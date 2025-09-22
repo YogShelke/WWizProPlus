@@ -1,0 +1,13 @@
+[SecNewsEnglish]
+count = 4
+1 = Hyatt hotel says payment systems hacked with credit-card stealing malware.
+2 = 130 celebrities e-mail accounts hacked; hacker stole movie scripts and sex tapes.
+3 = Encrypted e-mail servers seized by german authorities after school bomb threats.
+4 = WhatsApp both WhatsApp Web and mobile application can be crashed by sending nearly 4000 smileys continuously.
+
+[SecNewsGerman]
+count = 4
+1 = Hyatt Hotel sagt Zahlungssysteme mit Kreditkarten- stehlender Malware gehackt.
+2 = 130 Prominenten E-Mail-Konten gehackt; Hacker stehlen Drehbücher und Sex Tapes.
+3 = Verschlüsselte E-Mail-Server, die von Deutsch Behörden nach der Schule Bombendrohungen beschlagnahmt.
+4 = WhatsApp WhatsApp sowohl Web und mobile Applikation kann durch Senden fast 4000 smileys kontinuierlich zum Absturz gebracht werden.

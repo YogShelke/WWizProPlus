@@ -1,0 +1,9 @@
+signtool sign /f "D:\ISPY_Developement\SetupRequirements\DigitalSignature\OS201312129671.pfx" /p "Passw0rd12345" "D:\ISPY_Developement\Release\ISpyAVTray.exe"
+signtool sign /t http://timestamp.digicert.com /f "D:\ISPY_Developement\SetupRequirements\DigitalSignature\OS201312129671.pfx" /p "Passw0rd12345" "D:\ISPY_Developement\Release\ISPYAVUI.exe"
+
+
+
+signtool sign /f "D:\WardWizDevelopment_2.3\SetupRequirements\DigitalSignature\OS201701036103.pfx" /p "WelservWardWiz123" "D:\ISPY_Developement\Release\ISpyAVTray.exe"
+signtool sign /t http://timestamp.digicert.com /f "D:\WardWizDevelopment_2.3\SetupRequirements\DigitalSignature\OS201701036103.pfx" /p "WelservWardWiz123" "D:\ISPY_Developement\Release\ISPYAVUI.exe"
+
+

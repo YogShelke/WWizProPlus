@@ -1,0 +1,1 @@
+signtool sign /v /ac GlobalSignRootCA.crt /s My /n "WardWiz Deutschland GmbH" /t http://timestamp.veriSign.com/scripts/timstamp.dll "D:\CODEBACKUP\Himanshu\UnLoad_allowed\32\WithoutSign\WRDWIZREGPROT.sys"
