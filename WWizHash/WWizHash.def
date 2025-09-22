@@ -1,0 +1,6 @@
+; WWizHash.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZHASH"
+
+EXPORTS
+    ; Explicit exports can go here

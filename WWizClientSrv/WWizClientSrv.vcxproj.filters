@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{8d53ceed-0467-41c7-a8a1-7e8b46838264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sockets">
+      <UniqueIdentifier>{aa20e877-8b87-4913-b993-2f83c344fef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{a9bb0e64-176d-4c7b-8449-9602a2ed91b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DownloadManager">
+      <UniqueIdentifier>{8c54ed61-8bac-4a3b-bcaf-a44eff261edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQLite">
+      <UniqueIdentifier>{66fd28c2-5acb-40f5-a788-7c24a97074d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ServiceBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceInstaller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizClientSrv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDataManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyList.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\ExecuteProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Sockets\Connections.cpp">
+      <Filter>Sockets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Sockets\ping.cpp">
+      <Filter>Sockets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Sockets\SocketComm.cpp">
+      <Filter>Sockets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="WardwizClientAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\DownloadContext.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\DownloadController.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\MessageQueue.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\ThreadPool.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\WinHttpManager.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\WWizHttpManager.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizRegistration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkInstallation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkTasks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UninstallClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizProdDownloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp">
+      <Filter>SQLite</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ServiceBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceInstaller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WWizSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyList.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\ExecuteProcess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Sockets\Connections.h">
+      <Filter>Sockets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Sockets\ping.h">
+      <Filter>Sockets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Sockets\SocketComm.h">
+      <Filter>Sockets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDataManager.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\atlrx.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\DownloadContext.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\DownloadController.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\IController.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\IExecContext.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\MessageQueue.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\RegExp.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\StringProcess.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\ThreadPool.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\WinHttpClient.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\WinHttpManager.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\WWizHttpManager.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="WardwizClientAgent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WWizRegistration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkInstallation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkTasks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScanTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UninstallClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WWizProdDownloader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documentation\ReadMe.htm" />
+  </ItemGroup>
+</Project>

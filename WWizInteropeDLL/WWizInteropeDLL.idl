@@ -1,0 +1,44 @@
+// WWizInteropeDLL.idl : IDL source for WWizInteropeDLL
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WWizInteropeDLL.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5D407673-7406-4ED8-AB77-B45EE4361253),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IWardWizExports : IDispatch{
+	[id(1)] HRESULT FunctionGetStringHash([in, string] CHAR* strInputString, [out] BSTR* bstrHash);
+};
+[
+	uuid(A137D0A6-BFE8-48C6-B638-D1249F686796),
+	version(1.0),
+]
+library WWizInteropeDLLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(6F8FEE54-7E22-4EF6-BE18-F8BCE9667DFE)		
+	]
+	dispinterface _IWardWizExportsEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(D13B3509-5147-499B-8039-3195748C6168)		
+	]
+	coclass WardWizExports
+	{
+		[default] interface IWardWizExports;
+		[default, source] dispinterface _IWardWizExportsEvents;
+	};
+};
+

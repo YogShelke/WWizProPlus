@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {D13B3509-5147-499B-8039-3195748C6168} = s 'WardWizExports Class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{A137D0A6-BFE8-48C6-B638-D1249F686796}'
+			Version = s '1.0'
+		}
+	}
+}
