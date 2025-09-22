@@ -1,0 +1,689 @@
+<html window-blurbehind="light" window-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+  <style> 
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+	form.window
+	{
+		prototype: Widget;
+		background-image: url("IDR_PNG_WIDGET_BG.png");
+		background-repeat: no-repeat;
+		background-size:cover;
+		width: 130dip;
+		height: 130dip;
+		padding:3dip;
+	}
+	form.window > caption
+    {
+		width:111dip;
+		height:111dip;
+		line-height:1.4em;
+		padding: 64dip 9dip;
+		border-radius: 100%;
+    }
+		
+	.icon_scan
+	{
+		position: absolute;
+		size: 15dip;
+		top: 99dip;
+		left: 29dip;
+		cursor: pointer;
+		background:transparent;
+	}
+	.icon_scan:hover
+	{
+		transform:scale(1.3);
+		transition:transform(sine-in-out, 200ms);
+	}
+	.icon_updt
+	{
+		position: absolute;
+		size: 15dip;
+		top: 108dip;
+		left: 48dip;
+		cursor: pointer;
+		background:transparent;
+	}
+	.icon_updt:hover
+	{
+		transform:scale(1.3);
+		transition:transform(sine-in-out, 200ms);
+	}
+	.icon_tmp_file
+	{
+		position: absolute;
+		size: 14dip;
+		top: 108dip;
+		left: 70dip;
+		cursor: pointer;
+		background:transparent;
+	}
+	.icon_tmp_file:hover
+	{
+		transform:scale(1.3);
+		transition:transform(sine-in-out, 200ms);
+	}
+	.icon_report
+	{
+		position: absolute;
+		size: 14dip;
+		top: 99dip;
+		left: 86dip;
+		cursor: pointer;
+		background:transparent;
+	}
+	.icon_report:hover
+	{
+		transform:scale(1.3);
+		transition:transform(sine-in-out, 200ms);
+	}
+	 
+	.green_img
+	{
+		position:absolute;
+		top:-0.5dip;
+		left:0.5dip;
+		width:135dip;
+		height:140dip;
+		z-index: -1;
+	}
+	.yellow_img
+	{
+		position:absolute;
+		top:-0.7dip;
+		left:0.5dip;
+		width:135dip;
+		height:140dip;
+		z-index: -1;
+	}
+	.red_img
+	{
+		position:absolute;
+		top:0;
+		left:0;
+		width:130dip;
+		z-index: -1;
+	}
+	.menu_bar_img
+	{
+		position:absolute;
+		top:1dip;
+		left:2dip;
+		width:130dip;
+		z-index: -2;
+	}
+	.ww_logo{
+		position:absolute;
+		top:32dip;
+		left:47dip;
+		width:36dip;
+		z-index:-1;
+	}
+	.textpercentage{
+		position:absolute;
+		top:75dip;
+		left:47dip;
+		width:38dip;
+		height:16dip;
+		text-align:center;
+	}
+	.textpercentage span{
+		font-weight:bold;
+		font-size:10dip;
+		color:#31a3dd;
+		width:38dip;
+		text-align:center;
+	}
+	.textpercentage:hover > span{
+		color:#31a3dd;
+	}
+	.green_img
+	{
+		visibility: none;
+	}
+	.yellow_img
+	{
+		visibility: none;
+	}
+	.red_img
+	{
+		visibility: none;
+	}
+	.green_img:collapsed
+	{
+		visibility:none
+	}
+	.green_img:expanded
+	{
+		visibility:visible;
+		z-index:-3;
+	}
+	.yellow_img:collapsed
+	{
+		visibility:none;
+	}
+	.yellow_img:expanded
+	{
+		visibility:visible;
+		z-index:-3;
+	}
+	
+	.red_img:collapsed
+	{
+		visibility:none;
+	}
+	.red_img:expanded
+	{
+		visibility:visible;
+		z-index:-3;
+	}
+	img.ripple { 
+		aspect: ripple;
+		position:absolute;
+		top:65dip;
+		left:65dip;
+		size:1dip;
+		z-index:-1;
+	}
+      
+    img.ripple:expanded { transform: scale(115); transition: transform(sine-in-out, 1200ms); }
+
+	.hide_show
+	{
+		visibility: none;
+	}	
+	.hide_show:collapsed
+	{
+		visibility:none;
+	}
+	.hide_show:expanded
+	{
+		visibility:visible;
+	}
+	.hide_show_updt
+	{
+		visibility: none;
+	}	
+	.hide_show_updt:collapsed
+	{
+		visibility:none;
+	}
+	.hide_show_updt:expanded
+	{
+		visibility:visible;
+	}
+	
+	.temp_popup{
+		aspect: ripple;
+		width:15dip;
+		height:15dip;
+		display:inline-block;
+		background:red;
+		left:68dip;
+		bottom:27dip;
+		border-radius:20dip;
+		position:absolute;
+		font-size:10dip;
+		color:#fff;
+		z-index:-1;
+	}
+	.temp_popup:expanded { transform: scale(1.5); transition: transform(sine-in-out, 1200ms); }
+	
+	.updt_popup{
+		aspect: ripple;
+		width:15dip;
+		height:15dip;
+		display:inline-block;
+		background:red;
+		left:48dip;
+		bottom:27dip;
+		border-radius:20dip;
+		position:absolute;
+		font-size:10dip;
+		color:#fff;
+		z-index:-1;
+	}
+	.updt_popup:expanded { transform: scale(1.5); transition: transform(sine-in-out, 1200ms); }
+	
+	.temp_one
+	{
+		top:-2dip;
+		left:4dip;
+		position:absolute;
+	}
+	.updt_one
+	{
+		top:-2dip;
+		left:4dip;
+		position:absolute;
+	}
+	
+	.img_temp_down_arrow
+	{
+		width:7dip;
+		margin-top:15dip;
+		margin-left:4dip;
+	}
+	
+	.tooltip .tooltiptext 
+	{
+		visibility: hidden;
+		width: 110dip;
+		min-height: 11dip;
+		background: #fff;
+		color: #000;
+		text-align: center;
+		display:inline-block;
+		position:relative;
+		border:1dip solid #555;
+		z-index: 1;
+		position:absolute;
+		left:12dip;
+		top:65dip;
+		font-size:9dip;
+		border-radius:20dip;
+	} 
+	.tooltip:hover .tooltiptext 
+	{
+		visibility: visible;
+	} 
+	.rightClickMenu{
+		z-index: 0;
+		position:absolute;
+		top:5dip;
+		left:5dip;
+		width:125dip;
+		height:125dip;
+		border-radius: 80%;
+		context-menu: selector(menu#context);
+	}
+  </style>  
+
+  <style #ID_CSS_GERMAN_LANG />
+
+<script type="text/tiscript">
+	const styleBag = $(style#ID_CSS_GERMAN_LANG);
+	styleBag.attributes["src"] = "IDR_CSS_GERMAN_LANGUAGE.css";
+</script>
+	
+<script type="text/tiscript">
+	include "IDR_TIS_DESKTOP_WIDGET.tis";
+</script>
+	
+<script type="text/tiscript">
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script>
+<script type="text/tiscript">
+	var g_LanguageName;
+	var g_TempFileSizeCount = 0;
+	var g_ProductID;
+</script>
+<script type="text/tiscript">
+	if(g_LanguageName == "GERMAN")
+	{	
+		styleBag.activate();  // inject rules
+	}
+	else if(g_LanguageName == "ENGLISH")
+	{
+		styleBag.deactivate();
+	}
+</script>	
+<script type="text/tiscript">
+	var varRegTotDays = 0;
+	var bIsUptoDate = false;
+	var varActiveScnFlag = "GREENFLAG";
+</script>
+	
+<script type="text/tiscript">
+	$(#ID_ICON_SCAN).on("mouseenter", function()
+	{	
+		this.attributes["title"] = Lang.translate("ID_STR_SCAN_MENU");
+	});
+	
+	$(#ID_ICON_UPDT).on("mouseenter", function()
+	{
+		if($(.hide_show_updt).state.expanded == true)
+		{
+			$(#ID_UPDT_POPUP).start();
+			this.attributes["title"] = Lang.translate("ID_OLD_DB_VER_UPDT");
+		}
+		else if($(.hide_show_updt).state.collapsed == true)
+		{
+			this.attributes["title"] = Lang.translate("ID_LIVE_UPDATE");
+		}
+	});
+	
+	$(#ID_ICON_UPDT).on("mouseleave", function()
+	{
+		$(#ID_UPDT_POPUP).stop();
+	});
+	
+	$(#ID_ICON_TMP).on("mouseenter", function()
+	{
+		if($(.hide_show).state.expanded == true)
+		{
+			$(#ID_TEMP_POPUP).start();
+			this.attributes["title"] = Lang.translate("ID_UPTO")+g_TempFileSizeCount+Lang.translate("ID_MB_CAN_FREED_TMP_FILES");
+		}
+		else if($(.hide_show).state.collapsed == true)
+		{
+			this.attributes["title"] = Lang.translate("ID_TEMP_FILE_CLEANER1");
+		}
+	});
+	
+	$(#ID_ICON_TMP).on("mouseleave", function()
+	{
+		$(#ID_TEMP_POPUP).stop();
+	});
+	
+	$(#ID_ICON_REPORT).on("mouseenter", function()
+	{
+		this.attributes["title"] = Lang.translate("ID_STR_REPORTS_MENU");
+	});
+	
+	$(.textpercentage).on("mouseenter", function()
+	{
+		this.attributes["title"] = Lang.translate("ID_CPU_USAGE");
+	});
+</script>
+	
+<script type="text/tiscript">
+	$(#ID_ICON_SCAN).onClick = function()
+	{
+		view.OnBnClickedButtonScanPage();
+	}
+	
+	$(#ID_ICON_UPDT).onClick = function()
+	{
+		view.OnClickUpdate();
+	}
+	
+	$(#ID_ICON_TMP).onClick = function()
+	{
+		view.OnClickTempFileCleaner();
+	}
+	
+	$(#ID_ICON_REPORT).onClick = function()
+	{
+		view.OnClickReport();
+	}
+</script>
+<script type="text/tiscript">
+	function SetWidgetASState(strASColorState)
+	{
+		varActiveScnFlag = strASColorState;
+		if(strASColorState == "REDFLAG")
+		{
+			$(.red_img).state.expanded = true;
+			$(.green_img).state.collapsed = true;
+			$(.yellow_img).state.collapsed = true;
+		}
+		else if(strASColorState == "GREENFLAG")
+		{
+			$(.red_img).state.collapsed = true;
+
+			if(varRegTotDays >= 1 && bIsUptoDate == true)
+			{
+				$(.green_img).state.expanded = true;
+				$(.yellow_img).state.collapsed = true;
+			}
+			else
+			{
+				$(.green_img).state.collapsed = true;
+				$(.yellow_img).state.expanded = true;
+			}
+		}
+	}
+	
+	function GetTempFoldSize(varTempFoldSize)
+	{
+		g_TempFileSizeCount = varTempFoldSize.toInteger();
+		if(varTempFoldSize > 200)
+		{
+			$(.hide_show).state.expanded = true;
+		}
+		else
+		{
+			$(.hide_show).state.collapsed = true;
+		}
+	}
+	
+	function GetProdUpdtInfo(varIsProdUpdt)
+	{
+		bIsUptoDate = varIsProdUpdt;
+		if(varIsProdUpdt == false) //older db
+		{
+			$(.hide_show_updt).state.expanded = true;
+			$(.yellow_img).state.expanded = true;
+			$(.green_img).state.collapsed = true;
+		}
+		else if(varIsProdUpdt == true) //upto date
+		{
+			$(.hide_show_updt).state.collapsed = true;
+			$(.yellow_img).state.collapsed = true;
+			$(.green_img).state.expanded = true;
+		}
+		if(varActiveScnFlag == "REDFLAG")
+		{
+			$(.red_img).state.expanded = true;
+			$(.green_img).state.collapsed = true;
+			$(.yellow_img).state.collapsed = true;
+		}
+		if(varActiveScnFlag == "GREENFLAG")
+		{
+			$(.red_img).state.collapsed = true;
+
+			if(varRegTotDays >= 1 && bIsUptoDate == true)
+			{
+				$(.green_img).state.expanded = true;
+				$(.yellow_img).state.collapsed = true;
+			}
+			else
+			{
+				$(.green_img).state.collapsed = true;
+				$(.yellow_img).state.expanded = true;
+			}
+		}
+	}
+</script>
+<script type="text/tiscript">
+	
+	function ripple() 
+    {
+		function flipflop() 
+		{ 
+			this.state.expanded = !this.state.expanded; 
+		}
+    
+		this.start = function() 
+		{
+			this.state.expanded = true; // triggers transition/animation
+			this.on("animationend.ripple", flipflop );
+		} 
+		
+		this.stop = function() 
+		{
+			this.state.expanded = false; 
+			this.off("animationend.ripple");
+		}   
+    }
+</script>
+<script type="text/tiscript">
+	$(#search_box).on("mouseenter",function(){
+		if(varActiveScnFlag == "REDFLAG")
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_ACTIVE_SCN_OFF");
+		else if(varRegTotDays <= 0)
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_REG_REQRD");
+		else if(bIsUptoDate == false)
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_UPDATE_REQRD");
+		else
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_SECURED");
+	});
+</script>
+<script type="text/tiscript">
+	function funGetDays(totDays)
+	{
+		varRegTotDays = totDays;
+		if(varActiveScnFlag == "REDFLAG")
+		{
+			$(.red_img).state.expanded = true;
+			$(.green_img).state.collapsed = true;
+			$(.yellow_img).state.collapsed = true;
+		}
+		if(varActiveScnFlag == "GREENFLAG")
+		{
+			$(.red_img).state.collapsed = true;
+
+			if(varRegTotDays >= 1 && bIsUptoDate == true)
+			{
+				$(.green_img).state.expanded = true;
+				$(.yellow_img).state.collapsed = true;
+			}
+			else
+			{
+				$(.green_img).state.collapsed = true;
+				$(.yellow_img).state.expanded = true;
+			}
+		}
+	}
+	
+	function GetCpuUsageCount(varCPUCount)
+	{
+		$(#ID_CPU_PER).value = varCPUCount;
+	}
+</script>
+<script type="text/tiscript">
+	$(#ID_DISABLED).onClick = function()
+	{
+		view.DisableWidget();
+	}
+	$(#ID_HIDE).onClick = function()
+	{
+		view.HideWidget();
+	}
+</script>
+<script type="text/tiscript">
+	function self.ready()
+    {
+		var (screenX1,screenY1,screenX2,screenY2) = view.screenBox(#workarea, #rect );
+		var (w,h) = self.$(form).box(#dimension,#border);
+		$(#search_box).move(screenX2 - (w+35), screenY1 - (h/5), #self, #attached-window);
+
+		var bLangID = view.GetLanguageID();
+		if(bLangID == 0)
+			g_LanguageName = "ENGLISH";
+		else if(bLangID == 2)
+			g_LanguageName = "GERMAN";
+			
+		/*var varThemeID = view.OnGetThemeID();
+		if(varThemeID == 2)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(#ID_MENU_BAR).attributes["src"] = "IDR_PNG_WID_MENU_BG_DARK.png";
+		}*/
+		
+		view.funUnRegProd(funGetDays);
+		view.funUptoDateProd(GetProdUpdtInfo);
+		view.funActiveScan(SetWidgetASState, GetTempFoldSize);
+		self.language = g_LanguageName;
+		view.GetCpuUsage(GetCpuUsageCount);
+    }	
+</script>
+
+</head>
+<body>
+	<div>
+		<form #search_box .window .tooltip style="position:relative;">
+			
+			<span class="tooltiptext"><span #ID_STATUS_MSG><label> </label></span></span>
+			<caption>
+				<div .rightClickMenu></div>
+				<img class="green_img" src="IDR_PNG_WID_GREEN.png">
+				<img class="yellow_img" src="IDR_PNG_WID_YELLOW.png">
+				<img class="red_img" src="IDR_PNG_WID_RED.png">
+				<img class="ww_logo" src="IDR_PNG_WIDGET_WW_LOGO.png">
+				<span class="textpercentage"><span #ID_CPU_PER></span></span>
+				
+				<img #ID_MENU_BAR class="menu_bar_img" src="IDR_PNG_WID_MENU_BG.png">
+				
+				<span class="hide_show"><div class="temp_popup" id="ID_TEMP_POPUP"><span .temp_one>1</span><img src="IDR_PNG_DOWN_ARROW_WIDGET.png" .img_temp_down_arrow></div></span>
+				<span class="hide_show_updt"><div class="updt_popup" id="ID_UPDT_POPUP"><span .updt_one>1</span><img src="IDR_PNG_DOWN_ARROW_WIDGET.png" .img_temp_down_arrow></div></span>
+                <div #ID_ICON_SCAN>
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" class="icon_scan">
+                    <g>
+                    <g>
+                    <path fill="#FFFFFF" d="M497.9,430.1L380.5,312.6c-17.5,27.2-40.7,50.4-67.9,67.9l117.5,117.5c18.8,18.7,49.2,18.7,67.9,0
+									C516.7,479.2,516.7,448.8,497.9,430.1z"/>
+                    <path fill="#FFFFFF" d="M384,192C384,86,298,0,192,0C86,0,0,86,0,192s86,192,192,192C298,384,384,298,384,192z M192,336
+									c-79.4,0-144-64.6-144-144S112.6,48,192,48c79.4,0,144,64.6,144,144S271.4,336,192,336z"/>
+                    <path fill="#FFFFFF" d="M80,192h32c0-44.1,35.9-80,80-80V80C130.3,80,80,130.3,80,192z"/>
+							</g>
+						</g>
+					</svg>
+                </div>
+				<div #ID_ICON_UPDT>
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"  class="icon_updt">
+					<g>
+						<g>
+							<path fill="#FFFFFF" d="M54.3,273.9c-3.1-27.1-0.5-53.3,6.6-77.4C84.4,116.1,158.3,57,245.9,56V3.5c0-2.9,3.6-4.5,6-2.7
+								l108.1,79.4c1.8,1.4,1.8,4.1,0,5.3l-108,79.4c-2.5,1.8-6,0.2-6-2.7v-52.4c-57.6,0.9-106.8,36.5-128,86.7
+								c-8,19-12.1,39.9-10.9,61.9c1.6,30.2,12.9,58.1,30.9,80.6c9.6,12,7.3,29.5-5.1,38.6c-11.8,8.7-28.2,6.3-37.3-5.2
+								C73.3,344.6,58.5,310.8,54.3,273.9z M366.3,173c18,22.4,29.4,50.3,30.9,80.6c1.1,22.1-3,43-10.9,61.9
+								c-21.2,50.2-70.4,85.9-128,86.7v-52.4c0-2.9-3.6-4.5-6-2.7l-108.1,79.4c-1.8,1.4-1.8,4.1,0,5.3l108,79.4c2.5,1.8,6,0.2,6-2.7V456
+								c87.7-0.9,161.7-60,185.1-140.5c7.1-24.2,9.6-50.3,6.6-77.4c-4.2-36.9-19-70.7-41.2-98.4c-9.2-11.5-25.5-13.9-37.3-5.2
+								C359,143.5,356.7,161,366.3,173z"/>
+						</g>
+					</g>
+					</svg>
+				</div>
+				<div #ID_ICON_TMP>
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" class="icon_tmp_file">
+						<g>
+							<path fill="#FFFFFF" d="M508.9,307.7l-90.5,171.2c-4.4,8.5-17,17.5-26.7,17.5l-362.8,0.1c-7.7,0-15-3-20.4-8.5
+								C3,482.6,0,475.3,0,467.6l0.1-281.7C0.1,169.9,13,157,28.9,157l26.5,0v24.6H37.7c-3.5,0-6.8,1.4-9.3,3.8c-2.5,2.5-3.8,5.8-3.8,9.3
+								l0,264.1c0,7.2,5.9,13.1,13.1,13.1h18.2l85.7-173.5c4.8-9.7,14-17.5,23.7-17.5h210l0.1-69.8c13.7,1.3,24.5,12.6,24.5,26.7v43.1
+								h96.3C507.6,281,517.2,292.3,508.9,307.7z M72.2,384.6c-0.8-86.3,0-345.4,0-345.4c0-13.1,10.6-23.7,23.7-23.7h189.7
+								c3,0,5.9,1.3,8,3.5l61.3,66.6c1.8,2,2.9,4.6,2.9,7.4v172.6h-19.9V107.9c0-2.7-2.2-4.9-4.9-4.9h-46.9c-5.5,0-10-4.5-10-9.9V40.4
+								c0-2.7-2.2-4.9-4.9-4.9H95.9c-2.1,0-3.8,1.7-3.8,3.8v323.7l-15.2,30.8C76.8,393.6,72.2,393.3,72.2,384.6z M295.9,83.1h29.5
+								L295.9,51L295.9,83.1L295.9,83.1z M306.7,123.2H123.3c-6.8,0-12.2,5.5-12.2,12.2c0,6.7,5.5,12.2,12.2,12.2h183.3
+								c6.8,0,12.3-5.5,12.3-12.2C318.9,128.7,313.4,123.2,306.7,123.2z M318.9,206.7c0-6.7-5.5-12.2-12.2-12.2H123.3
+								c-6.8,0-12.2,5.5-12.2,12.2c0,6.7,5.5,12.2,12.2,12.2h183.3C313.4,219,318.9,213.5,318.9,206.7z M111.1,278.5
+								c0,6.7,5.5,12.2,12.2,12.2h4.4c7.7-21.6,26.9-24.5,26.9-24.5h-31.3C116.6,266.3,111.1,271.8,111.1,278.5z"/>
+						</g>
+					</svg>
+				</div>
+				<div #ID_ICON_REPORT>
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" class="icon_report">
+					<g>
+						<g>
+							<g>
+								<polygon fill="#FFFFFF" points="117.3,322.3 117.3,511.8 157.2,511.8 157.2,281.6 			"/>
+								<polygon fill="#FFFFFF" points="195.2,511.8 235.2,511.8 235.2,307.3 195.2,267.3 			"/>
+								<polygon fill="#FFFFFF" points="38.3,511.8 78.3,511.8 78.3,362.1 38.3,402.8 			"/>
+								<polygon fill="#FFFFFF" points="392.1,0.2 392.1,40.1 444.8,40.1 262.9,222 182.3,141.3 0,329 28.7,356.9 182.7,198.3 
+									262.9,278.5 472,69.4 472,119.1 512,119.1 512,0.2 			"/>
+								<polygon fill="#FFFFFF" points="431.1,166.9 431.1,511.8 471,511.8 471,161.1 436.9,161.1 			"/>
+								<polygon fill="#FFFFFF" points="273.2,511.8 313.1,511.8 313.1,284.8 273.2,324.8 			"/>
+								<polygon fill="#FFFFFF" points="352.1,511.8 392.1,511.8 392.1,205.9 352.1,245.9 			"/>
+							</g>
+						</g>
+					</g>
+					</svg>
+				</div>				
+			</caption>		
+        </form>
+	</div>
+	<menu .context id="context">
+		<li id="ID_HIDE"><label>ID_HIDE</label></li>
+		<li id="ID_DISABLED"><label>ID_DISABLE</label></li>		    
+	</menu>
+</body>
+</html>

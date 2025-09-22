@@ -1,0 +1,3173 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>
+	<style> 
+	@import url(IDR_CSS_TOGGELER.css);	
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@font-face {
+        font-family: Roboto-Medium;
+        src: url(Roboto-Medium.ttf);
+      }
+	html{
+		padding:0dip;
+		margin:0dip;
+		overflow:hidden; 
+		width:720dip!important;
+		height:500dip!important;
+	}
+
+	body{
+		width:720dip;
+		height:500dip;
+		margin:0;
+		padding:0;
+		background:url(IDR_JPG_BG_LIGHT_GREY.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+		position:relative;	
+		overflow:hidden;
+	}
+	main {size:*;}
+    main > frame { visibility:none; }
+    main > frame:current { visibility:visible; }
+	#ID_MENU_PAR_CONTROL:disabled{
+		opacity:.5;
+	}
+	#ID_MENU_EML_SCAN:disabled{
+		opacity:.5;
+	}
+	#ID_MENU_FIREWALL:disabled{
+		opacity:.5;
+	}
+	#ID_MENU_DATA_ENC:disabled{
+		opacity:.5;
+	}
+	#ID_MENU_REG_OPT:disabled{
+		opacity:.5;
+	}
+	.footer{
+		background:transparent;
+		width:670dip;
+		height:40dip;
+		flow:horizontal;
+	}
+	.footer .leftAl{
+		color:#000;
+		padding-top:10dip;
+		padding-left:10dip;
+		width:280dip;
+		display:block;
+		position:relative;	
+	}
+	.footer .rightAl{
+		color:#000;
+		padding-top:4dip;
+		padding-right:10dip;
+		text-align:right;
+		display:block;
+		position:relative;
+		float:right;
+		width:370dip;
+	}
+	.contentWindow{
+		width:670dip;
+		height:420dip;
+		position:relative;
+		z-index:9;
+	}
+	.subMnuContainer{
+		padding-bottom:50dip;
+		position:relative;
+		min-height:90dip;
+		display:block;
+	}
+	.translateWindow{
+        filter: blur(5dip);
+	}
+	.translateWindow::after{
+		content:"";
+		position:absolute;
+		width:720dip;
+		height:600dip;
+		top:0;
+		left:0;
+		background:transparent;
+	}
+	.subMnuDescription{
+		margin:0;
+		padding:0;
+		font-size:13dip;
+		color:#808080;
+	}
+	.subMnuHeading{
+		margin:0;
+		padding:0;
+		font-size:14dip;
+		/* font-weight:bold; */
+		font-family: Roboto-Medium;
+		margin-top: 5dip;
+	}
+	.menuIconStyleInner{
+		size:30dip;background:none;
+		cursor:pointer;
+		fill: rgb(0, 0, 0);
+		stroke:rgb(0, 0, 0);
+	}
+	.activeMenu{
+		border-left:6dip solid #3d748e;
+		padding-left:1dip!important;
+		visibility:visible!important;
+		left:50dip;
+		transition:left(sine-in-out, 400ms);
+		border-left:6dip solid #3d748e;
+		box-shadow: inset 0dip -1dip 10dip 5dip #55869c!important;
+	}
+	.menuIconStyleAccount{
+		size:20dip;
+		background:none;
+		cursor:pointer;
+		fill: #000;
+	}
+	.menuBar{
+		width:50dip;
+		height:380dip;
+		background:#269BD0!important;
+		margin-top:80px;
+		border-radius: 0 20px 20px 0;
+	}
+	.menuBar ul{
+		padding:0;
+		margin:0;
+		padding-top:15dip;
+	}
+	.menuBar ul li{
+		list-style:none;
+		padding:7dip 12dip;
+		position:relative;
+		cursor:pointer;
+	}
+	.menuBar ul li:hover .menuIconStyle{
+		transform:scale(1.1);
+		transition:transform(sine-in-out, 200ms);
+	}
+	
+	menu{
+		behavior:menu; 
+		display:none;  
+		prototype: PopupDialog;  
+	}
+	li[type="menu"]{
+		behavior:popup-menu;
+	}
+	.helpMnu menu{
+		flow:vertical;
+		margin-left:-170dip;
+	}
+	.helpMnu menu li{
+		width:160dip;
+		padding:5dip 10dip;
+	}
+	.topMenu{
+		margin-left:4dip;
+	}
+	.topMenu ul{
+		margin:0;
+		padding:0;
+		margin-left:105dip;
+		margin-top:10dip;	
+		display:block;
+		position:relative;
+		flow:horizontal;
+		/* background-color: blue!important; */
+	}
+	.topMenu li{
+		list-style:none;
+		display:inline-block;
+		padding:0dip 3dip;
+		cursor:pointer;
+		color:#000;
+		margin-left:1dip;
+		margin-right:1dip;
+		/* border:1px solid #000922; */
+	}
+	.col-1-1{
+		width:170dip;
+	}
+	.hoverMenuItemTools{
+		position:fixed!important;
+		left:50dip;
+		width:170dip;
+		top:40dip;
+		margin-left:1dip;
+		height:420dip;
+		z-index:9;
+		padding-top:10dip;
+		padding-top:0;
+		padding-left:0;
+		visibility:none;
+	}
+	.hoverMenuItemTools li{
+		background:none!important;
+		padding-top:0;
+		color:#555;
+		padding-left:5dip;
+		border:none!important;
+		flow:vertical;
+		text-align:center;
+	}
+	.bgScanSubMnu{
+		background: #fff; 
+		size:*;
+		margin-left:-8dip;
+		margin-right:-8dip;
+	}
+	.hoverMenuItemScan{
+		position:fixed!important;
+		left:-350dip;
+		width:170dip;
+		top:40dip;
+		margin-left:1dip;
+		height:420dip;
+		z-index:9;
+		padding-top:10dip;
+		color:#555;
+		padding-top:0;
+		padding-left:0;
+		visibility:none;
+		border-right:1dip solid #2b3944!important;
+	}
+	.hoverMenuItemScan li{
+		background:none!important;
+		padding-top:0;
+		color:#555;
+		padding-left:5dip;
+		border:none!important;
+		flow:vertical;text-align:center;
+	}
+	.shieldIco{
+		width:42dip;
+		padding:3dip;
+		cursor:pointer;
+	}
+	.homeIcon.animationHomeIco{
+		stroke-dasharray: 2100;
+		stroke-dashoffset: 2100;
+	}
+	.protectionIcon.animationProtectionIco{
+		stroke-dasharray: 2100;
+		stroke-dashoffset: 2100;
+	}
+	.toolsIcon.animationToolsIco{
+		stroke-dasharray: 1800;
+		stroke-dashoffset: 1800;
+	}
+	.encryptionIcon.animationEncryptionIco{
+		stroke-dasharray: 1000;
+		stroke-dashoffset: 1000;
+	}
+	.reportsIcon.animationReportsIco{
+		stroke-dasharray: 2100;
+		stroke-dashoffset: 2100;
+	}
+	.updateIcon.animationUpdateIco{
+		stroke-dasharray: 2100;
+		stroke-dashoffset: 2100;
+	}
+	.settingsIcon.animationSettingsIco{
+		stroke-dasharray: 2100;
+		stroke-dashoffset: 2100;
+	}
+	.midContent{
+		flow:horizontal;
+	}
+	.mainContent{
+		flow:vertical;
+	}
+	.activeMenu
+	{
+		visibility:visible!important;
+		left:50dip;
+		transition:left(sine-in-out, 400ms);
+	}
+	.CloseIcon{
+		size:10dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+		margin-top:5dip;
+	}
+	.MiniIcon{
+		size:10dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+		margin-top:5dip;
+	}
+	.MiniIcon1{
+		size:20dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+		margin-top:5dip;
+	}
+	.textAlignment{
+		margin-top:6dip;
+		padding-left:6dip;
+		margin-right:10dip;
+	}
+	.MiniIconFeedback{
+		size:25dip;
+		background:none;
+		fill: #fff;
+		cursor:pointer;
+		stroke:#fff;
+		margin-left:15dip;
+		margin-bottom:10dip;
+		position:absolute;
+		bottom:0;
+		left:0;
+	}
+	#ID_AMB_PROGRAM:collapsed{
+		visibility:none;
+	}
+	#ID_AMB_PROGRAM:expanded{
+		visibility:visible;
+	}
+	.social_style{
+	    padding:0;
+	    margin:0dip;
+	    margin-top:10dip;
+	}
+	.activeMenuClass{
+		//background:#dcdcdc!important;
+	}
+	.activeMenuClass .menuIconStyle{
+	size:26dip;
+	//background:red;
+	fill: #808080!important;
+	cursor:pointer;
+	stroke:#808080!important;
+}
+.protectionIcon {
+			fill: none;
+			stroke: #ffffff;
+			stroke-width: 15;
+			stroke-miterlimit: 10;
+		}
+		.activeMnuBtn svg .protectionIcon{
+	stroke: #5f5f5f!important;
+}		
+.activeMnuBtn{
+	background:linear-gradient(0deg, rgba(188, 215, 225, 1), rgba(255, 255, 255, .0))!important;
+	
+}
+.tooltip {
+  height:30dip;
+}
+
+.tooltip .tooltiptext {
+  visibility: none;
+  z-index: 9999;
+  background:#eef5fa;
+  position:fixed!important;
+		left:40dip;
+		min-width: max-content;
+		margin-left:0;
+		color:#324a5e;
+		padding-left:4dip;
+		padding-right:4dip;
+		padding-top:0;
+		height:20dip;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+#threatSecurity, #advanceSecurity {
+	visibility: none;
+}
+#threatSecurity:expanded, #advanceSecurity:expanded {
+	visibility: visible;
+}
+#threatSecurity:collapsed, #advanceSecurity:collapsed {
+	visibility: none;
+}
+</style>
+<style #ID_CSS_GERMAN_LANG />
+
+<script type="text/tiscript">
+     $(#fb).onClick = function() {
+		if(!view.FunCheckInternetAccessBlock())
+			Sciter.launch("https://www.facebook.com/Vibraniumav");
+            //Sciter.launch("http://www.wardwiz.de/social/re.php?social=facebook");
+     }
+	 $(#tw).onClick = function() {
+		if(!view.FunCheckInternetAccessBlock())
+			Sciter.launch("https://www.instagram.com/vibranium.india/?hl=en"); 
+           // Sciter.launch("http://www.wardwiz.de/social/re.php?social=Insta");
+     }
+	 $(#ln).onClick = function() {
+		if(!view.FunCheckInternetAccessBlock())
+			Sciter.launch("https://www.linkedin.com/company/vibranium-india/");
+            //Sciter.launch("http://www.wardwiz.de/social/re.php?social=LinkedIn");
+     }
+</script>
+    <script type="text/tiscript">
+		const styleBag = $(style#ID_CSS_GERMAN_LANG);
+		styleBag.attributes["src"] = "IDR_CSS_GERMAN_LANGUAGE.css";
+	</script>
+    <script type="text/tiscript">
+        include "IDR_TIS_MAIN.tis";
+    </script>
+	<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+    <script type="text/tiscript">	
+    if(productVersion == #BASIC){
+        $(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC";
+		//$(#ID_MENU_PAR_CONTROL).state.disabled = true;
+		//$(#ID_MENU_EML_SCAN).state.disabled = true;
+		//$(#ID_MENU_FIREWALL).state.disabled = true;
+		//$(#ID_MENU_DATA_ENC).state.disabled = true;
+		//$(#ID_MENU_REG_OPT).state.disabled = true;
+    }
+    else if(productVersion == #ESSENTIAL){
+		$(#threatSecurity).state.expanded = true;
+		$(#advanceSecurity).state.collapsed = true;
+
+        $(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL";
+		//$(#ID_MENU_PAR_CONTROL).state.disabled = true;
+		//$(#ID_MENU_EML_SCAN).state.disabled = true;
+		//$(#ID_MENU_FIREWALL).state.disabled = true;
+		$(#ID_MENU_DATA_ENC).state.disabled = false;
+		$(#ID_MENU_REG_OPT).state.disabled = false;
+    }
+    else if(productVersion == #PROVANTAGE){
+        $(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE";
+		$(#ID_MENU_PAR_CONTROL).state.disabled = false;
+		$(#ID_MENU_EML_SCAN).state.disabled = false;
+		$(#ID_MENU_FIREWALL).state.disabled = false;
+		$(#ID_MENU_DATA_ENC).state.disabled = false;
+		$(#ID_MENU_REG_OPT).state.disabled = false;
+    }
+    else if(productVersion == #ELITE){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE";
+		$(#ID_MENU_PAR_CONTROL).state.disabled = false;
+		$(#ID_MENU_EML_SCAN).state.disabled = false;
+		$(#ID_MENU_FIREWALL).state.disabled = false;
+		$(#ID_MENU_DATA_ENC).state.disabled = false;
+		$(#ID_MENU_REG_OPT).state.disabled = false;
+    }
+    else if(productVersion == #ESSENTIALPLUS){
+		$(#threatSecurity).state.collapsed = true;
+		$(#advanceSecurity).state.expanded = true;
+
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS";
+		$(#ID_MENU_PAR_CONTROL).state.disabled = false;
+		$(#ID_MENU_EML_SCAN).state.disabled = false;
+		$(#ID_MENU_FIREWALL).state.disabled = false;	
+		$(#ID_MENU_DATA_ENC).state.disabled = false;	
+		$(#ID_MENU_REG_OPT).state.disabled = false;	
+    }
+    </script>	
+    <script type="text/tiscript">	
+      var varIsStartUpScanNoUI = false;
+    </script>	
+    <script type="text/tiscript">
+        function CloseUI()
+        {
+			if(g_QuickScanFinish == false || g_FullScanFinish == false || g_CstmScanFinish == false || g_ARootScanFinish == false || g_RegOptFinish == false || g_IsDataEncDecRunning == true || g_RecoverFileFinish == false)
+			{
+				view.OnCallHideUIDialog();
+				var doc = selectView("IDR_HTM_HOME");
+			}
+			else
+			{
+				if(!g_IsAnyPopUpDisplayed)
+				{
+					var doc = selectView("IDR_HTM_HOME");
+					if(g_bIsAnyTaskInProcess)
+					{
+						return true;
+					}
+					else
+					{
+						view.OnClose();
+					}
+				}
+			}
+        }
+    </script>
+    <script type="text/tiscript">
+    $(#ID_ACCOUNT_HTML).onClick = function()
+    {
+        selectView("IDR_HTM_ACCOUNT");
+    }
+    $(#ID_AMB_PROGRAM).onClick = function()
+    {
+        if(g_LanguageName == "ENGLISH")
+            if(!view.FunCheckInternetAccessBlock())
+                Sciter.launch("https://partner.vibranium.co.in/partner");  //english for basic
+        else if(g_LanguageName == "GERMAN")
+            if(!view.FunCheckInternetAccessBlock())
+                Sciter.launch("https://partner.vibranium.co.in/partner"); //german for basic
+    }
+    </script>
+    <script type="text/tiscript">
+		$(#ID_HOME_HTML).onClick = function()
+		{
+			selectView("IDR_HTM_HOME");
+		}
+		$(#ID_SCAN_HTML).onClick = function()
+		{	
+			selectView("IDR_HTM_SCAN");
+		}
+		$(#ID_MENU_FIREWALL).onClick = function()
+		{
+			selectView("IDR_HTM_FIREWALL");
+		}
+		$(#ID_MENU_PAR_CONTROL).onClick = function()
+		{
+			selectView("IDR_HTM_PARENTAL_CONTROL");
+        }
+		$(#ID_MENU_EML_SCAN).onClick = function()
+		{
+			selectView("IDR_HTM_EMAIL_SCAN");
+		}
+		$(#ID_MENU_BROWSER_SECURITY).onClick = function()
+		{
+			selectView("IDR_HTM_BROWSER_SECURITY");
+		}
+		$(#ID_MENU_DATA_ENC).onClick = function()
+		{
+			selectView("IDR_HTM_DATA_ENCRYPTION");
+		}
+		
+		$(#ID_MENU_BLUE_DOME).onClick = function()
+		{
+			selectView("IDR_HTM_BLUE_DOME");
+		}
+		$(#ID_MENU_REG_OPT).onClick = function()
+		{
+			g_RegOptOpenStatus = false;
+			selectView("IDR_HTM_REGISTRY_OPTIMIZER");
+		}
+		$(#ID_MENU_RECOVER).onClick = function()
+		{
+			selectView("IDR_HTM_RECOVER_FILES");
+		}
+		$(#ID_REPORTS_HTML).onClick = function()
+		{
+			selectView("IDR_HTM_REPORTS");
+        }
+		$(#ID_SETTINGS_HTML).onClick = function()
+		{
+			selectView("IDR_HTM_SETTINGS");
+		}
+    </script>
+    <script type="text/tiscript">
+		function OpenHelpFile()
+		{
+			var varCommandlinestr = "-mapid";
+			var varHelpFilePath;
+			var varHelpFileIndex;
+			var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+			var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+			var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+			var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+			var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+			var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+			if(productVersion == #ESSENTIAL)
+			{
+				if(g_LanguageID == LANGUAGE_TYPE.ENGLISH)
+				{
+					varHelpFilePath = varEngEssential;
+				}
+				else if(g_LanguageID == LANGUAGE_TYPE.GERMAN)
+				{
+					varHelpFilePath = varGerEssential;
+				}
+			}
+			else if(productVersion == #BASIC)
+			{
+				if(g_LanguageID == LANGUAGE_TYPE.ENGLISH)
+				{
+					varHelpFilePath = varEngBasic;
+				}
+				else if(g_LanguageID == LANGUAGE_TYPE.GERMAN)
+				{
+					varHelpFilePath = varGerBasic;
+				}
+			}
+			else if(productVersion == #ESSENTIALPLUS)
+			{
+				if(g_LanguageID == LANGUAGE_TYPE.ENGLISH)
+				{
+					varHelpFilePath = varEngEssPlus;
+				}
+				else if(g_LanguageID == LANGUAGE_TYPE.GERMAN)
+				{
+					varHelpFilePath = varGerEssPlus;
+				}
+			}
+			switch(g_CurrentPage)
+			{
+				case #INDEX:
+					varHelpFileIndex = "2";
+					break;
+				case #ID_SCAN_HTML:
+					varHelpFileIndex = "41";
+					break;
+				case #QUICKSCAN:
+					varHelpFileIndex = "43";
+					break;
+				case #FULLSCAN:
+					varHelpFileIndex = "46";
+					break;			
+				case #CUSTOMSCAN:
+					varHelpFileIndex = "48";
+					break;
+				case #ANTIROOTKITSCAN:
+					varHelpFileIndex = "53";
+					break;
+				case #TOOLS:
+					varHelpFileIndex = "55";
+					break;
+				case #REGISTRYOPTIMIZER:
+					varHelpFileIndex = "56";
+					break;
+				case #DATAENCRYPTION:
+					varHelpFileIndex = "61";
+					break;
+				case #RECOVEROPR:
+					varHelpFileIndex = "70";
+					break;
+				case #UPDATE:
+					varHelpFileIndex = "79";
+					break;
+				case #LIVEUPDATE:
+					varHelpFileIndex = "80";
+					break;
+				case #UTILITIES:
+					varHelpFileIndex = "72";
+					break;
+				case #REPORTS:
+					varHelpFileIndex = "84";
+					break;
+				case #ACCOUNT:
+					varHelpFileIndex = "103";
+					break;
+				case #SETTINGS:
+					varHelpFileIndex = "88";
+					break;
+				case #SUPPORT:
+					varHelpFileIndex = "97";
+				break;
+			}			
+			System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+		}
+		$(#ID_BTN_HELP).onClick = function()
+		{
+			OpenHelpFile();
+		}
+		$(#ID_BTN_ONLINE_HELP).onClick = function()
+		{
+			if(productVersion == #ESSENTIAL)
+			{
+				if(g_LanguageID == 0)
+					if(!view.FunCheckInternetAccessBlock())
+						Sciter.launch("http://www.wardwiz.com/WardWiz-help/Essential"); // english for essential
+				else
+					if(!view.FunCheckInternetAccessBlock())
+						Sciter.launch("http://www.wardwiz.de/WardWiz-help/Essential"); //german for essential
+			}
+			else
+			{
+				if(g_LanguageID == 0)
+					if(!view.FunCheckInternetAccessBlock())
+						Sciter.launch("http://www.wardwiz.com/WardWiz-help/Basic");  //english for basic
+				else
+					if(!view.FunCheckInternetAccessBlock())
+						Sciter.launch("http://www.wardwiz.de/WardWiz-help/Basic"); //german for basic
+			}
+		}
+		$(#ID_BTN_SUPPORT).onClick = function()
+		{
+			selectView("IDR_HTM_SUPPORT");
+		}
+		$(#ID_BTN_PRODUCT_INFO).onClick = function()
+		{
+			selectView("IDR_HTM_ACCOUNT");
+		}
+		$(#ID_BTN_PROVIDE_FEEDBACK).onClick = function()
+		{
+			if(g_LanguageName == "ENGLISH")
+				if(!view.FunCheckInternetAccessBlock())
+					Sciter.launch("https://g.page/r/CcA8d9aX1rWUEBM/review");  //english for basic
+                    //Sciter.launch("http://www.wardwiz.in/feedback");  //english for basic
+			else if(g_LanguageName == "GERMAN")
+				if(!view.FunCheckInternetAccessBlock())
+					Sciter.launch("https://g.page/r/CcA8d9aX1rWUEBM/review"); //german for basic
+                    //Sciter.launch("http://www.wardwiz.in/feedback"); //german for basic
+		}
+        $(#ID_BUTTON_CLOSE).onClick = function()
+        {
+            CloseUI();
+        }
+    </script>
+    <script type="text/tiscript">
+    function selectView(viewId)
+    {
+		menuActiveFunction(viewId);
+        var currentViewDoc = null;
+        var fr = $(frame#content);
+		fr.load(viewId + ".htm");
+		currentViewDoc = fr[0];
+        return currentViewDoc;
+    }
+    </script>
+	<script type="text/tiscript">
+	function menuActiveFunction(viewId)
+    {
+		if(viewId == "IDR_HTM_HOME"){
+			$(#protectionOnclickEvent).attributes.removeClass("activeMenuClass");
+			$(#ID_MENU_DATA_ENC).attributes.removeClass("activeMenuClass");
+			$(#toolsOnclickEvent).attributes.removeClass("activeMenuClass");
+			$(#ID_REPORTS_HTML).attributes.removeClass("activeMenuClass");
+			$(.settingsOnclickBg).attributes.removeClass("activeMenuClass");
+			$(#toolsOnclickEvent).attributes.removeClass("activeMenuClass");
+			$(.reportsOnclickBg).attributes.removeClass("activeMenuClass");
+			$(#homeOnclickEvent).attributes.addClass("activeMenuClass");
+		}
+		else if(viewId == "IDR_HTM_SCAN" || viewId == "IDR_HTM_FIREWALL" || viewId == "IDR_HTM_PARENTAL_CONTROL" || viewId == "IDR_HTM_EMAIL_SCAN" || viewId == "IDR_HTM_BROWSER_SECURITY" || viewId == "IDR_HTM_QUICK_SCAN" || viewId == "IDR_HTM_FULL_SCAN" || viewId == "IDR_HTM_CUSTOM_SCAN" || viewId == "IDR_HTM_ANTIROOTKIT_SCAN"){
+			$(.activeMenuClass).attributes.removeClass("activeMenuClass");
+			$(#protectionOnclickEvent).attributes.addClass("activeMenuClass");
+		}
+		else if(viewId == "IDR_HTM_DATA_ENCRYPTION"){
+			$(.activeMenuClass).attributes.removeClass("activeMenuClass");
+			$(#ID_MENU_DATA_ENC).attributes.addClass("activeMenuClass");
+		}
+		else if(viewId == "IDR_HTM_REPORTS"){
+			$(.activeMenuClass).attributes.removeClass("activeMenuClass");
+			$(.reportsOnclickBg).attributes.addClass("activeMenuClass");
+		}
+		else if(viewId == "IDR_HTM_REGISTRY_OPTIMIZER" || viewId == "IDR_HTM_RECOVER_FILES" || viewId == "IDR_HTM_RECOVER_FILES"){
+			$(.activeMenuClass).attributes.removeClass("activeMenuClass");
+			$(#toolsOnclickEvent).attributes.addClass("activeMenuClass");
+		}
+		else if(viewId == "IDR_HTM_SETTINGS"){
+			$(.activeMenuClass).attributes.removeClass("activeMenuClass");
+			$(.settingsOnclickBg).attributes.addClass("activeMenuClass");
+		}
+		
+    }
+    </script>
+	<script type="text/tiscript">
+        function CallShowReports()
+        {
+            if(!g_IsAnyPopUpDisplayed)
+            {
+                if(g_CurrentPage == #REPORTS)
+                {
+                    return;
+                }
+                if(g_bIsAnyTaskInProcess)
+                {
+                    var doc = selectView("IDR_HTM_REPORTS");
+                    return;
+                }
+                if(g_varCurrentTask != #REPORTS && g_bIsAnyTaskInProcess == false)
+                {
+                    g_bIsAnyTaskInProcess = false;
+                    g_varCurrentTask = #NONE;
+                    var doc = selectView("IDR_HTM_REPORTS");
+                }
+            }
+        }
+    </script>
+	<script type="text/tiscript">
+        function CallShowScanPage()
+        {
+            if(!g_IsAnyPopUpDisplayed)
+            {
+                if(g_CurrentPage == #ID_SCAN_HTML)
+                {
+                    return;
+                }
+                if(g_bIsAnyTaskInProcess)
+                {
+                    var doc = selectView("IDR_HTM_SCAN");
+                }
+                if(g_varCurrentTask != #ID_SCAN_HTML && g_bIsAnyTaskInProcess == false)
+                {
+                    g_bIsAnyTaskInProcess = false;
+                    g_varCurrentTask = #NONE;
+                    var doc = selectView("IDR_HTM_SCAN");
+                }
+            }
+        }
+    </script>
+	<script type="text/tiscript">
+		function CallShowProductUpdate()
+        {
+            if(!g_IsAnyPopUpDisplayed)
+            {
+                if(g_varCurrentTask == #LIVEUPDATES)
+                {
+                    return;
+                }
+                if(g_bIsAnyTaskInProcess)
+                {
+                    var doc = selectView("IDR_HTM_LIVE_UPDATE");
+                }
+                if(g_varCurrentTask != #LIVEUPDATES && g_bIsAnyTaskInProcess == false)
+                {
+                    g_bIsAnyTaskInProcess = false;
+                    g_varCurrentTask = #NONE;
+                    var doc = selectView("IDR_HTM_LIVE_UPDATE");
+                }
+            }
+        }
+		</script>
+		<script type="text/tiscript">
+		function CallOnStartUpScan(ScanType, ScanShutdown)
+        {
+			if(!g_IsAnyPopUpDisplayed)
+            {
+				if(ScanType=="FullScan")
+                {
+					g_bFullScanShutdown = ScanShutdown;
+                    var doc = selectView("IDR_HTM_FULL_SCAN");
+                }
+                else if(ScanType=="QuickScan")
+                {
+					g_bQuickScanShutdown = ScanShutdown;
+                    var doc = selectView("IDR_HTM_QUICK_SCAN");
+                }
+                else if(ScanType == "regopt")
+                {
+					g_RegOptOpenStatus = true;
+                    var doc = selectView("IDR_HTM_REGISTRY_OPTIMIZER");
+				}
+			}
+        }
+		function CallOnStartUpScanNoUI(ScanType, ScanShutdown)
+        {
+			varIsStartUpScanNoUI = true;
+			if(!g_IsAnyPopUpDisplayed)
+            {
+				if(ScanType=="FullScan")
+                {
+					g_bFullScanShutdown = ScanShutdown;
+                    var doc = selectView("IDR_HTM_FULL_SCAN");
+                }
+                else if(ScanType=="QuickScan")
+                {
+					g_bQuickScanShutdown = ScanShutdown;
+                    var doc = selectView("IDR_HTM_QUICK_SCAN");
+                }
+            }
+        }
+	</script>
+	<script type="text/tiscript">
+	function CallSchedScanFromCmd(Evnt)
+    {
+        var strScanType = Evnt.data.one.toString();
+		var bIsShutdown = Evnt.data.two.toString();
+		if(!g_IsAnyPopUpDisplayed)
+		{
+			if(strScanType == 0)
+			{
+				g_bFullScanShutdown = bIsShutdown;
+                var doc = selectView("IDR_HTM_FULL_SCAN");
+			}
+			else if(strScanType == 1)
+			{
+				g_bQuickScanShutdown = bIsShutdown;
+                var doc = selectView("IDR_HTM_QUICK_SCAN");
+			}
+			else if(strScanType == 2)
+			{
+				g_RegOptOpenStatus = true;
+                var doc = selectView("IDR_HTM_REGISTRY_OPTIMIZER");
+            }
+        }
+    }
+    self.subscribe(CallSchedScanFromCmd, Event.BEHAVIOR_EVENT, 0x100 + 11);
+	</script>
+	<script type="text/tiscript">	
+    function onClickStartupToolTip(bCheckedState)
+    {
+        view.ShowCheckboxValue(bCheckedState);
+    }
+	function FunCheckInternetAccessBlock()
+	{
+		if(view.FunCheckInternetAccessBlock())
+		{
+			return true;
+		}
+		return false;
+	}
+    </script>
+	<script type="text/tiscript">
+    function ShowRegistrationDialog()
+    {
+		if(!g_IsAnyPopUpDisplayed && !g_bIsAnyTaskInProcess)
+		{
+			g_IsAnyPopUpDisplayed = true;
+			view.OnClickRegisterNowBtn();
+			g_IsAnyPopUpDisplayed = false;
+		}
+    }
+    function ShowRegistrationDialogNative(Evnt)
+    {
+       ShowRegistrationDialog();
+    }
+    self.subscribe(ShowRegistrationDialogNative, Event.BEHAVIOR_EVENT, 0x100 + 10);
+    </script>
+	<script type="text/tiscript">
+    function ShowToolTipDialog(Evnt)
+    {
+        if(!g_IsAnyPopUpDisplayed)
+         {
+            if(varIsStartUpScanNoUI == true)
+            {
+                return;
+            }
+            g_IsAnyPopUpDisplayed = true;
+            //var dialogParameters = { ButtonClick:onClickStartupToolTip,FunCheckInternetAccessBlock:FunCheckInternetAccessBlock,varLanguageValue:g_LanguageName,varThemeType:g_themeType};
+            //var dialogRetVal = view.dialog { url: self.url("IDR_HTM_TOOLTIP.htm"), parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+         }
+    }
+    self.subscribe(ShowToolTipDialog, Event.BEHAVIOR_EVENT, 0x100 + 9);
+    </script>
+
+	<script type="text/tiscript">
+    function checkIsValidUser()
+    {
+        function LaunchWardWizWebURL()
+        {
+			if(g_LanguageName == "ENGLISH")
+				Sciter.launch("https://vibranium.co.in/");  //english for basic
+			else if(g_LanguageName == "GERMAN")
+				Sciter.launch("https://vibranium.co.in/"); //german for basic
+        }
+		
+        function LaunchWrdWizRegDlg()
+        {
+			g_IsAnyPopUpDisplayed = false;
+            ShowRegistrationDialog();
+            selectView("IDR_HTM_HOME");
+        }
+        if(g_ProductLicenseType == #EXPIRED)
+        {
+            g_IsAnyPopUpDisplayed = true;
+            var dialogParameters = { ProductVersion:productVersion, LaunchWebURL:LaunchWardWizWebURL, LaunchRegDlg:LaunchWrdWizRegDlg,ProductLicenseType:g_ProductLicenseType, varThemeType:g_themeType, varLanguageValue:g_LanguageName};
+            var dialogRetVal = view.dialog { url: self.url("IDR_HTM_REGISTER.htm"), parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+            return false;
+        }
+        else if(g_ProductLicenseType == #UNREGISTERED)
+        {
+            g_IsAnyPopUpDisplayed = true;
+            var dialogParameters = { ProductVersion:productVersion, LaunchWebURL:LaunchWardWizWebURL, LaunchRegDlg:LaunchWrdWizRegDlg,ProductLicenseType:g_ProductLicenseType, varThemeType:g_themeType, varLanguageValue:g_LanguageName};
+            var dialogRetVal = view.dialog { url: self.url("IDR_HTM_REGISTER.htm"), parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+      }
+    </script>
+    <script type="text/tiscript">
+	self.on("~click", ".menuBar", function()
+    {
+		if( this.id == #ID_LOAD_QUICK_SCAN)
+        {
+            if(g_varCurrentTask == #QUICKSCAN)
+            {
+                return true;
+            }
+            return false; // event consumed
+        }
+        if( this.id == #ID_LOAD_FULL_SCAN)
+        {
+            if(g_varCurrentTask == #FULLSCAN)
+            {
+                return true;
+            }
+			return false; // event consumed
+		}
+		if( this.id == #ID_LOAD_CUSTOM_SCAN)
+		{
+			if(g_varCurrentTask == #CUSTOMSCAN)
+			{
+				return true;
+			}
+			return false; // event consumed
+		}
+		if( this.id == #ID_LOAD_ANTIROOTKIT_SCAN)
+		{
+			if(g_varCurrentTask == #ANTIROOTKITSCAN)
+			{
+				return true;
+			}
+			return false; // event consumed
+		}
+		if( this.id == #ID_HOME_HTML)
+		{
+			if(g_varCurrentTask == #QUICKSCAN || g_varCurrentTask == #QUICKSCAN_CLEAN || g_varCurrentTask == #FULLSCAN || g_varCurrentTask == #FULLSCAN_CLEAN || g_varCurrentTask == #CUSTOMSCAN || g_varCurrentTask == #CUSTOMSCAN_CLEAN || g_varCurrentTask == #ANTIROOTKITSCAN || g_varCurrentTask == #REGISTRYOPTIMIZER || g_varCurrentTask == #DATACRYPTOPR || g_varCurrentTask == #RECOVEROPR || g_varCurrentTask == #LIVEUPDATES || g_varCurrentTask == #UPDATE)
+			{
+				return false;
+			}
+			return false; // event consumed
+		}
+		if(this.id == #ID_ACCOUNT_HTML || this.id == #ID_SETTINGS_HTML)
+		{
+			if(g_varCurrentTask == #QUICKSCAN || g_varCurrentTask == #QUICKSCAN_CLEAN || g_varCurrentTask == #FULLSCAN || g_varCurrentTask == #FULLSCAN_CLEAN || g_varCurrentTask == #CUSTOMSCAN || g_varCurrentTask == #CUSTOMSCAN_CLEAN || g_varCurrentTask == #ANTIROOTKITSCAN || g_varCurrentTask == #REGISTRYOPTIMIZER || g_varCurrentTask == #DATACRYPTOPR || g_varCurrentTask == #RECOVEROPR || g_varCurrentTask == #LIVEUPDATES || g_varCurrentTask == #UPDATE)
+			{
+				return false;
+			}
+			return false; // event consumed
+		}
+        return false;
+	});
+	</script>
+    <script type="text/tiscript">
+    function CallDataCryptFromCmd(Evnt)
+    {
+        var strFilePath = Evnt.data.one.toString();
+        var valCryptOpr = Evnt.data.two.toInteger();
+        var bIsRequestFromExplorer = Evnt.data.three;
+        if(!g_IsAnyPopUpDisplayed)
+        {
+            if(productVersion == #BASIC)
+            {
+                function LaunchWardWizWebURL()
+                {
+                if(g_LanguageName == "ENGLISH")
+						Sciter.launch("https://vibranium.co.in/products/");  //english for basic
+				else if(g_LanguageName == "GERMAN")
+						Sciter.launch("https://vibranium.co.in/products/"); //german for basic
+                }
+                function LaunchWrdWizRegDlg()
+                {
+                    ShowRegistrationDialog();
+                    selectView("IDR_HTM_HOME");
+                }
+                var varCurPage = #DataEncryption;
+                var dialogParameters = { ProductVersion:productVersion, LaunchWebURL:LaunchWardWizWebURL, LaunchRegDlg:LaunchWrdWizRegDlg, ProductLicenseType:g_ProductLicenseType, OperationType:varCurPage, varThemeType:g_themeType, varLanguageValue:g_LanguageName};
+                g_IsAnyPopUpDisplayed = true;
+                var dialogRetVal = view.dialog { url: self.url("IDR_HTM_REGISTER.htm"), parameters: dialogParameters};
+                g_IsAnyPopUpDisplayed = false;
+            }
+            else
+            {
+                if(g_varCurrentTask != #DATACRYPTOPR)
+                {
+                    var doc = selectView("IDR_HTM_DATA_ENCRYPTION");
+                    if(valCryptOpr == 1)
+                    {
+                        doc.ns.showEncryptionPassDlg(strFilePath,valCryptOpr,bIsRequestFromExplorer);
+                        self.update();
+                    }
+                    else if (valCryptOpr == 2)
+                    {
+                        doc.ns.showDecryptionPassDlg(strFilePath, bIsRequestFromExplorer);
+                        self.update();
+                    }
+
+                }
+            }
+        }
+    }
+    self.subscribe(CallDataCryptFromCmd, Event.BEHAVIOR_EVENT, 0x100 + 8);
+    </script>
+    <script type="text/tiscript">
+	function CallGetDays(varDaysRemaining)
+    {
+        if(g_CurrentPage == #REGISTRYOPTIMIZER)
+        {
+            return;
+        }
+        else if(g_CurrentPage == #RECOVEROPR)
+        {
+            return;
+        }
+        else if(g_CurrentPage == #DATAENCRYPTION)
+        {
+            return;
+        }
+        else
+        {
+            var doc = selectView("IDR_HTM_HOME");
+        }
+    }
+	</script>
+    <script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+		{
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/products/");
+		}
+		else if(g_LanguageName == "GERMAN")
+		{
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/products/"); //german for basic
+		}
+	}
+    </script>
+    <script type="text/tiscript">
+    function ReloadHomePage()
+    {
+		if(g_CurrentPage == #INDEX)
+        {
+            var doc = selectView("IDR_HTM_HOME");
+        }
+    }
+    </script>
+    <script type="text/tiscript">
+	function funCallGetUIStatus()
+	{
+		if(g_varCurrentTask == #NONE || g_varCurrentTask == "0")
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+    <script type="text/tiscript">
+	function OnResetIndexPage()
+	{
+		self.language = g_LanguageName;
+		if(g_LanguageName == "ENGLISH")
+		{
+			styleBag.deactivate();
+			$(#ID_AMB_PROGRAM).state.expanded = true;
+		}
+		if(g_LanguageName == "GERMAN")
+		{
+			styleBag.deactivate();
+			styleBag.activate();
+			$(#ID_AMB_PROGRAM).state.collapsed = true;	
+		}
+	}
+	function ResetIndexPage()
+	{
+		self.timer(5ms,OnResetIndexPage);
+	}
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		self.timer(1ms,OnResetIndexPage);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		self.timer(1ms,OnResetIndexPage);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		self.timer(1ms,OnResetIndexPage);
+	}
+	</script>
+   
+    <script type="text/tiscript">
+	function SetOnProtectionEvent()
+	{
+		$(#protectionOnclickEvent).attributes.addClass("activeMnuBtn");
+		$(.contentWindow).attributes.addClass("translateWindow");
+		$(#scanSubmenu).attributes.addClass("activeMenu");
+		menuFlag = 1;
+		return menuFlag;
+	}
+	function SetOnToolsEvent()
+	{
+		$(#toolsOnclickEvent).attributes.addClass("activeMnuBtn");
+		$(.contentWindow).attributes.addClass("translateWindow");
+	    $(#toolsSubmenu).attributes.addClass("activeMenu");
+	    menuFlag = 1;
+	    return menuFlag;
+	}
+	</script>
+   
+    <script type="text/tiscript">
+	var menuFlag = 0;
+	$(#protectionOnclickEvent).on("~click",function()
+	{
+		SetOnProtectionEvent();
+	});
+	$(#toolsOnclickEvent).on("~click",function()
+	{
+		SetOnToolsEvent();
+	});
+	
+	$(body).on("~click",function()
+	{
+		if(menuFlag == 1){
+			$(.translateWindow).attributes.removeClass("translateWindow");
+			$(#scanSubmenu).attributes.removeClass("activeMenu");
+			$(#toolsSubmenu).attributes.removeClass("activeMenu");
+			$(.activeMnuBtn).attributes.removeClass("activeMnuBtn");
+	   }
+	   else{
+		
+	   }
+	});
+    </script>
+	<script type="text/tiscript">
+	namespace UTILITY_TYPE
+	{
+		const AUTO_RUN_SCAN = 0;
+		const TEMP_FILE_CLEAN = 1;
+		const USB_VACCINE = 2;
+		const RESCUE_DISK = 3;
+		const REG_TOOL = 4;
+	}
+	
+	$(#ID_AUTORUN_SCAN).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.AUTO_RUN_SCAN);
+	}
+	$(#ID_TEMP_FILE_CLEANER).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.TEMP_FILE_CLEAN);
+	}
+	$(#ID_USB_VACCIN).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.USB_VACCINE);
+	}
+	$(#ID_RESCUE_DISK).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.RESCUE_DISK);
+	}
+	$(#ID_REG_TOOL).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.REG_TOOL);
+	}
+	</script>
+    <script type="text/tiscript">
+		namespace UPDATE_TYPE
+		{
+			const OFFLINE_UPDATE = 0;
+			const ONLINE_UPDATE = 1;
+		}
+		$(#ID_BTN_UPDATE).onClick = function()
+		{
+			view.LaunchWardWizUpdate(UPDATE_TYPE.OFFLINE_UPDATE);
+		}
+	</script>
+    <script type="text/tiscript">
+		$(.homeIcon).on("mouseenter", function(evt){
+			$(.homeIcon).attributes.addClass("animationHomeIco");
+			var path = $(.homeIcon);
+			var length = 2000; var delta = -45;
+			path.animate(function() 
+			{
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});	
+		$(.homeIcon).on("mouseleave", function(evt){
+			$(.homeIcon).attributes.removeClass("animationHomeIco");
+		});	
+		$(.protectionIconHov).on("mouseenter", function(evt){
+			$(.protectionIcon).attributes.addClass("animationProtectionIco");
+			var path = $(.protectionIcon);
+			var length = 1800; var delta = -45;
+			path.animate(function() 
+			{ 
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});
+		$(.protectionIconHov).on("mouseleave", function(evt){
+			$(.protectionIcon).attributes.removeClass("animationProtectionIco");
+		});
+		$(.encryptionIconHov).on("mouseenter", function(evt){
+			$(.encryptionIcon).attributes.addClass("animationEncryptionIco");
+			var path = $(.encryptionIcon);
+			var length = 1000; var delta = -45;
+			path.animate(function() 
+			{ 
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});
+		$(.encryptionIconHov).on("mouseleave", function(evt){
+			$(.encryptionIcon).attributes.removeClass("animationEncryptionIco");
+		});
+		$(.toolsIconHov).on("mouseenter", function(evt){
+			$(.toolsIcon).attributes.addClass("animationToolsIco");
+			var path = $(.toolsIcon);
+			var length = 2100; var delta = -45;
+			path.animate(function() {
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});
+		$(.toolsIconHov).on("mouseleave", function(evt){
+			$(.toolsIcon).attributes.removeClass("animationToolsIco");
+		});
+		$(.reportsIconHov).on("mouseenter", function(evt){
+			$(.reportsIcon).attributes.addClass("animationReportsIco");
+			var path = $(.reportsIcon);
+			var length = 2100; var delta = -45;
+			path.animate(function() {
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});
+		$(.reportsIconHov).on("mouseleave", function(evt){
+			$(.reportsIcon).attributes.removeClass("animationReportsIco");
+		});
+		$(.updateIconHov).on("mouseenter", function(evt){
+			$(.updateIcon).attributes.addClass("animationUpdateIco");
+			var path = $(.updateIcon);
+			var length = 2100; var delta = -45;
+			path.animate(function() {
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});
+		$(.updateIconHov).on("mouseleave", function(evt){
+			$(.updateIcon).attributes.removeClass("animationUpdateIco");
+		});
+		$(.settingsIconHov).on("mouseenter", function(evt){
+			$(.settingsIcon).attributes.addClass("animationSettingsIco");
+			var path = $(.settingsIcon);
+			var length = 2100; var delta = -45;
+			path.animate(function() {
+				length += delta;
+				if(length > 0){
+					path.style#stroke-dashoffset = length;
+				}
+				else{
+					return false;
+				}
+				return true;
+			});
+		});
+		$(.settingsIconHov).on("mouseleave", function(evt){
+			$(.settingsIcon).attributes.removeClass("animationReportsIco");
+		});
+	</script>
+	<script type="text/tiscript">
+	$(#ID_SUPPORT).onClick = function()
+	{
+		selectView("IDR_HTM_SUPPORT");
+	}
+	</script>
+	<script type="text/tiscript">
+	$(#ID_DIV_BACKUP_UTIL).onClick = function() 
+		  {
+			//view.msgbox(#alert, "test")
+			//view.LaunchUtilities(UTILITY_TYPE.BACKUP_UTIL);
+			view.LaunchUtilities(5);
+		  }
+</script>
+   <script type="text/tiscript">
+    function self.ready()
+    {
+		g_CurrentPage = #INDEX;
+		ReloadHomePage();
+		g_LanguageName = "ENGLISH";
+		self.language = g_LanguageName;
+		if(g_themeType == "defaultTheme")
+		{
+			OnSetDefaultTheme();
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			OnSetDarkTheme();
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			OnSetCrystalTheme();
+		}
+
+		if(g_LanguageName == "GERMAN")
+		{
+			$(#ID_AMB_PROGRAM).state.collapsed = true;
+		}
+		view.CallGetUIStatus(funCallGetUIStatus);
+	}
+    </script>	
+</head>
+<body>
+	
+	<div .midContent>
+		<div .menuBar>
+			<!--img #ID_LOGO src="IDR_IMG_SHIELD_ICO.png" class="shieldIco"-->
+			<ul>
+				<span .frame_display_src #ID_HOME_HTML>
+				<li #homeOnclickEvent class="tooltip">
+				<!--svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyle">
+				<g>
+					<path class="homeIcon" fill="none" stroke-width="20" stroke-miterlimit="15" d="M12.4,257.5c0-4.3,0-8.7,0-13
+						c0.9-8.4,6-14.5,11.5-20.1C90.6,157.4,157.4,90.6,224.3,23.9c5.8-5.8,12.2-11,21-11.5c4,0,8.1,0,12.1,0c8.6,0.7,14.8,5.9,20.6,11.6
+						c20.3,20.1,40.5,40.4,60.9,60.8c0-4.7-0.1-9.1,0-13.6c0.5-16.8,13.6-30,30.4-30.5c10.2-0.2,20.5-0.2,30.7,0
+						c17.8,0.2,31.1,13.6,31.2,31.5c0.1,32.3,0.1,64.6-0.1,96.9c0,5.8,1.7,9.9,5.8,13.9c13,12.6,25.8,25.6,38.6,38.5
+						c2.4,2.4,4.6,5.1,6.9,7.6c9,9.9,8.9,21.6,6.1,33.3c-2.6,10.7-15.1,19.4-26.9,19.7c-7.6,0.2-15.2,0-22.8,0.1c-7.5,0-7.6,0-7.6,7.4
+						c0,55.9,0,111.8,0,167.7c0,8-1.7,15.4-6.8,21.7C419,486,412,490,402.9,490c-29.7,0-59.3-0.1-89,0.1c-3.6,0-4.7-1.6-4.8-4.7
+						c-0.1-1.9-0.1-3.7-0.1-5.6c0-45.8,0-91.6,0-137.4c0-15.6-9.4-27.1-24.2-29.8c-2.3-0.4-4.6-0.5-7-0.5c-18,0-36,0-54,0
+						c-19.2,0.1-31.1,12-31.1,31.2c0,45.8,0,91.6,0,137.4c0,9.2,0,9.2-9,9.2c-27.3,0-54.7,0-82,0c-18.8,0-31.1-12.3-31.2-31.2
+						c-0.1-56.1,0-112.1,0-168.2c0-8.3,0-8.3-8.5-8.3c-7,0-14,0.2-21-0.1c-11.1-0.4-19.5-5.5-25.6-14.6
+						C13.4,264.4,13.5,260.8,12.4,257.5z"/>
+					
+				</g>
+					</svg-->
+					<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve" class="menuIconStyle">
+<style type="text/css">
+	.homeIconst0{fill:#E8EAF6;}
+	.homeIconst1{fill:#C5CAE9;}
+	.homeIconst2{fill:#B71C1C;}
+	.homeIconst3{fill:#D84315;}
+	.homeIconst4{fill:#01579B;}
+	.homeIconst5{fill:#FF8A65;}
+</style>
+<path class="homeIconst0" d="M700,650H100V383.3L400,100l300,283.3V650z"/>
+<path class="homeIconst1" d="M650,350l-83.3-83.3V150H650V350z M100,650h600v83.3H100V650z"/>
+<path class="homeIconst2" d="M400,71.7l-333.3,310l33.3,36.7L400,140l300,278.3l33.3-36.7L400,71.7z"/>
+<path class="homeIconst3" d="M300,466.7h200v266.7H300V466.7z"/>
+<path class="homeIconst4" d="M350,283.3h100v100H350V283.3z"/>
+<path class="homeIconst5" d="M458.3,591.7c-5,0-8.3,3.3-8.3,8.3v33.3c0,5,3.3,8.3,8.3,8.3c5,0,8.3-3.3,8.3-8.3V600
+	C466.7,595,463.3,591.7,458.3,591.7z"/>
+</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle">
+<style type="text/css">
+	.home_icost0{fill:#FFB74F;}
+	.home_icost1{fill:#FF7D3C;}
+	.home_icost2{fill:#FF9A00;}
+	.home_icost3{fill:#FF4E19;}
+</style>
+<polygon class="home_icost0" points="422,244 422,458.4 289.6,458.4 289.6,328.4 216.2,328.4 216.2,458.4 78,458.4 78,244 250,111.7 "/>
+<path class="home_icost1" d="M429.2,178.2V87.6h-72.4v34.9L250,40.4L0,232.7l52.4,68.1l197.6-152l197.6,152l52.4-68.1L429.2,178.2z"/>
+<polygon class="home_icost2" points="422,244 422,458.4 289.6,458.4 289.6,328.4 250,328.4 250,111.7 "/>
+<polygon class="home_icost3" points="500,232.7 447.6,300.8 250,148.7 250,40.4 356.8,122.5 356.8,87.6 429.2,87.6 429.2,178.2 "/>
+</svg>
+<span class="tooltiptext">Home</span>
+				</li>
+				</span>
+				<li #protectionOnclickEvent class="tooltip">
+					<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="menuIconStyle protectionIconHov tt">
+<path d="M226 482H76C67.7 482 61 475.3 61 467C61 458.7 67.7 452 76 452H226C234.3 452 241 458.7 241 467C241 475.3 234.3 482 226 482Z" fill="#596C76"/>
+<path d="M436 482H286C277.7 482 271 475.3 271 467C271 458.7 277.7 452 286 452H436C444.3 452 451 458.7 451 467C451 475.3 444.3 482 436 482Z" fill="#465B62"/>
+<path d="M256 362C247.7 362 241 368.7 241 377V437C241 445.3 247.7 452 256 452C264.3 452 271 445.3 271 437V377C271 368.7 264.3 362 256 362Z" fill="#596C76"/>
+<path d="M271 437V377C271 368.7 264.3 362 256 362V452C264.3 452 271 445.3 271 437Z" fill="#465B62"/>
+<path d="M406 30H320.1C293.7 29.9 278.6 26.5 269.5 8.3C266.9 3.2 261.7 0 256 0C250.3 0 245.1 3.2 242.6 8.3C234.7 24 223 29.5 196.4 30H106C97.7 30 91 36.7 91 45V180.1C91 277.7 142.7 333.4 186.1 362.1C204.9 374.6 234.5 388.9 251.7 391.4C252.8 391.7 254.1 391.8 255.5 391.8H256C256 391.8 256.3 391.8 256.5 391.8C257.9 391.8 259.2 391.7 260.3 391.4C277.5 388.9 307.1 374.6 325.9 362.1C369.3 333.4 421 277.7 421 180.1V45C421 36.7 414.3 30 406 30Z" fill="#78C7CB"/>
+<path d="M260.3 391.4C277.5 388.9 307.1 374.6 325.9 362.1C369.3 333.4 421 277.7 421 180.1V45C421 36.7 414.3 30 406 30H320.1C293.7 29.9 278.6 26.5 269.5 8.3C266.9 3.2 261.7 0 256 0V391.8H256.5C257.9 391.8 259.1 391.7 260.3 391.4Z" fill="#0F2D2E"/>
+<path d="M256 301C313.99 301 361 253.99 361 196C361 138.01 313.99 91 256 91C198.01 91 151 138.01 151 196C151 253.99 198.01 301 256 301Z" fill="#F1F1F1"/>
+<path d="M361 196C361 138 314 91 256 91V301C314 301 361 254 361 196Z" fill="#DAECFA"/>
+<path d="M256 512C280.853 512 301 491.853 301 467C301 442.147 280.853 422 256 422C231.147 422 211 442.147 211 467C211 491.853 231.147 512 256 512Z" fill="#FFD92C"/>
+<path d="M301 467C301 442.2 280.8 422 256 422V512C280.8 512 301 491.8 301 467Z" fill="#FBBE02"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M256 77.7C274.5 77.7 289.8 93 289.8 111.5V156.7H313V111.5C313 80.1 287.3 54.5 256 54.5C224.7 54.5 199 80.2 199 111.5V156.7H222.2V111.5C222.1 92.9 237.4 77.7 256 77.7Z" fill="#F9F7F8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M198.9 277.1H313C321.5 277.1 328.5 270.1 328.5 261.6V168.7C328.5 160.2 321.5 153.2 313 153.2H198.9C190.4 153.2 183.4 160.2 183.4 168.7V261.5C183.5 270.2 190.4 277.1 198.9 277.1Z" fill="#D2CDE4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M296 153.3H313V111.5C313 80.1 287.3 54.5 256 54.5C253.1 54.5 250.3 54.7 247.5 55.1C274.9 59.2 296 83 296 111.5V153.3Z" fill="#EAE7F4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M256 253.6C277.1 253.6 294.4 236.4 294.4 215.3C294.4 194.2 277.2 176.9 256 176.9C234.9 176.9 217.6 194.1 217.6 215.3C217.5 236.4 234.8 253.6 256 253.6Z" fill="#F9F7F8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M256 176.8C277.2 176.8 294.4 194 294.4 215.2C294.4 236.4 277.2 253.5 256 253.5C253.1 253.5 250.2 253.2 247.5 252.5C264.6 248.7 277.4 233.3 277.4 215.1C277.4 196.9 264.6 181.6 247.5 177.7C250.2 177.2 253 176.8 256 176.8Z" fill="#EAE7F4"/>
+<path d="M225 224.4C223 222.4 223 219.2 225 217.1C227 215.1 230.2 215.1 232.3 217.1L246.8 231.6L285.2 193.2C287.2 191.2 290.4 191.2 292.5 193.2C294.5 195.2 294.5 198.4 292.5 200.5L250.5 242.5C248.5 244.5 245.3 244.5 243.2 242.5L225 224.4Z" fill="#0F2D2E"/>
+</svg>
+<span class="tooltiptext">Protection</span>
+				</li>
+				<span class="hoverMenuItemScan" #scanSubmenu>
+				<div .bgScanSubMnu>
+				<div .horizontalFlow>
+				<div .col-1-1>
+					<li .subMnuContainer .frame_display_src #ID_SCAN_HTML .scanBox>
+						<div>
+							<!--svg version="1.1" id="Scan" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner scanIconStyle">
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M346.8,307.8l123.6,122.6c0,0,10.8,11.1-0.4,25.4
+									c-9.3,11.8-21.5,10.9-34.5-0.1S315,339,315,339S333.6,324.3,346.8,307.8z"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M81,185c0,0-6,53,34,88s87,38,87,38" class="diffClr"/>
+								<circle fill="none" stroke-width="15" stroke-miterlimit="10" cx="202" cy="191" r="160"/>
+							</svg-->
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner scanIconStyle">
+<style type="text/css">
+	.scanMainIconst0{fill:#5D6D7E;}
+	.scanMainIconst1{fill:#FF8E31;}
+	.scanMainIconst2{fill:#FECE59;}
+	.scanMainIconst3{fill:#34495E;}
+	.scanMainIconst4{fill:#CEE2F2;}
+	.scanMainIconst5{fill:#FFFFFF;}
+</style>
+<polygon class="scanMainIconst0" points="297.8,327.7 310,340 324.3,354.3 329.8,359.8 358.4,331.2 326.4,299 "/>
+<path class="scanMainIconst1" d="M387.5,331l98.5,98.9c7.4,7.4,12,17.7,12,29s-4.6,21.6-12,29.1c-7.4,7.4-17.6,12-28.9,12s-21.5-4.6-28.9-12
+	l-98.5-98.9L387.5,331z"/>
+<path class="scanMainIconst2" d="M373.9,344.6L373.9,344.6l8-8.1l98.5,98.9c6.2,6.3,9.6,14.6,9.6,23.4c0,8.9-3.4,17.2-9.6,23.5
+	c-1.1,1.1-2.6,1.6-4,1.6c-1.5,0-2.9-0.5-4-1.7c-2.2-2.2-2.2-5.8,0-8c4.1-4.1,6.4-9.6,6.4-15.4s-2.2-11.3-6.3-15.4L373.9,344.6z"/>
+<g>
+	<path class="scanMainIconst3" d="M329.6,389.1l57.9-58.1l-4.3-4.3c-2.6-2.6-6.2-4.2-10.1-4.2c-4,0-7.6,1.6-10.1,4.2l-37.6,37.8
+		c-2.6,2.6-4.2,6.2-4.2,10.2c0,3.9,1.6,7.6,4.2,10.1L329.6,389.1z"/>
+	<path class="scanMainIconst3" d="M0,185.7C0,83.2,82.8,0,185,0s185,83.2,185,185.7c0,102.6-82.8,185.7-185,185.7S0,288.3,0,185.7z"/>
+</g>
+<path class="scanMainIconst0" d="M185,351.3c91.1,0,164.9-74.1,164.9-165.6C349.9,94.3,276,20.1,185,20.1c-91.1,0-165,74.2-165,165.6
+	C20,277.2,93.9,351.3,185,351.3z"/>
+<path class="scanMainIconst4" d="M185,338.1c83.8,0,151.7-68.2,151.7-152.4c0-84.1-68-152.3-151.7-152.3S33.2,101.6,33.2,185.7
+	C33.2,269.9,101.2,338.1,185,338.1z"/>
+<g>
+	<path class="scanMainIconst5" d="M189,58.4c-2.6-3.8-7-6.3-11.9-6c-20.9,1.3-40.7,7.2-58.8,17.7c-6.4,3.7-8.6,12-4.8,18.4
+		c3.7,6.3,11.9,8.6,18.3,4.8c14.4-8.4,30.2-13.1,47-14.1c7.4-0.4,13-6.8,12.6-14.1C191.1,62.5,190.2,60.2,189,58.4z"/>
+	<path class="scanMainIconst5" d="M103,102.5c-0.7-1.1-1.6-2.1-2.7-2.9c-5.7-4.7-14.2-3.8-18.8,2c-13.7,16.8-23.1,37.1-27.2,58.6
+		c-4.9,25.6-2.3,51.7,7.4,75.7c2.8,6.9,10.7,10.2,17.5,7.3c6.8-2.8,10.1-10.6,7.3-17.5c-7.8-19.1-9.8-40-5.8-60.4
+		c3.2-17.2,10.7-33.3,21.7-46.7C106.2,113.8,106.3,107.3,103,102.5z"/>
+</g>
+</svg>
+						</div>
+						<p .subMnuHeading><label>ID_STR_SCAN_MENU</label></p>
+						<p .subMnuDescription><label>ID_CHOOSE_THE_BEST_SCAN</label></p>
+					</li>
+					<li .subMnuContainer .frame_display_src #ID_MENU_FIREWALL .scanBox>
+						<div>
+					<!--svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner scanIconStyle">
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M36.2,284.1h124.1c0,0,11.7,2,11.7,13.6
+									c0,11.6,0,58.5,0,58.5s-0.6,12.2-11.7,12.9s-124.1,0-124.1,0s-12.8-5.4-12.8-15.7s0-51.7,0-51.7S24.5,286.9,36.2,284.1z"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M341.6,400h122c0,0,11.5,2,11.5,13.6s0,58.5,0,58.5
+									s-0.6,12.2-11.5,12.9c-10.9,0.7-122,0-122,0s-12.6-5.4-12.6-15.7s0-51.7,0-51.7S330.1,402.7,341.6,400z"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M36.6,399.8h239.7c0,0,15.8,0.7,15.8,14.3
+									c0,13.6,0,61.2,0,61.2s-3.3,8.8-17.2,9.8c-13.9,1.1-234.4,0-234.4,0s-17.8-1.7-17.2-18.7c0.7-17,0-53.1,0-53.1
+									S24.7,399.8,36.6,399.8z"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M221.8,283.9H462c0,0,15.9,0.7,15.9,14.3
+									s0,61.2,0,61.2s-3.3,8.8-17.2,9.8c-13.9,1.1-235,0-235,0s-17.9-1.7-17.2-18.7c0.7-17,0-53.1,0-53.1S209.9,283.9,221.8,283.9z" class="diffClr"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M137.5,249.1c0,0,34.5-7,49.7,9.5
+									c0,0,15.9,7.2,13.8-25.6c0,0-4.2-21.3,30.5-52.6c0,0,13.6-9.5,12.9-40.8c0,0,25.2,27.9,9.5,56.5s5.1,40.8,5.1,40.8
+									s29.6,11.6,23.5-32.7c0,0,30.6,8.8,21.1,45.6h64c0,0,5.4-13.6-8.8-33.3c-14.3-19.7-29.3-39.5-22.5-68.7
+									c6.8-29.3,18.4-52.4-26.5-70.1l-2,31.3c0,0-32,32-30.6-13.6c1.4-45.6,2.7-86.4-72.1-83.7c0,0,25.9,44.2,12.9,81.7
+									c0,0-6.8,40.8-49.7,19.1c0,0-17-2-20.4-1.4c0,0,29.3,25.9,4.1,56.5S137.5,249.1,137.5,249.1z"/>
+							</svg-->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner scanIconStyle">
+<style type="text/css">
+	.firewallMainIconst0{fill:#9F4747;}
+	.firewallMainIconst1{fill:#663232;}
+	.firewallMainIconst2{opacity:0.6;}
+	.firewallMainIconst3{fill:#7F3939;}
+	.firewallMainIconst4{fill:#F8B838;}
+	.firewallMainIconst5{fill:#E4A220;}
+	.firewallMainIconst6{fill:#EF5543;}
+	.firewallMainIconst7{fill:#E14B40;}
+</style>
+<g id="_x38_3">
+	<g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M5.1,240.3h151.5V304H5.1V240.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M272.8,240.3H378V304H272.8V240.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M156.6,240.3h116.2V304H156.6V240.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M378.1,240.3h116.8V304H378.1V240.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M110.2,495H21.9c-9.3,0-16.8-7.5-16.8-16.8v-46.9h105.1V495z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M325.5,431.3h105.1V495H325.5V431.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M228.1,431.3h97.4V495h-97.4V431.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M110.2,431.3h117.9V495H110.2V431.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M478.1,494.6h-47.5v-63.7h64.3v46.9C494.9,487.1,487.4,494.6,478.1,494.6z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M5.1,367.7h151.5v63.7H5.1V367.7z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M272.8,367.7H378v63.7H272.8V367.7z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M156.6,367.7h116.2v63.7H156.6V367.7z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M378.1,367.7h116.8v63.7H378.1V367.7z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M5.1,304h105.1v63.7H5.1V304z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M325.5,304h105.1v63.7H325.5V304z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M228.1,304h97.4v63.7h-97.4V304z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M110.2,304h117.9v63.7H110.2V304z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M430.6,303.5h64.3v63.7h-64.3L430.6,303.5L430.6,303.5z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M110.2,240.3H5.1v-46.9c0-9.3,7.5-16.8,16.8-16.8h88.3C110.2,176.6,110.2,240.3,110.2,240.3z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M325.5,176.6h105.1v63.6H325.5V176.6z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M228.1,176.6h97.4v63.6h-97.4V176.6z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M110.2,176.6h117.9v63.6H110.2V176.6z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst0" d="M494.9,239.9h-64.3v-63.7h47.5c9.3,0,16.8,7.5,16.8,16.8L494.9,239.9L494.9,239.9z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path class="firewallMainIconst1" d="M478.4,171.1c-205.5,0-258.9,0-456.9,0C9.7,171.1,0,180.7,0,192.6v285.5c0,11.9,9.7,21.6,21.5,21.6h456.9
+				c11.9,0,21.6-9.7,21.6-21.6c0-65.6,0-221.4,0-285.5C500,180.7,490.3,171.1,478.4,171.1z M383.2,425.8v-53.5h106.6v53.5
+				C450.8,425.8,422.8,425.8,383.2,425.8z M277.9,425.8v-53.5c1.4,0,98.6,0,95,0v53.5C371.5,425.8,274.3,425.8,277.9,425.8z
+				 M161.7,425.8v-53.5h106v53.5C231,425.8,198.4,425.8,161.7,425.8z M10.2,425.8v-53.5h141.3v53.5
+				C126.5,425.8,65.9,425.8,10.2,425.8z M151.5,245v53.5c-25,0-85.6,0-141.3,0V245H151.5z M267.7,245v53.5c-36.7,0-69.3,0-106,0V245
+				H267.7z M373,245v53.5c-1.4,0-98.7,0-95,0V245C279.3,245,376.6,245,373,245z M489.8,245v53.5c-39,0-67,0-106.6,0V245H489.8z
+				 M489.8,362.1h-54.1v-53.5h54.1V362.1z M330.7,362.1v-53.5c1.4,0,98.6,0,94.8,0v53.5C424.1,362.1,326.8,362.1,330.7,362.1z
+				 M233.2,362.1v-53.5c2.2,0,92.4,0,87.2,0v53.5C316.9,362.1,231.6,362.1,233.2,362.1z M115.3,362.1v-53.5H223v53.5
+				C127.6,362.1,170.3,362.1,115.3,362.1z M10.2,362.1v-53.5H105v53.5H10.2z M489.8,192.6v42.1h-54.1v-53.5
+				C461.6,183.7,489.8,174.1,489.8,192.6z M425.5,234.8c-1.4,0-98.6,0-94.8,0v-53.5h94.8V234.8z M320.4,234.8c-3.5,0-88.9,0-87.2,0
+				v-53.5h87.2V234.8z M223,234.8c-95.4,0-52.7,0-107.7,0v-53.5H223V234.8z M10.2,192.6c0-6.3,5.1-11.3,11.3-11.3H105v53.5H10.2
+				V192.6z M10.2,478.1V436H105v53.5H21.5C15.3,489.5,10.2,484.4,10.2,478.1z M115.3,436H223v53.5H115.3V436z M233.2,436
+				c2.2,0,92.4,0,87.2,0v53.5h-87.2V436z M330.7,436c1.4,0,98.6,0,94.8,0v53.5h-94.8V436z M489.8,478.1c0,6.3-5.1,11.3-11.3,11.3
+				h-42.7V436h54.1v42.1H489.8z"/>
+		</g>
+	</g>
+	<g class="firewallMainIconst2">
+		<g>
+			<path class="firewallMainIconst3" d="M368.5,240.3c-9.8,25.4-26.1,42.7-42.3,54.4c-4.9,3.5-10,6.7-15.2,9.4c-6.1,3.2-12.5,5.9-19.1,8.1
+				c-14.1,5.9-27.9,6.9-35.2,6.9c-2.3,0-4.3,0-5.7-0.2h-0.5c-1.8,0.1-3.6,0.1-5.3,0.1c-6,0-11.8-0.3-17.1-1.1
+				c-13.1-1.7-24.2-5.5-33.2-11.5c-1.6-0.7-3.2-1.5-4.8-2.3c-5.5-2.9-10.9-6.1-15.9-9.9c-6.7-4.9-12.6-10.2-17.6-15.7
+				c-10.3-11.1-17.4-23.4-22.2-36c-0.3-0.7-0.5-1.4-0.7-2.1c-0.5-1.4-0.9-2.7-1.5-4.1c-2.1-6.2-3.5-12.5-4.5-18.7
+				c-0.3-2.1-0.6-4.2-0.8-6.3c-1.1-8.6-1.4-17.2-0.9-25.3v-0.5c0.1-3,0.3-5.9,0.6-8.8h250.6C378.9,202.1,375.2,223,368.5,240.3z"/>
+		</g>
+	</g>
+	<g>
+		<g>
+			<g>
+				<g>
+					<path class="firewallMainIconst4" d="M320.1,286.2c-20.6,14.8-45.1,22.2-69.6,22.2c-24.8,0-49.6-7.6-70.2-22.7
+						c-76.4-56.1-30.4-163.2-29.9-164.2l19.2-57c0.6-1.9,2.2-3.3,4.5-3.1c2,0.1,3.7,1.6,4.3,3.6c8.3,34.8,26.2,50.7,32.8,55.5
+						c20-20.5,15.1-88.8,11.3-114.4c-0.3-1.6,0.5-3.4,1.8-4.4c1.5-1,3.3-1.1,4.8-0.3c37.5,20.4,56.1,78,62.6,103.4
+						c8.9-26.3,0.3-72.1,0.1-72.7c-0.4-1.9,0.5-3.7,2.1-4.8c1.6-1,3.8-0.9,5.2,0.3c38.5,29.6,59,101.1,59.8,104.1
+						C382.4,219.3,350.7,264,320.1,286.2z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path class="firewallMainIconst5" d="M365.8,166.5c-4.4-14.5-24.4-74.6-58.9-101.1c-1.5-1.2-3.6-1.3-5.2-0.3c-1.6,1.1-2.5,2.8-2.1,4.8
+						c0.1,0.4,4.8,25.4,3.8,49.1c-0.3,5.9-8.5,7.2-10.4,1.6c-9.6-28.1-27.2-65.7-56-81.4c-1.6-0.8-3.4-0.7-4.8,0.3
+						c-1.4,1.1-2.1,2.8-1.8,4.5c3.5,23.8,8,85-7.7,109.6c-1.8,2.8-5.6,3.3-8.1,1.1c-8.2-7.4-21.5-23.1-28.4-51.8
+						c-0.5-2.1-2.3-3.5-4.3-3.7c-2.3-0.2-3.8,1.3-4.5,3.1l-19.2,57.1c-0.3,0.5-16.2,37.5-14,79.4c-20.7-54.3,5.9-116.4,6.3-117.1
+						l19.2-57c0.6-1.9,2.2-3.3,4.5-3.1c2,0.1,3.7,1.6,4.3,3.6c8.3,34.8,26.2,50.7,32.8,55.5c20-20.5,15.1-88.8,11.3-114.4
+						c-0.3-1.6,0.5-3.4,1.8-4.4c1.5-1,3.3-1.1,4.8-0.3c37.5,20.4,56.1,78,62.6,103.4c8.9-26.3,0.3-72.1,0.1-72.7
+						c-0.4-1.9,0.5-3.7,2.1-4.8c1.6-1,3.8-0.9,5.2,0.3c38.5,29.6,59,101.1,59.8,104.1C362.3,144.3,364.5,155.8,365.8,166.5z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path class="firewallMainIconst6" d="M311.9,284.2c-16.9,22-43.9,24.5-55.1,24.5c-3,0-4.8-0.2-5.2-0.3c-29.9,1.3-51.5-6.2-63.5-22.3
+						c-18.7-25.1-6.7-61.3-6.1-62.7l17.5-43.9c0.7-1.8,2.6-3.1,4.5-2.8c1.9,0.1,3.7,1.5,4.2,3.3c5.7,20.7,15.1,29.5,19,32.5
+						c16.4-10.1,18.7-55,18.3-72.1c-0.1-1.6,0.7-3.1,2.1-4c1.4-0.8,3.2-0.9,4.6-0.1c20.6,11,26,55,27.3,71.1
+						c13.1-5.9,19.1-35.9,20.3-47.1c0.2-2.2,1.8-3.8,3.9-4.1c2.2-0.3,4.1,0.9,4.8,2.9C330.2,216.8,331.4,258.8,311.9,284.2z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="firewallMainIconst7" d="M279.4,206c-3.9-16.5-10.8-33.5-22.5-39.8c-1.4-0.8-3.2-0.7-4.6,0.1c-1.4,0.9-2.2,2.4-2.1,4
+					c0.4,13.5-1,44.2-9.7,61.5c-3.3,6.7-13,7.4-17.3,1.2c-3.6-5.2-7.5-12.7-10.4-23.2c-0.5-1.8-2.3-3.2-4.2-3.3
+					c-1.9-0.3-3.8,1-4.5,2.8l-17.5,43.9c-0.3,0.7-3.5,10.4-4.1,23c-10.4-23.8-1.1-51.8-0.6-53l17.5-43.9c0.7-1.8,2.6-3.1,4.5-2.8
+					c1.9,0.1,3.7,1.5,4.2,3.3c5.7,20.7,15.1,29.5,19,32.5c16.4-10.1,18.7-55,18.3-72.1c-0.1-1.6,0.7-3.1,2.1-4
+					c1.4-0.8,3.2-0.9,4.6-0.1C272.2,146.9,277.8,188.9,279.4,206z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
+						</div>
+						<p .subMnuHeading><label>ID_FIREWALL</label></p>
+						<p .subMnuDescription><label>ID_KEEP_HACKERS_OUT</label></p>
+					</li>
+					<li .subMnuContainer .frame_display_src #ID_MENU_PAR_CONTROL .scanBox>
+						<div>
+							<!--svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner scanIconStyle">
+								<ellipse fill="none" stroke-width="15" stroke-miterlimit="10" cx="250.5" cy="98" rx="84.5" ry="81"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M156,211h179l138,195c0,0,0,20-8,28s-29,13-37,5
+									s-55-83-55-83s-13-15-15,6l10,98c0,0,0,9-17,14s-195,0-195,0s-21-3-21-25l9-91c0,0-9-18-22,2s-46,72-46,72s-20,15-34,3s-16-26-11-36
+									S156,211,156,211z" class="diffClr"/>
+								<ellipse fill="none" stroke-width="15" stroke-miterlimit="10" cx="250" cy="273.5" rx="37" ry="37.5" class="diffClr"/>
+								<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M213,342.6h74l43,67.4c0,0,14,27-22,26l-21-33v67
+									l-4,5.2h-70V403c0,0-11,18-19,31s-31-2-28-20L213,342.6z" class="diffClr"/>
+							</svg-->
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner scanIconStyle">
+<style type="text/css">
+	.ParentalControlIconst0{fill:#002659;}
+	.ParentalControlIconst1{fill:#39326C;}
+	.ParentalControlIconst2{fill:#5F55AE;}
+	.ParentalControlIconst3{fill:#FF4A4A;}
+	.ParentalControlIconst4{fill:#FF9E22;}
+	.ParentalControlIconst5{fill:#FFD322;}
+</style>
+<g>
+	<path class="ParentalControlIconst0" d="M500.5,378.7v79.2h-181V216.1h18.7c55.6,0,106.7,28,136.7,75C491.6,317.3,500.5,347.6,500.5,378.7z"/>
+	<path class="ParentalControlIconst1" d="M159.3,216.1h160.2V458H159.3V216.1z"/>
+	<path class="ParentalControlIconst1" d="M436.6,139.3c0,64.7-52.5,117.3-117.1,117.3V22C384.1,22,436.6,74.6,436.6,139.3L436.6,139.3z"/>
+	<path class="ParentalControlIconst2" d="M319.5,22v234.7c-64.6,0-117.1-52.6-117.1-117.3S254.9,22,319.5,22L319.5,22z"/>
+	<path class="ParentalControlIconst3" d="M318.7,428.7V500H159.3V285.3h16.2c49.1,0,94.1,24.7,120.6,66.1C310.9,374.5,318.7,401.3,318.7,428.7
+		L318.7,428.7z"/>
+	<path class="ParentalControlIconst4" d="M159.3,285.3V500H0v-71.3c0-27.5,7.8-54.2,22.6-77.3C49,310,94,285.3,143.1,285.3H159.3z"/>
+	<path class="ParentalControlIconst4" d="M263.3,220c0,57.5-46.7,104.3-104,104.3V115.8C216.7,115.8,263.3,162.5,263.3,220L263.3,220z"/>
+	<path class="ParentalControlIconst5" d="M159.3,115.8v208.5c-57.4,0-104-46.8-104-104.3S102,115.8,159.3,115.8L159.3,115.8z"/>
+</g>
+</svg>
+						</div>
+						<p .subMnuHeading><label>ID_PARENTAL_CONTROL</label></p>
+						<p .subMnuDescription><label>ID_CHOOSE_THE_BEST_SECURITY</label></p>
+					</li>
+					<li .subMnuContainer .frame_display_src #ID_MENU_EML_SCAN>
+						<div>
+							<!--svg version="1.1" id="Email_scan" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+								<polygon fill="none" stroke-width="15" stroke-miterlimit="10" points="29,197 252.3,28 478,197 478,477 29,477 
+									"/>
+								<polyline fill="none" stroke-width="15" stroke-miterlimit="10" points="35,200 252.3,371 306.6,328.2 469,200 "/>
+								<line fill="none" stroke-width="15" stroke-miterlimit="10" x1="469" y1="471" x2="306.6" y2="328.2"/>
+								<line fill="none" stroke-width="15" stroke-miterlimit="10" x1="190" y1="328.2" x2="29" y2="477"/>
+								<polyline fill="none" stroke-width="15" stroke-miterlimit="10" points="143.7,285.5 143.7,181 355,181 355,290 
+									"/>
+								<line fill="none" stroke-width="15" stroke-miterlimit="10" x1="190" y1="229" x2="312" y2="229"/>
+								<line fill="none" stroke-width="15" stroke-miterlimit="10" x1="192.5" y1="269" x2="314.5" y2="269"/>
+							</svg-->
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.emailScanIconst0{fill:#FFB140;}
+	.emailScanIconst1{fill:#FFFFFF;}
+	.emailScanIconst2{fill:#343434;}
+	.emailScanIconst3{fill:#F48F34;}
+	.emailScanIconst4{fill:#5CC1E6;}
+	.emailScanIconst5{fill:#E6E6E6;}
+	.emailScanIconst6{fill:#4C4C4C;}
+	.emailScanIconst7{opacity:0.3;fill:#FFFFFF;enable-background:new    ;}
+</style>
+<g>
+	<g>
+		<path class="emailScanIconst0" d="M499.9,21v286.8c0,10.6-8.6,19.2-19.2,19.2H20.5c-10.7,0-19.2-8.6-19.2-19.2V21c0-10.6,8.6-19.2,19.2-19.2
+			h460.3C491.4,1.8,499.9,10.4,499.9,21L499.9,21z"/>
+		<g>
+			<path class="emailScanIconst1" d="M342,230.7v63.9c0,3.7-3,6.6-6.6,6.6H180.1c-3.7,0-6.6-3-6.6-6.6v-63.9c0-3.7,3-6.6,6.6-6.6h155.3
+				C339,224,342,227,342,230.7z"/>
+			<g>
+				<path class="emailScanIconst2" d="M189.6,236h7.6v53.1h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M205.6,236h7.6v44.8h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M221.8,236h7.6v44.8h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M237.8,236h7.6v44.8h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M253.9,236h7.6v53.1h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M270,236h7.6v44.8H270V236z"/>
+				<path class="emailScanIconst2" d="M286.1,236h7.6v44.8h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M302.2,236h7.6v44.8h-7.6V236z"/>
+				<path class="emailScanIconst2" d="M318.2,236h7.6v53.1h-7.6V236z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="emailScanIconst3" d="M344.4,64.8c0,3.4-3,6.3-6.5,6.3H163.3c-3.6,0-6.5-3-6.5-6.3c0-3.6,3-6.5,6.5-6.5H338
+					C341.5,58.3,344.4,61.2,344.4,64.8z"/>
+				<path class="emailScanIconst3" d="M321.5,37.4c0,3.4-3,6.3-6.5,6.3H186.2c-3.6,0-6.5-3-6.5-6.3c0-3.6,3-6.5,6.5-6.5H315
+					C318.6,30.9,321.5,33.8,321.5,37.4L321.5,37.4z"/>
+			</g>
+			<path class="emailScanIconst3" d="M309.4,160.7l184.4,161.1L303.3,168L309.4,160.7z"/>
+			<path class="emailScanIconst3" d="M198,168.1L7.4,321.9l184.4-161.1L198,168.1z"/>
+			<path class="emailScanIconst3" d="M493.9,6.9C455.1,42,415.7,76.3,376.2,110.5c-19.6,17.2-39.7,34-59.6,51l-29.8,25.4l-15,12.7
+				c-5.8,4.8-13.5,7.6-21,7.6c-7.6,0-15.2-2.7-21.1-7.5l-15-12.7l-29.8-25.3c-19.9-17-40-33.7-59.6-50.9L65.9,59.3
+				C46.5,42,26.8,24.7,7.4,7.1c20.7,16,41,32.4,61.6,48.5l60.9,49.3c20.4,16.4,40.3,33.3,60.5,49.9l30.2,25l15,12.5
+				c4.3,3.4,9.7,5.3,15.2,5.2c5.5,0.1,10.9-1.9,15.2-5.2l15-12.5l30.2-25c20.2-16.6,40-33.5,60.5-49.9C412,71.9,452.6,39,493.9,6.9z
+				"/>
+		</g>
+	</g>
+	<g>
+		<path class="emailScanIconst2" d="M354.2,324.9l41.5,41.8l-28.7,29l-41.5-41.8L354.2,324.9z"/>
+		<path class="emailScanIconst4" d="M406.4,355.1l83.1,83.8c14.1,14.2,14.1,37.2,0,51.4c-14.1,14.2-36.9,14.2-51,0l-83.1-83.8
+			c-3.4-3.5-3.4-9.1,0-12.6l38.4-38.8C397.3,351.6,402.9,351.6,406.4,355.1L406.4,355.1z"/>
+		<path class="emailScanIconst5" d="M416.3,365.1l-9.9-10c-3.4-3.5-9-3.5-12.5,0l-38.4,38.8c-3.4,3.5-3.4,9.1,0,12.6l9.9,10L416.3,365.1z"/>
+		<path class="emailScanIconst6" d="M252.9,108.1c-78.4,0-142,64.2-142,143.4s63.6,143.4,142,143.4s141.9-64.2,141.9-143.4
+			S331.3,108.1,252.9,108.1L252.9,108.1z M252.9,359.7c-59.1,0-107.2-48.5-107.2-108.2c0-59.8,48.2-108.2,107.2-108.2
+			c59.2,0,107.1,48.5,107.1,108.2C359.9,311.3,312.1,359.7,252.9,359.7z"/>
+		<g>
+			<path class="emailScanIconst7" d="M359.9,251.5c0,59.8-47.8,108.2-107.1,108.2c-59.1,0-107.2-48.5-107.2-108.2c0-59.8,48.2-108.2,107.2-108.2
+				C312.1,143.3,359.9,191.7,359.9,251.5z"/>
+			<path class="emailScanIconst7" d="M335.7,182.9c-18.3-14.7-41.5-23.5-66.8-23.5c-59.1,0-107.2,48.5-107.2,108.2c0,25.9,9,49.8,24.2,68.4
+				c-24.5-19.9-40.3-50.3-40.3-84.5c0-59.8,48.2-108.2,107.2-108.2C286.3,143.3,316.1,158.7,335.7,182.9L335.7,182.9z"/>
+		</g>
+	</g>
+</g>
+</svg>
+
+						</div>
+						<p .subMnuHeading><label>ID_EMAIL_SCAN</label></p>
+						<p .subMnuDescription><label>ID_PROTECT_YOUR_EMAIL_PRIVACY</label></p>
+					</li>
+					</div>
+					<div .col-1-1  style="visibility: none;">
+					<li .subMnuContainer .frame_display_src #ID_MENU_BROWSER_SECURITY>
+						<div>
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.browserSecurityIconst0{fill:#B0D3F0;}
+	.browserSecurityIconst1{fill:#4482C3;}
+	.browserSecurityIconst2{fill:#F0C419;}
+	.browserSecurityIconst3{fill:#24AE5F;}
+	.browserSecurityIconst4{fill:#FF5364;}
+	.browserSecurityIconst5{fill:#FFFFFF;}
+	.browserSecurityIconst6{fill:#95A5A5;}
+	.browserSecurityIconst7{fill:#2980BA;}
+	.browserSecurityIconst8{fill:#2C3E50;}
+	.browserSecurityIconst9{fill:#E57E25;}
+</style>
+<g>
+	<path class="browserSecurityIconst0" d="M4.2,45.7h440.5v367H38.1c-18.7,0-33.9-15.3-33.9-34.1C4.2,378.6,4.2,45.7,4.2,45.7z"/>
+	<path class="browserSecurityIconst1" d="M444.7,37.1v34.1H4.2V37.1C4.2,18.3,19.4,3,38.1,3h372.7C429.5,3,444.7,18.3,444.7,37.1z"/>
+	<path class="browserSecurityIconst2" d="M55,45.7h-8.5c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5H55c4.7,0,8.5,3.8,8.5,8.5S59.7,45.7,55,45.7z"/>
+	<path class="browserSecurityIconst3" d="M97.4,45.7h-8.5c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h8.5c4.7,0,8.5,3.8,8.5,8.5S102.1,45.7,97.4,45.7z"/>
+	<path class="browserSecurityIconst4" d="M139.7,45.7h-8.5c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h8.5c4.7,0,8.5,3.8,8.5,8.5S144.4,45.7,139.7,45.7z"
+		/>
+	<path class="browserSecurityIconst5" d="M402.3,45.7H173.6c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h228.7c4.7,0,8.5,3.8,8.5,8.5S407,45.7,402.3,45.7z"
+		/>
+	<path class="browserSecurityIconst6" d="M470.1,327.3H300.7c-4.7,0-8.5-3.8-8.5-8.5v-51.2c0-51.8,41.7-93.9,93.2-93.9s93.2,42,93.2,93.9v51.2
+		C478.6,323.5,474.8,327.3,470.1,327.3z M309.2,310.2h152.5v-42.7c0-42.4-34.1-76.8-76.2-76.8s-76.2,34.4-76.2,76.8L309.2,310.2
+		L309.2,310.2z"/>
+	<path class="browserSecurityIconst7" d="M131.3,216.4H63.5c-9.4,0-16.9-7.6-16.9-17.1V131c0-9.4,7.6-17.1,16.9-17.1h33.9c4.7,0,8.5,3.8,8.5,8.5
+		s-3.8,8.5-8.5,8.5H63.5v68.3h67.8v-25.6c0-4.7,3.8-8.5,8.5-8.5s8.5,3.8,8.5,8.5v25.6C148.2,208.7,140.6,216.4,131.3,216.4z"/>
+	<path class="browserSecurityIconst4" d="M97.4,182.2c-2.2,0-4.4-0.9-6-2.5l-16.9-17.1c-3.2-3.3-3.2-8.7,0.1-12c3.3-3.3,8.6-3.3,11.9-0.1L96.8,161
+		l36.4-44c1.9-2.3,5-3.5,8-2.9c3,0.5,5.5,2.6,6.5,5.5s0.5,6.1-1.4,8.4l-42.4,51.2c-1.5,1.8-3.7,2.9-6.1,3.1L97.4,182.2z"/>
+	<path class="browserSecurityIconst7" d="M131.3,361.4H63.5c-9.4,0-16.9-7.6-16.9-17.1V276c0-9.4,7.6-17.1,16.9-17.1h33.9c4.7,0,8.5,3.8,8.5,8.5
+		s-3.8,8.5-8.5,8.5H63.5v68.3h67.8v-25.6c0-4.7,3.8-8.5,8.5-8.5s8.5,3.8,8.5,8.5v25.6C148.2,353.8,140.6,361.4,131.3,361.4z"/>
+	<path class="browserSecurityIconst4" d="M97.4,327.3c-2.2,0-4.4-0.9-6-2.5l-16.9-17.1c-3.2-3.3-3.2-8.7,0.1-12c3.3-3.3,8.6-3.3,11.9-0.1l10.4,10.5
+		l36.4-44c1.9-2.3,5-3.5,8-2.9c3,0.5,5.5,2.6,6.5,5.5s0.5,6.1-1.4,8.4L104,324.3c-1.5,1.8-3.7,2.9-6.1,3.1L97.4,327.3z"/>
+	<g>
+		<path class="browserSecurityIconst8" d="M249.9,139.5h-67.8c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h67.8c4.7,0,8.5,3.8,8.5,8.5
+			C258.3,135.7,254.5,139.5,249.9,139.5z"/>
+		<path class="browserSecurityIconst8" d="M292.2,182.2H182.1c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h110.1c4.7,0,8.5,3.8,8.5,8.5
+			S296.9,182.2,292.2,182.2z"/>
+		<path class="browserSecurityIconst8" d="M249.9,284.6h-67.8c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h67.8c4.7,0,8.5,3.8,8.5,8.5
+			C258.3,280.8,254.5,284.6,249.9,284.6z"/>
+		<path class="browserSecurityIconst8" d="M241.4,327.3h-59.3c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h59.3c4.7,0,8.5,3.8,8.5,8.5
+			S246.1,327.3,241.4,327.3z"/>
+	</g>
+	<path class="browserSecurityIconst2" d="M283.8,310.2h203.3c4.7,0,8.5,3.8,8.5,8.5v128c0,28.3-22.8,51.2-50.8,51.2H326.1c-28.1,0-50.8-22.9-50.8-51.2
+		v-128C275.3,314.1,279.1,310.2,283.8,310.2z"/>
+	<g>
+		<path class="browserSecurityIconst9" d="M385.4,412.7c-14,0-25.4-11.5-25.4-25.6s11.4-25.6,25.4-25.6s25.4,11.5,25.4,25.6S399.4,412.7,385.4,412.7z
+			 M385.4,378.5c-4.7,0-8.5,3.8-8.5,8.5s3.8,8.5,8.5,8.5s8.5-3.8,8.5-8.5S390.1,378.5,385.4,378.5z"/>
+		<path class="browserSecurityIconst9" d="M385.4,438.3c-4.7,0-8.5-3.8-8.5-8.5v-25.6c0-4.7,3.8-8.5,8.5-8.5s8.5,3.8,8.5,8.5v25.6
+			C393.9,434.4,390.1,438.3,385.4,438.3z"/>
+		<path class="browserSecurityIconst9" d="M309.2,352.9h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			C317.6,349.1,313.8,352.9,309.2,352.9z"/>
+		<path class="browserSecurityIconst9" d="M309.2,387h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			C317.6,383.2,313.8,387,309.2,387z"/>
+		<path class="browserSecurityIconst9" d="M309.2,421.2h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			C317.6,417.4,313.8,421.2,309.2,421.2z"/>
+		<path class="browserSecurityIconst9" d="M309.2,455.3h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			C317.6,451.5,313.8,455.3,309.2,455.3z"/>
+		<path class="browserSecurityIconst9" d="M495.5,352.9h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			S500.2,352.9,495.5,352.9z"/>
+		<path class="browserSecurityIconst9" d="M495.5,387h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5S500.2,387,495.5,387z"
+			/>
+		<path class="browserSecurityIconst9" d="M495.5,421.2h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			C504,417.4,500.2,421.2,495.5,421.2z"/>
+		<path class="browserSecurityIconst9" d="M495.5,455.3h-33.9c-4.7,0-8.5-3.8-8.5-8.5s3.8-8.5,8.5-8.5h33.9c4.7,0,8.5,3.8,8.5,8.5
+			S500.2,455.3,495.5,455.3z"/>
+	</g>
+</g>
+</svg>
+						</div>
+						<p .subMnuHeading><label>ID_BROWSER_SECURITY</label></p>
+						<p .subMnuDescription><label>ID_BROWSER_SECURITY_DESC</label></p>
+					</li>
+					</div>
+					</div>
+				</div>
+			</span>
+			<span .frame_display_src>
+				<li #ID_MENU_DATA_ENC class="tooltip">
+					<!--svg version="1.1" id="Data_Encryption" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+						 y="0px" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+					<ellipse class="encryptionIcon" fill="none" stroke-width="20" stroke-miterlimit="10" cx="212.5" cy="105.5" rx="190.5" ry="86.5"/>
+					<path fill="none" stroke-width="20" stroke-miterlimit="10" d="M22,105.5V391c0,0,23,74,168,79"/>
+					<path fill="none" stroke-width="20" stroke-miterlimit="10" d="M22,219c0,0,77,100,272,61"/>
+					<path fill="none" stroke-width="20" stroke-miterlimit="10" d="M22,318c0,0,50,69,195,68"/>
+					<line fill="none" stroke-width="20" stroke-miterlimit="10" x1="403" y1="105.5" x2="403" y2="198"/>
+					<circle fill="none" stroke-width="20" stroke-miterlimit="10" cx="403" cy="307" r="75"/>
+					<polyline fill="none" stroke-width="20" stroke-miterlimit="10" points="330.2,325 228,427 228,483 279.1,483 
+						290,470 317,470 317,439 345,440 345,412 373,413 373,375.8 "/>
+					<line fill="none" stroke-width="20" stroke-miterlimit="10" x1="348.5" y1="358.5" x2="270" y2="437"/>
+					<circle fill="none" stroke-width="20" stroke-miterlimit="10" cx="412" cy="298" r="26"/>
+					</svg-->
+<!-- <svg version="1.1"  id="Data_Encryption" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve" class="menuIconStyle encryptionIconHov">
+<style type="text/css">
+	.dataProtectionIconst0{fill:#D1C4E9;}
+	.dataProtectionIconst1{fill:#FFA000;}
+	.dataProtectionIconst2{fill:#D68600;}
+</style>
+<path id="test" class="dataProtectionIconst0" d="M587.1,27H63.3c-20.6,0-37.4,16.8-37.4,37.4v112.2c0,20.6,16.8,37.4,37.4,37.4h523.8
+	c20.6,0,37.4-16.8,37.4-37.4V64.4C624.5,43.8,607.7,27,587.1,27L587.1,27z M587.1,251.5H63.3c-20.6,0-37.4,16.8-37.4,37.4v112.2
+	c0,20.6,16.8,37.4,37.4,37.4h469.6c24.3-24.3,91.7-16.8,91.7-37.4V288.9C624.5,268.3,607.7,251.5,587.1,251.5L587.1,251.5z
+	 M519.7,476H63.3c-20.6,0-37.4,16.8-37.4,37.4v112.2c0,20.6,16.8,37.4,37.4,37.4h523.8c20.6,0,37.4-16.8,37.4-37.4v-44.9
+	C624.5,522.7,577.7,476,519.7,476z"/>
+<path class="dataProtectionIconst1" d="M680.6,756.6L643.2,794h-37.4l-37.4-37.4V558.3h112.2v86.1L661.9,663l18.7,18.7v18.7l-18.7,18.7l18.7,18.7
+	L680.6,756.6z"/>
+<path class="dataProtectionIconst1" d="M764.8,429.2c-5.6-16.8-18.7-29.9-37.4-33.7c-24.3-5.6-61.7-13.1-102.9-13.1s-78.6,7.5-102.9,11.2
+	c-18.7,3.7-31.8,16.8-37.4,33.7c-3.7,18.7-9.4,41.2-9.4,67.3s5.6,48.6,9.4,65.5c5.6,16.8,18.7,29.9,37.4,33.7
+	c24.3,5.6,59.9,11.2,102.9,11.2s78.6-7.5,102.9-11.2c18.7-3.7,31.8-16.8,37.4-33.7c5.6-16.8,9.4-39.3,9.4-65.5
+	S768.5,446,764.8,429.2L764.8,429.2z M678.7,476H572.1c-11.2,0-20.6-9.4-20.6-20.6v-26.2c0-5.6,33.7-11.2,74.8-11.2
+	c41.2,0,74.8,5.6,74.8,11.2v26.2C699.3,466.6,690,476,678.7,476z"/>
+<path class="dataProtectionIconst2" d="M605.8,590.1h18.7V794h-18.7V590.1z"/>
+</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle encryptionIconHov">
+<style type="text/css">
+	.encryption_icost0{fill:#FF2C5C;}
+	.encryption_icost1{fill:#50475E;}
+	.encryption_icost2{fill:#FFD659;}
+	.encryption_icost3{fill:#FFBD54;}
+	.encryption_icost4{fill:#4FB1F5;}
+	.encryption_icost5{fill:#46A4E6;}
+	.encryption_icost6{fill:#ADE7FF;}
+	.encryption_icost7{fill:#E62753;}
+	.encryption_icost8{fill:#685C79;}
+</style>
+<g id="surface1">
+	<path class="encryption_icost0" d="M187.2,477.4c0,8.1-6.5,14.6-14.6,14.6s-14.6-6.5-14.6-14.6s6.5-14.6,14.6-14.6S187.2,469.3,187.2,477.4z"/>
+	<path class="encryption_icost0" d="M372.5,21.9c0,8.1-6.5,14.6-14.6,14.6s-14.6-6.5-14.6-14.6s6.5-14.6,14.6-14.6C366,7.3,372.5,13.9,372.5,21.9z
+		"/>
+	<path class="encryption_icost0" d="M36.6,169.7c0,8.1-6.5,14.6-14.6,14.6s-14.6-6.5-14.6-14.6s6.5-14.6,14.6-14.6S36.6,161.6,36.6,169.7z"/>
+	<path class="encryption_icost0" d="M59.2,226.3c0,8.1-6.5,14.6-14.6,14.6S30,234.3,30,226.3s6.5-14.6,14.6-14.6S59.2,218.2,59.2,226.3z"/>
+	<path class="encryption_icost0" d="M492,234.1c0,8.1-6.5,14.6-14.6,14.6s-14.6-6.5-14.6-14.6s6.5-14.6,14.6-14.6C485.5,219.4,492,226,492,234.1z"
+		/>
+	<path class="encryption_icost0" d="M469.3,290.6c0,8.1-6.5,14.6-14.6,14.6s-14.6-6.5-14.6-14.6s6.5-14.6,14.6-14.6S469.3,282.5,469.3,290.6z"/>
+	<path class="encryption_icost1" d="M179.9,456.7v-92.3c0-4-3.3-7.3-7.3-7.3s-7.3,3.3-7.3,7.3v92.3c-8.5,3-14.6,11.2-14.6,20.7
+		c0,12.1,9.8,21.9,21.9,21.9s21.9-9.8,21.9-21.9C194.6,467.9,188.4,459.7,179.9,456.7z M172.6,484.7c-4,0-7.3-3.3-7.3-7.3
+		s3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3C179.9,481.4,176.7,484.7,172.6,484.7z"/>
+	<path class="encryption_icost1" d="M365.2,121.9V42.6c8.5-3,14.6-11.2,14.6-20.7C379.9,9.8,370,0,357.9,0S336,9.8,336,21.9
+		c0,9.5,6.1,17.7,14.6,20.7v79.3c0,4,3.3,7.3,7.3,7.3S365.2,125.9,365.2,121.9z M357.9,14.6c4,0,7.3,3.3,7.3,7.3s-3.3,7.3-7.3,7.3
+		s-7.3-3.3-7.3-7.3S353.9,14.6,357.9,14.6z"/>
+	<path class="encryption_icost1" d="M120.9,162.4H42.6c-3-8.5-11.2-14.6-20.7-14.6C9.8,147.8,0,157.6,0,169.7c0,12.1,9.8,21.9,21.9,21.9
+		c9.5,0,17.7-6.1,20.7-14.6h78.3c4,0,7.3-3.3,7.3-7.3C128.2,165.7,125,162.4,120.9,162.4z M21.9,177c-4,0-7.3-3.3-7.3-7.3
+		s3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3S26,177,21.9,177z"/>
+	<path class="encryption_icost1" d="M120.9,218.9H65.3c-3-8.5-11.2-14.6-20.7-14.6c-12.1,0-21.9,9.8-21.9,21.9c0,12.1,9.8,21.9,21.9,21.9
+		c9.5,0,17.7-6.1,20.7-14.6h55.6c4,0,7.3-3.3,7.3-7.3S125,218.9,120.9,218.9z M44.6,233.6c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3
+		s7.3,3.3,7.3,7.3S48.7,233.6,44.6,233.6z"/>
+	<path class="encryption_icost1" d="M477.4,212.1c-9.5,0-17.7,6.1-20.7,14.6h-84.2c-4,0-7.3,3.3-7.3,7.3s3.3,7.3,7.3,7.3h84.2
+		c3,8.5,11.2,14.6,20.7,14.6c12.1,0,21.9-9.8,21.9-21.9C499.3,222,489.5,212.1,477.4,212.1z M477.4,241.4c-4,0-7.3-3.3-7.3-7.3
+		s3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3C484.7,238.1,481.4,241.4,477.4,241.4z"/>
+	<path class="encryption_icost1" d="M454.7,268.7c-9.5,0-17.7,6.1-20.7,14.6h-64.4c-4,0-7.3,3.3-7.3,7.3s3.3,7.3,7.3,7.3H434
+		c3,8.5,11.2,14.6,20.7,14.6c12.1,0,21.9-9.8,21.9-21.9C476.7,278.5,466.8,268.7,454.7,268.7z M454.7,297.9c-4,0-7.3-3.3-7.3-7.3
+		s3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3C462,294.7,458.7,297.9,454.7,297.9z"/>
+	<path class="encryption_icost2" d="M251.1,439.6c-0.9,0.4-1.9,0.4-2.9,0c-47.8-18.5-88.3-46.8-120.4-84.2c-23.3-27.2-36.2-63.2-36.2-101.5V118.1
+		c0-1.8,1.2-3.4,2.8-3.8c30.3-6.7,58.8-20,83.6-34.9c44-26.5,99.1-26.5,143.1,0c24.8,14.9,53.3,28.2,83.6,34.9
+		c1.6,0.4,2.8,1.9,2.8,3.8v135.7c0,38.2-12.9,74.3-36.2,101.5C339.4,392.8,298.9,421.1,251.1,439.6z"/>
+	<path class="encryption_icost3" d="M404.8,114.3c-9-2-17.8-4.6-26.4-7.6V249c0,40.4-12.9,78.5-36.2,107.3c-27.7,34.1-61.6,61-101,80.4
+		c2.3,1,4.7,1.9,7.1,2.8c0.9,0.4,1.9,0.4,2.9,0c47.8-18.5,88.3-46.8,120.4-84.2c23.3-27.2,36.2-63.3,36.2-101.5V118.1
+		C407.7,116.3,406.5,114.7,404.8,114.3z"/>
+	<path class="encryption_icost4" d="M250.8,408.1c-0.7,0.3-1.6,0.3-2.3,0c-38.8-16.7-71.8-40.8-98.4-71.8c-18.8-21.9-29.1-51.2-29.1-82.4V140.4
+		c0-1.7,1.1-3.2,2.7-3.7c22.9-7.3,46.2-18.1,69.6-32.3c17-10.3,36.5-15.7,56.4-15.7s39.4,5.4,56.4,15.7
+		c23.4,14.1,46.7,24.9,69.6,32.3c1.6,0.5,2.7,2,2.7,3.7v113.5c0,31.2-10.4,60.5-29.1,82.4C322.7,367.3,289.6,391.4,250.8,408.1z"/>
+	<path class="encryption_icost5" d="M375.7,136.7c-8.8-2.8-17.6-6.2-26.5-10v118.5c0,34.5-10.4,66.9-29.1,91.1c-21.9,28.2-48.1,51.2-78.3,68.7
+		c2.3,1,4.5,2.1,6.8,3c0.7,0.3,1.6,0.3,2.3,0c38.8-16.7,71.8-40.8,98.4-71.8c18.8-21.9,29.1-51.2,29.1-82.4V140.4
+		C378.4,138.7,377.3,137.2,375.7,136.7z"/>
+	<path class="encryption_icost6" d="M249.7,171.2c-20.2,0-36.6,16.4-36.6,36.6v30.9c0,4,3.3,7.3,7.3,7.3s7.3-3.3,7.3-7.3v-30.9
+		c0-12.1,9.8-21.9,21.9-21.9c12.1,0,21.9,9.8,21.9,21.9v30.9c0,4,3.3,7.3,7.3,7.3s7.3-3.3,7.3-7.3v-30.9
+		C286.2,187.6,269.8,171.2,249.7,171.2z"/>
+	<path class="encryption_icost0" d="M288.7,305.3h-78c-5.4,0-9.8-4.4-9.8-9.8V237c0-5.4,4.4-9.8,9.8-9.8h78c5.4,0,9.8,4.4,9.8,9.8v58.5
+		C298.4,300.9,294.1,305.3,288.7,305.3z"/>
+	<path class="encryption_icost7" d="M288.7,227.2h-29.3c5.4,0,9.8,4.4,9.8,9.8v58.5c0,5.4-4.4,9.8-9.8,9.8h29.3c5.4,0,9.8-4.4,9.8-9.8V237
+		C298.4,231.6,294.1,227.2,288.7,227.2z"/>
+	<path class="encryption_icost8" d="M264.3,258.9c0,8.1-6.5,14.6-14.6,14.6S235,267,235,258.9s6.5-14.6,14.6-14.6S264.3,250.8,264.3,258.9z"/>
+	<path class="encryption_icost1" d="M271.6,258.9c0-12.1-9.8-21.9-21.9-21.9s-21.9,9.8-21.9,21.9c0,9.5,6.1,17.7,14.6,20.7v8.6
+		c0,4,3.3,7.3,7.3,7.3s7.3-3.3,7.3-7.3v-8.6C265.5,276.6,271.6,268.5,271.6,258.9z M249.7,266.2c-4,0-7.3-3.3-7.3-7.3
+		s3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3C257,263,253.7,266.2,249.7,266.2z"/>
+</g>
+</svg>
+<span class="tooltiptext">Data Encryption</span>
+				</li>
+			</span>
+				<li #ID_MENU_BLUE_DOME class="tooltip">
+					<?xml version="1.0" encoding="utf-8"?>
+					<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle toolsIconHov">
+					<style type="text/css">
+						.blkClr{fill:#1C1B18;}
+						.orangeClr{fill:#EE7F22;}
+					</style>
+					<g id="XMLID_33_">
+						<path id="XMLID_31_" class="blkClr" d="M350.6,248.2c-24.8,100.6-113,213-113,213S136.1,331.8,120.3,226.5l117.3,36.2l99.5-30.7
+							l-99.5,122l0,0l-39.4-48.2c-3.6-4.4-10.1-5.1-14.5-1.5c-4.4,3.6-5.1,10.1-1.5,14.5l47.4,58.1l8,9.8l0,0l8-9.8L350.6,248.2
+							L350.6,248.2z"/>
+						<path id="XMLID_30_" class="orangeClr" d="M409.8,381.8c-0.1,1.1-0.2,2.2-0.4,3.1c-1.6,4.1-3.4,8-5.2,12l0.4-0.9l0.6-1.4l0.3-0.7l0.3-0.7
+							l1.1-2.9C407.9,387.5,408.9,384.6,409.8,381.8L409.8,381.8z"/>
+						<path id="XMLID_29_" class="orangeClr" d="M144.5,143.9c-4.5,2.1-10.4,5-14.8,7.3c-0.6-0.7-1.4-1.7-1.7-2.5c4.6-3.3,9.4-6.2,14.4-8.8
+							c4.1-1.7,9.5-4,13.7-5.5c0,0.5,0.1,1.1,0.4,1.5C152.3,138.2,148.3,140.9,144.5,143.9L144.5,143.9z"/>
+						<path id="XMLID_28_" class="orangeClr" d="M185.4,137.6c-4.3,1.7-10,3.9-14.3,5.6c-2.1-0.9-4.9-2.1-7-3c2.8-2.9,5.8-5.4,8.9-7.5
+							c3.8-1.2,8.9-2.9,12.7-4c1.6,0.6,3.7,1.3,5.3,1.8C189.1,132.4,187.2,134.8,185.4,137.6L185.4,137.6z"/>
+						<path id="XMLID_27_" class="orangeClr" d="M231.9,135.9c-3.6,1.3-8.4,2.9-11.9,4.2c-3.4-1.2-8-2.8-11.5-4c0.7-2.7,1.4-5,2.2-6.9
+							c3-0.8,7.1-2,10.1-2.8c2.9,0.8,6.8,1.8,9.8,2.6C231,130.9,231.5,133.2,231.9,135.9L231.9,135.9z"/>
+						<path id="XMLID_26_" class="orangeClr" d="M278.7,139.5c-2.4,0.9-5.7,2.1-8.1,3c-4.4-1.7-10.3-3.9-14.7-5.5c-1.6-2.7-3.3-5.1-5-7.1
+							c1.9-0.6,4.4-1.3,6.2-1.8c4,1.2,9.2,2.7,13.2,3.9C273.2,134.2,276,136.7,278.7,139.5L278.7,139.5z"/>
+						<path id="XMLID_25_" class="orangeClr" d="M316.3,147.8c-0.5,0.8-1.2,1.9-1.9,2.6c-4.5-2.2-10.4-5.1-15-7.2c-3.7-3-7.6-5.7-11.6-8
+							c0.3-0.4,0.7-1,0.7-1.5c4.1,1.6,9.6,3.7,13.6,5.4C307.1,141.6,311.8,144.6,316.3,147.8L316.3,147.8z"/>
+						<path id="XMLID_24_" class="orangeClr" d="M189.3,125.2c-0.7,0.2-1.4,0.3-2,0.5c-3.6,0.9-8.3,2-11.9,2.9c0-0.2-0.1-0.4-0.1-0.5
+							C179.9,127,184.6,126,189.3,125.2z"/>
+						<path id="XMLID_23_" class="orangeClr" d="M215.8,122.4c-0.5,0.1-1,0.4-1.4,0.9c-2.7,0.5-6.4,1.2-9.1,1.8c-1.4-0.3-3.2-0.7-4.6-1
+							c1-0.4,2-0.7,3.1-0.9c0,0,0,0,0,0c2.3-0.2,4.6-0.4,6.9-0.5C212.4,122.6,214.1,122.5,215.8,122.4L215.8,122.4z"/>
+						<path id="XMLID_22_" class="orangeClr" d="M243.4,123.9c-1.6,0.3-3.6,0.7-5.2,1c-2.7-0.5-6.3-1.2-9-1.7c-0.4-0.4-0.7-0.7-1.1-0.9l0.5,0
+							l3,0.1c1,0,2,0.1,3,0.2c2,0.1,4,0.3,5.9,0.4c0,0,0,0,0,0C241.5,123.2,242.4,123.5,243.4,123.9L243.4,123.9z"/>
+						<path id="XMLID_21_" class="orangeClr" d="M270.1,128.3c-0.1,0-0.2,0.1-0.2,0.2c-3.6-0.9-8.5-2.1-12.2-2.9c-0.6-0.2-1.2-0.3-1.9-0.5
+							c0.8,0.1,1.6,0.3,2.3,0.4l1.5,0.3l1.5,0.3l2.9,0.6l2.9,0.7l1.5,0.3c0.5,0.1,1,0.2,1.4,0.4l0.2,0.1
+							C270.1,128.1,270.1,128.2,270.1,128.3L270.1,128.3z"/>
+						<path id="XMLID_20_" class="orangeClr" d="M165.3,203.1c-5.5,3.3-12.8,7.6-18.2,11c-4.4-2.1-10.2-4.9-14.5-7c1.3-6,2.8-11.8,4.5-17.2
+							c5.2-3,12.1-7.1,17.4-10c4.1,1.9,9.6,4.3,13.7,6.2C167.1,191.5,166.1,197.2,165.3,203.1L165.3,203.1z"/>
+						<path id="XMLID_19_" class="orangeClr" d="M236.9,200.6c-5.5,2.7-12.7,6.3-18.2,9c-5.3-2.6-12.5-6.1-17.9-8.7c0.3-5.9,0.7-11.6,1.1-16.9
+							c5.1-2.5,12-5.7,17.1-8.1c5.1,2.3,12,5.5,17.1,7.9C236.4,189,236.6,194.7,236.9,200.6L236.9,200.6z"/>
+						<path id="XMLID_18_" class="orangeClr" d="M308.8,206.1c-4.8,2.1-11.2,4.9-16,7c-5.7-3.3-13.4-7.6-19.2-10.8c-0.8-6-1.6-11.6-2.6-17
+							c4.5-1.9,10.4-4.4,14.9-6.3c5.6,2.9,13,6.9,18.6,9.9C306.1,194.4,307.6,200.1,308.8,206.1z"/>
+						<path id="XMLID_17_" class="orangeClr" d="M366.8,218.9c-2.8,1.7-6.6,4.1-9.5,5.7c-4.9-3.9-11.4-9.1-16.4-12.8
+							c-1.7-6.1-3.7-11.9-5.9-17.5c2.7-1.5,6.4-3.4,9.1-5c4.7,3.5,10.9,8.1,15.5,11.7C362.2,206.7,364.6,212.7,366.8,218.9L366.8,218.9z"
+							/>
+						<path id="XMLID_16_" class="orangeClr" d="M401.1,236.3c-0.7,1.6-1.7,3.7-2.6,5.1c-3.3-4.3-7.7-10-11.2-14.2c-2.4-6.3-5.2-12.4-8.2-18.2
+							c0.8-1.3,1.8-3,2.3-4.5c2.6,3.1,5.9,6.9,8.8,10.4l0,0c0.4,0.6,0.8,1.2,1.1,1.8c2.3,3.7,4.4,7.5,6.3,11.4c0,0,0,0,0,0
+							C398.7,230.8,399.9,233.5,401.1,236.3z"/>
+						<path id="XMLID_15_" class="orangeClr" d="M145.5,167.8c-5,2.8-11.7,6.5-16.7,9.4c-2.6-1.3-6.1-3.1-8.6-4.6c2.9-4.7,5.9-9.1,9.2-13.1
+							c4.7-2.5,10.9-5.7,15.6-8.1c2.2,1.1,5.2,2.6,7.5,3.7C150,159,147.7,163.3,145.5,167.8L145.5,167.8z"/>
+						<path id="XMLID_14_" class="orangeClr" d="M204.5,162.5c-4.9,2.3-11.5,5.3-16.5,7.6c-4-1.7-9.4-4.1-13.4-5.8c1.3-4.5,2.8-8.6,4.3-12.4
+							c4.5-1.9,10.5-4.5,15.1-6.4c3.6,1.4,8.5,3.3,12.1,4.7C205.6,154,205.1,158.1,204.5,162.5L204.5,162.5z"/>
+						<path id="XMLID_13_" class="orangeClr" d="M267.5,163.8c-4.3,1.8-10,4.1-14.2,5.9c-5-2.2-11.7-5.2-16.7-7.4c-0.4-4.4-0.8-8.5-1.2-12.2
+							c3.8-1.5,8.9-3.4,12.7-4.9c4.6,1.9,10.8,4.3,15.5,6.3C264.9,155.2,266.2,159.4,267.5,163.8L267.5,163.8z"/>
+						<path id="XMLID_12_" class="orangeClr" d="M325.2,172.2c-2.7,1.4-6.3,3.2-9.1,4.5c-5.2-2.9-12.2-6.7-17.5-9.4c-2.1-4.5-4.4-8.8-6.8-12.7
+							c2.5-1.1,5.8-2.5,8.2-3.6c4.8,2.4,11.2,5.6,16,8.1C319.3,163.1,322.4,167.5,325.2,172.2L325.2,172.2z"/>
+						<path id="XMLID_11_" class="orangeClr" d="M364.6,185.6c-0.6,1.2-1.5,2.9-2.3,4c-4.3-3.4-10-7.9-14.4-11.1c-3.5-4.9-7.2-9.4-11.2-13.7
+							c0.6-0.9,1.3-2.1,1.6-3.2c4.1,2.8,9.6,6.6,13.6,9.6C356.4,175.8,360.6,180.6,364.6,185.6L364.6,185.6z"/>
+						<path id="XMLID_10_" class="orangeClr" d="M374.4,324.5c-4.4,2.2-10.3,5.1-14.7,7.3c-3.7-4.5-8.7-10.4-12.6-14.7c0.9-7.5,1.6-15.1,2-22.6
+							c4.5-2.3,10.6-5.4,15-7.8c3.9,4.5,9,10.6,12.7,15.3C376.4,309.5,375.6,317,374.4,324.5z"/>
+						<path id="XMLID_9_" class="orangeClr" d="M410.5,342.8c-2.6,1.9-6.1,4.3-8.8,6.1c-1.6-4.7-3.8-11-5.7-15.6c1.3-7.4,2.3-14.8,2.8-22.4
+							c2.7-1.9,6.3-4.5,8.8-6.6c1.9,4.8,4.4,11.3,6,16.3C413,328.1,411.9,335.5,410.5,342.8L410.5,342.8z"/>
+						<path id="XMLID_8_" class="orangeClr" d="M400,278.6c-2.7,2-6.3,4.7-9,6.6c-3.5-4.7-8.1-10.9-11.9-15.4c-0.6-7.3-1.5-14.4-2.7-21.3
+							c2.7-1.8,6.2-4.1,8.8-6c3.6,4.4,8.4,10.2,11.7,14.7C398.3,264.1,399.3,271.2,400,278.6L400,278.6z"/>
+						<path id="XMLID_7_" class="orangeClr" d="M418.9,302c-1.3-4.4-2.8-9.4-4.2-13.3c-0.7-7.4-1.8-14.6-3.3-21.6c0.2-0.6,0.5-1.3,0.7-2
+							c1.7,6,3.1,12.1,4.2,18.2l1,5.9l0.1,0.7l0.1,0.7l0.2,1.5l0.4,3l0.4,3l0.3,3L418.9,302L418.9,302z"/>
+						<path id="XMLID_6_" class="orangeClr" d="M362.8,439.6c-3.6,1.4-8.4,3.4-12,4.8c0.4-3.5,1-8.3,1.1-11.8c4.4-5.8,8.6-11.9,12.5-18.1
+							c3.8-1.6,8.8-3.8,12.5-5.5c-0.1,4-0.2,9.4-0.6,13.3C372.1,428.2,367.6,434.1,362.8,439.6L362.8,439.6z"/>
+						<path id="XMLID_5_" class="orangeClr" d="M388.7,427.1l-1,1.6l-0.8,1.3l-0.9,1.3l-1.7,2.6l-1.7,2.6c-0.3,0.4-0.6,0.8-0.9,1.3l-0.9,1.3
+							l-1.8,2.5l-0.9,1.3c-0.3,0.4-0.6,0.8-0.9,1.2c-3.2,4.2-6.6,8.2-10.1,12.1c-1.8,0.9-3.7,1.9-5.3,2.6c2.2-3.4,5-7.9,6.9-11.4
+							c5-5.3,9.7-10.9,14.1-16.7C384.5,429.6,386.8,428.3,388.7,427.1L388.7,427.1z"/>
+						<path id="XMLID_4_" class="orangeClr" d="M380.9,386.4c-3.9,1.8-9.2,4.3-13.1,6.1c-1.6-4.2-3.6-9.9-5.5-14c2.7-6.9,5.1-14,7.2-21.1
+							c4.1-2,9.6-4.7,13.7-6.7c1.9,4.5,4.4,10.4,5.9,15C386.7,372.7,383.9,379.7,380.9,386.4L380.9,386.4z"/>
+						<path id="XMLID_3_" class="orangeClr" d="M410.7,369.6c-0.2,3.6-0.4,8.1-0.8,12.1v0c-0.1,1.1-0.2,2.2-0.4,3.1c-1.6,4.1-3.4,8-5.2,12
+							c0,0,0,0,0,0c-1.2,2.6-2.6,5.2-3.9,7.7c-2.3,1.5-5.3,3.5-7.7,4.9c0.5-4.2,1.2-9.9,1.4-14.2c3.3-6.6,6.2-13.3,8.8-20.2
+							C405.2,373.6,408.4,371.4,410.7,369.6L410.7,369.6z"/>
+						<path id="XMLID_2_" class="blkClr" d="M464.3,20L343,126.6c0.9,0.6,1.8,1.1,2.7,1.7c1.9,1.2,3.8,2.5,5.7,3.8c3.8,2.6,7.5,5.3,11.1,8.1
+							c3.6,2.8,7.1,5.8,10.6,8.8c1.7,1.5,3.4,3.1,5.1,4.7l2.5,2.4l2.4,2.4l1.2,1.2l1.2,1.2l2.4,2.5l2.3,2.5l1.2,1.3
+							c0.4,0.4,0.7,0.9,1.1,1.3l2.2,2.6c0.7,0.9,1.5,1.8,2.2,2.7c1.5,1.8,2.9,3.6,4.3,5.4c0.4,0.5,0.7,0.9,1,1.4l1,1.4
+							c0.7,0.9,1.4,1.8,2,2.8c1.3,1.9,2.6,3.7,3.9,5.7c0.6,1,1.3,1.9,1.9,2.9l1.8,2.9l0.9,1.4l0.9,1.5l1.7,3c4.5,7.9,8.6,16.2,12.1,24.6
+							c1.7,4.2,3.4,8.5,4.8,12.8c0.4,1.1,0.7,2.2,1.1,3.2l1,3.3l0.5,1.6l0.5,1.6l0.9,3.3c2.4,8.8,4.1,17.7,5.4,26.7l0.8,6.8l0.1,0.8
+							l0.1,0.9l0.1,1.7l0.3,3.4l0.3,3.4l0.1,3.4l0.1,3.4l0.1,1.7l0,0.8l0,0.8l-0.1,6.8l0,1.7l-0.1,1.7l-0.2,3.4l-0.2,3.4
+							c0,0.3,0,0.6-0.1,0.8l-0.1,0.8l-0.2,1.7c-0.2,2.2-0.5,4.5-0.7,6.7c-1.2,9-2.9,17.8-5.1,26.5c-2.3,8.7-5.1,17.2-8.5,25.5l-2.6,6.2
+							c-0.4,1-0.9,2.1-1.4,3.1l-1.5,3l-1.5,3l-0.4,0.7l-0.4,0.7l-0.8,1.5c-1.1,2-2.1,3.9-3.2,5.9c-4.4,7.7-9.3,15.2-14.6,22.3
+							c-5.4,7.1-11.2,13.7-17.3,20l-4.7,4.6c-0.4,0.4-0.8,0.8-1.2,1.1l-1.2,1.1l-2.5,2.2l-2.4,2.2c-0.8,0.7-1.7,1.4-2.5,2.1l-2.5,2.1
+							l-1.3,1c-0.4,0.3-0.8,0.7-1.3,1l-5.2,3.9c-0.4,0.3-0.9,0.6-1.3,1l-1.4,0.9l-2.7,1.8l-2.7,1.8c-0.9,0.6-1.8,1.1-2.8,1.7l-2.8,1.7
+							l-1.4,0.8c-0.5,0.3-0.9,0.6-1.4,0.8l-5.7,3.1l-1.4,0.8c-0.5,0.3-1,0.5-1.4,0.7l-2.9,1.4c-3.8,2-7.8,3.6-11.8,5.2
+							c7.2-4.7,14.1-9.7,20.7-15c0.4-0.3,0.8-0.7,1.2-1l3.6-3.1l1.2-1c0.4-0.3,0.8-0.7,1.2-1l2.3-2.1l2.3-2.1l1.2-1.1
+							c0.4-0.4,0.8-0.7,1.1-1.1l4.5-4.4c2.1-2.2,4.2-4.5,6.3-6.8c3.5-3.9,6.9-8,10.1-12.1c0.3-0.4,0.6-0.8,0.9-1.2l0.9-1.3l1.8-2.5
+							l0.9-1.3c0.3-0.4,0.6-0.8,0.9-1.3l1.7-2.6l1.7-2.6l0.9-1.3l0.8-1.3l1-1.6v0l2.2-3.6c0.5-0.9,1-1.8,1.5-2.7l1.5-2.7l0.8-1.3
+							c0.3-0.4,0.5-0.9,0.7-1.4l1.4-2.7l1.4-2.7c0.2-0.5,0.5-0.9,0.7-1.4l0.6-1.4l2.6-5.6l2-4.7c0,0,0,0,0,0c1.9-3.9,3.6-7.9,5.2-12
+							c0.1-1,0.2-2,0.4-3.1v0c0.3-1,0.7-2,1-3c2.3-7.8,4.3-15.7,5.7-23.6c1.4-8,2.3-16,2.9-24c0.1-2,0.1-4,0.2-6l0.1-1.5l0-0.8
+							c0-0.3,0-0.5,0-0.8l0-3l0-3l0-1.5l-0.1-1.5l-0.3-6l0-0.7l-0.1-0.8l-0.1-1.5l-0.2-2.1v0l-0.1-0.9l-0.3-3l-0.4-3l-0.4-3l-0.2-1.5
+							l-0.1-0.7l-0.1-0.7l-1-5.9c-1.2-6.1-2.6-12.2-4.2-18.2c-0.5-1.7-1-3.4-1.5-5l-0.9-2.8l-0.5-1.4l-0.5-1.4l-1-2.8
+							c-0.3-0.9-0.7-1.9-1-2.8c-1.4-3.7-2.9-7.4-4.5-11c-1.5-3.3-3-6.5-4.7-9.7c0,0,0,0,0,0c-2-3.9-4.1-7.6-6.3-11.4
+							c-0.4-0.6-0.7-1.2-1.1-1.8l0,0c-3.8-6.1-7.9-12-12.4-17.7c-1.2-1.5-2.5-3.1-3.7-4.6c-0.6-0.8-1.3-1.5-1.9-2.3l-2-2.2
+							c-0.3-0.4-0.6-0.8-1-1.1l-1-1.1l-2-2.2l-2.1-2.1l-1-1.1l-1.1-1l-2.1-2.1l-2.2-2c-1.4-1.4-2.9-2.7-4.4-4c-3-2.6-6-5.1-9.1-7.6
+							c-3.1-2.5-6.3-4.8-9.6-7c-1.6-1.1-3.3-2.2-4.9-3.3c-0.8-0.5-1.7-1.1-2.5-1.6l-2.5-1.5c-0.4-0.2-0.8-0.5-1.3-0.8l-1.3-0.7l-2.6-1.5
+							l0,0l-0.1,0l-2.5-1.4l-1.3-0.7l-1.3-0.7l-2.6-1.4l-2.7-1.3l-1.3-0.7l-1.3-0.6l-2.7-1.2c-7.2-3.2-14.7-6-22.2-8.4
+							c-1.9-0.6-3.8-1.2-5.7-1.7c-1-0.3-1.9-0.5-2.9-0.8l-2.7-0.7l-0.2-0.1c-0.5-0.1-1-0.2-1.4-0.4l-1.5-0.3l-2.9-0.7l-2.9-0.6l-1.5-0.3
+							l-1.5-0.3c-0.8-0.1-1.5-0.3-2.3-0.4c0,0,0,0,0,0c0,0,0,0,0,0c-5.1-0.9-10.2-1.5-15.3-2c0,0,0,0,0,0c-2-0.2-4-0.3-5.9-0.4
+							c-1,0-2-0.1-3-0.2l-3-0.1l-0.5,0l-1,0l-1.5,0l-3,0c-2.3,0-4.5,0.1-6.8,0.1h0c-1.7,0.1-3.5,0.1-5.2,0.3c-2.3,0.1-4.6,0.3-6.9,0.5
+							c0,0,0,0,0,0c-4.8,0.5-9.6,1.1-14.4,2c0,0,0,0-0.1,0c-4.7,0.8-9.4,1.8-14,3c-4,1-7.9,2.1-11.8,3.3c-30.8,9.5-59.3,26.8-82.7,50
+							c-11.7,11.6-22,24.7-30.8,39c-8.8,14.3-16,29.7-21.6,45.9c2.3-17,7.2-33.8,14.2-49.8c7-16,16.2-31.1,27.3-44.9
+							c11.1-13.8,24.1-26.2,38.6-36.7c7.2-5.3,14.8-10.1,22.7-14.4l6-3.1c2-1,4.1-2,6.1-2.9c4.1-1.9,8.2-3.7,12.5-5.3
+							c16.8-6.5,34.5-10.9,52.6-12.9c4.5-0.5,9.1-0.8,13.6-1.1l3.4-0.1l1.7-0.1l1.7,0l3.4,0c1.1,0,2.3,0,3.4,0c2.3,0,4.5,0.1,6.8,0.2
+							c0.6,0,1.1,0.1,1.7,0.1l1.7,0.1c1.1,0.1,2.3,0.1,3.4,0.3c2.3,0.2,4.5,0.4,6.8,0.7c1.1,0.1,2.3,0.3,3.4,0.4l3.4,0.5l1.7,0.2l1.7,0.3
+							l3.4,0.6l3.4,0.6l1.7,0.3c0.6,0.1,1.1,0.2,1.7,0.4l3.3,0.7c1.1,0.3,2.2,0.6,3.3,0.8c2.2,0.5,4.4,1.2,6.6,1.8c1.1,0.3,2.2,0.7,3.3,1
+							l1.6,0.5c0.5,0.2,1.1,0.3,1.6,0.5c2.2,0.7,4.3,1.4,6.5,2.2c0.8,0.3,1.7,0.6,2.5,0.9l-15.7-43.5c-2-5.6,0.9-11.7,6.4-13.7
+							c5.1-1.9,10.8,0.4,13.2,5.2l22.4,43.4L458,11.9c0.8-0.5,1.6-0.8,2.5-0.9h0.9c1.5,0.1,2.9,0.9,3.8,2.2
+							C466.6,15.3,466.2,18.2,464.3,20L464.3,20z"/>
+						<polygon id="XMLID_1_" class="orangeClr" points="319.4,147.4 319.3,147.5 319.3,147.4 	"/>
+					</g>
+					</svg>
+								
+
+<span class="tooltiptext">Blue Dome</span>
+
+					</li>
+					<li #toolsOnclickEvent class="tooltip">
+					
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle toolsIconHov">
+						<style type="text/css">
+							.tools_st0{fill:#7A7B82;stroke:#231F1F;stroke-width:0.2;}
+							.tools_st1{fill:#3D3E42;stroke:#231F1F;stroke-width:0.2;}
+							.tools_st2{fill:#330E11;stroke:#231F1F;stroke-width:0.2;}
+							.tools_st3{fill:#4E0C10;stroke:#231F1F;stroke-width:0.2;}
+							.tools_st4{fill:#FF4755;}
+							.tools_st5{fill:#973535;stroke:#231F1F;stroke-width:0.2;}
+						</style>
+						<g>
+							<path class="tools_st0" d="M242.3,197.1l-102.7-122L113,97.2l106.8,126.6L242.3,197.1z"/>
+							<path class="tools_st1" d="M129.9,83.3l-16.7,14l106.7,126.5l14.3-16.9L129.9,83.3z"/>
+							<path class="tools_st2" d="M273.9,298.2l36.6-30.6l22.1,26.1L296,324.3L273.9,298.2z"/>
+							<path class="tools_st3" d="M308.5,293.9l14-11.8l-12.1-14.4l-36.6,30.6l22,26.1L313,310l-5.4-6.5C305.2,300.7,305.6,296.3,308.5,293.9
+								L308.5,293.9z"/>
+							<path class="tools_st0" d="M162.9,404.2c-1.5-4.7-0.3-9.9,2.8-13.7l171-202.9c3.5-4.2,9.3-6.1,14.6-4.9c33.9,8.2,71.1-2.9,94.5-32
+								c20.4-25.3,25.2-58.4,15.5-87.4c-1.4-4.2-7-5.2-9.8-1.8l-49.9,59.2c-3.2,3.8-8.2,5.5-13,4.7l-29.4-5.1c-4.8-0.9-9-4.2-10.7-8.9
+								l-10.1-28.1c-1.7-4.6-0.8-9.9,2.4-13.6l49.9-59.3c2.9-3.4,0.9-8.7-3.5-9.3c-30.9-4.6-63.5,6.5-85.1,32.1
+								c-23.5,27.9-27.6,65.5-13.9,96.7c2.2,5,1.3,11-2.3,15.2l-171,203c-3.2,3.8-8.2,5.7-13.2,5.1c-24.9-3.2-50.9,6.4-67.7,27.6
+								c-16.6,21.1-19.9,48.9-10.5,72.6c1.6,4,7,4.8,9.7,1.5l42.2-50.2c0.8-1,2.2-1.5,3.5-1.3l26.2,4.6c1.3,0.2,2.4,1.1,2.8,2.4l9.1,24.9
+								c0.5,1.2,0.2,2.6-0.6,3.6l-42.3,50.2c-2.7,3.3-1,8.4,3.2,9.3c25.8,5.2,53.5-3.3,71.6-24.8C165.8,453.7,170.2,427.4,162.9,404.2
+								L162.9,404.2z"/>
+							<path class="tools_st1" d="M64.7,380.8c16.8-21.3,42.8-30.7,67.7-27.6c4.9,0.6,10-1.3,13.2-5.1l171-202.9c3.6-4.2,4.5-10.2,2.3-15.2
+								c-13.7-31.3-9.6-68.9,13.9-96.7C347.6,15.6,367.5,5,388.4,1.4c-0.4-0.1-0.7-0.2-1.1-0.3c-30.9-4.6-63.5,6.5-85.1,32.1
+								c-23.5,27.9-27.6,65.5-13.9,96.7c2.2,5,1.3,11-2.3,15.2L114.9,348c-3.2,3.8-8.2,5.7-13.2,5.1c-24.9-3.2-50.9,6.4-67.7,27.6
+								c-16.6,21.1-19.9,48.9-10.5,72.6c1.6,4,7,4.8,9.7,1.5l16.4-19.5C47.2,416.5,52.1,396.7,64.7,380.8z"/>
+							<path class="tools_st4" d="M310.5,231.4c-2.1-2.5-6.3-4.5-9.3-3.9l-59.1,70.1l8.7,10.1c3.1,3.7,8.7,4.1,12.3,1.1l59.3-49.5
+								c3.7-3.1,4.2-8.6,1.1-12.3L310.5,231.4z"/>
+							<path class="tools_st2" d="M310.5,231.4c-2.1-2.5-6.3-4.5-9.3-3.9l-59.1,70.1l8.7,10.1c3.1,3.7,8.7,4.1,12.3,1.1l59.3-49.5
+								c3.7-3.1,4.2-8.6,1.1-12.3L310.5,231.4z"/>
+							<path class="tools_st3" d="M272,262.1l-29.8,35.4l8.7,10.1c3.1,3.7,8.7,4.1,12.3,1.1l27.5-23L272,262.1z"/>
+							<path class="tools_st5" d="M333.9,291.4l-40.8,34.1c-12.2,10.2-13.8,28.4-3.5,40.5l104.3,123.8c10.2,12.1,28.5,13.7,40.7,3.5l40.8-34.1
+								c12.2-10.2,13.8-28.4,3.5-40.5L374.6,294.9C364.4,282.8,346.1,281.2,333.9,291.4z"/>
+							<path class="tools_st2" d="M423.9,489.8L319.6,366c-10.2-12.1-8.6-30.3,3.5-40.5l40.8-34.1c1.1-0.9,2.3-1.8,3.5-2.5
+								c-10.3-6.3-23.9-5.5-33.6,2.5l-40.8,34.1c-12.2,10.2-13.8,28.4-3.5,40.5l104.3,123.8c9.3,11,25.2,13.3,37.2,6
+								C428.4,494.2,425.9,492.2,423.9,489.8L423.9,489.8z"/>
+							<path class="tools_st0" d="M93.3,20.1L65.7,43.2c-2.6,2.2-2.9,6-0.8,8.7l23.9,28.3l37-30.9l-23.9-28.3C99.8,18.3,95.9,18,93.3,20.1z"/>
+							<path class="tools_st1" d="M84.7,35.3c-2.2-2.6-3-5.5-1.7-6.6L65.7,43.2c-2.6,2.2-2.9,6-0.8,8.7l23.9,28.3l19.8-16.5L84.7,35.3z"/>
+							<path class="tools_st0" d="M88.8,80.2l24.3,17.1l26.5-22.1l-13.7-26L88.8,80.2z"/>
+							<path class="tools_st1" d="M108.7,63.5L88.8,80.2l24.3,17.1L130,83.2L108.7,63.5z"/>
+						</g>
+						</svg>
+						<span class="tooltiptext">Tools</span>
+						
+											</li>
+					<span class="hoverMenuItemTools" #toolsSubmenu>
+						<div .bgScanSubMnu>
+							<div .horizontalFlow>
+							<div .col-1-1>
+								<li .subMnuContainer #ID_TEMP_FILE_CLEANER>
+									<div>
+										<!-- <svg version="1.1" id="Layer_13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+										<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+											M463.5,15.1L482,34.5c0,0,7.5,9.5,0,17.5s-72.5,73-72.5,73s-11.5,9-17.5,10.5l33,34.5c0,0,8.5,9.5-7.5,24S387,223,387,223L276.5,112
+											l37-37c0,0,8-9.5,22,4.5S364,109,364,109s5.8-10.5,16.9-23.5c11.1-13,65.6-65,65.6-65S457,8.3,463.5,15.1z"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+											M259.7,129.7c0,0-16,28.7-77.3,23.3s-72-6.7-72-6.7l23.3,50l71.3-4.7l-55.3,34l12.7,18.7l39.3-16l-23.3,39.3l17.3,21.3l80.8-72
+											l-50.2,98l36,28l26-18.7v33.3l14.7,8c0,0,35.3-46,46.7-77.3c11.3-31.3,8-32,22.7-48.7L259.7,129.7z"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="M259,79
+											L91.7,81.7c0,0-34,3.3-40.7,64S11.6,422.3,11.6,422.3S9,482.5,70.3,488.4h296c0,0,60.7-5.4,52.7-75.4l-18-117.3"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="M67,398
+											h296c0,0,42,23.6,0,57H67C67,455,19,427,67,398z"/>
+										</svg> -->
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.temporary_st0{fill:#FFFFFF;}
+	.temporary_st1{fill:#FF7A7A;}
+	.temporary_st2{fill:#CED3DD;}
+	.temporary_st3{fill:#868EAF;}
+	.temporary_st4{fill:#FFCE69;}
+</style>
+<g>
+	<g>
+		<path class="temporary_st0" d="M316.6,24.9v174.2h-104c-5.7,0-11.1-2.1-15.3-6l-51.1-46.7c-4.2-3.8-9.6-6-15.3-6H64.7V24.9H316.6z"/>
+	</g>
+	<g>
+		<path class="temporary_st1" d="M423.6,126.3V268h-52.1V126.2c0-14.5,11.7-26.3,26.1-26.3C413.4,101.4,422.1,110.2,423.6,126.3z"/>
+	</g>
+	<g>
+		<path class="temporary_st2" d="M490.2,454.6c0,0-34.6,19.5-93.8,19.5c-63.5,0-96.2-19.5-96.2-19.5c12.3-20,12.3-54.4,12.3-54.4v-84.5
+			c0-26.3,21.1-47.6,47.1-47.6h73.2c26,0,47.1,21.3,47.1,47.6v84.5C480.1,423.6,490.2,454.6,490.2,454.6z"/>
+	</g>
+	<g>
+		<path class="temporary_st3" d="M480.1,315.7v17H312.6v-17c0-26.3,21.1-47.6,47.1-47.6h73.2C459,268,480.1,289.4,480.1,315.7z"/>
+	</g>
+	<g>
+		<path class="temporary_st4" d="M310.8,421.9c1.8-12,1.9-21.6,1.9-21.6v-84.5c0-26.3,21.1-47.6,47.1-47.6h11.7v-45.9c0-12.7-10.2-23-22.8-23
+			H212.6c-5.7,0-11.1-2.1-15.3-6l-51.1-46.7c-4.2-3.8-9.6-6-15.3-6H32.5c-12.5,0-22.7,10.2-22.8,22.9v235.4
+			C9.6,411.7,19.8,422,32.5,422L310.8,421.9z"/>
+	</g>
+</g>
+</svg>
+									</div>
+									<p .subMnuHeading><label>ID_TEMPORARY_FILE_CLEANER</label></p>
+									<p .subMnuDescription><label>ID_REMOVE_UNNECESSARY_FILES</label></p>
+								</li>
+								<li .subMnuContainer .frame_display_src #ID_MENU_REG_OPT>
+									<div>
+										<!-- <svg version="1.1" id="Layer_7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+										<rect x="16" y="237.7" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="174" y="237.7" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="344.4" y="213" transform="matrix(0.8658 -0.5004 0.5004 0.8658 -77.8779 239.6197)" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="16" y="99.6" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="185.4" y="92.8" transform="matrix(0.9714 0.2373 -0.2373 0.9714 41.4796 -54.9093)" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="344.4" y="40.8" transform="matrix(0.9624 -0.2717 0.2717 0.9624 -9.873 114.2945)" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="16" y="373.9" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="174" y="373.9" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										<rect x="332.9" y="373.9" fill="none" stroke-width="15" stroke-miterlimit="10" width="126.8" height="104.1"/>
+										</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.regisrty_st0{fill:#999999;}
+	.regisrty_st1{fill:#FFDF40;}
+</style>
+<g>
+	<path class="regisrty_st0" d="M0,329.9h159.8V492H0V329.9z M210.1,492h159.8V329.9H210.1V492z M3,282h159.8V120H3V282z M351.7,101.1
+		l-55.8-87l-85.8,56.5l55.8,87L351.7,101.1z M237,234.3l76.8,68.7l67.7-77.8l-76.8-68.7L237,234.3z M445.3,63.6L358.1,118l53.6,88.4
+		l87.2-54.4L445.3,63.6z"/>
+</g>
+<rect x="226.5" y="26.9" transform="matrix(0.8338 -0.552 0.552 0.8338 1.4927 169.1124)" class="regisrty_st1" width="110.3" height="110.3"/>
+<rect x="250.9" y="174" transform="matrix(0.6597 -0.7515 0.7515 0.6597 -68.2898 308.5135)" class="regisrty_st1" width="111.3" height="111.3"/>
+<rect x="375" y="82.3" transform="matrix(0.8464 -0.5326 0.5326 0.8464 -6.1439 248.4437)" class="regisrty_st1" width="105.1" height="105.1"/>
+</svg>
+									</div>
+									<p .subMnuHeading><label>ID_REGISTRY_OPTIMIZER</label></p>
+									<p .subMnuDescription><label>ID_BOOST_OVERALL_PERFORMANCE</label></p>
+								</li>
+								<li .subMnuContainer .frame_display_src #ID_MENU_RECOVER>
+									<div>
+										<!-- <svg version="1.1" id="Layer_10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+											<g>
+												<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+													M321.5,427.2l32.8-13.7L330,472.4l-58.8-24.2l26.7-11.1c-3.8-9.4-6-19.6-6.4-30.3c-1-25.3,8.3-48.6,24.3-65.9
+													c15.9-17.2,38.4-28.4,63.7-29.4c25.3-1,48.6,8.3,65.9,24.2c17.2,15.9,28.4,38.4,29.4,63.7c1,25.3-8.3,48.6-24.2,65.9
+													c-8.5,9.2-18.8,16.6-30.4,21.7"/>
+												<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+													M128,171.7h346.3c2.3,0,2.6,1.9,1.6,4.1l-44.8,100l-1.9-1.2c-15.1-9-32-15-49.7-17.6c-17.1-2.5-34.9-1.7-52.6,2.8
+													c-17.7,4.5-33.7,12.4-47.5,22.7C264.9,293.5,253,306.9,244,322c-9,15.1-15,32-17.6,49.7c-1.5,10.4-1.8,21-0.8,31.8H33.3
+													c-2.3,0-2.5-1.9-1.6-4.1l89.6-223.5C122.2,173.6,125.7,171.7,128,171.7z"/>
+												<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+													M31,343.4V65.9c0-5.6,4.6-10.2,10.2-10.2h11.9c3.1-3.2,5.4-6.7,5.4-10.4l0,0c0-14.2,11.6-25.7,25.7-25.7h89.4
+													c14.2,0,25.7,11.6,25.7,25.7l0,0c0,3.7,2.8,7.2,6.8,10.4h220c5.6,0,10.2,4.6,10.2,10.2v58.8"/>
+											</g>
+										</svg> -->
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.recover_files_icost0{display:none;}
+	.recover_files_icost1{display:inline;fill:#F7E174;}
+	.recover_files_icost2{display:inline;fill:#F9D43B;}
+	.recover_files_icost2{display:inline;fill:#414042;}
+	.recover_files_icost4{display:inline;}
+	.recover_files_icost5{fill:#ED1C24;}
+	.recover_files_icost6{fill:#FFFFFF;}
+	.recover_files_icost7{fill:#FEB237;}
+	.recover_files_icost8{fill:#F6AB31;}
+	.recover_files_icost9{fill:#F2FBFF;}
+	.recover_files_icost10{fill:#FFC344;}
+	.recover_files_icost11{fill:#80D261;}
+	.recover_files_icost12{fill:#01C0FA;}
+	.recover_files_icost13{fill:#0055A3;}
+</style>
+<g class="recover_files_icost0">
+	<path class="recover_files_icost1" d="M477.6,97.2H322.1c-3,0-5.8-1.7-7.3-4.3l-38-67c-1.5-2.6-4.3-4.3-7.3-4.3H81.5c-12.4,0-22.2,10-22.2,22.2v30.9
+		c0,12.4-10,22.2-22.2,22.2H23.3c-12.4,0-22.2,10-22.2,22.2v334.4c0,12.4,10,22.2,22.2,22.2h454.1c12.4,0,22.2-10,22.2-22.2V119.4
+		C499.8,107.2,489.8,97.2,477.6,97.2L477.6,97.2z"/>
+	<path class="recover_files_icost2" d="M1.1,167.8V456c0,11.1,9,20,20,20H480c11.1,0,20-9,20-20V167.8L1.1,167.8z"/>
+	<path class="recover_files_icost2" d="M400.2,318.4c-2.8-3-67.6-75.1-149.7-75.1s-147,71.9-149.7,75.1c-3.6,4.1-3.6,10,0,14.1
+		c2.8,3,67.6,75.1,149.7,75.1s147-71.9,149.7-75.1C403.6,328.4,403.6,322.4,400.2,318.4z"/>
+	<g class="recover_files_icost4">
+		<path class="recover_files_icost5" d="M250.4,295.1c-16.6,0-30.3,13.7-30.3,30.3c0,16.6,13.7,30.3,30.3,30.3s30.3-13.7,30.3-30.3
+			C280.7,308.8,267.1,295.1,250.4,295.1z"/>
+		<path class="recover_files_icost6" d="M250.4,366.4c-22.6,0-41-18.3-41-41c0-22.6,18.3-41,41-41s41,18.3,41,41C291.4,348,273.1,366.4,250.4,366.4z
+			 M250.4,305.8c-10.9,0-19.6,8.7-19.6,19.6s8.7,19.6,19.6,19.6c10.9,0,19.6-8.7,19.6-19.6C270.1,314.8,261.3,305.8,250.4,305.8z"/>
+	</g>
+	<g class="recover_files_icost4">
+		<path class="recover_files_icost6" d="M178.6,447.6c-1.9,0-4.1-0.6-5.8-1.7c-4.9-3.2-6.4-9.8-3.2-14.7l144.8-227.2c3.2-4.9,9.8-6.4,14.7-3.2
+			c4.9,3.2,6.4,9.8,3.2,14.7L187.5,442.7C185.4,445.9,182,447.6,178.6,447.6z"/>
+	</g>
+</g>
+<g>
+	<path class="recover_files_icost7" d="M119.9,78.7c-6.5,0-12.2-4.1-14.3-10.3l-6.4-19.3C95.8,38.9,86.2,32,75.4,32H29.2c-8.3,0-15,6.7-15,15v125.1
+		h470.1v-68.4c0-13.8-11.2-25.1-25.1-25.1H119.9z"/>
+	<path class="recover_files_icost8" d="M484.3,128.5c-3.3-1.6-7-2.5-10.9-2.5H25.1c-3.9,0-7.6,0.9-10.9,2.5v43.7h470.1V128.5z"/>
+	<path class="recover_files_icost6" d="M436.1,141l-186.9,15.6L62.3,141v-21.4c0-5.4,4.4-9.7,9.7-9.7h354.3c5.4,0,9.7,4.4,9.7,9.7V141z"/>
+	<path class="recover_files_icost9" d="M62.3,126v15l186.9,15.6L436.1,141v-15H62.3z"/>
+	<path class="recover_files_icost10" d="M460.2,468.1H38.3c-13.4,0-24.4-10.5-25-23.9L0,167.3C-0.7,153,10.8,141,25.1,141h448.3
+		c14.3,0,25.7,12,25,26.3l-13.2,276.9C484.6,457.6,473.5,468.1,460.2,468.1z"/>
+	<g>
+		<path class="recover_files_icost7" d="M233.6,342.7c-1.9,0-3.9-0.7-5.3-2.2c-2.9-2.9-2.9-7.7,0-10.6l13.4-13.4l0-20.3c0-4.2,3.4-7.5,7.5-7.5h0
+			c4.2,0,7.5,3.4,7.5,7.5l0,23.4c0,2-0.8,3.9-2.2,5.3l-15.6,15.6C237.5,342,235.6,342.7,233.6,342.7z"/>
+		<path class="recover_files_icost7" d="M328,238.4c2.1,1.9,2.1,5.2,0.1,7.2l-26,26c-1.8,1.8-4.8,2-6.8,0.3c-12.3-10.8-28.5-17.4-46.2-17.4
+			c-19.4,0-36.9,7.8-49.6,20.5c-7.6,7.6-13.5,17-17,27.5c-0.9,2.7,0.7,5.7,3.5,6.4l6.7,1.8c4,1.1,5,6.2,1.8,8.8l-15.1,11.9l-33,25.9
+			c-2.6,2.1-6.5,1-7.7-2.1l-4.9-12.2l-17.9-44.6c-1.5-3.8,2-7.8,6-6.7l9.3,2.5c2.6,0.7,5.3-0.8,6.1-3.4
+			c5.6-18.7,15.8-35.4,29.3-48.8c21.1-21.1,50.3-34.2,82.6-34.2C279.6,207.8,307.3,219.4,328,238.4L328,238.4z"/>
+		<path class="recover_files_icost7" d="M170.4,410.8c-2.1-1.9-2.1-5.2-0.1-7.2l29.4-29.4h0c12.7,12.7,30.2,20.5,49.5,20.5c19.4,0,36.9-7.8,49.6-20.5
+			c7.6-7.6,13.5-17,17-27.5c0.9-2.7-0.7-5.7-3.5-6.4l-6.7-1.8c-4-1.1-5-6.2-1.8-8.8l15.1-11.9l33-25.9c2.6-2.1,6.5-1,7.7,2.1
+			l4.9,12.2l17.9,44.6c1.5,3.8-2,7.8-6,6.7l-9.3-2.5c-2.6-0.7-5.3,0.8-6.1,3.4c-5.6,18.7-15.8,35.4-29.3,48.8
+			c-21.1,21.1-50.3,34.2-82.6,34.2C218.8,441.4,191.1,429.8,170.4,410.8L170.4,410.8z"/>
+		<path class="recover_files_icost7" d="M473.3,141h-15.5c0.4,2,0.6,4.1,0.5,6.2l-11.6,243.4c-1.5,32.2-28,57.4-60.2,57.4H13.7
+			c2.3,11.5,12.5,20.1,24.6,20.1h421.9c13.4,0,24.4-10.5,25-23.9l13.2-276.9C499.1,153,487.7,141,473.3,141L473.3,141z"/>
+	</g>
+	<path class="recover_files_icost11" d="M328.2,218.5c2,1.9,2.1,5.1,0.1,7l-26.2,26.2c-1.8,1.8-4.7,1.9-6.6,0.3c-12.3-10.9-28.5-17.5-46.3-17.5
+		c-19.4,0-36.9,7.8-49.6,20.5c-8.3,8.3-14.5,18.6-17.8,30.2c-0.4,1.3,0.4,2.7,1.7,3l9.5,2.6c3.9,1,4.9,6.1,1.7,8.5l-15.4,12.1
+		l-33.1,26c-2.6,2-6.3,1-7.5-2l-5-12.4l-18-44.8c-1.5-3.7,1.9-7.6,5.8-6.5l12.1,3.2c1.3,0.3,2.6-0.4,3-1.7
+		c5.5-19.6,15.9-37.2,29.9-51.2c21.1-21.1,50.3-34.2,82.6-34.2C279.6,187.8,307.4,199.4,328.2,218.5L328.2,218.5z"/>
+	<path class="recover_files_icost12" d="M170.3,390.7c-2-1.9-2.1-5.1-0.1-7l26.2-26.2c1.8-1.8,4.7-1.9,6.6-0.3c12.3,10.9,28.5,17.5,46.3,17.5
+		c19.4,0,36.9-7.8,49.6-20.5c8.3-8.3,14.5-18.6,17.8-30.2c0.4-1.3-0.4-2.7-1.7-3l-9.5-2.6c-3.9-1-4.9-6.1-1.7-8.5l15.4-12.1l33.1-26
+		c2.6-2,6.3-1,7.5,2l5,12.4l18,44.8c1.5,3.7-1.9,7.6-5.8,6.5l-12.1-3.2c-1.3-0.3-2.6,0.4-3,1.7c-5.5,19.6-15.9,37.2-29.9,51.2
+		c-21.1,21.1-50.3,34.2-82.6,34.2C218.8,421.4,191,409.7,170.3,390.7L170.3,390.7z"/>
+	<g>
+		<g>
+			<path class="recover_files_icost13" d="M233.6,327.5c-1.9,0-3.7-0.7-5.2-2.1c-2.9-2.9-2.9-7.5,0-10.3l13.4-13.4l0-35.9c0-4,3.3-7.3,7.3-7.3
+				s7.3,3.3,7.3,7.3l0,38.9c0,1.9-0.8,3.8-2.1,5.2l-15.6,15.6C237.4,326.7,235.5,327.5,233.6,327.5L233.6,327.5z"/>
+		</g>
+	</g>
+</g>
+</svg>
+
+									</div>
+									<p .subMnuHeading><label>ID_RECOVER_FILES</label></p>
+									<p .subMnuDescription><label>ID_RECOVER_DATA_FROM_DEVICE</label></p>
+								</li>
+								<li .subMnuContainer .frame_display_src #ID_USB_VACCIN>
+									<div>
+										<!-- <svg version="1.1" id="Layer_11" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+					<g>
+											<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+												M261,215.4c37.6,0,75.9-6.2,112.8-23.4c33.5,15.8,73.9,23.4,111.5,23.4c6.4,119-25,203.5-112.2,240
+												C285.2,416.2,253.6,331.5,261,215.4L261,215.4z"/>
+											<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+												M334.7,307.3l29.6,24.7l46-54.1"/>
+					</g>
+										<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+											M277,439.7v22.7c0,0,1.3,22-20,22s-200,0-200,0s-20.7-3.3-20.7-28c0-24.7,0-308,0-308S41,131.7,55,131h205.3c0,0,16.7,4.7,16.7,21.3
+											c0,16.7,0,26.8,0,26.8"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="M80.3,127
+											V37c0,0,0.7-20,14.7-20s121.3,0,121.3,0s15.3,0,15.7,16s0,94,0,94"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M223,247.1L223,247.1h-12.4v0.7v25.9c0,8.2-2.8,15-8.7,21.3
+											c-3.5,3.5-7.5,6.9-11.3,9.9c-10.1,9-19.7,18.1-29.9,27c-2.4,2.3-4,5.6-4.4,9c-0.4,0.8-0.4,1.9-0.4,2.6v61.3c0,0.9,0.4,1.1,1.4,1.6
+											c11.9,2.6,21,12.3,22.8,24.1c2.1,15.1-8.9,30-25,32.3c-16.6,2.8-32-7.2-35-22.8c-3.2-15,6.9-30.1,22.8-33.6c1-0.5,1-0.7,1-1.7v-17.9
+											c0-4.3-1.5-8-4.3-11.3c-0.3-0.4-0.3-0.4-0.6-0.4c-13.3-12.3-26.6-23.9-39.4-35.9c-6.6-5.9-10.7-13.6-10.7-22.7V290
+											c0-0.6,0-0.9-0.5-1.3c-7.7-2.7-12.2-10.2-11.7-17.8c1.4-7.8,8-14.3,16.3-15.2c10.8-1.3,21.4,7.4,20.3,17.9
+											c-0.4,7.2-4.2,12.3-11.4,15c-0.5,0.4-0.8,0.7-0.8,1.3c0,9.1,0,18.8,0.4,28.1c0,4.5,1.6,8.6,5.4,11.7c11.8,10.9,24.2,21.9,36.2,32.5
+											c0.5,0,0.8,0,1,0.8V186.7h-15c6.7-11.9,14-23.5,21.1-34.6c7.3,11.1,13.9,22.7,21.2,34.6H156v133l0.8-0.3
+											c12.5-11.3,25-22.4,37.5-33.4c2.2-2.4,3.6-5.6,4.3-8.7c0.3-1.1,0.3-2.1,0.3-2.7v-27v-0.8h-12.1v-34.3H223V247.1z"/>
+									</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.usbvaccination_st0{clip-path:url(#SVGID_00000108297462111934399840000017273009881486365621_);}
+	.usbvaccination_st1{fill:#F0C020;}
+	.usbvaccination_st2{fill:#E8A61E;}
+	.usbvaccination_st3{fill:#463E54;}
+	.usbvaccination_st4{fill:#EFEFEF;}
+	.usbvaccination_st5{fill:#AFAFAF;}
+	.usbvaccination_st6{fill:#FC5D3D;}
+	.usbvaccination_st7{fill:#F8E5B0;}
+</style>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="-1.5" width="500" height="500"/>
+	</defs>
+	<clipPath id="SVGID_00000103962846938458221830000003733830326854253213_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g style="clip-path:url(#SVGID_00000103962846938458221830000003733830326854253213_);">
+		<path class="usbvaccination_st1" d="M320.2,79.9l71.9-72c3.9-3.9,10.2-3.9,14.1,0l84.4,84.4c3.9,3.9,3.9,10.2,0,14.1l-71.9,72L320.2,79.9z"/>
+		<path class="usbvaccination_st2" d="M320.1,79.9L330,70l98.5,98.5l-9.9,9.9L320.1,79.9z"/>
+		<path class="usbvaccination_st3" d="M298.2,72L8.7,361.5c-7.8,7.8-7.8,20.4,0,28.2l100.2,100.2c7.8,7.8,20.4,7.8,28.2,0l289.4-289.5
+			c3.9-3.9,3.9-10.2,0-14.1L312.3,72C308.4,68.1,302.1,68.1,298.2,72z"/>
+		<path class="usbvaccination_st3" d="M178.6,417.8l-70.9,70.9L10,391l70.9-71c26.9-27,70.7-27,97.7,0C205.5,347,205.6,390.8,178.6,417.8z"/>
+		<path class="usbvaccination_st1" d="M90.7,329.9L5.8,414.8c-3.9,3.9-3.9,10.2,0,14.1l63.9,63.9c3.9,3.9,10.2,3.9,14.1,0l84.9-84.9
+			c21.5-21.5,21.5-56.5,0-78C147.2,308.4,112.3,308.4,90.7,329.9z"/>
+		<path class="usbvaccination_st4" d="M384.3,47.7L367,65c-2.3,2.3-2.3,6.1,0,8.5l7.9,7.9c2.3,2.3,6.1,2.3,8.5,0L400.7,64c2.3-2.3,2.3-6.1,0-8.5
+			l-7.9-7.9C390.4,45.3,386.6,45.3,384.3,47.7z"/>
+		<path class="usbvaccination_st4" d="M434.5,97.9l-17.3,17.3c-2.3,2.3-2.3,6.1,0,8.5l7.9,7.9c2.3,2.3,6.1,2.3,8.5,0l17.3-17.3
+			c2.3-2.3,2.3-6.1,0-8.5l-7.9-7.9C440.6,95.5,436.8,95.5,434.5,97.9z"/>
+		<path class="usbvaccination_st5" d="M400.7,64l-2.8,2.8l-5.1-5.2c-2.4-2.3-6.1-2.3-8.5,0l-14.6,14.6l-2.8-2.8c-2.3-2.3-2.3-6.1,0-8.5l17.3-17.4
+			c2.4-2.3,6.1-2.3,8.5,0l7.9,7.9C403,57.9,403,61.7,400.7,64z"/>
+		<path class="usbvaccination_st5" d="M450.9,114.3l-2.8,2.8l-5.2-5.2c-2.3-2.3-6.1-2.3-8.5,0l-14.6,14.6l-2.8-2.7c-2.3-2.3-2.3-6.1,0-8.5
+			l17.5-17.4c2.3-2.3,6.1-2.3,8.5,0l7.9,7.9C453.2,108.1,453.2,111.9,450.9,114.3z"/>
+		<path class="usbvaccination_st4" d="M312.1,233.7l21.3-21.3l21.3,21.3L333.4,255L312.1,233.7z"/>
+		<path class="usbvaccination_st4" d="M266,181.2c1.3-8.2-4.2-15.9-12.4-17.2c-8.2-1.3-15.9,4.2-17.2,12.4c-1.3,8.2,4.2,15.9,12.4,17.2
+			C257,194.9,264.7,189.4,266,181.2z"/>
+		<path class="usbvaccination_st2" d="M100.5,398.1c-16.1-16.1-16.1-42.3,0-58.4c16.1-16.1,42.3-16.1,58.4,0c16.1,16.1,16.1,42.3,0,58.4
+			C142.8,414.2,116.7,414.2,100.5,398.1z"/>
+		<path class="usbvaccination_st6" d="M149.1,349.5c-10.7-10.7-28-10.7-38.7,0c-10.7,10.7-10.7,28,0,38.7c10.7,10.7,28,10.7,38.7,0
+			C159.8,377.5,159.8,360.2,149.1,349.5z"/>
+		<path class="usbvaccination_st7" d="M73.2,475.2L69,471c-1.9-1.9-1.9-5.1,0-7.1c1.9-1.9,5.1-1.9,7,0l4.2,4.2c1.9,1.9,1.9,5.1,0,7.1
+			C78.3,477.1,75.2,477.1,73.2,475.2z M54.9,456.9l-31.4-31.5c-1.9-1.9-1.9-5.1,0-7.1c1.9-1.9,5.1-1.9,7,0l31.4,31.5
+			c1.9,1.9,1.9,5.1,0,7.1C60,458.8,56.9,458.8,54.9,456.9z"/>
+		<path class="usbvaccination_st3" d="M122.9,280.5c-1.3,0-2.6-0.5-3.5-1.5c-1.9-1.9-1.9-5.1,0-7.1l4.2-4.2c1.9-1.9,5.1-1.9,7,0
+			c1.9,1.9,1.9,5.1,0,7.1l-4.2,4.2C125.5,280,124.2,280.5,122.9,280.5z M141.2,262.2c-1.3,0-2.6-0.5-3.5-1.5c-1.9-1.9-1.9-5.1,0-7.1
+			l63.9-63.9c1.9-1.9,5.1-1.9,7,0c1.9,1.9,1.9,5.1,0,7.1l-63.9,63.9C143.8,261.7,142.5,262.2,141.2,262.2z"/>
+		<path class="usbvaccination_st3" d="M219.7,372l63.6-63.7c1.9-1.9,5.1-1.9,7,0c1.9,1.9,1.9,5.1,0,7.1l-63.8,63.8c-2.4,2.4-5.5,1.6-7.2-0.3
+			C217.8,377.1,217.3,374.2,219.7,372z M297.5,301.3c-1.9-1.9-1.9-5.1,0-7.1l4.2-4.2c1.9-1.9,5.1-1.9,7,0c1.9,1.9,1.9,5.1,0,7.1
+			l-4.2,4.2C302.6,303.2,299.4,303.2,297.5,301.3z"/>
+		<path d="M454.8,56.6c2-1.9,2-5.1,0-7c-1.9-1.9-5.2-1.9-7,0c-1.9,1.9-1.9,5.1,0,7C449.7,58.5,452.9,58.5,454.8,56.6z"/>
+		<path d="M202.6,160.6c-2,2-1.9,5.1,0,7c2,2,5.1,1.9,7,0c1.9-1.9,2-5.1,0-7C207.7,158.7,204.5,158.7,202.6,160.6z"/>
+		<path d="M182.9,353.6c-2.7,0.5-4.5,3.1-3.9,5.8c0.5,2.7,3.2,4.5,5.8,4c2.7-0.5,4.5-3.2,3.9-5.8C188.2,354.9,185.6,353,182.9,353.6
+			z"/>
+		<path d="M380.8,44.1l-17.3,17.3c-4.3,4.3-4.3,11.2,0,15.5l7.9,7.9c4.3,4.3,11.2,4.3,15.5,0l17.3-17.3c4.3-4.3,4.3-11.2,0-15.5
+			l-7.9-7.9C392,39.9,385,39.9,380.8,44.1z M397.1,60.5l-17.3,17.3c-0.5,0.5-0.9,0.5-1.4,0l-7.9-7.9c-0.4-0.4-0.4-1,0-1.4l17.3-17.3
+			c0.4-0.4,1-0.4,1.4,0l7.9,7.9C397.5,59.5,397.5,60.1,397.1,60.5z"/>
+		<path d="M431,94.4l-17.3,17.3c-4.3,4.3-4.3,11.2,0,15.5l7.9,7.9c4.3,4.3,11.2,4.3,15.5,0l17.3-17.3c4.3-4.3,4.3-11.2,0-15.5
+			l-7.9-7.9C442.2,90.1,435.2,90.1,431,94.4z M439.4,101.4l7.9,7.9c0.4,0.4,0.4,1,0,1.4L430,128c-0.5,0.5-0.9,0.5-1.4,0l-7.9-7.9
+			c-0.4-0.4-0.4-1,0-1.4l17.3-17.3C438.4,101,439,101,439.4,101.4z"/>
+		<path d="M217.7,207.4v66.5L201.6,290c-1.9,1.9-1.9,5.1,0,7.1c1.9,1.9,5.1,1.9,7,0c12.8-12.8,18.8-18.8,29.8-29.8h66.4
+			c1.3,0,2.6-0.5,3.5-1.5l14.4-14.4l7.1,7.1c1.9,2,5.1,1.9,7,0l21.3-21.3c1.9-1.9,1.9-5.1,0-7.1l-21.3-21.3c-1.9-1.9-5.2-1.9-7,0
+			l-21.3,21.3c-1.9,1.9-1.9,5.1,0,7.1l7.1,7.1l-12.9,12.9h-54.4l86.8-86.8l-0.6,16.9c-0.1,2.8,2.2,5.2,5,5.2c2.7,0,4.9-2.1,5-4.8
+			l1.1-29.6c0.1-2.9-2.4-5.3-5.2-5.2l-29.6,1.1c-2.8,0.1-4.9,2.4-4.8,5.2c0.1,2.8,2.4,4.9,5.2,4.8l16.9-0.6l-95.3,95.3l-5.1,5.1
+			v-54.4l13.4-13.4c7.9,4.6,17.8,3.4,24.3-3.1c7.8-7.8,7.8-20.4,0-28.3c-7.8-7.8-20.4-7.8-28.2,0c-6.6,6.6-7.6,16.6-3.1,24.3
+			l-14.9,14.9C218.2,204.8,217.7,206,217.7,207.4z M333.4,219.4l14.2,14.2l-14.2,14.2l-14.2-14.2L333.4,219.4z M244.2,171.8
+			c3.9-3.9,10.2-3.9,14.1,0c3.9,3.9,3.9,10.2,0,14.1c-3.9,3.9-10.2,3.9-14.1,0C240.2,182,240.2,175.7,244.2,171.8z"/>
+		<path d="M106.9,346c-12.6,12.6-12.6,33.1,0,45.7s33.1,12.6,45.7,0c12.6-12.6,12.6-33.1,0-45.7C140,333.4,119.5,333.4,106.9,346z
+			 M145.6,353.1c8.7,8.7,8.7,22.9,0,31.6c-8.7,8.7-22.9,8.7-31.6,0c-8.7-8.7-8.7-22.9,0-31.6C122.7,344.3,136.8,344.3,145.6,353.1z"
+			/>
+	</g>
+</g>
+</svg>
+
+									</div>
+									<p .subMnuHeading><label>ID_USB_VACCINATION</label></p>
+									<p .subMnuDescription><label>ID_PROTECT_YOUR_USB</label></p>
+								</li>
+							</div>
+							<div .col-1-1>
+								<li .subMnuContainer #ID_AUTORUN_SCAN>
+									<div>
+										<!-- <svg version="1.1" id="Layer_12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+											<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke-width="15" stroke-miterlimit="10" d="
+											M365.9,424.4L365.9,424.4c-34.4,0-62.1-26.3-62.1-58.8c0-32.4,27.7-58.7,62.1-58.7c34,0,61.8,26.3,61.8,58.7
+											C427.7,398.1,399.9,424.4,365.9,424.4L365.9,424.4z M478.7,386c8.4,4.5,11.2,14.5,6.4,22.1l-20.9,34.2c-2.4,3.7-6,6.4-10.5,7.5
+											c-1.5,0.5-3,0.7-4.4,0.7c-3,0-6-0.8-8.7-2.3l-15.6-8.5c-6.6,4.8-13.6,9-21.2,12v16.8c0,9-7.7,16.2-17.3,16.2h-41.8
+											c-9.4,0-17.1-7.2-17.1-16.2v-16.8c-7.6-3-14.7-7.2-21.2-12l-15.7,8.5c-2.6,1.5-5.6,2.3-8.5,2.3c-1.6,0-3.1-0.2-4.5-0.7
+											c-4.4-1.1-8.3-3.8-10.6-7.5l-20.8-34.2c-4.7-7.7-1.7-17.7,6.5-22.1l15.7-8.6c-0.7-3.9-1.4-7.6-1.4-11.7c0-4,0.7-7.7,1.4-11.6
+											l-15.7-8.6c-8.2-4.4-11.1-14.6-6.5-22.3l20.8-34.1c2.3-3.9,6.2-6.4,10.6-7.6c1.4-0.4,2.9-0.6,4.5-0.6c3,0,5.9,0.7,8.5,2.2l15.7,8.5
+											c6.5-4.8,13.6-9,21.2-12.1v-16.6c0-9,7.7-16.3,17.1-16.3h41.8c9.6,0,17.3,7.3,17.3,16.3v16.6c7.6,3.1,14.6,7.4,21.2,12.1l15.6-8.5
+											c2.9-1.5,5.8-2.2,8.6-2.2c6.1,0,11.7,3,15,8.2l20.9,34.1c2.3,3.8,2.7,8.2,1.7,12.4c-1.1,4.2-4.2,7.7-8.1,9.8l-15.8,8.6
+											c0.6,3.9,1.4,7.5,1.4,11.6c0,4.1-0.8,7.8-1.4,11.7L478.7,386L478.7,386z M229,479.5H59.7c-26.9,0-48.8-20.6-48.8-46.4V59.8
+											c0-25.4,21.9-46.2,48.8-46.2h273.7c26.8,0,48.7,20.7,48.7,46.2V198 M298,119l-213-1 M245,209.5l-160-0.8 M183,294.4l-98-0.5
+											 M189,385.2l-104-0.5 M248.6,278.9"/>
+					</svg> -->
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.autorunscan_st0{fill:#FFBE40;}
+	.autorunscan_st1{fill:#FFDF40;}
+	.autorunscan_st2{fill:#5B5B8C;}
+	.autorunscan_st3{fill:#443D66;}
+	.autorunscan_st4{fill:#FF6A4D;}
+	.autorunscan_st5{fill:#F23030;}
+</style>
+<g>
+	<g>
+		<path class="autorunscan_st0" d="M221.8,138H44c-8.1,0-14.7-6.7-14.7-15V63c0-8.3,6.6-15,14.7-15h197.1c4.7,0,9.1,2.3,11.9,6.2
+			c2.7,3.9,3.5,8.9,2,13.5l-19.3,60C233.7,133.9,228.1,138,221.8,138L221.8,138z"/>
+	</g>
+	<g>
+		<path class="autorunscan_st1" d="M211.2,108H14.7C6.6,108,0,114.7,0,123v300c0,24.8,19.7,45,44,45h412.3c24.2,0,44-20.2,44-45V33
+			c0-8.3-6.6-15-14.7-15H272.2c-7.5,0-14.7,2-21.1,5.6c-9.4,5.3-16.9,14.2-20.7,25.4L211.2,108z"/>
+	</g>
+	<path class="autorunscan_st0" d="M500.2,33v390c0,24.8-19.7,45-44,45H251.1V23.6c6.3-3.6,13.6-5.6,21.1-5.6h213.4C493.6,18,500.2,24.7,500.2,33
+		L500.2,33z"/>
+	<g id="Virus_12_">
+		<g>
+			<path class="autorunscan_st2" d="M192.3,274.7l-35.7-18.3c-5-2.5-8.1-7.7-8.1-13.4v-30c0-8.3,6.6-15,14.7-15c8.1,0,14.7,6.7,14.7,15v20.7
+				l27.6,14.1c7.2,3.7,10.2,12.7,6.6,20.1C208.3,275.2,199.7,278.4,192.3,274.7z"/>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path class="autorunscan_st2" d="M192.5,318h-29.3c-8.1,0-14.7-6.7-14.7-15s6.6-15,14.7-15h29.3c8.1,0,14.7,6.7,14.7,15
+						S200.6,318,192.5,318z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<path class="autorunscan_st3" d="M339,318h-29.3c-8.1,0-14.7-6.7-14.7-15s6.6-15,14.7-15H339c8.1,0,14.7,6.7,14.7,15S347.1,318,339,318z"/>
+		</g>
+		<g>
+			<g>
+				<g>
+					<path class="autorunscan_st2" d="M163.1,408c-8.1,0-14.7-6.7-14.7-15v-30c0-5.7,3.1-10.9,8.1-13.4l34.1-17.4c7.2-3.6,16-0.7,19.7,6.7
+						c3.6,7.4,0.7,16.4-6.6,20.1l-26,13.3V393C177.8,401.3,171.2,408,163.1,408L163.1,408z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<path class="autorunscan_st3" d="M339,408c-8.1,0-14.7-6.7-14.7-15v-20.7l-26-13.3c-7.2-3.7-10.2-12.7-6.6-20.1s12.4-10.3,19.7-6.7l34.1,17.4
+				c5,2.5,8.1,7.7,8.1,13.4v30C353.6,401.3,347.1,408,339,408L339,408z"/>
+		</g>
+		<g>
+			<path class="autorunscan_st2" d="M277.9,258.7c-5.2-0.9-12.2-0.8-19.4-0.7c-3,0-17.8,0-14.9,0c-7.2-0.1-14.1-0.2-19.4,0.7
+				c-4.3,0.7-8.6-0.5-11.9-3.3s-5.2-7-5.2-11.5V213c0-24.8,19.7-45,44-45s44,20.2,44,45v30.9c0,4.4-1.9,8.6-5.2,11.5
+				C286.5,258.2,282.2,259.4,277.9,258.7z"/>
+		</g>
+		<path class="autorunscan_st3" d="M353.6,243v-30c0-8.3-6.6-15-14.7-15s-14.7,6.7-14.7,15v20.7l-27.6,14.1c-7.2,3.7-10.2,12.7-6.6,20.1
+			c3.6,7.3,12.3,10.5,19.7,6.7l35.7-18.3C349.5,254.4,353.6,248.8,353.6,243z"/>
+	</g>
+	<path class="autorunscan_st3" d="M258.5,257.9c7.2-0.1,14.1-0.2,19.4,0.7c4.3,0.8,8.7-0.5,11.9-3.3c3.3-2.9,5.2-7,5.2-11.5V213
+		c0-24.8-19.7-45-44-45v89.9H258.5z"/>
+	<g>
+		<path class="autorunscan_st4" d="M251.1,408c-22,0-73.3-10.2-73.3-105c0-31.4,4.8-68.2,41.8-73.9c7.6-1.3,15.7-1.2,24.4-1.1c3,0,17.1,0,14.1,0
+			c8.7-0.1,16.8-0.2,24.7,1.2c15.8,2.4,27.2,11.2,33.7,26.1c5.2,11.4,7.7,27.1,7.7,47.8C324.3,397.8,273.1,408,251.1,408L251.1,408z
+			"/>
+	</g>
+	<path class="autorunscan_st5" d="M282.9,229.1c-7.9-1.4-16-1.3-24.7-1.2c1.8,0-2.6,0-7.1,0V408c22,0,73.3-10.2,73.3-105
+		c0-20.8-2.5-36.5-7.7-47.8C310.1,240.3,298.6,231.5,282.9,229.1z"/>
+</g>
+</svg>
+
+									</div>
+									<p .subMnuHeading><label>ID_AUTORUN_SCAN</label></p>
+									<p .subMnuDescription><label>ID_PREVENT_AUTORUN_ATTACK</label></p>
+								</li>
+								<!---------------------testing ------------------------------------------->
+								<li .subMnuContainer style="visibility:none" #ID_DIV_BACKUP_UTIL>
+									<!-- <li .subMnuContainer #ID_RESCUE_DISK> -->
+									<div>
+										<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 598.7 598.7" enable-background="new 0 0 598.7 598.7" xml:space="preserve" class="menuIconStyleInner">
+											 <g id="Layer_1">
+											 		<g id="surface1">
+											 			<path d="M558.4,123.1c1.3-3.6,0.4-7.6-2.3-10.3l-69.9-69.9c-2.7-2.7-6.7-3.6-10.3-2.3C467.7,16.3,444.9,0,419.3,0H179.7
+											 				c-25.6,0-48.4,16.3-56.6,40.6c-3.6-1.3-7.6-0.4-10.3,2.3l-69.9,69.9c-2.7,2.7-3.6,6.7-2.3,10.3C16.3,131.3,0,154.1,0,179.7v239.6
+											 				c0,25.6,16.3,48.4,40.6,56.6c-1.3,3.6-0.4,7.6,2.3,10.3l69.9,69.9c2.7,2.8,6.7,3.7,10.3,2.3c8.3,24.2,31,40.5,56.6,40.6h239.6
+											 				c25.6,0,48.4-16.3,56.6-40.6c3.6,1.4,7.7,0.5,10.3-2.3l69.9-69.9c2.7-2.7,3.6-6.7,2.3-10.3c24.2-8.3,40.5-31,40.6-56.6V179.7
+											 				C599,154.1,582.7,131.3,558.4,123.1z M535,119.8l-76.5,76.5c-14.5-22.3-33.5-41.3-55.8-55.8L479.2,64L535,119.8z M468.7,384.7
+											 				c27.3-53.5,27.3-116.9,0-170.5L520,163c52,83.6,52,189.5,0,273.1L468.7,384.7z M299.5,489.2c29.6,0,58.8-7,85.2-20.5L436,520
+											 				c-83.6,52-189.5,52-273.1,0l51.3-51.3C240.7,482.2,269.9,489.2,299.5,489.2z M299.5,469.2c-93.7,0-169.7-76-169.7-169.7
+											 				s76-169.7,169.7-169.7s169.7,76,169.7,169.7C469.1,393.2,393.2,469.1,299.5,469.2z M79,436c-52-83.6-52-189.5,0-273.1l51.3,51.3
+											 				c-27.3,53.5-27.3,116.9,0,170.5L79,436z M299.5,109.8c-29.6,0-58.8,7-85.2,20.5L163,79c83.6-52,189.5-52,273.1,0l-51.3,51.3
+											 				C358.3,116.8,329.1,109.8,299.5,109.8z M179.7,20h239.6c20.5,0.1,37.7,15.7,39.6,36.2l-8.3,8.3c-91.9-59.4-210.1-59.4-302,0
+											 				l-8.3-8.3C142,35.7,159.2,20,179.7,20z M119.8,64l76.5,76.5c-22.3,14.5-41.3,33.5-55.8,55.8L64,119.8L119.8,64z M20,419.3V179.7
+											 				c0.1-20.5,15.7-37.7,36.2-39.6l8.3,8.3c-59.4,91.9-59.4,210.1,0,302l-8.3,8.3C35.7,457,20,439.8,20,419.3z M64,479.2l76.5-76.5
+											 				c14.5,22.3,33.5,41.3,55.8,55.8L119.8,535L64,479.2z M419.3,579H179.7c-20.5-0.1-37.7-15.7-39.6-36.2l8.3-8.3
+											 				c91.9,59.4,210.1,59.4,302,0l8.3,8.3C457,563.3,439.8,579,419.3,579z M479.2,535l-76.5-76.5c22.3-14.5,41.3-33.5,55.8-55.8
+											 				l56.3,56.3l20.2,20.2L479.2,535z M579,299.5v119.8c-0.1,20.5-15.7,37.7-36.2,39.6l-8.3-8.3c59.4-91.9,59.4-210.1,0-302l8.3-8.3
+											 				c20.4,1.9,36.1,19,36.2,39.6V299.5z"/>
+											 		</g>
+											 </g>
+											 <g id="Layer_2">
+											 	<circle fill="none" stroke="#000000" stroke-width="8" stroke-miterlimit="10" cx="300.5" cy="299.5" r="178.5"/>
+											 </g>
+										</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve"class="menuIconStyleInner">
+<style type="text/css">
+	.st0123{fill:#F58220;}
+</style>
+<path class="st0123" d="M324,385.3v29H50.9c-19.3,0-34.9-15.7-34.9-34.9v-69.2c0-7.6,2.5-14.7,6.6-20.4c-4.2-5.7-6.6-12.8-6.6-20.4
+	v-69.2c0-7.6,2.5-14.7,6.6-20.4c-4.2-5.7-6.6-12.8-6.6-20.4V90.3C16,71,31.7,55.4,50.9,55.4h340.9c19.3,0,34.9,15.7,34.9,34.9v69.2
+	c0,7.9-2.7,15.1-7,20.9c0.2,0,0.5,0,0.7,0c3.9,5.6,6.3,12.5,6.3,19.9v49.2h-29v-49.2c0-3.3-2.7-6-6-6H50.9c-3.3,0-6,2.7-6,6v69.2
+	c0,3.3,2.7,6,6,6h273.2v29H50.9c-3.3,0-6,2.7-6,6v69.2c0,3.3,2.7,6,6,6L324,385.3L324,385.3z M44.9,90.2L44.9,90.2v69.2
+	c0,3.3,2.7,6,6,6h340.9c3.3,0,6-2.7,6-6V90.2c0-3.3-2.7-6-6-6H50.9C47.6,84.2,44.9,86.9,44.9,90.2L44.9,90.2z"/>
+<path class="st0123" d="M377.8,371.2H454v42.9h-79.7v-42.9H377.8L377.8,371.2z M392.6,321.3L392.6,321.3c0-11.2,5.5-18.2,12.7-21.2
+	c2.8-1.1,5.7-1.7,8.7-1.7s6,0.6,8.6,1.6l0,0c7.2,3,12.8,9.5,12.8,19.3v22.1h-42.9L392.6,321.3L392.6,321.3L392.6,321.3z
+	 M362.9,317.4L362.9,317.4v23.9h-18.5v102.6h139.5V341.3h-18.5v-6.3c0-24.4,0-40.1-20.8-56.6c-9.4-7.5-21.8-10.6-33.9-9.7
+	c-12.3,0.9-24.4,6-33.3,14.7c-3.8,3.8-7.8,9.6-10.7,16.4C364.4,305.2,362.9,311.3,362.9,317.4L362.9,317.4L362.9,317.4z"/>
+</svg>										
+<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.rescuedisk_st0{fill:#DBDBDB;}
+	.rescuedisk_st1{fill:#F5BB36;}
+	.rescuedisk_st2{opacity:0.1;enable-background:new    ;}
+	.rescuedisk_st3{fill:#5A5B5B;}
+	.rescuedisk_st4{opacity:0.15;enable-background:new    ;}
+	.rescuedisk_st5{fill:#EFEFEF;}
+	.rescuedisk_st6{opacity:0.2;fill:#FFFFFF;enable-background:new    ;}
+</style>
+<g id="_x32_1_Cd_Room">
+	<g>
+		<g>
+			<path class="rescuedisk_st0" d="M109.5,163.7h296.3V500H109.5V163.7z"/>
+			<path class="rescuedisk_st1" d="M250.1,203.6c-72,0-130.4,58.4-130.4,130.4s58.4,130.4,130.4,130.4S380.5,406,380.5,334
+				S322.1,203.6,250.1,203.6L250.1,203.6z M250.1,387.1c-29.3,0-53.1-23.8-53.1-53.1c0-29.3,23.8-53.1,53.1-53.1
+				s53.1,23.8,53.1,53.1C303.2,363.3,279.4,387.1,250.1,387.1z"/>
+			<path class="rescuedisk_st2" d="M287.4,427.2c-72.1,0-130.4-58.4-130.4-130.4c0-26.5,7.9-51.1,21.5-71.7c-35.4,23.3-58.8,63.4-58.8,109
+				c0,72.1,58.4,130.4,130.4,130.4c45.6,0,85.7-23.4,109-58.8C338.5,419.3,313.9,427.2,287.4,427.2L287.4,427.2z"/>
+			<path class="rescuedisk_st0" d="M250.1,281c-29.3,0-53.1,23.7-53.1,53s23.8,53.1,53.1,53.1s53-23.8,53-53.1C303.1,304.7,279.4,281,250.1,281
+				z M270,353.9c-5.4,5.4-12.4,8.3-19.9,8.3c-15.6,0-28.2-12.6-28.2-28.2c0-15.5,12.6-28.1,28.2-28.1c15.5,0,28.1,12.6,28.1,28.1
+				C278.2,341.5,275.3,348.6,270,353.9L270,353.9z"/>
+			<path class="rescuedisk_st3" d="M413.4,490.3c0,5.4-4.3,9.7-9.7,9.7H96.6c-5.4,0-9.7-4.3-9.7-9.7s4.3-9.7,9.7-9.7h307.1
+				C409,480.6,413.4,484.9,413.4,490.3z"/>
+			<path class="rescuedisk_st4" d="M138,500H96.6c-5.4,0-9.7-4.4-9.7-9.7c0-5.4,4.4-9.7,9.7-9.7H138c-5.4,0-9.7,4.4-9.7,9.7S132.6,500,138,500z
+				"/>
+			<path class="rescuedisk_st3" d="M72.9,18.7v257c0,10.3,8.4,18.7,18.7,18.7h317.1c10.3,0,18.7-8.4,18.7-18.7v-257C427.3,8.4,419,0,408.7,0
+				H91.6C81.3,0,72.9,8.4,72.9,18.7L72.9,18.7z"/>
+			<path class="rescuedisk_st4" d="M236.2,0v294.4H91.6c-10.3,0-18.7-8.3-18.7-18.7v-257C72.9,8.3,81.3,0,91.6,0H236.2z"/>
+			<path class="rescuedisk_st5" d="M383.8,56v64.3c0,6.9-5.6,12.4-12.4,12.4H248.9c-6.8,0-12.4-5.5-12.4-12.4V56c0-6.8,5.6-12.4,12.4-12.4
+				h122.5C378.2,43.6,383.8,49.2,383.8,56z"/>
+			<g>
+				<path class="rescuedisk_st0" d="M357,70h-93.9c-2.6,0-4.7-2.1-4.7-4.7s2.1-4.7,4.7-4.7H357c2.6,0,4.7,2.1,4.7,4.7
+					C361.7,67.9,359.6,70,357,70z"/>
+				<path class="rescuedisk_st0" d="M357,92.8h-93.9c-2.6,0-4.7-2.1-4.7-4.7s2.1-4.7,4.7-4.7H357c2.6,0,4.7,2.1,4.7,4.7
+					C361.7,90.7,359.6,92.8,357,92.8z"/>
+				<path class="rescuedisk_st0" d="M357,115.6h-93.9c-2.6,0-4.7-2.1-4.7-4.7s2.1-4.7,4.7-4.7H357c2.6,0,4.7,2.1,4.7,4.7S359.6,115.6,357,115.6
+					z"/>
+			</g>
+			<path class="rescuedisk_st6" d="M396.3,193.5v45c0,11.8-9.6,21.3-21.3,21.3c-11.8,0-21.3-9.6-21.3-21.3v-45c0-11.8,9.6-21.3,21.3-21.3
+				C386.7,172.1,396.3,181.7,396.3,193.5z"/>
+		</g>
+	</g>
+</g>
+</svg> -->
+
+									</div>
+									<!-- <p .subMnuHeading><label>ID_WWIZ_WELCOME_RESCUE_DISK</label></p>
+									<p .subMnuDescription><label>ID_REPAIR_YOUR_SYSTEM_DATA</label></p> -->
+									<p .subMnuHeading><label>Data Knox</label></p>
+									<p .subMnuDescription><label>Secure your Data by taking Backup</label></p>
+								</li>
+								<!---------------------testing reg------------------------------------------->
+								<li .subMnuContainer #ID_REG_TOOL>
+									<div>
+										<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyleInner">
+											<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M13.9,343.7h139.6v139.6H13.9V343.7z M197.4,483.3
+												H337V343.7H197.4V483.3z M16.6,302.5h139.6V162.9H16.6V302.5z M486.2,426.6l-48.7-75l-75,48.7l48.7,75L486.2,426.6z M20.9,84
+												l67,59.1l59.1-67l-67-59.1L20.9,84z"/>
+												<path fill="none" stroke-width="15" stroke-miterlimit="10" d="M485.2,155.2c-0.5-4.2-5.4-7.3-9.6-7.3
+												c-13.7,0-25.8-8-30.9-20.4c-5.2-12.7-1.8-27.5,8.3-36.9c3.2-2.9,3.6-7.8,0.9-11.3c-7-8.9-14.9-16.9-23.6-23.9
+												c-3.4-2.7-8.4-2.3-11.3,0.9c-8.9,9.8-24.9,13.5-37.2,8.4c-12.8-5.4-20.9-18.4-20.1-32.4c0.3-4.4-2.9-8.2-7.3-8.7
+												c-11.1-1.3-22.4-1.3-33.6-0.1c-4.3,0.5-7.5,4.2-7.4,8.5c0.5,13.8-7.7,26.6-20.4,31.8c-12.2,5-28.1,1.3-36.9-8.4
+												c-2.9-3.2-7.8-3.6-11.3-0.9c-8.9,7-17.1,15-24.1,23.9c-2.8,3.4-2.3,8.4,0.9,11.3c10.4,9.4,13.7,24.4,8.3,37.2
+												c-5.1,12.3-17.9,20.2-32.5,20.2c-4.7-0.2-8.1,3-8.6,7.3c-1.3,11.2-1.3,22.6-0.1,33.9c0.5,4.2,5.5,7.3,9.8,7.3
+												c13-0.3,25.5,7.7,30.7,20.4c5.2,12.7,1.9,27.5-8.3,36.9c-3.2,2.9-3.6,7.8-0.9,11.2c6.9,8.8,14.9,16.9,23.6,23.9
+												c3.4,2.8,8.4,2.4,11.4-0.9c8.9-9.9,24.9-13.5,37.2-8.4c12.9,5.4,21,18.4,20.2,32.4c-0.3,4.4,3,8.2,7.3,8.7c5.7,0.7,11.4,1,17.2,1
+												c5.5,0,10.9-0.3,16.4-0.9c4.3-0.5,7.5-4.2,7.4-8.5c-0.5-13.8,7.7-26.6,20.4-31.8c12.3-5,28.1-1.3,36.9,8.4c2.9,3.2,7.8,3.6,11.3,0.9
+												c8.9-7,17-15,24.1-23.9c2.8-3.4,2.4-8.4-0.9-11.3c-10.4-9.4-13.7-24.4-8.4-37.2c5.1-12.1,17.3-20.2,30.5-20.2l1.8,0
+												c4.3,0.3,8.2-2.9,8.7-7.3C486.5,177.9,486.5,166.5,485.2,155.2z M337,257.8c-47.5,0-86-38.5-86-86s38.5-86,86-86s86,38.5,86,86
+												c0,16.1-4.4,31.2-12.2,44.1l-37.7-37.7c2.7-6.4,4.2-13.4,4.2-20.6c0-14.1-5.5-27.3-15.4-37.3c-10-10-23.2-15.4-37.3-15.4
+												c-4.7,0-9.4,0.6-13.9,1.9c-2,0.5-3.6,2.2-4.1,4.2c-0.5,2,0.1,4.1,1.7,5.7c0,0,18.6,18.7,24.8,25c0,0-2.5,21.8-2.6,21.9
+												c-0.1,0.1-0.1,0.1-0.5,0.3l-21.9,1.7c-6.5-6.5-24.3-24.2-24.3-24.2c-1.6-1.6-3.2-1.9-4.3-1.9c-2.6,0-4.8,1.8-5.6,4.5
+												c-4.9,18.2,0.3,37.8,13.6,51.1c10,10,23.2,15.4,37.3,15.4c7.2,0,14.2-1.4,20.6-4.2l38.1,38.1C369.9,252.8,354,257.8,337,257.8z"/>
+										</svg> -->
+										<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner">
+<style type="text/css">
+	.regisrty_st0{fill:#999999;}
+	.regisrty_st1{fill:#FFDF40;}
+</style>
+<g>
+	<path class="regisrty_st0" d="M0,329.9h159.8V492H0V329.9z M210.1,492h159.8V329.9H210.1V492z M3,282h159.8V120H3V282z M351.7,101.1
+		l-55.8-87l-85.8,56.5l55.8,87L351.7,101.1z M237,234.3l76.8,68.7l67.7-77.8l-76.8-68.7L237,234.3z M445.3,63.6L358.1,118l53.6,88.4
+		l87.2-54.4L445.3,63.6z"/>
+</g>
+<rect x="226.5" y="26.9" transform="matrix(0.8338 -0.552 0.552 0.8338 1.4927 169.1124)" class="regisrty_st1" width="110.3" height="110.3"/>
+<rect x="250.9" y="174" transform="matrix(0.6597 -0.7515 0.7515 0.6597 -68.2898 308.5135)" class="regisrty_st1" width="111.3" height="111.3"/>
+<rect x="375" y="82.3" transform="matrix(0.8464 -0.5326 0.5326 0.8464 -6.1439 248.4437)" class="regisrty_st1" width="105.1" height="105.1"/>
+</svg>
+
+									</div>
+									<p .subMnuHeading><label>ID_REG_TOOL_HEADER</label></p>
+									<p .subMnuDescription><label>ID_REG_HOME_HEADER</label></p>
+								</li>
+								<!---------------------testing reg end------------------------------------------->
+							</div>
+							</div>
+						</div>
+					</span>
+				<span .frame_display_src #ID_REPORTS_HTML><li .reportsOnclickBg class="tooltip">
+					<!--svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						 x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="menuIconStyle reportsIconHov">
+					<path class="reportsIcon"  fill="none" stroke-width="20" stroke-miterlimit="10" d="M99,38.1H74.5c-27.2,0-49.8,22-49.8,49.8v347.3c0,27.2,22,49.8,49.8,49.8h248.4c27.2,0,49.8-22,49.8-49.8V87.9
+    c0-27.2-22-49.8-49.8-49.8h-25.2v28.5c0,16.8-13.6,31-31,31c-17.5,0-31-13.6-31-31V38.1h-74.4v28.5c0,16.8-13.6,31-31,31
+    c-17.5,0-31-13.6-31-31L99,38.1L99,38.1z"/>
+<path class="reportsIcon"  fill="none" stroke-width="20" stroke-miterlimit="10" d="M456.4,122.9h-24.6c-13.6,0-24.6,11-24.6,24.6v49.8h73.7v-49.8C481.6,134.5,470,122.9,456.4,122.9z"/>
+<path class="reportsIcon"  fill="none" stroke-width="20" stroke-miterlimit="10" d="M481.6,197.2h-74.4v223.1l37.5,49.8l37.5-49.8L481.6,197.2L481.6,197.2z"/>
+<path class="st1" d="M99.5,167.1c0-7.1,5.8-12.3,12.3-12.3h174c7.1,0,12.3,5.8,12.3,12.3c0,7.1-5.8,12.3-12.3,12.3h-174
+    C104.7,180,99.5,174.2,99.5,167.1z"/>
+<path class="st1" d="M112.4,219.5c-7.1,0-12.3,5.8-12.3,12.3c0,7.1,5.8,12.3,12.3,12.3h174c7.1,0,12.3-5.8,12.3-12.3
+    c0-7.1-5.8-12.3-12.3-12.3H112.4z"/>
+<path class="st1" d="M99.5,293.8c0-7.1,5.8-12.3,12.3-12.3h174c7.1,0,12.3,5.8,12.3,12.3c0,7.1-5.8,12.3-12.3,12.3h-174
+    C105.3,306.1,99.5,301,99.5,293.8L99.5,293.8z"/>
+<path class="st1" d="M112.4,344.3c-7.1,0-12.3,5.8-12.3,12.3c0,6.5,5.8,12.3,12.3,12.3h99.6c7.1,0,12.3-5.8,12.3-12.3
+    c0-6.5-5.8-12.3-12.3-12.3H112.4z"/>
+</svg-->
+<!-- <svg version="1.1" id="Layer_154" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle reportsIconHov">
+<style type="text/css">
+	.reportIconst0{fill:#FDBF44;}
+	.reportIconst1{fill:#E6AD3E;}
+	.reportIconst2{fill:#25B1FA;}
+	.reportIconst3{fill:#FCFEFF;}
+	.reportIconst4{fill:#80DAFF;}
+</style>
+<g>
+	<path class="reportIconst0" d="M411.1,499.8h-42.2l-17.2-17.2L352,19.3l135.1,23.9c5.8,1,9.7,6.6,8.7,12.4l-74.2,435.3
+		C420.8,496,416.3,499.8,411.1,499.8z"/>
+	<path class="reportIconst1" d="M352,19.3l-0.3,463.3l17.2,17.2h17.2V25.4L352,19.3z"/>
+	<g>
+		<path class="reportIconst2" d="M10.8,2.2h347.5c5.9,0,10.7,4.8,10.7,10.7V489c0,5.9-4.8,10.7-10.7,10.7H10.8C4.9,499.8,0,495,0,489V12.9
+			C0,7,4.9,2.2,10.8,2.2z"/>
+		<path class="reportIconst3" d="M64.4,251h42.9c11.8,0,21.4,9.6,21.4,21.4v42.9c0,11.8-9.6,21.4-21.4,21.4H64.4c-11.8,0-21.4-9.6-21.4-21.4
+			v-42.9C42.9,260.6,52.5,251,64.4,251z"/>
+		<path class="reportIconst3" d="M64.4,379.7h42.9c11.8,0,21.4,9.6,21.4,21.4V444c0,11.8-9.6,21.4-21.4,21.4H64.4c-11.8,0-21.4-9.6-21.4-21.4
+			v-42.9C42.9,389.3,52.5,379.7,64.4,379.7z"/>
+		<g>
+			<path class="reportIconst4" d="M94.4,319.6c-2.3,0-4.5-0.9-6.1-2.5l-25.7-25.7l12.1-12.1l19.2,19.2l45.4-53l13,11.2l-51.5,60.1
+				c-1.6,1.8-3.8,2.9-6.2,3C94.6,319.6,94.5,319.6,94.4,319.6z"/>
+			<path class="reportIconst4" d="M94.4,448.3c-2.3,0-4.5-0.9-6.1-2.5L62.6,420l12.1-12.1l19.2,19.2l45.4-53l13,11.2l-51.5,60.1
+				c-1.6,1.8-3.8,2.9-6.2,3C94.6,448.3,94.5,448.3,94.4,448.3z"/>
+			<g>
+				<path class="reportIconst3" d="M171.6,371.1h128.7v17.2H171.6V371.1z"/>
+				<path class="reportIconst3" d="M171.6,414h42.9v17.2h-42.9V414z"/>
+			</g>
+		</g>
+		<g>
+			<path class="reportIconst3" d="M231.7,414h68.6v17.2h-68.6L231.7,414L231.7,414z"/>
+			<path class="reportIconst3" d="M171.6,242.4h128.7v17.2H171.6V242.4z"/>
+			<path class="reportIconst3" d="M171.6,285.3h42.9v17.2h-42.9V285.3z"/>
+			<path class="reportIconst3" d="M231.7,285.3h68.6v17.2h-68.6L231.7,285.3L231.7,285.3z"/>
+			<path class="reportIconst3" d="M188.7,36.5l-77.1,34.4l6.4,40.8c6.1,33.2,24.7,62.8,52,82.7l18.7,13.8l17.8-13
+				c27.7-19.9,46.6-49.7,52.7-83.2l6.5-41.1L188.7,36.5z M186.1,145.6c-3.4,3.3-8.8,3.3-12.1,0l-25.7-25.7l12.1-12.1l19.7,19.7
+				L225.4,82l12.1,12.1L186.1,145.6z"/>
+			<path class="reportIconst3" d="M34.4,27.9h51.5v17.2H34.4V27.9z"/>
+			<path class="reportIconst3" d="M34.4,62.2h34.3v17.2H34.4V62.2z"/>
+			<path class="reportIconst3" d="M291.7,27.9h17.2v17.2h-17.2V27.9z"/>
+			<path class="reportIconst3" d="M326.1,27.9h17.2v17.2h-17.2V27.9z"/>
+		</g>
+	</g>
+</g>
+</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle reportsIconHov">
+<style type="text/css">
+	.report_icost0{fill:#FDBF44;}
+	.report_icost1{fill:#E6AD3E;}
+	.report_icost2{fill:#463E54;}
+	.report_icost3{fill:#FCFEFF;}
+	.report_icost4{fill:#80DAFF;}
+</style>
+<path class="report_icost0" d="M412.2,498.9h-42.3l-17.2-17.2L353,17.2l135.5,24c5.8,1,9.7,6.6,8.7,12.4L422.7,490
+	C421.9,495.1,417.4,498.9,412.2,498.9z"/>
+<path class="report_icost1" d="M352.9,17.1l-0.3,464.5l17.2,17.2H387V23.3L352.9,17.1z"/>
+<path class="report_icost2" d="M10.8,0h348.4c5.9,0,10.7,4.8,10.7,10.7v477.4c0,5.9-4.8,10.7-10.7,10.7H10.8C4.9,498.9,0,494.1,0,488.1V10.7
+	C0,4.8,4.9,0,10.8,0z"/>
+<path class="report_icost3" d="M64.6,249.5h43c11.8,0,21.5,9.6,21.5,21.5v43c0,11.8-9.6,21.5-21.5,21.5h-43c-11.8,0-21.5-9.6-21.5-21.5v-43
+	C43,259.1,52.6,249.5,64.6,249.5z"/>
+<path class="report_icost3" d="M64.6,378.5h43c11.8,0,21.5,9.6,21.5,21.5v43c0,11.8-9.6,21.5-21.5,21.5h-43c-11.8,0-21.5-9.6-21.5-21.5v-43
+	C43,388.1,52.6,378.5,64.6,378.5z"/>
+<path class="report_icost4" d="M94.7,318.3c-2.3,0-4.5-0.9-6.1-2.5L62.8,290l12.1-12.1l19.3,19.3l45.5-53.1l13,11.2l-51.6,60.3
+	c-1.6,1.8-3.8,2.9-6.2,3C94.9,318.3,94.8,318.3,94.7,318.3z"/>
+<path class="report_icost4" d="M94.7,447.3c-2.3,0-4.5-0.9-6.1-2.5l-25.8-25.9l12.1-12.1L94.2,426l45.5-53.1l13,11.2l-51.6,60.3
+	c-1.6,1.8-3.8,2.9-6.2,3C94.9,447.3,94.8,447.3,94.7,447.3z"/>
+<path class="report_icost3" d="M172.1,369.9h129v17.2h-129V369.9z"/>
+<path class="report_icost3" d="M172.1,412.9h43v17.2h-43V412.9z"/>
+<path class="report_icost3" d="M232.3,412.9h68.8v17.2h-68.8V412.9z"/>
+<path class="report_icost3" d="M172.1,240.8h129V258h-129V240.8z"/>
+<path class="report_icost3" d="M172.1,283.9h43v17.2h-43V283.9z"/>
+<path class="report_icost3" d="M232.3,283.9h68.8v17.2h-68.8V283.9z"/>
+<path class="report_icost3" d="M189.2,34.4l-77.3,34.5l6.4,40.9c6.1,33.3,24.8,63,52.1,82.9l18.8,13.8l17.8-13c27.8-20,46.7-49.8,52.8-83.4
+	l6.5-41.2L189.2,34.4z M186.6,143.8c-3.4,3.3-8.8,3.3-12.1,0L148.7,118l12.1-12.1l19.8,19.8L226,80l12.1,12.1L186.6,143.8z"/>
+<path class="report_icost3" d="M34.5,25.8h51.6V43H34.5V25.8z"/>
+<path class="report_icost3" d="M34.5,60.2h34.4v17.2H34.5V60.2z"/>
+<path class="report_icost3" d="M292.5,25.8h17.2V43h-17.2V25.8z"/>
+<path class="report_icost3" d="M327,25.8h17.2V43H327V25.8z"/>
+</svg>
+<span class="tooltiptext">Reports</span>
+
+				<!-- <div .hoverMenuItem style='width:80dip;'><label>ID_MENU_REPORTS</label></div> --></li>
+                </span>
+				<span .frame_display_src #ID_BTN_UPDATE><li class="tooltip">
+					<!--svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyle updateIconHov">
+                        <path  class="updateIcon" fill="none" stroke-width="24" stroke-miterlimit="10" d="M107.9,347.6c0,0-82.3-8.6-92-98.4
+						s83.4-84.5,83.4-84.5s9.6-141.1,123-140.1s133.6,117.6,133.6,117.6s135.8-3.2,126.2,130.4c-9.6,133.6-170,117.6-170,117.6v-75.9
+						h48.1L250.1,178.7L136.7,310.2l52.4,1.1l2.1,185"/>
+					</svg-->
+					<!-- <svg version="1.1" id="Layer_187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle updateIconHov">
+<style type="text/css">
+	.updateIconst0{fill-rule:evenodd;clip-rule:evenodd;fill:#00AAF0;}
+	.updateIconst1{fill-rule:evenodd;clip-rule:evenodd;fill:#0099D8;}
+	.updateIconst2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFC850;}
+	.updateIconst3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<g id="Layer_x0020_1">
+	<g id="_408366040">
+		<path class="updateIconst0" d="M405.3,339.2h-35.2c-2.9,0-5.9-2.9-5.9-5.9c0-63.4-50.8-114.1-114.3-114.1s-114.3,50.7-114.3,114.1
+			c0,2.9-2.9,5.9-5.9,5.9h-35C42,339.2,0,297.3,0,244.6c0-34.1,18.6-65.3,48.8-81.9c3.9-20.5,14.6-39,30.3-52.7
+			c16.6-13.7,38.1-22.4,59.6-22.4c12.7,0,23.4,2.9,35.2,6.8C185.5,57.3,220.7,31,260.7,31c32.2,0,62.5,17.6,79.1,44.9
+			c8.8-2.9,17.6-3.9,27.3-3.9c50.8,0,91.8,41,91.8,91.7v3.9c25.4,17.6,41,46.8,41,77C500,297.3,458,339.2,405.3,339.2z"/>
+		<path class="updateIconst1" d="M390.6,288.5c-2,0-4.9-2-4.9-3.9C365.2,228,310.5,190,250,190s-115.2,38-135.7,94.6c-1,2.9-3.9,4.9-6.8,2.9
+			c-2.9-1-4.9-3.9-3.9-6.8c22.4-61.5,81-102.4,146.4-102.4s124,41,146.5,102.4c1,2.9-1,5.9-3.9,6.8
+			C392.6,288.5,391.6,288.5,390.6,288.5z"/>
+		<path class="updateIconst2" d="M250,460.1c-69.3,0-126-56.6-126-126.8c0-69.2,56.6-125.8,126-125.8s126,56.6,126,125.8
+			C376,403.6,319.3,460.1,250,460.1z"/>
+		<path class="updateIconst3" d="M273.4,415.3h-46.9c-3.9,0-5.9-2.9-5.9-5.9v-70.2H202c-2,0-3.9-1-4.9-2.9s-1-3.9,0-5.9l47.9-76.1
+			c1-2,2.9-2.9,4.9-2.9s3.9,1,4.9,2.9l47.9,76.1c1,2,1,3.9,0,5.9s-2.9,2.9-4.9,2.9h-18.6v70.2C279.3,412.3,277.3,415.3,273.4,415.3z
+			"/>
+		<path class="updateIconst1" d="M367.2,72c-9.8,0-18.6,1-27.3,3.9C323.2,48.6,293,31,260.7,31c-21.5,0-42,7.8-57.6,20.5
+			c26.4,4.9,50.8,20.5,64.5,43.9c8.8-2.9,17.6-4.9,27.3-4.9c50.8,0,91.8,41.9,91.8,92.7v3.9c26.4,17.6,41,45.8,41,77
+			c0,30.2-14.6,57.5-37.1,75.1h14.6c52.7,0,94.7-41.9,94.7-94.6c0-30.2-15.6-59.5-41-77c0-1,0-2.9,0-3.9C459,112.9,418,72,367.2,72z
+			"/>
+	</g>
+</g>
+</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle updateIconHov">
+<style type="text/css">
+	.update_icost0{fill-rule:evenodd;clip-rule:evenodd;fill:#00AAF0;}
+	.update_icost1{fill-rule:evenodd;clip-rule:evenodd;fill:#0099D8;}
+	.update_icost2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFC850;}
+	.update_icost3{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<g id="Layer_x0020_1">
+	<g id="_408366040">
+		<path class="update_icost0" d="M405.3,339.2h-35.2c-2.9,0-5.9-2.9-5.9-5.9c0-63.4-50.8-114.1-114.3-114.1s-114.3,50.7-114.3,114.1
+			c0,2.9-2.9,5.9-5.9,5.9H94.7C42,339.2,0,297.3,0,244.6c0-34.1,18.6-65.3,48.8-81.9c3.9-20.5,14.6-39,30.3-52.7
+			c16.6-13.7,38.1-22.4,59.6-22.4c12.7,0,23.4,2.9,35.2,6.8C185.5,57.3,220.7,31,260.7,31c32.2,0,62.5,17.6,79.1,44.9
+			c8.8-2.9,17.6-3.9,27.3-3.9c50.8,0,91.8,41,91.8,91.7v3.9c25.4,17.6,41,46.8,41,77C500,297.3,458,339.2,405.3,339.2z"/>
+		<path class="update_icost1" d="M390.6,288.5c-2,0-4.9-2-4.9-3.9C365.2,228,310.5,190,250,190s-115.2,38-135.7,94.6c-1,2.9-3.9,4.9-6.8,2.9
+			c-2.9-1-4.9-3.9-3.9-6.8C126,219.2,184.6,178.3,250,178.3s124,41,146.5,102.4c1,2.9-1,5.9-3.9,6.8
+			C392.6,288.5,391.6,288.5,390.6,288.5z"/>
+		<path class="update_icost2" d="M250,460.1c-69.3,0-126-56.6-126-126.8c0-69.2,56.6-125.8,126-125.8s126,56.6,126,125.8
+			C376,403.6,319.3,460.1,250,460.1z"/>
+		<path class="update_icost3" d="M273.4,415.3h-46.9c-3.9,0-5.9-2.9-5.9-5.9v-70.2h-18.6c-2,0-3.9-1-4.9-2.9s-1-3.9,0-5.9l47.9-76.1
+			c1-2,2.9-2.9,4.9-2.9s3.9,1,4.9,2.9l47.9,76.1c1,2,1,3.9,0,5.9s-2.9,2.9-4.9,2.9h-18.6v70.2C279.3,412.3,277.3,415.3,273.4,415.3z
+			"/>
+		<path class="update_icost1" d="M367.2,72c-9.8,0-18.6,1-27.3,3.9C323.2,48.6,293,31,260.7,31c-21.5,0-42,7.8-57.6,20.5
+			c26.4,4.9,50.8,20.5,64.5,43.9c8.8-2.9,17.6-4.9,27.3-4.9c50.8,0,91.8,41.9,91.8,92.7v3.9c26.4,17.6,41,45.8,41,77
+			c0,30.2-14.6,57.5-37.1,75.1h14.6c52.7,0,94.7-41.9,94.7-94.6c0-30.2-15.6-59.5-41-77c0-1,0-2.9,0-3.9C459,112.9,418,72,367.2,72z
+			"/>
+	</g>
+</g>
+</svg>
+<span class="tooltiptext">Update</span>
+                    </li>
+                </span>
+                <span #ID_SETTINGS_HTML .frame_display_src><li .settingsOnclickBg  class="tooltip">
+					<!--svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						 x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="menuIconStyle settingsIconHov">
+					<path class="settingsIcon" fill="none" stroke-width="20" stroke-miterlimit="10" d="M464.4,200.1l-35.2-5.9
+						c-3.4-10.9-7.8-21.5-13.1-31.5l20.4-28.6c7.1-8.7,6.5-21.3-1.5-29.2l-39.9-39.9c-4.1-4.1-9.6-6.4-15.4-6.4c-5,0-9.9,1.8-13.4,4.6
+						l-29.1,20.7c-10.1-5.3-20.6-9.7-31.5-13.1L300,36.1c-1.1-11.2-10.5-19.6-21.7-19.6h-56.5c-11.3,0-20.6,8.5-21.7,19.1l-5.9,35.2
+						c-10.9,3.4-21.5,7.8-31.5,13.1l-28.7-20.4c-8.4-6.9-21.6-6.2-29.3,1.5l-39.9,39.9c-8,8-8.6,20.5-1.8,28.8l20.7,29.1
+						c-5.3,10.1-9.7,20.6-13.1,31.5L36.1,200c-11.2,1.1-19.6,10.5-19.6,21.7v56.4c0,11.3,8.5,20.6,19.1,21.7l35.2,5.9
+						c3.4,10.8,7.8,21.4,13.1,31.5l-20.4,28.6c-7.1,8.7-6.5,21.3,1.5,29.3l39.9,39.9c4.1,4.1,9.6,6.4,15.4,6.4c5,0,9.9-1.8,13.4-4.6
+						l29.1-20.7c10.1,5.3,20.7,9.7,31.5,13.1l5.8,34.7c1.1,11.2,10.4,19.6,21.7,19.6h56.5c11.3,0,20.6-8.5,21.7-19.1l5.9-35.2
+						c10.9-3.4,21.4-7.8,31.5-13.1l28.6,20.4c8.4,6.9,21.6,6.2,29.3-1.5l39.9-39.9c8-7.9,8.6-20.5,1.8-28.9l-20.7-29
+						c5.3-10.1,9.7-20.6,13.1-31.5l34.7-5.8c11.2-1.1,19.7-10.4,19.7-21.7v-56.4C483.5,210.5,475.1,201.2,464.4,200.1z"/>
+					<path fill="none" stroke-width="20" stroke-miterlimit="10" d="M250,157.6c-51,0-92.4,41.5-92.4,92.4
+						c0,50.9,41.5,92.4,92.4,92.4c50.9,0,92.4-41.5,92.4-92.4C342.4,199.1,301,157.6,250,157.6z"/>
+</svg-->
+<!-- <svg version="1.1" id="Layer_15r" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle settingsIconHov">
+<style type="text/css">
+	.settingsIconst0{fill:#FEA832;}
+	.settingsIconst1{fill:#FE9923;}
+	.settingsIconst2{fill:#FFCC33;}
+</style>
+<path class="settingsIconst0" d="M250,118.2c-72.8,0-131.8,59-131.8,131.8s59,131.8,131.8,131.8s131.8-59,131.8-131.8S322.8,118.2,250,118.2z
+	 M250,293.9c-24.2,0-43.9-19.7-43.9-43.9s19.7-43.9,43.9-43.9s43.9,19.7,43.9,43.9S274.2,293.9,250,293.9z"/>
+<path class="settingsIconst1" d="M293.9,250c0,24.2-19.7,43.9-43.9,43.9v87.9c72.8,0,131.8-59,131.8-131.8s-59-131.8-131.8-131.8v87.9
+	C274.2,206.1,293.9,225.8,293.9,250z"/>
+<path class="settingsIconst2" d="M487.7,206.3l-54.9-9.1c-3.8-13.8-9.4-26.7-16.1-39.3l31.6-44.5c4.1-5.9,3.5-13.8-1.5-18.7l-41.6-41.6
+	c-5-5-12.9-5.6-18.8-1.5L342,83.3c-12.6-6.7-25.5-12.3-39.3-16.1l-9.1-54.9c-1.2-7-7.3-12.3-14.4-12.3h-58.6
+	c-7,0-13.2,5.3-14.4,12.3l-9.1,54.9c-13.8,3.8-26.7,9.4-39.3,16.1l-44.5-31.6c-5.9-4.1-13.8-3.5-18.8,1.5L53.1,94.7
+	c-5,5-5.6,12.9-1.5,18.7L83.3,158c-6.7,12.6-12.3,25.5-16.1,39.3l-54.9,9.1c-7,1.2-12.3,7.3-12.3,14.4v58.6c0,7,5.3,13.2,12.3,14.4
+	l54.9,9.1c3.8,13.8,9.4,26.7,16.1,39.3l-31.6,44.5c-4.1,5.9-3.5,13.8,1.5,18.8l41.6,41.6c5,5,12.9,5.6,18.8,1.5l44.5-31.6
+	c12.6,6.7,25.5,12.3,39.3,16.1l9.1,54.9c1.2,7,7.3,12.3,14.4,12.3h58.6c7,0,13.2-5.3,14.4-12.3l9.1-54.9
+	c13.8-3.8,26.7-9.4,39.3-16.1l44.5,31.6c5.9,4.1,13.8,3.5,18.8-1.5l41.6-41.6c5-5,5.6-12.9,1.5-18.8l-32-44.7
+	c6.7-12.6,12.3-25.5,16.1-39.3l54.9-9.1c7-1.2,12.3-7.3,12.3-14.4v-58.6C500,213.7,494.7,207.5,487.7,206.3z M250,352.5
+	c-56.5,0-102.5-46-102.5-102.5s46-102.5,102.5-102.5s102.5,46,102.5,102.5S306.5,352.5,250,352.5z"/>
+<path class="settingsIconst0" d="M500,220.7v58.6c0,7-5.3,13.2-12.3,14.4l-54.9,9.1c-3.8,13.8-9.4,26.7-16.1,39.3l31.6,44.5
+	c4.1,5.9,3.5,13.8-1.5,18.8L405.2,447c-5,5-12.9,5.6-18.8,1.5L342,416.7c-12.6,6.7-25.5,12.3-39.3,16.1l-9.1,54.9
+	c-1.2,7-7.3,12.3-14.4,12.3H250V352.5c56.5,0,102.5-46,102.5-102.5s-46-102.5-102.5-102.5V0h29.3c7,0,13.2,5.3,14.4,12.3l9.1,54.9
+	c13.8,3.8,26.7,9.4,39.3,16.1l44.5-31.6c5.9-4.1,13.8-3.5,18.8,1.5L447,94.8c5,5,5.6,12.9,1.5,18.7L416.7,158
+	c6.7,12.6,12.3,25.5,16.1,39.3l54.9,9.1C494.7,207.5,500,213.7,500,220.7z"/>
+</svg> -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyle settingsIconHov">
+<style type="text/css">
+	.settings_icost0{fill:#463E54;stroke:#000000;stroke-width:0.2;}
+	.settings_icost1{fill:#6D6280;stroke:#000000;stroke-width:0.2;}
+	.settings_icost2{clip-path:url(#SVGID_00000040556577327660095800000002909564033282058153_);fill:#463E54;stroke:#000000;stroke-width:0.2;}
+</style>
+<path class="settings_icost0" d="M108.3,249.9c0-66.6,54-120.6,120.6-120.6s120.6,54,120.6,120.6s-54,120.6-120.6,120.6S108.3,316.5,108.3,249.9
+	z M188.6,249.9c0,22.2,18.1,40.3,40.3,40.3s40.3-18.1,40.3-40.3s-18.1-40.3-40.3-40.3S188.6,227.7,188.6,249.9z"/>
+<path class="settings_icost1" d="M229,290.2c22.2-0.1,40.2-18.1,40.2-40.3c0-22.2-18-40.2-40.2-40.3v-80.3c66.5,0.1,120.5,54,120.5,120.6
+	c0,66.6-53.9,120.5-120.5,120.6V290.2z"/>
+<path class="settings_icost1" d="M396.1,201.6L396.1,201.6L396.1,201.6l50.3,8.4c6.4,1.1,11.2,6.7,11.2,13v53.6c0,6.4-4.8,12-11.2,13.1
+	l-50.3,8.3l-0.1,0l0,0.1c-3.5,12.6-8.6,24.4-14.7,36l0,0.1l0,0l29.3,40.9c3.7,5.4,3.2,12.5-1.4,17.1l-38.1,38.1
+	c-4.5,4.5-11.7,5.1-17.1,1.4l-40.7-28.9l-0.1,0l-0.1,0c-11.5,6.1-23.3,11.3-36,14.7l-0.1,0l0,0.1l-8.3,50.3
+	c-1.1,6.4-6.7,11.2-13.1,11.2h-53.7c-6.4,0-12-4.8-13.1-11.2l-8.3-50.3l0-0.1l-0.1,0c-12.6-3.5-24.4-8.6-36-14.7l-0.1,0l-0.1,0
+	l-40.7,28.9l0,0c-5.4,3.7-12.5,3.2-17.1-1.4l-38.1-38.1c-4.5-4.5-5.1-11.7-1.4-17.1l28.9-40.7l0-0.1l0-0.1
+	c-6.1-11.5-11.3-23.3-14.7-36l0-0.1l-0.1,0l-50.3-8.3c-6.4-1.1-11.2-6.7-11.2-13.1v-53.6c0-6.4,4.8-12,11.2-13.1l50.3-8.3l0.1,0
+	l0-0.1c3.5-12.6,8.6-24.4,14.7-36l0-0.1l0-0.1l-29-40.8c-3.7-5.3-3.2-12.4,1.4-17h0l37.9-38c0,0,0,0,0,0c4.5-4.5,11.7-5.1,17.1-1.4
+	l40.7,28.9l0.1,0l0.1,0c11.5-6.1,23.3-11.3,36-14.7l0.1,0l0-0.1l8.3-50.3c1.1-6.4,6.7-11.2,13.1-11.2h53.6c6.4,0,12,4.8,13.1,11.2
+	l8.3,50.3l0,0.1l0.1,0c12.6,3.5,24.4,8.6,36,14.7l0.1,0l0,0l40.6-29c5.4-3.7,12.5-3.2,17.1,1.4l38.1,38.1l0,0
+	c4.5,4.4,5.1,11.6,1.4,17h0l-28.9,40.7l0,0.1l0,0.1C387.5,177.1,392.7,188.9,396.1,201.6z M134.9,249.9c0,51.8,42.2,93.9,93.9,93.9
+	s93.9-42.2,93.9-93.9s-42.2-93.9-93.9-93.9S134.9,198.1,134.9,249.9z"/>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="228.9" y="21.1" width="272" height="472.7"/>
+	</defs>
+	<clipPath id="SVGID_00000093883134356904820610000015757043786113810097_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	
+		<path style="clip-path:url(#SVGID_00000093883134356904820610000015757043786113810097_);fill:#463E54;stroke:#000000;stroke-width:0.2;" d="
+		M396.1,201.6L396.1,201.6L396.1,201.6l50.3,8.4c6.4,1.1,11.2,6.7,11.2,13v53.6c0,6.4-4.8,12-11.2,13.1l-50.3,8.3l-0.1,0l0,0.1
+		c-3.5,12.6-8.6,24.4-14.7,36l0,0.1l0,0l29.3,40.9c3.7,5.4,3.2,12.5-1.4,17.1l-38.1,38.1c-4.5,4.5-11.7,5.1-17.1,1.4l-40.7-28.9
+		l-0.1,0l-0.1,0c-11.5,6.1-23.3,11.3-36,14.7l-0.1,0l0,0.1l-8.3,50.3c-1.1,6.4-6.7,11.2-13.1,11.2h-53.7c-6.4,0-12-4.8-13.1-11.2
+		l-8.3-50.3l0-0.1l-0.1,0c-12.6-3.5-24.4-8.6-36-14.7l-0.1,0l-0.1,0l-40.7,28.9l0,0c-5.4,3.7-12.5,3.2-17.1-1.4l-38.1-38.1
+		c-4.5-4.5-5.1-11.7-1.4-17.1l28.9-40.7l0-0.1l0-0.1c-6.1-11.5-11.3-23.3-14.7-36l0-0.1l-0.1,0l-50.3-8.3
+		c-6.4-1.1-11.2-6.7-11.2-13.1v-53.6c0-6.4,4.8-12,11.2-13.1l50.3-8.3l0.1,0l0-0.1c3.5-12.6,8.6-24.4,14.7-36l0-0.1l0-0.1l-29-40.8
+		c-3.7-5.3-3.2-12.4,1.4-17h0l37.9-38c0,0,0,0,0,0c4.5-4.5,11.7-5.1,17.1-1.4l40.7,28.9l0.1,0l0.1,0c11.5-6.1,23.3-11.3,36-14.7
+		l0.1,0l0-0.1l8.3-50.3c1.1-6.4,6.7-11.2,13.1-11.2h53.6c6.4,0,12,4.8,13.1,11.2l8.3,50.3l0,0.1l0.1,0c12.6,3.5,24.4,8.6,36,14.7
+		l0.1,0l0,0l40.6-29c5.4-3.7,12.5-3.2,17.1,1.4l38.1,38.1l0,0c4.5,4.4,5.1,11.6,1.4,17h0l-28.9,40.7l0,0.1l0,0.1
+		C387.5,177.1,392.7,188.9,396.1,201.6z M134.9,249.9c0,51.8,42.2,93.9,93.9,93.9s93.9-42.2,93.9-93.9s-42.2-93.9-93.9-93.9
+		S134.9,198.1,134.9,249.9z"/>
+</g>
+</svg>
+<span class="tooltiptext">Settings</span>
+
+				</li></span>	
+			</ul>
+			<span #ID_AMB_PROGRAM>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" class="MiniIconFeedback" title="Feedback">
+								<path d="M91.3,308.4c3.3,2.2,6.9,3.2,10.6,3.2c6.1,0,12.2-3,15.8-8.4c30.7-45.9,82.2-73.4,137.5-73.4c55.2,0,106.5,27.3,137.3,73
+									c5.9,8.7,17.7,11,26.4,5.2c8.7-5.9,11-17.7,5.2-26.4c-24.6-36.5-59.8-63.5-100.1-77.9c24.2-19.7,39.6-49.7,39.6-83.3
+									c0-59.3-48.2-107.5-107.5-107.5S148.5,61.1,148.5,120.4c0,33.3,15.2,63.1,39.1,82.9C146.7,217.7,110.9,244.9,86,282
+									C80.2,290.8,82.5,302.6,91.3,308.4z M256,51c38.3,0,69.5,31.2,69.5,69.5s-31.2,69.5-69.5,69.5s-69.5-31.2-69.5-69.5S217.7,51,256,51
+									z M331.9,349.8l-28.4,20.5c-4.2,3-6,8.4-4.4,13.4l11.4,33.1c0.5,1.5,0.7,2.9,0.6,4.3c-0.4,8.9-11.6,15-19.7,9.1l-28.4-20.5
+									c-2.1-1.5-4.6-2.3-7.1-2.3c-2.5,0-5,0.8-7.1,2.3l-28.4,20.5c-8.2,5.9-19.4-0.2-19.7-9.1c-0.1-1.4,0.1-2.8,0.6-4.3l11.4-33.1
+									c1.6-4.9-0.2-10.3-4.4-13.4l-28.4-20.5c-9.4-6.8-4.6-23,7.1-23h35.1c5.2,0,9.8-2,11.5-6.9l10.8-33.3c1.8-5.5,6.6-8.3,11.5-8.3
+									c4.8,0,9.7,2.8,11.5,8.3l10.8,33.3c1.6,4.9,6.2,6.9,11.5,6.9h35.1C336.5,326.9,341.3,343,331.9,349.8z M494.6,416.4l-28.4,20.5
+									c-4.2,3-6,8.4-4.4,13.4l11.4,33.1c0.5,1.5,0.7,2.9,0.6,4.3c-0.4,8.9-11.6,15-19.7,9.1l-28.4-20.5c-2.1-1.5-4.6-2.3-7.1-2.3
+									c-2.5,0-5,0.8-7.1,2.3l-28.4,20.5c-8.2,5.9-19.4-0.2-19.7-9.1c-0.1-1.4,0.1-2.8,0.6-4.3l11.4-33.1c1.6-4.9-0.2-10.3-4.4-13.4
+									l-28.4-20.5c-9.4-6.8-4.6-23,7.1-23H385c5.2,0,9.8-2,11.5-6.9l10.8-33.3c1.8-5.5,6.6-8.3,11.5-8.3c4.8,0,9.7,2.8,11.5,8.3l10.8,33.3
+									c1.6,4.9,6.2,6.9,11.5,6.9h35.1C499.2,393.5,504,409.6,494.6,416.4z M169.2,416.4l-28.4,20.5c-4.2,3-6,8.4-4.4,13.4l11.4,33.1
+									c0.5,1.5,0.7,2.9,0.6,4.3c-0.4,8.9-11.6,15-19.7,9.1l-28.4-20.5c-2.1-1.5-4.6-2.3-7.1-2.3c-2.5,0-5,0.8-7.1,2.3l-28.4,20.5
+									c-8.2,5.9-19.4-0.2-19.7-9.1c-0.1-1.4,0.1-2.8,0.6-4.3l11.4-33.1c1.6-4.9-0.2-10.3-4.4-13.4l-28.4-20.5c-9.4-6.8-4.6-23,7.1-23h35.1
+									c5.2,0,9.8-2,11.5-6.9l10.8-33.3c1.8-5.5,6.6-8.3,11.5-8.3c4.8,0,9.7,2.8,11.5,8.3l10.8,33.3c1.6,4.9,6.2,6.9,11.5,6.9h35.1
+									C173.8,393.5,178.6,409.6,169.2,416.4z"/>
+				</svg>
+			</span>
+		</div>
+		<div .mainContent>
+			<div .header role="window-caption" style="background-color: rgba(255, 255, 255, .5);margin-left:-50dip;width:720dip;">
+				<h4><img src="IDR_PNG_VIBRANIUM.png" style="width:170dip;margin-top: 5dip;margin-left:6dip;margin-right:4dip;"><span style="color:#000;font-weight: 500;">Beta</span><img id="threatSecurity" src="IDR_PNG_THREAT_SECURITY.png" style="width:150dip;margin-top: 2dip;margin-left:80dip;"><img id="advanceSecurity" src="IDR_PNG_WIDGET_VIBRANIUM_ADSEC.png" style="width:150dip;margin-top: 2dip;margin-left:80dip;"></h4>
+				<div .topMenu>
+					<ul>
+						<span .clickable_cl .frame_display_src #ID_ACCOUNT_HTML><li><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 47.3 144.6 151.1" enable-background="new 0 47.3 144.6 151.1" xml:space="preserve" class="menuIconStyleAccount">
+							<path d="M142.8,122.1c0-38.9-31.6-70.5-70.5-70.5S1.8,83.2,1.8,122.1c0,20.5,8.8,39.1,22.9,52l-0.1,0.1l2.3,1.9
+							c0.1,0.1,0.3,0.2,0.5,0.4c1.2,1,2.5,2,3.8,2.9c0.4,0.3,0.8,0.6,1.3,0.9c1.4,0.9,2.8,1.8,4.2,2.7c0.3,0.2,0.6,0.4,0.9,0.5
+							c1.6,0.9,3.2,1.7,4.8,2.5c0.1,0.1,0.2,0.1,0.4,0.2c5.4,2.5,11.1,4.3,17.1,5.4c0.2,0,0.3,0.1,0.5,0.1c1.9,0.3,3.7,0.6,5.6,0.7
+							c0.2,0,0.5,0,0.7,0.1c1.9,0.2,3.8,0.3,5.7,0.3c1.9,0,3.8-0.1,5.7-0.3c0.2,0,0.5,0,0.7-0.1c1.9-0.2,3.7-0.4,5.6-0.7
+							c0.2,0,0.3-0.1,0.5-0.1c5.9-1.1,11.5-2.8,16.8-5.3c0.2-0.1,0.4-0.2,0.6-0.3c1.6-0.7,3.1-1.5,4.6-2.4c0.4-0.2,0.8-0.4,1.1-0.6
+							c1.4-0.8,2.7-1.7,4.1-2.6c0.5-0.3,0.9-0.7,1.4-1c1.1-0.8,2.2-1.6,3.3-2.5c0.2-0.2,0.5-0.4,0.7-0.6l2.3-2l-0.1-0.1
+							C133.9,161.4,142.8,142.8,142.8,122.1z M6.9,122.1c0-36.1,29.3-65.4,65.4-65.4s65.4,29.3,65.4,65.4c0,19.4-8.5,36.9-22,48.9
+							c-0.8-0.5-1.5-1-2.3-1.4l-21.7-10.9c-1.9-1-3.2-2.9-3.2-5.1v-7.6c0.5-0.6,1-1.3,1.6-2.1c2.8-4,5.1-8.4,6.7-13.1
+							c3.2-1.5,5.3-4.8,5.3-8.4v-9.1c0-2.2-0.8-4.4-2.3-6.1v-12c0.1-1.3,0.6-8.8-4.8-15c-4.7-5.4-12.4-8.1-22.7-8.1s-18,2.7-22.7,8.1
+							c-5.4,6.2-5,13.7-4.8,15v12c-1.5,1.7-2.3,3.9-2.3,6.1v9.1c0,2.8,1.3,5.5,3.4,7.2c2.1,8.1,6.4,14.3,7.9,16.4v7.4c0,2.1-1.1,4-3,5
+							l-20.3,11.1c-0.6,0.4-1.3,0.8-1.9,1.2C15.3,158.8,6.9,141.4,6.9,122.1z"/>
+						</svg></li></span>
+						<li type="menu" .helpMnu style="visibility:none;"><span .dfn style='cursor:pointer;color:#000;'>ID_STR_HELP</span>
+                            <menu>
+                                <li  #ID_BTN_HELP><label>ID_STR_HELP</label></li>
+                                <li  #ID_BTN_ONLINE_HELP><label>ID_ONLINE_HELP</label></li>
+                                <li  #ID_BTN_SUPPORT><label>ID_STR_SUPPORT</label></li>
+                                <li  #ID_BTN_PRODUCT_INFO><label>IDS_PRODINFO_PRODINFO_TEXT</label></li>
+                                <li  #ID_BTN_PROVIDE_FEEDBACK style="border-bottom:none;"><label>ID_PROVIDE_FEEDBACK</label></li>
+                            </menu>
+                        </li>
+						<li .clickable_cl role="window-minimize">
+							<!-- <svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="483" x2="485" y2="483"/>
+							</svg> -->
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+							</svg>
+						</li>
+                        <li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+							</svg>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div .contentWindow>
+			<!-- <main> -->
+				<frame #content src="IDR_HTM_HOME.htm" style="width:670dip;height:420dip;background:transparent;"></frame>
+			<!-- </main> -->
+			</div>
+			<div .footer>
+				<span .leftAl><label>ID_STR_WARDWIZ_2017</label> <label>ID_STR_ALL_RIGHTS_RESERVED</label> </span>
+				<span .rightAl .right_section1>
+				<div style="float:right;">
+				<div .horizontalFlow>
+					<div .horizontalFlow #ID_SUPPORT style="cursor:pointer">
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="MiniIcon1">
+					<g>
+						<path d="M421.1,190.1v-19.2c0-46-16.3-88.8-45.8-120.5C345,17.9,303.4,0,258,0h-15.9c-45.4,0-87,17.9-117.2,50.4
+							c-29.5,31.7-45.8,74.5-45.8,120.5v19.2c-35.8,2.4-64.3,32.2-64.3,68.7v30c0,37.9,30.9,68.8,68.8,68.8h38.8
+							c6.9,0,12.6-5.7,12.6-12.6V202.5c0-6.9-5.7-12.6-12.6-12.6h-18.1v-19c0-83.1,59.2-145.7,137.7-145.7h15.9
+							c78.6,0,137.7,62.6,137.7,145.7v19h-18.1c-6.9,0-12.6,5.7-12.6,12.6V345c0,6.9,5.7,12.6,12.6,12.6h17.6
+							c-5.1,65.8-50.4,81-71.4,84.5c-5.8-17.8-22.5-30.6-42.1-30.6h-31.5c-24.4,0-44.2,19.9-44.2,44.2c0,24.4,19.9,44.3,44.2,44.3h31.6
+							c20.4,0,37.5-13.9,42.6-32.6c10.3-1.5,26.6-5.1,42.8-14.6c22.8-13.3,49.8-40.5,53.4-95.4c36-2.2,64.6-32.1,64.6-68.7v-30
+							C485.2,222.4,456.9,192.4,421.1,190.1z M110,332.4H83.9c-24.1,0-43.6-19.5-43.6-43.6v-30c0-24.1,19.5-43.6,43.6-43.6H110V332.4z
+							 M281.8,474.8h-31.6c-10.5,0-19-8.5-19-19c0-10.5,8.5-19,19-19h31.6c10.5,0,19,8.5,19,19C300.8,466.3,292.3,474.8,281.8,474.8z
+							 M460,288.8c0,24.1-19.5,43.6-43.6,43.6h-26.2V215.1h26.2c24.1,0,43.6,19.5,43.6,43.6V288.8z"/>
+					</g>
+					</svg><label .textAlignment>ID_STR_SUPPORT</label>
+					</div>
+					<ul .social .social_style>
+					      <li .clickable_cl #fb><div class="fb_icon_menu"></div></li>
+					      <li .clickable_cl #tw><div class="tw_icon_menu"></div></li>
+					      <li .clickable_cl #ln><div class="ln_icon_menu"></div></li>
+				    </ul>
+						<!-- <div style="padding-top:6dip;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div>
+						<div .horizontalFlow>
+							
+							<label .textAlignment>Feedback</label>
+						</div> -->
+					</div>
+				</div>
+				</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

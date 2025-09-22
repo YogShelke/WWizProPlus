@@ -1,0 +1,216 @@
+<html>
+<head>
+	<title></title>
+	<style>
+		html{
+			background:transparent;
+		}
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+			background:transparent;
+			color:#fff;
+		}
+		
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:70dip;
+			height:22dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		
+		.scan_button_select:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button_select{
+			width:160dip;
+			height:22dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.left{
+			text-align:left;
+			padding-left:10dip;
+		}
+		.input_text{
+			width:180dip;
+			height:16dip;
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			color:#555555;
+			font-size:15dip;
+		}
+		h2,h3{
+			font-weight:400;
+		}
+		
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:697dip;
+			height:100dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			margin:10dip!important;
+		}
+
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: scroll-indicator;  
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		  
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:2dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center; width:.2*; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left;
+			 overflow:hidden;        /* three line below - ellipsis */
+			 text-overflow:ellipsis;
+			 white-space:nowrap;
+			 width:.4*;
+			 border-left:1dip solid #bdbccc;
+		} /* second column */
+		
+		table td:nth-child(3) {  
+			text-align:left;
+			 overflow:hidden;        /* three line below - ellipsis */
+			 text-overflow:ellipsis;
+			 white-space:nowrap;
+			 width:.4*;
+			 border-left:1dip solid #bdbccc;
+		} /* second column */
+	</style>
+</head>
+<body>
+	<h1 style="color:#fff;text-align:center;font-weight:400;">Content filter</h1>
+	<h3 style="color:#fff;text-align:center; margin:5dip 0;font-weight:300;">Allow/blocks mails as per user defined rules.</h3>
+		<div .left>
+			<input type="checkbox"><span>Enable content filter</span>
+		</div>
+		<table id="thetable"  style="margin:20dip">
+			<thead>
+				<tr>
+					<th>Action</th>
+					<th>Rule Type</th>
+					<th>Rule</th>
+				</tr>
+			</thead>  
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 style="margin-left:10dip;">Add spam filter rule</h2>
+		<select .scan_button_select style="margin-left:10dip;">
+			<option>Attachment extension is</option>
+			<option>Message contains</option>
+			<option>Subject contains</option>
+		</select>
+		<input type="text".input_text novalue="">
+		<select .scan_button>
+			<option selected>Allow</option>
+			<option>Block</option>
+		</select>
+		<button .scan_button>Delete</button>
+		<button .scan_button>Edit</button>
+		<button .scan_button>Apply</button>
+	<frame #footer_frame src="IDR_HTM_FOOTER.htm" />
+</body>
+</html>

@@ -1,0 +1,840 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">			
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css); 
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);			
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:720dip;
+		   height:402dip;
+		   overflow:hidden;
+		}
+		body{
+			width:720dip;
+			height:402dip;
+			margin:0;
+			padding:0;
+			background-size:cover;
+			background-repeat: no-repeat;
+			position:relative;	
+			overflow:hidden;
+			//border:1px solid #3d748e;
+		}		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.mainUninstall{
+			width:720dip;
+			height:400dip;
+			background-size:cover;
+		}
+		.mainUninstall .header{
+			width:720dip;
+			height:40dip;
+			flow:horizontal;
+		}
+		.mainUninstall .header .tempLogo{
+			width:660dip;
+			padding-left:10dip;
+			padding-top:3dip;
+			flow:horizontal;
+		}	
+		.mainUninstall .titleCont{	
+			width:720dip;
+			text-align:center;
+			min-height:10dip;
+			padding-top:30dip; 
+		}
+		.mainUninstall .header{
+			width:720dip;
+		}	
+		.uninstall_wardwiz:expanded{
+			visibility:visible;
+		}
+		.uninstall_wardwiz:collapsed{
+			visibility:none;
+		}
+		.passwordLockUninstall{
+			height:350dip; 
+			position:relative;
+			margin-left:185dip;
+		}
+		.passwordLockUninstall:collapsed{
+			visibility:none;
+		}
+		.passwordLockUninstall:expanded{
+			visibility:visible;
+		}
+		.unsinstallWidget widget{
+			flow:horizontal;
+			margin-top:45dip;
+		}
+		.unsinstallWidget .eye{
+			font-size:10dip;
+			width:22dip;
+			height:21dip;
+			margin-left:-23dip;
+			padding-top:3dip;
+		}
+		.unsinstallWidget .input_password{	
+			width:335dip;
+			margin-bottom:5dip;
+			display:inline-block;
+			height:21dip;
+			margin-left:1dip;
+			padding-left:10dip;
+		}
+		.unsinstallWidget .null_button{
+			padding:0;
+			cursor:pointer;
+		}
+		.inner_bodyUninstall{
+			visibility:visible;
+		}		
+		.inner_bodyUninstall:collapsed{
+			visibility:none;
+		}
+		.inner_bodyUninstall:expanded{
+			visibility:visible;
+		}
+		.inner_bodyUninstall .step1{
+			visibility:visible;
+		}
+		.inner_bodyUninstall .step1:collapsed{
+			visibility:none;
+		}
+		.inner_bodyUninstall .step2{
+			visibility:none;
+		}
+		.inner_bodyUninstall .step2:collapsed{
+			visibility:visible;
+		}
+		.inner_bodyUninstall .step3{
+			visibility:none;
+		}
+		.inner_bodyUninstall .step3:collapsed{
+			visibility:visible;
+		}
+		.inner_bodyUninstall .step3 .finish h1{
+			margin-top:30dip;
+		}
+		.inner_bodyUninstall .step3 .finish img{
+			margin-top:5dip;
+		}
+		.inner_bodyUninstall .step1 p{
+			padding:10dip;
+		}
+		.inner_bodyUninstall .step2 h3{
+			padding:10dip;
+			font-weight:400;
+			margin:0;
+		}
+		.inner_bodyUninstall .step2 .id_btn_close{
+			margin-top:5dip;
+		}
+		.inner_bodyUninstall .step3 .finish h3{
+			padding:20dip;
+			font-weight:400;
+			margin-top:10dip;
+			height:20dip;
+		}
+		.checkbox_container_uninstall{
+			padding-left:30dip;
+			min-height:100dip;
+		}
+		.footer_buttons_uninstall #ID_BTN_CLOSE:disabled{
+			opacity:.5;
+		}
+		.footer_buttons_uninstall{
+			width:710dip;
+			text-align:right;
+				}
+		.progress_bar_container_uninstall{
+			padding-left:10dip;
+			min-height:30dip;
+		}
+		.progress_bar_container_uninstall #progress_bar{
+			width:700dip;
+			padding:0dip;
+		}
+		.progress_bar_container_uninstall .percentage_container{
+			text-align:center;
+			margin-top:-20dip;
+		}
+		.progress_bar_container_uninstall progress#progress_bar
+		{
+			foreground-position:20 20 20 20; 
+			height:17dip;
+		}
+		.minimize_window_uninstall{
+			width:700dip;
+			margin-left:10dip;
+			padding:10dip 0;
+		}	
+		.minimize_window_uninstall p{
+			padding-left:10dip;
+		}	
+		.finish_footer{
+			margin-top:2dip;
+			margin-left:190dip;
+		}		
+		.uninstallTpMnu{
+			margin-top:10dip;
+			margin-left:18dip;
+			color:#fff;
+		}
+		.unsinstallWidget .null_button{
+			background:none;border:none;
+		}
+	</style>
+    <script type="text/tiscript">
+    include "IDR_TIS_MAIN.tis";
+    </script>	
+   	<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	include "IDR_TIS_SQLITE.tis";
+	</script>
+    <script type="text/tiscript">
+		if(productVersion == #BASIC){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+		}
+		else if(productVersion == #ESSENTIAL){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+		}
+		else if(productVersion == #ESSENTIALPLUS){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS 2020";
+		}
+    </script>
+    <script type="text/tiscript">
+	    var bIsUninstallStarted = false;
+	</script>
+	<script type="text/tiscript">
+		var varDBPath;
+		var DataBase;
+		var varGetRecordSetVal;
+		var varFeatureID;
+		var g_password = "";
+	</script>
+	<script type= "text/tiscript">
+	var varFieldVal = 0;
+	function GetRecSetVal(varRecordSet)
+	{
+		for (var varVirtualDBCount in varRecordSet)
+		{
+			varFieldVal = varVirtualDBCount;
+		}
+	}
+	</script>
+	<script type="text/tiscript">
+    /*function FunCheckforFeatures()
+    {
+        $(#ID_INVALID_MSG).state.collapsed = true;
+        varDBPath = view.GetDBPathforEPS();
+        DataBase = DB.open(varDBPath);
+        var varGetRecordSetVal = DataBase.exec("select BACCESSVAL from WWIZFEATURESACCESS where MODULE_ID = ?",varFeatureID);
+        if (varGetRecordSetVal instanceof Recordset)
+            GetRecSetVal(varGetRecordSetVal);
+        varGetRecordSetVal.close();
+        var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+        if(varPassword == 101)
+        {
+            g_IsPasswordProtect = false;
+        }
+        else
+        {
+            g_IsPasswordProtect = true;
+            varPassword.close();
+        }
+        DataBase.close();
+        if(varFieldVal == 1)
+        {
+            return true;
+        }
+        else
+        {
+            $(.message_display_block).state.collapsed = true;
+            $(#ID_STATUS_MSG).text = Lang.translate("ID_U_DONT_VE_ACC_FEATURE");
+            $(.disable_div).state.disabled = true;
+        }
+    }*/	
+    </script>
+	<script type="text/tiscript">
+	function OnStartUninstall()
+	{		
+		$(.step2).state.collapsed = true;
+		$(.step1).state.collapsed = true;
+        /*if(productVersion == #PROVANTAGE)
+        {
+            varDBPath = view.GetDBPath();
+            DataBase = DB.open(varDBPath);
+            var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='Wardwiz_FoldLockerPassword'");
+            if(varPassword != 101)//if db not exist
+            {
+                if( varPassword instanceof Recordset)
+                {
+                    for (var varTableName in varPassword)
+                    {
+                        if(varTableName != "")
+                        {
+                            $(.side_menu_pwd).state.expanded = true;
+                        }
+                        else
+                        {
+                            //if password doesn't get set then and only then this 'll execute otherewise never. don't thing so such case 'll occure
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if(bIsUninstallStarted)
+                    return;
+                bIsUninstallStarted = true;
+                var vSelectedItem = new Array(0);
+                vSelectedItem[0] = {UserSettings: $(#ID_USER_SETTINGS).value, QuarantineEntries: $(#ID_QUARANTINE_ENTRIES).value};
+                view.OnClickStartUninstall(vSelectedItem, ShowPercentage, ShowFinishPage, enableDisableButton,ShowWrdWizRunning);
+                $(.step1).state.collapsed = true;
+                $(.step2).state.collapsed = true;
+            }
+        }
+        else
+        {*/
+            //$(.side_menu_pwd).state.collapsed = true;
+            if(bIsUninstallStarted)
+                return;
+            bIsUninstallStarted = true;
+            var vSelectedItem = new Array(0);
+            vSelectedItem[0] = {UserSettings: $(#ID_USER_SETTINGS).value, QuarantineEntries: $(#ID_QUARANTINE_ENTRIES).value};
+            view.OnClickStartUninstall(vSelectedItem, ShowPercentage, ShowFinishPage, enableDisableButton,ShowWrdWizRunning);
+			$(.step1).state.collapsed = true;
+			$(.step2).state.collapsed = true;
+        //}
+	}
+	</script>
+	<script type="text/tiscript">	
+	 $(#ID_BUTTON_MINIMIZE).onClick = function()
+     {
+         view.OnButtonClickMinimize();
+     }
+	 $(#close_button).onClick = function()
+     {
+	    view.OnCloseCalled();
+     }
+     $(#ID_BTN_CLOSE).onClick = function()
+     {
+		ShowFinishPage();
+		view.OnCloseCalled();
+     }
+     $(#ID_BUTTON_CLOSE).onClick = function()
+     {
+	 	view.OnCloseCalled();
+     }
+     //Function to show next page
+     $(.go_to_step2).onClick = function()
+     {
+		OnStartUninstall();
+     }
+	</script>
+	<script type="text/tiscript">	 
+     //Function to Enable disable buttons
+     function enableDisableButton(buttonID, bISEnable)
+     {
+         var vISEnable = bISEnable.toInteger();
+         var buttonState = true;
+         if(vISEnable == 1)
+             buttonState = false;
+
+         var vBtnID = buttonID.toInteger();
+         switch(vBtnID) {
+         case 0:
+             $(#close_button).state.disabled = buttonState;
+             $(#ID_BTN_CLOSE).state.disabled = buttonState;
+             break;
+         case 1: $(#ID_BUTTON_CLOSE).state.disabled = buttonState;break;
+         case 2: break;
+         case 3: break;
+         }
+     }
+
+     //Function to set percentage
+     function ShowPercentage( strPercent )
+     {
+         var varPercentage = strPercent.toInteger();
+         if(varPercentage<=0)
+         {
+             varPercentage = 1;
+         }
+         var progress = $(#progress_bar);
+         $(#percentage).text = varPercentage;
+         progress.value = varPercentage;
+     }
+	 
+     //Function to restart machine call
+     $(#ID_BUTTON_RESTARTNOW).onClick = function()
+     {
+         view.OnClickRestartNow();
+     }
+
+     $(#ID_BUTTON_RESTART_LATER).onClick = function()
+     {
+         view.close(null);
+     }
+
+     //Function which show finish page
+	 function ShowFinishPage()
+     {
+        	$(.step2).state.collapsed = false;
+            $(.step3).state.collapsed = true;
+			$(.uninstall_wardwiz).state.collapsed = true;
+            $(#ID_BUTTON_RESTARTNOW).state.focus = true;
+			
+			if(productVersion != #ELITE )
+			{
+				if(g_LanguageName == "GERMAN")
+				{
+					Sciter.launch("https://g.page/r/CcA8d9aX1rWUEBM/review");
+                    //Sciter.launch("http://www.wardwiz.in/feedback");
+				}
+				else
+				{
+					Sciter.launch("https://g.page/r/CcA8d9aX1rWUEBM/review");
+                    //Sciter.launch("http://www.wardwiz.in/feedback");
+				}
+			}
+     }
+     function ShowWrdWizRunning(varMessageText,msgType)
+     {
+         $(#ID_LIGHTBOX_TXT).text = varMessageText;
+        if(msgType == 2)
+        {
+             var res = dialog { body:$(form#simple-dialog),
+             returns: #values,
+			 caption : Lang.translate("ID_WARNING"),
+             buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+             };
+            if(res == true)
+            {
+                 return 1;
+            }
+             else
+             {
+                 return 0;
+            }
+        }
+        else
+        if(msgType == 1)
+        {
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: "OK", role:#ok, value:true }]};
+            return 0;
+        }
+     }
+    </script>
+	<script type="text/tiscript">
+    /*$(#ID_BTN_GO).onClick = function()
+    {
+       if(productVersion == #ELITE)
+        {
+            var varPasswordField = $(#ID_PASSWORD).state.value;
+            var varDecyptPaswd = view.GetDecryptPasssword(varPasswordField);
+            varDBPath = view.GetDBPathforEPS();
+            DataBase = DB.open(varDBPath);
+            var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+            if( varPassword instanceof Recordset)
+            {
+                for (var dbPwd in varPassword)
+                {
+                    if(dbPwd == varPasswordField)
+                    {
+                        g_IsPasswordSecure = true;
+                        $(.side_menu_pwd).state.collapsed = true;
+                        $(.disable_div).state.disabled = false;
+                    }
+                    else
+                    {
+                        $(#ID_INVALID_MSG).state.expanded = true;
+                        $(#ID_PASSWORD).state.value = "";
+                    }
+                }
+            }
+            DataBase.close();
+        } 
+        else
+        {
+            varDBPath = view.GetDBPath();
+            DataBase = DB.open(varDBPath);
+            var varPassword = DataBase.exec("SELECT PASSWORD FROM Wardwiz_FoldLockerPassword");
+            if( varPassword instanceof Recordset)
+            {
+                for (var dbPwd in varPassword)
+                {
+                    if(dbPwd == $(#ID_PASSWORD).state.value)
+                    {
+                        $(.side_menu_pwd).state.collapsed = true;
+						if(bIsUninstallStarted)
+							return;
+						bIsUninstallStarted = true;
+						var vSelectedItem = new Array(0);
+						vSelectedItem[0] = {UserSettings: $(#ID_USER_SETTINGS).value, QuarantineEntries: $(#ID_QUARANTINE_ENTRIES).value};
+						view.OnClickStartUninstall(vSelectedItem, ShowPercentage, ShowFinishPage, enableDisableButton,ShowWrdWizRunning);
+						$(.step1).state.collapsed = true;
+						$(.step2).state.collapsed = true;
+                    }
+                    else
+                    {
+                        $(#ID_INVALID_MSG).state.expanded = true;
+                        $(#ID_PASSWORD).state.value = "";
+                    }
+                }
+            }
+            DataBase.close();
+       }
+    }*/
+    </script>	
+    <script type="text/tiscript">
+	function CallShowUninstall(UserDefinedSettings,KeepQuarFiles)
+	{
+		if(UserDefinedSettings == true)
+		{
+			$(#ID_USER_SETTINGS).state.checked = true;
+		}
+		else
+		{
+			$(#ID_USER_SETTINGS).state.checked = false;
+		}
+		if(KeepQuarFiles == true)
+		{
+			$(#ID_QUARANTINE_ENTRIES).state.checked = true;
+		}
+		else
+		{
+			$(#ID_QUARANTINE_ENTRIES).state.checked = false;
+		}
+		$(head).$append(<style>@import url(epsCSS.css);</style>)
+		OnStartUninstall();
+	}
+	</script>
+	<script type="text/tiscript">				
+		$(#ID_BTN_FORGET_PWD).onClick = function()
+		{
+			var vArr = new Array();
+			vArr[0] = {isMailSent:0};
+            DataBase = DB.open( view.GetDBPathforEPS());				
+			var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");		
+			if(varPassword != 101)
+			{
+				varPassword.close();
+				var params = { 	ProductVersion:productVersion,
+								varLanguageValue:g_LanguageName,
+								vardb:view.GetDBPathforEPS(),
+								vArr:vArr,
+								varThemeType:g_themeType}; // parameters to pass	
+				view.dialog{
+							url: self.url("IDR_HTM_FORGOT_PASSWORD.htm"),
+							client:true,
+							alignment:-5,
+							parameters:params};			
+				if(vArr[0].isMailSent == 1)
+				{
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAIL_HAS_BEEN_SENT");
+					var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+				}					
+			}
+			DataBase.close();
+		}	
+		$(#ID_BTN_PWD_SCOPE_GO).onClick = function()
+		{
+			ValidatePassword();
+		}
+	</script>
+	<script type="text/tiscript">
+    $(#EnterPassword).on("keyup",function(event) {
+      if( event.keyCode == Event.VK_RETURN)
+      {
+		  ValidatePassword();
+      }
+    });
+    </script>
+	<script type="text/tiscript">
+		function ValidatePassword()
+		{
+			var varPassword = $(#EnterPassword).value;
+			if(g_password == varPassword)
+			{
+				g_IsPasswordEntered = true;
+				$(.passwordLockUninstall).state.collapsed = true;
+				$(.inner_bodyUninstall).state.expanded = true;
+			}
+			else
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_ENTER_VALID_PWD");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+				$(#EnterPassword).value = "";
+			}
+		}		
+	</script>
+	
+	<script type="text/tiscript">
+	  function PasswordEnter(pwd) {
+		var t = pwd.value;
+		if(	pwd.attributes["type"] == "password")
+		{
+			pwd.attributes["type"] = "text";
+		}	
+		else
+		{
+			pwd.attributes["type"] = "password";
+		}			
+	    pwd.value = t;			
+	  }
+	  
+	  function ChangePwdAttr(pwd) {
+		var t = pwd.value;
+		pwd.attributes["type"] = "password";
+		pwd.value = t;			
+	  }
+	  
+	  $(#BTN_TOGGLE).on("mousedown", function(evt){
+			PasswordEnter($(input#EnterPassword));
+	  });
+	  
+	  $(#BTN_TOGGLE).on("mouseup", function(evt){
+			ChangePwdAttr($(input#EnterPassword));
+	  });
+	  
+	</script>
+
+	<script type="text/tiscript">
+		function CheckPasswordScope()
+		{
+			var vFlag = false;
+			var varDB = view.GetDBPathforEPS();
+			DataBase = DB.open(varDB);
+			var varCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'"); 
+			if(varCheck != 101)
+			{				
+				varCheck.close();
+				varCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = 4");//"UNINSTALL":4
+				if(varCheck instanceof Recordset)
+				{
+					if(varCheck["SELECTED"] == 0)
+					{
+						$(.passwordLockUninstall).state.collapsed = true;
+						$(.inner_bodyUninstall).state.expanded = true;
+						vFlag = true;
+					}
+					varCheck.close();					
+				}
+			}	
+			else{
+				$(.passwordLockUninstall).state.collapsed = true;
+				$(.inner_bodyUninstall).state.expanded = true;
+				vFlag = true;
+			}	
+			DataBase.close();
+			return vFlag;		
+		}
+	</script>
+
+    <script type="text/tiscript">
+        function OnSetDefaultTheme()
+        {
+            $(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+            $(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+        }
+        function OnSetDarkTheme()
+        {
+            $(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+            $(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+        }
+		function OnSetCrystalTheme()
+		{
+			$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+    </script>
+
+    <script type="text/tiscript">
+        function self.ready()
+        {
+            self.language = g_LanguageName;
+            if(g_themeType == "defaultTheme")
+            {
+                OnSetDefaultTheme();
+            }
+            else if(g_themeType == "darkTheme")
+            {
+                OnSetDarkTheme();
+            }
+			else if(g_themeType == "crystalTheme")
+			{
+				OnSetCrystalTheme();
+			}
+            //$(#ID_INVALID_MSG).state.collapsed = true;
+            $(#close_button).state.disabled = false;
+            $(#ID_BTN_CLOSE).state.disabled = false;
+            $(#ID_BUTTON_CLOSE).state.disabled = false;
+            $(#ID_USER_SETTINGS).state.checked = true;
+            $(#ID_QUARANTINE_ENTRIES).state.checked = true;
+            $(.passwordLockUninstall).state.expanded = true;
+            $(.inner_bodyUninstall).state.collapsed = true;
+            $(.uninstall_wardwiz).state.expanded = true;
+            if(!CheckPasswordScope())
+            {
+                var varDB = view.GetDBPathforEPS();
+                DataBase = DB.open(varDB);
+                var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+                if(varPassword != 101)//if db not exist
+                {
+                    if( varPassword instanceof Recordset)
+                    {
+
+                            var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+                            if(varPasswordFromDB instanceof Recordset)
+                            {
+                                for(var l_varpass in varPasswordFromDB)
+                                    g_password = l_varpass;
+                                varPasswordFromDB.close();
+                            }
+                        }
+                    varPassword.close();
+                }
+                DataBase.close();
+            }
+            /*if(productVersion == #ELITE && g_IsPasswordSecure == false)
+            {
+                varFeatureID = 14;
+                FunCheckforFeatures();
+            }*/
+        }
+    </script>
+    <form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+<div .mainUninstall>
+	<div .header role="window-caption">
+		<div .tempLogo>
+			<img src="IDR_IMG_SHIELD_ICO.png" style="width:30dip;">			
+			<h4 style="margin-top:10dip">VIBRANIUM</h4>
+		</div>		
+		<div .uninstallTpMnu>				
+                <div .clickable_cl .frame_display_src #ID_BUTTON_CLOSE>X</div>
+		</div>
+	</div>
+	<div .titleCont .uninstall_wardwiz>
+		<h1 .headingTitle1><label>ID_UNINSTALL_WARDWIZ</label></h1>
+	</div>
+	<div class="passwordLockUninstall">
+		<div>
+			<div .unsinstallWidget>
+				<widget>
+					<input type="password" .input_password #EnterPassword maxlength="24" novalue="Enter Password">
+					<div class="eye"><button .null_button #BTN_TOGGLE>
+						<svg version="1.1" id="Layer_14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="eyeIcon">
+						<path fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M31,243c0,0,91-129,225-123s214,123,214,123
+							s-97,91.2-231,91c-80.3-0.1-166-50.5-208-97"/>
+						<circle fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" cx="245.5" cy="222.5" r="69.5"/>
+						<path stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M302,250c0,24-35.2,41.7-59.2,41.7S189,272.3,189,248.2
+							s29.8-43.5,53.8-43.5S302,226,302,250z"/>
+						</svg>
+					</button></div>
+				</widget>	
+			</div>
+			<div>
+				<div .btnCstmMd #ID_BTN_PWD_SCOPE_GO style="width:100dip;margin-left:60dip;"><label>ID_GO</label></div>
+				<div .btnCstmMd #ID_BTN_FORGET_PWD><label>ID_FORGOT_PASSWORD</label></div>
+			</div>
+		</div>			
+	</div>
+	
+	<div .inner_bodyUninstall>
+		<div class="step1" .disable_div>
+			<p style="color:#000"><label>ID_CONFIGURATIONS_FULLY_REMOVE_OR_SAVE_DATA_INSTALLATION_PROGRAM</label></p>
+			<div class="checkbox_container_uninstall">
+				<div>
+					<input type="checkbox" #ID_USER_SETTINGS  name="group" />
+					<label for="ID_USER_SETTINGS">ID_KEEP_USER_DEFINED_SETTINGS</label>
+				</div>
+				<div>
+					<input type="checkbox" #ID_QUARANTINE_ENTRIES name="group" />
+					<label for="ID_QUARANTINE_ENTRIES">ID_KEEP_QUARANTINED_FILES</label>
+				</div>
+			</div>
+			<div .footer_buttons_uninstall>
+				<div class="btnCstm" .go_to_step2><label>ID_NEXT_ONLINE</label></div>
+				<div class="btnCstm" #close_button><label>ID_CANCEL</label></div>
+			</div>
+		</div>
+		<!--<div .message_display_block>
+				<p #ID_STATUS_MSG>Scanning has been completed successfully!!</p>
+		</div>--> 
+		<!--Only for PRO-->
+		<!--<div .side_menu_pwd> 
+		<br/>
+			<p style="color:#fff;margin-top:60dip;"><label>Enter the password :</label></p> 
+			<input #ID_PASSWORD class="input_type1" value="" type="password">
+			<br/><br/>
+			<button .scan_button #ID_BTN_GO><label>ID_GO</label></button>
+			<br/><br/>
+			<p #ID_INVALID_MSG style="color:red;">Please enter valid password.</p>
+		</div>-->
+		
+		<div class="step2">
+			<h3><label>ID_UNINSTALLATION_IN_PROCESS</label>...</h3>
+			<div class="progress_bar_container_uninstall">
+				<div><progress #progress_bar max="100" value="0"/></div>
+				<p .percentage_container><span #percentage>0</span>%</p>
+			</div>
+			<div .minimize_window_uninstall>
+				<p><label>ID_FEEL_FREE_TO_MINIMIZE_WINDOW</label><br/><label>ID_WE_WILL_LET_YOU_KNOW_WHEN_UNINSTALLATION_FINISHED</label></p>
+                <div class="btnCstm" #ID_BUTTON_MINIMIZE><label>ID_MINIMIZE</label></div>
+			</div>
+			<div .footer_buttons_uninstall .id_btn_close>
+				<div class="btnCstm" #ID_BTN_CLOSE><label>ID_CANCEL</label></div>
+			</div>
+		</div>
+		<div class="step3">
+			<div .finish>
+				<h1 .headingTitle1><label>ID_UNINSTALLATION_COMPLETED</label></h1>				
+				<img src="IDR_PNG_OK.png">
+				<h3><label>ID_WARDWIZ_2017_HAS_BEEN_SUCCESSFULLY_REMOVED</label><br/><label>ID_RESTART_YOUR_COMPUTER_TO_COMPLETE_UNINSTALLATION</label></h3>
+			</div>
+			<div .finish_footer>
+                <div class="btnCstmMd" #ID_BUTTON_RESTARTNOW><label>ID_RESTART_NOW</label></div>
+				<div class="btnCstmMd" #ID_BUTTON_RESTART_LATER role="window-close"><label>ID_RESTART_LATER</label></div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</body>
+</html>

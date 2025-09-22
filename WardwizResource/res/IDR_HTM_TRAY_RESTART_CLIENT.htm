@@ -1,0 +1,375 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">		
+	<style>
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   overflow:hidden; 
+		   width:420dip;
+		   height:310dip;
+		}
+		body{
+			padding:0dip;
+			margin:0dip;
+			border:2dip solid #074a81;
+			width:420dip;
+			height:310dip;
+			position:relative;
+			overflow:hidden;
+			
+		}
+		.header{
+			background:#074a81;
+			border-bottom:1dip solid #074a81;
+		}
+		.logo img{
+			padding-left:1dip;
+			padding-top:5dip;
+			width:90dip!important;
+			height:auto;
+		}
+		
+		/*this is restart client code*/
+
+.title{
+	text-align:center;
+	color:#cf0202;
+	//width:400dip;
+	font-size:17dip;
+}
+.addContent
+{
+	padding-top:20dip;
+	padding-bottom:30dip
+}
+.details{
+	text-align:center;
+	width:390dip;
+	font-size:13dip;
+	padding-left:15dip;
+	padding-right:15dip;
+	padding-bottom:0;
+	padding-top:0dip;
+}
+.timer{
+	font-size:30dip;
+	padding:0;
+	margin:0;
+	color:#cf0202;
+	margin-top:-5dip;
+}
+.buttonPassword{
+	width:153dip;
+	height:30dip;
+	background:#074a81;
+	color:#fff;
+	border:1dip solid #074a81;
+	margin-top:3dip;
+}
+.buttonPasswordbtn{
+    width:161dip;
+	padding:4dip;
+	text-align:center;
+	background:#074a81;
+	color:#fff;
+	border:1dip solid #074a81;
+	margin-top:0dip;
+	margin-bottom:0dip;
+}
+.buttonPassword:collapsed{
+	visibility:none;
+}
+#message:collapsed
+{
+visibility:none;
+}
+#message:expanded
+{
+visibility:visible;
+}
+#ChkUserPwd:collapsed{
+    visibility:none;
+}
+#ChkUserPwd:expanded{
+    visibility:visible;
+}
+.check_btn:collapsed{
+    visibility:none;
+}
+.check_btn:expanded{
+    visibility:visible;
+}
+.check_pwd_btn:collapsed{
+    visibility:none;
+}
+.check_pwd_btn:expanded{
+    visibility:visible;
+}
+form.window
+	{
+		prototype: Widget url(IDR_TIS_DESKTOP_WIDGET.tis);
+		//prototype: Widget;
+		background: #dcdcdc;
+		//border: 1dip solid #074a81;
+		background-repeat: expand stretch-left stretch-right stretch-center;
+		margin:0dip;
+		transform: translate(0,0); opacity:1.0;
+		font:system;
+		padding:0dip;
+		background-repeat: no-repeat;
+		text-align:center;
+		width:418dip;
+		height:309dip;	
+		//border-bottom:2dip solid #074a81;
+}
+		.parTimer1{
+			margin-top:0dip;
+			font-size:30dip;
+			width:70dip;
+			margin-left:120dip;
+			background:#a6a6a6;
+			border-radius:5dip;
+			text-align:center;
+			padding:0dip;
+			color:red;
+		}
+		.parTimer2{
+			margin-top:0dip;
+			font-size:30dip;
+			width:70dip;
+			margin-left:140dip;
+			background:#a6a6a6;
+			border-radius:5dip;
+			text-align:center;
+			padding:0dip;;
+			color:red;
+		}
+		.parTimer3{
+			margin-top:2dip;
+			font-size:30dip;
+			width:70dip;
+			margin-left:157dip;
+			border-radius:5dip;
+			text-align:center;
+			padding-bottom:5dip;
+			padding-left:5dip;
+			padding-right:5dip;
+			padding-top:-3dip;
+			color:red;
+			position:absolute;
+		}
+		.parCtrlTitle{
+			font-size:18dip;
+			margin:0;
+			margin-top:5dip;
+			margin-right:20dip;
+			font-weight:normal;
+			color:#074a81;
+		}
+		.parCtrlDescrip{
+			font-size:14dip;
+			margin:0;
+			margin-top:2dip;
+			width:350dip;
+			margin-left:18dip;
+		}
+		.counterClass{
+			margin-top:0dip;
+			width:394dip;
+			text-align:center;
+			margin-left:12dip;
+			margin-bottom:10dip;
+		}
+    </style>
+		<script type="text/tiscript">
+        include "IDR_TIS_SQLITE.tis";
+		include "IDR_TIS_MAIN.tis";
+    </script>
+	<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+	<script type="text/tiscript">
+		var varDBPath;
+		var DataBase;
+		var varFieldVal;
+		var varGetDBValue;
+		var varIsCorrectPswd = false;
+	</script>
+	<script type="text/tiscript">
+	include "IDR_TIS_DECORATORS.tis";
+	function ValidatePassword()
+    {
+		var varPassword = $(#ChkUserPwd).value;
+		if(varPassword =="")
+		{
+		   $(#message).text =Lang.translate("ID_PLEASE_ENTER_PASSWORD");
+		   $(.message_display_block).state.collapsed = true;
+		   return;		   
+		}
+		if(varPassword == varFieldVal)
+		{   	
+			varIsCorrectPswd = true;
+		}
+		else if((varFieldVal != varPassword) && (varPassword != null))
+		{
+			$(#message).state.expanded = true;
+			$(#message).text =Lang.translate("ID_GIVEN_PASSWORD_INCORRECT");
+			return;
+		}
+	}
+	@click @on "#checkPasswordBtn": 
+	{
+		ValidatePassword();
+	}
+	@click @on "#checkPassword": 
+    {
+		$(#ChkUserPwd).state.expanded = true;
+		$(.check_btn).state.collapsed = true;
+		$(.check_pwd_btn).state.expanded = true;
+	}
+	</script>
+	<script type= "text/tiscript">
+	function GetRecSetVal(varRecordSet)
+	{
+		for (var varVirtualDBCount in varRecordSet)
+		{
+			varFieldVal = varVirtualDBCount;
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function getDatabaseInfoForClient()
+	{
+		varDBPath = view.GetDBPath();
+		DataBase = DB.open(varDBPath);
+		var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+		if (varPassword instanceof Recordset)
+		{
+			GetRecSetVal(varPassword);
+		}
+		DataBase.close();
+    }
+	function getDatabaseInfoForParCtrl()
+	{
+		varDBPath = view.GetDBPath();
+		DataBase = DB.open(varDBPath);
+		var varPassword = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+		if (varPassword instanceof Recordset)
+			GetRecSetVal(varPassword);
+		DataBase.close();
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    function countdownOn()
+    {
+        var count = 60;
+        function show()
+        {
+            $(#ID_COUNTDOWN).text = String.printf("%02d",count);
+        }
+        self.timer(1s, function()
+        {
+            if( count == 0 )
+            {
+                view.OnClickOK();
+            }
+            --count;
+            if(varIsCorrectPswd == true)
+            {
+                view.OnClickClose();
+            }
+            show(); // show current value
+            return true; // keep timer running
+        });
+        show(); // show initial value
+    }
+    function OnCallGetMsgType(varMsgType)
+    {
+        var varMessageType = varMsgType;
+        if(varMessageType == 0)//0 - restart pop-up
+        {
+            $(#ID_CONTENT_HEADER).text = Lang.translate("ID_RESTART_REQUIRED");
+            $(#ChkUserPwd).state.collapsed = true;
+            $(.check_pwd_btn).state.collapsed = true;
+            $(.check_btn).state.expanded = true;
+            $(#ID_CONTENT_MSG).text = Lang.translate("ID_WARDWIZ_PARENTAL_CONTROL");
+            getDatabaseInfoForClient();
+        }
+        else if(varMessageType == 1)//1 - PC LOCK pop-up
+        {
+            $(.title).attributes.addClass("addContent");
+            $(.details).attributes.addClass("addContent");
+            $(.timer).attributes.addClass("addClasst");
+            $(#ID_CONTENT_HEADER).text = Lang.translate("ID_CONTENT_MSG_DETAILS");
+            $(#ID_CONTENT_MSG).text = Lang.translate("ID_SYS_LOCK_SAV_CHG");
+            $(.check_btn).state.collapsed = true;
+            $(#ChkUserPwd).state.collapsed = true;
+            $(.check_pwd_btn).state.collapsed = true;
+            getDatabaseInfoForParCtrl();
+
+        }
+    }
+    </script>
+    <script type="text/tiscript">
+    function self.ready()
+    {		
+		$(#ChkUserPwd).attributes["novalue"] = Lang.translate("ID_PWD");				
+		$(#checkPassword).state.value = Lang.translate("ID_ADD_PWD");
+		view.OnCheckMsgType(OnCallGetMsgType);
+		countdownOn();
+		$(.check_btn).state.collapsed = true;
+		$(#ChkUserPwd).state.collapsed = true;
+		$(.check_pwd_btn).state.collapsed = true;
+		
+		/*$(#checkPassword).state.value = Lang.translate("ID_ADD_PWD");
+		$(#ChkUserPwd).attributes["novalue"] = Lang.translate("ID_PWD");		
+		OnCallGetMsgType(1);*/
+    }
+</script>
+    <form #simple-dialog caption="Simple!">
+        <p #StatusMessage>?</p>
+    </form>
+</head>
+<body >
+<div >
+  <!-- keep this -->
+	<div .header role="window-caption">
+		<div .logo>
+			<img src="IDR_PNG_LOGO.png" #ID_LOGO style="cursor:pointer;">
+		
+	<!-- keep this	 -->
+		
+	<form <!--#search_box .window style="position:relative;"-->
+	
+		<!-- <caption class="header"><img src="IDR_PNG_LOGO.png" class="logo"></caption><br/> -->
+	
+		<h3 #ID_CONTENT_HEADER class="title" style="color:#2b5a7e;font-weight:normal;margin-bottom:0dip;margin-top:3dip;"></h3>
+		<p #ID_CONTENT_MSG class="details" style="font-weight:normal;margin-top:4dip;"></p> 
+		<!-- <p class="timer">00:<span #ID_COUNTDOWN ></span></p>  -->
+		<div .counterClass>
+			<div .parTimer3 .blink style="position:absolute;">:</div>
+			<div .parTimer2 style="position:absolute;margin-left:207dip;" #ID_COUNTDOWN>00</div>
+			<div class="timer" .parTimer1>00</div>
+		</div>
+		<div>
+			<input type="password" #ChkUserPwd novalue="Password.." style="width:160dip;height:30dip;padding-left:10dip;"/>
+		</div> 
+		<p .check_btn style="text-align:center;">
+			<button class="buttonPassword" #checkPassword></button></p>
+		<p .check_pwd_btn style="text-align:center;">
+			<button class="buttonPasswordbtn" #checkPasswordBtn >OK</button></p>
+		<p #message style="color:red;font-weight:normal;margin-top:0dip;"></p>
+	</form>
+		</div>
+    </div>
+</div>	
+</body>
+</html>

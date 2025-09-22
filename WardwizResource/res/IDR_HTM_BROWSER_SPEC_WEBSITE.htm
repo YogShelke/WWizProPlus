@@ -1,0 +1,504 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+	<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_MAIN.css);
+	
+	html 
+	{ 
+		width:375dip;           /* preferred/initial width */
+		height:330dip;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+	}	
+	.buttons{
+		text-align:center;
+		margin-top:10dip;
+	}
+	body .SpecWebsite{ 
+		width:374dip;
+		background-size:cover;
+		padding:0; margin:0; 
+	}
+	.hdrSpecWebsite{
+		flow:horizontal;
+		width:374dip;        
+		height:40dip;
+	}
+	.browserSecBtn{
+		cursor: pointer;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		height:21dip;
+		width:80dip;
+		overflow:hidden;
+		text-align:center;
+		transition: background-image(cubic-in-out, duration:0.3s);
+		padding:0;
+		vertical-align:middle;
+		line-height:21dip;
+		font-weight:normal;
+		display:inline-block;
+		font-size:12dip;
+		color:#fff!important;
+	}
+	.browserSecBtn .bgClrSmall{
+		min-height:33dip;
+		width:122dip;
+		position:absolute;
+		z-index:-1;
+		left:-310dip;
+	}
+	.browserSecBtn:hover{
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	.browserSecBtn:hover > .bgClrSmall{
+		left:-1dip;
+	}
+	.browserSecBtn:hover > .buttonIcons{
+		visibility:visible;
+	}
+	table#managebrowser { 
+		style-set: vgrid; 
+		flow:table-fixed;
+		width:350dip;
+		height:150dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#managebrowser > thead {
+		behavior:column-resizer;  
+	}
+	table#managebrowser > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#managebrowser th 
+	{ 
+		font-size:13dip; 
+		border:none;
+		padding:4dip; 
+		background-image:url(IDR_PNG_HEADER_BASIC.png)!important;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	
+	table#managebrowser th:nth-child(1)  {  width:0.08*; }
+	table#managebrowser th:nth-child(2)  {  width:0.6*; }
+	
+	table#managebrowser th:hover 
+	{ 
+		transition:blend;
+		background-image:url(IDR_PNG_HEADER_BASIC_REVERSE.png)!important;
+	}
+	table#managebrowser td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+		color:#000!important;
+	}
+	.InputContent{
+		text-align:left;
+		margin-left:10dip;
+		margin-bottom:10dip;
+	}
+	.statusMsgSepcWeb
+	{
+		width:375dip;
+		height:18dip;
+		position:absolute;
+		text-align:center;
+		background:rgba(255,255,255,.95);
+		padding-top:16dip;
+		color:#000;
+		opacity:0;
+		transition: opacity(sine-in-out, 600ms)
+					top(sine-in-out, 600ms);
+	}
+	.statusMsgSepcWeb:collapsed
+	{
+		top:43dip;
+		opacity:1;
+	}
+	.addBtnMrgn{
+		margin-left:8dip;
+	}
+	.textClr{
+		color:White;
+	}
+	#ID_IP_EXTENSION{
+		width:255dip;
+	}
+	</style>
+	
+	<script type="text/tiscript">
+    include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	var arrOfWebsiteList = new Array(0);
+	var arrOfSpecificWebsiteList = new Array(0);
+	var g_iIndex = 0;
+	var varDataBase;
+	var varDBPath;
+	var varRecordSet;
+	var varRecords;
+	var g_CurrentUser;
+	var arrbModifyVal4MngExc = new Array(1);
+	var varWebsiteListCount = 0;
+	</script>
+	
+	<script type="text/tiscript">
+	$(body).onClick = function()
+	{
+		$(.statusMsgSepcWeb).state.collapsed = false;
+	}
+	</script>
+	
+	<script type="text/tiscript">
+		function ShowLightbox(varMsgText)
+		{
+			self.timer(50ms,function (){
+				$(#ID_STATUS_MESSAGE).value = varMsgText;
+				$(.statusMsgSepcWeb).state.collapsed = true;
+			});
+		}
+	</script>
+
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+	</script>
+
+	<script type="text/tiscript">
+     $(#ID_OK).onClick = function()
+     {
+         view.close(null);
+     }	
+	</script>
+	
+	<script type="text/tiscript">
+	function CheckIfSpecificWebsite(varInputUrl)
+	{	
+		var bFlag = false;
+		var i = 0;
+		
+		for(i = 0; i < arrOfSpecificWebsiteList.length; i++)
+		{
+				if((arrOfSpecificWebsiteList[i].WebsiteName == varInputUrl))
+				{
+					bFlag = true;
+					break;
+				}
+		}
+		if(bFlag == true)
+		{
+		
+			$(#ID_IP_EXTENSION).value = "";
+			return false;
+		}
+
+		return true;
+	}
+	</script>
+
+	<script type="text/tiscript">
+    function showRecordsetData(varRecordSet)
+    {
+		var m_iIndex = 0;
+        do
+        {
+            var varCounter = 0;
+            arrOfWebsiteList[m_iIndex] = {index : m_iIndex, selected : false, WebsiteName : "", WebSiteID : 0};
+            for (var varVirtualDBData in varRecordSet)
+            {
+				switch(varCounter)
+                {
+                    case 0:
+                            arrOfWebsiteList[m_iIndex].WebSiteID = varVirtualDBData;
+                            break;
+                    case 1:
+                            arrOfWebsiteList[m_iIndex].WebsiteName = varVirtualDBData;
+                            break;
+                }
+                varCounter++;
+            }
+            m_iIndex++;
+        }
+        while( varRecordSet.next());
+		g_iIndex = m_iIndex;
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    function GetSpecificWebsiteData(varRecords)
+    {
+		var iIndex = 0;
+        do
+        {
+            var varCount = 0;
+            arrOfSpecificWebsiteList[iIndex] = {index : iIndex, WebsiteName : "", IsSubDomain : 0};
+            for (var varVirtualData in varRecords)
+            {
+				switch(varCount)
+                {
+                    case 0:
+                            arrOfSpecificWebsiteList[iIndex].WebsiteName = varVirtualData;
+                            break;
+					case 1:
+                            arrOfSpecificWebsiteList[iIndex].IsSubDomain = varVirtualData;
+                            break;
+                }
+                varCount++;
+            }
+            iIndex++;
+        }
+        while( varRecords.next());
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_BTN_ADD).onClick = function()
+	{
+		var bFlag = false;
+		var IsNewFile = false;
+		var arrURLCount = arrOfWebsiteList.length;
+		var csInputVal = $(#ID_IP_EXTENSION).value;	 
+		
+      	csInputVal = csInputVal.replace(/^(https?:|http?:)\/\//, ""); 
+		var res = csInputVal.match("/")
+		if(res)
+		{
+			var res1 = csInputVal.indexOf("/");
+			csInputVal = csInputVal.splice(res1,csInputVal.length);
+		}
+       	if(!$(#ID_IP_EXTENSION).value)
+		{
+			ShowLightbox(Lang.translate("ID_ENTER_URL"));
+			return;
+		}
+		
+		if(!CheckIfSpecificWebsite(csInputVal.toLowerCase()))
+		{
+			return;
+		}	
+		if(g_iIndex > 0)
+		{
+            for(var URLCount = 0; URLCount<arrURLCount; URLCount++)
+            {
+                var varCurrentURL = arrOfWebsiteList[URLCount].WebsiteName;
+                if((varCurrentURL == $(#ID_IP_EXTENSION).value) ||
+					($(#ID_IP_EXTENSION).value.toLowerCase().indexOf(varCurrentURL.toLowerCase()) != -1) ||
+					(varCurrentURL.toLowerCase().indexOf($(#ID_IP_EXTENSION).value.toLowerCase()) != -1))
+                {
+                    ShowLightbox(Lang.translate("ID_URL_EXIST"));
+                 	IsNewFile = false;
+					break;
+                }
+                else
+                {
+                    $(.statusMsgSepcWeb).state.collapsed = false;
+                    IsNewFile = true;
+                }
+            }
+        }
+        else
+        {
+			$(.statusMsgSepcWeb).state.collapsed = false;
+            IsNewFile = true;
+        }
+        if(IsNewFile == true)
+        {
+				arrOfWebsiteList[g_iIndex] = {index : g_iIndex, selected : false, WebsiteName:csInputVal, WebSiteID : ++g_iIndex};
+ 			    varDataBase = DB.open(varDBPath);
+				varDataBase.exec("insert into WWIZBROWSESPECLIST (SPECIFICLIST) values (?)",csInputVal);
+				varDataBase.close();
+				arrbModifyVal4MngExc[0] = 1;
+        }
+		var vlist = $(table);
+		vlist.value = arrOfWebsiteList;
+		varWebsiteListCount = arrOfWebsiteList.length;
+		if(varWebsiteListCount ==0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfWebsiteList )
+				record.selected = selected; 
+		};
+		$(#ID_IP_EXTENSION).value = "";
+	}
+	</script>	
+
+	<script type="text/tiscript">
+    $(#ID_BTN_REMOVE).onClick = function()
+	{   
+		var bselected = false;
+		for( var record in arrOfWebsiteList )
+        {
+            bselected = record.selected;
+            if(bselected == true)
+            {
+                break;
+            }
+        }
+        if(!bselected)
+        {
+            ShowLightbox(Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION"));
+            return;
+        }
+        else
+		{
+            $(.statusMsgSepcWeb).state.collapsed = false;
+		}
+		
+		for(var URLCount = arrOfWebsiteList.length; URLCount > 0; )
+        {
+			URLCount = URLCount - 1;
+			bselected = arrOfWebsiteList[URLCount].selected;
+			if(bselected == true)
+            {
+                var varSelectedIndexVal = arrOfWebsiteList[URLCount].WebSiteID;
+                varDataBase = DB.open(varDBPath);
+                varDataBase.exec("DELETE FROM WWIZBROWSESPECLIST WHERE ID = ?", varSelectedIndexVal);
+                varDataBase.close();
+                arrOfWebsiteList.remove(URLCount);
+				g_iIndex--;
+				arrbModifyVal4MngExc[0] = 1;
+            }
+        }
+		varWebsiteListCount = arrOfWebsiteList.length;
+		if(varWebsiteListCount ==0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+		
+	}
+	</script>
+
+	<script type="text/tiscript">
+	function self.ready() {		
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		varDBPath=view.parameters.vardb;
+		arrbModifyVal4MngExc=view.parameters.IsDBModified4MngExc;
+		$(#ID_IP_EXTENSION).attributes["novalue"] = "www.example.com";
+		varDataBase = DB.open(varDBPath);
+		
+		varRecordSet = varDataBase.exec("SELECT ID,SPECIFICLIST FROM WWIZBROWSESPECLIST");
+		if(varRecordSet instanceof Recordset)
+		{
+			showRecordsetData(varRecordSet);
+			varRecordSet.close();
+		}
+		
+		var vlist = $(table);
+		vlist.value = arrOfWebsiteList;
+		varWebsiteListCount = arrOfWebsiteList.length;
+		if(varWebsiteListCount ==0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+		const selectAll = vlist.$(input#select-all);			
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			var selected = this.value;
+			for( var record in arrOfWebsiteList )
+				record.selected = selected; 
+		};
+	}
+	</script>
+</head>
+<body .SpecWebsite>
+	<div .hdrSpecWebsite>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:23dip;">
+		</window-caption>	
+		<window-button #window-close role="window-close"></window-button>
+	</div>
+	<div class="statusMsgSepcWeb">
+		<div style="margin-top:-22dip;">
+			<p #ID_STATUS_MESSAGE></p>
+		</div>
+	</div>
+	<div style="padding:2dip;">
+		<p style="color:#000;padding-left:10dip;"><label>ID_LIST_OF_URL_TOBE_BLOCKED</label>
+		</p>
+	</div>
+	<div .InputContent>
+		<input #ID_IP_EXTENSION type="text" novalue="e.g. www.example.com"/>
+		<div .browserSecBtn .addBtnMrgn #ID_BTN_ADD style="height:18dip;padding-bottom:3dip;color:#fff"><label>ID_HTM_CUSTOM_SCAN_ADD</label></div>
+	</div>
+	<div style="margin-left:10dip;" .textClr>
+	<table #managebrowser resizeable>
+    <thead>
+      <tr><th><input#select-all|checkbox /></th><th(WebsiteName)><label>ID_BROWSER_BLOCK_LIST</label></th></tr>
+    </thead>
+    <tbody .dfn>
+      <tr><td style="width:30dip;"><input(selected)|checkbox /></td><td(WebsiteName)></td></tr>
+    </tbody>
+	</table>
+	</div>
+	<div .buttons>
+		<div .browserSecBtn #ID_BTN_REMOVE><label>ID_REMOVE</label></div>
+		<div .browserSecBtn #ID_OK><label>ID_OK</label></div>
+	</div>	
+</body>
+</html>

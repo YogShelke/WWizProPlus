@@ -1,0 +1,589 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+<title>PC_Exclude_Web</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+<style>
+@import url(IDR_CSS_MAIN.css);
+@import url(IDR_CSS_VGRID.css);
+@import url(IDR_CSS_GERMAN_LANG.css);
+@import url(IDR_CSS_TOGGELER.css);
+@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+
+html 
+{
+	width:460dip;           /* preferred/initial width */
+	height:370dip;          /* content will not overflow, no vertical scrollbars on the window */  
+	overflow:hidden;
+	behavior:WardWizParControl;
+}
+
+window-button  { display:inline-block; size: 19dip; outline-color:red; behavior:clickable; clear:after;}
+window-caption { display:block; flow:text; width:*; font:system; padding: 4dip 8dip; }
+
+window-button#window-close { color:white;margin-left:35dip;margin-top:7dip;
+	background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 
+					  c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0
+					  l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269
+					  c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73
+					  L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+	background-size: 10dip;
+	background-position: 50% 50%;
+	background-repeat:no-repeat;
+	fill: #fff;
+}
+
+window-button#window-close:hover
+{
+	//background-color:red; 
+	//outline:5dip glow red -1dip; 
+	//transition: outline(linear,200ms) 
+	//background-color(linear,200ms); 
+}
+body 
+{
+	padding:0; 
+	margin:0;   
+}
+.header
+{
+	background:rgba(0,0,0,.4);
+	flow:horizontal;
+	width:458dip;        
+	height:40dip;
+}
+.scan_button:hover
+{
+	background: linear-gradient(bottom, #0780d8, #06304f);
+	transition: background(quart-out,0.5s,quart-in);
+	border:1dip solid #0780d8;
+	color:#000;
+}
+.scan_button
+{
+	width:70dip;
+	height:21dip;
+	background: linear-gradient(bottom, #06304f, #0780d8);
+	border:1dip solid #0780d8;
+	color:#fff;
+	border-radius:4dip;
+}
+.file_ext
+{
+	width:309dip;
+	margin-left:10dip;
+	padding-left:10dip;
+	height:21dip;
+	margin-right:8dip;
+}
+.close_remove
+{
+	text-align:right;
+	padding-right:15dip;
+	margin-top:5dip;
+}
+table#ID_MNG_EXCL
+{ 
+	style-set: vgrid;
+	margin-left: 10dip;
+	margin-top: 20dip;
+    width:430dip;
+	height:180dip;
+	padding:0;
+	border-spacing:0;
+	overflow-x: scroll;
+	horizontal-scrollbar: my-v-scrollbar;
+	vertical-scrollbar: my-v-scrollbar;
+	color:#000;
+}
+table#ID_MNG_EXCL > thead {
+	behavior:column-resizer;  
+}
+
+table#ID_MNG_EXCL > tbody {
+	vertical-scrollbar: my-v-scrollbar;
+} 
+table#ID_MNG_EXCL th 
+{ 
+	color: white;
+	font-size:10pt; 
+	border:none;
+	padding:4dip; 
+	background-color:#DDD; 
+	background-repeat:expand stretch-left stretch-right stretch-middle;
+	background-position:3dip 3dip 3dip 3dip;
+}
+table#ID_MNG_EXCL tr:current /* current row */ 
+{ 
+	background-color:#bdbccc; 
+	color:#000;
+}
+table#ID_MNG_EXCL th:nth-child(1) { width:2em; }
+table#ID_MNG_EXCL th:last-child { width:*; text-align:center;}
+table#ID_MNG_EXCL input { display:block; }
+table#ID_MNG_EXCL td:nth-child(1) 
+{  
+	width:0.08*;
+	padding-top:2dip;
+} /* first column */
+table#ID_MNG_EXCL td:last-child
+{  
+	text-align:center;
+	width:0.8*;
+	border-left:1dip solid #bdbccc;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+} /* second column */
+@set my-v-scrollbar //scrollbar code
+{
+  .prev { display:none; }
+  .next { display:none; }
+  
+  .base,
+  .next-page, 
+  .prev-page { background:white;}
+  
+  .slider    { background: gray;}
+ 
+  .base:disabled { background: #aaa;}
+
+  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+  
+  .slider:active { background: khaki; }
+  
+  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+  .corner { background: transparent; }
+}
+div#lightbox-shim 
+{
+  top:45dip;
+}
+div#lightbox-shim > div.dialog-frame 
+{
+	padding-right:20dip;
+	padding-left:0dip;
+}
+#select-all:disabled{
+	opacity:.3;
+}
+.header_pc_ex_dialogue{
+	flow:horizontal;
+	width:450dip;
+	height:30dip;
+}
+#ID_BTN_REMOVE{
+	margin-left:274dip;
+}
+</style>
+<script type="text/tiscript">
+include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+include "IDR_TIS_SQLITE.tis";
+</script>
+<script type="text/tiscript">
+	var arrOfWebsiteList = new Array(0);
+	var arrOfSpecificWebsiteList = new Array(0);
+	var g_iIndex = 0;
+	var varDataBase;
+	var varDBPath;
+	var varRecordSet;
+	var varRecords;
+	var g_CurrentUser;
+	var arrbModifyVal4MngExc = new Array(1);
+	var varWebsiteListCount = 0;
+</script>
+<script type="text/tiscript">
+    $(#ID_CLOSE_BTN).onClick = function()
+    {
+        view.close(null);
+    }
+	$(#window-close).onClick = function()
+    {
+        view.close(null);
+    }
+</script>
+<script type="text/tiscript">
+	function ShowLightbox(varType, varMsgText)
+	{
+		if(varType == 1)
+        {			
+			$(#StatusMessage).text = varMsgText;
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return res;
+        }
+		else if(varType == 2)
+		{
+			$(#StatusMessage).text = varMsgText;
+			var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+					};
+			return res;
+		}
+	}
+</script>
+<script type="text/tiscript">
+    $(#ID_BTN_REMOVE).onClick = function()
+	{   
+		var bselected = false;
+		for( var record in arrOfWebsiteList )
+        {
+            bselected = record.selected;
+            if(bselected == true)
+            {
+                break;
+            }
+        }
+        if(!bselected)
+        {
+            ShowLightbox(1, Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION"));
+            return;
+        }
+						
+		var res = ShowLightbox(2, Lang.translate("ID_CONF_RU_REMOVE"));		
+		if(res == false)
+		{
+			return;
+		}
+		
+		for(var URLCount = arrOfWebsiteList.length; URLCount > 0; )
+        {
+			URLCount = URLCount - 1;
+			bselected = arrOfWebsiteList[URLCount].selected;
+			if(bselected == true)
+            {
+                var varSelectedIndexVal = arrOfWebsiteList[URLCount].WebSiteID;
+                varDataBase = DB.open(varDBPath);
+                varDataBase.exec("DELETE FROM WWIZ_MANAGE_EXCLUSION_LIST WHERE ID = ?", varSelectedIndexVal);
+                varDataBase.close();
+                arrOfWebsiteList.remove(URLCount);
+				g_iIndex--;
+				arrbModifyVal4MngExc[0] = 1;
+            }
+        }
+		
+		varWebsiteListCount = arrOfWebsiteList.length;
+		if(varWebsiteListCount ==0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+	}
+</script>
+<script type="text/tiscript">
+	$(#ID_BTN_ADD).onClick = function()
+	{	
+		var bFlag = false;
+		var IsNewFile = false;
+		var arrURLCount = arrOfWebsiteList.length;
+		var csInputVal = $(#ID_IP_EXTENSION).value;
+		//var csFileExt = /[~,`,!,@,#,$,%,^,&,*,(,),_,-,+,=,{,},[,\],|,\,?,\/,.,,,',:,;,<,>]/gi;
+		//var csFileExt = /[*,|,\,?,\/,:,., ,<,>,""]/gi;
+        //var matchesArray = csInputVal.match(csFileExt);
+       	if(!$(#ID_IP_EXTENSION).value)
+		{
+			ShowLightbox(1, Lang.translate("ID_ENTER_URL"));
+			return;
+		}
+		
+		if(!CheckIfSpecificWebsite(csInputVal.toLowerCase()))
+		{
+			return;
+		}
+		
+		/*if(matchesArray != null)
+		{
+			ShowLightbox(1, Lang.translate("ID_ENTR_FILE_EXT"));
+			return;
+		}*/			
+		if(g_iIndex > 0)
+		{
+            for(var URLCount = 0; URLCount<arrURLCount; URLCount++)
+            {
+                var varCurrentURL = arrOfWebsiteList[URLCount].WebsiteName;
+                if((varCurrentURL == $(#ID_IP_EXTENSION).value) ||
+					($(#ID_IP_EXTENSION).value.toLowerCase().indexOf(varCurrentURL.toLowerCase()) != -1) ||
+					(varCurrentURL.toLowerCase().indexOf($(#ID_IP_EXTENSION).value.toLowerCase()) != -1))
+                {
+                    ShowLightbox(1, Lang.translate("ID_URL_EXIST"));
+                 	IsNewFile = false;
+					break;
+                }
+                else
+                {
+                    IsNewFile = true;
+                }
+            }
+        }
+        else
+        {
+            IsNewFile = true;
+        }
+        if(IsNewFile == true)
+        {
+            //if((arrOfWebsiteList.length) < 50)
+            //{
+				//arrOfWebsiteList[g_iIndex] = {selected: true, WebsiteName:$(#ID_IP_EXTENSION).value, varEntriesID: ++g_iIndex };
+                arrOfWebsiteList[g_iIndex] = {index : g_iIndex, selected : false, WebsiteName:$(#ID_IP_EXTENSION).value, WebSiteID : ++g_iIndex};
+ 			    varDataBase = DB.open(varDBPath);
+				varDataBase.exec("insert into WWIZ_MANAGE_EXCLUSION_LIST (FK_USERNAME, db_ExcList) values (?,?)", g_CurrentUser, $(#ID_IP_EXTENSION).value);
+				varDataBase.close();
+				arrbModifyVal4MngExc[0] = 1;
+            /*}
+            else
+            {
+                ShowLightbox(1, Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_EXCLUDE_FILES_OR_FOLDERS_FROM_SCANNING"));
+                return;
+            }*/
+        }
+		var vlist = $(table);
+		vlist.value = arrOfWebsiteList;
+		varWebsiteListCount = arrOfWebsiteList.length;
+		if(varWebsiteListCount ==0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfWebsiteList )
+				record.selected = selected; 
+		};
+		$(#ID_IP_EXTENSION).value = "";
+	}
+</script>
+<script type="text/tiscript">
+    function showRecordsetData(varRecordSet)
+    {
+		var m_iIndex = 0;
+        do
+        {
+            var varCounter = 0;
+            arrOfWebsiteList[m_iIndex] = {index : m_iIndex, selected : false, WebsiteName : "", WebSiteID : 0};
+            for (var varVirtualDBData in varRecordSet)
+            {
+				switch(varCounter)
+                {
+                    case 0:
+                            arrOfWebsiteList[m_iIndex].WebSiteID = varVirtualDBData;
+                            break;
+                    case 1:
+                            arrOfWebsiteList[m_iIndex].WebsiteName = varVirtualDBData;
+                            break;
+                }
+                varCounter++;
+            }
+            m_iIndex++;
+        }
+        while( varRecordSet.next());
+		g_iIndex = m_iIndex;
+    }
+</script>
+<script type="text/tiscript">
+    function GetSpecificWebsiteData(varRecords)
+    {
+		var iIndex = 0;
+        do
+        {
+            var varCount = 0;
+            arrOfSpecificWebsiteList[iIndex] = {index : iIndex, WebsiteName : "", IsSubDomain : 0};
+            for (var varVirtualData in varRecords)
+            {
+				switch(varCount)
+                {
+                    case 0:
+                            arrOfSpecificWebsiteList[iIndex].WebsiteName = varVirtualData;
+                            break;
+					case 1:
+                            arrOfSpecificWebsiteList[iIndex].IsSubDomain = varVirtualData;
+                            break;
+                }
+                varCount++;
+            }
+            iIndex++;
+        }
+        while( varRecords.next());
+    }
+</script>
+<script type="text/tiscript">
+	function CheckIfSpecificWebsite(varInputUrl)
+	{	
+		var bFlag = false;
+		var i = 0;
+		
+		for(i = 0; i < arrOfSpecificWebsiteList.length; i++)
+		{
+			if(arrOfSpecificWebsiteList[i].IsSubDomain == 0)
+			{
+				if((arrOfSpecificWebsiteList[i].WebsiteName == varInputUrl))
+				{
+					bFlag = true;
+					break;
+				}
+			}
+			if(self.IsDomainName(arrOfSpecificWebsiteList[i].WebsiteName,varInputUrl) == true)
+			{
+				bFlag = true;
+				break;
+			}
+			/*else if(arrOfSpecificWebsiteList[i].IsSubDomain == 1)
+			{
+				if((arrOfSpecificWebsiteList[i].WebsiteName == varInputUrl) ||
+				(varInputUrl.indexOf(arrOfSpecificWebsiteList[i].WebsiteName.toLowerCase()) != -1) ||
+				(arrOfSpecificWebsiteList[i].WebsiteName.toLowerCase().indexOf(varInputUrl) != -1))
+				{
+					bFlag = true;
+					break;
+				}
+			}*/		
+		}
+		if(bFlag == true)
+		{
+			var res = ShowLightbox(2, Lang.translate("ID_ALREADY_URL_SPECIFIC_BLOCK"));			
+			if(res == false)
+			{
+				$(#ID_IP_EXTENSION).value = "";
+				return false;
+			}
+			else
+			{
+			 	varDataBase = DB.open(varDBPath);
+                varDataBase.exec("DELETE FROM WWIZ_SPEC_WEB_BLOCK WHERE db_BlockWebsiteName = ? AND FK_USERNAME = ?", arrOfSpecificWebsiteList[i].WebsiteName, g_CurrentUser);
+                varDataBase.close();
+			}
+		}
+		return true;
+	}
+</script>
+
+<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+    }
+    function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+</script>
+
+<script type="text/tiscript">
+	function self.ready()
+	{
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+			
+		varDBPath = view.parameters.vardb;
+		arrbModifyVal4MngExc = view.parameters.IsDBModified4MngExc;
+		g_CurrentUser = view.parameters.g_CurrentUser;
+		$(body).state.focus = true;
+		$(#ID_IP_EXTENSION).attributes["novalue"] = "www.example.com";
+		varDataBase = DB.open(varDBPath);
+		varDataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_MANAGE_EXCLUSION_LIST(ID INTEGER PRIMARY KEY NOT NULL, FK_USERNAME NVARCHAR(250) NOT NULL, db_ExcList NVARCHAR(256),db_Res1 NVCHAR(212),db_Res2 NVCHAR(212),db_Res3 NVCHAR(212))");
+		varRecordSet = varDataBase.exec("SELECT ID, db_ExcList FROM WWIZ_MANAGE_EXCLUSION_LIST WHERE FK_USERNAME = ?",g_CurrentUser);
+		if(varRecordSet instanceof Recordset)
+		{
+			showRecordsetData(varRecordSet);
+			varRecordSet.close();
+		}
+		
+		varRecords = varDataBase.exec("SELECT db_BlockWebsiteName, db_IsSubDomain FROM WWIZ_SPEC_WEB_BLOCK WHERE FK_USERNAME = ?",g_CurrentUser);
+		if(varRecords instanceof Recordset)
+		{
+			GetSpecificWebsiteData(varRecords);
+			varRecords.close();
+		}
+		varDataBase.close();
+
+		var vlist = $(table);
+		vlist.value = arrOfWebsiteList;
+		varWebsiteListCount = arrOfWebsiteList.length;
+		if(varWebsiteListCount ==0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+		const selectAll = vlist.$(input#select-all);			
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			var selected = this.value;
+			for( var record in arrOfWebsiteList )
+				record.selected = selected; 
+		};
+	}
+</script>
+<form #simple-dialog>
+    <p #StatusMessage ></p>
+</form>
+</head>
+<body>
+	<div .header_pc_ex_dialogue>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:26dip;">
+		</window-caption>	
+		<window-button #window-close ></window-button>
+	</div>
+	<div>
+		<p style="color:#000;padding:5dip;padding-left:10dip;"><label>ID_LB_LIST_OF_ALLOW</label> </p>
+	</div>
+	<div>
+		<input #ID_IP_EXTENSION .file_ext type="text" novalue="e.g. www.google.com"/>
+		<div .btnCstmSmall #ID_BTN_ADD ><label>ID_HTM_CUSTOM_SCAN_ADD</label></div>		
+	</div>
+	<table #ID_MNG_EXCL .germanTableHeight resizeable>
+		<thead>
+			<tr><th><input#select-all|checkbox /></th><th(WebsiteName)><label>EXCLUSION_LIST</label></th></tr>
+		</thead>
+		<tbody .dfn>
+			<tr><td><input(selected)|checkbox /></td><td(WebsiteName)></td></tr>
+		</tbody>
+	</table>
+		<div .btnCstmSmall #ID_BTN_REMOVE ><label>ID_REMOVE</label></div>
+		<div .btnCstmSmall #ID_CLOSE_BTN ><label>ID_OK</label></div>
+</body>
+</html>

@@ -1,0 +1,1653 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<style>
+		@import url(IDR_CSS_VGRID.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		form#data-dialog > table > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			vertical-align:top;
+		}
+		html{
+			background:transparent;
+			behavior:WardWizFolderLocker;
+		}
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+			background:transparent;
+			color:#fff;
+		}
+		.fold_lock_outer_body{
+			flow:horizontal;
+		}
+		.custom_scan_tab{
+			width:230dip;
+			height:220dip;
+			margin-left:0dip;
+			margin-top:30dip;
+			position:absolute;
+		}
+		.drag_drop{
+			width:220dip;
+			height:220dip;
+			text-align:center;
+			color:#fff;
+			margin-top:10dip;
+		}
+		.drag_drop img{
+			width:100dip;
+			height:auto;
+		}
+		.custom_scan_button{
+			width:150dip;
+			height:25dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.custom_scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:677dip;
+			height:200dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: scroll;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin-top:0dip!important;
+			margin-left:0!important;
+			color:#fff;
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			vertical-scrollbar: my-v-scrollbar; 
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		  
+		table th:nth-child(1)  {  width:0.02*; }
+		table th:nth-child(2)  {  width:0.2*; }
+		table th:nth-child(3)  {  width:0.05*; }
+		table th:nth-child(4)  {  width:0.05*; }
+		table th:nth-child(5)  {  width:0.05*; }
+		table th:nth-child(6)  {  width:0.05*; }
+		table th:nth-child(7)  {  width:0.05*; }
+		  
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		//table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		//table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		table td:nth-child(3) {  text-align:center; width:0.05*;padding-top:2dip; }
+		table td:nth-child(4) {  text-align:center; width:0.05*;padding-top:2dip; }
+		table td:nth-child(5) {  text-align:center; width:0.05*;padding-top:2dip; }
+		table td:nth-child(6) {  text-align:center; width:0.05*;padding-top:2dip; }
+		table td:nth-child(7) {  text-align:center; width:0.05*;padding-top:2dip; }
+	  
+	  
+		//*******************************************************************//
+		
+		
+		
+		.settings_option{
+			
+			float:right;
+			margin-top:11dip;
+			margin-right:23dip;
+		}
+		.maximise_settings{
+			width:250dip;
+			height:28dip;
+			margin-left:-161dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			visibility:visible;
+			transition:visibility(sine-in-out, 500ms);
+			position:absolute;
+			padding-top:0;
+			margin-top:-70dip;
+			padding-right:0;
+		}
+		.maximise_settings li{
+			list-style:none;
+			float:left;
+			padding:5dip 10dip;
+			width:58dip;
+			text-align:center;
+			color:#fff;
+			cursor:pointer;
+			transition:background(sine-in-out, 200ms);
+		}
+		.maximise_settings li:hover{
+			background:rgba(0,0,0,0);
+		}
+		
+		
+	//**Drag n drop**//
+		div.file-drop-zone1 {
+			prototype: FileDropZone;
+			vertical-align:middle;
+			text-align:center;
+            //margin-left:-170dip!important;
+			//border-radius:10dip;
+			width:677dip;
+			height:200dip;
+			margin-left:20dip;
+		  }
+		  div.file-drop-zone1.active-target {
+			background:rgba(0,0,0,.5);
+		  }
+		.scan_areas{
+			visibility:visible;
+		}
+		
+		.scan_areas:collapsed{
+			visibility:none;
+		}
+		.scan_areas:expanded{
+			visibility:visible;
+		}
+		.select_all{
+		text-align:left;
+		padding-left:24dip;
+		width:335dip;
+		}
+		#SetScanStatus{
+		width:650dip;
+		text-overflow:ellipsis;
+		height:18dip;
+		overflow:hidden;
+		margin:0dip;
+		margin-left:35dip;
+		text-align:center;
+		}
+				
+		#Select_All_Enable_Disable:disabled{
+			opacity:.3;
+		}
+	//*******************************************************************//
+	.AnimatedDiv { aspect: AnimationFunction; /* see below */ } 
+    .AnimatedDiv:expanded { text-shadow: 0 0 5dip #fe980f; transform: scale(1.05); transition: transform(sine-in-out, 900ms); }
+	#ID_BTN_Show_Reports:collapsed{
+		visibility:none;
+	}
+	#ID_FILE_SCAN_COUNT{
+		visibility:none;
+	}
+	#ID_FILE_SCAN_COUNT:collapsed{
+		visibility:visible;
+	}
+	.text_color{
+		color:#109323!important;
+		font-weight:500;
+	}
+	.message_display_block p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:20dip;
+	  }
+	  .message_display_block {
+		background:rgba(0,8,44,.95);
+		position:absolute;
+		top:-50dip;
+		width:720dip;
+		height:60dip;
+		visibility:none;
+	  }
+	  .message_display_block:collapsed {
+		visibility:visible;
+		top:0dip;
+		transition:bottom(sine-in-out, 600ms);
+	  }
+	  .forget_pwd_message_display_block p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:20dip;
+		color:#fff;
+	  }
+	  .forget_pwd_message_display_block {
+		background:rgba(0,0,0,.92);
+		position:absolute;
+		margin-top:85dip;
+		width:720dip;
+		height:60dip;
+		visibility:none;
+	  }
+	  .forget_pwd_message_display_block:collapsed {
+		visibility:visible;
+		top:0dip;
+		transition:bottom(sine-in-out, 600ms);
+	  }
+	  .file_folder{
+			margin:0;
+			padding:0;
+		}
+		.selector_click:hover > .file_folder_div{
+			visibility:visible!important;
+		}
+		.file_folder_div{
+			visibility:none;
+			position:absolute;
+			top:26dip;
+			left:0;
+			right:-2dip;
+			background:#0780d8;
+			border-radius:0;
+			padding:0;
+		}
+		.file_fold_div{
+			visibility:visible;
+			position:absolute;
+			float:right;
+			height:25dip;
+			top:0dip;
+			left:77dip;
+			right:-2dip;
+			border:1dip solid #0780d8;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			padding:0;
+			line-height:23dip;
+		}
+		.file_folder li{
+			list-style:none;
+			display:inline-block;
+			padding:2dip;
+			padding-top:4dip;
+			padding-bottom:4dip;
+			width:68dip;
+			behavior:clickable;
+			color:#000;
+			text-align:center;
+			margin-right:0;
+		}
+		.file_folder li:hover{
+			color:white;
+			/*color:#000;*/
+			cursor:pointer;
+		}
+		.selector_click{
+			width:60dip;
+			height:24dip;
+			margin-top:0;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			color:#fff;
+			border:1dip solid #0780d8;
+			margin-left:-10dip;
+			cursor:pointer;
+			text-align:center!important;
+		}
+		.footer_buttons{
+			width:380dip;
+			height:30dip;
+			margin-left:175dip;
+		}
+		.inner_content{
+			padding-top:100dip;
+		}
+		.password_prompt{
+			width:350dip;
+			height:300dip;
+			margin-left:180dip;
+			margin-top:-40dip;
+			background-size:cover;
+		}
+		.password_prompt:expanded{
+			visibility:visible;
+		}
+		.password_prompt:collapsed{
+			visibility:none;
+		}
+		.confirm_password:expanded{
+			visibility:visible;
+		}
+		.confirm_password:collapsed{
+			visibility:none;
+		}
+		.enter_password:expanded{
+			visibility:visible;
+		}
+		.enter_password:collapsed{
+			visibility:none;
+		}
+		.confirm_password{
+			margin-top:10dip;
+		}
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:50dip;
+			height:21dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.conf_pwd{
+			visibility:visible;
+		}
+		.conf_pwd:collapsed{
+			visibility:none;
+		}
+		.conf_pwd:expanded{
+			visibility:visible;
+		}
+		.conf_pwd{
+			margin-bottom:5dip;
+		}
+		
+		.side_menu_pwd
+		{
+			position:absolute;
+			width:720dip;
+			height:140dip;
+			background:rgba(0,8,44,.95);
+			text-align:center;
+			top:-330dip;
+			opacity:0;
+			transition:bott(sine-in-out, 500ms) opacity(sine-in-out, 500ms);
+		}
+		.side_menu_pwd:collapsed
+		{
+			visibility:none;
+		}
+		.side_menu_pwd:expanded
+		{
+			top:0dip;
+			opacity:1;
+			transition:top(sine-in-out, 500ms) opacity(sine-in-out, 500ms);	
+		}
+		#ID_INVALID_MSG:collapsed
+		{
+			visibility:none;
+		}
+		#ID_INVALID_MSG:expanded
+		{
+			visibility:visible;
+		}
+		.message_block p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:20dip;
+		color:#fff;
+	  }
+	  .message_block {
+		background:rgba(0,8,44,.95);
+		position:absolute;
+		top:-50dip;
+		width:720dip;
+		height:60dip;
+		visibility:none;
+	  }
+	  .message_block:collapsed {
+		visibility:visible;
+		top:0dip;
+		transition:bottom(sine-in-out, 600ms);
+	  }
+	    #ID_BTN_SKIP:expanded{
+		    visibility:visible;
+	    }
+	    #ID_BTN_SKIP{
+		    visibility:none;
+	    }
+		widget{
+			flow:horizontal;
+		}
+		.eye{
+			color:#fff;
+			font-size:10dip;
+			width:22dip;
+			height:15dip;
+			margin-left:-25dip;
+		}
+		.null_button{
+			background:none;border:none;
+			padding:0dip;
+			cursor:pointer;
+			font-weight:bold;
+			color:#6BA7BF;
+			text-decoration:underline;			
+		}
+	</style>
+	<script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+	<script type="text/tiscript">
+    var FileFolderRecords = new Array(0);
+    var arrVirusFoundEntries = new Array(0);
+    var vlistObj;
+    var varDroppedFileCount = 0;
+    var varThreatFoundCount = 0;
+    var vCheckBoxDragDrop = $(body);
+    var varCheckedUnchecked = 0;
+    var IsMaxLimitReached = false;
+    var IsAllSelected = false;
+    var varRecordSet;
+    var DataBase;
+    var varDBPath;
+    var g_password = "";
+    var varIsFileOrFolder = "";
+	var g_MaxIDCount = 0;
+    </script>
+	<script type="text/tiscript">
+    function ValidatePassword()
+    {
+		var isValidPassword  = true;
+        var varPassword = $(#FoldLockPassword).value;
+        var varConfirmPassword = $(#ConfirmPassword).value;
+        var regexp = /[0-9]/gi;
+        var matchesArray = varPassword.search(regexp);
+        var spregexp = /[~,`,!,@,#,$,%,^,&,*,(,),_,-,+,=,{,},[,\],|,\,?,\/,.,,,',:,;,<,>]/gi;
+        var matchesArraySp = varPassword.search(spregexp);
+		if(g_password == "")
+		{
+			if(varPassword.length < 1 )
+			{
+				isValidPassword = false;
+				$(#message).text ="Please enter password";
+				$(.message_display_block).state.collapsed = true;
+				return false;
+			}
+			if(matchesArray < 0 )
+			{
+				isValidPassword = false;
+				$(#message).text =Lang.translate("ID_PASSWORD_SHOULD_CONTAIN_ONE_DIGIT");
+				$(.message_display_block).state.collapsed = true;
+				$(#ConfirmPassword).value ="";
+				$(#FoldLockPassword).value = "";
+				return false;
+			}
+			if(matchesArraySp < 0 )
+			{
+				isValidPassword = false;
+				$(#message).text =Lang.translate("IDS_STATIC_FLDRLCKPSSWRD_VALIDSPL");
+				$(.message_display_block).state.collapsed = true;
+				$(#ConfirmPassword).value ="";
+				$(#FoldLockPassword).value = "";
+				return false;
+			}
+			if(varPassword.length >= 1 && varPassword.length < 5)
+			{
+				isValidPassword = false;
+				$(#message).text =Lang.translate("IDS_STATIC_FLDRLCKPSSWRD_VALID5");
+				$(.message_display_block).state.collapsed = true;
+				$(#ConfirmPassword).value ="";
+				$(#FoldLockPassword).value = "";
+				return false;
+			}
+		}
+		else
+		{	
+			$(.message_display_block).state.collapsed = true;
+			if(g_password == $(#FoldLockPassword).value)
+			{
+				g_IsPasswordEntered = true;
+				$(.password_prompt).state.collapsed = true;
+				$(.scan_areas).state.expanded = true;
+				$(.message_display_block).state.collapsed = false;
+			}
+			else
+			{
+				$(#message).text = "Please enter the valid password.";
+				$(#FoldLockPassword).value = "";
+				return false;
+			}
+		}
+		return true;
+    }
+	
+	function ComparePasswords()
+	{
+		var varPassword = $(#FoldLockPassword).value;
+        var varConfirmPassword = $(#ConfirmPassword).value;
+		if(varPassword != varConfirmPassword)
+        {
+			$(#message).text =Lang.translate("ID_PLEASE_ENTER_SAME_PASSWORD");
+			$(.message_display_block).state.collapsed = true;
+            $(#ConfirmPassword).value ="";
+            $(#EncPassword).value = "";
+            return false;
+        }
+        else
+        {			
+			var varDB = view.GetDBPath();
+			DataBase = DB.open(varDB);
+			var varCheckTable = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+			if(varCheckTable == 101)
+			{
+				DataBase.exec("create table IF NOT EXISTS WWIZ_PWDFORPWDSCOPE(ID INTEGER PRIMARY KEY,PASSWORD VARCHAR (20) NOT NULL, IS_FORGET_PWD BOOL)");
+			}
+			else
+			{
+				varCheckTable.close();
+			}	
+			var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+			if(varPasswordFromDB == 101)//not sure about this 101 value every time on each pc.
+			{
+				var params = { vardb: varDB, 
+							   ProductVersion:productVersion,
+							   varLanguageValue:g_LanguageName, 
+							   varPassword:varPassword,
+							   ID:1}; //"FOLDER_LOCKER":1
+				view.dialog{
+					url: self.url("IDR_HTM_FORGET_PASSWORD.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+			}
+			else{
+				varPasswordFromDB.close();
+			}
+			//Check wheather password set/inserted in db or not
+			DataBase.close();
+			DataBase = DB.open(varDB);
+			var varCheckPassword = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+			if(varCheckPassword == 101)
+			{
+				DataBase.close();
+				return false;
+			}
+			else
+			{
+				g_IsPasswordEntered = true;
+				varCheckPassword.close();
+			}
+			DataBase.close();			
+		}		
+		
+		//to show folder locker main page(add/remove files)
+		$(.password_prompt).state.collapsed = true;
+		$(.scan_areas).state.expanded = true;
+		
+		return true;
+	}
+    </script>
+	
+    <script type="text/tiscript">
+	var FileFoldName;
+	var strFilePath;
+	$(#ID_BROWSE_FILE).onClick = function()
+    {      	 
+        var fn = view.selectFile(#open ,  "Files (*.*)|*.*" , "files");
+		if(fn)
+        {
+            FileFoldName = fn;
+            strFilePath = FileFoldName.splice(0 , 7);
+            strFilePath = strFilePath.replace("\/","\\");
+			if(self.CheckIsNetworkPath(strFilePath))
+            {
+				$(#message).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+				$(.message_display_block).state.collapsed = true;
+                return;
+            }
+            AddDroppedFileEntry(strFilePath);
+		}
+		if(IsMaxLimitReached)
+		{
+			$(#message).text = Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_CUSTOM_SCAN");
+			$(.message_display_block).state.collapsed = true;
+			IsMaxLimitReached = false;
+		}
+          return true;			
+    }
+
+    $(#ID_BROWSE_FOLDER).onClick = function()
+    {          
+        var fn = view.selectFolder();  
+		if(fn)
+        {
+            FileFoldName = fn;
+            strFilePath = FileFoldName.replace("\/","\\");
+			if(self.CheckIsNetworkPath(strFilePath))
+            {
+				$(#message).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+				$(.message_display_block).state.collapsed = true;
+                return;
+            }
+			AddDroppedFileEntry(strFilePath);
+		}
+		if(IsMaxLimitReached )
+		{
+			$(#message).text = Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_CUSTOM_SCAN");
+			$(.message_display_block).state.collapsed = true;
+			IsMaxLimitReached = false;
+		}
+         return true;			
+    }
+	
+	$(#ID_BTN_GO).onClick = function()
+	{	
+		$(.forget_pwd_message_display_block).state.collapsed = false;
+		$(.message_display_block).state.collapsed = false;
+		if(!ValidatePassword())
+		{
+			return;
+		}
+		if(g_password.length < 1)
+			if(!ComparePasswords())
+				return;
+
+		var varDB = view.GetDBPath();
+		DataBase = DB.open(varDB);
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+		if(varPassword != 101)//db not exist
+		{
+			if( varPassword instanceof Recordset)
+			{
+				var varPasswordFromDB;
+				varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+				if(varPasswordFromDB instanceof Recordset)
+				{
+					for(var l_varpass in varPasswordFromDB)
+						g_password = l_varpass;
+					varPasswordFromDB.close();
+				}				
+			}
+			varPassword.close();
+		}
+		else
+		{
+			g_password = ""; // in case table not exist and g_password returns with empty.
+		}	
+		DataBase.close();
+		
+		GetRecordDetails();
+	}
+	
+	function GetRecordDetails()
+	{
+		DataBase = DB.open(varDBPath);
+		var varRecordDetails = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='Wardwiz_FoldLockerDetails'");
+		if(varRecordDetails != 101)
+		{
+			varRecordSet = DataBase.exec("select PathID,PATH,ISFILEFOLD,ISVISIBLE,ISACCESSIBLE,ISWRITABLE,ISDELETABLE from Wardwiz_FoldLockerDetails");
+		
+			var varMaxIDCount = DataBase.exec("select ifnull(max(PathID),0)+1 from Wardwiz_FoldLockerDetails");
+					if(varMaxIDCount instanceof Recordset)
+					{
+						for(var maxId in varMaxIDCount)
+						{
+							g_MaxIDCount = maxId;
+							//this 'll useful for future to take id from DataBase.varRecordSet.
+						}
+					}
+            varMaxIDCount.close();
+			if ( varRecordSet instanceof Recordset )
+				showRecordset(varRecordSet);
+            varRecordDetails.close();
+        }
+		else
+		{
+			//Wardwiz_FoldLockerDetails table does not exist
+		}
+        DataBase.close();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+        if(productVersion == #BASIC){
+			$(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>)
+		}
+		else if(productVersion == #PROVANTAGE)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+		}
+		else if(productVersion == #ELITE)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+		}
+		else if(productVersion == #ESSENTIALPLUS)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+		}
+	</script>
+	
+	<script type= "text/tiscript">
+    function AddDroppedFileEntry( strFileFolderName)
+    {	
+        var varListEntriesLength = 0;
+        var varLastIndex = strFileFolderName.lastIndexOf("\\");
+        var varFileLength = strFileFolderName.length;
+        if(varLastIndex == --varFileLength)
+        {
+            strFileFolderName = strFileFolderName.splice(varLastIndex, varFileLength);
+        }
+		var arrFileCount = FileFolderRecords.length;
+        var IsNewFile = false;
+        if(varDroppedFileCount > 0)
+        {
+		    for(var FileCount = 0; FileCount<arrFileCount; FileCount++)
+            {
+		        var varCurrentFilePath = FileFolderRecords[FileCount].FilePathCol;
+                if(varCurrentFilePath == strFileFolderName)
+                {
+                    IsNewFile = false;
+                    break;
+                }
+                else
+                {
+                    varListEntriesLength += varCurrentFilePath.length;
+                    varListEntriesLength++;
+
+                    IsNewFile = true;
+		        }
+            }
+        }
+        else
+        {
+            $(#Select_All_Enable_Disable).state.disabled = true;
+            IsNewFile = true;
+        }
+        if(IsNewFile == true)
+        {
+			if((varListEntriesLength +strFileFolderName.length) < 1000)
+            {
+				if(self.CheckFileOrFolderPath(strFileFolderName))
+                {
+					varCheckedUnchecked = 1;
+					varIsFileOrFolder = "Folder";
+					FileFolderRecords[varDroppedFileCount] = {selected : true,varEntriesID : ++varDroppedFileCount,FilePathCol:strFileFolderName,IsFileFolderCol:"Folder",IsVisibleCol:1,IsAccessibleCol:0,IsWritableCol:0,IsDeletableCol:0};
+					$(#Select_All_Enable_Disable).state.disabled = false;
+					varListEntriesLength += strFileFolderName.length;
+                    varListEntriesLength++;
+                    DataBase = DB.open(varDBPath);
+                    DataBase.exec("create table IF NOT EXISTS Wardwiz_FoldLockerDetails (PathID INTEGER PRIMARY KEY,PATH VARCHAR(1000) NOT NULL,ISFILEFOLD VARCHAR(50) NOT NULL,ISVISIBLE INT NOT NULL,ISACCESSIBLE INT NOT NULL,ISWRITABLE INT NOT NULL,ISDELETABLE INT NOT NULL)");
+					DataBase.exec("insert into Wardwiz_FoldLockerDetails(PATH,ISFILEFOLD,ISVISIBLE,ISACCESSIBLE,ISWRITABLE,ISDELETABLE)values(?, ?, ?, ?, ?, ?)",strFileFolderName,"Folder",1,0,0,0);
+					DataBase.close();
+                }
+                else
+                {
+					varCheckedUnchecked = 0;
+					varIsFileOrFolder = "File";
+					FileFolderRecords[varDroppedFileCount] = {selected : true,varEntriesID : ++varDroppedFileCount,FilePathCol:strFileFolderName,IsFileFolderCol:"File",IsVisibleCol:1,IsAccessibleCol:0,IsWritableCol:0,IsDeletableCol:0};
+					$(#Select_All_Enable_Disable).state.disabled = false;
+					varListEntriesLength += strFileFolderName.length;
+                    varListEntriesLength++;
+                    DataBase = DB.open(varDBPath);
+                    DataBase.exec("create table IF NOT EXISTS Wardwiz_FoldLockerDetails (PathID INTEGER PRIMARY KEY,PATH VARCHAR(1000) NOT NULL,ISFILEFOLD VARCHAR(50) NOT NULL,ISVISIBLE INT NOT NULL,ISACCESSIBLE INT NOT NULL,ISWRITABLE INT NOT NULL,ISDELETABLE INT NOT NULL)");
+					DataBase.exec("insert into Wardwiz_FoldLockerDetails(PATH,ISFILEFOLD,ISVISIBLE,ISACCESSIBLE,ISWRITABLE,ISDELETABLE)values(?, ?, ?, ?, ?, ?)",strFileFolderName,"File",1,0,0,0);
+					DataBase.close();	
+                }
+            }
+            else
+            {
+                IsMaxLimitReached = true;
+            }
+        }
+		//vlistObj = $(#theFiletable);
+        //vlistObj.value = FileFolderRecords;
+		//const selectAll = vlistObj.$(input#select-all-File);
+        const selectAll = vCheckBoxDragDrop.$(input#select-all-File);
+		
+		vlistObj.on("change","tbody > tr", function() { // some change inside tr
+          // note: each row (this) is a form here so its value is structure:
+          this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+          if( !this.data.selected )
+            selectAll.value = false;
+        });
+
+		 vlistObj.on("change","#select-all-File", function() { // select/deselect all
+          var selected = this.value;
+          for( var record in FileFolderRecords )
+            record.selected = selected;
+        });
+		DataBase.close();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#ID_BTN_DELETE).onClick = function()
+    { 
+        var arrFileCount = FileFolderRecords.length;
+        var bselected = false;
+        if(FileFolderRecords.length == 0)
+        {
+            ShowLightbox(MESSAGE_TYPE.OK_BUTTON,Lang.translate("IDS_CUSTOM_SCAN_NO_ENTRY_AVAILABLE_FOR_DELETE"));
+            return;
+        }
+        for( var record in FileFolderRecords )
+        {
+            bselected = record.selected;
+            if(record.selected)
+            {
+                bselected = true;
+                break;
+            }
+        }
+        if(!bselected)
+        {
+            ShowLightbox(MESSAGE_TYPE.OK_BUTTON,Lang.translate("IDS_CUSTOM_SCAN_NO_ENTRY_SELECTED_FOR_DELETE"));
+            return;
+        }
+        for(var FileCount = FileFolderRecords.length; FileCount>0; )
+        {
+			bselected = FileFolderRecords[--FileCount].selected;
+			if(bselected == true)
+            {
+				var varSelectedIndexVal = FileFolderRecords[FileCount].varEntriesID;
+				DataBase = DB.open(varDBPath);	
+                DataBase.exec("delete from Wardwiz_FoldLockerDetails where PathID = ?",varSelectedIndexVal);
+            	DataBase.close();
+                FileFolderRecords.remove(FileCount);
+                varDroppedFileCount --;
+            }
+        }
+        if(FileFolderRecords.length == 0)
+        {
+            $(#Select_All_Enable_Disable).state.disabled = true;
+            varDroppedFileCount = 0;
+        }
+        else
+        {
+            $(#Select_All_Enable_Disable).state.disabled = false;
+        }
+    }
+    </script>	
+	
+    <script type="text/tiscript">
+	 $(body).onClick = function ()
+     {
+		$(.forget_pwd_message_display_block).state.collapsed = false;
+        $(.message_display_block).state.collapsed = false;
+		$(#FoldLockPassword).state.focus = true;
+     }
+    </script>
+
+	<script type="text/tiscript">
+    class FileDropZone :Behavior
+    {
+		function onExchange(evt)
+		{
+			if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+			{
+				this.attributes.addClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG_LEAVE )
+			{
+				this.attributes.removeClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+			{
+				stdout.println(evt.x,evt.y);
+				return true;
+			}
+			else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+			{
+				this.attributes.removeClass("active-target");
+				var fn = evt.dragging;
+				var strFileName = fn.toString();
+
+				var arrstrFileName =  strFileName.split(",file://");
+				for (var i = 0; i<arrstrFileName.length; i++)
+				{
+					var varFile = arrstrFileName[i];                    
+					if(i == 0)
+					{
+						varFile = varFile.splice(0, 7);
+					}
+                    if(self.CheckIsNetworkPath(varFile))
+						{
+							$(#message).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+							$(.message_display_block).state.collapsed = true;
+							return;
+						}
+					AddDroppedFileEntry(varFile);
+				}			
+				if(IsMaxLimitReached )
+				{
+					$(#message).text = Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_CUSTOM_SCAN");
+					$(.message_display_block).state.collapsed = true;
+					IsMaxLimitReached = false;
+				}
+				return true;
+			}
+		}
+    }
+    </script>
+	
+    <script type="text/tiscript">
+    function ShowNotificationMessage(varMsgType, strMessageText)
+    {
+        if(varMsgType == 1)
+		{
+			ShowScanFinishedMsg();
+			g_bIsAnyTaskInProcess = false;
+			ShowLightbox(MESSAGE_TYPE.OK_BUTTON,+strMessageText);
+			
+		}
+		else
+		{
+			var res = ShowLightbox(MESSAGE_TYPE.YESNO_BUTTON,+strMessageText);
+			if(res == true)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    function showRecordset(varRecordSet)
+    {
+        var iIndex = 0;
+        do
+        {
+			var varCounter = 0;
+            FileFolderRecords[iIndex] = {selected : true,varEntriesID :"",FilePathCol:"",IsFileFolderCol:"",IsVisibleCol:1,IsAccessibleCol:0,IsWritableCol:0,IsDeletableCol:0};
+			for (var varVirtualDBData in varRecordSet)
+            {
+                switch(varCounter)
+                        {
+                            case 0:
+                                    FileFolderRecords[iIndex].varEntriesID = varVirtualDBData;
+									break;
+                            case 1:
+                                    FileFolderRecords[iIndex].FilePathCol = varVirtualDBData;
+                                    break;
+                            case 2:
+                                    FileFolderRecords[iIndex].IsFileFolderCol = varVirtualDBData;
+                                    /*if(varVirtualDBData == 1)
+                                    {
+                                        FileFolderRecords[iIndex].IsFileFolder = false;
+                                    }*/
+                                    break;
+							case 3: 
+									FileFolderRecords[iIndex].IsVisibleCol = varVirtualDBData;
+                                    break;
+							case 4:
+									FileFolderRecords[iIndex].IsAccessibleCol = varVirtualDBData;
+									break;
+							case 5:
+									FileFolderRecords[iIndex].IsWritableCol = varVirtualDBData;
+									break;
+							case 6:
+									FileFolderRecords[iIndex].IsDeletableCol = varVirtualDBData;
+									break;
+                        }
+                varCounter++;
+            }
+            iIndex++;
+            varDroppedFileCount = iIndex;
+        }
+        while( varRecordSet.next());
+		return;
+    }
+    </script>
+	<script type="text/tiscript">
+	$(#ID_BTN_FORGET_PWD).onClick = function()
+	{
+		var vArr = new Array();
+		vArr[0] = {isMailSent:0};
+		$(.forget_pwd_message_display_block).state.collapsed = false;
+		DataBase = DB.open(view.GetDBPath());			
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");		
+		if(varPassword != 101)
+		{
+			varPassword.close();						
+			
+			varPassword = DataBase.exec("SELECT IS_FORGET_PWD FROM WWIZ_PWDFORPWDSCOPE");
+			
+			if(varPassword != 101 && varPassword["IS_FORGET_PWD"] == 0)
+			{
+				varPassword.close();		
+				var params = { 	ProductVersion:productVersion,
+								varLanguageValue:g_LanguageName,
+								vardb:view.GetDBPath(),
+							   vArr:vArr}; // parameters to pass	
+				view.dialog{
+							url: self.url("IDR_HTM_FORGOT_PASSWORD.htm"),
+							client:true,
+							alignment:-5,
+							parameters:params};	
+				if(vArr[0].isMailSent == 1)
+				{
+					$(.message_display_block).state.collapsed = true;
+					$(#message).text = "Mail has been sent.";
+				}				
+			}
+		}
+		DataBase.close();
+	}
+	$(#ID_BTN_SKIP).onClick = function()
+	{
+		$(.forget_pwd_message_display_block).state.collapsed = false;
+		$(.message_display_block).state.collapsed = false;
+		$(.password_prompt).state.collapsed = true;
+		$(.scan_areas).state.expanded = true;
+    }
+    </script>
+ <script type="text/tiscript">
+	var varFieldVal = 0;
+	var varGetRecordSetVal;
+	var varFeatureID;
+	
+	function GetRecSetVal(varRecordSet)
+	{
+		for (var varVirtualDBCount in varRecordSet)
+		{
+			varFieldVal = varVirtualDBCount;
+		}
+	}
+	
+	$(#ID_BTN_Enter).onClick = function()
+	{
+		var varPasswordField = $(#ID_PASSWORD).state.value;
+		var varDecyptPaswd = view.GetDecryptPasssword(varPasswordField);
+		varDBPath = view.GetDBPath();
+		DataBase = DB.open(varDBPath);
+		var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+		if( varPassword instanceof Recordset)
+		{
+			for (var dbPwd in varPassword)
+            {
+				if(dbPwd == varPasswordField)
+				{
+					g_IsPasswordSecure = true;
+					$(.side_menu_pwd).state.collapsed = true;
+					$(.disable_div).state.disabled = false;					
+				}
+				else
+				{
+					$(#ID_INVALID_MSG).state.expanded = true;
+					$(#ID_PASSWORD).state.value = "";
+				}
+            }
+		}
+		DataBase.close();
+	}
+	function FunCheckforFeatures()
+	{	
+		$(#ID_INVALID_MSG).state.collapsed = true;
+		varDBPath = self.GetDBPathforEPS();
+		DataBase = DB.open(varDBPath);
+		varGetRecordSetVal = DataBase.exec("select BACCESSVAL from WWIZFEATURESACCESS where MODULE_ID = ?",varFeatureID);
+		if (varGetRecordSetVal instanceof Recordset)
+		{
+			GetRecSetVal(varGetRecordSetVal);
+		}
+		//varGetRecordSetVal.close();
+		var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+		if(varPassword == 101)
+		{
+			g_IsPasswordProtect = false;
+		}
+		else
+		{
+			g_IsPasswordProtect = true;
+		}
+		DataBase.close();
+		varFieldVal = 1;
+		if(varFieldVal == 1)
+		{
+			if(g_IsPasswordProtect == true)
+			{
+				$(.side_menu_pwd).state.expanded = true;
+				$(.disable_div).state.disabled = true;
+				$(.message_block).state.collapsed = false;
+			}
+		}
+		else
+		{	
+			$(.disable_div).state.disabled = true;
+			$(.message_block).state.collapsed = true;
+			$(#ID_STATUS_MSG).text = "You don't have access to this feature";
+		}
+	}	
+	</script>
+		
+	<script type="text/tiscript">
+		function CheckPasswordScope()
+		{
+			var vFlag = false;
+			var varDB = view.GetDBPath();
+			DataBase = DB.open(varDB);
+			var varCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'"); 
+			if(varCheck != 101)
+			{				
+				varCheck.close();
+				varCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = 1"); //"FOLDER_LOCKER":1
+        		if(varCheck instanceof Recordset)
+				{
+					if(varCheck["SELECTED"] == 0)
+					{
+						$(.password_prompt).state.collapsed = true;
+						$(.scan_areas).state.expanded = true;
+						vFlag = true;
+					}
+					varCheck.close();					
+				}
+			}	
+			DataBase.close();
+			return vFlag;		
+		}		
+	</script>
+
+	<script type="text/tiscript">
+		function CheckForgetPwd()
+		{
+			var vFlag = 0;
+			DataBase = DB.open(view.GetDBPath());			
+			var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");		
+			if(varPassword != 101)
+			{
+				varPassword.close();						
+				
+				varPassword = DataBase.exec("SELECT IS_FORGET_PWD FROM WWIZ_PWDFORPWDSCOPE");
+				
+				if(varPassword != 101)
+				{
+					$(#ID_BTN_SKIP).state.expanded = false;
+				}					
+				if(varPassword != 101 && varPassword["IS_FORGET_PWD"] == 1)
+				{
+					varPassword.close();		
+					vFlag = 1;
+					$(#ID_BTN_FORGET_PWD).style["display"] = "none";
+				}
+				else if(varPassword == 101)
+				{
+					$(#ID_BTN_FORGET_PWD).style["display"] = "none";
+				}	
+			}
+			else if(varPassword == 101)
+			{
+				$(#ID_BTN_FORGET_PWD).style["display"] = "none";
+			}
+			
+			if(vFlag == 1)
+			{
+				$(.forget_pwd_message_display_block).state.collapsed = true;
+				$(#forget_pwd_message).text ="Forgot Password feature is disabled. Enable this feature in Settings.";
+			}
+			DataBase.close();
+		}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#FoldLockPassword).on("keyup",function(event) {  
+		  if( event.keyCode == Event.VK_RETURN)
+		  {
+			FunCheckValidPassword();
+		  }	
+		  else if( event.keyCode == Event.VK_TAB)
+		  {		
+			$(#FoldLockPassword).state.focus = false;
+			$(#ConfirmPassword).state.focus = true;
+		  }
+	});
+	
+	$(#ConfirmPassword).on("keyup",function(event) {  
+		  if( event.keyCode == Event.VK_RETURN)
+		  {
+			FunCheckValidPassword();
+		  }
+		  else if( event.keyCode == Event.VK_TAB)
+		  {
+			$(#FoldLockPassword).state.focus = true;
+			$(#ConfirmPassword).state.focus = false;
+		  }
+	});	
+	</script>
+	<script type="text/tiscript">
+		$(#BTN_TOGGLE_ENTER).on("mousedown", function(evt){
+			PasswordEnter($(input#FoldLockPassword));
+			$(#FoldLockPassword).state.focus = true;
+		});
+		
+		$(#BTN_TOGGLE_ENTER).on("mouseup", function(evt){
+			ChangePwdAttr($(input#FoldLockPassword));
+			$(#FoldLockPassword).state.focus = true;
+		});
+		 
+        $(#BTN_TOGGLE_CONFIRM).on("mousedown", function(evt){
+			PasswordEnter($(input#ConfirmPassword));
+			$(#ConfirmPassword).state.focus = true;
+		});
+	  
+	    $(#BTN_TOGGLE_CONFIRM).on("mouseup", function(evt){
+			ChangePwdAttr($(input#ConfirmPassword));
+			$(#ConfirmPassword).state.focus = true;
+		});
+	</script>
+	<script type="text/tiscript">
+		function PasswordEnter(pwd) {
+			var t = pwd.value;
+			if(	pwd.attributes["type"] == "password")
+			{
+				pwd.attributes["type"] = "text";
+			}	
+			else
+			{
+				pwd.attributes["type"] = "password";
+			}			
+			pwd.value = t;			
+		}
+		function ChangePwdAttr(pwd) {
+			var t = pwd.value;
+			pwd.attributes["type"] = "password";
+			pwd.value = t;
+		}
+	</script>
+	<script type="text/tiscript">
+	function FunCheckValidPassword()
+	{
+		$(.forget_pwd_message_display_block).state.collapsed = false;
+		$(.message_display_block).state.collapsed = false;
+		if(!ValidatePassword())
+		{
+			return;
+		}
+		if(g_password.length < 1)
+			if(!ComparePasswords())
+				return;
+	
+		var varDB = view.GetDBPath();
+		DataBase = DB.open(varDB);
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+		if(varPassword != 101)//db not exist
+		{
+			if( varPassword instanceof Recordset)
+			{
+				var varPasswordFromDB;
+				varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+				if(varPasswordFromDB instanceof Recordset)
+				{
+					for(var l_varpass in varPasswordFromDB)
+						g_password = l_varpass;
+					varPasswordFromDB.close();
+				}				
+			}
+			varPassword.close();
+		}
+		else
+		{
+			g_password = ""; // in case table not exist and g_password returns with empty.
+		}	
+		DataBase.close();
+		GetRecordDetails();
+	}
+	</script>
+	<script type="text/tiscript">
+        function self.ready()
+        {
+            hideFooterAll();
+            showFooterTwo();
+            self.language = g_LanguageName;            
+			/*if(productVersion == #ELITE && g_IsPasswordSecure == false)
+			{
+				varFeatureID = 18;
+				//FunCheckforFeatures();
+			}*/
+			
+			$(#FoldLockPassword).state.focus = true;
+			$(.password_prompt).state.expanded = true;
+			$(.scan_areas).state.collapsed = true;
+			$(#ID_BTN_SKIP).state.expanded = true;
+			varDBPath = self.GetDBPath();
+            
+			//hide forget password button if necessary
+			CheckForgetPwd();
+			
+			if(g_IsPasswordEntered == true)
+			{
+				$(.password_prompt).state.collapsed = true;
+				$(.scan_areas).state.expanded = true;
+				$(.forget_pwd_message_display_block).state.collapsed = false;
+				GetRecordDetails();
+			}
+			else
+			{
+				if(!CheckPasswordScope())
+				{
+					var varDB = view.GetDBPath();
+					DataBase = DB.open(varDB);
+					var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+					if(varPassword != 101)//if db not exist
+					{
+						if( varPassword instanceof Recordset)
+						{
+							var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+							if(varPasswordFromDB instanceof Recordset)
+							{
+								for(var l_varpass in varPasswordFromDB)
+									g_password = l_varpass;
+								varPasswordFromDB.close();
+							}
+						}
+						varPassword.close();
+					}
+					if(g_password.length > 0)
+					{
+						$(.conf_pwd).state.collapsed = true;
+					}
+					DataBase.close();
+				}
+				else{
+					GetRecordDetails();
+				}
+			}
+			//DataBase = DB.open(varDBPath);
+			//DataBase.exec("create table IF NOT EXISTS WWIZFOLDERLOCK(ID INTEGER PRIMARY KEY, NAME VARCHAR (1000) NOT NULL, ISFILEFOLD INT NOT NULL, ISVISIBLE INT NOT NULL, ISACCESSIBLE INT NOT NULL, ISWRITABLE INT NOT NULL, ISDELETABLE INT NOT NULL)");
+			/*varRecordSet = DataBase.exec("select PathID,PATH,ISFILEFOLD,ISVISIBLE,ISACCESSIBLE,ISWRITABLE,ISDELETABLE from Wardwiz_FoldLockerDetails");
+			if ( varRecordSet instanceof Recordset )
+				showRecordset(varRecordSet);
+			else
+			{
+				DataBase.close();
+			}*/
+			//DataBase.close();
+            vlistObj = $(#theFiletable);
+            vlistObj.value = FileFolderRecords;
+
+			/*varDroppedFileCount = FileFolderRecords.length;
+            if(varDroppedFileCount ==0)
+            {
+                $(#Select_All_Enable_Disable).state.disabled = true;
+            }
+            else
+            {
+                $(#Select_All_Enable_Disable).state.disabled = false;
+            }*/
+            const selectAll = vCheckBoxDragDrop.$(input#select-all-File);
+            vlistObj.on("change","tbody > tr", function() { // some change inside tr
+            // note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAll.value = false;
+			});
+
+             vCheckBoxDragDrop.on("change","#select-all-File", function() { // select/deselect all
+             var selected = this.value;
+             for( var record in FileFolderRecords )
+			 {
+				record.selected = selected;
+			 }
+			 });
+			 
+			vlistObj.on("click", ".ExcludeSubFolder", function(evt)
+			{
+				var record = this.$p(tr).data;
+				var index = FileFolderRecords.indexOf(record);
+				var bselected = this.value;
+				var varSelectedIndexVal = FileFolderRecords[index].varEntriesID;
+				var varFileFolderPath = FileFolderRecords[index].FilePath;
+				
+				if(bselected == false)
+				{
+					varCheckedUnchecked = 0;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISVISIBLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+				else
+				{
+					varCheckedUnchecked = 1;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISVISIBLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+			});
+			vlistObj.on("click", ".IsAccessibleCHKBOX", function(evt)
+			{
+				var record = this.$p(tr).data;
+				var index = FileFolderRecords.indexOf(record);
+				var bselected = this.value;
+				var varSelectedIndexVal = FileFolderRecords[index].varEntriesID;
+				var varFileFolderPath = FileFolderRecords[index].FilePath;
+				if(bselected == false)
+				{
+					varCheckedUnchecked = 0;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISACCESSIBLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+				else
+				{
+					varCheckedUnchecked = 1;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISACCESSIBLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+			});	
+					
+			vlistObj.on("click", ".IsWritableCHKBOX", function(evt)
+			{
+				var record = this.$p(tr).data;
+				var index = FileFolderRecords.indexOf(record);
+				var bselected = this.value;
+				var varSelectedIndexVal = FileFolderRecords[index].varEntriesID;
+				var varFileFolderPath = FileFolderRecords[index].FilePath;
+				if(bselected == false)
+				{
+					varCheckedUnchecked = 0;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISWRITABLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+				else
+				{
+					varCheckedUnchecked = 1;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISWRITABLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+			});		
+					
+			vlistObj.on("click", ".IsDeletableCHKBOX", function(evt)
+			{
+				var record = this.$p(tr).data;
+				var index = FileFolderRecords.indexOf(record);
+				var bselected = this.value;
+				var varSelectedIndexVal = FileFolderRecords[index].varEntriesID;
+				var varFileFolderPath = FileFolderRecords[index].FilePath;
+				if(bselected == false)
+				{
+					varCheckedUnchecked = 0;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISDELETABLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+				else
+				{
+					varCheckedUnchecked = 1;
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("UPDATE Wardwiz_FoldLockerDetails SET ISDELETABLE = ? WHERE PathID = ?",varCheckedUnchecked, varSelectedIndexVal);
+					DataBase.close();
+				}
+			});	
+        }
+    </script>
+	
+	<form #simple-dialog caption="Simple!">
+        <p #ID_STATUS_MESSAGE> </p>
+    </form>	
+</head>
+<body>
+<div .disable_div>
+	<h1 style="color:#fff;text-align:center;font-weight:300;text-shadow:1dip 1dip 6dip #292929;padding-top:1dip; margin-top:10dip"><label>ID_FOLD_LOCK</label></h1>
+	<div .message_display_block>
+        <p #message></p>
+    </div>
+	<div .forget_pwd_message_display_block>
+        <p #forget_pwd_message></p>
+    </div>	
+	<div .password_prompt>
+		<div .inner_content>
+			<form style="padding-left:50dip;">
+			<div .enter_password>
+				<p style="color:white;margin:0;margin-bottom:5dip;"><label>ID_PASSWORD</label>:</p>
+				<widget>
+					<input type="password" .input_password name="EncryptPassword" #FoldLockPassword maxlength="24" style="width:270dip;">
+					<div class="eye"><button .null_button #BTN_TOGGLE_ENTER><img src="IDR_PNG_VISIBLE.png" style="width:20dip;"></button></div>
+				</widget>	
+				<!-- <button .scan_button  #ID_OK_Button button role="default-button" .dfn>Go</button> -->
+			</div>
+			<div .confirm_password>
+				<div .conf_pwd>
+					<p style="color:white;margin:0; margin-bottom:5dip;"><label>ID_CONFIRM_PASSWORD</label>:</p>
+				<widget>
+					<input type="password" .input_password name="EncryptPassword" #ConfirmPassword maxlength="24" style="width:270dip;"><br/>
+					<div class="eye"><button .null_button #BTN_TOGGLE_CONFIRM><img src="IDR_PNG_VISIBLE.png" style="width:20dip;"></button></div>
+				</widget>
+				</div>
+				
+				<button .scan_button .scan_button_pro #ID_BTN_GO .dfn><label>ID_GO</label></button>
+				<button .scan_button .scan_button_pro #ID_BTN_FORGET_PWD style="margin-left:5dip;width:96dip;"  .dfn>ID_FORGOT_PASSWORD</button>
+				
+				<u><p #ID_BTN_SKIP style="cursor:pointer;margin-left:5dip;"><label>ID_SKIP</label></p></u>
+			</div>
+			</form>
+		</div>
+	</div>
+	<div .scan_areas>
+	<h3 style="color:#fff;text-align:center; margin:5dip 0;font-weight:300;margin-top:-5dip;"><label>ID_DRAG_DROP_FILE_FOLDER</label></h3>
+		<div .fold_lock_outer_body>
+			
+		 <div  .file-drop-zone1>
+                <table #theFiletable style="margin-left:5dip;">
+			<thead>
+				<tr>
+					<th></th><th><label>ID_INCLUDE_FILE_FOLDER</label></th><th><label>ID_TYPE</label></th><th><label>ID_VISIBLE</label></th><th><label>ID_ACCESSIBLE</label></th><th><label>ID_WRITABLE</label></th><th><label>ID_DELETABLE</label></th>
+				</tr>
+			</thead>  
+			<tbody>
+				<tr><td><input (selected)|checkbox /><label style="color:rgba(0,0,0,0);">.</label></td><td(FilePathCol)></td><td(IsFileFolderCol)>ID_FILE_FOLDER</td><td><input .ExcludeSubFolder (IsVisibleCol)|checkbox /></td><td><input .IsAccessibleCHKBOX (IsAccessibleCol)|checkbox /></td><td><input .IsWritableCHKBOX (IsWritableCol)|checkbox /></td><td><input .IsDeletableCHKBOX (IsDeletableCol)|checkbox /></td></tr>
+				
+			</tbody>
+			
+		</table>
+			
+		</div>
+		</div>
+		<p #Select_All_Enable_Disable style="float:left;margin-top:10dip;margin-left:30dip;width:105dip;height:40dip;"><input #select-all-File|checkbox style="width:15dip;height:15dip;" checked/><label for="select-all-File">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></p>
+			<div .settings_option>
+				<div .maximise_settings>
+					<ul style="padding-left:0;margin-top:0;">
+						<li style="margin-left:0dip;padding-top:0;">
+						<button class="selector_click" #AddEntry><div style="text-align:center;font-size:12.5dip;margin-top:0;".dfn>ID_HTM_CUSTOM_SCAN_ADD</div>
+							<div class="file_folder_div">
+								<ul class="file_folder">
+									<li #ID_BROWSE_FILE><label>ID_FILE</label></li>
+									<li #ID_BROWSE_FOLDER><label>ID_FOLDER</label></li>
+								</ul>
+							</div>
+						</button>
+						</li>						
+						<li><div #ID_BTN_DELETE style="min-height:25dip;"> 
+						<div class="file_fold_div">
+						<label>ID_HTM_CUSTOM_SCAN_DELETE</label>
+						</div>
+						</div></li>
+					</ul>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div .message_block>
+        <p #ID_STATUS_MSG></p>
+	</div>
+	<div .side_menu_pwd> 
+		<p style="color:#fff;margin-top:25dip;"><label>ID_ENTER_PWD</label></p> 
+		<input style="height:20dip;margin-left:35dip;" #ID_PASSWORD value="" type="password">
+		<!-- <img style="padding-bottom:-15dip;" #ID_BTN_Enter src="IDR_PNG_GO.png"> -->
+		<button .scan_button_go #ID_BTN_Enter>ID_ENTER</button>
+		<br/>
+		<p #ID_INVALID_MSG style="color:red;">ID_PLZ_ENTER_VALID_PWD</p>
+	</div>
+</body>
+</html>

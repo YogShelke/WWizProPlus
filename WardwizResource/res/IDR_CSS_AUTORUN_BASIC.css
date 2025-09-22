@@ -1,0 +1,99 @@
+.main{
+	width:720dip;
+	height:500dip;
+	background:url(IDR_JPG_BACKGROUND_BASIC.jpg)no-repeat;
+	background-size:cover;
+}
+.scan_button:hover{
+ background: linear-gradient(bottom, #888888, #000);
+ transition: background(quart-out,0.5s,quart-in);
+ border:1dip solid #888888;
+ color:#fff;
+}
+.scan_button{
+ width:100dip;
+ height:25dip;
+ background: linear-gradient(bottom, #000, #888888);
+ border:1dip solid #888888;
+ color:#fff;
+ border-radius:4dip;
+}
+ th 
+{ 
+	color: white;
+	font-size:10pt; 
+	border:none;
+	padding:4dip; 
+	background-color:#DDD; 
+	background-image:url(IDR_PNG_HEADER_BASIC.png)!important;
+	background-repeat:expand stretch-left stretch-right stretch-middle;
+	background-position:3dip 3dip 3dip 3dip;
+}
+table{
+	border:1dip solid #888888 !important; 
+}
+.selector{
+	width:100dip;
+	height:22dip;
+	background: linear-gradient(bottom, #000, #888888);
+	border:1dip solid #888888;
+	color:#fff;
+	border-radius:4dip;
+	margin-left:15dip;
+}
+.selector:hover{
+	width:100dip;
+	height:22dip;
+	background: linear-gradient(bottom, #888888, #000);
+	transition: background(quart-out,0.5s,quart-in);
+	border:1dip solid #888888;
+	color:#fff;
+	border-radius:4dip;
+	margin-left:15dip;
+}
+.condition_popup{
+	background:rgba(0,0,0,.6)!important;
+}
+
+#progress_bar{
+			width:500dip;
+			border:2dip solid #c0c0c0;
+			background:#afccfb;
+		}
+		progress#progress_bar
+		{
+			foreground:#292929;  
+			foreground-position:20 20 20 20; 
+			
+      }
+
+.dialog-frame{
+   background:rgba(9,14,20,.9)!important;
+  }
+  div#lightbox-shim > div.dialog-frame > text.buttons > button 
+{
+ width:70dip;
+ height:25dip;
+ background: linear-gradient(bottom, #000, #888888);
+ border:1dip solid #888888;
+ color:#fff;
+ border-radius:4dip;
+ cursor:pointer;
+ margin-left:10dip;
+ text-align:center;
+}
+div#lightbox-shim > div.dialog-frame > text.buttons > button:hover 
+{
+ width:70dip;
+ height:25dip;
+ background: linear-gradient(bottom, #888888, #000);
+ transition: background(quart-out,0.5s,quart-in);
+ border:1dip solid #888888;
+ color:#fff;
+ border-radius:4dip;
+ cursor:pointer;
+ margin-left:10dip;
+}
+.message_display_block {
+		background:rgba(0,0,0,.8)!important;
+	  }

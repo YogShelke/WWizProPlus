@@ -1,0 +1,620 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+<title>Rule List</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+<include src="IDR_HTM_FONT_AWESOME.htm" />	
+<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+	   width:483dip;
+	   height:263dip;
+	   overflow:hidden;
+	   behavior:WardWizFirewall;
+	}
+	body{
+	   padding:0dip;
+	   margin:0dip;
+	}
+	h3{
+		font-family: 'Source Sans Pro', sans-serif!important;
+	}
+	.main{
+		width:480dip;
+		height:260dip;
+		background-size:cover;
+	}		
+	.clickable_cl{
+		behavior:clickable;
+		cursor:pointer;
+	}
+	popup#test > button { display: block;margin:0.5em *;color:#555;} 
+	popup#test {     
+		min-width:55dip!important;
+		popup-position: top-right bottom-right;
+		margin-top:2dip;
+	}						
+	.null_button_rule{
+		background:none;border:none;
+		padding: 0 10dip;
+		cursor:pointer;
+		font-weight:bold;
+		text-decoration:underline;
+	}
+	.rule_tab_body .section{
+		width:480dip;
+		height:190dip;
+		margin-left:10dip!important;
+		margin-top:20dip!important;
+	}
+	.rule_tab_body .main .set_btn{
+		margin-left:129dip;
+	}
+	.header_rule_tab{
+		background:rgba(0,0,0,.1);
+		flow:horizontal;
+		width:482dip;        
+		height:40dip;
+	}
+	form#data-dialog > table#ID_TABLE_RULE > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#ID_TABLE_RULE { 
+		style-set: vgrid;
+		border:1dip solid #888888; 
+		flow:table-fixed;
+		width:458dip;
+		height:153dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		//margin-top:0dip!important;
+		border:0 solid #fff!important;
+		//margin-bottom:10dip;
+		color:#000!important;
+	}
+	table#ID_TABLE_RULE > thead {
+		behavior:column-resizer;  
+	}
+	table#ID_TABLE_RULE > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#ID_TABLE_RULE th 
+	{ 
+		color: white;
+		font-size:13dip; 
+		border:none;
+		padding:4dip; 
+		background-color:#DDD; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}	
+	table#ID_TABLE_RULE th:nth-child(1) {
+		width: 0.1*;
+	}
+	table#ID_TABLE_RULE th:nth-child(2) {
+		width: 0.2*;
+	}
+	table#ID_TABLE_RULE th:nth-child(3) {
+		width: 0.2*;
+	}
+	table#ID_TABLE_RULE th:nth-child(4) {
+			width: 0.3*;
+	}	
+	table#ID_TABLE_RULE th:nth-child(5) {
+		width: 0.3*;
+	}
+	table#ID_TABLE_RULE th:nth-child(6) {
+		width: 0.1*;
+	}
+	table#ID_TABLE_RULE th:hover 
+	{ 
+		color: #000;
+		transition:blend;
+	}  
+	table#ID_TABLE_RULE tr:current /* current row */ 
+	{ 
+		background-color:#bdbccc; 
+		color:#000;
+	}   
+	table#ID_TABLE_RULE td {
+		padding: 4dip!important;
+		min-height: 20dip;
+	}	
+	table#ID_TABLE_RULE td:nth-child(1) {
+		text-align:center;
+		width: 0.1*;
+	}
+	table#ID_TABLE_RULE td:nth-child(2) {
+		text-align:center;
+		width: 0.2*;
+	}
+	table#ID_TABLE_RULE td:nth-child(3) {
+		text-align:center;
+		width: 0.2*;
+	}	
+	table#ID_TABLE_RULE td:nth-child(4) {
+		text-align:center;
+		width: 0.3*;
+		padding-top:4dip!important;
+	}
+	table#ID_TABLE_RULE td:nth-child(5) {
+		text-align:center;
+		width: 0.3*;
+	}
+	table#ID_TABLE_RULE td:nth-child(6) {
+		text-align:center;
+		width: 0.1*;
+	}
+	#ID_DDBTN_ACCESS{
+		width:90dip;
+	}
+table#ID_TABLE_RULE td
+	{ 
+		color: #000;
+	} 
+</style>
+
+<script type="text/tiscript">  
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	include "IDR_TIS_SQLITE.tis";
+</script>
+
+<script type="text/tiscript">  
+	var vlist = $(#ID_TABLE_RULE);
+	var varDBPath;
+	var DataBase;
+	var ArrRules = new Array(0);
+	var ArrPrevRules = new Array(0);
+	var ArrTempRules = new Array(0);
+	var ArrAllRules = new Array(0);
+	var bDeletedRule = false;
+</script>
+
+<script type= "text/tiscript">
+	function UpdateTable(bUpdated)
+	{
+		DataBase = DB.open(varDBPath);	
+		for(var vIndex=0, vCount=0; vIndex < ArrPrevRules.length; vIndex++)
+		{
+			if(vCount < ArrRules.length && ArrPrevRules[vIndex].ID == ArrRules[vCount].ID)
+			{
+				if(ArrRules[vCount].bChanged == 1)
+				{
+					if(bUpdated[0].bUpdated != 1)
+					{
+						bUpdated[0].bUpdated = 1;
+					}
+					if(ArrRules[vCount].ProgramPath == Lang.translate("IDS_ALL_APP"))
+					{
+						DataBase.exec("UPDATE WWIZ_FIREWALL_PACKET_RULE_CONFIG SET LOCAL_IP = ?, LOCAL_IP_DATA = ?, LOCAL_PORT = ?, LOCAL_PORT_DATA = ?, REMOTE_IP = ?, REMOTE_IP_DATA = ?, REMOTE_PORT = ?, REMOTE_PORT_DATA = ?, PROGRAMPATH = ?, PROGRAMNAME = ?, PROTOCOL = ?, ACCESS = ?, NETWORKTYPE = ?, DIRECTION = ?, SETRULES = 1 WHERE ID = ?", ArrRules[vCount].Local_ip, ArrRules[vCount].Local_ip_data, ArrRules[vCount].Local_port,  ArrRules[vCount].Local_port_data,  ArrRules[vCount].Remote_ip, ArrRules[vCount].Remote_ip_data, ArrRules[vCount].Remote_port, ArrRules[vCount].Remote_port_data, "IDS_ALL_APP", "IDS_ALL_APP", ArrRules[vCount].Protocol, ArrRules[vCount].Access, ArrRules[vCount].NetworkType, ArrRules[vCount].Direction,ArrRules[vCount].ID);		
+					}
+					else
+					{
+						DataBase.exec("UPDATE WWIZ_FIREWALL_PACKET_RULE_CONFIG SET LOCAL_IP = ?, LOCAL_IP_DATA = ?, LOCAL_PORT = ?, LOCAL_PORT_DATA = ?, REMOTE_IP = ?, REMOTE_IP_DATA = ?, REMOTE_PORT = ?, REMOTE_PORT_DATA = ?, PROGRAMPATH = ?, PROGRAMNAME = ?, PROTOCOL = ?, ACCESS = ?, NETWORKTYPE = ?, DIRECTION = ?, SETRULES = 1 WHERE ID = ?", ArrRules[vCount].Local_ip, ArrRules[vCount].Local_ip_data,  ArrRules[vCount].Local_port,  ArrRules[vCount].Local_port_data,  ArrRules[vCount].Remote_ip, ArrRules[vCount].Remote_ip_data, ArrRules[vCount].Remote_port, ArrRules[vCount].Remote_port_data, ArrRules[vCount].ProgramPath, ArrRules[vCount].ProgramPath.split("\\")[ArrRules[vCount].ProgramPath.split("\\").length-1], ArrRules[vCount].Protocol, ArrRules[vCount].Access, ArrRules[vCount].NetworkType, ArrRules[vCount].Direction,ArrRules[vCount].ID);		
+					}
+				}
+				vCount++;					
+			}
+		}	
+		DataBase.close();	
+	}
+
+	function DeleteRule(bUpdated)
+	{
+		DataBase = DB.open(varDBPath);	
+		if(ArrRules.length == 0)
+		{
+			for(var vIndex=0; vIndex < ArrPrevRules.length; vIndex++)
+			{	
+				var vCheck = DataBase.exec("SELECT ID FROM WWIZ_FIREWALL_PACKET_RULE_CONFIG WHERE ID = ?",ArrPrevRules[vIndex].ID);
+				if(vCheck instanceof Recordset)
+				{
+					if(bUpdated[0].bUpdated != 1)
+					{
+						bUpdated[0].bUpdated = 1;
+					}
+					DataBase.exec("DELETE FROM WWIZ_FIREWALL_PACKET_RULE_CONFIG WHERE ID = ?",ArrPrevRules[vIndex].ID);
+					vCheck.close();
+				}				
+			}		
+			ArrPrevRules.splice(0,ArrPrevRules.length);
+		}	
+		else
+		{
+			for(var vIndex=0, vCount=0; vIndex < ArrPrevRules.length; vIndex++)
+			{
+				if((vCount < ArrRules.length && ArrPrevRules[vIndex].ID != ArrRules[vCount].ID) ||
+					(vCount >= ArrRules.length && vIndex < ArrPrevRules.length)) 
+				{
+					var vCheck = DataBase.exec("SELECT ID FROM WWIZ_FIREWALL_PACKET_RULE_CONFIG WHERE ID = ?",ArrPrevRules[vIndex].ID);
+					if(vCheck instanceof Recordset)
+					{
+						if(bUpdated[0].bUpdated != 1)
+						{
+							bUpdated[0].bUpdated = 1;
+						}
+						DataBase.exec("DELETE FROM WWIZ_FIREWALL_PACKET_RULE_CONFIG WHERE ID = ?",ArrPrevRules[vIndex].ID);
+						vCheck.close();
+					}				
+					ArrPrevRules.splice(vIndex,1);
+					vIndex--;
+				}
+				else
+				{
+					vCount++;
+				}
+			}	
+		}
+		DataBase.close();
+	}
+</script>
+
+<script type= "text/tiscript">
+    $(#window-close).onClick = function()
+    {
+        view.close();
+    }
+
+	$(#ID_BTN_CANCEL).onClick = function()
+	{
+		view.close(null);
+	}
+
+	$(#ID_BTN_OK).onClick = function()
+	{
+		var bUpdated = new Array(0);
+		bUpdated[0] = {bUpdated:0};
+		UpdateTable(bUpdated);
+		if(bDeletedRule == true)
+		{
+			DeleteRule(bUpdated);
+		}	
+		if(bUpdated[0].bUpdated == 1)
+		{
+			self.OnClickEdit();
+		}	
+		view.close(null);	
+	}
+</script>
+
+<script type="text/tiscript">
+	function InsertTempRules(iIndex1, iIndex2)
+	{	
+		ArrTempRules[iIndex1].ID = ArrRules[iIndex2].ID;
+		if(ArrRules[iIndex2].Remote_ip_data == "")
+		{
+			ArrTempRules[iIndex1].Remote_ip_data = "Any";
+		}
+		else
+		{
+			ArrTempRules[iIndex1].Remote_ip_data = ArrRules[iIndex2].Remote_ip_data;
+		}
+		if(ArrRules[iIndex2].Remote_port_data == "")
+		{	
+			ArrTempRules[iIndex1].Remote_port_data = Lang.translate("ID_ANY");
+		}
+		else
+		{	
+			ArrTempRules[iIndex1].Remote_port_data = ArrRules[iIndex2].Remote_port_data;
+		}			
+		ArrTempRules[iIndex1].ProgramPath = ArrRules[iIndex2].ProgramPath;
+		switch(ArrRules[iIndex2].Protocol)
+		{
+			case 0:ArrTempRules[iIndex1].Protocol = Lang.translate("ID_ANY");
+					break;
+			case 6:ArrTempRules[iIndex1].Protocol = Lang.translate("ID_TCP");
+					break;
+			case 17:ArrTempRules[iIndex1].Protocol = Lang.translate("ID_UDP");
+					break;
+			case 1:ArrTempRules[iIndex1].Protocol = Lang.translate("ID_ICMP");
+					break;
+		}
+		ArrTempRules[iIndex1].Access = ArrRules[iIndex2].Access;
+		switch(ArrRules[iIndex2].NetworkType)
+		{
+			case 1:ArrTempRules[iIndex1].NetworkType = Lang.translate("ID_NW_DYNAMIC");
+					break;
+			case 2:ArrTempRules[iIndex1].NetworkType = Lang.translate("ID_NW_HOME_OFFICE");
+					break;
+			case 3:ArrTempRules[iIndex1].NetworkType = Lang.translate("ID_NW_PUBLIC");
+					break;
+		}
+		switch(ArrRules[iIndex2].Direction)
+		{	
+			case 3:ArrTempRules[iIndex1].Direction =  Lang.translate("ID_BOTH");
+					break;
+			case 1:ArrTempRules[iIndex1].Direction =  Lang.translate("ID_INBOUND");
+					break;
+			case 2:ArrTempRules[iIndex1].Direction =  Lang.translate("ID_OUTBOUND");
+					break;
+		}		
+	}
+	
+	$(#ID_BTN_EDIT).onClick = function Edit()
+	{
+		$(popup#test).state.popup = false;
+		var bUpdated = new Array(0);
+		var selTempIndex = vlist.tbody.currentIndex;
+		var selRuleIndex = -1;	
+		vlist.tbody.currentIndex = -1;
+		//var vProgramName = ArrRules[selectedIndex].ProgramName;
+		bUpdated[0] = {bUpdated:-1};
+		for(var iIndex=0; iIndex < ArrRules.length; iIndex++)
+		{
+			if(ArrRules[iIndex].ID == ArrTempRules[selTempIndex].ID)
+			{
+				selRuleIndex = iIndex;
+				break;
+			}
+		}	
+		var params = { arr_of_table: ArrRules, index: selRuleIndex, All_Rules:ArrAllRules, ProductVersion:view.parameters.ProductVersion, varLanguageValue:view.parameters.varLanguageValue, bUpdated:bUpdated, varThemeType:view.parameters.varThemeType}; // parameters to pass
+		var v = view.dialog {
+			url: self.url("IDR_HTM_EXCEPTION_DIALOGUE.htm"),
+			parameters: params 
+		};
+		if(bUpdated[0].bUpdated != -1)
+		{
+			if(ArrTempRules[selTempIndex].ProgramPath != ArrRules[selRuleIndex].ProgramPath)
+			{
+				ArrTempRules.splice(selTempIndex,1);
+			}
+			else
+			{
+				InsertTempRules(selTempIndex, selRuleIndex);
+			}	
+			for(var iCount=0; iCount < ArrAllRules.length; iCount++)
+			{
+				if(ArrRules[selRuleIndex].ID == ArrAllRules[iCount].ID)	
+				{
+					ArrAllRules[iCount].Local_ip =  ArrRules[selRuleIndex].Local_ip;
+					ArrAllRules[iCount].Local_ip_data =  ArrRules[selRuleIndex].Local_ip_data;
+					ArrAllRules[iCount].Local_port =  ArrRules[selRuleIndex].Local_port;
+					ArrAllRules[iCount].Local_port_data =  ArrRules[selRuleIndex].Local_port_data;
+					ArrAllRules[iCount].Remote_ip =  ArrRules[selRuleIndex].Remote_ip;
+					ArrAllRules[iCount].Remote_ip_data =  ArrRules[selRuleIndex].Remote_ip_data;
+					ArrAllRules[iCount].Remote_port =  ArrRules[selRuleIndex].Remote_port;
+					ArrAllRules[iCount].Remote_port_data =  ArrRules[selRuleIndex].Remote_port_data;
+					ArrAllRules[iCount].ProgramPath =  ArrRules[selRuleIndex].ProgramPath;
+					//ArrAllRules[iCount].ProgramName =  ArrRules[selRuleIndex].ProgramName;
+					ArrAllRules[iCount].Protocol =  ArrRules[selRuleIndex].Protocol;
+					ArrAllRules[iCount].Access =  ArrRules[selRuleIndex].Access;
+					ArrAllRules[iCount].NetworkType =  ArrRules[selRuleIndex].NetworkType;
+					ArrAllRules[iCount].Direction =  ArrRules[selRuleIndex].Direction;
+					break;
+				}
+			}
+		}	
+	}
+
+	$(#ID_BTN_DELETE).onClick = function Delete()
+	{
+		$(popup#test).state.popup = false;
+		$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_DEL_SEL_RUL");		
+		var res = dialog { body:$(form#simple-dialog), 
+							returns: #values, 
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]};
+		if(res == true)
+		{
+			for(var vIndex=0; vIndex < ArrAllRules.length; vIndex++)
+			{
+				if(ArrRules[vlist.tbody.currentIndex].ID == ArrAllRules[vIndex].ID)
+				{
+					ArrAllRules.splice(vIndex,1);
+					if(bDeletedRule != true)
+					{
+						bDeletedRule = true;
+					}
+					break;	
+				}		
+			}
+			ArrRules.splice(vlist.tbody.currentIndex,1);							
+			ArrTempRules.splice(vlist.tbody.currentIndex,1);							
+		}
+		vlist.tbody.currentIndex = -1;		
+	}
+
+	vlist.on("click","tbody > tr > td > #ID_BTN_CONFIG", function() {
+		this.popup($(popup#test));		
+	});
+
+	vlist.on("change","tbody > tr", function() {
+		this.data.Access = this.value.Access;	
+		ArrTempRules[this.data.index].Access = this.data.Access;
+		ArrRules[this.data.index].Access = this.data.Access;
+		ArrRules[this.data.index].bChanged = 1;
+	});
+</script>
+
+<script type="text/tiscript">
+	function GetData(ProgramName)
+	{
+		if(ProgramName == Lang.translate("IDS_ALL_APP"))
+		{
+			ProgramName = "IDS_ALL_APP";
+		}
+		DataBase = DB.open(varDBPath);
+		var varIdVal = DataBase.exec("SELECT ID, LOCAL_IP, LOCAL_IP_DATA, LOCAL_PORT, LOCAL_PORT_DATA, REMOTE_IP, REMOTE_IP_DATA, REMOTE_PORT, REMOTE_PORT_DATA, PROGRAMPATH, PROGRAMNAME, PROTOCOL, ACCESS, NETWORKTYPE, DIRECTION FROM WWIZ_FIREWALL_PACKET_RULE_CONFIG WHERE PROGRAMNAME = ?",ProgramName);
+		if(varIdVal instanceof Recordset)
+		{
+			var iCount = 0;
+			var choice;
+			do
+			{
+				choice = 0;
+				ArrRules[iCount] = {index:ArrRules.length,ID:0,Local_ip:0,Local_ip_data:"",Local_port:0,Local_port_data:"",Remote_ip:0,Remote_ip_data:"",Remote_port:0,Remote_port_data:"",ProgramPath:"",ProgramName:"",Protocol:0,Access:1,NetworkType:1,Direction:3,bChanged:0};
+				for(var record in varIdVal)
+				{
+					switch(choice)
+					{
+						case 0:	ArrRules[iCount].ID = record;
+								break;					
+						case 1:	ArrRules[iCount].Local_ip = record;
+								break;
+						case 2:	ArrRules[iCount].Local_ip_data = record;
+								break;
+						case 3:	ArrRules[iCount].Local_port = record;
+								break;
+						case 4:ArrRules[iCount].Local_port_data = record;
+								break;
+						case 5:ArrRules[iCount].Remote_ip = record;
+								break;
+						case 6:ArrRules[iCount].Remote_ip_data = record;
+								break;
+						case 7:ArrRules[iCount].Remote_port = record;
+								break;
+						case 8:ArrRules[iCount].Remote_port_data = record;
+								break;
+						case 9: if(record == "IDS_ALL_APP")
+								{
+									record = Lang.translate("IDS_ALL_APP");
+								}
+								ArrRules[iCount].ProgramPath = record;
+								break;
+						case 10:if(record == "IDS_ALL_APP")
+								{
+									record = Lang.translate("IDS_ALL_APP");
+								}
+								ArrRules[iCount].ProgramName = record + " Rule-"+iCount;
+								break;
+						case 11:ArrRules[iCount].Protocol = record;
+								break;
+						case 12:ArrRules[iCount].Access = record;
+								break;
+						case 13:ArrRules[iCount].NetworkType = record;
+								break;
+						case 14:ArrRules[iCount].Direction = record;
+								break;	
+					}
+					choice++;
+				}
+				iCount++;
+			}while(varIdVal.next());		
+			varIdVal.close();
+		}
+		DataBase.close();
+		if(ArrRules.length != 0)
+		{
+			for(var iCount= 0; iCount < ArrRules.length; iCount++)
+			{
+				ArrPrevRules[iCount] = {index:ArrPrevRules.length,ID:0,Local_ip:0,Local_ip_data:"",Local_port:0,Local_port_data:"",Remote_ip:0,Remote_ip_data:"",Remote_port:0,Remote_port_data:"",ProgramPath:"",ProgramName:"",Protocol:0,Access:1,NetworkType:1,Direction:3};
+				ArrPrevRules[iCount].ID =  ArrRules[iCount].ID;
+				ArrPrevRules[iCount].Local_ip =  ArrRules[iCount].Local_ip;
+				ArrPrevRules[iCount].Local_ip_data =  ArrRules[iCount].Local_ip_data;
+				ArrPrevRules[iCount].Local_port =  ArrRules[iCount].Local_port;
+				ArrPrevRules[iCount].Local_port_data =  ArrRules[iCount].Local_port_data;
+				ArrPrevRules[iCount].Remote_ip =  ArrRules[iCount].Remote_ip;
+				ArrPrevRules[iCount].Remote_ip_data =  ArrRules[iCount].Remote_ip_data;
+				ArrPrevRules[iCount].Remote_port =  ArrRules[iCount].Remote_port;
+				ArrPrevRules[iCount].Remote_port_data =  ArrRules[iCount].Remote_port_data;
+				ArrPrevRules[iCount].ProgramPath =  ArrRules[iCount].ProgramPath;
+				ArrPrevRules[iCount].ProgramName =  ArrRules[iCount].ProgramName;
+				ArrPrevRules[iCount].Protocol =  ArrRules[iCount].Protocol;
+				ArrPrevRules[iCount].Access =  ArrRules[iCount].Access;
+				ArrPrevRules[iCount].NetworkType =  ArrRules[iCount].NetworkType;
+				ArrPrevRules[iCount].Direction =  ArrRules[iCount].Direction;
+			}
+		}
+		if(ArrRules.length != 0)
+		{
+			for(var iIndex= 0; iIndex < ArrRules.length; iIndex++)
+			{
+				ArrTempRules[iIndex] = {index:iIndex,ID:0,Remote_ip_data:"",Remote_port_data:"",ProgramPath:"",Protocol:"",Access:1,NetworkType:"",Direction:""};
+				InsertTempRules(iIndex, iIndex);
+			}
+		}
+	}
+</script>
+
+<script type="text/tiscript">
+	function self.ready()
+	{
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+			self.update();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+			self.update();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme")
+		{
+			$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+			self.update();
+		}		
+		$(#ID_TEXT_HEADER).value = Lang.translate("ID_RULES_FOR")+ view.parameters.HeaderName;
+		varDBPath = view.parameters.vardb;
+		vlist.value = ArrTempRules; 
+		ArrAllRules = view.parameters.arr_prev_table;		
+		GetData(view.parameters.ProgramName);				
+	}
+</script>
+	
+<form #simple-dialog>
+    <label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+<popup #test>
+	<button .null_button_rule #ID_BTN_EDIT><label>ID_EDIT</label></button>
+	<button .null_button_rule #ID_BTN_DELETE><label>ID_FW_DELETE</label></button>
+</popup>
+</head>
+<body .rule_tab_body>
+	<div .main>
+		<div .header_rule_tab>
+			<window-caption role="window-caption">
+				<label #ID_TEXT_HEADER></label>
+			</window-caption>	
+			<window-button #window-close></window-button>
+		</div>
+		<div .section>
+			<table #ID_TABLE_RULE resizeable>
+				<thead>
+					<tr> 
+						<th><label>ID_PROTOCOL</label></th>
+						<th><label>ID_TRAFFIC</label></th>
+						<th><label>ID_PORTS</label></th>
+						<th><label>ID_IP</label></th>
+						<th><label>ID_ACCESS</label></th>
+						<th></th>	
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td (Protocol) style="color:#000"></td>
+						<td (Direction) style="color:#000"></td>
+						<td (Remote_port_data) style="color:#000"></td>
+						<td (Remote_ip_data) style="color:#000"></td>
+						<td>
+							<select|dropdown(Access) #ID_DDBTN_ACCESS>
+								<option value=1><label>ID_ALLOW</label></option>
+								<option value=2><label>ID_DENY</label></option>
+								</select>
+						</td>
+						<td>
+							<button .null_button #ID_BTN_CONFIG>...</button>
+						</td>
+					</tr>	
+				</tbody>
+			</table>
+			<div .set_btn .btnCstmSmall #ID_BTN_OK><label>ID_OK</label></div>
+			<div .btnCstmSmall #ID_BTN_CANCEL><label>ID_CANCEL</label></div>
+		</div>
+	</div>
+</body>
+</html>

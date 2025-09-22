@@ -1,0 +1,416 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+<title>Exclude_File_Extension</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+<include src="IDR_HTM_FONT_AWESOME.htm" />	
+<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	html 
+	{            
+		background-size:cover;
+		width:461dip;           /* preferred/initial width */
+		height:391dip;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+		behavior:WardWizSettings;
+	}
+	body.excludeFileExt{
+		background-size:cover;	
+		padding:0dip;
+		margin:0dip;
+	}
+	.header_exclude_file{
+		flow:horizontal;
+		width:460dip;        
+		height:40dip;
+	}
+	.header_exclude_file .tempLogo{	
+		width:430dip;
+		padding-left:10dip;
+		padding-top:3dip;
+	}
+	.header_exclude_file .tempLogo img{
+		width:100dip;
+		height:35dip;
+	}
+	#ID_FILE_EXT_DESC{
+		padding-left:10dip;
+		padding-right:10dip;
+		font-size:13dip;
+	}
+	.file_ext{
+		width:309dip;
+		margin-left:10dip;
+		padding-left:10dip;
+		height:21dip;
+		margin-right:8dip;	
+	}
+	
+	form#data-dialog > table#theExcludeDiagTable > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#theExcludeDiagTable { 
+		style-set: vgrid; 
+		flow:table-fixed;
+		width:430dip;
+		height:180dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: scroll;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin-left: 10dip;
+		margin-top: 20dip;    
+	}
+	table#theExcludeDiagTable > thead {
+		behavior:column-resizer;
+	}
+	table#theExcludeDiagTable > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#theExcludeDiagTable th {
+		font-size:13dip; 
+		padding:0dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		font-weight:normal;
+	}
+	table#theExcludeDiagTable th:nth-child(1)  {  width:50dip; }
+	table#theExcludeDiagTable th:nth-child(2)  {  width:*; text-align:center;}		
+	table#theExcludeDiagTable th:hover 
+	{ 
+		transition:blend;
+	}		
+	table#theExcludeDiagTable td { 
+		padding:1dip; 
+		min-height:14dip;
+		color:#000;
+	}	  
+	table#theExcludeDiagTable td:nth-child(1) {  text-align:center; width:0.08*;padding-top:2dip; } /* first column */
+	table#theExcludeDiagTable td:nth-child(2) {  
+		text-align:left; 
+		width:0.8*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	.close_remove
+	{
+		margin-top:5dip;
+		text-align:right;
+		padding-right:15dip;
+	}
+	.btn_margin_top{
+		margin-top:5dip;
+	}
+	#ID_BTN_REMOVE_EXCLUDE{
+		margin-left:273dip;
+	}
+</style>
+
+<script type="text/tiscript">  
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	include "IDR_TIS_SQLITE.tis";
+</script>
+
+<script type="text/tiscript">
+	var arrOfFileExt = new Array(0);
+	var g_iIndex = 0;
+	var varDataBase;
+	var varDBPath;
+	var varRecordSet;
+</script>
+
+<script type="text/tiscript">
+	$(body).onClick = function()
+	{
+		//$(.condition_popup_for_reports).state.collapsed = false;
+	}
+</script>
+
+<script type="text/tiscript">
+	function ShowLightbox(varType, varMsgText)
+	{
+		if(varType == 1)
+		{
+			//$(#ID_STATUS_MESSAGE).value = varMsgText;
+			//$(.condition_popup_for_reports).state.collapsed = true;
+			$(#ID_LIGHTBOX_TXT).value = varMsgText;
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};			
+			
+		}
+	}
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_REMOVE_EXCLUDE).onClick = function()
+	{   
+		var bselected = false;
+		for( var record in arrOfFileExt )
+        {
+            bselected = record.selected;
+            if(record.selected)
+            {
+                bselected = true;
+                break;
+            }
+            else
+                bselected = false;
+        }
+        if(!bselected)
+        {
+			ShowLightbox(1, Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION"));
+            return;
+        }
+       	
+		for(var FileCount = arrOfFileExt.length; FileCount > 0; )
+        {
+			FileCount = FileCount - 1;
+			bselected = arrOfFileExt[FileCount].selected;
+			if(bselected == true)
+            {
+                var varSelectedIndexVal = arrOfFileExt[FileCount].varEntriesID;
+                varDataBase = DB.open(varDBPath);
+                varDataBase.exec("DELETE FROM WWIZEXCLUDEFILEEXT WHERE ID = ?", varSelectedIndexVal);
+                varDataBase.close();
+                arrOfFileExt.remove(FileCount);
+				g_iIndex--;
+            }
+            else
+            {
+                continue;
+            }
+        }
+		self.AddExcludeFileExtension();
+		self.funFromExclude4FileExt();
+	}
+</script>
+
+<script type="text/tiscript">
+	$(#ID_BTN_ADD).onClick = function()
+	{	
+		var bFlag = false;
+		var IsNewFile = false;
+		var arrFileCount = arrOfFileExt.length;
+		var csInputVal = $(#ID_IP_EXTENSION).value;
+		//var csFileExt = /[~,`,!,@,#,$,%,^,&,*,(,),_,-,+,=,{,},[,\],|,\,?,\/,.,,,',:,;,<,>]/gi;
+		var csFileExt = /[*,|,\,?,\/,:,., ,<,>,""]/gi;
+        var matchesArray = csInputVal.match(csFileExt);
+       	if(!$(#ID_IP_EXTENSION).value)
+		{
+			ShowLightbox(1, Lang.translate("ID_ENTR_FILE_EXT"));
+			return;
+		}
+		if(matchesArray != null)
+		{
+			ShowLightbox(1, Lang.translate("ID_ENTR_FILE_EXT"));
+			return;
+		}			
+		if(g_iIndex > 0)
+		{
+            for(var FileCount = 0; FileCount<arrFileCount; FileCount++)
+            {
+                var varCurrentFilePath = arrOfFileExt[FileCount].FileExtension;
+                if(varCurrentFilePath == $(#ID_IP_EXTENSION).value)
+                {
+                    ShowLightbox(1, Lang.translate("ID_ALREADY_EXT_EXIST"));
+                 	IsNewFile = false;
+					break;
+                }
+                else
+                {
+                    //$(.condition_popup_for_reports).state.collapsed = false;
+                    IsNewFile = true;
+                }
+            }
+        }
+        else
+        {
+			//$(.condition_popup_for_reports).state.collapsed = false;
+            IsNewFile = true;
+        }
+        if(IsNewFile == true)
+        {
+            if((arrOfFileExt.length) < 50)
+            {
+				arrOfFileExt[g_iIndex] = {selected: true, FileExtension:$(#ID_IP_EXTENSION).value, varEntriesID: ++g_iIndex };
+                varDataBase = DB.open(varDBPath);
+				varDataBase.exec("insert into WWIZEXCLUDEFILEEXT (FILEEXTNAME) values (?)", $(#ID_IP_EXTENSION).value);
+				varDataBase.close();
+            }
+            else
+            {
+                ShowLightbox(1, Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_EXCLUDE_FILES_OR_FOLDERS_FROM_SCANNING"));
+                return;
+            }
+        }
+		var vlist = $(table);
+		vlist.value = arrOfFileExt;
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfFileExt )
+				record.selected = selected; 
+		};
+		$(#ID_IP_EXTENSION).value = "";
+		self.AddExcludeFileExtension();
+		self.funFromExclude4FileExt();
+	}
+</script>
+
+<script type="text/tiscript">
+    function showRecordsetData(varRecordSet)
+    {
+		var m_iIndex = 0;
+        do
+        {
+            var varCounter = 0;
+            arrOfFileExt[m_iIndex] = {selected : true, FileExtension : "", varEntriesID : ""};
+            for (var varVirtualDBData in varRecordSet)
+            {
+				switch(varCounter)
+                {
+                    case 0:
+                            arrOfFileExt[m_iIndex].varEntriesID = varVirtualDBData;
+                            break;
+                    case 1:
+                            arrOfFileExt[m_iIndex].FileExtension = varVirtualDBData;
+                            break;
+                }
+                varCounter++;
+            }
+            m_iIndex++;
+        }
+        while( varRecordSet.next());
+		g_iIndex = m_iIndex;
+    }
+</script>
+
+<script type="text/tiscript">
+	$(#ID_BTN_CLOSE).onClick = function()
+	{
+		view.close(null);
+	}
+	$(#window-close).onClick = function()
+	{
+		view.close(null);
+	}
+</script>
+
+<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+</script>	
+
+<script type="text/tiscript">
+	function self.ready()
+	{
+		self.language = view.parameters.varParamLangName;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		varDBPath = view.parameters.varParamDBPath;
+		$(body).state.focus = true;
+		$(#ID_IP_EXTENSION).attributes["novalue"] = Lang.translate("ID_EXAMPLE");
+		varDataBase = DB.open(varDBPath);
+		varDataBase.exec("CREATE TABLE IF NOT EXISTS WWIZEXCLUDEFILEEXT(ID INTEGER PRIMARY KEY, FILEEXTNAME VARCHAR(20), RES1 VARCHAR(50), RES2 VARCHAR(50))");
+		varRecordSet = varDataBase.exec("SELECT ID, FILEEXTNAME FROM WWIZEXCLUDEFILEEXT");
+		if(varRecordSet instanceof Recordset)
+			showRecordsetData(varRecordSet);
+		else
+			varDataBase.close();
+		DataBase.close();
+		var vlist = $(#theExcludeDiagTable);
+		vlist.value = arrOfFileExt;
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfFileExt )
+				record.selected = selected; 
+		};
+		self.AddExcludeFileExtension();
+		self.funFromExclude4FileExt();
+	}
+</script>
+
+<form #simple-dialog>
+    <label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+</head>
+<body .excludeFileExt>
+<div .header_exclude_file>
+	<window-caption role="window-caption">
+		<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:25dip;">
+	</window-caption>	
+	<window-button #window-close></window-button>
+</div>
+<div>
+	<p #ID_FILE_EXT_DESC><label>ID_FILE_EXT_DESC</label>
+	</p>
+</div>
+<span>
+	<input #ID_IP_EXTENSION .file_ext type="text" novalue="e.g. exe"/>
+	<div class="btnCstmSmall" #ID_BTN_ADD><label>ID_HTM_CUSTOM_SCAN_ADD</label></div>  
+</span>
+  <table #theExcludeDiagTable resizeable>
+    <thead>
+      <tr><th><input#select-all|checkbox /></th><th(FileExtension)><label>ID_FILE_EXT</label></th></tr>
+    </thead>
+    <tbody>
+      <tr><td><input(selected)|checkbox /></td><td(FileExtension)></td></tr>
+    </tbody>
+  </table>
+  <span .close_remove>
+	<span class="btnCstmSmall" .btn_margin_top #ID_BTN_REMOVE_EXCLUDE><label>ID_REMOVE</label></span>  
+	<span class="btnCstmSmall" .btn_margin_top #ID_BTN_CLOSE><label>ID_CLOSE</label></span>  
+  </span>
+</body>
+</html>

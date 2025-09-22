@@ -1,0 +1,534 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+    <link href="IDR_TIS_BANGLA.tis" hreflang="BANGLA" rel="translation">	
+    <link href="IDR_TIS_HINDI.tis" hreflang="HINDI" rel="translation">	
+    <link href="IDR_TIS_URDU.tis" hreflang="URDU" rel="translation">	
+	<style>
+	@import url(IDR_CSS_VGRID.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	form#data-dialog > table > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		//text-align:right;
+		vertical-align:top;
+	}
+	@font-face 
+	{
+		font-family: 'Source Sans Pro', sans-serif;
+		src: url("SourceSansPro-Light.ttf");
+	}
+	html
+	{
+	   padding:0dip;
+	   margin:0dip;
+	   width:402dip;
+	   height:280dip;
+	   overflow:hidden;
+       background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat!important;
+	   background-size:cover!important;
+	}
+	  body{
+	   padding:0dip;
+	   margin:0dip;
+	   border:0.5dip solid #9ce1ff;
+	   color:#000;
+	   //overflow-y:my-v-scrollbar;
+	}
+	h1,h2,h3,h4,h5
+	{
+		font-family: 'Source Sans Pro', sans-serif!important;
+	}
+	.main
+	{
+		width:400dip;
+		height:280dip;
+	}
+	.header{
+		background:rgba(255, 255, 255, .5);
+			flow:horizontal;
+			width:640dip;        
+			height:47dip;
+	}
+	.inner_body_ext_add{
+		margin-top:10dip;
+	}
+	window-button  { display:inline-block; size: 19dip; behavior:clickable; clear:after;}
+
+	window-caption { display:block; flow:text; width:500dip; font:system; }
+
+	window-button#window-close { 
+		color:#000;margin-right:5dip;margin-top:7dip;
+		background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 
+									c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0
+									l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269
+									c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73
+									L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+		background-size: 10dip;
+		background-position: 50% 50%;
+		background-repeat:no-repeat;
+		fill: #000;
+	}
+
+	window-button#window-close:hover { 
+		/* background-color:red; 
+		outline:5dip glow red -1dip;  */
+		transition: outline(linear,200ms) 
+		background-color(linear,200ms); 
+	}
+	//******** Menu Bar CSS *********//	
+	
+	.logo img{
+		padding-left:15dip;
+		padding-top:5dip;
+		width:140dip;
+		height:auto;
+	}
+	
+	.clickable_cl{
+		behavior:clickable;
+		cursor:pointer;
+	}
+	
+	.basic_background{
+		background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+	}
+	.essential_background{
+		background:url(IDR_JPG_BACKGROUND.jpg) no-repeat;
+		background-size:cover;
+	}
+	.provantage_background{
+		background:url(IDR_JPG_BG_PROVANTAGE.jpg)!important;
+	}
+	.essential_plus_background{
+		background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+		background-size:cover;
+	}
+	.elite_background{
+		background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+		background-size:cover;
+	}
+		
+	.message_display_block p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		margin-left:10dip;
+		margin-right:10dip;
+		text-align:center;
+		padding-top:10dip;
+			color: #fff;
+	}
+	.message_display_block {
+		background:rgba(0, 150, 214, .5);
+		position:absolute;
+		top:-50dip;
+		width:402dip;
+		height:35dip;
+		visibility:none;
+		margin-top:48dip;
+		margin-left:0;
+	}
+	.message_display_block:collapsed {
+		visibility:none;
+	}
+	.message_display_block:expanded {
+		visibility:visible;
+		top:0;
+		transition:top(sine-in-out, 600ms);
+	}
+	.scan_button:hover{
+		background: linear-gradient(bottom, #0780d8, #06304f);
+		transition: background(quart-out,0.5s,quart-in);
+		border:1dip solid #0780d8;
+		color:#000;
+	}
+	.scan_button{
+		width:70dip;
+		height:19dip!important;
+		background: linear-gradient(bottom, #06304f, #0780d8);
+		border:1dip solid #0780d8;
+		color:#fff;
+		border-radius:4dip;
+	}
+	.set_server_port{
+		margin-top:17dip;
+		margin-left:28dip;
+	}
+	.buttons{
+		float:right;
+		margin-right:26dip;
+		margin-top:5dip;
+		margin-bottom:13dip;
+		text-align:center;
+		height:25dip;
+	}
+	.basic_background{
+		background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+	}
+	.essential_background{
+		background:url(IDR_JPG_POPUP_BACKGROUND.jpg)!important;
+	}
+	.provantage_background{
+		background:url(IDR_JPG_BG_PROVANTAGE.jpg)!important;
+	}
+	.essential_plus_background{
+		background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+		background-size:cover;
+	}
+	.elite_background{
+		background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+		background-size:cover;
+	}
+	.table_Backup 
+	{ 
+		style-set: vgrid;
+		border:1dip solid #888888; 
+		flow:table-fixed;
+		padding:0;
+		width:343dip;
+		height:88dip;
+		border-spacing:0;
+		overflow-x: scroll;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin:10dip!important;
+		margin-left:0!important;
+		color:#fff;
+	}
+	@set my-v-scrollbar
+	{
+	  .prev { display:none; }
+	  .next { display:none; }
+	  
+	  .base,
+	  .next-page, 
+	  .prev-page { background:white;}
+	  
+	  .slider    { background: gray;}
+	 
+	  .base:disabled { background: #aaa;}
+
+	  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+	  
+	  .slider:active { background: khaki; }
+	  
+	  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+	  .corner { background: transparent; }
+	}
+	.table_Backup > thead {
+		behavior:column-resizer;  
+	}
+		
+	.table_Backup > tbody {
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	 
+	.table_Backup th 
+	{ 
+		color: white;
+		font-size:10pt; 
+		border:none;
+		padding:4dip; 
+		background-image: none!important;
+		background-color:#0097D6!important; 
+		/* background-image:url(IDR_PNG_HEADER.png);
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip; */
+	}
+	  
+	.table_Backup th:nth-child(1)  {  width:0.02*; }
+	.table_Backup th:nth-child(2)  {  width:0.2*; }
+	  
+	.table_Backup th:hover 
+	{ 
+		color: #ffe598;
+		transition:blend;
+		background-image:url(IDR_PNG_HEADER_HOVER.png);
+	}
+	  
+	//table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+	//table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+	  
+	.table_Backup tr:current /* current row */ 
+	{ 
+		background-color:#bdbccc; 
+		color:white;
+	} 
+	  
+	.table_Backup td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	}
+	  
+	.table_Backup td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } /* first column */
+	.table_Backup td:nth-child(2) {  
+		text-align:left; 
+		width:0.2*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+
+
+
+
+	.btnNew2Sm{
+	cursor:pointer;
+	/* background: linear-gradient(top, #0097D6 0%, rgb(175, 211, 253) 100%);; */
+	background: #0097D6;
+	width:70dip;
+	height:28dip;
+	padding-top:0dip;
+	padding-left:10dip;
+	padding-right: 10px;
+	color:#fff;
+	border-radius: 30dip;
+	position: relative;
+	margin-top:0;
+}
+.btnNew2Sm label{
+	width:50dip;
+	text-align: left;
+	margin-top: 5dip;
+}
+	</style>
+	<script type="text/tiscript">
+	$(body).onClick = function()
+	{
+	   $(.message_display_block).state.collapsed = true;
+    }
+	</script>
+	<script type="text/tiscript">
+		include "IDR_TIS_DECORATORS.tis"; 
+    </script>
+    <script type="text/tiscript">
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+    <script type="text/tiscript">
+		var DataBase;
+		var varDBPath;
+		var varRecordSet;
+		var varSchedEditKeyEnabled;
+		var varRecSetExtVal;
+		var varRecSetExtValData;
+		var varEntryIdEdit;
+		var vlist;
+		var varExtVal;
+		var varExclAddFinalVal;
+		var iIndex = 0;
+		var vCheckBox = $(body);
+		var arrOfFileExt = new Array(0);
+	</script>
+
+    <script type="text/tiscript">
+		if(view.parameters.ProVersion == #BASIC)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+			$(body).attributes.addClass("basic_background");
+		}
+		else if(view.parameters.ProVersion == #ESSENTIAL)
+		{
+			$(body).attributes.addClass("essential_background");
+		}
+		else if(view.parameters.ProVersion == #PROVANTAGE)
+		{
+			$(body).attributes.addClass("provantage_background");
+			$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+		}
+		else if(view.parameters.ProVersion == #ELITE)
+		{
+			$(body).attributes.addClass("elite_background");
+			$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+		}
+		else if(view.parameters.ProVersion == #ESSENTIALPLUS)
+		{
+			$(body).attributes.addClass("essential_plus_background");
+			$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+		}
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		if(g_LanguageName == "BANGLA")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_BANGLA_LANGUAGE.css);</style>);
+		}
+	</script>
+    <script type="text/tiscript"> 
+		const selectAllVal = vCheckBox.$(input#select_all_ext);
+		
+        vCheckBox.on("change","#select_all_ext", function() { // select/deselect all
+          var selected = this.value;
+          for( var record in arrOfFileExt )
+            record.selected = selected;
+        });
+	</script>
+    <script type="text/tiscript">
+    $(#ID_BTN_CANCEL).onClick = function()
+    {
+		view.close();
+    }
+    $(#ID_BTN_OK).onClick = function()
+    {
+		view.close(varExtVal);
+    }
+	function FunLoadExtVal()
+	{
+		varExtVal = "";
+		for(var FileCount = 0; FileCount < arrOfFileExt.length; FileCount++)
+        {
+            if(FileCount <1)
+			{
+				varExtVal = arrOfFileExt[FileCount].ExcPath;
+			}
+			else
+			{
+				varExtVal = varExtVal + "," + arrOfFileExt[FileCount].ExcPath;
+			}
+        }
+	}
+    $(#ID_BTN_REMOVE).onClick = function()
+    {
+		for(var FileCount = arrOfFileExt.length; FileCount>0; )
+        {
+            if(arrOfFileExt[--FileCount].selected == true)
+            {
+                arrOfFileExt.remove(FileCount);
+                iIndex--;
+            }
+        }
+		if(arrOfFileExt.length == 0)
+        {
+            $(#select_all_ext).state.disabled = true;
+        }
+        else
+        {
+            $(#select_all_ext).state.disabled = false;
+        }
+		FunLoadExtVal();
+    }
+    </script>
+	<script type="text/tiscript">  
+		function SetExtValData(varExtVal)
+		{
+			arrOfFileExt[iIndex] = {selected : true, ExcPath : varExtVal};				
+			iIndex++;
+			$(#ID_TXT_EXT_LIST).state.value = "";
+		}
+		function OnSetExclValues(varExtValue)
+		{
+			var arrstrFileName =  varExtValue.split(",");
+			for (var i = 0; i < arrstrFileName.length; i++)
+			{
+				if(i == 0)
+				{
+					var varFirstFile = arrstrFileName[i];
+					SetExtValData(varFirstFile);
+				}
+				else
+				{
+					var NextFile = arrstrFileName[i];
+					SetExtValData(NextFile);
+				}
+			}
+		}
+	</script>
+    <script type="text/tiscript">
+	$(#ID_BTN_ADD).onClick = function()
+	{
+		var varTempVal = $(#ID_TXT_EXT_LIST).state.value;
+		if(varTempVal == "")
+		{
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_EMPTY_EXT");
+			$(.message_display_block).state.expanded = true;
+			return;
+		}
+		else
+		{
+			for(var FileCount = 0; FileCount < arrOfFileExt.length; FileCount++)
+			{
+				if(varTempVal == arrOfFileExt[FileCount].ExcPath)
+				{
+					$(#ID_TXT_EXT_LIST).state.value = "";
+					$(#ID_STATUS_MSG).text = Lang.translate("ID_DUPLICATE_EXT");
+					$(.message_display_block).state.expanded = true;
+					return;
+				}
+			}
+			if(varExtVal == "undefined" || varExtVal == "")
+			{
+				varExtVal = varTempVal;
+			}
+			else
+			{
+				varExtVal = varExtVal + ","+varTempVal;
+			}
+			SetExtValData(varTempVal);
+		}
+	}
+	</script>
+
+    <script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = view.parameters.varLanguageValue;
+		varDBPath = view.parameters.varDBPath;
+		varSchedEditKeyEnabled = view.parameters.varSchedEditKeyEnabled;
+		varEntryIdEdit = view.parameters.varEntryIdEdit;
+		varExclAddFinalVal = view.parameters.varExclAddFinalVal;
+		varExtVal = varExclAddFinalVal;
+		OnSetExclValues(varExclAddFinalVal);
+		vlist = $(#theExcludetable);
+		vlist.value = arrOfFileExt;
+		
+		vlist.on("change","tbody > tr", function() { // some change inside tr
+          // note: each row (this) is a form here so its value is structure:
+          this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+          if( !this.data.selected )
+            selectAllVal.value = false;
+        });
+	}	
+  </script>
+</head>
+<body>
+<div .main>
+		<div .header>
+			<!-- <div .logo> -->
+				<window-caption role="window-caption" style="width:350dip;padding-top:14dip;padding-left:15dip;font-size:13dip;;height:34dip">
+				<!-- <img src="IDR_PNG_LOGO.png" #ID_LOGO style="cursor:pointer;width:100dip;"> -->
+				<b><label>ID_EXCLUSION_LIST</label></b>
+				</window-caption>	
+			<!-- </div> -->
+			<window-button #window-close role="window-close"></window-button>
+		</div>
+		<div .set_server_port>
+			<label style="color:#fff;">ID_ENTER_EXTENSION_LIST</label><br/>
+			<input #ID_TXT_EXT_LIST type="text" style="width:237dip;margin-right:15dip;">
+			<button .btnNew2Sm #ID_BTN_ADD><label>ID_HTM_CUSTOM_SCAN_ADD</label></button>
+		<table .table_Backup #theExcludetable style="margin:0">
+		<thead> 
+			<tr>
+				<th><input#select_all_ext|checkbox checked/></th><th style="width:305dip;"><label>ID_EXCLUSION_LIST</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></th> 
+			 </tr> 
+		 </thead> 
+		<tbody> 
+			<tr><input(selected)|checkbox /><td(ExcPath)></td></tr>
+		</tbody>
+		</table>
+		</div>	
+		<div .buttons>
+			<button .btnNew2Sm #ID_BTN_REMOVE><label>ID_REMOVE</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+			<button .btnNew2Sm #ID_BTN_OK><label>ID_OK</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+			<button .btnNew2Sm #ID_BTN_CANCEL><label>ID_CANCEL</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+		</div>	
+		<div .message_display_block>
+			<p #ID_STATUS_MSG>Scanning has been completed successfully!!</p>
+		</div>		
+</div>
+</body>
+</html>

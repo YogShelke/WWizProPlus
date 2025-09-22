@@ -1,0 +1,471 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+ <style> 
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+		padding:0dip;
+		margin:0dip;
+		overflow:hidden; 
+		width:720dip;
+		height:500dip;
+	}
+
+	body{
+		width:720dip;
+		height:420dip;
+		margin:0;
+		padding:0;
+		background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+		position:relative;	
+		overflow:hidden;
+		//border:0.5dip solid #3d748e;
+	}
+    .clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+	}
+	.header{
+		width:720dip!important;
+	}
+	.select_file_path{
+		background:rgba(255,255,255,.8);
+		width:690dip;
+		margin-left:10dip;
+		//border-radius:4dip;
+		padding-top:25dip;
+		padding-bottom:25dip;
+		margin-bottom:20dip;
+		//box-shadow:0 0 6dip #c0c0c0;
+		padding-left:10dip;
+	  }
+	  widget[type=file-name] {
+		  prototype: FileName;
+		  flow:horizontal;
+		  width:35em;
+		  margin-left:33dip;
+		  height:35dip;
+		  display:inline-block;
+		}
+		widget[type=file-name]:disabled{
+			opacity:.5;
+		}
+		widget[type=file-name] > input { width:*;margin-top:10dip; }
+		.selector{
+			margin-left:5dip;
+			margin-top:10dip;
+			width:100dip;
+			height:21dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.selector:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.selector label{
+			width:100dip;
+			text-align:center!important;
+		}
+		.selector:disabled{
+			opacity:.5;
+		}
+		#ID_SCAN_STATUS{
+			visibility:none;
+		}
+		#ID_SCAN_STATUS:collapsed{
+			visibility:none;
+		}
+		#ID_SCAN_STATUS:expanded{
+			visibility:visible;
+		}
+		input  { context-menu:none; }		
+		.drag_zone_utility{
+			width:610dip;
+			height:40dip;
+		}
+		.mainContent{
+			flow:vertical;
+		}
+		.titleCont_utilities{
+			text-align:center;
+			min-height:10dip;
+			width:720dip;
+			padding-top:1dip; 
+		}	
+		.vaccineBtnMrgn{
+			margin-left:455dip;
+		}
+		.MenuSpacing{
+			margin:1dip;
+			margin-top:0dip;
+		}
+</style>    
+
+    <script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>	
+
+    <script type="text/tiscript">
+        include "IDR_TIS_MAIN.tis";
+    </script>
+    <script type="text/tiscript">
+		if(productVersion == #BASIC){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+		}
+		else if(productVersion == #ESSENTIAL){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+		}
+		else if(productVersion == #ESSENTIALPLUS){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS 2020";
+		}
+    </script>
+    
+	<script type="text/tiscript">
+    var m_bClickNo = false;
+    var m_bUSBVaccine = false;
+    var m_bResetbtn = false;
+	</script>
+
+	<script type="text/tiscript">
+    function CloseUI()
+    {
+       view.OnPauseThread();
+        if(m_bResetbtn == false)
+        {
+            view.OnClickClose();
+        }
+        else if(m_bResetbtn == true)
+        {
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DO_YOU_WANT_TO_STOP_USB");
+            var result = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false}]};
+			if(result == true)
+			{
+				view.OnClickClose();
+			}
+			else
+			{
+				m_bClickNo = view.OnClickedNo();
+				if(m_bClickNo == true)
+				{
+					$(#ID_BTN_OK).state.disabled = true;
+					$(#ID_RADIO_USBVACCIN).state.disabled = true;
+					$(#ID_BTN_BROWSE).state.disabled = true;
+					$(#ID_RADIO_UNHIDE).state.disabled = true;
+				}
+			}
+        }
+    }
+    </script>
+    
+	<script type="text/tiscript">
+	$(#help_click).onClick = function()
+    {
+		OpenHelpFile();
+	}
+	function OpenHelpFile()
+	{
+		var varCommandlinestr = "-mapid";
+		var varHelpFilePath;
+		var varHelpFileIndex;
+		var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+		var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+		var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+		var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+		var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+		var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+		switch(g_LanguageID)
+		{
+			case LANGUAGE_TYPE.ENGLISH	:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varEngEssential;
+					varHelpFileIndex = "77";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varEngBasic;
+					varHelpFileIndex = "77";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varEngEssPlus;
+					varHelpFileIndex = "77";
+				}
+			break;
+	
+			case LANGUAGE_TYPE.GERMAN:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varGerEssential;
+					varHelpFileIndex = "77";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varGerBasic;
+					varHelpFileIndex = "77";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varGerEssPlus;
+					varHelpFileIndex = "77";
+				}
+			break;
+		}
+		System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	$(.OnClickMinimize).onClick = function()
+    {
+        view.OnMinimize();
+    }
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        CloseUI();
+    }
+	$(#ID_BTN_CLOSE).onClick = function()
+    {
+        CloseUI();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    var FilePath = " ";
+    class FileName : Behavior {
+    function attached() {
+    this.$append( <input|text.path readonly><span .btnCstmSmall .widgetMrgnRight .mrgntop6 #ID_BTN_BROWSE><label>ID_UPDATE_BTN_BROWSE</label></span>);
+    var path = this.path = this.$(.path);
+    this.$(#ID_BTN_BROWSE).onClick = function () {
+			var m_FilePath =  view.SelectFileFolder();
+
+			if( m_FilePath != "INVALID" && m_FilePath != "CANCEL")
+			{
+				FilePath = m_FilePath;
+				path.value = FilePath;
+			}
+			else if(m_FilePath == "INVALID")
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SELECT_VALID_FILE_FOLDER");
+				var res = dialog { body:$(form#simple-dialog),
+				returns: #values,
+				caption : Lang.translate("ID_WARNING"),
+				buttons: [ { caption: "OK", role:#ok, value:true }]};
+				$(widget).value = "";
+				return 0;
+			}
+			(this super).postEvent(Event.EDIT_VALUE_CHANGED);
+		};
+	}
+    property value(v) {
+		get { return this.path.value; }
+		set { this.path.value = v; }
+    }
+	}
+
+	$(widget).onValueChanged = function() {
+		stdout.println(this.value);
+	};
+	</script>
+
+    <script type="text/tiscript">
+    function NotificationMSG(strNotificationMessage)
+    {
+        $(#ID_LIGHTBOX_TXT).value = strNotificationMessage;
+		var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							}; 		
+        $(#ID_WIDGET_EDITBOX).value = " ";
+        $(#ID_SCAN_STATUS).state.collapsed = true;
+        $(#ID_BTN_OK).state.disabled = false;
+        $(#ID_RADIO_USBVACCIN).state.disabled = false;
+        $(#ID_BTN_BROWSE).state.disabled = false;
+        $(#ID_RADIO_UNHIDE).state.disabled = false;
+        $(widget).value = "";
+        FilePath = " ";
+        m_bResetbtn = false;
+        $(#ID_DIV_USBVACCIN).state.disabled = false;
+    }
+	</script>
+
+    <script type="text/tiscript">
+    $(#ID_RADIO_USBVACCIN).on("change", function(){
+        $(#ID_BTN_BROWSE).state.disabled = this.value;
+    });
+	
+    $(#ID_RADIO_USBVACCIN).on("change", function(){
+        $(widget).value = "";
+        FilePath = "";
+        $(widget).state.disabled = this.value;
+    });
+
+    $(#ID_RADIO_UNHIDE).on("change", function(){
+        $(#ID_BTN_BROWSE).state.disabled =! this.value;
+    });
+	
+    $(#ID_RADIO_UNHIDE).on("change", function(){
+        $(widget).state.disabled =! this.value;
+    });
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_BTN_OK).onClick = function()
+    {
+        $(#ID_DIV_USBVACCIN).state.disabled = true;
+        m_bUSBVaccine = $(#ID_RADIO_USBVACCIN).value;
+        if(m_bUSBVaccine == false && FilePath == " ")
+        {
+            NotificationMSG(Lang.translate("ID_SELECT_FILE_FOLDER_TO_UNHIDE"));
+            $(#ID_BTN_OK).state.disabled = false;
+            $(#ID_RADIO_UNHIDE).state.disabled = false;
+            $(#ID_BTN_BROWSE).state.disabled = false;
+            return;
+        }
+        else
+        {
+			if(m_bUSBVaccine != false)			
+				$(#ID_SCAN_STATUS).state.collapsed = true;
+			else	
+				$(#ID_SCAN_STATUS).state.expanded = true;
+            $(#ID_BTN_OK).state.disabled = true;
+            $(#ID_BTN_BROWSE).state.disabled = true;
+            $(#ID_RADIO_USBVACCIN).state.disabled = true;
+            m_bResetbtn = view.OnStartVaccineProcess(m_bUSBVaccine, FilePath, NotificationMSG);
+        }
+    }
+	
+	function IsWindowClose() //m_root_el function for taskbar close
+    {
+		CloseUI();
+    }
+	
+	function SetFileStatus(Evnt)
+    {
+      var FileName = Evnt.data.one.toString();
+      $(#UNHIDE_PATH).value = FileName;
+    }
+    self.subscribe(SetFileStatus, Event.BEHAVIOR_EVENT, 0x100 + 4);
+	</script>
+	<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/"); //german for basic
+	}
+    </script>
+		
+    <script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;	
+        $(#ID_BTN_BROWSE).state.disabled = this.value;
+        $(#ID_WIDGET_EDITBOX).state.disabled = this.value;		
+		if(g_themeType == "defaultTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+			self.update();
+        }
+        else if(g_themeType == "darkTheme"){
+            $(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+            self.update();
+        }	
+		else if(g_themeType == "crystalTheme")
+		{
+            $(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+	}
+    </script>
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+	<div .mainContent>
+			<div .header>
+				<div .tempLogo>
+					<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+				</div>
+				<div .menu_utility>
+					<div .drag_zone_utility role="window-caption">
+						<h4 style="margin-top:10dip">VIBRANIUM</h4>
+					</div>
+					<div .topMenuUtility style="margin-left:30dip;">
+						<ul>
+							<li .clickable_cl #help_click .MenuSpacing style="font-size:13.5dip;visibility:none"><label>ID_STR_HELP</label></li>
+							<li .clickable_cl .OnClickMinimize .MenuSpacing>
+								<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+								</svg>
+							</li>
+							<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE .MenuSpacing>
+								<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+								</svg>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div .titleCont_utilities>
+				<h1 .headingTitle1><label>ID_USB_VACCINATE_PREVENTS</label></h1>
+				<p><label>ID_USB_VACCINATE_PREVENTS_INFECTING_USB_OR_PC_FROM_AUTORUN_MALWARE</label></p>
+			</div>
+			<div class="select_file_path" #ID_DIV_USBVACCIN>
+				<div>
+					<input type="radio" #ID_RADIO_USBVACCIN checked name="radio">
+					<label for="ID_RADIO_USBVACCIN">ID_USB_VACCINE</label><br/>
+				</div>
+				<div .divider></div> <br/>
+				<div> 
+					<input type="radio" #ID_RADIO_UNHIDE name="radio">
+					<label for="ID_RADIO_UNHIDE">ID_UNHIDE_FILES_FOLDERS</label>
+					<p style="margin:0;padding-top:10dip;margin-left:27dip"><label>ID_SELECT_FILE_FOLDER_TO_UNHIDE</label></p>
+					<div style="margin-left:-5dip"><widget|file-name name=test #ID_WIDGET_EDITBOX disabled /></div>
+				</div>
+			</div>
+				
+		<div .scan_container>
+			<div .footer_buttonsTemp>
+				<div class="btnCstm" .vaccineBtnMrgn #ID_BTN_OK><label>ID_START</label></button></div>
+				<div class="btnCstm" #ID_BTN_CLOSE><label>ID_CANCEL</label></button></div>
+			</div>
+		</div>
+		<p #ID_SCAN_STATUS style="width:700dip;margin-left:8dip;"><label>ID_UNHIDING</label> <span #UNHIDE_PATH></span></p>
+	</div>
+</body>
+</html>

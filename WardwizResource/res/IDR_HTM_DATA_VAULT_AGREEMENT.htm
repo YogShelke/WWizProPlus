@@ -1,0 +1,293 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+    <link href="IDR_TIS_BANGLA.tis" hreflang="BANGLA" rel="translation">	
+    <link href="IDR_TIS_HINDI.tis" hreflang="HINDI" rel="translation">	
+    <link href="IDR_TIS_URDU.tis" hreflang="URDU" rel="translation">	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		@font-face 
+		{
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html
+		{
+		   padding:0dip;
+		   margin:0dip;
+		   width:640dip;
+		   height:400dip;
+		   overflow:hidden;
+           background:url(IDR_JPG_BACKGROUND.jpg) no-repeat!important;
+		   background-size:cover!important;
+		}
+		body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:0.5dip solid #000;
+		   color:#000;
+		}
+		.main
+		{
+			width:640dip;
+			height:400dip;
+		}
+		
+		.header{
+			background:rgba(0,0,0,.4);
+			flow:horizontal;
+			width:640dip;        
+			height:47dip;
+		}
+		window-button  { display:inline-block; size: 19dip; outline-color:red; behavior:clickable; clear:after;}
+
+		window-caption { display:block; flow:text; width:500dip; font:system; color:#fff}
+
+		window-button#window-close { 
+			color:white;margin-right:5dip;margin-top:12.5dip;
+			background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 
+										c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0
+										l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269
+										c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73
+										L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+			background-size: 10dip;
+			background-position: 50% 50%;
+			background-repeat:no-repeat;
+			fill: #fff;
+		}
+
+		window-button#window-close:hover { 
+			background-color:red; 
+			outline:5dip glow red -1dip; 
+			transition: outline(linear,200ms) 
+			background-color(linear,200ms); 
+		}
+		//******** Menu Bar CSS *********//	
+	
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+	
+		.basic_background{
+			background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+		}
+		.essential_background{
+			background:url(IDR_JPG_BACKGROUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.provantage_background{
+			background:url(IDR_JPG_BG_PROVANTAGE.jpg)!important;
+		}
+		.essential_plus_background{
+			background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+			background-size:cover;
+		}
+		.elite_background{
+			background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+			background-size:cover;
+		}
+	//************************Resizable Table CSS ************************//	
+		
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		
+		//*******************************************************************//
+		
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:75dip;
+			height:20dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			font-size:11dip;
+			text-align:center;  
+			line-height:18dip;
+		}		
+		.button_small{
+			height:18dip!important;
+		}
+		.button_big_g{
+			width:110dip!important;
+		}
+		.button_small_g{
+			width:85dip!important;
+		}
+		html > body > .section { padding:6dip;}
+		div.licence
+		{
+			background:white;
+			border:1dip solid #1c496e;
+			width:602dip;
+			height:262dip;
+			overflow:auto;
+			vertical-scrollbar:my-v-scrollbar;
+			margin-top:20dip;
+			margin-left:15dip;
+		}
+		div.licence > div { margin:10dip}
+		.font_size_12{
+			font-size:12dip;
+		}
+		.buttons{
+			margin-top:15dip;
+			text-align:center;
+			height:25dip;
+			margin-bottom:10dip;
+			margin-right:20dip;
+			float:right;
+		}
+	</style>
+    <script type="text/tiscript">
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        view.close(false);
+    }
+    </script>
+	<script type="text/tiscript">
+	$(#ID_BTN_AGREE).onClick = function()
+	{
+		view.close(true);		
+	}
+	
+	$(#ID_BTN_DISAGREE).onClick = function()
+	{
+		view.close(false);
+	}
+	</script>
+    <script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.ProductVersion == #BASIC)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+			$(body).attributes.addClass("basic_background");
+		}
+		else if(view.parameters.ProductVersion == #ESSENTIAL)
+		{
+			$(body).attributes.addClass("essential_background");
+		}
+		else if(view.parameters.ProductVersion == #PROVANTAGE)
+		{
+			$(body).attributes.addClass("provantage_background");
+			$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+		}
+		else if(view.parameters.ProductVersion == #ELITE)
+		{
+			$(body).attributes.addClass("elite_background");
+			$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+		}
+		else if(view.parameters.ProductVersion == #ESSENTIALPLUS)
+		{
+			$(body).attributes.addClass("essential_plus_background");
+			$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+		}	
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+	}	
+  </script>
+</head>
+<body>
+<div .main>
+		<div .header>
+			<!-- <div .logo> -->
+				<window-caption role="window-caption" style="width:590dip;padding-top:15dip;padding-left:17dip;font-size:13dip;">
+				<!-- <img src="IDR_PNG_LOGO.png" #ID_LOGO style="cursor:pointer;width:100dip;"> -->
+				<b><label>ID_DATA_VAULT_CAPS</label></b>
+				</window-caption>	
+			<!-- </div> -->
+			<window-button #window-close role="window-close"></window-button>
+		</div>
+		
+		<div .section>
+			<div .licence>
+				<div>
+					<h5 style="height:2dip;margin-bottom:10dip;font-size:13dip"><label>ID_BACKUP_UTILITY</label></h5>
+					<p style="margin-bottom:0;">__________________________</p>					
+					<p style="font-size:12dip;margin-bottom:8dip;margin-top:5dip;"> 
+						<label>ID_DATA_VAULT_DESC_P_1</label>
+					</p>					
+					<p style="font-size:12dip;margin-bottom:8dip;margin-top:5dip;"> 
+						<label>ID_DATA_VAULT_DESC_P_2</label>
+					</p>	
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_3</label><b><label>ID_DATA_VAULT_DESC_P_3_1</label></b><label>ID_DATA_VAULT_DESC_P_3_2</label>
+					</p>				
+					<p style="font-size:12dip;margin-bottom:8dip;margin-top:5dip;"> 
+						<label>ID_DATA_VAULT_DESC_P_4</label>
+					</p>	
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_5</label>
+						<ul .font_size_12>
+							<li><label>ID_DATA_VAULT_DESC_P_5_1</label></li>
+							<li><label>ID_DATA_VAULT_DESC_P_5_2</label></li>
+							<li><label>ID_DATA_VAULT_DESC_P_5_3</label></li>
+						</ul>
+					</p>
+					
+					<h5 style="height:7dip;margin-bottom:10dip;margin-top:0"><label style="font-size:12dip;">ID_DATA_VAULT_DISCLAIMER</label></h5>					
+					<p style="font-size:12dip;margin-bottom:5dip;">
+						<label>ID_DATA_VAULT_DESC_P_6</label>
+					</p>
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_7</label>
+					</p>
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_8</label>
+					</p>
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_9</label>
+					</p>
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_10</label>
+					</p>
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_11</label>
+					</p>
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_12</label>
+					</p>					
+					<p .font_size_12>
+						<label>ID_DATA_VAULT_DESC_P_13_1</label><b><label>ID_DATA_VAULT_DESC_P_13_2</label></b><label>ID_DATA_VAULT_DESC_P_13_3</label>
+					</p>
+				</div>					
+			</div>
+			<div .buttons>
+				<button .scan_button .button_dv_agrmnt #ID_BTN_AGREE .dfn><label>ID_AGREE</label></button>
+				<button .scan_button .button_dv_agrmnt #ID_BTN_DISAGREE .dfn><label>ID_DISAGREE</label></button>
+			</div>
+		</div>	
+</div>
+</body>
+</html>

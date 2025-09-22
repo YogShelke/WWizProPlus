@@ -1,0 +1,156 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<include src="IDR_HTM_FONT_AWESOME.htm" />		
+	<style>
+		@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:402dip;
+		   height:272dip;
+		   overflow:hidden;
+		}
+		  body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:0.5dip solid #3d748e;
+		}
+		h3{
+			font-family: 'Source Sans Pro', sans-serif!important;
+			text-align:left; 
+			font-weight:400;
+			padding-left:10dip;
+		}
+		.main{
+			width:400dip;
+			height:270dip;
+			background-size:cover;
+		}		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}		
+		.header_usb_first_pop_up{
+			flow:horizontal;
+			width:400dip;        
+			height:40dip;
+		}
+		.header_usb_first_pop_up .tempLogo{
+			width:375dip;
+			padding-left:10dip;
+			padding-top:3dip;
+		}
+		.header_usb_first_pop_up .tempLogo img{
+			width:100dip;
+			height:35dip;
+		}		
+		.header_usb_first_pop_up #ID_CLOSE_BUTTON {
+			padding-top:8dip;
+		}
+		.inner_body_usb_first_pop_up{
+			width:400dip;
+			height:340dip;
+			overflow:hidden;
+		}	
+		.inner_body_usb_first_pop_up .select_file_path{
+			width:370dip;
+			margin-left:10dip;
+			border-radius:4dip;
+			padding-top:15dip;
+			padding-bottom:15dip;
+			margin-bottom:10dip;
+			padding-left:10dip;
+		}
+		.inner_body_usb_first_pop_up h3{
+			margin-left:1dip;
+		}
+		#ID_RECOMMENDED{ 
+			margin-top:3dip;
+			margin-left:5dip;
+		}	
+		#ID_CONTINUE_WITHOUT_SCANNING{
+			margin-top:14dip;
+			margin-left:5dip;
+		}
+	</style>
+	
+	<script type="text/tiscript">
+		include "IDR_TIS_MAIN.tis";
+	</script>
+	
+	<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script>
+
+	<script type="text/tiscript">
+    function self.ready()
+    {
+        self.language = g_LanguageName;
+		if(g_themeType == "defaultTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			self.update();
+		}
+		else if(g_themeType == "darkTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			self.update();
+		} 
+		else if(g_themeType == "crystalTheme")
+		{
+			$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			self.update();
+		}		
+    }
+    </script>	
+	
+ 	<script type="text/tiscript">
+	$(#window-close).onClick = function()
+	{
+		view.OnCloseUI();
+	}
+	$(#ID_YES_BUTTON).onClick = function()
+	{
+		view.OnButtonClickYes();
+	}
+	$(#ID_NO_BUTTON).onClick = function()
+	{
+		view.OnCloseUI();
+	}
+	</script>
+</head>
+<body>
+<div .main>
+	<!--<div .header_usb_first_pop_up role="window-caption">
+		<div .tempLogo>
+			<img src="IDR_PNG_LOGO_BLACK.png">
+		</div>
+		<div .clickable_cl .frame_display_src #ID_CLOSE_BUTTON>X</div>
+	</div>-->
+	<div .header_usb_first_pop_up>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:25dip;">
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>
+	<div .inner_body_usb_first_pop_up>
+		<h3><label>ID_USB_DETECTED</label> <br/><label>ID_USB_DO_YOU_WANT_TO_START_USB_SCANNING</label></h3>
+		<div class="select_file_path">
+			<div .flow_horizontal>
+				<div class="btnCstmSmall" #ID_YES_BUTTON style="margin-top:0dip;"><label>ID_YES</label></div> 
+				<div #ID_RECOMMENDED><label>ID_RECOMMENDED</label></div>
+			</div>
+			<div .flow_horizontal>
+				<div class="btnCstmSmall" #ID_NO_BUTTON><label>ID_NO</label></div>  
+				<div #ID_CONTINUE_WITHOUT_SCANNING><label>ID_CONTINUE_WITHOUT_SCANNING</label></div>
+			</div>			
+		</div>		
+	</div>
+</div>
+</body>
+</html>

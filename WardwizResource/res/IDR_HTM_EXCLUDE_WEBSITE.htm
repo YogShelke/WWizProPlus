@@ -1,0 +1,440 @@
+<html custom-frame="solid">
+<head>
+<title>Exclude Website</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+<style>
+@import url(IDR_CSS_VGRID.css);
+@import url(IDR_CSS_GERMAN_LANG.css);
+
+html 
+{ 
+    background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+    background-size:cover;
+	width:388dip;           /* preferred/initial width */
+	height:367dip;          /* content will not overflow, no vertical scrollbars on the window */  
+	overflow:hidden;
+}
+
+window-button  { display:inline-block; size: 19dip; outline-color:red; behavior:clickable; clear:after;}
+window-caption { display:block; flow:text; width:*; font:system; padding: 4dip 8dip; }
+window-button#window-close { color:white;margin-left:4dip;margin-top:7dip;
+background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 
+							c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0
+							l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269
+							c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73
+							L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+background-size: 10dip;
+background-position: 50% 50%;
+background-repeat:no-repeat;
+fill: #fff;
+}
+
+window-button#window-close:hover { 
+background-color:red; 
+outline:5dip glow red -1dip; 
+transition: outline(linear,200ms) 
+background-color(linear,200ms); }
+	
+body { 
+padding:0; margin:0; 
+border:1dip solid #555555;  
+}
+
+
+.header{
+background:rgba(0,0,0,.4);
+flow:horizontal;
+width:500dip;        
+height:40dip;
+}
+
+
+
+html > body > .section { padding:10dip;}
+
+h1, p { text-align:center; }
+
+#content { flow:horizontal; size:*; }   
+#content > picture { display:block; size:auto; margin:6dip; }
+#content > textarea { display:block; size:*; min-width:16em; min-height:6em; }  
+
+/ /************************Resizable Table CSS ************************/ / 
+	
+table {
+	color: white;
+	font-size: 10pt;
+	border: none;
+	padding: 4dip;
+	background-color: #DDD;
+	background-image: url(IDR_PNG_HEADER.png);
+	background-repeat: expand stretch-left stretch-right stretch-middle;
+	background-position: 3dip 3dip 3dip 3dip;		
+	margin-bottom:2dip;
+}
+	
+/* style block defining vertical scrollbar */
+@set my-v-scrollbar {
+	.prev {
+		display: none;
+	}
+
+	.next {
+		display: none;
+	}
+
+	.base,
+	.next-page,
+	.prev-page {
+		background: white;
+	}
+
+	.slider {
+		background: gray;
+	}
+
+	.base:disabled {
+		background: #aaa;
+	}
+
+	.slider:hover {
+		background: gold;
+		border-left: 1dip solid #AAA;
+	}
+
+	.slider:active {
+		background: khaki;
+	}
+
+	.base {
+		width: 5dip;
+		height: 5dip;
+	}
+	/* explicit declaration of its width */
+	.corner {
+		background: transparent;
+	}
+}
+
+table > thead {
+	behavior: column-resizer;
+}
+
+table > tbody {
+	vertical-scrollbar: my-v-scrollbar;
+}
+
+table th {
+	color: white;
+	font-size: 10pt;
+	border: none;
+	padding: 4dip;
+	background-color: #DDD;
+	background-image: url(IDR_PNG_HEADER.png);
+	background-repeat: expand stretch-left stretch-right stretch-middle;
+	background-position: 3dip 3dip 3dip 3dip;			
+}
+
+
+table td {
+	padding: 1dip;
+	min-height: 14dip;
+}
+
+	#ID_TABLE_APP th:nth-child(1) {
+		width: 0.1*;
+	}
+	
+	#ID_TABLE_APP th:nth-child(2) {
+		width: 0.4*;
+	}
+	
+	#ID_TABLE_APP td:nth-child(1) {
+	text-align:center;
+	width: 0.1*;
+	padding-top:4dip!important;
+	}
+	
+	#ID_TABLE_APP td:nth-child(2) {
+	text-align:left;
+	color:#fff;
+	width: 0.4*;
+	}
+
+table tr:current /* current row */ 
+{
+	background-color: #bdbccc;
+	color: white;
+}
+
+
+
+#ID_TABLE_APP { style-set: vgrid; // see vgrid.css
+	width:360dip;
+	height:136dip; 
+	margin-top:5dip;} 
+	
+.message_display_block p{
+margin-top:10dip;
+margin-bottom:0dip;
+text-align:center;
+padding-top:0dip;
+}
+
+.message_display_block {
+background:rgba(0,8,44,.95);
+position:absolute;
+width:383dip;
+height:35dip;
+visibility:none;
+margin-top:40dip;
+margin-left:0dip;
+color:#fff;
+}
+
+.message_display_block:collapsed {
+visibility:visible;
+top:0;
+transition:top(sine-in-out, 600ms);
+}
+
+.set_chkbox_exclude{
+margin-top:3dip;
+height:16dip;
+}
+
+.set_label_information{
+margin-top:8dip;
+margin-left:3dip;
+}
+	
+.set_label_information_font{
+color:#fff;
+font-size:11dip;
+}	
+
+.set_input_type_text{
+width:230dip;
+margin-left:2dip;
+margin-top:5dip;
+}
+
+.basic_background{
+	background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+}
+.essential_background{
+	background:url(IDR_JPG_POPUP_BACKGROUND.jpg)!important;
+}
+.provantage_background{
+	background:url(IDR_JPG_BG_PROVANTAGE.jpg)!important;
+}
+.essential_plus_background{
+	background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+	background-size:cover;
+}
+.elite_background{
+	background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+	background-size:cover;
+}	
+</style>
+<script type="text/tiscript">  
+include "IDR_TIS_DECORATORS.tis";
+include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+include "IDR_TIS_SQLITE.tis";
+</script>
+
+<script type="text/tiscript">  
+var vlist = $(#ID_TABLE_APP);
+var ArrSitenames = new Array();
+var ArrPrevious = new Array();
+</script>
+
+<script type="text/tiscript">
+	$(#ID_CHK_BLOCK_SUBDOMAIN).onClick = function()
+	{
+		$(.message_display_block).state.collapsed = false;
+	}
+	
+	$(#ID_BTN_ADD).onClick = function()
+	{
+		$(.message_display_block).state.collapsed = false;
+		var varWebSite = $(#ID_TEXT_WEBSITE).value.trim();		
+		if(varWebSite[varWebSite.length - 1] == '.' || varWebSite[0] == '.' || varWebSite.split(".").length <= 1) 
+		{
+			$(.message_display_block).state.collapsed = true;
+			$(#ID_Def_exception_MSG).value = "Please enter valid URL.";
+			return;
+		}				
+		$(#ID_TEXT_WEBSITE).value = "";
+		var checked = $(#ID_CHK_BLOCK_SUBDOMAIN).state.checked;
+		$(#ID_CHK_BLOCK_SUBDOMAIN).state.checked = false;
+		if(varWebSite.length != 0)
+		{
+			if(ArrSitenames.length != 0)
+			{
+				for(var vindex = 0; vindex < ArrSitenames.length; vindex++)
+				{		
+					if(ArrSitenames[vindex].Domainname == varWebSite)
+					{
+						$(.message_display_block).state.collapsed = true;
+						$(#ID_Def_exception_MSG).value = "URL is already listed.";
+						return;
+					}
+				}
+			}
+			ArrSitenames.push {index:ArrSitenames.length,selected:checked,Domainname:varWebSite};	
+		}		
+	}
+	
+	$(#ID_BTN_OK).onClick = function()
+	{
+		if(ArrPrevious.length != 0)
+		{
+			ArrPrevious.splice(0,ArrPrevious.length);
+		}
+		if(ArrSitenames.length != 0)
+		{			
+			for(var vindex=0; vindex < ArrSitenames.length; vindex++)
+			{
+				ArrPrevious[vindex] = {index:ArrSitenames[vindex].index,selected:ArrSitenames[vindex].selected,Domainname:ArrSitenames[vindex].Domainname};
+			}
+		}
+		view.close(null);
+	}
+	
+	$(#ID_BTN_CANCEL).onClick = function()
+	{
+		view.close(null);
+	}
+	
+	$(#ID_BTN_REMOVE).onClick = function()
+	{
+		$(.message_display_block).state.collapsed = false;
+		if( vlist.tbody.currentIndex != -1)
+		{
+			var vindex = vlist.tbody.currentIndex;
+			ArrSitenames.splice(vindex,1);
+		}	
+	}
+	
+	$(#ID_BTN_REMOVE_ALL).onClick = function()
+	{
+		$(.message_display_block).state.collapsed = false;
+		if(ArrSitenames.length > 0)
+		{
+			ArrSitenames.splice(0,ArrSitenames.length);
+		}
+	}
+	
+</script> 
+<script type="text/tiscript">
+	vlist.on("change","tbody", function() { 
+		$(.message_display_block).state.collapsed = false;
+	});
+
+	$(body).onClick = function ()
+    {
+		$(.message_display_block).state.collapsed = false;
+    }
+</script> 
+<script type="text/tiscript">
+function GetData()
+{
+	$(.message_display_block).state.collapsed = false;
+	vlist.value = ArrSitenames; 
+	
+}
+</script>
+
+<script type="text/tiscript">
+	$(#window-close) << event click()
+	{		
+		view.close(null);
+	}
+</script> 
+
+<script type="text/tiscript">
+function self.ready() {	
+	self.language = view.parameters.varLanguageValue;
+    if(view.parameters.ProductVersion == #BASIC)
+    {
+        $(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+        $(body).attributes.addClass("basic_background");
+    }
+    else if(view.parameters.ProductVersion == #ESSENTIAL)
+    {
+        $(body).attributes.addClass("essential_background");
+    }
+    else if(view.parameters.ProductVersion == #PROVANTAGE)
+    {
+        $(body).attributes.addClass("provantage_background");
+		$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+    }
+    else if(view.parameters.ProductVersion == #ELITE)
+    {
+        $(body).attributes.addClass("elite_background");
+		$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+    }
+    else if(view.parameters.ProductVersion == #ESSENTIALPLUS)
+    {
+        $(body).attributes.addClass("essential_plus_background");
+		$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+    }
+	ArrPrevious = view.parameters.ArrSitenames;
+	if(ArrPrevious.length != 0)
+	{
+		for(var vindex = 0; vindex < ArrPrevious.length; vindex++)
+		{
+			ArrSitenames[vindex] = {index:ArrPrevious[vindex].index,selected:ArrPrevious[vindex].selected,Domainname:ArrPrevious[vindex].Domainname};	
+		}		
+	}
+	GetData();
+}
+
+</script> 
+</head>
+<body>
+
+<div .header>
+<window-caption role="window-caption" style="padding-top:14dip;width:342dip;color:#000;font-size:13dip;">
+	<b><label>Exclusion</label></b>
+</window-caption>	
+<window-button #window-close role="window-close"></window-button>
+</div>
+<div .section>
+<label style="color:#000;font-size:14dip;"><b>Enter URL</b></label><br/>
+<input #ID_TEXT_WEBSITE .set_input_type_text type="text">
+<button style="margin-left:4dip;color:#000!important;" .scan_button .scan_button_small #ID_BTN_ADD>Add</button>
+<div .set_chkbox_exclude> <input #ID_CHK_BLOCK_SUBDOMAIN|checkbox />
+<label style="color:#000;">Exclude Subdomain</label> 
+</div>
+
+<div .set_label_information> 
+<label .set_label_information_font style="margin-left:15dip;">(You can exclude certain known websites from getting blocked.</label><br/>
+<label .set_label_information_font> Excluded URLs or Websites will not get blocked even if its</label><br/>
+<label .set_label_information_font> category has been set to deny.)</label><br/>
+</div>
+
+<table #ID_TABLE_APP resizeable>
+<thead>
+<tr><th>Excluded SubDomain</th><th(Domainname)> URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input (selected)|checkbox disabled/></td>
+<td (Domainname)></td>
+</tbody>
+</table>
+<br/>
+
+<button .scan_button .scan_button_small #ID_BTN_REMOVE style="color:#000!important;">Remove</button>
+<button .scan_button .scan_button_small style="margin-left:5dip;" #ID_BTN_REMOVE_ALL  style="color:#000!important;;">Remove All</button>
+<button .scan_button .scan_button_small #ID_BTN_OK  style="color:#000!important;;">Ok</button>
+<button .scan_button .scan_button_small #ID_BTN_CANCEL  style="color:#000!important;;">Cancel</button>    	
+</div> 
+<div .message_display_block>
+	<p #ID_Def_exception_MSG style="color:#000;"></p>
+</div>
+</body>
+</html>

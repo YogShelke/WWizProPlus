@@ -1,0 +1,154 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+    <title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <style>
+        @import url(IDR_CSS_GERMAN_LANG.css);
+		@import url(IDR_CSS_NOTIFICATION_TRAY_INFINITE_POPUP.css);
+        html {
+            padding: 0dip;
+            margin: 0dip;
+            overflow: hidden;
+            width: 400dip;
+            height: 180dip;
+        }
+        body {
+            padding: 0dip;
+            margin: 0dip;
+            border: 2dip solid #599cb5;
+            width: 397dip!important;
+            height: 177dip!important;
+            position: relative;
+            overflow: hidden;
+        }
+		#ID_CONTENT_MSG{
+			font-size:14dip;
+		}
+		#ID_LOGO{
+			height:36dip;
+			width:90dip!important;
+		}
+		.parTimer1{
+			margin-top:2dip;
+			font-size:45dip;
+			width:70dip;
+			margin-left:110dip;
+			background:#a6a6a6;
+			border-radius:5dip;
+			text-align:center;
+			padding-bottom:5dip;
+			padding-left:5dip;
+			padding-right:5dip;
+			padding-top:-2dip;
+			color:red;
+		}
+		.parTimer2{
+			margin-top:2dip;
+			font-size:45dip;
+			width:70dip;
+			margin-left:110dip;
+			background:#a6a6a6;
+			border-radius:5dip;
+			text-align:center;
+			padding-bottom:5dip;
+			padding-left:5dip;
+			padding-right:5dip;
+			padding-top:-2dip;
+			color:red;
+		}
+		.parTimer3{
+			margin-top:2dip;
+			font-size:45dip;
+			width:70dip;
+			margin-left:157dip;
+			border-radius:5dip;
+			text-align:center;
+			padding-bottom:5dip;
+			padding-left:5dip;
+			padding-right:5dip;
+			padding-top:-6dip;
+			color:red;
+			position:absolute;
+		}
+		.parCtrlTitle{
+			font-size:16dip;
+			margin:0;
+			margin-top:5dip;
+			margin-right:20dip;
+			font-weight:normal;
+			color:#074a81;
+		}
+		.parCtrlDescrip{
+			margin:0;
+			margin-top:5dip;
+			width:370dip;
+			margin-left:18dip;
+			font-size:12.5dip!important;
+		}
+		.parTimerOuterDiv{
+			margin-top:7dip;
+			width:394dip;
+			text-align:center;
+		}
+    </style>
+    <script type="text/tiscript">
+        include "IDR_TIS_MAIN.tis";
+    </script>
+    <script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+	
+    <script type="text/tiscript">
+        function countdownOn()
+        {
+            var count = 60;
+            function show()
+            {
+                $(#ID_COUNTDOWN).text = String.printf("%02d",count);
+            }
+            self.timer(1s, function()
+            {
+                if( count == 0 )
+                {
+                    view.OnClickOK();
+                }
+                --count;
+                show(); // show current value
+                return true; // keep timer running
+            });
+            show(); // show initial value
+        }
+    </script>
+
+    <script type="text/tiscript">
+        function self.ready()
+        {
+		    self.language = g_LanguageName;
+		    if(g_themeType == "darkTheme")
+		    {
+		    	$(head).$append(<style>@import url(IDR_CSS_POPUP_DARK_THEME.css);</style>);
+		    }
+			countdownOn();
+        }
+    </script>
+
+</head>
+<body .scheduleScanBody .body>
+<div>
+	<div .header role="window-caption" style="background:#2b5a7e;">
+		<div .logo>
+			<img src="IDR_PNG_TRAY_LOGO.png" #ID_LOGO style="cursor:pointer;">
+		</div>
+	</div>	
+	<h3 #ID_CONTENT_HEADER class="title" .parCtrlTitle><label>ID_WARDWIZ_PARENTAL_CONTROL</label></h3>
+	<p #ID_CONTENT_MSG .parCtrlDescrip><label>ID_WARDWIZ_PARENTAL_CONTROL_LOCK</label></p>
+	<div .parTimerOuterDiv>
+		<div .parTimer3 .blink style="position:absolute;">:</div>
+		<div .parTimer2 style="position:absolute;margin-left:207dip;" #ID_COUNTDOWN></div>
+		<div .parTimer2 style="position:absolute;margin-left:107dip;" .parTimer1>00</div>
+	</div>
+</div>	
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+/* lightbox shim */
+div#lightbox-shim 
+{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 60dip;
+  right: 0;
+  bottom: 0;
+  background-color:rgba(0,0,0,0.3);
+  /* background: url(images/shim-bg.png) repeat; */
+  /* background-image-transformation:color-schema("system"); */
+  text-align:center;
+}
+
+/* dialog "window" frame */
+div#lightbox-shim > div.dialog-frame 
+{
+  font: system;
+  width: 100%;
+  min-width: min-content;
+  color:#fff;
+  font-size:15dip;
+  margin-left: 50%%;
+  margin-right: 50%%;
+  margin-top: 0%%;
+  background:rgba(0,0,0,.7);
+  background-repeat: expand;
+  background-position: 38dip 20dip 20dip 20dip;
+  background-image-transformation:color-schema("system");
+  text-align:center;
+  
+  /* background-color: window;
+  border-radius: 0 0 10dip 10dip; square top / round bottom */
+  
+  padding:10dip;
+  padding-top:0;
+}
+
+/* dialog "window" caption */
+div#lightbox-shim > div.dialog-frame > caption 
+{
+  font-weight: bold;
+  line-height: 28dip;
+  background-color: threedface threedface threedshadow threedshadow;
+  padding:0 10dip;
+  visibility:none;
+}
+
+/* dialog body element */
+div#lightbox-shim > div.dialog-frame > :nth-child(2) 
+{
+  height: *;
+  padding: 10dip;
+  text-align:center;
+}
+
+/* dialog button bar */
+div#lightbox-shim > div.dialog-frame > text.buttons
+ {
+  
+  text-align:center;
+  /*
+  border-top: 1dip solid threedshadow;
+  padding-top: 10dip;
+  */
+}
+
+/* button on dialog button bar */
+div#lightbox-shim > div.dialog-frame > text.buttons > button 
+{
+	width:70dip;
+	height:25dip;
+	background: background: linear-gradient(bottom, #000, #888888);
+	border:1dip solid #888888!important;
+	color:#fff;
+	border-radius:4dip;
+	cursor:pointer;
+	margin-left:10dip;
+	text-align:center;
+}
+
+
+

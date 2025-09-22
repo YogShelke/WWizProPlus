@@ -1,0 +1,1747 @@
+<html lang="ENGLISH">
+
+<head>
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+		@import url(IDR_CSS_TOGGELER.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+
+		.homeCenterCont {
+			flow: horizontal;
+			width: 665dip;
+		}
+
+		.titleDiv1 {
+			flow: horizontal;
+			margin-left: 10dip;
+			color: #555;
+			height: 28dip;
+			background: rgba(255, 255, 255, .3);
+			border: 1dip solid #c4e0e9;
+			border-bottom: 0;
+			border-radius: 5dip 5dip 0 0;
+		}
+
+		.tilesDiv1 {
+			flow: horizontal;
+			padding-left: 10dip;
+		}
+
+		.titleDiv2 {
+			flow: horizontal;
+			margin-right: 10dip;
+			color: #555;
+			height: 28dip;
+			background: rgba(13, 54, 89, .6);
+			border: 1dip solid #c4e0e9;
+			border-bottom: 0;
+			border-radius: 5dip 5dip 0 0;
+		}
+
+		.tilesDiv2 {
+			flow: horizontal;
+			padding-left: 10dip;
+			padding-right: 10dip;
+		}
+
+		.tiles1 {
+			width: 126dip;
+			height: 110dip;
+			background: rgba(13, 54, 89, .6);
+			//background:rgba(39,51,61,.7);
+			border: 1dip solid rgba(13, 54, 89, .7);
+			border-top: none;
+			color: #fff;
+			text-align: center;
+			padding-top: 10dip;
+		}
+
+		.titleTile1 {
+			width: 254dip;
+			height: 22dip;
+			background: rgba(13, 54, 89, .6);
+			border: 1dip solid rgba(13, 54, 89, .7);
+			color: #fff;
+			text-align: center;
+			padding-top: 6dip;
+			margin-left: 10dip;
+		}
+
+		.titleTile2 {
+			width: 382dip;
+			height: 22dip;
+			background: rgba(13, 54, 89, .6);
+			border: 1dip solid rgba(13, 54, 89, .7);
+			color: #fff;
+			text-align: center;
+			padding-top: 6dip;
+			margin-left: 10dip;
+		}
+
+		.titleTile1 h4,
+		.titleTile2 h4 {
+			margin: 0;
+		}
+
+		.titleTile3 {
+			width: 638dip;
+			height: 52dip;
+			padding-top: 6dip;
+			margin-left: 10dip;
+			margin-top: 10dip;
+			padding-left: 10dip;
+			flow: horizontal;
+		}
+
+		.titleTile3 h4,
+		.titleTile3 p {
+			margin: 0;
+		}
+
+		.tiles1 h4,
+		.tiles1 p {
+			margin: 0;
+			margin-bottom: 5dip;
+		}
+
+		.tiles1 h4 {
+			margin-top: 5dip;
+		}
+
+		.menuIconStyle {
+			size: 40dip;
+			background: none;
+			fill: #fff;
+			cursor: pointer;
+			stroke: #fff;
+		}
+
+		.menuIconStyle1 {
+			size: 25dip;
+			background: none;
+			fill: #fff;
+			stroke: #fff;
+			float: left;
+			margin-left: 10dip;
+		}
+
+		p {
+			font-size: 12dip;
+		}
+
+		h4 {
+			font-size: 14dip;
+			font-weight: 500;
+		}
+
+		.scanNowBt {
+			width: 100dip;
+			height: 35dip;
+			margin-top: 6dip;
+			margin-left: 16dip;
+			background: transparent;
+			color: #fff;
+			border: 1dip solid #fff;
+			font-size: 14dip;
+			cursor: pointer;
+			border-radius: 5dip;
+			<!-- box-shadow:3dip 3dip 4dip #888; -->
+		}
+
+		.emailIconAnim {
+			//fill:red!important;
+			//stroke:red!important;
+			//text-shadow: 0 0 15px  red;
+			//drop-shadow: 10px, 10px, 10px, #fff;
+			stroke-dasharray: 800;
+		}
+
+		.menuIconStyle {
+			//box-shadow: 0 0 15px  red;
+			drop-shadow: 10px, 10px, 10px, #fff;
+		}
+
+		.greenColor {
+			color: #1d5f03;
+		}
+
+		.redColor {
+			color: #ba0202;
+		}
+
+		.yellowColor {
+			color: #d48f04;
+		}
+
+		#ID_BUTTON_ACTIVE_PROTECTION {
+			visibility: none;
+		}
+
+		#ID_BUTTON_ACTIVE_PROTECTION:collapsed {
+			visibility: none;
+		}
+
+		#ID_BUTTON_ACTIVE_PROTECTION:expanded {
+			visibility: visible;
+		}
+
+		#ID_BUTTON_RENEW {
+			visibility: none;
+		}
+
+		#ID_BUTTON_RENEW:expanded {
+			visibility: visible;
+		}
+
+		#ID_BUTTON_RENEW:collapsed {
+			visibility: none;
+		}
+
+		#ID_UPDATE {
+			visibility: none;
+		}
+
+		#ID_UPDATE:expanded {
+			visibility: visible;
+		}
+
+		#ID_UPDATE:collapsed {
+			visibility: none;
+		}
+
+		#ID_BUTTON_REGISTER_NOW {
+			visibility: none;
+		}
+
+		#ID_BUTTON_REGISTER_NOW:expanded {
+			visibility: visible;
+		}
+
+		#ID_BUTTON_REGISTER_NOW:collapsed {
+			visibility: none;
+		}
+
+		#ID_NOT_PROTECTED {
+			visibility: none;
+		}
+
+		#ID_NOT_PROTECTED:expanded {
+			visibility: visible;
+		}
+
+		#ID_PROTECTED {
+			visibility: visible;
+		}
+
+		#ID_PROTECTED:collapsed {
+			visibility: none;
+		}
+
+		.clickable_cl {
+			cursor: pointer;
+		}
+
+		menu {
+			behavior: menu;
+			display: none;
+			prototype: PopupDialog;
+			width: 130dip;
+			padding: 0;
+			margin: 0;
+		}
+
+		li[type="menu"] {
+			behavior: popup-menu;
+		}
+
+		.scanMnu menu {
+			flow: vertical;
+			margin-left: 0dip;
+			border: 1dip solid #2f404c;
+			margin-bottom: -5dip;
+		}
+
+		.scanMnu menu li {
+			width: 160dip;
+			padding: 5dip;
+			cursor: pointer;
+			color:#fff
+		}
+
+		.scanMnu menu li:hover {
+			background: #fff;
+			color: #32485e;
+		}
+
+		.scanNowBt {
+			width: 130dip;
+			height: 23dip;
+			//margin-top:6dip;
+			margin-left: 0;
+			background: #269BD0;
+			color: #fff;
+			border: 1dip solid #269BD0;
+			font-size: 14dip;
+			position: relative;
+			display: block;
+			text-align: center;
+			padding-top: 5dip;
+			padding-bottom: 5dip;
+		}
+
+		.FeaturesCont {
+			flow: horizontal;
+		}
+
+		.FeaturesDiv {
+			width: 156dip;
+			height: 185dip;
+			margin-left: 5dip;
+			overflow: hidden;
+			border-radius: 5dip;
+			background-color: #ffffff!important;
+			box-shadow: 3px 3px 5px #c0c0c0;
+		}
+
+		.menuIconStyleInner11 {
+			size: 40dip;
+			background: none;
+			fill: #fff;
+			stroke: #fff;
+			margin-bottom: 8dip;
+			margin-left: 60dip;
+		}
+
+		.menuIconStyleInner12 {
+			position: absolute;
+			width: 30dip;
+			background: none;
+			cursor: pointer;
+			margin-bottom: 8dip;
+			margin-top: 17dip !important;
+			padding: 1dip 4dip;
+			border-radius: 10dip;
+			font-size: 9dip;
+			right: 15dip;
+			top: -10dip;
+		}
+
+		.onBtn {
+			background: #1d5f03;
+			color:#fff;
+		}
+
+		.offBtn {
+			background: #909090;
+			color:#000;
+		}
+
+		.FIconDiv {
+			//text-align:center;
+			color: #000;
+			padding-top: 5dip;
+			min-height: 25dip;
+		}
+
+		.FIconDiv h4 {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			position: relative;
+		}
+
+		.descriptionTit {
+			color: #000;
+			margin: 0;
+			padding: 0;
+			height: 79dip;
+			overflow: hidden;
+		}
+		.hdeShow{
+			visibility: none;
+		}
+
+		.descriptionTit ul {
+			padding: 0;
+			margin-left: 0;
+			margin-top: 6dip;
+		}
+
+		.descriptionTit li {
+			list-style: none;
+			margin: 0;
+			padding-top: 4dip;
+			padding-bottom: 4dip;
+			padding-left: 5dip;
+			//text-align:center;
+			cursor: pointer;
+			font-size: 13dip;
+			position: relative;
+		}
+
+		.FeaturesDiv:hover>.descriptionTit {
+			height: *;
+			overflow: visible;
+		}
+		.FeaturesDiv:hover>.descriptionTit li.hdeShow {
+			visibility: visible;
+		}
+
+		.FeaturesDiv:hover>.FIconDiv svg {
+			margin-left: 5dip;
+			size: 20dip;
+			transition: margin-left(linear, duration:0.3s) size(linear, duration:0.4s);
+		}
+
+		.FeaturesDiv:hover>.FIconDiv h4 {
+			margin-top: -25dip;
+			font-size: 12dip;
+			//margin-left:0;
+			//position:absolute;
+			transition: margin-top(linear, duration:0.45s) font-size(linear, duration:0.4s);
+		}
+
+		.FeaturesDiv:hover>.FIconDiv1 h4 {
+			margin-left: 20dip;
+		}
+
+		.dotIco {
+			width: 15dip;
+			margin-left: 74dip;
+			margin-top: 17dip;
+		}
+
+		.FeaturesDiv:hover>.dotIco {
+			visibility: hidden;
+		}
+
+		.descriptionTit li:hover {
+			padding-left: 10dip;
+			background: #d7e6f2;
+			transition: border-left(linear, duration:0.3s) padding-left(linear, duration:0.3s);
+		}
+
+		.listIcon1 {
+			width: 10px;
+			opacity: .4;
+		}
+
+		.icons {
+			font-family: MyAwesome;
+		}
+
+		.icons.green {
+			color: #1d5f03;
+		}
+
+		.icons.red {
+			color: red;
+		}
+
+		.color_green {
+			color: #1d5f03;
+		}
+
+		.color_yellow {
+			color: #d48f04;
+		}
+
+		.color_red {
+			color: red;
+		}
+
+		.mrgnTop3 {
+			margin-top: 3dip;
+			width: 10.5dip;
+		}
+
+		.msg_btn {
+			text-decoration: underline;
+			cursor: pointer;
+			color: #1d5f03;
+			margin: 0;
+			display: inline-block;
+		}
+
+		.message_container {
+			color: #000;
+			margin-bottom: 10dip;
+			margin-top: 12dip;
+			margin-left: 21dip;
+			visibility: none;
+			width: 530dip;
+			display: inline-block;
+			text-align: left;
+			padding-top: 0;
+			margin-top: -13dip;
+		}
+
+		.message_container:expanded {
+			visibility: visible;
+		}
+
+		.message_container:collapsed {
+			visibility: none;
+		}
+
+		#ID_SVG_NOT_PROTECTED {
+			visibility: none;
+		}
+
+		#ID_SVG_NOT_PROTECTED:expanded {
+			visibility: visible;
+		}
+
+		#ID_SVG_NOT_PROTECTED:collapsed {
+			visibility: none;
+		}
+
+		#ID_SVG_PROTECTED {
+			visibility: none;
+		}
+
+		#ID_SVG_PROTECTED:expanded {
+			visibility: visible;
+		}
+
+		#ID_SVG_PROTECTED:collapsed {
+			visibility: none;
+		}
+
+		#ID_SVG_PARTIALLY_PROTECTED {
+			visibility: none;
+		}
+
+		#ID_SVG_PARTIALLY_PROTECTED:expanded {
+			visibility: visible;
+		}
+
+		#ID_SVG_PARTIALLY_PROTECTED:collapsed {
+			visibility: none;
+		}
+
+		#ID_FIREWALL_FIX {
+			visibility: none;
+		}
+
+		#ID_FIREWALL_FIX:collapsed {
+			visibility: none;
+		}
+
+		#ID_FIREWALL_FIX:expanded {
+			visibility: visible;
+		}
+
+		#ID_EMAIL_SCN_FIX {
+			visibility: none;
+		}
+
+		#ID_EMAIL_SCN_FIX:collapsed {
+			visibility: none;
+		}
+
+		#ID_EMAIL_SCN_FIX:expanded {
+			visibility: visible;
+		}
+
+		#ID_PAR_CONTROL_FIX {
+			visibility: none;
+		}
+
+		#ID_PAR_CONTROL_FIX:collapsed {
+			visibility: none;
+		}
+
+		#ID_PAR_CONTROL_FIX:expanded {
+			visibility: visible;
+		}
+
+		#ID_BROWSER_SEC_FIX {
+			visibility: none;
+		}
+
+		#ID_BROWSER_SEC_FIX:collapsed {
+			visibility: none;
+		}
+
+		#ID_BROWSER_SEC_FIX:expanded {
+			visibility: visible;
+		}
+
+		.red_update_color {
+			color: #ba0202;
+		}
+
+		.protectionIcon {
+			fill: none;
+			stroke: #ffffff;
+			stroke-width: 15;
+			stroke-miterlimit: 10;
+		}
+		.vibroImg{
+			position: absolute;
+			width: 150dip;
+			left:0dip;
+			bottom:0;
+		}
+		.cstmDivStyle{
+			color:#000;
+			width:650dip;
+			text-align:center;
+			background-color: #ffffff!important;
+			margin-left:10px ;position:relative;
+			margin-top: 30dip;
+			box-shadow: 3px 3px 5px #c0c0c0;
+			border-radius: 20dip;
+		}
+		.cstmProtected{
+			box-shadow: 3px 3px 5px #99fe82!important;
+		}
+		.cstmPerProtected{
+			box-shadow: 3px 3px 5px #ffe570!important;
+		}
+		.cstmNotProtected{
+			box-shadow: 3px 3px 5px #fc9090!important;
+		}
+	</style>
+	<script type="text/tiscript">
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	include "IDR_TIS_SQLITE.tis";
+</script>
+	<script type="text/tiscript">
+	var ArrayRegValue = new Array(0);
+	var varReportDBPath;
+	var DataBase;
+	var varFileCount  = 0;
+	var varThreatCount = 0;
+	var varThreatCleanCount = 0;
+</script>
+	<script type="text/tiscript">
+    function RemoveAttributesClasses()
+    {
+        self.select("#ID_DAYS_COLOR_VALIDATION").attributes.removeClass("color_green");
+        self.select("#ID_DAYS_COLOR_VALIDATION").attributes.removeClass("color_yellow");
+        self.select("#ID_DAYS_COLOR_VALIDATION").attributes.removeClass("color_red");
+    }
+</script>
+	<script type="text/tiscript">
+	function DaysColorValidation(varDaysReflect)
+	{
+		RemoveAttributesClasses();
+		
+        $(#ID_DAYS_REMAINING).value = varDaysReflect;
+
+        if(varDaysReflect > 20)
+        {
+           self.select("#ID_DAYS_COLOR_VALIDATION").attributes.addClass("color_green");
+        }
+        else if(varDaysReflect <= 20 && varDaysReflect > 10)
+        {
+           self.select("#ID_DAYS_COLOR_VALIDATION").attributes.addClass("color_yellow");
+        }
+        else if(varDaysReflect <= 10 && varDaysReflect >= 00)
+        {
+           self.select("#ID_DAYS_COLOR_VALIDATION").attributes.addClass("color_red");
+        }
+	}
+</script>
+	<script type="text/tiscript">
+	function FunCheckParCtrlValues()
+	{
+		g_ParCtrlUserActive = false;
+		var varUserCount;
+		var varDataBasePath = view.GetDataBasePath();
+		DataBase = DB.open(varDataBasePath);
+		DataBase.exec("create table IF NOT EXISTS WWiz_PC_UserList(USERID INTEGER PRIMARY KEY, USERNAME VARCHAR(50) NOT NULL, ISCONTROL BOOL, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");	
+		var vResult = DataBase.exec("SELECT ISCONTROL FROM WWiz_PC_UserList");
+		if(vResult != 101)
+		{
+			do
+			{
+				for (var varVirtualDBData in vResult)
+				{
+					if(varVirtualDBData == 1)
+					{
+						g_ParCtrlUserActive = true;
+						break;
+					}
+				}
+			}
+			while( vResult.next());
+			vResult.close();
+		}
+		DataBase.close();
+	}
+</script>
+	<script type="text/tiscript">
+	function MessageValidation(varMessageType)
+	{
+		if(varMessageType == 0)
+        {
+            $(.message_container).state.collapsed = true;
+        }
+        else if(varMessageType == 1)
+        {
+			$(.message_container).state.expanded = true;         
+            $(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_WARDWIZ_COPY_IS_NOT_GENUINE");
+            return;
+        }
+        else if(varMessageType == 2)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_FREE_TRIAL_NOT_ACTVTD");
+			$(#ID_BUTTON_REGISTER_NOW).state.expanded = true;
+            return;
+        }
+        else if(varMessageType == 3)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_TRIAL_VERSION_EXPIRED_REGISTER");
+            $(#ID_BUTTON_REGISTER_NOW).state.expanded = true;
+            return;
+        }
+        else if(varMessageType == 4)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value =Lang.translate("ID_PRODUCT_IS_EXPIRED_PLEASE_RENEW");
+            $(#ID_BUTTON_RENEW).state.expanded = true;
+            return;
+        }
+        else if(varMessageType == 5)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_OLDER_DATABASE_VERSION_PLEASE_UPDATE");
+            $(#ID_UPDATE).state.expanded = true;
+			$(#ID_UPDATE_DATE).attributes.addClass("red_update_color");
+            return;
+        }
+        else if(varMessageType == 6)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value =Lang.translate("ID_PRODUCT_IS_EXPIRED_PLEASE_RENEW");
+            $(#ID_BUTTON_RENEW).state.expanded = true;
+            return;
+        }
+        else if(varMessageType == 7)
+        {
+            return;
+        }
+        else if(varMessageType == 8)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_ACTIVE_SCAN_IS_DISABLED");
+            $(#ID_BUTTON_ACTIVE_PROTECTION).state.expanded = true;
+            return;
+        }
+        else if(varMessageType == 9)
+        {
+			$(.message_container).state.expanded = true;
+            $(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_TRIAL_VERSION");
+            $(#ID_BUTTON_REGISTER_NOW).state.expanded = true;
+            return;
+        }
+		
+		if(productVersion == #ESSENTIALPLUS)
+		{
+			if(ArrayRegValue[1].value == 0)
+			{
+				$(.message_container).state.expanded = true;
+				$(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_FIREWALL_MSG");
+				$(#ID_FIREWALL_FIX).state.expanded = true;
+				return;
+			}
+			else if(ArrayRegValue[2].value == 0)
+			{
+				$(.message_container).state.expanded = true;
+				$(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_EMAIL_SCN_MSG");
+				$(#ID_EMAIL_SCN_FIX).state.expanded = true;
+				return;
+			}
+			else if(ArrayRegValue[3].value == 0 || g_ParCtrlUserActive == false)
+			{
+				$(.message_container).state.expanded = true;
+				$(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_PARENTAL_PROT_MSG");
+				$(#ID_PAR_CONTROL_FIX).state.expanded = true;
+				return;
+			}
+			/*else if(ArrayRegValue[4].value == 0)
+			{
+				$(.message_container).state.expanded = true;
+				$(#ID_PROTECTED_MESSAGE).value = Lang.translate("ID_BROWSER_SEC_MSG");
+				$(#ID_BROWSER_SEC_FIX).state.expanded = true;
+				return;
+			}*/
+		}	
+	}
+</script>
+	<script type="text/tiscript">
+    function DataToDisplay(varDaysReflect,varLastUpdate,strScanType,varMessageType)
+    {
+		//view.msgbox(#alert,"Testing");
+		//DaysColorValidation(varDaysReflect);
+		MessageValidation(varMessageType);
+	   
+		var arrUserDetails = view.GetRegisteredUserInfo();
+		//$(#ID_DATABASE_VERSION).value = arrUserDetails[8];
+		//$(#ID_PRODUCT_VERSION).value = arrUserDetails[4];
+		//$(#ID_UPDATE_DATE).value = varLastUpdate;
+		//$(#ID_LAST_SCAN_TYPE).value = strScanType;
+
+		var bflag = 0;
+		if(varMessageType && varDaysReflect == 0)
+		{
+			SetNotProtectedText();
+			return;
+		}
+		else if(varDaysReflect)
+		{
+			SetProtectedText();
+			bflag = 1;
+		}		
+		
+		if(varMessageType == 9)
+		{
+			SetProtectedText();
+			bflag = 1;
+		}
+		else if(varMessageType > 0)
+		{
+			SetNotProtectedText();
+			return;
+		}
+		
+
+		if(productVersion == #ESSENTIALPLUS)
+		{
+			if(bflag == 1)
+			{
+				if(ArrayRegValue[1].value == 0 ||
+					ArrayRegValue[2].value == 0 ||
+					(ArrayRegValue[3].value == 0 || g_ParCtrlUserActive == false) 
+                    //||ArrayRegValue[4].value == 0
+                    )
+				{
+                    SetPartiallyProtectedText();
+				}
+			}
+		}
+    }
+    </script>
+	<script type="text/tiscript">
+    function SetProtectedText()
+    {
+		$(#ID_SVG_NOT_PROTECTED).state.collapsed = true;
+		$(#ID_SVG_PARTIALLY_PROTECTED).state.collapsed = true;
+		$(#ID_SVG_PROTECTED).state.expanded = true;
+		self.select("#ID_PROTECTED_MSG").attributes.addClass("greenColor");
+		$(#ID_PROTECTED_MSG).text = Lang.translate("ID_PROTECTED");
+		self.select("#CHG_BG").attributes.addClass("cstmProtected");
+	}
+
+    function SetNotProtectedText()
+	{
+		$(#ID_SVG_PROTECTED).state.collapsed = true;
+		$(#ID_SVG_PARTIALLY_PROTECTED).state.collapsed = true;
+		$(#ID_SVG_NOT_PROTECTED).state.expanded = true;
+		self.select("#ID_PROTECTED_MSG").attributes.addClass("redColor");
+		$(#ID_PROTECTED_MSG).text = Lang.translate("ID_NOT_PROTECTED");
+		self.select("#CHG_BG").attributes.addClass("cstmNotProtected");
+    }
+	
+	function SetPartiallyProtectedText()
+	{
+		$(#ID_SVG_PROTECTED).state.collapsed = true;
+		$(#ID_SVG_NOT_PROTECTED).state.collapsed = true;
+		$(#ID_SVG_PARTIALLY_PROTECTED).state.expanded = true;
+		self.select("#ID_PROTECTED_MSG").attributes.addClass("yellowColor");
+		$(#ID_PROTECTED_MSG).text = Lang.translate("ID_PARTIALLY_PROTECTED");
+		self.select("#CHG_BG").attributes.addClass("cstmPerProtected");
+    }
+</script>
+	<script type="text/tiscript">
+    function Disabled(varButton)
+    {
+		if(varButton == 1)		//Trial version
+		{
+			g_ProductLicenseType = #NONE;
+		}
+		else if(varButton == 2)	//Registered User
+		{
+			g_ProductLicenseType = #NONE;
+		}
+		else if(varButton == 3)
+		{
+			g_ProductLicenseType = #EXPIRED;
+		}
+		else if(varButton == 4)
+		{
+			g_ProductLicenseType = #EXPIRED;
+		}
+		else if(varButton == 5)
+		{
+			g_ProductLicenseType = #UNREGISTERED;
+		}
+    }
+</script>
+	<script type="text/tiscript">
+	function CurrentRegValues(iKey, iValue)
+    {
+        var varKey = iKey.toInteger();
+        ArrayRegValue[varKey] = {Key : iKey , value : iValue};
+    }
+</script>
+	<script type="text/tiscript">
+	function ApplyCurrentTogglerValue(ArrayCurrentRegValue)
+    {
+		RemoveAttribute();
+		if(productVersion == #ESSENTIALPLUS)
+		{
+			FunCheckParCtrlValues();
+		}
+		if((ArrayCurrentRegValue[1].value).toInteger() == 0)
+		{
+			self.select("#ID_FIREWALL_TOGGLE").attributes.addClass("offBtn");
+			$(#ID_FIREWALL_TOGGLE).text = Lang.translate("ID_OFF");
+		}
+		else
+		{
+			self.select("#ID_FIREWALL_TOGGLE").attributes.addClass("onBtn");
+			$(#ID_FIREWALL_TOGGLE).text = Lang.translate("ID_ON");
+		}
+		
+		if((ArrayCurrentRegValue[2].value).toInteger() == 0)
+		{
+			self.select("#ID_EMAIL_TOGGLE").attributes.addClass("offBtn");
+			$(#ID_EMAIL_TOGGLE).text = Lang.translate("ID_OFF");
+		}
+		else
+		{
+			self.select("#ID_EMAIL_TOGGLE").attributes.addClass("onBtn");
+			$(#ID_EMAIL_TOGGLE).text = Lang.translate("ID_ON");
+		}
+		
+		if((ArrayCurrentRegValue[3].value).toInteger() == 0 || g_ParCtrlUserActive == false)
+		{
+			self.select("#ID_PAR_CONTROL_TOGGLE").attributes.addClass("offBtn");
+			$(#ID_PAR_CONTROL_TOGGLE).text = Lang.translate("ID_OFF");
+		}
+		else
+		{
+			self.select("#ID_PAR_CONTROL_TOGGLE").attributes.addClass("onBtn");
+			$(#ID_PAR_CONTROL_TOGGLE).text = Lang.translate("ID_ON");
+		}
+		
+		if((ArrayCurrentRegValue[4].value).toInteger() == 0)
+		{
+			self.select("#ID_BROWSER_SEC_TOGGOLE").attributes.addClass("offBtn");
+			$(#ID_BROWSER_SEC_TOGGOLE).text = Lang.translate("ID_OFF");
+		}
+		else
+		{
+			self.select("#ID_BROWSER_SEC_TOGGOLE").attributes.addClass("onBtn");
+			$(#ID_BROWSER_SEC_TOGGOLE).text = Lang.translate("ID_ON");
+		}		
+	}
+</script>
+	<script type="text/tiscript">
+    function RemoveAttribute()
+    {
+        self.select("#ID_FIREWALL_TOGGLE").attributes.removeClass("offBtn");
+        self.select("#ID_FIREWALL_TOGGLE").attributes.removeClass("onBtn");
+        self.select("#ID_EMAIL_TOGGLE").attributes.removeClass("offBtn");
+        self.select("#ID_EMAIL_TOGGLE").attributes.removeClass("onBtn");
+        self.select("#ID_PAR_CONTROL_TOGGLE").attributes.removeClass("offBtn");
+        self.select("#ID_PAR_CONTROL_TOGGLE").attributes.removeClass("onBtn");
+		self.select("#ID_BROWSER_SEC_TOGGOLE").attributes.removeClass("offBtn");
+        self.select("#ID_BROWSER_SEC_TOGGOLE").attributes.removeClass("onBtn");
+    }
+</script>
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+</script>
+	<script type="text/tiscript">
+function FunSetReportsVal(varFilesScanned, varThreatsFound, varThreatsCleaned, varURLsBlocked)
+{
+	var varTempVal1 = varFilesScanned;
+	var varTempVal2 = varThreatsFound;
+	var varTempVal3 = varThreatsCleaned;
+	var varTempVal4 = varURLsBlocked;
+	if(varFilesScanned == "")
+	{
+		varTempVal1 = "0";
+	}
+	if(varThreatsFound == "")
+	{
+		varTempVal2 = "0";
+	}
+	if(varThreatsCleaned == "")
+	{
+		varTempVal3 = "0";
+	}
+	if(varURLsBlocked == "")
+	{
+		varTempVal4 = "0";
+	}
+	$(#ID_FILES_SCANNED).value = varTempVal1;
+	$(#ID_THREAT_FOUND).value = varTempVal2;
+	$(#ID_THREAT_CLEANED).value = varTempVal3;
+	$(#ID_URL_BLOCKED).value = varTempVal4;
+}
+</script>
+
+	<script type="text/tiscript">
+	function FunSetReportValfromDB()
+	{
+		self.timer(10ms, function()
+		{
+			view.FetchReportValue(FunSetReportsVal);
+		});		
+		if(g_ProductLicenseType == #UNREGISTERED || g_ProductLicenseType == #EXPIRED)
+		{
+			self.select("#ID_FIREWALL_TOGGLE").attributes.addClass("offBtn");
+			self.select("#ID_EMAIL_TOGGLE").attributes.addClass("offBtn");
+			self.select("#ID_PAR_CONTROL_TOGGLE").attributes.addClass("offBtn");
+			self.select("#ID_BROWSER_SEC_TOGGOLE").attributes.addClass("offBtn");
+		}
+	}
+</script>
+
+	<script type="text/tiscript">
+	function self.ready()
+	{
+		
+		//self.language = "ENGLISH";
+		//OnSetDefaultTheme();
+		//g_themeType = "defaultTheme"
+		//g_LanguageName = "ENGLISH"
+		g_CurrentPage = #INDEX;
+		if(g_themeType == "defaultTheme")
+		{
+			OnSetDefaultTheme();
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			OnSetDarkTheme();
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			OnSetCrystalTheme();
+		}
+		self.language = g_LanguageName;
+		varScanStatusHomeToScan = 0;
+		//to add german lang css changes
+		if(g_LanguageName == "GERMAN")
+		{
+			$(.titleTile3).style["height"] = 62dip;
+		}
+		view.ReadCurrentValues(CurrentRegValues);
+		ApplyCurrentTogglerValue(ArrayRegValue);
+		view.LoadHomepageControls(DataToDisplay);
+		view.HomeControl(Disabled);
+		FunSetReportValfromDB();
+	}
+</script>
+
+	<script type="text/tiscript">
+	function FunCheckForOtherScans()
+	{
+		if((g_IsFullScanRunning == true && g_FullScanFinish == false) || (g_IsQuickScanRunning == true && g_QuickScanFinish == false) || (g_IsCustomScanRunning == true && g_CstmScanFinish == false) || (g_IsAntirootkitRunning == true && g_ARootScanFinish == false))
+		{
+			return true;
+		}
+		return false;
+	}
+</script>
+
+	<script type="text/tiscript">
+function CheckRunningQuickScan()
+{
+	if(g_IsQuickScanRunning == true || !FunCheckForOtherScans())
+	{
+		selectView("IDR_HTM_QUICK_SCAN");
+	}
+	else
+	{
+		varScanStatusHomeToScan = 1;
+		selectView("IDR_HTM_SCAN");
+	}
+}
+
+function CheckRunningFullScan()
+{
+	if(g_IsFullScanRunning == true || !FunCheckForOtherScans())
+	{
+		selectView("IDR_HTM_FULL_SCAN");
+	}
+	else
+	{	
+		varScanStatusHomeToScan = 2;
+		selectView("IDR_HTM_SCAN");
+	}
+}
+
+function CheckRunningCustomScan()
+{
+	if(g_IsCustomScanRunning == true || !FunCheckForOtherScans())
+	{
+		selectView("IDR_HTM_CUSTOM_SCAN");
+	}
+	else
+	{		
+		varScanStatusHomeToScan = 3;
+		selectView("IDR_HTM_SCAN");
+	}
+}
+
+function CheckRunningAntiRootkitScan()
+{
+	if(g_IsAntirootkitRunning == true || !FunCheckForOtherScans())
+	{
+		selectView("IDR_HTM_ANTIROOTKIT_SCAN");
+	}
+	else
+	{
+		varScanStatusHomeToScan = 4;
+		selectView("IDR_HTM_SCAN");	
+	}
+}
+</script>
+	<script type="text/tiscript">
+	$(#ID_LOAD_QUICK_SCAN).onClick = function()
+	{
+		CheckRunningQuickScan();
+	}
+	$(#ID_LOAD_QUICK_SCAN1).onClick = function()
+	{
+		CheckRunningQuickScan();
+	}
+	$(#ID_LOAD_FULL_SCAN).onClick = function()
+	{
+		CheckRunningFullScan();
+	}
+	$(#ID_LOAD_FULL_SCAN1).onClick = function()
+	{
+		CheckRunningFullScan();
+	}
+	$(#ID_LOAD_CUSTOM_SCAN).onClick = function()
+	{
+		CheckRunningCustomScan();
+	}
+	$(#ID_LOAD_CUSTOM_SCAN1).onClick = function()
+	{
+		CheckRunningCustomScan();
+	}
+	$(#ID_LOAD_ANTIROOTKIT_SCAN).onClick = function()
+	{
+		CheckRunningAntiRootkitScan();
+	}
+	$(#ID_LOAD_ANTIROOTKIT_SCAN1).onClick = function()
+	{
+		CheckRunningAntiRootkitScan();
+	}
+	$(#ID_BOOTTIME_SCAN).onClick = function()
+	{
+		if(checkIsValidUser() == true)
+		{
+			g_IsAnyPopUpDisplayed = true;
+			var dialogParameters = { ProductVersion:productVersion,varLanguageValue:g_LanguageName,vthemeType:g_themeType};
+			var dialogRetVal = view.dialog { url: self.url("IDR_POPUP_BOOTTIME_SCAN.htm"), client:true, alignment:-5, parameters: dialogParameters};
+			g_IsAnyPopUpDisplayed = false;
+        }
+	}
+	$(#ID_RESCUE_DISK).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.RESCUE_DISK);
+	}	
+	$(#ID_REG_OPTI).onClick = function()
+	{
+		selectView("IDR_HTM_REGISTRY_OPTIMIZER");
+	}
+	$(#ID_DATA_ENC).onClick = function()
+	{
+		selectView("IDR_HTM_DATA_ENCRYPTION");
+	}
+    $(#ID_USB_VACC).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.USB_VACCINE);
+	}
+	$(#ID_AUTORUN_SCAN).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.AUTO_RUN_SCAN);
+	}
+	$(#ID_REG_TOOL).onClick = function()
+	{
+		view.LaunchUtilities(UTILITY_TYPE.REG_TOOL);
+	}
+	$(#ID_FIREWALL).onClick = function()
+	{
+		selectView("IDR_HTM_FIREWALL");
+	}
+	$(#ID_EMAIL_PROT).onClick = function()
+	{
+		selectView("IDR_HTM_EMAIL_SCAN");
+	}
+	$(#ID_PAR_CONTROL).onClick = function()
+	{
+		selectView("IDR_HTM_PARENTAL_CONTROL");
+	}
+	$(#ID_REPORT_LI1).onClick = function()
+    {
+		selectView("IDR_HTM_REPORTS");
+    }
+	$(#ID_REPORT_LI2).onClick = function()
+    {
+		selectView("IDR_HTM_REPORTS");
+    }
+	$(#ID_REPORT_LI3).onClick = function()
+    {
+		selectView("IDR_HTM_REPORTS");
+    }
+	$(#ID_REPORT_LI4).onClick = function()
+    {
+		selectView("IDR_HTM_REPORTS");
+    }
+	$(#ID_LAST_UPDATE).onClick = function()
+    {
+		view.LaunchWardWizUpdate(UPDATE_TYPE.OFFLINE_UPDATE);
+    }
+	$(#ID_BROWSER_SECURITY_LAUNCH).onClick = function()
+    {
+		//selectView("IDR_HTM_BROWSER_SECURITY");
+    }
+</script>
+	<script type="text/tiscript">
+    $(#ID_BUTTON_REGISTER_NOW).onClick = function()
+    {
+        ShowRegistrationDialog();
+    }
+
+    $(#ID_BUTTON_RENEW).onClick = function()
+    {
+        ShowRegistrationDialog();
+    }
+
+    $(#ID_UPDATE).onClick = function()
+    {
+		view.LaunchWardWizUpdate(UPDATE_TYPE.ONLINE_UPDATE);
+    }
+    
+	$(#ID_BUTTON_ACTIVE_PROTECTION).onClick = function()
+    {
+        view.EnableDriverProtection();
+        ReloadHomePage();
+    }
+
+	$(#ID_FIREWALL_FIX).onClick = function()
+    {
+		view.OnSetRegValue("dwFirewallEnableState");
+		ReloadHomePage();
+    }
+
+	$(#ID_EMAIL_SCN_FIX).onClick = function()
+    {
+		view.OnSetRegValue("dwEmailScanState");
+		ReloadHomePage();
+    }
+
+	$(#ID_PAR_CONTROL_FIX).onClick = function()
+    {
+		selectView("IDR_HTM_PARENTAL_CONTROL");
+    }
+	
+	$(#ID_BROWSER_SEC_FIX).onClick = function()
+    {
+		view.OnSetRegValue("dwBrowserSecurityState");
+		ReloadHomePage();
+    }
+</script>
+</head>
+
+<body>
+	<div style="flow:horizontal;">
+		<div class="title cstmDivStyle" #CHG_BG>
+			<h3 style="color:rgb(59, 59, 59);padding-top:3dip;font-family: Roboto-Medium;letter-spacing:1dip;text-align: left;padding-left: 20dip;">
+				<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500"
+					enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyle1"
+					id="ID_SVG_PROTECTED" style="visibility:none;">
+					<g>
+						<g id="check-circle-outline">
+							<path fill="#08a860" d="M150.4,206.3l-34,34l109.4,109.4l243-243l-34-34l-209,209L150.4,206.3z M444.4,252.5
+								c0,
+								106.9-87.5,194.4-194.4,194.4S55.6,359.4,55.6,252.5S143.1,58.1,250,58.1c19.4,0,36.5,2.4,53.5,7.3l38.9-38.9
+								c-29.2-9.7-60.8-17-92.3-17C116.3,9.5,7,118.8,7,252.5s109.4,243,243,243s243-109.4,243-243H444.4z" />
+						</g>
+					</g>
+				</svg> -->
+				<img id="ID_SVG_PROTECTED" src="IDR_PNG_PROTECTIONON.png" style="width:50dip;">
+				<img id="ID_SVG_PARTIALLY_PROTECTED" src="IDR_PNG_PROTECTION_PARTIAL.png" style="width:50dip;">
+				<img id="ID_SVG_NOT_PROTECTED" src="IDR_PNG_PROTECTION_OFF.png" style="width:50dip;">
+				<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500"
+					enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyle1"
+					id="ID_SVG_PARTIALLY_PROTECTED">
+					<g>
+						<g id="check-circle-outline">
+							<path fill="#d48f04" d="M150.4,206.3l-34,34l109.4,109.4l243-243l-34-34l-209,209L150.4,206.3z M444.4,252.5
+								c0,106.9-87.5,194.4-194.4,194.4S55.6,359.4,55.6,252.5S143.1,58.1,250,58.1c19.4,0,36.5,2.4,53.5,7.3l38.9-38.9
+								c-29.2-9.7-60.8-17-92.3-17C116.3,9.5,7,118.8,7,252.5s109.4,243,243,243s243-109.4,243-243H444.4z" />
+						</g>
+					</g>
+				</svg> -->
+				<!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500"
+					enable-background="new 0 0 500 500" xml:space="preserve" class="menuIconStyle1"
+					id="ID_SVG_NOT_PROTECTED">
+					<path fill="none" stroke="#ba0202" stroke-width="50" stroke-miterlimit="10" d="M390.2,145.3c37,35.1,60.1,84.7,60.1,139.7
+						c0,106.3-86.2,192.5-192.5,192.5S65.3,391.3,65.3,285c0-56.2,24.1-106.8,62.5-142" />
+					<path fill="#ba0202"
+						d="M210.5,71.4c0-58.6,90.9-71.4,95.1,0l-39.2,250.5c0,0-14,30.6-29.4,0C236.9,321.9,210.5,130,210.5,71.4z" />
+					<circle fill="#ba0202" cx="256.8" cy="403.5" r="33.9" />
+				</svg> -->
+				<div style="position: absolute;top: 25dip;width:250dip!important;left:70dip;"><label>ID_STR_YOU_ARE</label><br/>
+					<span #ID_PROTECTED_MSG .greenColor><label>ID_PROTECTED</label></span>
+				</div>
+				<!-- <input #m1 type="masked" mask="____-____-____" name="one"/> -->
+			</h3>
+			<!-- <h4 style="margin-left:10dip;margin-bottom:21dip;line-height:2dip;font-weight:normal;visibility:none;"><label>IDS_PRODINFO_PRODVERSION_TEXT</label>: <b><span #ID_PRODUCT_VERSION>4.0.2.1</span></b></h4>
+			<h4 style="margin-left:10dip;margin-bottom:0;line-height:5dip;font-weight:normal;visibility:none;"><label>IDS_STATIC_ABOUTGUI_DBVERSION</label>: <b><span #ID_DATABASE_VERSION>9.02.7.1</span></b></h4> -->
+			<div .message_container style="z-index:999;">
+				<span #ID_PROTECTED_MESSAGE><label></label></span>
+				<p #ID_BUTTON_REGISTER_NOW .msg_btn><label>ID_REGISTER_NOW</label></p>
+				<p #ID_BUTTON_RENEW .msg_btn><label>ID_STR_RENEW</label></p>
+				<p #ID_UPDATE .msg_btn><label>ID_STR_UPDATE</label></p>
+				<p #ID_BUTTON_ACTIVE_PROTECTION .msg_btn><label>ID_ENABLE_NOW</label></p>
+				<p #ID_FIREWALL_FIX .msg_btn><label>ID_FIX_IT</label></p>
+				<p #ID_EMAIL_SCN_FIX .msg_btn><label>ID_FIX_IT</label></p>
+				<p #ID_PAR_CONTROL_FIX .msg_btn><label>ID_FIX_IT</label></p>
+				<p #ID_BROWSER_SEC_FIX .msg_btn><label>ID_FIX_IT</label></p>
+			</div>
+			<div style="width:150dip;height:100dip;position:absolute;bottom:0;right:10dip"><img src="IDR_PNG_VIBRO_NEW.png" class="vibroImg" /></div>
+		</div>
+		<!-- <div class="switchContainer" style="color:#fff;width:308dip;flow:vertical;text-align:right;margin-top:25dip;margin-left:350dip;visibility:none;">
+			<h4 style="padding:0;margin-top:0;line-height:10dip;font-weight:normal;"><label>ID_ACTIVE_SUB</label> (<span #ID_DAYS_COLOR_VALIDATION><b><span #ID_DAYS_REMAINING>22</span> <label>ID_STR_DAYS</label></b></span> <label>ID_STR_REMAINING</label>)</h4>
+			<h4 style="padding:0;margin-top:0;line-height:10dip;font-weight:normal;"><span><label>ID_STR_LAST_UPDATE</label>:</span>  <b style="cursor:pointer;text-decoration:underline;" #ID_LAST_UPDATE><span #ID_UPDATE_DATE>1st April 1990</span></b></h4>
+			<h4 style="margin-left:10dip;padding:0;margin-top:0;line-height:10dip;font-weight:normal;"><label>ID_STR_LAST_SCAN</label>: <b><span #ID_LAST_SCAN_TYPE>Quick Scan</span></b></h4>
+		</div> -->
+	</div>
+
+	<div class="homeCenterCont" style="margin-top:15dip;>
+		<div class="FeaturesCont">
+			<div class="FeaturesDiv" style="margin-left:10dip;">
+				<div class="FIconDiv">
+					<!--svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve" class="menuIconStyleInner11">
+<style type="text/css">
+	.protectionIconst0{fill:#80D4C4;}
+	.protectionIconst1{fill:#D2F0EA;}
+	.protectionIconst2{fill:#A38FD8;}
+	.protectionIconst3{fill:#7C64BD;}
+	.protectionIconst4{fill:#FBD872;}
+	.protectionIconst5{fill:#F38E7A;}
+	.protectionIconst6{fill:#FFFFFF;}
+</style>
+<g>
+	<polygon class="protectionIconst0" points="5,655.6 37.9,728.5 762.1,728.5 795,655.6 	"/>
+	<path class="protectionIconst1" d="M696.4,181.1H103.6c-27.3,0-49.4,22.1-49.4,49.4v425.1H746V230.5C745.8,203.2,723.7,181.1,696.4,181.1z"/>
+	<rect x="120" y="247" class="protectionIconst2" width="560.1" height="342.8"/>
+	<rect x="226.9" y="214.2" class="protectionIconst3" width="346.3" height="375.6"/>
+	<g>
+		<g>
+			<path class="protectionIconst4" d="M553.7,120.7L408.9,72.8c-5.8-2-12-2-17.8,0l-144.8,47.9c-11.7,3.8-19.4,14.6-19.4,26.8v180.4
+				c0,37.9,17.4,73.4,47.1,96.8L376.6,505c13.7,10.7,32.9,10.7,46.6,0l102.7-80.3c29.8-23.2,47.1-58.9,47.1-96.8V147.7
+				C573.1,135.5,565.2,124.7,553.7,120.7z"/>
+			<path class="protectionIconst5" d="M536.3,153.8v174.3c0,26.7-12,51.2-32.9,67.8l-102.7,80.3l-0.7,0.2c-0.3,0-0.5-0.2-0.5-0.3l-102.9-80.3
+				c-21.1-16.5-32.9-41.1-32.9-67.8V153.8L400,108.7L536.3,153.8z"/>
+		</g>
+		<g>
+			<polygon class="protectionIconst6" points="362.8,375.7 302.6,315.6 334.7,283.5 362.8,311.6 465.3,208.9 497.4,241 			"/>
+		</g>
+	</g>
+</g>
+</svg-->
+<!-- <svg version="1.1" id="Layer_1sd" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve" class="menuIconStyleInner11">
+<style type="text/css">
+	.protecIconst0{fill:#80D4C4;}
+	.protecIconst1{fill:#D2F0EA;}
+	.protecIconst2{fill:#A38FD8;}
+	.protecIconst3{fill:#7C64BD;}
+	.protecIconst4{fill:#FBD872;}
+	.protecIconst5{fill:#F38E7A;}
+	.protecIconst6{fill:#FFFFFF;}
+</style>
+<g>
+	<polygon class="protecIconst0" points="5.1,710.6 38,783.5 762.2,783.5 795.1,710.6 	"/>
+	<path class="protecIconst1" d="M696.4,181.1H103.6c-27.3,0-49.4,22.1-49.4,49.4l-0.1,480.1h691.8l0.1-480.1
+		C745.8,203.2,723.7,181.1,696.4,181.1z"/>
+	<rect x="119.9" y="247" class="protecIconst2" width="560.1" height="397.8"/>
+	<rect x="226.9" y="214.2" class="protecIconst3" width="346.3" height="375.6"/>
+	<g>
+		<g>
+			<path class="protecIconst4" d="M553.7,54.7L408.9,6.8c-5.8-2-12-2-17.8,0L246.3,54.7c-11.7,3.8-19.4,14.6-19.4,26.8v180.4
+				c0,37.9,17.4,73.4,47.1,96.8L376.6,439c13.7,10.7,32.9,10.7,46.6,0l102.7-80.3c29.8-23.2,47.1-58.9,47.1-96.8V81.7
+				C573.1,69.5,565.2,58.7,553.7,54.7z"/>
+			<path class="protecIconst5" d="M536.3,87.8v174.3c0,26.7-12,51.2-32.9,67.8l-102.7,80.3l-0.7,0.2c-0.3,0-0.5-0.2-0.5-0.3l-102.9-80.3
+				c-21.1-16.5-32.9-41.1-32.9-67.8V87.8L400,42.7L536.3,87.8z"/>
+		</g>
+		<g>
+			<polygon class="protecIconst6" points="362.8,309.7 302.6,249.6 334.7,217.5 362.8,245.6 465.3,142.9 497.4,175 			"/>
+		</g>
+	</g>
+</g>
+</svg> -->
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" class="menuIconStyleInner11">
+<path d="M226 482H76C67.7 482 61 475.3 61 467C61 458.7 67.7 452 76 452H226C234.3 452 241 458.7 241 467C241 475.3 234.3 482 226 482Z" fill="#596C76"/>
+<path d="M436 482H286C277.7 482 271 475.3 271 467C271 458.7 277.7 452 286 452H436C444.3 452 451 458.7 451 467C451 475.3 444.3 482 436 482Z" fill="#465B62"/>
+<path d="M256 362C247.7 362 241 368.7 241 377V437C241 445.3 247.7 452 256 452C264.3 452 271 445.3 271 437V377C271 368.7 264.3 362 256 362Z" fill="#596C76"/>
+<path d="M271 437V377C271 368.7 264.3 362 256 362V452C264.3 452 271 445.3 271 437Z" fill="#465B62"/>
+<path d="M406 30H320.1C293.7 29.9 278.6 26.5 269.5 8.3C266.9 3.2 261.7 0 256 0C250.3 0 245.1 3.2 242.6 8.3C234.7 24 223 29.5 196.4 30H106C97.7 30 91 36.7 91 45V180.1C91 277.7 142.7 333.4 186.1 362.1C204.9 374.6 234.5 388.9 251.7 391.4C252.8 391.7 254.1 391.8 255.5 391.8H256C256 391.8 256.3 391.8 256.5 391.8C257.9 391.8 259.2 391.7 260.3 391.4C277.5 388.9 307.1 374.6 325.9 362.1C369.3 333.4 421 277.7 421 180.1V45C421 36.7 414.3 30 406 30Z" fill="#78C7CB"/>
+<path d="M260.3 391.4C277.5 388.9 307.1 374.6 325.9 362.1C369.3 333.4 421 277.7 421 180.1V45C421 36.7 414.3 30 406 30H320.1C293.7 29.9 278.6 26.5 269.5 8.3C266.9 3.2 261.7 0 256 0V391.8H256.5C257.9 391.8 259.1 391.7 260.3 391.4Z" fill="#0F2D2E"/>
+<path d="M256 301C313.99 301 361 253.99 361 196C361 138.01 313.99 91 256 91C198.01 91 151 138.01 151 196C151 253.99 198.01 301 256 301Z" fill="#F1F1F1"/>
+<path d="M361 196C361 138 314 91 256 91V301C314 301 361 254 361 196Z" fill="#DAECFA"/>
+<path d="M256 512C280.853 512 301 491.853 301 467C301 442.147 280.853 422 256 422C231.147 422 211 442.147 211 467C211 491.853 231.147 512 256 512Z" fill="#FFD92C"/>
+<path d="M301 467C301 442.2 280.8 422 256 422V512C280.8 512 301 491.8 301 467Z" fill="#FBBE02"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M256 77.7C274.5 77.7 289.8 93 289.8 111.5V156.7H313V111.5C313 80.1 287.3 54.5 256 54.5C224.7 54.5 199 80.2 199 111.5V156.7H222.2V111.5C222.1 92.9 237.4 77.7 256 77.7Z" fill="#F9F7F8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M198.9 277.1H313C321.5 277.1 328.5 270.1 328.5 261.6V168.7C328.5 160.2 321.5 153.2 313 153.2H198.9C190.4 153.2 183.4 160.2 183.4 168.7V261.5C183.5 270.2 190.4 277.1 198.9 277.1Z" fill="#D2CDE4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M296 153.3H313V111.5C313 80.1 287.3 54.5 256 54.5C253.1 54.5 250.3 54.7 247.5 55.1C274.9 59.2 296 83 296 111.5V153.3Z" fill="#EAE7F4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M256 253.6C277.1 253.6 294.4 236.4 294.4 215.3C294.4 194.2 277.2 176.9 256 176.9C234.9 176.9 217.6 194.1 217.6 215.3C217.5 236.4 234.8 253.6 256 253.6Z" fill="#F9F7F8"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M256 176.8C277.2 176.8 294.4 194 294.4 215.2C294.4 236.4 277.2 253.5 256 253.5C253.1 253.5 250.2 253.2 247.5 252.5C264.6 248.7 277.4 233.3 277.4 215.1C277.4 196.9 264.6 181.6 247.5 177.7C250.2 177.2 253 176.8 256 176.8Z" fill="#EAE7F4"/>
+<path d="M225 224.4C223 222.4 223 219.2 225 217.1C227 215.1 230.2 215.1 232.3 217.1L246.8 231.6L285.2 193.2C287.2 191.2 290.4 191.2 292.5 193.2C294.5 195.2 294.5 198.4 292.5 200.5L250.5 242.5C248.5 244.5 245.3 244.5 243.2 242.5L225 224.4Z" fill="#0F2D2E"/>
+</svg>
+
+					<h4><label>ID_HOME_PROTECTION</label></h4>
+				</div>
+				<div class="descriptionTit">
+					<ul>
+						<li #ID_FIREWALL><span .icons>&fa-angle-double-right;</span>&nbsp; <label>ID_FIREWALL</label>
+							<span #ID_FIREWALL_TOGGLE .menuIconStyleInner12>
+								<label>ID_OFF</label>
+							</span>
+						</li>
+						<li #ID_EMAIL_PROT><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_EMAIL_PROTECTION</label>
+							<span #ID_EMAIL_TOGGLE .menuIconStyleInner12>
+								<label>ID_ON</label>
+							</span>
+						</li>
+						<li #ID_PAR_CONTROL><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_PARENTAL_PROTECTION</label>
+							<span #ID_PAR_CONTROL_TOGGLE .menuIconStyleInner12>
+								<label>ID_OFF</label>
+							</span>
+						</li>
+						<li #ID_BROWSER_SECURITY_LAUNCH style="visibility: none;"><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_BROWSER_SECURITY</label>
+							<span #ID_BROWSER_SEC_TOGGOLE .menuIconStyleInner12>
+								<label>ID_OFF</label>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<img src="IDR_PNG_DOT.png" class="dotIco">
+			</div>
+			<div class="FeaturesDiv">
+				<div class="FIconDiv">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner11">
+<style type="text/css">
+	.systemscan_st0{fill:#445EA0;}
+	.systemscan_st1{fill:#2E4C89;}
+	.systemscan_st2{fill:#293D7C;}
+	.systemscan_st3{fill:#1A2B63;}
+	.systemscan_st4{fill:#EEF6FF;}
+	.systemscan_st5{fill:#FFAF10;}
+	.systemscan_st6{fill:#FF9518;}
+	.systemscan_st7{fill:#C3DDF4;}
+	.systemscan_st8{fill:#EF8318;}
+	.systemscan_st9{fill:#69CDFF;}
+	.systemscan_st10{fill:#5DC1D8;}
+	.systemscan_st11{fill:#28A5A5;}
+	.systemscan_st12{fill:#52BBEF;}
+	.systemscan_st13{fill:#1E99D6;}
+</style>
+<rect x="170.5" y="370.9" class="systemscan_st0" width="105.5" height="45.1"/>
+<rect x="170.5" y="370.9" class="systemscan_st1" width="19.4" height="45.1"/>
+<path class="systemscan_st2" d="M325.3,439.5c0,2.7-2.2,4.9-4.9,4.9H126.1c-2.7,0-4.9-2.2-4.9-4.9V420c0-2.7,2.2-4.9,4.9-4.9h194.3
+	c2.7,0,4.9,2.2,4.9,4.9V439.5z"/>
+<path class="systemscan_st3" d="M140.6,439.5V420c0-2.7,2.2-4.9,4.9-4.9h-19.4c-2.7,0-4.9,2.2-4.9,4.9v19.5c0,2.7,2.2,4.9,4.9,4.9h19.4
+	C142.8,444.3,140.6,442.1,140.6,439.5z"/>
+<path class="systemscan_st2" d="M0,362.1c0,5.4,4.4,9.8,9.8,9.8h293.1v-65.4H0V362.1z"/>
+<path class="systemscan_st3" d="M19.4,362.1v-55.6H0v55.6c0,5.4,4.4,9.8,9.8,9.8h19.4C23.8,371.9,19.4,367.5,19.4,362.1z"/>
+<path class="systemscan_st0" d="M302.9,280.3c0-2.2,1.8-3.9,3.9-3.9h139.7V64.9c0-5.9-4.8-10.7-10.7-10.7H10.7C4.8,54.2,0,59,0,64.9v242.6
+	h302.9V280.3z"/>
+<path class="systemscan_st4" d="M302.9,280.3c0-2.2,1.8-3.9,3.9-3.9h118.3V80.5c0-2.7-2.2-4.9-4.9-4.9H26.4c-2.7,0-4.9,2.2-4.9,4.9v200.6
+	c0,2.7,2.2,4.9,4.9,4.9H303L302.9,280.3L302.9,280.3z"/>
+<circle class="systemscan_st0" cx="223.3" cy="340.1" r="13.6"/>
+<path class="systemscan_st5" d="M406.6,201.5c0,2.7-2.2,4.9-4.9,4.9H247c-2.7,0-4.9-2.2-4.9-4.9v-71c0-2.7,2.2-4.9,4.9-4.9h154.7
+	c2.7,0,4.9,2.2,4.9,4.9V201.5L406.6,201.5z"/>
+<path class="systemscan_st6" d="M261.5,201.5v-71c0-2.7,2.2-4.9,4.9-4.9H247c-2.7,0-4.9,2.2-4.9,4.9v71c0,2.7,2.2,4.9,4.9,4.9h19.4
+	C263.7,206.4,261.5,204.2,261.5,201.5z"/>
+<g>
+	<path class="systemscan_st7" d="M292.3,234.5h-42.1c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h42.1c4,0,7.3,3.3,7.3,7.3
+		C299.6,231.2,296.3,234.5,292.3,234.5z"/>
+	<path class="systemscan_st7" d="M292.3,256.8h-42.1c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h42.1c4,0,7.3,3.3,7.3,7.3
+		C299.6,253.5,296.3,256.8,292.3,256.8z"/>
+	<path class="systemscan_st7" d="M343,234.5h-31.3c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3H343c4,0,7.3,3.3,7.3,7.3
+		C350.4,231.2,347.1,234.5,343,234.5z"/>
+	<path class="systemscan_st7" d="M343,256.8h-31.3c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3H343c4,0,7.3,3.3,7.3,7.3
+		C350.4,253.5,347.1,256.8,343,256.8z"/>
+	<path class="systemscan_st7" d="M402.1,234.5h-39.9c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h39.9c4,0,7.3,3.3,7.3,7.3S406.2,234.5,402.1,234.5z"
+		/>
+	<path class="systemscan_st7" d="M402.1,256.8h-39.9c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h39.9c4,0,7.3,3.3,7.3,7.3
+		C409.4,253.5,406.2,256.8,402.1,256.8z"/>
+</g>
+<g>
+	<path class="systemscan_st8" d="M350.9,108.5c0,2.7-2.2,4.9-4.9,4.9h-10.7c-2.7,0-4.9-2.2-4.9-4.9V97.7c0-2.7,2.2-4.9,4.9-4.9H346
+		c2.7,0,4.9,2.2,4.9,4.9V108.5z"/>
+	<path class="systemscan_st8" d="M378.3,108.5c0,2.7-2.2,4.9-4.9,4.9h-10.7c-2.7,0-4.9-2.2-4.9-4.9V97.7c0-2.7,2.2-4.9,4.9-4.9h10.7
+		c2.7,0,4.9,2.2,4.9,4.9V108.5z"/>
+	<path class="systemscan_st8" d="M405.6,108.5c0,2.7-2.2,4.9-4.9,4.9H390c-2.7,0-4.9-2.2-4.9-4.9V97.7c0-2.7,2.2-4.9,4.9-4.9h10.7
+		c2.7,0,4.9,2.2,4.9,4.9V108.5z"/>
+</g>
+<g>
+	<path class="systemscan_st9" d="M186.4,251h-8.8c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S190.5,251,186.4,251z"/>
+	<path class="systemscan_st9" d="M153.2,251h-8.8c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S157.3,251,153.2,251z"/>
+	<path class="systemscan_st9" d="M120,251h-8.8c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S124.1,251,120,251z"/>
+	<path class="systemscan_st9" d="M86.8,251H78c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3C94.1,247.7,90.9,251,86.8,251z"/>
+	<path class="systemscan_st9" d="M215,220.8c-4,0-7.3-3.3-7.3-7.3v-8.8c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3v8.8
+		C222.3,217.5,219,220.8,215,220.8z"/>
+	<path class="systemscan_st9" d="M215,187.6c-4,0-7.3-3.3-7.3-7.3v-8.8c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3v8.8
+		C222.3,184.3,219,187.6,215,187.6z"/>
+	<path class="systemscan_st9" d="M215,154.4c-4,0-7.3-3.3-7.3-7.3v-8.8c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3v8.8
+		C222.3,151.1,219,154.4,215,154.4z"/>
+	<path class="systemscan_st9" d="M49,220.8c-4,0-7.3-3.3-7.3-7.3v-8.8c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3v8.8C56.3,217.5,53,220.8,49,220.8z"
+		/>
+	<path class="systemscan_st9" d="M49,187.6c-4,0-7.3-3.3-7.3-7.3v-8.8c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3v8.8C56.3,184.3,53,187.6,49,187.6z"
+		/>
+	<path class="systemscan_st9" d="M49,154.4c-4,0-7.3-3.3-7.3-7.3v-8.8c0-4,3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3v8.8C56.3,151.1,53,154.4,49,154.4z"
+		/>
+	<path class="systemscan_st9" d="M186.4,118.2h-8.8c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S190.5,118.2,186.4,118.2z"/>
+	<path class="systemscan_st9" d="M153.2,118.2h-8.8c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S157.3,118.2,153.2,118.2z"/>
+	<path class="systemscan_st9" d="M120,118.2h-8.8c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S124.1,118.2,120,118.2z"/>
+	<path class="systemscan_st9" d="M86.8,118.2H78c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3h8.8c4,0,7.3,3.3,7.3,7.3S90.9,118.2,86.8,118.2z"/>
+</g>
+<path class="systemscan_st10" d="M195.5,219.2c0,2.7-2.2,4.9-4.9,4.9H73.4c-2.7,0-4.9-2.2-4.9-4.9v-84c0-2.7,2.2-4.9,4.9-4.9h117.2
+	c2.7,0,4.9,2.2,4.9,4.9V219.2z"/>
+<path class="systemscan_st11" d="M87.9,219.2v-84c0-2.7,2.2-4.9,4.9-4.9H73.4c-2.7,0-4.9,2.2-4.9,4.9v84c0,2.7,2.2,4.9,4.9,4.9h19.4
+	C90.1,224.1,87.9,221.9,87.9,219.2z"/>
+<g>
+	<path class="systemscan_st12" d="M228.7,118.2c0,2.7-2.2,4.9-4.9,4.9h-20.5c-2.7,0-4.9-2.2-4.9-4.9V97.7c0-2.7,2.2-4.9,4.9-4.9h20.5
+		c2.7,0,4.9,2.2,4.9,4.9V118.2z"/>
+	<path class="systemscan_st12" d="M66.5,120.1c0,2.7-2.2,4.9-4.9,4.9H41.2c-2.7,0-4.9-2.2-4.9-4.9V99.6c0-2.7,2.2-4.9,4.9-4.9h20.5
+		c2.7,0,4.9,2.2,4.9,4.9L66.5,120.1L66.5,120.1z"/>
+	<path class="systemscan_st12" d="M228.7,254.8c0,2.7-2.2,4.9-4.9,4.9h-20.5c-2.7,0-4.9-2.2-4.9-4.9v-20.5c0-2.7,2.2-4.9,4.9-4.9h20.5
+		c2.7,0,4.9,2.2,4.9,4.9V254.8z"/>
+	<path class="systemscan_st12" d="M66.5,254.8c0,2.7-2.2,4.9-4.9,4.9H41.2c-2.7,0-4.9-2.2-4.9-4.9v-20.5c0-2.7,2.2-4.9,4.9-4.9h20.5
+		c2.7,0,4.9,2.2,4.9,4.9L66.5,254.8L66.5,254.8z"/>
+</g>
+<g>
+	<path class="systemscan_st13" d="M209.1,118.2V97.7c0-2.7,2.2-4.9,4.9-4.9h-10.8c-2.7,0-4.9,2.2-4.9,4.9v20.5c0,2.7,2.2,4.9,4.9,4.9H214
+		C211.3,123.1,209.1,120.9,209.1,118.2z"/>
+	<path class="systemscan_st13" d="M47,120.1V99.6c0-2.7,2.2-4.9,4.9-4.9H41.2c-2.7,0-4.9,2.2-4.9,4.9v20.5c0,2.7,2.2,4.9,4.9,4.9H52
+		C49.2,125,47,122.8,47,120.1z"/>
+	<path class="systemscan_st13" d="M209.1,254.8v-20.5c0-2.7,2.2-4.9,4.9-4.9h-10.8c-2.7,0-4.9,2.2-4.9,4.9v20.5c0,2.7,2.2,4.9,4.9,4.9H214
+		C211.3,259.7,209.1,257.5,209.1,254.8z"/>
+	<path class="systemscan_st13" d="M47,254.8v-20.5c0-2.7,2.2-4.9,4.9-4.9H41.2c-2.7,0-4.9,2.2-4.9,4.9v20.5c0,2.7,2.2,4.9,4.9,4.9H52
+		C49.2,259.7,47,257.5,47,254.8z"/>
+</g>
+<path class="systemscan_st10" d="M425.3,358.2c-0.2-0.4-0.1-0.6-0.1-0.7h0.1c0.1,0,0.3,0,0.6,0.1l41.1,15.1v-92.4c0-2.7-2.2-4.9-4.9-4.9H306.8
+	c-2.7,0-4.9,2.2-4.9,4.9v112.1c0,2.7,2.2,4.9,4.9,4.9h132.8L425.3,358.2z"/>
+<path class="systemscan_st11" d="M321.3,392.4V280.3c0-2.7,2.2-4.9,4.9-4.9h-19.4c-2.7,0-4.9,2.2-4.9,4.9v112.1c0,2.7,2.2,4.9,4.9,4.9h19.4
+	C323.5,397.3,321.3,395.1,321.3,392.4z"/>
+<path class="systemscan_st2" d="M426.2,356.7c-1.6-0.6-2.4,0.2-1.9,1.9l25.7,70.1c0.6,1.6,2.1,1.9,3.3,0.7l13.7-13.7c1.2-1.2,3.2-1.2,4.4,0
+	l15.8,15.8c1.2,1.2,3.2,1.2,4.4,0l7.5-7.5c1.2-1.2,1.2-3.2,0-4.4l-15.8-15.8c-1.2-1.2-1.2-3.2,0-4.4l13.7-13.7
+	c1.2-1.2,0.9-2.7-0.7-3.3L426.2,356.7z"/>
+</svg>
+
+
+
+					<h4><label>ID_HOME_SYSTEM_SCAN</label></h4>
+				</div>
+				<div class="descriptionTit">
+					<ul>
+						<li #ID_LOAD_QUICK_SCAN><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_QUICK_SCAN</label>
+						</li>
+						<li #ID_LOAD_FULL_SCAN><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_FULL_SCAN</label>
+						</li>
+						<li #ID_LOAD_CUSTOM_SCAN .horizontalFlow><span .mrgnTop3
+								.icons>&fa-angle-double-right;</span>&nbsp; <label>ID_CUSTOM_SCAN</label></li>
+						<li #ID_LOAD_ANTIROOTKIT_SCAN><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_ANTIROOTKIT_SCAN</label>
+						</li>
+						<li #ID_BOOTTIME_SCAN><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_BOOT_TIME_SCAN</label>
+						</li>
+					</ul>
+				</div>
+				<img src="IDR_PNG_DOT.png" class="dotIco">
+			</div>
+			<div class="FeaturesDiv">
+				<div class="FIconDiv" .FIconDiv1>
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner11">
+<style type="text/css">
+	.tools_st0{fill:#7A7B82;stroke:#231F1F;stroke-width:0.2;}
+	.tools_st1{fill:#3D3E42;stroke:#231F1F;stroke-width:0.2;}
+	.tools_st2{fill:#330E11;stroke:#231F1F;stroke-width:0.2;}
+	.tools_st3{fill:#4E0C10;stroke:#231F1F;stroke-width:0.2;}
+	.tools_st4{fill:#FF4755;}
+	.tools_st5{fill:#973535;stroke:#231F1F;stroke-width:0.2;}
+</style>
+<g>
+	<path class="tools_st0" d="M242.3,197.1l-102.7-122L113,97.2l106.8,126.6L242.3,197.1z"/>
+	<path class="tools_st1" d="M129.9,83.3l-16.7,14l106.7,126.5l14.3-16.9L129.9,83.3z"/>
+	<path class="tools_st2" d="M273.9,298.2l36.6-30.6l22.1,26.1L296,324.3L273.9,298.2z"/>
+	<path class="tools_st3" d="M308.5,293.9l14-11.8l-12.1-14.4l-36.6,30.6l22,26.1L313,310l-5.4-6.5C305.2,300.7,305.6,296.3,308.5,293.9
+		L308.5,293.9z"/>
+	<path class="tools_st0" d="M162.9,404.2c-1.5-4.7-0.3-9.9,2.8-13.7l171-202.9c3.5-4.2,9.3-6.1,14.6-4.9c33.9,8.2,71.1-2.9,94.5-32
+		c20.4-25.3,25.2-58.4,15.5-87.4c-1.4-4.2-7-5.2-9.8-1.8l-49.9,59.2c-3.2,3.8-8.2,5.5-13,4.7l-29.4-5.1c-4.8-0.9-9-4.2-10.7-8.9
+		l-10.1-28.1c-1.7-4.6-0.8-9.9,2.4-13.6l49.9-59.3c2.9-3.4,0.9-8.7-3.5-9.3c-30.9-4.6-63.5,6.5-85.1,32.1
+		c-23.5,27.9-27.6,65.5-13.9,96.7c2.2,5,1.3,11-2.3,15.2l-171,203c-3.2,3.8-8.2,5.7-13.2,5.1c-24.9-3.2-50.9,6.4-67.7,27.6
+		c-16.6,21.1-19.9,48.9-10.5,72.6c1.6,4,7,4.8,9.7,1.5l42.2-50.2c0.8-1,2.2-1.5,3.5-1.3l26.2,4.6c1.3,0.2,2.4,1.1,2.8,2.4l9.1,24.9
+		c0.5,1.2,0.2,2.6-0.6,3.6l-42.3,50.2c-2.7,3.3-1,8.4,3.2,9.3c25.8,5.2,53.5-3.3,71.6-24.8C165.8,453.7,170.2,427.4,162.9,404.2
+		L162.9,404.2z"/>
+	<path class="tools_st1" d="M64.7,380.8c16.8-21.3,42.8-30.7,67.7-27.6c4.9,0.6,10-1.3,13.2-5.1l171-202.9c3.6-4.2,4.5-10.2,2.3-15.2
+		c-13.7-31.3-9.6-68.9,13.9-96.7C347.6,15.6,367.5,5,388.4,1.4c-0.4-0.1-0.7-0.2-1.1-0.3c-30.9-4.6-63.5,6.5-85.1,32.1
+		c-23.5,27.9-27.6,65.5-13.9,96.7c2.2,5,1.3,11-2.3,15.2L114.9,348c-3.2,3.8-8.2,5.7-13.2,5.1c-24.9-3.2-50.9,6.4-67.7,27.6
+		c-16.6,21.1-19.9,48.9-10.5,72.6c1.6,4,7,4.8,9.7,1.5l16.4-19.5C47.2,416.5,52.1,396.7,64.7,380.8z"/>
+	<path class="tools_st4" d="M310.5,231.4c-2.1-2.5-6.3-4.5-9.3-3.9l-59.1,70.1l8.7,10.1c3.1,3.7,8.7,4.1,12.3,1.1l59.3-49.5
+		c3.7-3.1,4.2-8.6,1.1-12.3L310.5,231.4z"/>
+	<path class="tools_st2" d="M310.5,231.4c-2.1-2.5-6.3-4.5-9.3-3.9l-59.1,70.1l8.7,10.1c3.1,3.7,8.7,4.1,12.3,1.1l59.3-49.5
+		c3.7-3.1,4.2-8.6,1.1-12.3L310.5,231.4z"/>
+	<path class="tools_st3" d="M272,262.1l-29.8,35.4l8.7,10.1c3.1,3.7,8.7,4.1,12.3,1.1l27.5-23L272,262.1z"/>
+	<path class="tools_st5" d="M333.9,291.4l-40.8,34.1c-12.2,10.2-13.8,28.4-3.5,40.5l104.3,123.8c10.2,12.1,28.5,13.7,40.7,3.5l40.8-34.1
+		c12.2-10.2,13.8-28.4,3.5-40.5L374.6,294.9C364.4,282.8,346.1,281.2,333.9,291.4z"/>
+	<path class="tools_st2" d="M423.9,489.8L319.6,366c-10.2-12.1-8.6-30.3,3.5-40.5l40.8-34.1c1.1-0.9,2.3-1.8,3.5-2.5
+		c-10.3-6.3-23.9-5.5-33.6,2.5l-40.8,34.1c-12.2,10.2-13.8,28.4-3.5,40.5l104.3,123.8c9.3,11,25.2,13.3,37.2,6
+		C428.4,494.2,425.9,492.2,423.9,489.8L423.9,489.8z"/>
+	<path class="tools_st0" d="M93.3,20.1L65.7,43.2c-2.6,2.2-2.9,6-0.8,8.7l23.9,28.3l37-30.9l-23.9-28.3C99.8,18.3,95.9,18,93.3,20.1z"/>
+	<path class="tools_st1" d="M84.7,35.3c-2.2-2.6-3-5.5-1.7-6.6L65.7,43.2c-2.6,2.2-2.9,6-0.8,8.7l23.9,28.3l19.8-16.5L84.7,35.3z"/>
+	<path class="tools_st0" d="M88.8,80.2l24.3,17.1l26.5-22.1l-13.7-26L88.8,80.2z"/>
+	<path class="tools_st1" d="M108.7,63.5L88.8,80.2l24.3,17.1L130,83.2L108.7,63.5z"/>
+</g>
+</svg>
+					<h4><label>ID_HOME_TUNEUP_TOOL</label></h4>
+				</div>
+				<div class="descriptionTit">
+					<ul>
+						<li #ID_RESCUE_DISK style="visibility: none;"><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_RESCUE_DISK</label>
+						</li>
+						<li #ID_REG_OPTI><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_REGISTRY_OPTIMIZER</label>
+						</li>
+						<li #ID_DATA_ENC><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_DATA_ENCRYPTION</label>
+						</li>
+						<li #ID_USB_VACC><span .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_USB_VACCINATION</label>
+						</li>
+						<li #ID_AUTORUN_SCAN .horizontalFlow .hdeShow><span .mrgnTop3 .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_AUTORUN_SCAN</label>
+						</li>
+						<li #ID_REG_TOOL .horizontalFlow .hdeShow><span .mrgnTop3 .icons>&fa-angle-double-right;</span>&nbsp;
+							<label>ID_REG_TOOL_HEADER</label>
+						</li>
+					</ul>
+				</div>
+				<img src="IDR_PNG_DOT.png" class="dotIco">
+			</div>
+			<div class="FeaturesDiv">
+				<div class="FIconDiv">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="menuIconStyleInner11">
+<style type="text/css">
+	.report_icost0{fill:#FDBF44;}
+	.report_icost1{fill:#E6AD3E;}
+	.report_icost2{fill:#463E54;}
+	.report_icost3{fill:#FCFEFF;}
+	.report_icost4{fill:#80DAFF;}
+</style>
+<path class="report_icost0" d="M412.2,498.9h-42.3l-17.2-17.2L353,17.2l135.5,24c5.8,1,9.7,6.6,8.7,12.4L422.7,490
+	C421.9,495.1,417.4,498.9,412.2,498.9z"/>
+<path class="report_icost1" d="M352.9,17.1l-0.3,464.5l17.2,17.2H387V23.3L352.9,17.1z"/>
+<path class="report_icost2" d="M10.8,0h348.4c5.9,0,10.7,4.8,10.7,10.7v477.4c0,5.9-4.8,10.7-10.7,10.7H10.8C4.9,498.9,0,494.1,0,488.1V10.7
+	C0,4.8,4.9,0,10.8,0z"/>
+<path class="report_icost3" d="M64.6,249.5h43c11.8,0,21.5,9.6,21.5,21.5v43c0,11.8-9.6,21.5-21.5,21.5h-43c-11.8,0-21.5-9.6-21.5-21.5v-43
+	C43,259.1,52.6,249.5,64.6,249.5z"/>
+<path class="report_icost3" d="M64.6,378.5h43c11.8,0,21.5,9.6,21.5,21.5v43c0,11.8-9.6,21.5-21.5,21.5h-43c-11.8,0-21.5-9.6-21.5-21.5v-43
+	C43,388.1,52.6,378.5,64.6,378.5z"/>
+<path class="report_icost4" d="M94.7,318.3c-2.3,0-4.5-0.9-6.1-2.5L62.8,290l12.1-12.1l19.3,19.3l45.5-53.1l13,11.2l-51.6,60.3
+	c-1.6,1.8-3.8,2.9-6.2,3C94.9,318.3,94.8,318.3,94.7,318.3z"/>
+<path class="report_icost4" d="M94.7,447.3c-2.3,0-4.5-0.9-6.1-2.5l-25.8-25.9l12.1-12.1L94.2,426l45.5-53.1l13,11.2l-51.6,60.3
+	c-1.6,1.8-3.8,2.9-6.2,3C94.9,447.3,94.8,447.3,94.7,447.3z"/>
+<path class="report_icost3" d="M172.1,369.9h129v17.2h-129V369.9z"/>
+<path class="report_icost3" d="M172.1,412.9h43v17.2h-43V412.9z"/>
+<path class="report_icost3" d="M232.3,412.9h68.8v17.2h-68.8V412.9z"/>
+<path class="report_icost3" d="M172.1,240.8h129V258h-129V240.8z"/>
+<path class="report_icost3" d="M172.1,283.9h43v17.2h-43V283.9z"/>
+<path class="report_icost3" d="M232.3,283.9h68.8v17.2h-68.8V283.9z"/>
+<path class="report_icost3" d="M189.2,34.4l-77.3,34.5l6.4,40.9c6.1,33.3,24.8,63,52.1,82.9l18.8,13.8l17.8-13c27.8-20,46.7-49.8,52.8-83.4
+	l6.5-41.2L189.2,34.4z M186.6,143.8c-3.4,3.3-8.8,3.3-12.1,0L148.7,118l12.1-12.1l19.8,19.8L226,80l12.1,12.1L186.6,143.8z"/>
+<path class="report_icost3" d="M34.5,25.8h51.6V43H34.5V25.8z"/>
+<path class="report_icost3" d="M34.5,60.2h34.4v17.2H34.5V60.2z"/>
+<path class="report_icost3" d="M292.5,25.8h17.2V43h-17.2V25.8z"/>
+<path class="report_icost3" d="M327,25.8h17.2V43H327V25.8z"/>
+</svg>
+					<h4><label>ID_HOME_REPORT</label></h4>
+				</div>
+				<div class="descriptionTit">
+					<ul>
+						<li #ID_REPORT_LI1 .horizontalFlow><span .mrgnTop3 .icons>&fa-angle-double-right;</span>&nbsp;
+							<span><span #ID_FILES_SCANNED>0</span> <label>ID_ITEM_SCANNED</label></span>
+						</li>
+						<li #ID_REPORT_LI2 .horizontalFlow><span .mrgnTop3 .icons>&fa-angle-double-right;</span>&nbsp;
+							<span><span #ID_THREAT_FOUND>0</span> <label>ID_THREATS_FOUND_HOME</label></span>
+						</li>
+						<li #ID_REPORT_LI3 .horizontalFlow><span .mrgnTop3 .icons>&fa-angle-double-right;</span>&nbsp;
+							<span><span #ID_THREAT_CLEANED>0</span> <label>ID_THREATS_CLEANED</label></span>
+						</li>
+						<li #ID_REPORT_LI4 .horizontalFlow .hdeShow><span .mrgnTop3 .icons>&fa-angle-double-right;</span>&nbsp;
+							<span><span #ID_URL_BLOCKED>0</span> <label>ID_WEBSITE_BLOCK</label></span>
+						</li>
+					</ul>
+				</div>
+				<img src="IDR_PNG_DOT.png" class="dotIco">
+			</div>
+		</div>
+	</div>
+	<div class="titleTile3" style="background-color: #fff!important;box-shadow: 3px 3px 5px #c0c0c0;border-radius: 20dip;">
+		<div style="width:500dip;">
+			<h4><label>ID_SCAN_NOW_DESC</label></h4>
+			<p><label>ID_SCAN_NOW_DESC1</label></p>
+		</div>
+		<li type="menu" .scanMnu align-popup="top"><span .dfn .scanNowBt
+				style="cursor:pointer;"><label>ID_HTM_CUSTOM_SCAN_SCAN_NOW</label></span>
+			<menu .top>
+		<li #ID_LOAD_QUICK_SCAN1><label>ID_TYPE_SCAN_QUICK</label></li>
+		<li #ID_LOAD_FULL_SCAN1><label>ID_TYPE_SCAN_FULL</label></li>
+		<li #ID_LOAD_CUSTOM_SCAN1 style="width:120dip;"><label>ID_CUSTOM_SCAN</label></li>
+		<li #ID_LOAD_ANTIROOTKIT_SCAN1><label>ID_ANTIROOTKIT_SCAN</label></li>
+		</menu>
+		</li>
+	</div>
+
+</body>
+
+</html>

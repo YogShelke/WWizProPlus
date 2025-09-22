@@ -1,0 +1,393 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<style>
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		@import url(IDR_CSS_TOGGELER.css);
+		html{
+			background:transparent;
+			behavior:WardWizSettings;
+		}
+		
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+			margin-top:-600dip;
+			transition:margin-top(sine-in-out,600ms);
+		}
+		body:collapsed{
+			margin-top:0dip;
+		}
+		@font-face {
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+
+		//******** Menu Bar CSS *********//	
+	
+		
+
+		.inner_body{
+			flow:horizontal;
+		}
+		
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+			
+		  .slider:hover  { background: gold; border-left:1px solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5px; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+        //******** Accordion ***********//
+		.gray{
+			color:#dcdcdc!important;
+		}
+
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			style-set: vgrid; 
+			flow:table-fixed;
+			width:525dip;
+			height:230dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: scroll;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:7dip!important;
+			margin-left:100!important;
+			color:#fff;
+			overflow:auto; 
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+
+		  .slider:hover  { background: gold; border-left:1px solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5px;height:5px; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		  
+		table th:nth-child(1)  {  width:0.02*;visibility:none; }
+		table th:nth-child(2)  {  width:0.2*;visibility:none; }
+		table th:nth-child(3)  {  width:0.02*;visibility:none; }
+		
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:30dip;
+		}
+		  
+		//table td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip;border-bottom:1dip solid #bdbccc; } /* first column */
+		table td:nth-child(1) {  
+			text-align:left; 
+			width:0.9*;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+//table td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } 
+		
+
+	.side_menu{
+			position:absolute;
+		width:530dip;
+			height:343dip;
+		background:rgba(0,8,44,.95);
+		text-align:center;
+		margin-left:100dip;
+		top:-330dip;
+			opacity:0;
+		transition:top(sine-in-out, 500ms)
+					opacity(sine-in-out, 500ms);
+		}
+		.side_menu:collapsed{
+			top:0dip;
+			opacity:1;
+		transition:top(sine-in-out, 500ms)
+					opacity(sine-in-out, 500ms);
+		}	
+		    .scan_button:hover{
+		background: linear-gradient(bottom, #0780d8, #06304f);
+		transition: background(quart-out,0.5s,quart-in);
+		border:1dip solid #0780d8;
+		color:#000;
+		}
+		.scan_button{
+		width:70dip;
+		height:21dip;
+		background: linear-gradient(bottom, #06304f, #0780d8);
+		border:1dip solid #0780d8;
+		color:#fff;
+		border-radius:4dip;
+		}
+		.input_type1{
+		width:300dip;
+		height:21dip!important;
+		border:1dip solid #dcdcdc;
+		border-radius:4dip;
+		margin-top:15dip;
+		margin-bottom:5dip;
+		margin-left:20dip;
+		}
+		.content_display{
+			width:650dip;
+			margin-bottom:5dip;
+			background:rgba(0,0,0,.3.5);
+			overflow:hidden;
+			overflow-y:auto;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		.fixed_size{
+			overflow-y:auto;
+			margin-left:100dip;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		.inner_content_div{
+			flow:horizontal;
+			
+			background:rgba(0,0,0,.1);
+		}
+		.inner_content_div:hover{
+			background:rgba(0,0,0,.1);
+		}
+				.content_tray:hover > h3{
+			color:#2bc900;
+		}
+		.content_tray:hover > span h3{
+			color:#2bc900;
+		}
+		.content_tray:hover{
+			color:#2bc900;
+		}
+	</style>
+	<script type="text/tiscript">
+    if(productVersion == #BASIC){
+        $(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+	}
+    else if(productVersion == #ESSENTIAL){
+
+    }
+    else if(productVersion == #PROVANTAGE){
+        $(#hide_show_per_product).state.collapsed = true;
+    }
+    </script>
+ <script type="text/tiscript">
+ var  arrAddWebsiteEntries = new array(0);
+ </script>
+ <script type="text/tiscript">
+     function AddWebsiteEntry( strFileFolderName)
+    {
+        var varListEntriesLength = 0;
+        var varLastIndex = strFileFolderName.lastIndexOf("\\");
+        var varFileLength = strFileFolderName.length;
+        if(varLastIndex == --varFileLength)
+        {
+            strFileFolderName = strFileFolderName.splice(varLastIndex, varFileLength);
+        }
+        var arrFileCount = arrAddWebsiteEntries.length;
+        var IsNewFile = false;
+        if(varDroppedFileCount > 0)
+        {
+            for(var FileCount = 0; FileCount<arrFileCount; FileCount++)
+            {
+                var varCurrentFilePath = arrAddWebsiteEntries[FileCount].FilePath;
+                if(varCurrentFilePath == strFileFolderName)
+                {
+                    IsNewFile = false;
+                    break;
+                }
+                else
+                {
+                    varListEntriesLength += varCurrentFilePath.length;
+                    varListEntriesLength++;
+
+                    IsNewFile = true;
+                }
+            }
+        }
+        else
+        {
+            $(#Select_All_Enable_Disable).state.disabled = true;
+            IsNewFile = true;
+        }
+        if(IsNewFile == true)
+        {
+            if((varListEntriesLength +strFileFolderName.length) < 1000)
+            {
+                arrAddWebsiteEntries[varDroppedFileCount] = {FilePath:strFileFolderName};
+                varDroppedFileCount++;
+                $(#Select_All_Enable_Disable).state.disabled = false;
+                varListEntriesLength += strFileFolderName.length;
+                varListEntriesLength++;
+            }
+            else
+            {
+                IsMaxLimitReached = true;
+
+            }
+        }
+ </script>
+
+
+ <script type="text/tiscript">
+    function self.ready()
+    {
+		g_CurrentPage = #SAFE_MONEY;
+		hideFooterAll();
+		showFooterTwo();
+		
+		$(body).state.collapsed = true;  //page slide in
+		vlistObj = $(#theFiletable);
+        vlistObj.value = arrAddWebsiteEntries;
+		varDroppedFileCount = arrAddWebsiteEntries.length;
+        //self.ReadCurrentSettingsValues(CurrentSettingsValues);
+        //ApplyCurrentSettings(ArraySettings);
+    }
+  </script>
+ 
+ 
+<script type= "text/tiscript">
+	$(#ADD_WEBSITES).onClick = function()
+	{
+		$(.side_menu).state.collapsed=true;
+	}
+</script>
+<script type= "text/tiscript">
+		$(#ID_CLOSE).onClick = function()
+        {
+			$(.side_menu).state.collapsed= false;
+		}
+		$(#ID_OPTIONS).onClick = function()
+        {
+			$(.side_menu).state.collapsed=true;
+		}
+		$(#ID_OK).onClick = function()
+        {
+			$(.side_menu).state.collapsed=false;
+			var varAddWebsite = $(#ID_ADD_WEBSITE).value;
+			arrAddWebsiteEntries[0] = {FilePath:varAddWebsite};
+            
+			view.msgbox(#information,""+varAddWebsite);
+			AddWebsiteEntry(varAddWebsite);
+		}
+</script>
+
+</head>
+<body>
+	<h1 style="color:#fff;margin-left:265dip; margin-top:10dip;font-weight:300;"><label>Safe Money</label></h1>
+	<h3 style="color:#fff;text-align:center;margin-top:0dip;font-weight:200;">Ensure safety of all the transactions you do with this feature</h3>
+	<div .inner_body>
+		<div style="margin-left:0dip;">
+			<div style="margin-left:75dip;margin-top:10dip;width:700px;">
+			<div style="color:#fff;margin-top:30dip;" #ADD_WEBSITES><img src="IDR_PNG_ADD_WEBSITE.png" style="cursor:pointer;width:15dip;margin-top:20dip;"/>Add Websites</div>
+			</div>
+			
+		<table #theFiletable  style="margin:0;">
+			<thead>
+				<tr>
+					<th><label>Added Websites</label></th>
+				</tr>
+			</thead>  
+			<tbody>
+				<tr><td(Website)> www.example.com (Run in Protected Browser) <img #ID_OPTIONS src="IDR_PNG_GEAR.png" style="margin-bottom:5dip;width:15dip;height:15dip;cursor:pointer;float:right;"/></td></tr>
+			</tbody>
+		</table>
+		</div>	
+<br/><br/>		
+	</div>
+	<div .side_menu>
+	<br/>
+			<p style="color:#fff"><label>Website for Safe Money(URL):</label></p> 
+			<input #ID_ADD_WEBSITE class="input_type1" value="http://" type="text">
+			<br/>		
+			<p style="color:#fff"><label>Action to perform when this website is visited:</label></p> 			
+			<button type="radio" style="width:150dip;height:20dip;cursor:pointer;margin-left:20dip;" checked>
+					<p #general_menu_item style="color:#fff;margin-top:3dip;"><label>Run on private browser</label></p>
+			</button><br/>
+			<button type="radio" style="width:150dip;height:22dip;cursor:pointer;margin-left:20dip;">
+					<p #app_menu_item style="color:#fff;margin-top:3dip;"><label>Prompt me each time</label></p>
+			</button><br/>
+			<button type="radio" style="width:150dip;height:22dip;cursor:pointer;margin-left:23dip;">
+					<p #internet_menu_item style="color:#fff;margin-top:3dip;"><label>Don't Prompt</label></p>
+			</button>
+			<br/>
+			<button .scan_button #ID_OK>Add</button>
+			<button .scan_button #ID_CLOSE>Cancel</button>
+		</div> 
+</body>
+</html>

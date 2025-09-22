@@ -1,0 +1,333 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	
+	.product_state1Account p{
+		width:230dip;
+		padding-left:40dip;
+		text-align:left;
+	}
+	.bgAccountInfo1{
+		margin-bottom:15dip;
+		flow:horizontal;
+		position:relative;
+		display:inline-block; 
+		text-align:center;
+	}
+	.bgAccountInfo{
+		text-align:center;
+		width:667dip;
+		height:74dip;
+	}
+	.product_state1Account{
+		height:75dip;
+		width:280dip;
+		vertical-align:middle;
+	}
+	.bg_color2{
+		height:220dip;
+		padding-top:-42dip;
+	}
+	.product_state2Account{
+		height:75dip;
+		text-align:center;
+	}
+	.product_state2Account .btnCstmMd{
+		margin-top:0;
+	}
+	#ID_BTN_UPDT_INFO:expanded{
+		visibility:visible;
+	}
+	#ID_BTN_UPDT_INFO:collapsed{
+		visibility:none;
+	}
+	table#AccountPage{
+		margin-top:40dip;
+		margin-left:150dip;
+	}
+	table#AccountPage td:nth-child(1){
+		width:250dip;
+	}
+	#ID_TXT_DEALER_CODE:collapsed{
+		visibility:none;
+	}
+	#ID_TXT_DEALER_CODE:expanded{
+		visibility:visible;
+	}
+	#ID_DELEAR_CODE:collapsed{
+		visibility:none;
+	}
+	#ID_DELEAR_CODE:expanded{
+		visibility:visible;
+	}
+	#ID_TXT_REF_ID:collapsed{
+		visibility:none;
+	}
+	#ID_TXT_REF_ID:expanded{
+		visibility:visible;
+	}
+	#ID_REFERENCE_ID:collapsed{
+		visibility:none;
+	}
+	#ID_REFERENCE_ID:expanded{
+		visibility:visible;
+	}
+	.product_state_size{
+		height:75dip;
+		width:300dip;
+		vertical-align:middle;
+	}
+	.product_state_margin .btnCstm{
+		margin-right:10dip;
+	}
+	.btn_buy_size{
+		width:93dip!important;
+		margin-right:5dip;
+	}
+	.custm_font{
+		font-size:11dip!important;
+	}
+	.update_btn_size{
+		width:139dip!important;
+	}
+	#ID_REGISTERTO:collapsed{
+		visibility:none;
+	}
+	#ID_REGISTERTO:expanded{
+		visibility:visible;
+	}
+	</style>
+	<script type="text/tiscript">
+    $(#ID_BTN_RENEW_REG).onClick = function()
+    {
+        view.OnClickRegisterNowBtn();
+    }
+    $(#ID_BTN_UPDT_INFO).onClick = function()
+    {
+        view.OnClickRegisterNowBtn();
+    }
+    function FunSetText(varButton)
+    {
+        if(varButton == 1)		//Trial version
+        {
+            $(#ID_PRODUCT_STATE).text = Lang.translate("ID_TRIAL_ACTIVE");
+            $(#ID_BTN_RENEW_REG).text = Lang.translate("ID_STR_REGISTER_NOW");
+            $(#ID_BTN_UPDT_INFO).state.collapsed = true;
+        }
+        else if(varButton == 2)		//Registered User
+        {
+			$(#ID_PRODUCT_STATE).text = Lang.translate("ID_REG_USER_ACTIVE");
+            $(#ID_BTN_RENEW_REG).text = Lang.translate("ID_RENEW_NOW");
+            $(#ID_BTN_UPDT_INFO).state.expanded = true;
+			$(.product_state2Account).attributes.addClass("product_state_margin");
+			$(.product_state1Account).attributes.addClass("product_state_size");
+        }
+        else if(varButton == 3) //Registered but Expired
+        {
+            $(#ID_PRODUCT_STATE).text = Lang.translate("ID_REG_VER_EXP_PLS_REGISTER");
+            $(#ID_BTN_RENEW_REG).text = Lang.translate("ID_RENEW_NOW");
+            $(#ID_BTN_UPDT_INFO).state.collapsed = true;
+        }
+        else if(varButton == 4) //Trial Expired
+        {
+            $(#ID_PRODUCT_STATE).text = Lang.translate("ID_TRIAL_VER_EXP");
+            $(#ID_BTN_RENEW_REG).text = Lang.translate("ID_STR_REGISTER_NOW");
+            $(#ID_BTN_UPDT_INFO).state.collapsed = true;
+        }
+        else if(varButton == 5) //Unregistered
+        {
+            $(#ID_PRODUCT_STATE).text = Lang.translate("ID_UNREG_REGISTER_NOW");
+            $(#ID_BTN_RENEW_REG).text = Lang.translate("ID_STR_REGISTER_NOW");
+            $(#ID_BTN_UPDT_INFO).state.collapsed = true;
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_BTN_BUY_NOW).onClick = function()
+    {
+		if(g_LanguageName == "ENGLISH")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/products/");
+                //Sciter.launch("http://www.wardwiz.in/buy-wardwiz");  
+		else if(g_LanguageName == "GERMAN")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/products/"); 
+                //Sciter.launch("http://www.wardwiz.de/buy-wardwiz"); 
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+        g_CurrentPage = #ACCOUNT;
+        self.language = g_LanguageName;
+		var arrUserDetails=view.GetRegisteredUserInfo();
+		view.HomeControl(FunSetText);
+		$(#ID_REGISTERED_TO).value = ": "+arrUserDetails[0];
+        if(arrUserDetails[0] == "")
+        {
+            $(#ID_REGISTERED_TO).value = ": "+Lang.translate("ID_NA");
+        }
+		
+		var arrMailID = new Array(0);
+		var arrACPageMailID = new Array(0);
+		var varAfterAtletter = "";
+		var varMailID = "";
+		arrMailID = arrUserDetails[1];
+		if(arrMailID.length > 42)
+		{
+			varAfterAtletter = arrMailID.slice(arrMailID.indexOf("@"), arrMailID.length); // we get @welserv.com string
+			varMailID = arrMailID.slice(0, 25);
+			varMailID = varMailID.concat("~", varAfterAtletter);
+			$(#ID_EMAIL_ID).value = ": "+varMailID;
+		}
+		else
+		{
+			$(#ID_EMAIL_ID).value = ": "+arrUserDetails[1];
+		}
+        $(#ID_DAYS_LEFT).value = ": "+arrUserDetails[2];
+        $(#ID_PRODUCT_EDITION).value = ": "+arrUserDetails[3];
+        $(#ID_PRODUCT_VERSION).value = ": "+arrUserDetails[4];
+        $(#ID_PRODUCT_KEY).value = ": "+arrUserDetails[5];
+        //$(#ID_THREAT_DEF_COUNT).value = ": "+arrUserDetails[7];
+        $(#ID_DATABASE_VERSION).value = ": "+arrUserDetails[8];
+        $(#ID_DELEAR_CODE).value = ": "+arrUserDetails[9];
+        $(#ID_REFERENCE_ID).value =": "+arrUserDetails[10];
+		
+		if(arrUserDetails[11].length > 0 )
+			$(#ID_SCAN_ENGINE).value =": "+arrUserDetails[11];
+		else
+			$(#ID_SCAN_ENGINE).value =": 2.5.1.0";
+			
+        if(arrUserDetails[6] == 0)
+        {
+         $(#ID_ROW_ENCRYPT).state.collapsed = true;
+        }
+        else
+        {
+         $(#ID_DATA_ENC_VER).value = ": "+arrUserDetails[6];
+        }
+        if(arrUserDetails[9] == 0)
+        {
+            $(#ID_TXT_DEALER_CODE).state.collapsed = true;
+            $(#ID_DELEAR_CODE).state.collapsed = true;
+        }
+        else
+        {
+            $(#ID_TXT_DEALER_CODE).state.expanded = true;
+            $(#ID_DELEAR_CODE).state.expanded = true;
+        }
+        if(arrUserDetails[10] == 0)
+        {
+            $(#ID_TXT_REF_ID).state.collapsed = true;
+            $(#ID_REFERENCE_ID).state.collapsed = true;
+        }
+        else
+        {
+            $(#ID_TXT_REF_ID).state.expanded = true;
+            $(#ID_REFERENCE_ID).state.expanded = true;
+        }
+		
+		var varCheckOffline = view.OnIsCheckOfline();
+		if(varCheckOffline == true)
+			$(#ID_REGISTERTO).state.collapsed = true;
+		else
+			$(#ID_REGISTERTO).state.expanded = true;
+		
+        if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		}
+    }
+    </script>
+</head>
+<body>
+	<div .titleCont>
+		<h1 .headingTitle1 style="font-family: Roboto-Medium;letter-spacing:1dip;text-align:center;"><label>ID_PRODUCT_INFORMATION</label></h1>
+		<p><label>ID_ACCESS_INFORMATION_ABOUT_SOFTWARE_LICENSING_AND_MAINTENANCE</label></p>
+	</div>
+	<div .bgAccountInfo >
+		<div .bgAccountInfo1>
+			<div .product_state1Account>
+				<p #ID_PRODUCT_STATE><label>ID_UNREG_REGISTER_NOW</label></p>	
+			</div>
+			<div class="product_state2Account horizontalFlow">
+				<div class="btnCstm btnCstmMd" .btn_buy_size .custm_font #ID_BTN_BUY_NOW><label>ID_BUY_NOW</label></div>
+				<div class="btnCstm btnCstmMd" .btn_buy_size .custm_font #ID_BTN_RENEW_REG><label>ID_STR_REGISTER_NOW</label></div>
+				<div class="btnCstm btnCstmMd" .custm_font .update_btn_size #ID_BTN_UPDT_INFO><label>ID_UPDATE_INFO</label></div>
+			</div>
+		</div>
+	</div>
+	<div class="bg_color2">
+		<table #AccountPage>
+			<tr #ID_REGISTERTO>
+				<td><label>IDS_PRODINFO_REGTO_TEXT</label></td>
+				<td #ID_REGISTERED_TO>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td><label>IDS_REG_EMAIL_ID</label></td>
+				<td #ID_EMAIL_ID>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td><label>IDS_STATIC_DAYS_LEFT</label></td>
+				<td> <span #ID_DAYS_LEFT>: 0</span><label>ID_DAYS</label></td>
+			</tr>
+			<tr>
+				<td><label>IDS_PRODINFO_PRODEDITION_TEXT</label></td>
+				<td #ID_PRODUCT_EDITION>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td><label>IDS_PRODINFO_PRODVERSION_TEXT</label></td>
+				<td #ID_PRODUCT_VERSION>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td><label>IDS_SCAN_ENGINE</label></td>
+				<td #ID_SCAN_ENGINE>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td><label>IDS_STATIC_ABOUTGUI_DBVERSION</label></td>
+				<td #ID_DATABASE_VERSION>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td><label>ID_REGISTRATIONKEY</label></td>
+				<td #ID_PRODUCT_KEY>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<!--<td><label>ID_THREAT_DEFCOUNT</label></td>
+				<td #ID_THREAT_DEF_COUNT>: <label>ID_NA</label></td>-->
+			</tr>	
+			<tr #ID_ROW_ENCRYPT>
+				<td><label>IDS_DATAENC_TEXT</label></td>
+				<td #ID_DATA_ENC_VER>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td #ID_TXT_DEALER_CODE><label>ID_NO_VALUE_DEALER_CODE</label></td>
+				<td #ID_DELEAR_CODE>: <label>ID_NA</label></td>
+			</tr>
+			<tr>
+				<td #ID_TXT_REF_ID><label>ID_NO_VALUE_REF_CODE</label></td>
+				<td #ID_REFERENCE_ID>: <label>ID_NA</label></td>
+			</tr>
+			<!--<tr>
+				<td>Virus Scan Engine Version</td>
+				<td #ID_VIR_SCAN_ENGINE_VER>: NA</td>
+			</tr>-->
+		</table>
+	</div>
+</body>
+</html>

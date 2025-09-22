@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D623259C-5CE3-438C-997F-F757EF968D0C}</ProjectGuid>
+    <RootNamespace>WardwizResource</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>VBRESOURCE</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>VBRESOURCE</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>VBRESOURCE</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)Binaries\WRDWIZRESOURCE.DLL</OutputFile>
+      <ModuleDefinitionFile>.\WardwizResource.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(OutDir)Intermediate\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)Binaries\VBRESOURCE.DLL</OutputFile>
+      <ModuleDefinitionFile>.\WardwizResource.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(OutDir)Intermediate\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)Binaries\VBRESOURCE.DLL</OutputFile>
+      <ModuleDefinitionFile>.\WardwizResource.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>$(OutDir)Intermediate\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>$(OutDir)Binaries\VBRESOURCE.DLL</OutputFile>
+      <ModuleDefinitionFile>.\WardwizResource.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>$(OutDir)Intermediate\$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WardwizResource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\commondataprovider.tis" />
+    <None Include="res\IDR_CSS_CAROUSEL.css" />
+    <None Include="res\IDR_CSS_CHARTS.css" />
+    <None Include="res\IDR_CSS_GERMAN_LANG.css" />
+    <None Include="res\IDR_CSS_GERMAN_LANGUAGE.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_DARK.css" />
+    <None Include="res\IDR_CSS_MAIN.css" />
+    <None Include="res\IDR_CSS_MAIN_CRYSTAL_THEME.css" />
+    <None Include="res\IDR_CSS_MAIN_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_NOTIFICATION.css" />
+    <None Include="res\IDR_CSS_NOTIFICATION_TRAY_INFINITE_POPUP.css" />
+    <None Include="res\IDR_CSS_POPUP_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_TOGGELER.css" />
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\IDR_HTM_ACCOUNT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_ANTIROOTKIT_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_AUTORUN_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_BACKUP_UTILITY.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_BLOCK_SPECIFIC_WEBSITE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_BLUE_DOME.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_BROWSER_SECURITY.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_BROWSER_SPEC_WEBSITE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_CHANGE_REMOVE_PASSWORD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_CUSTOM_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_DATA_ENCRYPTION.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_DATA_VAULT_AGREEMENT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_DECRYPT_PASSWORD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_EMAIL_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_ENCRYPT_PASSWORD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_EXCEPTION_DIALOGUE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_EXCLUDE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_EXCLUDE_FILE_EXT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_FIREWALL.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_FONT_AWESOME.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_FORGET_PASSWORD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_FORGET_PASSWORD_SETTING.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_FORGOT_PASSWORD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_FULL_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_HOME.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_INDEX.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_INTERNET_SETTINGS.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_MANAGE_BROWSER_EXCLUSION.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_MANAGE_EXCLUSION.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_MANAGE_RESTRICTION.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_PARENTAL_CONTROL.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_PASSWORD_PROTECTION.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_PASSWORD_SCOPE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_PC_SPEC_CAT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_PREINSTALATION_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_QUICK_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_RECOVER_FILES.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_REGISTER.html" />
+    <None Include="res\IDR_HTM_REGISTRATION.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_REGISTRY_OPTIMIZER.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_REG_ENABLE_TOOL.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_REM_ASSIST_AGREEMENT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_REPORTS.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_RESCUE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_RESTRICT_SPECIFIED_WEBSITE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_RESTRICT_USE_APP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_RULES_TABLE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_SCAN_BY_NAME.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_SETTINGS.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_SUPPORT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TEMP_FILE_CLEANER.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TOOLTIP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_BLK_SPECIFIC_WEBSITE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_BLOCK_APPLICATION_POPUP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_DATA_VAULT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_LIVE_UPDATE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_PARCTRL_POPUP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_POPUP_THREAT_DETECT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_PORT_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_RESTART_POPUP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_SCHED_SCAN_MISS.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_TEMP_FILE_CLNR.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_UPDATE_SUCCESS.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_USB_POPUP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_TRAY_VIRUS_PROTECT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_UNINSTALL.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_USB_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_USB_SCAN_FIRST_POP_UP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_USB_VACCIN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_VALIDATE_PASSWORD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_VIEW_REPORTS.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_WARDWIZ_RESCUEDISK.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_WIDGET.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_MICRO_CHART.tis" />
+    <None Include="res\IDR_POPUP_BACKUP_EXCL_ADD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_BACKUP_EXT_ADD.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_BACKUP_RESTORE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_BACKUP_UTIL.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_BOOTTIME_SCAN.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_DELETE_OLDER_REPORT.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_SCAN_AT_STARTUP.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_POPUP_SET_SCAN_SCHED.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_TIS_CAROUSEL.tis" />
+    <None Include="res\IDR_TIS_CHARTS.tis" />
+    <None Include="res\IDR_TIS_CHARTS_PARTS.tis" />
+    <None Include="res\IDR_TIS_DECORATORS.tis" />
+    <None Include="res\IDR_TIS_DESKTOP_WIDGET.tis" />
+    <None Include="res\IDR_TIS_ENGLISH.tis" />
+    <None Include="res\IDR_TIS_GERMAN.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG_TOOL.tis" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+    <None Include="res\IDR_TIS_MAIN.tis" />
+    <None Include="res\IDR_TIS_NOTIFICATION.tis" />
+    <None Include="res\IDR_TIS_NOTIFICATION_TRAY_INFINITE_POPUP.tis" />
+    <None Include="res\IDR_TIS_PLUS.tis" />
+    <None Include="res\IDR_TIS_RECT_TRACKER.tis" />
+    <None Include="res\IDR_TIS_SQLITE.tis" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\logo.svg" />
+    <None Include="res\sqlite.tis" />
+    <None Include="WardwizResource.def" />
+    <None Include="res\aero_link.cur" />
+    <None Include="res\WardwizResource.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WardwizResource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\103x21.bmp" />
+    <Image Include="res\103x21_H_over.bmp" />
+    <Image Include="res\150x17.bmp" />
+    <Image Include="res\150x17_dis.bmp" />
+    <Image Include="res\150x17_H_over.bmp" />
+    <Image Include="res\32x32Preloader.GIF" />
+    <Image Include="res\57x21Button.bmp" />
+    <Image Include="res\57x21Button_dis.bmp" />
+    <Image Include="res\57x21Button_H_over.bmp" />
+    <Image Include="res\AdvanceSecurity.png" />
+    <Image Include="res\Button_103x22_disable_WhiteBG.bmp" />
+    <Image Include="res\Button_103x22_hover_WhiteBG.bmp" />
+    <Image Include="res\Button_103x22_normal_WhiteBG.bmp" />
+    <Image Include="res\Button_57x21_disable_whiteBG.bmp" />
+    <Image Include="res\Button_57x21_hover_whiteBG.bmp" />
+    <Image Include="res\Button_57x21_normal_whiteBG.bmp" />
+    <Image Include="res\Calender_BG.bmp" />
+    <Image Include="res\Change Password_BG.jpg" />
+    <Image Include="res\check mark.bmp" />
+    <Image Include="res\Check mark_01.bmp" />
+    <Image Include="res\close_button.bmp" />
+    <Image Include="res\close_button_H_over.bmp" />
+    <Image Include="res\close_button_onAceesss.bmp" />
+    <Image Include="res\COMPANYLOGO.ICO" />
+    <Image Include="res\cross mark.bmp" />
+    <Image Include="res\cross.bmp" />
+    <Image Include="res\cross_H_over.bmp" />
+    <Image Include="res\Data Encryption_BG.jpg" />
+    <Image Include="res\Download.bmp" />
+    <Image Include="res\Drop_down_button.bmp" />
+    <Image Include="res\Drop_up_button.bmp" />
+    <Image Include="res\email_icon.bmp" />
+    <Image Include="res\facebook.bmp" />
+    <Image Include="res\facebook_H_over.bmp" />
+    <Image Include="res\Header.bmp" />
+    <Image Include="res\help.bmp" />
+    <Image Include="res\help_H_over.bmp" />
+    <Image Include="res\home.bmp" />
+    <Image Include="res\home_H_over.bmp" />
+    <Image Include="res\icon.bmp" />
+    <Image Include="res\IDR_GIF_LOADING_GLOBE.gif" />
+    <Image Include="res\IDR_GIF_LOGO_ANIMATION.gif" />
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION.gif" />
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION_BOTTOM.gif" />
+    <Image Include="res\IDR_GIF_SCAN_RUNNING.gif" />
+    <Image Include="res\IDR_IMG_SHIELD_ICO.png" />
+    <Image Include="res\IDR_JPG_CRYSTAL_BACKGRUND.jpg" />
+    <Image Include="res\IDR_JPG_DARK_THEME.JPG" />
+    <Image Include="res\IDR_JPG_DEFAULT_BACKGRUND.jpg" />
+    <Image Include="res\IDR_JPG_OFFLINE_AMBASSADOR.jpg" />
+    <Image Include="res\IDR_JPG_OFFLINE_AMBASSADOR_GERMAN.jpg" />
+    <Image Include="res\IDR_JPG_POPUP_BACKGROUND.jpg" />
+    <Image Include="res\IDR_PNG_BULB.png" />
+    <Image Include="res\IDR_PNG_BUTTON_BG.png" />
+    <Image Include="res\IDR_PNG_BUTTON_BG_REV.png" />
+    <Image Include="res\IDR_PNG_DOT.png" />
+    <Image Include="res\IDR_PNG_DOWN_ARROW_WIDGET.png" />
+    <Image Include="res\IDR_PNG_DROP_FILES.png" />
+    <Image Include="res\IDR_PNG_FAILED.png" />
+    <Image Include="res\IDR_PNG_FB.png" />
+    <Image Include="res\IDR_PNG_FB_HOVER.png" />
+    <Image Include="res\IDR_PNG_HEADER.png" />
+    <Image Include="res\IDR_PNG_HEADER_BASIC.png" />
+    <Image Include="res\IDR_PNG_HEADER_BASIC_REVERSE.png" />
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png" />
+    <Image Include="res\IDR_PNG_INFO.png" />
+    <Image Include="res\IDR_PNG_INFO_HOVER.png" />
+    <Image Include="res\IDR_PNG_INSTA.png" />
+    <Image Include="res\IDR_PNG_INSTA_HOVER.png" />
+    <Image Include="res\IDR_PNG_LINKEDIN.png" />
+    <Image Include="res\IDR_PNG_LINKEDIN_HOVER.png" />
+    <Image Include="res\IDR_PNG_LOGO_BLACK.PNG" />
+    <Image Include="res\IDR_PNG_NEXT_BUTTON.png" />
+    <Image Include="res\IDR_PNG_NEXT_WHITE.png" />
+    <Image Include="res\IDR_PNG_OK.png" />
+    <Image Include="res\IDR_PNG_OPTIONS.png" />
+    <Image Include="res\IDR_PNG_PHONE_SUPPORT.png" />
+    <Image Include="res\IDR_PNG_PREVIOUS_BUTTON.png" />
+    <Image Include="res\IDR_PNG_PROTECTED.png" />
+    <Image Include="res\IDR_PNG_PROTECTIONON.png" />
+    <Image Include="res\IDR_PNG_PROTECTION_OFF.png" />
+    <Image Include="res\IDR_PNG_PROTECTION_ON.png" />
+    <Image Include="res\IDR_PNG_PROTECTION_PARTIAL.png" />
+    <Image Include="res\IDR_PNG_REFRESH.png" />
+    <Image Include="res\IDR_PNG_REFRESH_HOVER.png" />
+    <Image Include="res\IDR_PNG_THREAT_SECURITY.png" />
+    <Image Include="res\IDR_PNG_TICK_ICO.png" />
+    <Image Include="res\IDR_PNG_TRAY_LOGO.PNG" />
+    <Image Include="res\IDR_PNG_TWITTER.png" />
+    <Image Include="res\IDR_PNG_TWITTER_HOVER.png" />
+    <Image Include="res\IDR_PNG_UNPROTECTED.png" />
+    <Image Include="res\IDR_PNG_USER_IMG.png" />
+    <Image Include="res\IDR_PNG_VIBRANIUM.png" />
+    <Image Include="res\IDR_PNG_VIBRO.png" />
+    <Image Include="res\IDR_PNG_VIBRO_LG.PNG" />
+    <Image Include="res\IDR_PNG_VIBRO_NEW.png" />
+    <Image Include="res\IDR_PNG_WIDGET_BG.png" />
+    <Image Include="res\IDR_PNG_WIDGET_BG_DARK.png" />
+    <Image Include="res\IDR_PNG_WIDGET_WW_LOGO.png" />
+    <Image Include="res\IDR_PNG_WID_GREEN.png" />
+    <Image Include="res\IDR_PNG_WID_MENU_BG.png" />
+    <Image Include="res\IDR_PNG_WID_MENU_BG_DARK.png" />
+    <Image Include="res\IDR_PNG_WID_RED.png" />
+    <Image Include="res\IDR_PNG_WID_YELLOW.png" />
+    <Image Include="res\ID_PNG_NAVIGATION.png" />
+    <Image Include="res\ID_PNG_START_NAVIGATION.png" />
+    <Image Include="res\info.bmp" />
+    <Image Include="res\info_H_over.bmp" />
+    <Image Include="res\inner dilog registration.jpg" />
+    <Image Include="res\InnerDialog.jpg" />
+    <Image Include="res\linkedin.bmp" />
+    <Image Include="res\linkedin_H_over.bmp" />
+    <Image Include="res\lock_new.bmp" />
+    <Image Include="res\logo.bmp" />
+    <Image Include="res\MainUIBk.jpg" />
+    <Image Include="res\maxi_ button.bmp" />
+    <Image Include="res\maxi_ button_H_over.bmp" />
+    <Image Include="res\mini_button.bmp" />
+    <Image Include="res\mini_button_H_over.bmp" />
+    <Image Include="res\MsgBox_BG.jpg" />
+    <Image Include="res\Non Protected.bmp" />
+    <Image Include="res\Password Dialog BG.jpg" />
+    <Image Include="res\preloader.GIF" />
+    <Image Include="res\Protected_Button.bmp" />
+    <Image Include="res\Protected_Button_HOVER.bmp" />
+    <Image Include="res\protected_HEADER.bmp" />
+    <Image Include="res\Radio_button_normal.bmp" />
+    <Image Include="res\Radio_button_select.bmp" />
+    <Image Include="res\Register now button.bmp" />
+    <Image Include="res\Register now button_H_over.bmp" />
+    <Image Include="res\Registration.jpg" />
+    <Image Include="res\Registration_header.bmp" />
+    <Image Include="res\Registry Optimizer Button.bmp" />
+    <Image Include="res\Registry Optimizer Disabled.bmp" />
+    <Image Include="res\Registry Optimizer Hand Over.bmp" />
+    <Image Include="res\Registry Optimizer_BG.jpg" />
+    <Image Include="res\Restart.bmp" />
+    <Image Include="res\scan img.bmp" />
+    <Image Include="res\services.bmp" />
+    <Image Include="res\services_H_over.bmp" />
+    <Image Include="res\setting_BG.jpg" />
+    <Image Include="res\setting_button 50x17.bmp" />
+    <Image Include="res\setting_H_over 50x17.bmp" />
+    <Image Include="res\setting_inner_BG.jpg" />
+    <Image Include="res\setting_logo.bmp" />
+    <Image Include="res\ShowTipOnStartUp_BG.jpg" />
+    <Image Include="res\ShowTipOnStartUpBulb.bmp" />
+    <Image Include="res\ShowTipOnStartUpHeader.bmp" />
+    <Image Include="res\splash.jpg" />
+    <Image Include="res\splash_german.jpg" />
+    <Image Include="res\splash_Logo.bmp" />
+    <Image Include="res\Tray PopUp BG.jpg" />
+    <Image Include="res\Tray PopUp Multi Dlg BG.jpg" />
+    <Image Include="res\Tray_Popup.jpg" />
+    <Image Include="res\Tray_PopUp_Button_Next.bmp" />
+    <Image Include="res\Tray_PopUp_Button_Prev.bmp" />
+    <Image Include="res\tray_popup_header_icon.bmp" />
+    <Image Include="res\twitter.bmp" />
+    <Image Include="res\twitter_H_over.bmp" />
+    <Image Include="res\unlock_new.bmp" />
+    <Image Include="res\USB_button.bmp" />
+    <Image Include="res\USB_Detect_BG.jpg" />
+    <Image Include="res\USB_dis_button.bmp" />
+    <Image Include="res\USB_H_over_button.bmp" />
+    <Image Include="res\USB_Implementation_logo.bmp" />
+    <Image Include="res\USB_popup_BG.jpg" />
+    <Image Include="res\USB_popup_Button.bmp" />
+    <Image Include="res\USB_popup_Button_H_over.bmp" />
+    <Image Include="res\UsbProg.GIF" />
+    <Image Include="res\Uudate_BG.jpg" />
+    <Image Include="res\Warning MSG BG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardwizResource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\IDR_TTF_FONTAWESOME-WEBFONT.ttf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

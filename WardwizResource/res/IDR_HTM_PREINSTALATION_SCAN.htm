@@ -1,0 +1,820 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style> 
+	@import url(IDR_CSS_MAIN.css); 
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);			
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+		padding:0dip;
+	    margin:0dip;
+	    width:550dip;
+	    height:300dip;
+		overflow:hidden;
+		behavior:WardWizPreInsScanDlg;	
+	}
+	body{
+		padding:0dip;
+		margin:0dip;
+		padding-bottom:10dip;
+		background-size:549dip 297dip;
+		background-repeat: no-repeat;
+		position:relative;	
+		background-position:center;
+		object-fit:fill!important;
+		//background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+	}
+	.inner_body{
+		width:530dip;
+		height:180dip;
+		overflow:hidden;
+		//align:center;
+		margin:5dip;
+	}
+	
+	.btn_scan_stop{
+		width:200dip;
+		text-align:center;
+		height:20dip;
+        margin-left:160dip;
+		margin-top:17dip;
+		padding:5dip;
+	}					
+	.cl_welcome{
+		text-align:center;
+		font-size:20dip;
+		margin:0;
+		margin-top:5dip;
+		margin-bottom:10dip;
+	}
+	.cl_scan_type{
+		text-align:center;
+		font-size:15dip;
+		margin-top:10dip;
+	}
+	#P_SetScanStatus{
+		margin-top:0dip;
+		text-align:center;
+	}
+	.inner_body:expanded{
+		visibility:visible;
+	}
+	.inner_body:collapsed{
+		visibility:none;
+	}
+	
+	.scanAnimation_PreInstall:expanded{
+		visibility:visible;
+	}
+	.scanAnimation_PreInstall:collapsed{
+		visibility:none;
+	}
+	.protect_memory_img img{
+		width:30dip;
+		height:40dip;
+	}
+	.protect_memory_img:expanded{
+		visibility:visible;
+		width:30dip;
+		text-align:center;
+		margin-left:20dip;
+	}
+	.protect_memory_img:collapsed{
+		visibility:none;
+	}
+	#show_details:collapsed{
+		visibility:none;
+	}
+	#show_details:expanded{
+		visibility:visible;
+	}
+	#hide_details:collapsed{
+		visibility:none;
+	}
+	#hide_details:expanded{
+		visibility:visible;
+	}
+	.scan_report_preInstall:expanded{
+		visibility:visible;
+	}
+	.scan_report_preInstall:collapsed{
+		visibility:none;
+	}
+	.scan_report_preInstall{
+		width:530dip;
+		height:180dip;
+		padding-left:5dip;
+		margin-left:2dip;
+	}
+	.final_block{
+		width:540dip;
+		height:180dip;
+		overflow:hidden;
+		text-align:center;
+	}
+	.final_block h1{
+		color:#000; 
+		font-weight:300;
+		text-align:center;
+	}
+	.final_block img{
+		margin-top:20dip;
+	}
+	.final_block:expanded{
+		visibility:visible;
+	}
+	.final_block:collapsed{
+		visibility:none;
+	}
+	.text_color{
+		color:#109323!important;
+		font-weight:500;
+	}
+	.content_progress{
+		flow:horizontal;
+		padding:4dip;
+		width:430dip;
+		margin-left:100dip;
+		font-size:15dip;
+	}
+	.display_scan_path{
+		height:25dip;
+		margin-top:10dip;
+		width:500dip;
+		margin-left:5dip;
+		font-size:10dip;
+	}				
+	.message_display_block_PreInstall:collapsed {
+		visibility:visible;
+		top:40dip;
+		transition:top(sine-in-out, 600ms);
+	}
+	
+	.message_display_block_PreInstall p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:0dip;
+	}	
+	#ID_BUTTON_CLEAN:disabled{
+		opacity:.4;
+	}
+    .header_PreInstall{
+         background:rgba(255,255,255, .1);
+		width:548dip;
+		height:40dip;
+		color:#000;
+		flow:horizontal;
+    }
+	.menu_PreInstall{
+		width:510dip;
+		flow:horizontal;
+	}
+	.drag_zone_PreInstall{
+		width:500dip;
+		height:40dip;
+	}
+	.closebtn_PreInstall{
+		margin-top:10dip;
+		margin-left:-3dip;
+		color:#000;
+	}
+	.scanAnimation_PreInstall{
+		width:40dip;
+		height:40dip;
+		border-radius:200dip;
+		overflow:hidden;
+		box-shadow:0 0 20dip #7cbbd2;
+		/* position:relative; */
+		color:#000;
+	}
+	/*Tables for PreInstall Scan Page*/
+	form#data-dialog > table#PreInstallScan > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#PreInstallScan { 
+		style-set: vgrid;
+		border:1dip solid #888888; 
+		flow:table-fixed;
+		width:530dip;
+		height:160dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin:0dip!important;
+	}
+	table#PreInstallScan > thead {
+		behavior:column-resizer;  
+	}
+	table#PreInstallScan > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#PreInstallScan th 
+	{ 
+		color: white;
+		font-size:13dip; 
+		border:none;
+		padding:1dip; 
+		background-color:#DDD; 
+		background-image:url(IDR_PNG_HEADER_BASIC.png)!important;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		font-weight:normal;
+	}
+	table#PreInstallScan th:nth-child(1)  {  width:0.20*; }
+	table#PreInstallScan th:nth-child(2)  {  width:0.60*; }		
+	table#PreInstallScan th:nth-child(3)  {  width:0.20*; }		
+	table#PreInstallScan th:hover 
+	{ 
+		color: #ffe598;
+		transition:blend;
+		background-image:url(IDR_PNG_HEADER_BASIC_REVERSE.png)!important;
+	}
+	table#PreInstallScan tr:current /* current row */ 
+	{ 
+		background-color:#bdbccc; 
+		color:black;
+	} 
+	table#PreInstallScan td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+		color:black!important;
+	}
+	table#PreInstallScan td:nth-child(1) {  text-align:center; width:0.20*;padding-top:2dip; } /* first column */
+	table#PreInstallScan td:nth-child(2) {  
+		text-align:left; 
+		width:0.60*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	table#PreInstallScans td:nth-child(3) {  
+		text-align:left; 
+		width:0.20*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* third column */
+	.btnCstmSmall_PreInstall{
+	  border: 1dip solid #39505e;
+	  color: #fff;
+	  cursor: pointer;
+	  /* background: #599cb5; */
+	  background-image:url(IDR_PNG_HEADER_BASIC.png)!important;
+	 	background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	  height:18dip;
+	  width:70dip;
+	  overflow:hidden;
+	  text-align:center;
+	  transition: background-image(cubic-in-out, duration:0.3s);
+	  /* transition: left(cubic-in-out, duration:0.3s)
+				  color(cubic-in-out, duration:0.4s)
+				  border(cubic-in-out, duration:0.4s); */
+	  padding:0;
+	  vertical-align:middle;
+	  line-height:18dip;
+	  font-weight:normal;
+	  /* margin-top:12dip; */
+	  display:inline-block;
+	  font-size:12dip;
+	}
+	.btnCstmSmall_PreInstall .bgClrSmall{
+		background:#fff;
+	  min-height:18dip;
+	  width:70dip;
+	  position:absolute;
+	  z-index:-1;
+	  left:-310pdip;
+	  /* transition: left(cubic-in-out, duration:0.3s); */
+	}
+	.btnCstmSmall_PreInstall:hover{
+		/* color:#217594; */
+		border:1dip solid #39505e;
+		background-image:url(IDR_PNG_HEADER_BASIC_REVERSE.png)!important;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	.btnCstmSmall_PreInstall:hover > .bgClrSmall{
+	  left:-1dip;
+	}
+	.btnCstmSmall_PreInstall:hover > .buttonIcons{
+		visibility:visible;
+	}
+	.cleanbtn{
+		float:right;
+		margin-top:10dip;
+	}
+	.message_display_block_PreInstall {
+		background:rgba(238,246,248,.95);
+		position:absolute;
+		width:548dip;
+		height:37dip;
+		visibility:none;
+		margin-left:0dip;
+		top:0dip;
+	}
+	.scan_desc{
+		margin-top:10dip;
+		padding-left:20dip;
+		color:#000;
+	}
+	.ScanPath_PreInstall{
+		margin-left:13dip;
+		margin-top:4dip;
+		margin-bottom:0;
+		padding-bottom:0;
+		text-align:center;
+		color:#000;
+	}
+	.ContentShowHide{
+		height:15dip;
+		width:200dip;
+		margin-left:170dip!important;
+		text-align:center;
+	}
+	.ContentShowHide p{
+		cursor:pointer;
+		margin:0;
+		color:#000;
+	}
+	.headingClrwht{
+		color:#000;
+	}
+	pie-chart_PreInstallScan{
+		display:block;
+		aspect: Pie_Chart(band:5dip, sector:rgb(89,156,181), circle:rgb(230,230,230));
+		size:40dip;
+		font-size:10dip;
+		vertical-align:middle;
+		text-align:center;
+		color:#000;
+	}
+</style>
+
+<script type="text/tiscript">
+    include "IDR_TIS_MAIN.tis";
+</script>
+
+<script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+</script>
+
+<script type="text/tiscript">
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script>
+
+<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(LanguageID == 0)
+			Sciter.launch("https://vibranium.co.in/");
+		else if(LanguageID == 2)
+			Sciter.launch("https://vibranium.co.in/");
+	}
+</script>
+
+<script type="text/tiscript">
+	var records = new Array(0);
+	var vlistObj;
+	var varThreatFoundCount = 0;
+	var varScanFlag = 0;
+	var RecordLength = 0;
+	var varScanPercentage = 0.1;
+</script>
+
+<script type="text/tiscript">    
+	var chart_memory = $(pie-chart_PreInstallScan);
+</script>
+
+<script type= "text/tiscript">
+	function Pie_Chart(params = {}) 
+    {
+        const strokeWidth = params.band || 10dip; 
+        const strokeColor = params.sector || color(100,0,0); 
+        const circleColor = params.circle || color(230,230,230); 
+      
+        var start = 0; 
+        var value = 0;  
+
+        function render(gfx) 
+        {
+
+          const sw = this.toPixels(strokeWidth, #width); 
+
+          var (w,h) = this.box(#dimension); 
+          var (x,y) = (w/2, h/2);  
+          var r = Integer.min(w,h) / 2 - sw / 2;  
+          
+          gfx.strokeWidth(sw + 0.5)
+             .strokeColor(circleColor)
+             .arc(x,y,r,r, 0deg, 360deg)
+             .strokeColor(strokeColor)
+             .arc(x,y,r,r, 360deg * start, 360deg * value);
+        }  
+        
+        this.paintContent = render;
+        
+        // redefining property 'value' on that element
+        this["value"] = property(v) {
+          get return value;
+          set {
+            value = v;
+            this.text = String.$({(value * 100).toInteger() }%) ;
+            this.refresh();
+          }
+        };
+        this.value = this.attributes["value"].toFloat(0.0);
+    }
+	</script>
+
+<script type="text/tiscript">
+	function SetStatus(evt)
+	{
+		$(#P_SetScanStatus).text = evt.data;
+		self.update();
+	}
+	const MY_EVENT = 0x100 + 1;
+	self.subscribe(SetStatus, Event.BEHAVIOR_EVENT, MY_EVENT);
+	
+	function SetCurrentFileCount(evt)
+	{
+		var varCurrentFile = evt.data.one.toInteger();
+		var varTotalFile = evt.data.two.toInteger();
+		$(#ID_FILE_SCANED).value = " " + varCurrentFile;
+		
+		if(varScanFlag == 0)
+		{
+			if(varTotalFile != 0)
+			{
+				varScanPercentage = varCurrentFile * 100;
+				varScanPercentage = varScanPercentage /  varTotalFile;
+			}
+			chart_memory.value = varScanPercentage.toFloat()/100;
+			if(chart_memory.value <= .01)
+			{
+				chart_memory.value = .00;
+			}
+			else if(chart_memory.value >= .98)
+			{
+				chart_memory.value = 1;
+			}
+			self.update();
+		}
+	}
+	self.subscribe(SetCurrentFileCount, Event.BEHAVIOR_EVENT, 0x100 + 2);
+</script>
+	
+<script type="text/tiscript"> 
+$(#close-dialog).onClick = function()
+{
+	FunStopScanning();
+}
+</script>
+<script type="text/tiscript">
+$(#ID_BTN_STOP).onClick = function()
+{
+	FunStopScanning();
+}
+</script>
+<script type="text/tiscript">
+function FunStopScanning()
+{
+	self.OnPauseQuickScan(SetScanStatus);
+	if(varScanFlag == 0 && varThreatFoundCount == 0)
+	{	
+		$(#ID_LIGHTBOX_TXT).text = Lang.translate("SCAN_PROGRESS_DO_YOU_STOP_SCANNING");
+		var res = dialog { body:$(form#simple-dialog),
+				returns: #values,
+				caption : Lang.translate("ID_WARNING"),
+				buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+				};
+		if(res == true)
+		{
+			view.OnCloseButton();
+		}
+		else
+		{
+			self.OnResumeQuickScan(SetScanStatus);
+			$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+			return;
+		}
+	}
+	else (varThreatFoundCount > 0)
+		view.OnCloseButton();
+}
+</script>
+<script type="text/tiscript">
+function SetTableValues()
+{
+	vlistObj = $(table);
+	vlistObj.value = records;
+	vlistObj.on("change","tbody > tr", function()
+	{	
+		this.data.selected = this.value.selected;
+		if( !this.data.selected )
+			selectAll.value = false;
+	});
+}
+</script>
+<script type="text/tiscript">
+function SetScanFinishedStatus(str)
+{
+    $(.scanAnimation_PreInstall).state.collapsed = true;
+    $(.protect_memory_img).state.expanded = true;
+	varScanFlag = 1;
+	$(#ID_BUTTON_CLEAN).state.disabled = false;
+    function SetScanFinishedStatusDelayed()
+    {
+        //chart_memory.value = 1;
+        g_bIsAnyTaskInProcess = false;
+        g_varCurrentTask = #NONE;
+        ShowScanFinishedMsg();
+        $(#P_SetScanStatus).text = str;
+    }
+    self.timer(500ms, SetScanFinishedStatusDelayed);
+	return 1;
+}
+</script>
+<script type="text/tiscript">
+function FunNoThreatFound()
+{
+	view.OnCloseButton();
+}
+</script>
+<script type="text/tiscript">
+function FunThreatFound()
+{
+	$(.scan_report_preInstall).state.expanded = true;
+	$(#show_details).state.collapsed = true;
+	$(#hide_details).state.expanded = true;
+	$(.inner_body).state.collapsed = true;
+	$(#ID_BTN_STOP).state.disabled = true;
+	$(#ID_BTN_RESUME_SCAN).state.disabled = true;
+	$(#ID_STATUS).text = Lang.translate("ID_THREATS_FOUND");
+	$(#ID_STATUS).attributes.addClass("text_color");
+}
+</script>
+<script type="text/tiscript">
+function ShowScanFinishedMsg()
+{
+   if(varThreatFoundCount == 0 && varScanFlag == 1)
+    {
+		$(#ID_STATUS).text = Lang.translate("NO_THREATS_FOUND");
+		$(#ID_STATUS).attributes.addClass("text_color");
+		$(.final_block).state.expanded = true;
+		$(.scan_report_preInstall).state.collapsed = true;
+		$(.inner_body).state.collapsed = true;
+		$(#show_details).state.collapsed = true;
+		$(#hide_details).state.collapsed = true;
+		self.timer(500ms,FunNoThreatFound);
+    }
+	else
+	{
+		FunThreatFound();
+	}
+}
+</script> 
+
+<script type= "text/tiscript"> 
+function AddVirusFoundEntry( strThreatName, strFileName, strActiontaken, SpyID)
+{
+	var varThreatName;
+	if(strThreatName == "USER_DEFINED")
+		varThreatName = Lang.translate("ID_USER_DEFINED");
+	else
+		varThreatName = strThreatName;
+	records[varThreatFoundCount] = {selected: false, ThreatName: varThreatName, FilePath:strFileName, ActionTaken:strActiontaken, WardWizID:SpyID };
+	varThreatFoundCount++;
+}
+</script>
+<script type="text/tiscript"> 
+function FunShowDetails()
+{
+	$(.scan_report_preInstall).state.expanded = true;
+	$(.inner_body).state.collapsed = true;
+	$(.final_block).state.collapsed = true;
+	$(#show_details).state.collapsed = true;
+	$(#hide_details).state.expanded = true;
+}
+</script>
+<script type="text/tiscript"> 
+function SetScanStatus( str)
+{
+	$(#P_SetScanStatus).text =  str;
+	return 1;
+}
+</script>
+<script type= "text/tiscript">
+var IsScanning = 1;
+$(.PauseResumeScan).onClick = function()
+{
+	if(IsScanning == 1)
+	{	
+		$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_RESUME");
+		IsScanning = 2;
+		self.OnPauseQuickScan(SetScanStatus);
+	}
+	else if(IsScanning == 2)
+	{
+		$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+		IsScanning = 1;
+		self.OnResumeQuickScan(SetScanStatus);
+	}
+}
+</script>
+<script type="text/tiscript">
+    $(#ID_BUTTON_CLEAN).onClick = function()
+    {
+        if(varScanFlag == 1)
+        {
+            RecordLength = records.length;
+            self.OnClickScanCleanBtn(records, FunFlagQuarantine);
+            $(.message_display_block_PreInstall).state.collapsed = true;
+            $(#close-dialog).state.disabled = true;
+            $(#ID_BUTTON_CLEAN).state.disabled = true;
+            $(#hide_details).state.disabled = true;
+			$(#ID_EXCEPTION_MSG).text = Lang.translate("QUARANTINE_PROGRESS_PLEASE_WAIT");
+			varScanFlag++;
+        }
+    }
+    var varSysBoot = 0;
+    function FunClickCleanBtn()
+    {
+        RecordLength = records.length;
+        self.OnClickScanCleanBtn(records, FunFlagQuarantine);
+    }
+
+    function FunFlagQuarantine(varRestartFlag)
+    {
+        varSysBoot = varRestartFlag;
+        FunGetRecord();
+    }
+    function FunGetRecord()
+    {
+        records.splice(0,RecordLength);
+		$(.message_display_block_PreInstall).state.collapsed = false;
+        $(#close-dialog).state.disabled = false;
+        $(#ID_BUTTON_CLEAN).state.disabled = true;
+        $(#hide_details).state.disabled = false;
+		
+		$(.scan_report_preInstall).state.collapsed = true;
+		$(.inner_body).state.collapsed = true;
+		$(.final_block).state.expanded = true;
+		$(#show_details).state.expanded = true;
+		$(#hide_details).state.collapsed = true;
+		
+        if(varSysBoot == 1)
+        {
+			$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_RESTART_REQUIRED_TO_CLEAN");
+            var res = dialog { body:$(form#simple-dialog),
+                    returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+                    buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+                    };
+            if(res == true)
+			{
+                view.OnRestartForBootScan(varSysBoot);
+			}
+            else
+			{
+				varSysBoot = 0;
+				view.OnRestartForBootScan(varSysBoot);
+                return;
+			}
+        }
+		else
+		{
+			$(#ID_STATUS).text = Lang.translate("QUARANTINE_FILESUCCESSFULY_CLEAN");
+		}
+    }
+</script>
+<script type="text/tiscript">
+$(#show_details).onClick = function()
+{
+	$(#show_details).state.collapsed = true;
+	$(#hide_details).state.expanded = true;
+	$(.scan_report_preInstall).state.expanded = true;
+	$(.inner_body).state.collapsed = true;
+	$(.final_block).state.collapsed = true;
+	$(.message_display_block_PreInstall).state.collapsed = false;
+}
+$(#hide_details).onClick = function()
+{
+	$(.inner_body).state.expanded = true;
+	$(.scan_report_preInstall).state.collapsed = true;
+	$(#hide_details).state.collapsed = true;
+	$(#show_details).state.expanded = true;
+}
+</script> 
+<script type="text/tiscript"> 
+function FunStartScan()
+{
+	self.OnStartQuickScan(SetScanStatus, AddVirusFoundEntry, SetScanFinishedStatus);
+}
+</script>
+<script type="text/tiscript"> 
+function self.ready()
+{
+	self.language = g_LanguageName;
+	$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+	$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);	
+	$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+	$(.inner_body).state.expanded = true;
+	$(.protect_memory_img).state.collapsed = true;
+	$(.final_block).state.collapsed = true;
+	$(.scan_report_preInstall).state.collapsed = true;
+	
+	$(#show_details).state.expanded = true;
+	$(#hide_details).state.collapsed = true;
+	$(#ID_BUTTON_CLEAN).state.disabled = true;
+	FunStartScan();
+	
+	vlistObj = $(table);
+	vlistObj.value = records;
+	vlistObj.on("change","tbody > tr", function()
+	{	
+		this.data.selected = this.value.selected;
+		if( !this.data.selected )
+			selectAll.value = false;
+	});
+}
+</script>
+
+<form #simple-dialog>
+	<label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+
+</head>
+<body>
+	<div .header_PreInstall>
+		<div .tempLogo>
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+		</div>
+		<div .menu_PreInstall>
+			<div .drag_zone_PreInstall role="window-caption"></div>
+			<div .closebtn_PreInstall .clickable_cl #close-dialog>X</div>
+		</div>
+	</div>
+	<div .scan_details>
+		<P .cl_welcome .headingClrwht><label>ID_WWIZ_PREINSTALL_SCAN</label></P>
+		<div .inner_body>
+			<P .cl_scan_type .headingClrwht><label>ID_WWIZ_PREINSTALL_SCAN_COMMENT</label></P>
+			<div .content_progress>
+				<div .scanAnimation_PreInstall>
+					<pie-chart_PreInstallScan value=0.0 />
+				</div>
+				<div .protect_memory_img><img src="IDR_PNG_PROTECTED.png"></div>
+				<div .scan_desc><label>ID_SCAN_MEMORY</label></div>
+			</div>
+			<div .display_scan_path>
+				<p .ScanPath_PreInstall #P_SetScanStatus><span></span><label></label></p>
+			</div>
+			<div .btn_scan_stop>
+				<div .btnCstmSmall_PreInstall #ID_BTN_RESUME_SCAN .PauseResumeScan><label></label></div>
+				<div .btnCstmSmall_PreInstall #ID_BTN_STOP><label>ID_BTN_STOP</label></div>
+			</div>
+		</div>
+		<div .final_block>
+			<img src="IDR_PNG_OK.png">
+				<h1 #ID_STATUS><label>ID_FINISHED</label></h1>
+				<h1 #ID_FILE_SCAN_COUNT> <span #ID_FILE_SCANED> 0 </span> <label>ID_FILES_SCANNED</label></h1>
+		</div>
+		<div .scan_report_preInstall>
+			<table id="PreInstallScan">
+				<thead>
+					<tr>
+						<th><label>ID_THREAT_NAME</label></th>
+						<th><label>ID_FILE_PATH</label></th>
+						<th><label>ID_ACTION</label></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td(ThreatName)></td><td(FilePath)></td> <td(ActionTaken)></td></tr>
+				</tbody>
+			</table>
+			<div .btnCstmSmall_PreInstall .cleanbtn #ID_BUTTON_CLEAN><label>ID_BTN_CLEAN</label></div>
+		</div>
+		<div .ContentShowHide>
+			<p #show_details style="margin-top:-5dip;"><label>ID_SHOW_DETAILS</label></p>
+			<p #hide_details style="margin-top:-2dip;"><label>ID_HIDE_DETAILS</label></p>
+		</div>
+		<div .message_display_block_PreInstall>
+		<p #ID_EXCEPTION_MSG></p>
+	</div>
+	</div>
+</body>
+</html>

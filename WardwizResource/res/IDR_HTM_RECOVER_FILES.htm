@@ -1,0 +1,725 @@
+<html custom-frame="solid" lang="ENGLISH">
+	<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+        behavior:WardWizRecover;  
+	}	
+	#ID_BUTTON_EXCLUDE_RECOVER:disabled{
+		opacity:.5;
+	}
+	#ID_BUTTON_DELETE_RECOVER_FILES:disabled{
+		opacity:.5;
+	}
+	#ID_BUTTON_RECOVER_FILES:disabled{
+		opacity:.5;
+	}
+	.recover_file .patch1 .right_section{
+		text-align:right;
+		position:absolute;
+		padding-top:0dip;
+	}
+	.recover_file .patch1 .left_selection{
+		width:143dip;
+		text-align:left;
+		padding-top:0dip;
+		padding-left:16dip;
+	}
+	.recover_file .section{
+		prototype: FileDropZone;
+		width:643dip;
+		height:208dip;
+		margin-left:10dip!important;
+		margin-top:20dip!important;
+	}
+	.recover_file .section.active-target {
+		background:rgba(0,0,0,.5);
+	}
+	#loading_text{
+		visibility:none;
+	}
+	#loading_text:collapsed{
+		visibility:none;
+	}
+	#loading_text:expanded{
+		visibility:visible;
+	}
+	#page_title{
+		visibility:visible;
+	}
+	#page_title:collapsed{
+		visibility:none;
+	}
+	/*Tables for Recover Page*/
+	form#data-dialog > table#RecoverEntrytable > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#RecoverEntrytable { 
+		style-set: vgrid;
+		border:1dip solid #888888; 
+		flow:table-fixed;
+		width:640dip;
+		height:205dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#RecoverEntrytable > thead {
+		behavior:column-resizer;  
+	}
+	table#RecoverEntrytable > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#RecoverEntrytable th 
+	{ 
+		color: white;
+		font-size:12.5dip; 
+		border:none;
+		padding:4dip; 
+		background-color:#DDD; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	table#RecoverEntrytable th:nth-child(1)  {  width:0.05*!important; }
+	table#RecoverEntrytable th:nth-child(2)  {  width:0.30*!important; }		
+	table#RecoverEntrytable th:nth-child(3)  {  width:0.50*!important; }		
+	table#RecoverEntrytable th:nth-child(4)  {  width:0.15*!important; }		
+	table#RecoverEntrytable th:hover 
+	{ 
+		color: #ffe598;
+		transition:blend;
+	}
+	table#RecoverEntrytable tr:current /* current row */ 
+	{ 
+		background-color:#bdbccc; 
+	}  
+	table#RecoverEntrytable td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	} 
+	table#RecoverEntrytable td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } /* first column */
+	table#RecoverEntrytable td:nth-child(2) {  
+		text-align:left; 
+		width:0.25*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	table#RecoverEntrytable td:nth-child(3) {  
+		text-align:left; 
+		width:0.5*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* third column */	
+	table#RecoverEntrytable td:nth-child(4) {  
+		text-align:left; 
+		width:0.20*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* fourth column */	
+	.lgbuttonSmallFnt{
+		font-weight:normal;
+		font-size:13dip;
+	}
+	.left_selection{
+		width:143dip;
+		text-align:left;
+		padding-top:15dip;
+		padding-left:16dip;
+	}
+	.patch1{
+		flow:horizontal;
+		position:relative;
+	}
+	.right_section{
+		text-align:right;
+		position:absolute;
+	}
+	#ID_RF_RECOVER{
+		margin-left:0dip;
+	}
+	</style>
+
+    <script type="text/tiscript">
+        include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    </script>
+    <script type="text/tiscript">
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	var m_bIsEntryLoading = false;
+    var m_bIsEntryDeleting = false;
+    var m_bIsEntryRecovering = false;
+    var m_bExclude = false;
+    var varDBPath;
+    var DataBase;
+	var IsMaxLimitReached = false;	
+    var varRecEntryCount = 0;    
+	var vCheckBoxSelectAll = $(body);   
+	var vlistRecoverEntries;        
+	</script>
+	
+	<script type="text/tiscript">
+    self.on("closerequest", function(event){
+       self.CallContinueRecoverFile();
+    });
+    </script>
+	
+	<script type="text/tiscript">	
+	function AddRecoverTable(strThreatName, strFileName, strActiontaken)
+	{
+		$(#page_title).state.collapsed = true;
+		$(#loading_text).state.expanded = true;
+		$(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+		$(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+		$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;
+		arrRecoverEntries[varRecEntryCount] = {selected: true, ThreatName: strThreatName, FilePath:strFileName, Status:strActiontaken};
+		varRecEntryCount++;
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_RF_TOOL).onClick = function()
+	{
+		SetOnToolsEvent();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    function AddRecoverTable_FireEvent(evt)
+    {
+		var strThreatName = evt.data.one.toString();
+		var strFileName = evt.data.two.toString();
+		var strActiontaken = evt.data.three.toString();
+		
+		var varThreatName;
+		if(strThreatName == "USER_DEFINED")
+			varThreatName = Lang.translate("ID_USER_DEFINED");
+		else
+			varThreatName = strThreatName;
+			
+		$(#page_title).state.collapsed = true;
+		$(#loading_text).state.expanded = true;
+		$(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+		$(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+		$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;
+		arrRecoverEntries[varRecEntryCount] = {selected: false, ThreatName: varThreatName, FilePath:strFileName, Status:strActiontaken};
+		varRecEntryCount++;
+		}
+		
+		const ADD_ENTRY_TABLE_EVENT = 0x100 + 2;
+		self.subscribe(AddRecoverTable_FireEvent, Event.BEHAVIOR_EVENT, ADD_ENTRY_TABLE_EVENT);
+	</script>
+	
+	<script type="text/tiscript">
+	function UpdateRecoverTable(iMsgType,strArrayIndex, strStatus)
+    {	
+        if(iMsgType ==1)
+        {
+			g_bIsAnyTaskInProcess = true;
+			g_IsRecoverFilesRunning = true;
+			m_bIsEntryRecovering = true;
+			var iArrayIntex = strArrayIndex.toInteger();
+			arrRecoverEntries.remove(iArrayIntex);
+		}
+		else
+		{
+			g_bIsAnyTaskInProcess = true;
+			g_IsRecoverFilesRunning = true;
+			m_bIsEntryRecovering = true;
+			var iArrayIntex = strArrayIndex.toInteger();
+			arrRecoverEntries[iArrayIntex].Status = strStatus;//= {selected: true, ThreatName: strThreatName, FilePath:strFileName, Status:strActiontaken};
+		}
+    }	
+    </script>
+	
+	<script type="text/tiscript">
+    function UpdateRecoverTable_FireEvent(evt)
+    {
+        var iMsgType = evt.data.one.toInteger();
+        var iArrayIntex = evt.data.two.toInteger();
+        var strStatus = evt.data.three.toString();
+
+        if(iMsgType ==1)
+        {
+        g_bIsAnyTaskInProcess = true;
+		g_IsRecoverFilesRunning = true;
+        m_bIsEntryRecovering = true;
+        arrRecoverEntries.remove(iArrayIntex);
+        }
+        else if(iMsgType == 2)
+        {
+            g_bIsAnyTaskInProcess = true;
+			g_IsRecoverFilesRunning = true;
+            m_bIsEntryRecovering = true;
+            arrRecoverEntries[iArrayIntex].Status = strStatus;//= {selected: true, ThreatName: strThreatName, FilePath:strFileName, Status:strActiontaken};
+        }
+     }
+
+     const UPDATE_TABLE_EVENT = 0x100 + 1;
+     self.subscribe(UpdateRecoverTable_FireEvent, Event.BEHAVIOR_EVENT, UPDATE_TABLE_EVENT);
+    </script>
+	
+	<script type="text/tiscript">
+	var vMsg = "";
+	function RecoverOprFinishedDelayed()
+    {
+		g_bIsAnyTaskInProcess = false;
+		g_RecoverFileFinish = true;
+		g_IsRecoverFilesRunning = false;
+        m_bIsEntryDeleting = false;
+        g_varCurrentTask = #NONE;
+        $(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = false;
+        $(#ID_BUTTON_RECOVER_FILES).state.disabled = false;			
+		$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = false;
+        if(arrRecoverEntries.length > 0 )
+        {
+			var vPrevCount = 0;
+			for(var iCount = 0; iCount < arrRecoverEntries.length; )
+			{	
+				vPrevCount = iCount;
+				if(arrRecoverEntries[iCount].selected == true && arrRecoverEntries[iCount].Status == "")
+				{
+					arrRecoverEntries.remove(iCount);
+					iCount = vPrevCount;
+				}
+				else
+					iCount++;
+			}
+		}
+		if(arrRecoverEntries.length == 0)
+		{
+			varRecEntryCount = 0;
+		}				
+		LoadEntriesFinishedDelay();								    
+		Notification_popup_Recover(vMsg);
+		for(var checkbox in vlistRecoverEntries.$$(tbody input[type=checkbox]))
+			checkbox.state.disabled = false;			
+	}
+       
+	function RecoverOprFinished(strMsg)
+    {
+		vMsg = strMsg;
+		self.timer(1000ms, RecoverOprFinishedDelayed);
+    } 
+	function RecoverOprFinishedLast(evt)
+	{
+		vMsg = evt.data.msg.toString();
+		self.timer(10ms, RecoverOprFinishedDelayed);
+	}		
+	self.subscribe(RecoverOprFinishedLast, Event.BEHAVIOR_EVENT, 0x100 + 26);    
+	</script>	
+   
+	<script type="text/tiscript">
+    //for Exclude And Recover
+    $(#ID_BUTTON_EXCLUDE_RECOVER).onClick = function()
+    {
+		if(checkIsValidUser() == true)
+        {
+            m_bExclude = true;
+            $(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+            $(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+            $(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;
+			$(#SelectAllEnableDisable).state.disabled = true;
+            g_bIsAnyTaskInProcess = true;
+			g_IsRecoverFilesRunning = true;
+			g_RecoverFileFinish = false;
+            g_varCurrentTask = #RECOVEROPR;
+            for(var checkbox in vlistRecoverEntries.$$(tbody input[type=checkbox]))
+				checkbox.state.disabled = true;
+			self.OnButtonRecoverEntries(arrRecoverEntries, UpdateRecoverTable, RecoverOprFinished, m_bExclude);			
+        }
+    }
+    </script>
+
+	<script type= "text/tiscript">
+	$(#ID_BUTTON_RECOVER_FILES).onClick = function()
+    {
+		if(checkIsValidUser() == true)
+        {
+			m_bExclude = false;
+            $(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+            $(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+			$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;
+			$(#SelectAllEnableDisable).state.disabled = true;
+			g_bIsAnyTaskInProcess = true;
+			g_IsRecoverFilesRunning = true;
+			g_RecoverFileFinish = false;
+            g_varCurrentTask = #RECOVEROPR;	
+			for(var checkbox in vlistRecoverEntries.$$(tbody input[type=checkbox]))
+				checkbox.state.disabled = true;
+			self.OnButtonRecoverEntries(arrRecoverEntries, UpdateRecoverTable, RecoverOprFinished, m_bExclude);
+		}
+    }
+    </script>
+	
+	<script type= "text/tiscript">
+    $(#ID_BUTTON_DELETE_RECOVER_FILES).onClick = function()
+    {
+		var bselected = false;
+        if(checkIsValidUser() == true)
+        {
+            for(var record in arrRecoverEntries )
+            {
+                bselected = record.selected;
+                if(record.selected)
+                {
+                    bselected = true;
+                    break;
+                }
+            }
+            if(!bselected)
+            {
+        		$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_PLEASE_SELECT_ATLEAST_ONE_ENTRY");
+				var res1 = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+                return;
+            }
+            $(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_SELECTED_FILES_DELETED_PERMANENTLY_YOU_WILL_NOT_RECOVER_THEM_AGAIN_WANT_TO_PROCEED");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+								};
+            if(res == true)
+            {
+                $(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+                $(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+				$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;
+				$(#SelectAllEnableDisable).state.disabled = true;
+				g_bIsAnyTaskInProcess = true;
+				g_IsRecoverFilesRunning = true;
+				g_RecoverFileFinish = false;
+                g_varCurrentTask = #RECOVEROPR;
+                m_bIsEntryDeleting = true;
+				for(var checkbox in vlistRecoverEntries.$$(tbody input[type=checkbox]))
+					checkbox.state.disabled = true;
+				self.OnButtonDeleteRecoverEntries(arrRecoverEntries, UpdateRecoverTable, RecoverOprFinished);
+			}
+            else
+            {
+                return;
+            }
+        }
+    }
+    </script>			
+	
+	<script type="text/tiscript">
+    const selectAll = vCheckBoxSelectAll.$(input#select-all);
+
+    vCheckBoxSelectAll.on("change","#select-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var record in arrRecoverEntries )
+			record.selected = selected;
+    });
+    
+	vCheckBoxSelectAll.on("change","tbody > tr", function()
+    {// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+        this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+			if( !this.data.selected )
+				selectAll.value = false;
+	});
+	</script>
+	
+	<script type= "text/tiscript">
+	var g_IsRecoverFinished = true;
+	function LoadEntriesFinishedDelay()
+	{		
+		m_bIsEntryLoading = false;
+        g_bIsAnyTaskInProcess = false;
+		g_IsRecoverFilesRunning = false;
+        g_RecoverFileFinish = true;
+		g_varCurrentTask = #NONE;
+		$(#page_title).state.collapsed = false;
+		$(#loading_text).state.collapsed = true;
+		if(arrRecoverEntries.length == 0)
+		{
+			$(#select-all).state.disabled = true;
+			$(#SelectAllEnableDisable).state.disabled = true;
+			$(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+			$(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+			$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;						
+			$(#SelectAllEnableDisable).state.disabled = true;
+		}
+		else
+		{
+			$(#select-all).state.disabled = false;
+			$(#SelectAllEnableDisable).state.disabled = false;
+			$(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = false;
+			$(#ID_BUTTON_RECOVER_FILES).state.disabled = false;
+			$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = false;			
+			$(#SelectAllEnableDisable).state.disabled = false;
+			for(var checkbox in vlistRecoverEntries.$$(tbody input[type=checkbox]))
+				checkbox.state.disabled = false;
+		}
+	}	
+	function LoadEntriesFinished()
+    {
+		self.timer(5ms,LoadEntriesFinishedDelay);
+    }
+	</script>
+	
+	<script type= "text/tiscript">		
+	function Notification_popup_Recover(strNotificationMsg)
+    {
+		$(#ID_LIGHTBOX_TXT).text = strNotificationMsg;
+        var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: "OK", role:#ok, value:true }]
+					}; 						
+	}	
+    </script>
+	
+	<script type="text/tiscript">
+	function LoadPopulateList()
+	{
+		varRecEntryCount = 0;
+		self.OnLoadRecoverEntries(AddRecoverTable, LoadEntriesFinished);
+	}
+    class FileDropZone :Behavior
+    {
+		function onExchange(evt)
+		{
+			if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+			{
+				this.attributes.addClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG_LEAVE )
+			{
+				this.attributes.removeClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+			{
+				return true;
+			}
+			else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+			{
+				if(g_IsRecoverFilesRunning == false)
+				{
+					this.attributes.removeClass("active-target");
+					var fn = evt.dragging;
+					var strFileFolderName = fn.toString();
+					var arrstrFileName =  strFileFolderName.split(",");
+					if(checkIsValidUser() == true)
+					{
+						for (var i = 0; i<arrstrFileName.length; i++)
+						{
+							var varFile = arrstrFileName[i];
+							varFile = URL.toPath(varFile);						
+							varFile = varFile.replace("/","\\");						
+							if(self.CheckIsNetworkPath(varFile))
+							{
+								$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+								var res1 = dialog { body:$(form#simple-dialog),
+													returns: #values,
+													caption : Lang.translate("ID_WARNING"),
+													buttons: [ { caption: "OK", role:#ok, value:true }]
+													}; 						
+								return;
+							}
+							if(self.CheckIsFilePath(varFile))
+							{
+								$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_FAILED_VALID_FOLDER");
+								var res1 = dialog { body:$(form#simple-dialog),
+													returns: #values,
+													caption : Lang.translate("ID_WARNING"),
+													buttons: [ { caption: "OK", role:#ok, value:true }]
+													}; 													
+							}
+							var strFileName = self.GetTargetFilePath(varFile);
+							if(strFileName != "")
+								varFile = strFileName;
+
+							if(self.CheckIsWrdWizFile(varFile))
+							{
+								$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_WARDWIZ_OWN_FILE");
+								var res1 = dialog { body:$(form#simple-dialog),
+													returns: #values,
+													caption : Lang.translate("ID_WARNING"),
+													buttons: [ { caption: "OK", role:#ok, value:true }]
+													};
+								return false;
+							}
+							if(!self.OnCallQuarantineRecover(varFile))
+							{
+								$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_FAILED_FILE_SIZE");
+								var res1 = dialog { body:$(form#simple-dialog),
+													returns: #values,
+													caption : Lang.translate("ID_WARNING"),
+													buttons: [ { caption: "OK", role:#ok, value:true }]
+													};							
+							}
+						}	
+					}
+					if(IsMaxLimitReached)
+					{
+						$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_MAX_LIMIT_REACHED");
+						var res1 = dialog { body:$(form#simple-dialog),
+											returns: #values,
+											caption : Lang.translate("ID_WARNING"),
+											buttons: [ { caption: "OK", role:#ok, value:true }]
+											};
+						IsMaxLimitReached = false;
+					}
+					LoadPopulateList();
+				}
+				return true;
+			}
+		}
+    }	
+	</script>
+	 
+	<script type= "text/tiscript">		
+	function LoadEntries()
+    {
+		g_CurrentPage = #RECOVEROPR;
+        g_varCurrentTask = #RECOVEROPR;
+        m_bIsEntryLoading = true;
+        g_bIsAnyTaskInProcess = true;
+        g_IsRecoverFilesRunning = true;
+        $(#page_title).state.collapsed = true;
+        $(#loading_text).state.expanded = true;
+		vlistRecoverEntries.value = arrRecoverEntries;
+		self.timer(5ms,function(){
+			varRecEntryCount = 0;
+			self.OnLoadRecoverEntries(AddRecoverTable, LoadEntriesFinished);
+			self.OnGetPathForExclude(funGetPathForExclude);
+		});
+	}
+	
+	function funGetPathForExclude(ThreatPath,FileOrFold)
+    {
+        DataBase = DB.open(varDBPath);
+        if(FileOrFold != 3)
+        {
+            DataBase.exec("insert into WWIZEXCLUDELST (NAME, ISUBFOL) values (?, ?)", ThreatPath, FileOrFold);
+        }
+        if(FileOrFold == 3) //3 for failed
+        {
+            var varMaxID = DataBase.exec("select max([ID]) from WWIZEXCLUDELST");
+            DataBase.exec("delete from WWIZEXCLUDELST where ID = ?", varMaxID[0]);
+        }
+        DataBase.close();
+    }
+    
+	function setRunningStatus()
+	{
+		vlistRecoverEntries.value = arrRecoverEntries;
+		for(var checkbox in vlistRecoverEntries.$$(tbody input[type=checkbox]))
+			checkbox.state.disabled = true;
+		$(#ID_BUTTON_DELETE_RECOVER_FILES).state.disabled = true;
+		$(#ID_BUTTON_RECOVER_FILES).state.disabled = true;
+		$(#ID_BUTTON_EXCLUDE_RECOVER).state.disabled = true;
+		$(#SelectAllEnableDisable).state.disabled = true;		
+		$(#page_title).state.collapsed = false;					
+	}
+	
+	function self.ready()
+    {
+		self.language = g_LanguageName;		
+		self.SetPage();
+		$(#ID_RF_RECOVER).state.disabled = true;
+		varDBPath = self.GetDBPath();
+		if(g_LanguageName == "GERMAN")
+		{
+			$(#ID_RF_RECOVER).style["margin-left"] = 6dip;	
+		}
+		if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}	
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		vlistRecoverEntries = $(#RecoverEntrytable);
+		if(g_RecoverFileFinish == false)
+		{
+			self.OnSetTimer();
+			setRunningStatus();				
+		}
+		else
+		{	
+			if(arrRecoverEntries.length > 0)
+		    	arrRecoverEntries.splice(0, arrRecoverEntries.length);
+			LoadEntries();    		
+		}
+	}
+    </script>
+	
+<form #simple-dialog>
+    <label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+</head>
+<body .recover_file>	
+	<div .titleCont>
+		<div class="breadcrumbNav">
+			<ul class="listDisplayRow">
+				<li #ID_RF_TOOL><label>ID_STR_TOOLS_MENU</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #ID_RF_RECOVER><label>ID_RECOVER_FILES_TOOLS</label></li>
+			</ul>
+		</div>
+		<br/>
+		<h1 #loading_text .headingTitle1><label>ID_LOADING_IS_IN_PROGRESS_PLEASE_WAIT</label></h1>
+		<h1 #page_title .headingTitle1 style="font-family: Roboto-Medium;letter-spacing:1dip"><label>ID_RECOVER_FILES</label></h1>
+		<p><label>ID_ALLOWS_YOU_TO_RECOVER</label></p>
+	</div>
+	<div .section>
+		<table resizeable #RecoverEntrytable>
+			<thead>
+				<tr>
+					<th style="width:40dip;"></th>
+					<th style="width:180dip;"><label>ID_THREAT_NAME</label></th>
+					<th style="width:365dip;"><label>ID_FILE_PATH</label></th>
+					<th><label>ID_STATUS</label></th>
+				</tr>
+			</thead>  
+			<tbody>
+				<tr><td><input(selected)|checkbox style="margin-top:5dip;"/></td><td(ThreatName)></td><td(FilePath)></td><td(Status)></td></tr>
+			</tbody>
+		</table>
+	</div>
+	<div .patch1>	
+		<div .left_selection>
+			<p #SelectAllEnableDisable><input #select-all|checkbox /><label for="select-all">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></p>
+		</div>
+		<div .right_section>
+			<span class="lgbutton lgbuttonSmallFnt" #ID_BUTTON_EXCLUDE_RECOVER><label>ID_EXCLUDE_RECOVER</label></span>
+			<span class="btnCstm lgbuttonSmallFnt" #ID_BUTTON_DELETE_RECOVER_FILES><label>ID_HTM_CUSTOM_SCAN_DELETE</label></span>
+			<span class="btnCstm lgbuttonSmallFnt" #ID_BUTTON_RECOVER_FILES><label>ID_RECOVER</label></span>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<html lang="ENGLISH">
+<head>
+    <title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">			
+    <style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html {
+		padding:0;
+		margin: 40dip;
+		overflow: hidden;
+		width:auto;
+		height:auto;
+	}
+	.product_heading {
+		text-align: center; font-weight: 500;font-size:15dip!important;
+		color: #2b5a7e; //e90000
+		margin: 0dip;	margin-top:5dip;
+	}		
+	popup#notification { style-set: notification-message; }
+
+@set notification-message {
+
+  :root {
+    prototype: Notification;
+    background: transparent;
+    margin:0dip;
+    size: max-content;
+    display:block;
+    visibility:none;
+    transform: translate(0,0); opacity:1.0;
+    font:system;
+	position:relative;
+  }
+  
+  :root[state] {visibility:visible;}
+  :root[state=initial] { transform: translate(0,100%); opacity:0.0; } /* offstage */
+  :root[state=shown]   { transform: translate(0,0);    opacity:1.0;   transition: transform(ease-in-out,500ms) opacity(linear,500ms);   }
+  :root[state=shownSlow]   { transform: translate(0,0);    opacity:1.0;visibility:visible; transition: visibility(ease-in-out,1000ms) opacity(linear,1000ms);  }
+  :root[state=closed]  { transform: translate(0,0); opacity:0.0;   transition: transform(linear,1ms) opacity(linear,1ms);  }
+  :root[state=closedSlow]  { transform: translate(0,0); opacity:0.0; transition: transform(linear,500ms) opacity(linear,500ms);  }
+
+  :root > div.cont {
+    background: rgba(255,255,255,1);
+    border: 1dip solid #c0c0c0;
+    /* border-radius: 10dip; */
+    margin:6dip; // gap for shadow 
+    width: 300dip;
+    /* box-shadow: 2dip 2dip 2dip rgba(0,0,0,0.5);   */
+	
+	 /* filter:blur(5dip);  */
+  }
+	  content { display:block; /* padding: 8dip; padding-bottom: 8dip; */}
+
+	}	
+	.information {
+		text-align: center;
+		margin-bottom:0;
+		margin-top:0dip;
+		padding-left:6dip;
+		padding-right:6dip;
+		font-size:13dip!important;
+	}	
+	.minimize_btt{
+		float:right;
+		cursor:pointer;
+		behaviour:clickable;
+		size:20;
+		//height:10dip;
+		//width:10dip;
+		margin-top:4dip;
+		margin-right:10dip;
+	}
+	.headerTop{
+		size:*;
+		background:#2b5a7e;
+		padding:8dip;
+		padding-top:2dip;
+		padding-bottom:0;
+	}
+	.logo{
+		width:90dip!important;
+	}
+	.smallContent{
+		padding-bottom:8dip;
+		text-align:center;
+	}
+	.smallContent h4{
+		margin:0;
+		font-size:13dip;
+	}
+	.smallContentSm{
+		padding:8dip;
+		background:#2b5a7e;
+		color:#fff;
+	}
+	.smallContentSm h4{
+		margin:0;
+		margin-top:2dip;
+		text-align:left;
+	}
+	.clickbtn1{
+		padding:0;
+		padding-top:6dip;
+		margin:0;
+	}
+	.clickbtn2{
+		cursor:pointer;
+		color:#fe980f!important;
+	}
+	.arrow{
+		size:16dip;
+		background:transparent;
+		float:right;
+		margin-top:7dip;
+		cursor:pointer;
+	}
+    .reverse{
+		transform:rotate(180deg);
+	}
+	.shield{
+		width:30dip;
+	}
+	.closeBt2{
+		margin-top:7dip;
+		margin-left:5dip;
+	}
+    </style>
+	
+	<script type="text/tiscript">
+	var varMsgType;
+	</script> 
+	
+	<script type="text/tiscript">
+	class Notification : Behavior 
+	{
+		 const WAIT_TIMER = 5s; // duration to show it
+		 var msg; // singleton, one message at the same time
+		 
+		 
+		 function cancel() { // call if you want to cancel it
+			 if( msg.attributes["state"] !== undefined  ) {
+				 msg.off(".notification");
+				 msg.attributes["state"] = undefined;
+				 msg.move();
+			 }
+		 }
+		 
+		function closeIt() 
+		{
+			if(!msg.isVisible) return;
+			if(gFlagOnce == 0)
+			{
+				msg.attributes["state"] = "closed";
+			}
+			if(gFlagOnce == 1)
+			{
+				msg.attributes["state"] = "closedSlow";
+			}
+			//msg.attributes["state"] = "closed";
+			msg.on("animationend.notification", function(evt) 
+			{ 
+				msg.off(this function); // do it once
+				msg.attributes["state"] = undefined;
+				msg.postEvent("notification-closed"); 
+				msg.move();
+				msg.post(function(){		
+					view.close(null);
+				});
+				return true;
+			});
+		}
+		
+		function show(flag, message, title = "Some message:") 
+		{ 
+			gFlagOnce = flag;
+			cancel();
+			msg.$( content ).html = message;
+			//msg.$( header ).text = title;
+
+			// NOTE: state animations are defined in CSS
+			function revealIt() {
+				if(!msg.isVisible) 
+				{
+					return;
+				}
+				if(flag == 0){
+					on_mouse = 1;
+					msg.attributes["state"] = "shownSlow";
+				}
+				else if(flag == 1){
+					msg.attributes["state"] = "shown";
+				}
+				//msg.attributes["state"] = "shown";
+				msg.on("animationend.notification", function(evt) { 
+					if(!msg.isVisible) return;
+					msg.off(this function); // do it once
+					
+					if(on_mouse == 0)
+					{
+						msg.timer( WAIT_TIMER, closeIt );
+						return true;
+					}
+				});
+			}
+
+			// getting this monitor's workarea box
+			var (screenX1,screenY1,screenX2,screenY2) = view.screenBox(#workarea, #rect );
+	
+			// set initial "off stage" state 
+			msg.attributes["state"] = "initial";
+			
+			// measure its real sizes
+			var (w,h) = msg.box(#dimension,#border);
+			self.update();
+			
+			if(flag == 0){
+				(w,h) = msg.box(#dimension,#border);
+			}
+			else if(flag == 1){
+				(w,h) = msg.box(#dimension,#border);
+			}
+			// getting **declared** margins widths, note: they can be different from computed ones due to margin collapsing
+			w += msg.toPixels(msg.style#margin-right,#width);
+			h += msg.toPixels(msg.style#margin-bottom,#height);
+			
+			// position its border box at bottom / right corner of the screen
+			msg.move( screenX2 - w, 
+				screenY2 - h, 
+				#screen, 
+				#detached-topmost-window );
+			// request to start animation
+			msg.post( revealIt );	
+		}
+		 
+		function attached() {
+			msg = this;
+		}
+		
+		function onMouse(evt)
+		{
+			switch(evt.type) 
+			{
+			case Event.MOUSE_ENTER:
+				on_mouse = 1;
+				msg.timer( 0, closeIt );
+				return true;
+			case Event.MOUSE_LEAVE:
+				on_mouse = 0;
+				msg.timer( WAIT_TIMER, closeIt );
+				return true;
+			}
+		}
+	}
+	</script>
+    <script type="text/tiscript">
+		include "IDR_TIS_MAIN.tis";
+		include "IDR_TIS_GERMAN_LANG.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	var gFlagOnce = 0;
+	var on_mouse = 0;
+	</script> 
+	
+	<script type="text/tiscript">
+	event click $(#IDR_ID_CLOSE){
+		view.close(null);
+	}
+	</script> 
+	
+	<script type="text/tiscript">
+	event click $(.ID_BTN_MIN) {
+			if(cursorStatus == 1){
+				Notification.show("1","
+				<div class='smallContentSm ID_BTN_DETAILS' style='flow:horizontal;text-align:left;'>
+					<div>
+						<img .shield src='IDR_IMG_SHIELD_ICO.png'>
+					</div>
+					<div style='text-align:left!important;padding-left:15dip;'>
+						<h4><label>ID_WWIZ_USB_SCAN</label></h4>
+						<p .clickbtn1><span .clickbtn2 .ID_BTN_DETAILS><label>ID_VIEW_DETAILS</label></span></p>
+					</div>
+				</div>
+				");     
+			}
+			cursorStatus = 0;
+		}
+	</script> 
+			
+	<script type="text/tiscript">
+	function OnShowPopupDlg()
+	{
+		if(varMsgType == 1)
+		{
+			Notification.show(0,"
+			<div class='headerTop'>
+				<img .logo src='IDR_PNG_TRAY_LOGO.png' >
+				<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+								viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' #IDR_ID_CLOSE class='arrow closeBt2'>
+								<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='39' y1='37' x2='463' y2='465'/>
+								<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='466.2' y1='37.9' x2='38.1' y2='461.8'/>
+				</svg>
+				<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+						viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' class='arrow ID_BTN_MIN reverse' id=''>
+						<line fill='none' stroke='#ffffff' stroke-width='18' stroke-miterlimit='10' x1='242.3' y1='19' x2='242.3' y2='485'/>
+						<path fill='none' stroke='#ffffff' stroke-width='18' stroke-miterlimit='10' d='M98,155L237.6,16.8c0,0,5-3.4,10.7,0L383,155'/>
+					</svg>
+			</div>
+			<div class='smallContent'>
+				<div .product_heading>
+					<label>ID_WWIZ_USB_SCAN</label>
+				</div>
+				<div .information>
+					<label>ID_WWIZ_USB_SCAN_START</label> <label #ID_DRIVE_NAME></label> 
+				</div>
+			</div>
+			");
+			$(#ID_DRIVE_NAME).text = view.OnGetDriveName();
+		}
+		if(varMsgType == 2)
+		{
+			Notification.show(0,"
+			<div class='headerTop'>
+				<img .logo src='IDR_PNG_TRAY_LOGO.png' >
+				<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+								viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' #IDR_ID_CLOSE class='arrow closeBt2'>
+								<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='39' y1='37' x2='463' y2='465'/>
+								<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='466.2' y1='37.9' x2='38.1' y2='461.8'/>
+				</svg>
+				<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+						viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' class='arrow ID_BTN_MIN reverse' id=''>
+						<line fill='none' stroke='#ffffff' stroke-width='18' stroke-miterlimit='10' x1='242.3' y1='19' x2='242.3' y2='485'/>
+						<path fill='none' stroke='#ffffff' stroke-width='18' stroke-miterlimit='10' d='M98,155L237.6,16.8c0,0,5-3.4,10.7,0L383,155'/>
+					</svg>
+			</div>
+			<div class='smallContent'>
+				<div .product_heading>
+					<label>ID_WWIZ_USB_SCAN</label>
+				</div>
+				<div .information>
+					<label>ID_WWIZ_USB_SCAN_FINISH</label> <label #ID_DRIVE_NAME></label>
+				</div>
+			</div>
+			");
+			$(#ID_DRIVE_NAME).text = view.OnGetDriveName();
+		}
+	}
+		</script>
+
+	<script type="text/tiscript">
+	var cursorStatus = 0;
+	event click $(.ID_BTN_DETAILS) {
+		OnShowPopupDlg();
+		cursorStatus = 1;
+	}
+	event click $(.minimize_btt) {
+		OnCallGetMsgType();
+		cursorStatus = 0;
+	}
+	</script>
+
+	<script type="text/tiscript">
+	function OnCallGetMsg()
+	{
+		Notification.show(1,"
+			<div class='smallContentSm' style='flow:horizontal;text-align:left;'>
+				<div>
+					<img .shield src='IDR_IMG_SHIELD_ICO.png'>
+				</div>
+				<div style='text-align:left!important;padding-left:15dip;'>
+					<h4><label>ID_WWIZ_USB_SCAN</label></h4>
+					<p .clickbtn1><span .clickbtn2 .ID_BTN_DETAILS><label>ID_VIEW_DETAILS</label></span></p>
+				</div>
+			</div>
+		");
+	}
+	</script>
+
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+		varMsgType = view.OnCheckMsgType();
+		OnCallGetMsg();
+	}
+    </script>
+ </head>
+		<popup #notification>
+			<div.cont>
+				<content></content>
+			</div>
+		</popup>
+ </html>

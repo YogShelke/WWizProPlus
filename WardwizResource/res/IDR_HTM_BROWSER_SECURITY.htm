@@ -1,0 +1,576 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_TOGGELER.css);
+		@import url(IDR_CSS_MAIN.css);
+		html{
+			background:transparent;
+			behavior:WardWizBrowserSecurity;
+		}
+		.togller_button_browser_sec{
+			width:70dip;
+			margin-top:35dip;
+			float:right;
+		}
+		.titleCont_browser_sec{
+			text-align:center;
+			min-height:0dip;
+			width:650dip;
+			padding-top:15dip;
+			margin-bottom:-15dip;
+		}
+		.validation_msg_email_scn{
+			//height:20dip;
+			width:250dip;
+		}
+		#validationMessage_email_scn{
+			color:red;
+			margin-left:10dip;
+			margin-top:0dip;
+		}
+		#validationMessage_email_scn:collapsed{
+			visibility:none;
+		}
+		#validationMessage_email_scn:expanded{
+			visibility:visible;
+		}
+		.body_browsec_inner{
+			max-height:max-content;
+		}
+		.messageContAlert{
+			width:300dip;
+			height:155dip;
+			margin:*;
+			position:absolute;
+			top:110dip;
+			left:-20dip;
+			text-align:center;
+			padding:15dip;
+			//border-radius:30dip 0 30dip 0;
+			visibility:hidden;
+		}
+		.messageContAlert:expanded{
+			visibility:visible;
+		}
+		
+		.BrowserSecurityStatus{
+			border:2dip solid rgb(88,88,88);
+			width:577dip;
+			padding-left:12dip;
+			margin-left:30dip;
+			margin-top:40dip!important;
+			color:#dcdcdc;
+			font-weight:500;
+			flow:vertical;
+			background:rgba(88,88,88,.6);
+		}
+		.descriptionTit{
+			color:#fff;
+			height:70dip;
+			overflow:hidden;
+		}
+		.descriptionTit ul{
+			padding:0;
+			margin-left:0;
+			margin-top:6dip;
+		}
+		.descriptionTit li{
+			list-style:none;
+			margin:0;
+			padding-top:4dip;
+			padding-bottom:4dip;
+			padding-left:5dip;
+			font-size:13dip;
+			position:relative;
+		}
+		.BrowserSecurityContent{
+			margin-left:25dip;
+			margin-top:15dip;
+			color:#dcdcdc;
+		}
+		.radioHeight{
+			height:15dip!important;
+			margin-top:5dip;
+		}
+		.translateWindow{
+			filter: blur(5dip);
+			position:relative;
+			opacity:.4;
+		}
+		#ID_BUY_HIGH_VER{
+			visibility:none;
+		}
+		#ID_BUY_HIGH_VER:expanded{
+			visibility:visible;
+		}
+		#ID_BUY_HIGH_VER:collapsed{
+			visibility:none;
+		}
+		#ID_REGISTER_NOW{
+			visibility:none;
+		}
+		#ID_REGISTER_NOW:expanded{
+			visibility:visible;
+		}
+		#ID_REGISTER_NOW:collapsed{
+			visibility:none;
+		}
+		#ID_VERSION_MESSAGE2{
+			visibility:none;
+		}
+		#ID_VERSION_MESSAGE2:expanded{
+			visibility:visible;
+		}
+		#ID_VERSION_MESSAGE2:collapsed{
+			visibility:none;
+		}
+	</style>
+	
+    <script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+    	
+	<script type="text/tiscript">
+		var varDBPath;
+		var DataBase;
+		var arrbModifyVal4BrwExc = new Array(1);
+	</script>
+    	
+	<script type="text/tiscript">
+    self.on("closerequest", function(event)
+    {
+		self.SetOtherPage();
+    });
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_CLOSE_POPUP).onClick = function()
+	{
+		selectView("IDR_HTM_HOME");
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function setRegVal(bToggleState)
+	{
+		bToggleState?bToggleState = 1:bToggleState=0;
+		self.OnSetRegVal(bToggleState);
+	}
+	</script>
+	<script type="text/tiscript">
+    $(#ID_VIEW_DETAILS).onClick = function()
+	{
+		selectView("IDR_HTM_REPORTS");
+	}
+    $(#ID_BTN_BROWSER_SECURITY).onClick = function()
+    {
+		var bToggleState = $(#ID_BTN_BROWSER_SECURITY).state.value;
+		if(bToggleState == true)
+        {
+			bToggleState = 1;
+        }
+        else
+        {
+		    bToggleState = 0;
+        }
+		setRegVal(bToggleState);
+		self.OnReloadBrowserSecurity(bToggleState);
+    }
+	$(#ID_MANAGE_EXCLUSION).onClick = function()
+    {
+		arrbModifyVal4BrwExc[0] = { 0 };
+		
+		var params = { vardb: varDBPath, ProductVersion:productVersion, varLanguageValue:g_LanguageName, varThemeType:g_themeType, IsDBModified4MngExc: arrbModifyVal4BrwExc}; // parameters to pass	
+			
+			view.dialog{
+					url: self.url("IDR_HTM_MANAGE_BROWSER_EXCLUSION.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+		
+		if(arrbModifyVal4BrwExc[0] == 1)
+		{
+			self.ReloadDB4MngBrowserSecExc();
+		}
+	}
+	
+	$(#ID_CONFIG_SPEC_WEBSITE).onClick = function()
+	 {
+		var params = { vardb: varDBPath, ProductVersion:productVersion, varLanguageValue:g_LanguageName, varThemeType:g_themeType, IsDBModified4MngExc: arrbModifyVal4BrwExc}; // parameters to pass	
+			
+			view.dialog{
+					url: self.url("IDR_HTM_BROWSER_SPEC_WEBSITE.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+		if(arrbModifyVal4BrwExc[0] == 1)
+		{
+			self.ReloadDB4MngBrowserSecSpec();
+		}
+	}
+    </script>
+	<script type="text/tiscript">
+	$(#ID_BROWSEC_INFO).onClick = function()
+	{
+		if(!view.FunCheckInternetAccessBlock())
+			Sciter.launch("https://vibranium.co.in/");
+            //Sciter.launch("http://www.wardwiz.in/security_feature?id=1");
+	}
+	$(#ID_CHK_URL_PROT).onClick = function()
+    {
+		var varCheckVal = $(#ID_CHK_URL_PROT).state.value;
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("UPDATE WWIZBROWSESECURE SET URL_PROT = ? WHERE ID = 1", varCheckVal);
+		DataBase.close();
+		self.OnReloadBrowserSecRules();
+	}
+	$(#ID_CHK_PHISHING_PROT).onClick = function()
+    {
+		var varCheckVal = $(#ID_CHK_PHISHING_PROT).state.value;
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("UPDATE WWIZBROWSESECURE SET PHISHING_PROT = ? WHERE ID = 1", varCheckVal);
+		DataBase.close();
+		self.OnReloadBrowserSecRules();
+	}
+	$(#ID_CHK_APPLY_EXC).onClick = function()
+    {
+		var varCheckVal = $(#ID_CHK_APPLY_EXC).state.value;
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("UPDATE WWIZBROWSESECURE SET URL_PROT_EXC = ? WHERE ID = 1", varCheckVal);
+		DataBase.close();
+		self.OnReloadBrowserSecRules();
+	}
+	$(#ID_CHK_APPLY_SPEC).onClick = function()
+    {
+		var varCheckVal = $(#ID_CHK_APPLY_SPEC).state.value;
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("UPDATE WWIZBROWSESECURE SET URL_PROT_SPEC = ? WHERE ID = 1", varCheckVal);
+		DataBase.close();
+		self.OnReloadBrowserSecRules();
+	}
+	</script>
+	
+	<script type= "text/tiscript">
+	$(#ID_BUY_HIGH_VER).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/"); 
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function FunSetURLDetails()
+	{
+		var varDBPathforCount = self.GetReportDBPath();
+		DataBase = DB.open(varDBPathforCount);
+		var varMalCount = DataBase.exec("select count(*) from Wardwiz_Browser_Sec where WebCategory = 125;");
+		if(varMalCount != 101)
+		{
+			for (var varVirtualDBRowCount in varMalCount)
+			{
+				$(#ID_MALICIOUS_COUNT).value = varVirtualDBRowCount;
+			}
+			varMalCount.close();
+		}
+		var varPhishingCount = DataBase.exec("select count(*) from Wardwiz_Browser_Sec where WebCategory = 122;");
+		if(varPhishingCount != 101)
+		{
+			for (var varVirtualDBRowCount in varPhishingCount)
+			{
+				$(#ID_PHISHING_COUNT).value = varVirtualDBRowCount;
+			}
+			varPhishingCount.close();
+		}
+		DataBase.close();
+	}
+	function funDatabase()
+    {
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("create table IF NOT EXISTS WWIZBROWSESECURE(ID INTEGER PRIMARY KEY, URL_PROT BOOLEAN NOT NULL, URL_PROT_EXC BOOLEAN NOT NULL, URL_PROT_SPEC BOOLEAN NOT NULL, PHISHING_PROT BOOLEAN NOT NULL, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250),db_Res1 NVCHAR(212),db_Res2 NVCHAR(212),db_Res3 NVCHAR(212))");
+		DataBase.exec("create table IF NOT EXISTS WWIZBROWSEEXCLIST(ID INTEGER PRIMARY KEY, EXCLUDELIST VARCHAR (1000) NOT NULL,db_Res1 NVCHAR(212),db_Res2 NVCHAR(212),db_Res3 NVCHAR(212))");
+		DataBase.exec("create table IF NOT EXISTS WWIZBROWSESPECLIST(ID INTEGER PRIMARY KEY, SPECIFICLIST VARCHAR (1000) NOT NULL,db_Res1 NVCHAR(212),db_Res2 NVCHAR(212),db_Res3 NVCHAR(212))");
+		
+        var varRecordSetVal = DataBase.exec("select ID from WWIZBROWSESECURE");
+		if(varRecordSetVal == 101)
+        {
+			DataBase.exec("insert into WWIZBROWSESECURE(URL_PROT,URL_PROT_EXC,URL_PROT_SPEC,PHISHING_PROT)values(1,1,0,1)");
+        }
+		varRecordSetVal.close();
+		var varSelectValues = DataBase.exec("select * from WWIZBROWSESECURE");
+		var varRecSet = varSelectValues["URL_PROT"];
+		if(varRecSet == 0)
+		{
+			$(#ID_CHK_URL_PROT).checked = false;
+		}
+		else if(varRecSet == 1)
+		{
+			$(#ID_CHK_URL_PROT).checked = true;
+		}
+		
+		var varURLProt = varSelectValues["URL_PROT_EXC"];
+		if(varURLProt == 0)
+		{
+			$(#ID_CHK_APPLY_EXC).checked = false;
+		}
+		else if(varURLProt == 1)
+		{
+			$(#ID_CHK_APPLY_EXC).checked = true;
+		}
+		
+		var varURLSpec = varSelectValues["URL_PROT_SPEC"];
+		if(varURLSpec == 0)
+		{
+			$(#ID_CHK_APPLY_SPEC).checked = false;
+		}
+		else if(varURLSpec == 1)
+		{
+			$(#ID_CHK_APPLY_SPEC).checked = true;
+		}
+		
+		var varPhishProt = varSelectValues["PHISHING_PROT"];
+		if(varPhishProt == 0)
+		{
+			$(#ID_CHK_PHISHING_PROT).checked = false;
+		}
+		else if(varPhishProt == 1)
+		{
+			$(#ID_CHK_PHISHING_PROT).checked = true;
+		}
+		varSelectValues.close();
+		DataBase.close();
+	}
+	</script>
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+		g_CurrentPage = #BROWSER_SEC;
+		if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		varDBPath = self.GetDBPath();
+
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		var varRegVal = self.GetSetRegistryVal();
+        if(varRegVal == 0)
+        {
+            $(#ID_BTN_BROWSER_SECURITY).state.value = false;
+        }
+        else
+        {
+            $(#ID_BTN_BROWSER_SECURITY).state.value = true;
+        }
+		FunSetURLDetails();
+		funDatabase();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_CS_PROT).on("click",function()
+	{
+		SetOnProtectionEvent();
+	});
+	</script>
+	
+<script type="text/tiscript">
+	$(#ID_REGISTER_NOW).onClick = function()
+	{
+		ShowRegistrationDialog(); 
+	}
+</script>
+
+<script type="text/tiscript">	
+	if(productVersion == #BASIC){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_browsec_inner).attributes.addClass("translateWindow");
+			$(.body_browsec_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;
+			$(#ID_REGISTER_NOW).state.collapsed = true;			
+		}
+		else if(productVersion == #ESSENTIAL){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_browsec_inner).attributes.addClass("translateWindow");
+			$(.body_browsec_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_browsec_inner).attributes.addClass("translateWindow");
+			$(.body_browsec_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_browsec_inner).attributes.addClass("translateWindow");
+			$(.body_browsec_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ESSENTIALPLUS)
+		{
+			if(g_ProductLicenseType == #UNREGISTERED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_IS_UNREGISTERED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_A_LICENSE_OR_TO_REGISTER_FOR_30_DAYS_FREE_TRIAL");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_browsec_inner).attributes.addClass("translateWindow");
+				$(.body_browsec_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.expanded = true;
+				$(.messageContAlert).style["height"] = 190dip;
+				
+			}
+			else if(g_ProductLicenseType == #EXPIRED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_HAS_EXPIRED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_THE_COMMERCIAL_LICENSE");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_browsec_inner).attributes.addClass("translateWindow");
+				$(.body_browsec_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.collapsed = true;
+				$(.messageContAlert).style["height"] = 180dip;
+			}
+		}
+</script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+	
+</head>
+<body>
+	<div .body_browsec_inner>
+	<div class="breadcrumbNav">
+			<ul class="listDisplayRow">
+				<li #ID_CS_PROT><label>ID_PROTECTION</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #DISABLE_BTN style="padding-left:5dip;"><label>ID_BROWSER_SECURITY</label></li>
+			</ul>
+	</div>
+	<div .togller_button_browser_sec>
+		<button|toggler name="toggler" #ID_BTN_BROWSER_SECURITY>
+			<caption .true><label>ID_ON</label></caption>
+			<caption .false><label>ID_OFF</label></caption>
+		</button>
+	</div>
+	<div .titleCont_browser_sec style="width:650dip;">
+		<h1 .headingTitle1><label>ID_BROWSER_SECURITY</label></h1>
+		<p style="margin-top:0dip;margin-bottom:23dip;"><label .textColor>ID_BROWSER_SEC_DESC</label></p>
+	</div>
+	<div #ID_BROWSEC_INFO style="margin-top:28dip;margin-right:50dip;float:right;cursor:pointer;text-decoration:underline;color:#5a9dbc;"><label>ID_HOW_IT_WORKS</label></div>
+	<div .BrowserSecurityStatus>
+		<div class="descriptionTit">
+			<ul>
+				<li><span .icons>&fa-angle-double-right;</span>&nbsp; <span #ID_MALICIOUS_COUNT>730</span> <label>ID_BROWSER_MALICIOUS_LIST</label></li>
+				<li><span .icons>&fa-angle-double-right;</span>&nbsp; <span #ID_PHISHING_COUNT>73</span> <label>ID_BROWSER_PHISHING_LIST</label></li>
+			</ul>
+		</div>
+		<span style="margin-top:93dip;padding-right:5dip;float:right;cursor:pointer;text-decoration:underline;" #ID_VIEW_DETAILS><label>ID_VIEW_DETAILS</label></span>
+	</div>
+	<div .BrowserSecurityContent>
+		<span style="margin-bottom:5dip;">
+			<button type="checkbox" #ID_CHK_URL_PROT><label style="cursor:pointer;color:#555">ID_ENABLE_MALWARE_PROTECTION</label></button>
+		</span>
+		<div style="margin-left:40dip;">
+			<div .contentContSetting>
+				<div .contentTray>
+					<button type="checkbox" #ID_CHK_APPLY_EXC><label>ID_APPLY_EXCEPT</label></button>
+					<p style="text-decoration:underline;cursor:pointer;padding-left:20dip" #ID_MANAGE_EXCLUSION><label>ID_MANAGE_EXCLUSION</label></p>
+				</div>
+			</div>
+			<div .contentContSetting>
+				<div .contentTray>
+					<button type="checkbox" #ID_CHK_APPLY_SPEC><label>ID_APPLY_SPECIFIC</label></button>
+					<p style="text-decoration:underline;cursor:pointer;padding-left:20dip" #ID_CONFIG_SPEC_WEBSITE><label>ID_CONFIGURE_SPECIFIC</label></p>
+				</div>
+			</div>
+		</div>
+		<span style="margin-bottom:5dip;margin-top:15dip;">
+			<button type="checkbox" #ID_CHK_PHISHING_PROT><label style="cursor:pointer;color:#555">ID_ENABLE_PHISHING</label></button>
+		</span>
+	</div>
+	<div .validation_msg_email_scn>
+		<p #validationMessage_email_scn></p>
+	</div>
+	</div>
+	
+	
+	<div class="messageContAlert">
+		<div .clickable_cl .BuyHighVersionClose #ID_CLOSE_POPUP>
+				<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIconVersionUpgrade">
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+				</svg>
+		</div>
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 511 511" enable-background="new 0 0 511 511" xml:space="preserve" style="size:45dip;background:transparent;">
+		<path fill="#E58E13" d="M311.5,434.9c0,35-23.6,64.4-55.7,73.3c-6.5,1.8-13.3,2.8-20.3,2.8c-42,0-76.1-34.1-76.1-76.1l76.2-39.2
+			L311.5,434.9z"/>
+		<path fill="#F7D360" d="M307.8,458.4c-7.8,24.2-27.4,43-52.1,49.9c-15.5-4.3-29-13.3-38.8-25.5c-7.9-9.8-0.8-24.4,11.8-24.4H307.8z"
+			/>
+		<path fill="#F7D360" d="M431.8,358.9l-163.4,35.3L39,358.9c18,0,28.2-9.4,34-25c27.9-75.4-46.5-295.1,162.5-295.1
+			s134.5,219.7,162.5,295.1C403.7,349.4,413.8,358.9,431.8,358.9z"/>
+		<path fill="#E58E13" d="M469.9,396.9c0,21-17,38-38,38H39c-10.5,0-20-4.3-26.9-11.1C5.2,416.9,1,407.4,1,396.9c0-21,17-38,38-38
+			h392.8c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M397.9,333.8H193.7c-22,0-39.6-18.2-38.9-40.2c2.9-93.1-12-253.1,79.1-254.8
+			c-250,1.3-90.2,320.1-194.9,320.1h392.8C413.8,358.9,403.7,349.4,397.9,333.8z"/>
+		<path fill="#F7D360" d="M469.9,396.9c0,21-17,38-38,38H148.9c-10.5,0-20-4.3-26.9-11.1c-6.9-6.9-11.1-16.4-11.1-26.9
+			c0-21,17-38,38-38h282.9c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M274.1,41.7c0.1-1,0.1-1.9,0.1-2.9c0-21.4-17.4-38.8-38.8-38.8c-21.4,0-38.8,17.4-38.8,38.8c0,1,0,2,0.1,2.9
+			"/>
+		<g>
+			<path fill="#E6E6E6" d="M424.2,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-36.2-9.3-67.1-27.7-91.8c-13.7-18.5-27.6-26.4-27.8-26.5
+				c-3.8-2.1-5.1-6.9-3-10.6c2.1-3.8,6.8-5.1,10.6-3c0.7,0.4,16.5,9.3,32.2,30.1c14.3,19,31.3,52,31.3,101.9
+				C432.1,163.9,428.6,167.4,424.2,167.4z"/>
+			<path fill="#E6E6E6" d="M458.7,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-49.9-29.6-69.8-30.8-70.6c-3.6-2.4-4.7-7.2-2.3-10.8
+				c2.3-3.6,7.1-4.7,10.8-2.4c1.6,1,38,24.9,38,83.8C466.5,119.1,463,122.6,458.7,122.6z"/>
+			<path fill="#E6E6E6" d="M46.6,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-49.8,17-82.9,31.3-101.9c15.7-20.8,31.5-29.7,32.2-30.1
+				c3.8-2.1,8.5-0.7,10.6,3.1c2.1,3.8,0.7,8.5-3,10.6c-0.3,0.2-14.1,8.1-27.8,26.5c-18.4,24.7-27.7,55.6-27.7,91.8
+				C54.4,163.9,50.9,167.4,46.6,167.4z"/>
+			<path fill="#E6E6E6" d="M12.2,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-58.9,36.5-82.8,38-83.8c3.6-2.3,8.5-1.2,10.8,2.4
+				c2.3,3.6,1.3,8.5-2.4,10.8C49.5,45,20,64.8,20,114.7C20,119.1,16.5,122.6,12.2,122.6z"/>
+		</g>
+		</svg><br/>
+		<p style="color:#000;" #ID_VERSION_MESSAGE><label>ID_BUY_HIGHER_VERSION</label></p>
+		<p style="color:#000;" #ID_VERSION_MESSAGE2><label>ID_BUY_HIGHER_VERSION</label></p>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_BUY_HIGH_VER><label>ID_BUY_NOW</label></div>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_REGISTER_NOW><label>ID_REGISTER_NOW</label></div>
+	</div>
+</body>
+</html>

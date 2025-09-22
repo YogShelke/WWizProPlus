@@ -1,0 +1,1892 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+<title>Sched_Scan_Popup</title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+    <style>
+        @import url(IDR_CSS_MAIN.css);
+        @import url(IDR_CSS_LIGHTBOX_DIALOG.css);    
+		@import url(IDR_CSS_GERMAN_LANG.css); 
+		html 
+		{ 
+			width:550dip;         
+			height:400dip;         
+			overflow:hidden;
+			behavior:WardWizSettings;
+		}
+		.file-drop-zone1 {
+			prototype: FileDropZone;
+			width:402dip;
+			height:162dip;
+		}
+		.file-drop-zone1.active-target {
+			background:rgba(0,0,0,.5);
+		}
+		body.schedule_scan{ 
+			background-size:cover;
+			padding:0; margin:0;  
+		}
+		.header_schedule_scan{
+			flow:horizontal;
+			width:547dip;        
+			height:40dip;
+		}
+		.header_schedule_scan img{
+			width:27dip;
+		}
+		.main_schedule_scan{
+			width:545dip;
+			height:356dip;
+			position:relative;
+		}
+		.content_display_sched{
+			width:533dip;
+			height:297dip;
+			overflow:hidden;
+			overflow-y:auto;
+			margin-left:12dip; 
+			margin-top:5dip;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		.content_tray_type{
+			height:40dip;
+			width:530dip;
+			margin-left:12dip;
+			flow:horizontal;
+		}
+		.select_scan_type{
+			margin-top:15dip;
+			margin-left:15dip;
+		}
+		.content_tray_check{
+			min-height:70dip;
+			width:525dip;
+			margin-top:5dip;
+			margin-left:6dip;
+			flow:vertical;
+		}
+		.content_tray_check p{
+			margin:0dip;
+			padding:0dip;
+			height:auto;
+		}
+		.margin_top_three{
+			margin-top:3dip!important; 
+		}
+		#IDR_CHECK_WAKE_UP:collapsed{
+			visibility:none;
+		}
+		#IDR_CHECK_WAKE_UP:expanded{
+			visibility:visible;
+		}
+		.content_scan_day_date{
+			margin-left:10dip;
+			width:500dip;
+		}
+		.content_scan_day_date h3{
+			margin-top:13dip;
+		}	
+		.scan_time_date{
+			margin-left:30dip;
+			margin-bottom:2dip;
+		}
+		#ID_START_DATE_MONTHLY:expanded{
+			visibility:visible;
+		}
+		#ID_START_DATE_MONTHLY:collapsed{
+			visibility:none;
+		}
+		.content_scan_days{
+			margin-left:10dip;
+			width:500dip;
+		}
+		.btn_scan_day{
+			width:75dip;
+		}
+		.btn_radio_scan_type{
+			width:420dip;
+			margin-left:10dip;
+		}
+		.btn_radio_scan_type h3{
+			margin-top:3dip;
+			height:10dip;
+		}
+		.btn_radio_scan_type p{
+			margin:0dip;
+			padding:0dip;
+			width:450dip;
+			height:15dip;
+			margin-left:10dip;
+			font-size:12.5dip;
+		}
+		.show_hide_table{
+			padding:5dip;
+			min-height:250dip;
+			width:410dip;
+			position:relative;
+			margin-top:15dip;
+			margin-left:5dip;
+		}
+		#ID_SHOW_HIDE_TABLE:collapsed{
+			visibility:none;
+		}
+		#ID_SHOW_HIDE_TABLE:collapsed > .file-drop-zone1{
+			visibility:none;
+			position:absolute;
+			display:none;
+			height:0;
+		}
+		#ID_SHOW_HIDE_TABLE:expanded{
+			visibility:visible;
+		}
+		
+		#ID_SCHED_TABLE{ 
+			style-set: vgrid;
+			flow:table-fixed;
+			width:410dip;
+			height:160dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		#ID_SCHED_TABLE > thead {
+			behavior:column-resizer;  
+		}
+		#ID_SCHED_TABLE > tbody {
+			overflow-y: auto;
+			vertical-scrollbar: my-v-scrollbar;  
+		}
+		#ID_SCHED_TABLE th 
+		{ 
+			font-size:12.5dip; 
+			padding:4dip; 
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		#ID_SCHED_TABLE th:nth-child(1)  {  width:3em; }
+		#ID_SCHED_TABLE th:nth-child(2)  {  width:*; }
+		#ID_SCHED_TABLE th:hover 
+		{ 
+			transition:blend;
+		} 
+		#ID_SCHED_TABLE td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		#ID_SCHED_TABLE td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } /* first column */
+		#ID_SCHED_TABLE td:nth-child(2) {  
+			text-align:left; 
+			width:0.3*;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		.select_all_check{
+			//float:left;
+			margin-top:10dip !important;
+			width:150dip !important;
+		}
+		.scheduledBtnMgLft{
+			text-align:left!important;
+			width:233dip;
+			position:relative;
+			margin-left:224dip!important;
+			margin-top:-25dip!important;
+		}
+		#ID_SHOW_HIDE_TBL_REG_OPT:collapsed{
+			visibility:none;
+		}
+		#ID_SHOW_HIDE_TBL_REG_OPT:expanded{
+			visibility:visible;
+		}
+		.pdLeft8{
+			padding-left:8dip;
+		}
+		.schedule_scan_footer{
+			float:right;
+			position:relative;
+			margin-bottom:10dip !important;
+			margin-right:5dip;
+			margin-top:10dip;
+		}
+		.fontNormal{
+			font-weight:normal!important;
+		}
+		#registryOption{
+			/* margin-left:-600dip; */
+			width:665dip;
+			height:310dip;
+		}
+		#registryOption{
+			margin-left:10dip;
+		}
+		#registryOption{
+			visibility:visible;
+		}
+		#registryOption:collapsed{
+			visibility:none;
+		}
+		.chkOption{
+			clear:after;min-height:165dip;
+		}
+		#ID_12HOURS_CLOCK:collapsed{
+			visibility:none;
+		}
+		#ID_12HOURS_CLOCK:expanded{
+			visibility:visible;
+		}
+		.timeAmPm{
+			width:50dip;
+			margin-left:10dip;
+			margin-top:14dip;
+		}
+		#IDR_CHECK_SHUT_DOWN:disabled{
+			opacity:0.5;
+		}
+		.message_display_sched_scan {
+			background:rgba(238,246,248,.95);
+			position:absolute;
+			width:550dip;
+			height:37dip;
+			visibility:none;
+			margin-left:0dip;
+			top:0dip;
+		}
+		.message_display_sched_scan p{
+			margin-top:10dip;
+			margin-bottom:0dip;
+			text-align:center;
+			padding-top:0dip;
+			color:#000;
+		}
+		.message_display_sched_scan:collapsed {
+			visibility:visible;
+			top:40dip;
+			transition:top(sine-in-out, 600ms);
+		}
+	</style>
+	<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_SQLITE.tis";
+    </script>
+	<script type="text/tiscript">
+		var vlistObj = $(table);
+		var vCheckBox = $(body);
+		var varSchedType;
+		var bScanSunday = false;
+		var bScanMonday = false;
+		var bScanTuesday = false;
+		var bScanWednesday = false;
+		var bScanThursday = false;
+		var bScanFriday = false;
+		var bScanSaturday = false;
+		var varLowBattery = false;
+		var varShutDown = false;
+		var varWakeUp = false;
+		var varSkipScan = false;
+		var varStartTime;
+		var varEntryIdEdit;
+		var varStartScanRecSet;
+		var varScanTimeRecSet;
+		var varTimeCount = 0;
+		var varScanType;
+		var SchedScanTimeArray = new Array(0);
+		var FileFolderRecords = new Array(0);
+		var FileFolderRecTemp = new Array(0);
+		var varSchedScanFKeyCount = 0;
+		var varFileCount;
+		var varRecordSet;
+		var varGetRecordSet;
+		var TempValForCheck;
+		var vCheckBoxDragDrop = $(body);
+		var varCurrentDate;
+		var varAllFileConcat;
+		var varSelectedIndexVal;
+		var varDaySelectedWeekly = false;
+		var bScanTimeSame = false;
+		var varEditExistTime = 0;
+		var vAddArr = new Array(0);
+		var vDropFlag = false;
+		var varTimeFormat;
+		var varStartTimeHH;
+		var varStartTimeMM;
+		var varStartTimeSS;
+	</script>
+	<script type="text/tiscript">
+	$(#window_close).onClick = function()
+    {
+		var varStartTime = new Date(); 
+		view.close(varStartTime);
+	}
+	</script>
+	<script type="text/tiscript">
+		$(#COMActiveXEntries).onClick = function(){
+			if($(#COMActiveXEntries).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#UninstallEntries).onClick = function(){		
+			if($(##UninstallEntries).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#FontEntries).onClick = function(){		
+			if($(#FontEntries).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#SharedDLLs).onClick = function(){		
+			if($(#SharedDLLs).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#ApplicationPaths).onClick = function(){		
+			if($(#ApplicationPaths).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#HelpFileInformation).onClick = function(){
+			if($(#HelpFileInformation).value == false)
+				$(#RegistryOptSelectAll).value = false;		
+		} 
+		$(#WindowsStartupItems).onClick = function(){
+			if($(#WindowsStartupItems).value == false)
+				$(#RegistryOptSelectAll).value = false;		
+		} 
+		$(#WindowsServices).onClick = function(){		
+			if($(#WindowsServices).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#InvalidExtensions).onClick = function(){		
+			if($(#InvalidExtensions).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#RootKits).onClick = function(){		
+			if($(#RootKits).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#RogueApplications).onClick = function(){		
+			if($(#RogueApplications).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#Worms).onClick = function(){		
+			if($(#Worms).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#SpywareThreats).onClick = function(){		
+			if($(#SpywareThreats).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#AdwareThreats).onClick = function(){		
+			if($(#AdwareThreats).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#Keyloggers).onClick = function(){		
+			if($(#Keyloggers).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#BHO).onClick = function(){		
+			if($(#BHO).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#ExplorerEntries).onClick = function(){		
+			if($(#ExplorerEntries).value == false)
+				$(#RegistryOptSelectAll).value = false;
+		} 
+		$(#InternetExplorerEntries).onClick = function(){
+			if($(#InternetExplorerEntries).value == false)
+				$(#RegistryOptSelectAll).value = false;		
+		} 
+	</script>	
+	<script type="text/tiscript">
+		$(#RegistryOptSelectAll).onClick = function() 
+		{
+			var bVal = $(#RegistryOptSelectAll).value;
+			if(bVal == true)
+			{
+				$(#COMActiveXEntries).value = true;
+				$(#UninstallEntries).value = true;
+				$(#FontEntries).value = true;
+				$(#SharedDLLs).value = true;
+				$(#ApplicationPaths).value = true;
+				$(#HelpFileInformation).value = true;
+				
+				$(#WindowsStartupItems).value = true;
+				$(#WindowsServices).value = true;
+				$(#InvalidExtensions).value = true;
+				$(#RootKits).value = true;
+				$(#RogueApplications).value = true;
+				$(#Worms).value = true;
+				
+				$(#SpywareThreats).value = true;
+				$(#AdwareThreats).value = true;
+				$(#Keyloggers).value = true;
+				$(#BHO).value = true;
+				$(#ExplorerEntries).value = true;
+				$(#InternetExplorerEntries).value = true;
+			}
+			else
+			{
+				$(#COMActiveXEntries).value = false;
+				$(#UninstallEntries).value = false;
+				$(#FontEntries).value = false;
+				$(#SharedDLLs).value = false;
+				$(#ApplicationPaths).value = false;
+				$(#HelpFileInformation).value = false;
+				
+				$(#WindowsStartupItems).value = false;
+				$(#WindowsServices).value = false;
+				$(#InvalidExtensions).value = false;
+				$(#RootKits).value = false;
+				$(#RogueApplications).value = false;
+				$(#Worms).value = false;
+				
+				$(#SpywareThreats).value = false;
+				$(#AdwareThreats).value = false;
+				$(#Keyloggers).value = false;
+				$(#BHO).value = false;
+				$(#ExplorerEntries).value = false;
+				$(#InternetExplorerEntries).value = false;
+			}
+		}
+	</script>
+	<script type="text/tiscript">
+		function DefaultRegOptStatus()
+		{
+			$(#COMActiveXEntries).value = true;
+			$(#UninstallEntries).value = true;
+			$(#FontEntries).value = false;
+			$(#SharedDLLs).value = false;
+			$(#ApplicationPaths).value = true;
+			$(#HelpFileInformation).value = false;
+			
+			$(#WindowsStartupItems).value = true;
+			$(#WindowsServices).value = false;
+			$(#InvalidExtensions).value = false;
+			$(#RootKits).value = true;
+			$(#RogueApplications).value = true;
+			$(#Worms).value = true;
+			
+			$(#SpywareThreats).value = true;
+			$(#AdwareThreats).value = true;
+			$(#Keyloggers).value = true;
+			$(#BHO).value = true;
+			$(#ExplorerEntries).value = true;
+			$(#InternetExplorerEntries).value = true;				
+		}
+	</script>
+	<script type="text/tiscript">
+    const selectAll = vCheckBox.$(#select-all-File);
+	vCheckBox.on("change","#select-all-File", function() // select/deselect all
+    { 
+        var selected = this.value;
+        for( var record in FileFolderRecords )
+        record.selected = selected;
+    });
+	
+	const selectAll = vCheckBoxDragDrop.$(input#select-all-File);
+	vlistObj.on("change","tbody > tr", function() {   // note: each row (this) is a form here so its value is structure:
+		this.data.selected = this.value.selected;    // input(selected).value to record.selected in this case
+        if( !this.data.selected )
+		selectAll.value = false;
+    });
+
+    vCheckBoxDragDrop.on("change","#select-all-File", function() { // select/deselect all
+		var selected = this.value;
+		for( var record in FileFolderRecords )
+		record.selected = selected;
+    });
+
+	</script>
+	<script type="text/tiscript">
+	$(#ID_DELETE_FILEFOLD).onClick = function()
+	{
+		$(#IDR_RADIO_SCHED_SPEC).checked = true;
+		$(#IDR_RADIO_SCHED_QUICK).checked = false;
+		$(#IDR_RADIO_SCHED_FULL).checked = false;	
+		$(#IDR_RADIO_SCHED_TFC).checked = false;
+		$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+		var bselected = false;
+		for( var record in FileFolderRecords )
+		{
+			bselected = record.selected;
+			if(record.selected)
+			{
+				bselected = true;
+				break;
+			}
+			else
+			{
+				bselected = false;
+			}
+		}
+		for(var FileCount = FileFolderRecords.length; FileCount>0; )
+		{
+			bselected = FileFolderRecords[--FileCount].selected;
+			if(bselected == true)
+			{
+				var varSelectedIndexVal = FileFolderRecords[FileCount].varEntriesID;
+				FileFolderRecords.remove(FileCount);
+			}
+			else
+			{
+				continue;
+			}
+		}
+	}
+	</script>
+	<script type="text/tiscript">
+	function showRecordset()
+    {
+		var iIndex = 0;        
+		for(var vIndex=0; vIndex < vAddArr[0].vArrCstmScn.length; vIndex++)
+		{
+			FileFolderRecords[vIndex] = {selected : true, FileFoldName : "", varEntriesID:"" };            
+			FileFolderRecords[vIndex].varEntriesID = vAddArr[0].vArrCstmScn[vIndex].FileORFolderID;
+			FileFolderRecords[vIndex].FileFoldName = vAddArr[0].vArrCstmScn[vIndex].FileORFolderData;
+		}
+	}
+	function showRegOptimizerRecordset()
+    {	
+		$(#COMActiveXEntries).value = vAddArr[0].vArrRegOpt[0].bSelect_1 == 1 ? true:false;
+		$(#UninstallEntries).value = vAddArr[0].vArrRegOpt[0].bSelect_2 == 1 ? true:false;
+		$(#FontEntries).value = vAddArr[0].vArrRegOpt[0].bSelect_3 == 1 ? true:false;
+		$(#SharedDLLs).value = vAddArr[0].vArrRegOpt[0].bSelect_4 == 1 ? true:false;
+		$(#ApplicationPaths).value = vAddArr[0].vArrRegOpt[0].bSelect_5 == 1 ? true:false;
+		$(#HelpFileInformation).value = vAddArr[0].vArrRegOpt[0].bSelect_6 == 1 ? true:false;
+		$(#WindowsStartupItems).value = vAddArr[0].vArrRegOpt[0].bSelect_7 == 1 ? true:false;
+		$(#WindowsServices).value = vAddArr[0].vArrRegOpt[0].bSelect_8 == 1 ? true:false;
+		$(#InvalidExtensions).value = vAddArr[0].vArrRegOpt[0].bSelect_9 == 1 ? true:false;
+		$(#RootKits).value = vAddArr[0].vArrRegOpt[0].bSelect_10 == 1 ? true:false;
+		$(#RogueApplications).value = vAddArr[0].vArrRegOpt[0].bSelect_11 == 1 ? true:false;
+		$(#Worms).value = vAddArr[0].vArrRegOpt[0].bSelect_12 == 1 ? true:false;
+		$(#SpywareThreats).value = vAddArr[0].vArrRegOpt[0].bSelect_13 == 1 ? true:false;
+		$(#AdwareThreats).value = vAddArr[0].vArrRegOpt[0].bSelect_14 == 1 ? true:false;
+		$(#Keyloggers).value = vAddArr[0].vArrRegOpt[0].bSelect_15 == 1 ? true:false;
+		$(#BHO).value = vAddArr[0].vArrRegOpt[0].bSelect_16 == 1 ? true:false;
+		$(#ExplorerEntries).value = vAddArr[0].vArrRegOpt[0].bSelect_17 == 1 ? true:false;
+		$(#InternetExplorerEntries).value = vAddArr[0].vArrRegOpt[0].bSelect_18 == 1 ? true:false;	
+	}
+	</script>
+	<script type="text/tiscript">
+		var varSettingsCount = 0;
+		function GetRecSetCount(varRecordSet)
+		{
+			for (var varVirtualDBCount in varRecordSet)
+			{
+				varSettingsCount = varVirtualDBCount;
+			}
+		}
+		function AddEntriesToDBfile(strFileName)
+		{
+			if(view.parameters.varBrowseType == "ScheduleAdd")
+			{ 
+				varSchedScanFKeyCount = varSettingsCount + 1;
+			}
+			else if(view.parameters.varBrowseType == "ScheduleEdit")
+			{
+				varSchedScanFKeyCount = varEntryIdEdit;
+			}
+			varFileCount = FileFolderRecords.length;
+			if(varFileCount == 7)
+			{ 	     
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAX_NO_FILES");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+				return false;
+			}
+			var varThreatPath = strFileName;
+			var bIsDuplicateFound = false;
+			if(varFileCount > 0)
+			{
+				for( var rec in FileFolderRecords)
+				{
+					var temp = rec.FileFoldName;
+					if(varThreatPath == temp )
+					{
+						bIsDuplicateFound = true;
+						vDropFlag = true;
+						break;
+					}
+				}
+			}
+			if(bIsDuplicateFound == false && varFileCount < 7)
+			{
+				FileFolderRecords[varFileCount] = {selected : true, FileFoldName : strFileName, Reservedint1:"", Reservedint2:"", varEntriesID : ++varFileCount };
+				varFileCount++;
+				vlistObj = $(#ID_SCHED_TABLE);
+				vlistObj.value = FileFolderRecords;
+				vlistObj.on("change","tbody > tr", function()
+				{												// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+					this.data.selected = this.value.selected;	// input(selected).value to record.selected in this case
+					if( !this.data.selected )
+						selectAll.value = false;
+				});
+				varAllFileConcat ="";
+				for(var FileCount = 0; FileCount <=FileFolderRecords.length; FileCount++)
+				{
+					varSelectedIndexVal = FileFolderRecords[FileCount].FileFoldName;
+					varAllFileConcat = varAllFileConcat + varSelectedIndexVal;
+					varAllFileConcat = varAllFileConcat + "|";
+					var abc = varAllFileConcat.length;
+					if(varAllFileConcat.length > 1000)
+					{
+						$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_FILE_LEN_EXCEED");
+						var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+						FileFolderRecords.remove(FileCount);
+					}
+					else
+					{
+						return;
+					}
+				}
+			}
+		}
+		$(#ID_BROWSE_FILE).onClick = function()
+		{
+			$(#IDR_RADIO_SCHED_SPEC).checked = true;
+			$(#IDR_RADIO_SCHED_QUICK).checked = false;
+			$(#IDR_RADIO_SCHED_FULL).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = false;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+			var FileFolderPath = view.selectFile(#open,  "Files (*.*)|*.*" , "files");
+			FileFolderPath = URL.toPath(FileFolderPath);
+			FileFolderPath = FileFolderPath.replace("\/","\\");			
+			if(FileFolderPath == 0)
+			{
+				return;
+			}
+			else
+			{
+				AddEntriesToDBfile(FileFolderPath);
+				if(vDropFlag)
+				{
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+					var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]
+										}; 
+					vDropFlag = false;
+				}
+			}
+		}
+		$(#IDR_RADIO_SCHED_SPEC).onClick = function()
+		{
+		    $(#IDR_CHECK_SHUT_DOWN).state.disabled = false;
+			$(#ID_SCHED_TABLE).state.disabled = false;
+			$(#ID_SHOW_HIDE_TABLE).state.expanded = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		$(#IDR_RADIO_SCHED_QUICK).onClick = function()
+		{
+		    $(#IDR_CHECK_SHUT_DOWN).state.disabled = false;
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		$(#IDR_RADIO_SCHED_FULL).onClick = function()
+		{
+		    $(#IDR_CHECK_SHUT_DOWN).state.disabled = false;
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		$(#IDR_RADIO_SCHED_TFC).onClick = function()
+		{
+		    $(#IDR_CHECK_SHUT_DOWN).state.disabled = true;
+			$(#IDR_CHECK_SHUT_DOWN).checked = false;
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		$(#IDR_RADIO_SCHED_REG_OPT).onClick = function()
+		{
+		    $(#IDR_CHECK_SHUT_DOWN).state.disabled = true;
+			$(#IDR_CHECK_SHUT_DOWN).checked = false;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.expanded = true; 
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+		}
+		$(#ID_BROWSE_FOLDER).onClick = function()
+		{
+			$(#IDR_RADIO_SCHED_SPEC).checked = true;
+			$(#IDR_RADIO_SCHED_QUICK).checked = false;
+			$(#IDR_RADIO_SCHED_FULL).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = false;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+			var FileFolderPath = view.selectFolder();
+			FileFolderPath = URL.toPath(FileFolderPath);
+			FileFolderPath = FileFolderPath.replace("\/","\\");
+			if(FileFolderPath == 0)
+			{
+				return;
+			}
+			else
+			{
+				AddEntriesToDBfile(FileFolderPath);
+				if(vDropFlag)
+				{
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+					var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]
+										}; 
+					vDropFlag = false;
+				}
+			}
+		}
+	</script>
+	<script type="text/tiscript">
+    class FileDropZone :Behavior
+    {
+      function onExchange(evt)
+      {
+        if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+        {
+          this.attributes.addClass("active-target");
+          return true;
+        }
+        else if( evt.type == Event.X_DRAG_LEAVE )
+        {
+          this.attributes.removeClass("active-target");
+          return true;
+        }
+        else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+        {
+          stdout.println(evt.x,evt.y);
+          return true;
+        }
+        else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+        {
+			this.attributes.removeClass("active-target");
+			var fn = evt.dragging;
+			var strFileName = fn.toString();
+
+			var arrstrFileName =  strFileName.split(",");
+			for (var i = 0; i<arrstrFileName.length; i++)
+			{
+				if(i == 0)
+				{
+					var varFirstFile = URL.toPath(arrstrFileName[i]);
+					varFirstFile = varFirstFile.replace("\/","\\");
+					if(self.CheckIsNetworkPath(varFirstFile))
+					{
+						$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+						var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+						return;
+					}
+					AddEntriesToDBfile(varFirstFile);
+				}
+				else
+				{
+					var NextFile = URL.toPath(arrstrFileName[i]);
+					NextFile = NextFile.replace("\/","\\");
+					if(self.CheckIsNetworkPath(NextFile))
+					{
+						$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+						var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+						return;
+					}
+					AddEntriesToDBfile(NextFile);
+				}
+			}			
+			if(vDropFlag)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+				var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									}; 
+				vDropFlag = false;
+			}
+			return true;
+        }
+      }
+    }
+    </script>
+	<script type="text/tiscript">
+		function CompareScanTimeAndDate(varRecordSet)
+		{
+			var StartTime = varStartTime;
+			if(view.parameters.varBrowseType == "ScheduleEdit" && varEditExistTime != StartTime)
+			{
+				for(var varCount = 0; varCount < varRecordSet.length; varCount++)
+				{
+					if(StartTime == varRecordSet[varCount].SCHEDSCANTIME && $(#IDR_RADIO_SCHED_SPEC).checked == false)
+					{
+						bScanTimeSame = true;
+						$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SCHED_CONFLICT");
+						var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+						break;
+					}
+				}
+			}
+			else if(view.parameters.varBrowseType != "ScheduleEdit")
+			{
+				for(var varCount = 0; varCount < varRecordSet.length; varCount++)
+				{
+					if(StartTime == varRecordSet[varCount].SCHEDSCANTIME && $(#IDR_RADIO_SCHED_SPEC).checked == false)
+					{
+						bScanTimeSame = true;
+						$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SCHED_CONFLICT");
+						var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: "OK", role:#ok, value:true }]
+									};
+						break;
+					}
+				}
+			}
+		}
+    </script>
+	<script type="text/tiscript">
+    $(#ID_OK).onClick = function()
+    {
+		var varDate = new Date();
+		var varMonth = varDate.month;
+		var varDay = varDate.day;
+		var varYear = varDate.year;
+		var varCheckTimeHH = varDate.hour;
+		var varCheckTimeMM = varDate.minute;
+		var varCheckTimeSS = varDate.second;
+		if($(#ID_START_TIME_HH).value === undefined || $(#ID_START_TIME_MM).value === undefined || $(#ID_START_TIME_SS).value === undefined )
+		{
+			self.timer(50ms,function (){
+				$(.message_display_sched_scan).state.collapsed = true;
+				$(#ID_Def_exception_MSG).value = Lang.translate("ID_ENTER_START_TIME");
+			});
+		}
+		varStartTimeHH = $(#ID_START_TIME_HH).value;
+		varStartTimeHH=varStartTimeHH * 3600;
+		
+		if(varTimeFormat == true)
+		{	
+			//for PM
+			if($(#ID_AMPM_TIME).state.value == 2)
+			{
+				if(varStartTimeHH != 43200)
+				{
+					varStartTimeHH = varStartTimeHH + 43200;
+				}
+			}
+		
+			//for AM
+			if($(#ID_AMPM_TIME).state.value == 1)
+			{
+				if(varStartTimeHH == 43200)
+				{
+					varStartTimeHH = 0;
+				}
+			}
+		}
+		varStartTimeMM = $(#ID_START_TIME_MM).value;
+		varStartTimeMM = varStartTimeMM * 60;
+		varStartTimeSS = $(#ID_START_TIME_SS).value;
+		varStartTimeSS = varStartTimeSS;
+		varStartTime = varStartTimeHH + varStartTimeMM + varStartTimeSS;
+
+		if(view.parameters.vArrPrevSS.length > 0)
+		{
+			CompareScanTimeAndDate(view.parameters.vArrPrevSS);
+		}
+		if(bScanTimeSame == true)
+		{
+			bScanTimeSame = false;
+			return;
+		}
+		varSchedType = $(#ID_SELECT_SCHEDULE).state.value;
+		varLowBattery = $(#IDR_CHECK_LOW_BATTERY).state.value;
+		varShutDown = $(#IDR_CHECK_SHUT_DOWN).state.value;
+		varWakeUp = $(#IDR_CHECK_WAKE_UP).state.value;
+		varSkipScan = $(#IDR_CHECK_SCAN_SKIP).state.value;
+		bScanSunday = $(#IDR_CHECK_SUNDAY).state.value;
+		bScanMonday = $(#IDR_CHECK_MONDAY).state.value;
+		bScanTuesday = $(#IDR_CHECK_TUESDAY).state.value;
+		bScanWednesday = $(#IDR_CHECK_WEDNESDAY).state.value;
+		bScanThursday = $(#IDR_CHECK_THURSDAY).state.value;
+		bScanFriday = $(#IDR_CHECK_FRIDAY).state.value;
+		bScanSaturday = $(#IDR_CHECK_SATURDAY).state.value;
+		varCurrentDate = $(#ID_START_DATE).value;
+		var varSelectYear = varCurrentDate.year;
+		var varSelectMonth = varCurrentDate.month;
+		var varSelectDay = varCurrentDate.day;
+		if(varSelectYear > 3000)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SET_DATE_UPPER_LIMIT");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return;
+		}
+		if(varSelectYear < 1970)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SET_DATE_LOWER_LIMIT");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return;
+		}
+		if(varSelectYear == varYear && varSchedType==3)
+		{
+			if(varSelectMonth < varMonth)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SET_DATE_LOWER_LIMIT");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+				return;
+			}
+			else if(varSelectDay < varDay)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SET_DATE_LOWER_LIMIT");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+				return;
+			}
+			else if(varSelectDay == varDay)
+			{
+				var varCheckTime=(varCheckTimeHH*3600)+(varCheckTimeMM*60)+(varCheckTimeSS);
+				if(varStartTime < varCheckTime)
+				{
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SET_DATE_LOWER_LIMIT");
+							var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]
+										};
+							return;
+				}
+			}
+		}
+		if(varSelectYear < varYear)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SET_DATE_LOWER_LIMIT");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return;
+		}
+		varCurrentDate = varCurrentDate.year+"-"+varCurrentDate.month+"-"+varCurrentDate.day;
+		varScanType = 0;
+		if($(#IDR_RADIO_SCHED_QUICK).state.value == true)
+		{
+			varScanType = 0;
+		}
+		else if($(#IDR_RADIO_SCHED_FULL).state.value == true)
+		{
+			varScanType = 1;
+		}
+		else if($(#IDR_RADIO_SCHED_SPEC).state.value == true)
+		{
+			varScanType = 2;
+		}
+		else if($(#IDR_RADIO_SCHED_TFC).state.value == true)
+		{
+			varScanType = 4;
+		}
+		else if($(#IDR_RADIO_SCHED_REG_OPT).state.value == true)
+		{
+			varScanType = 5;
+		}
+		if(varScanType == 2)
+		{
+			if(FileFolderRecords.length == 0)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_FILES_OR_FOLDERS_FOR_CUSTOM_SCAN");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+				return;
+			}
+		}
+		if(varSchedType == 2)
+		{
+			if($(#IDR_CHECK_SUNDAY).state.value == true || $(#IDR_CHECK_MONDAY).state.value == true || $(#IDR_CHECK_TUESDAY).state.value == true || $(#IDR_CHECK_WEDNESDAY).state.value == true || $(#IDR_CHECK_THURSDAY).state.value == true || $(#IDR_CHECK_FRIDAY).state.value == true || $(#IDR_CHECK_SATURDAY).state.value == true)
+			{
+				varDaySelectedWeekly = true;
+			}
+			if(varDaySelectedWeekly == false)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_ATLEAST_ONE_DAY");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+				return;
+			}
+		}
+		if(view.parameters.varBrowseType == "ScheduleAdd")
+		{			
+			varCurrentDate = $(#ID_START_DATE).value;
+			varCurrentDate = varCurrentDate.year+"-"+varCurrentDate.month+"-"+varCurrentDate.day;
+			
+			vAddArr[0].INTSCHEDULEDTYPE = varSchedType;
+			vAddArr[0].INTLOWBATTERY = varLowBattery;
+			vAddArr[0].INTSHUTDOWN = varShutDown;
+			vAddArr[0].INTWAKEUP = varWakeUp;
+			vAddArr[0].INTSCANSKIP = varSkipScan;
+			vAddArr[0].SCHEDSCANTIME = varStartTime;
+			vAddArr[0].BSUNDAY = bScanSunday;
+			vAddArr[0].BMONDAY = bScanMonday;
+			vAddArr[0].BTUESDAY = bScanTuesday;
+			vAddArr[0].BWEDNESDAY = bScanWednesday;
+			vAddArr[0].BTHURSDAY = bScanThursday;
+			vAddArr[0].BFRIDAY = bScanFriday;
+			vAddArr[0].BSATURDAY = bScanSaturday;
+			vAddArr[0].INTSCANTYPE = varScanType;
+			vAddArr[0].SCHEDSCANDATE = varCurrentDate;
+			
+			if(varScanType == 2)
+			{
+				vAddArr[0].FileORFolderFlag = 1;
+				for(var vCounter = 0; vCounter < FileFolderRecords.length; vCounter++)
+				{
+					vAddArr[0].vArrCstmScn[vCounter] = {FileOrFolderData:"",FileOrFolderID:""};
+					vAddArr[0].vArrCstmScn[vCounter].FileOrFolderData = FileFolderRecords[vCounter].FileFoldName;
+					vAddArr[0].vArrCstmScn[vCounter].FileOrFolderID = FileFolderRecords[vCounter].varEntriesID;
+				}
+			}
+			else if(varScanType == 5)
+			{
+				vAddArr[0].RegOptFlag = 1;
+				vAddArr[0].vArrRegOpt[0] = {ID:0, bSelect_1:$(#COMActiveXEntries).value == true ? 1:0, 
+				bSelect_2:$(#UninstallEntries).value == true ? 1:0, bSelect_3:$(#FontEntries).value == true ? 1:0, 
+				bSelect_4:$(#SharedDLLs).value == true ? 1:0, bSelect_5:$(#ApplicationPaths).value == true ? 1:0, 
+				bSelect_6:$(#HelpFileInformation).value == true ? 1:0, bSelect_7:$(#WindowsStartupItems).value == true ? 1:0, 
+				bSelect_8:$(#WindowsServices).value == true ? 1:0, bSelect_9:$(#InvalidExtensions).value == true ? 1:0, 
+				bSelect_10:$(#RootKits).value == true ? 1:0, bSelect_11:$(#RogueApplications).value == true ? 1:0, 
+				bSelect_12:$(#Worms).value == true ? 1:0, bSelect_13:$(#SpywareThreats).value == true ? 1:0, 
+				bSelect_14:$(#AdwareThreats).value == true ? 1:0, bSelect_15:$(#Keyloggers).value == true ? 1:0, 
+				bSelect_16:$(#BHO).value == true ? 1:0, bSelect_17:$(#ExplorerEntries).value == true ? 1:0, 
+				bSelect_18:$(#InternetExplorerEntries).value == true ? 1:0, bSelecteAll:$(#RegistryOptSelectAll).value == true ? 1:0};						
+			}
+			vAddArr[0].SAVE_DATA_FLAG = 1;
+		}
+		else if(view.parameters.varBrowseType == "ScheduleEdit")
+		{
+			if(!varLowBattery)
+				varLowBattery = false;
+			if(!varSkipScan)
+				varSkipScan = false;
+				
+			vAddArr[0].INTSCHEDULEDTYPE = varSchedType;
+			vAddArr[0].INTLOWBATTERY = varLowBattery;
+			vAddArr[0].INTSHUTDOWN = varShutDown;
+			vAddArr[0].INTWAKEUP = varWakeUp;
+			vAddArr[0].INTSCANSKIP = varSkipScan;
+			vAddArr[0].SCHEDSCANTIME = varStartTime;
+			vAddArr[0].BSUNDAY = bScanSunday;
+			vAddArr[0].BMONDAY = bScanMonday;
+			vAddArr[0].BTUESDAY = bScanTuesday;
+			vAddArr[0].BWEDNESDAY = bScanWednesday;
+			vAddArr[0].BTHURSDAY = bScanThursday;
+			vAddArr[0].BFRIDAY = bScanFriday;
+			vAddArr[0].BSATURDAY = bScanSaturday;
+			vAddArr[0].INTSCANTYPE = varScanType;
+			vAddArr[0].SCHEDSCANDATE = varCurrentDate;
+			
+			if(varScanType == 2)
+			{
+				vAddArr[0].FileORFolderFlag = 1;
+				vAddArr[0].vArrCstmScn.splice(0,vAddArr[0].vArrCstmScn.length);
+				for(var vCounter = 0; vCounter < FileFolderRecords.length; vCounter++)
+				{
+					vAddArr[0].vArrCstmScn[vCounter] = {FileOrFolderData:"",FileOrFolderID:""};
+					vAddArr[0].vArrCstmScn[vCounter].FileOrFolderData = FileFolderRecords[vCounter].FileFoldName;
+					vAddArr[0].vArrCstmScn[vCounter].FileOrFolderID = FileFolderRecords[vCounter].varEntriesID;
+				} 
+			}
+			else if(varScanType == 5)
+			{
+				vAddArr[0].RegOptFlag = 1;
+				vAddArr[0].vArrRegOpt.splice(0,vAddArr[0].vArrRegOpt.length);
+				vAddArr[0].vArrRegOpt.push{ID:0, bSelect_1:$(#COMActiveXEntries).value == true ? 1:0, 
+				bSelect_2:$(#UninstallEntries).value == true ? 1:0, bSelect_3:$(#FontEntries).value == true ? 1:0, 
+				bSelect_4:$(#SharedDLLs).value == true ? 1:0, bSelect_5:$(#ApplicationPaths).value == true ? 1:0, 
+				bSelect_6:$(#HelpFileInformation).value == true ? 1:0, bSelect_7:$(#WindowsStartupItems).value == true ? 1:0, 
+				bSelect_8:$(#WindowsServices).value == true ? 1:0, bSelect_9:$(#InvalidExtensions).value == true ? 1:0, 
+				bSelect_10:$(#RootKits).value == true ? 1:0, bSelect_11:$(#RogueApplications).value == true ? 1:0, 
+				bSelect_12:$(#Worms).value == true ? 1:0, bSelect_13:$(#SpywareThreats).value == true ? 1:0, 
+				bSelect_14:$(#AdwareThreats).value == true ? 1:0, bSelect_15:$(#Keyloggers).value == true ? 1:0, 
+				bSelect_16:$(#BHO).value == true ? 1:0, bSelect_17:$(#ExplorerEntries).value == true ? 1:0, 
+				bSelect_18:$(#InternetExplorerEntries).value == true ? 1:0, bSelecteAll:$(#RegistryOptSelectAll).value == true ? 1:0};			
+			}
+			
+			vAddArr[0].UPDATE_DATA_FLAG = 1;			
+		}		
+        view.close(varStartTime);
+    }
+
+    $(#ID_CANCEL).onClick = function()
+    {
+		var varStartTime = new Date(); 
+		view.close(varStartTime);
+    }
+	function FunSetValuesfromDB()
+	{
+		var iIndex = 0;
+		var ScheduleTypeVal = SchedScanTimeArray[iIndex].ScheduleType;
+		if(ScheduleTypeVal == 1)
+		{
+			$(#ID_SELECT_SCHEDULE).state.value = 1;
+			$(#ID_CHECK_DAILY).state.disabled = true;
+			$(#IDR_CHECK_SUNDAY).state.value = true;
+			$(#IDR_CHECK_MONDAY).state.value = true;
+			$(#IDR_CHECK_TUESDAY).state.value = true;
+			$(#IDR_CHECK_WEDNESDAY).state.value = true;
+			$(#IDR_CHECK_THURSDAY).state.value = true;
+			$(#IDR_CHECK_FRIDAY).state.value = true;
+			$(#IDR_CHECK_SATURDAY).state.value = true;
+			$(#ID_START_DATE_MONTHLY).state.collapsed = true;
+		}
+		else if(ScheduleTypeVal == 2)
+		{
+			$(#ID_SELECT_SCHEDULE).state.value = 2;
+			$(#ID_START_DATE_MONTHLY).state.collapsed = true;
+		}
+		else if(ScheduleTypeVal == 3)
+		{
+			$(#ID_SELECT_SCHEDULE).state.value = 3;
+			$(#ID_CHECK_DAILY).state.disabled = true;
+			$(#IDR_CHECK_SUNDAY).state.value = false;
+			$(#IDR_CHECK_MONDAY).state.value = false;
+			$(#IDR_CHECK_TUESDAY).state.value = false;
+			$(#IDR_CHECK_WEDNESDAY).state.value = false;
+			$(#IDR_CHECK_THURSDAY).state.value = false;
+			$(#IDR_CHECK_FRIDAY).state.value = false;
+			$(#IDR_CHECK_SATURDAY).state.value = false;
+			$(#ID_START_DATE_MONTHLY).state.expanded = true;
+			$(#ID_START_DATE).value = new Date(SchedScanTimeArray[iIndex].SchedScanDate);
+		}
+		var LowBatteryVal = SchedScanTimeArray[iIndex].LowBattery;
+		if(LowBatteryVal == 0)
+		{
+			$(#IDR_CHECK_LOW_BATTERY).checked = false;
+		}
+		else if(LowBatteryVal == 1)
+		{
+			$(#IDR_CHECK_LOW_BATTERY).checked = true;
+		}
+		var ShutDownVal = SchedScanTimeArray[iIndex].ShutDown;
+		if(ShutDownVal == 0)
+		{
+			$(#IDR_CHECK_SHUT_DOWN).checked = false;
+		}
+		else if(ShutDownVal == 1)
+		{
+			$(#IDR_CHECK_SHUT_DOWN).checked = true;
+		}
+		var WakeUpVal = SchedScanTimeArray[iIndex].WakeUp;
+		if(WakeUpVal == 0)
+		{
+			$(#IDR_CHECK_WAKE_UP).checked = false;
+		}
+		else if(WakeUpVal == 1)
+		{
+			$(#IDR_CHECK_WAKE_UP).checked = true;
+		}
+		var SkipScanVal = SchedScanTimeArray[iIndex].SkipScan;
+		if(SkipScanVal == 0)
+		{
+			$(#IDR_CHECK_SCAN_SKIP).checked = false;
+		}
+		else if(SkipScanVal == 1)
+		{
+			$(#IDR_CHECK_SCAN_SKIP).checked = true;
+		}
+		var setDate = new Date(SchedScanTimeArray[iIndex].SchedScanTime);
+		var varTimeConvert = setDate.hour;
+		if(varTimeFormat == true)
+		{
+			if(varTimeConvert >= 12)
+			{
+				$(#ID_AMPM_TIME).value = 2;
+				if( varTimeConvert > 12)
+				{
+					varTimeConvert = varTimeConvert - 12;
+				}
+			}
+			else if(varTimeConvert < 12)
+			{
+				$(#ID_AMPM_TIME).value = 1;
+				if(varTimeConvert == 0)
+				{
+					varTimeConvert = 12;	
+				}
+			}
+			
+		}
+		if(varTimeConvert < 10)
+		{
+			varTimeConvert = "0" + varTimeConvert;
+		}
+		$(#ID_START_TIME_HH).value = varTimeConvert;
+		$(#ID_START_TIME_MM).value = setDate.minute;
+		if($(#ID_START_TIME_MM).value < 10)
+		{
+			$(#ID_START_TIME_MM).value = "0" + $(#ID_START_TIME_MM).value;
+		}
+		$(#ID_START_TIME_SS).value = setDate.second;
+		if($(#ID_START_TIME_SS).value < 10)
+		{
+			$(#ID_START_TIME_SS).value = "0" + $(#ID_START_TIME_SS).value;
+		}
+		var ScanSundayVal = SchedScanTimeArray[iIndex].ScanSunday;
+		if(ScanSundayVal == 0)
+		{
+			$(#IDR_CHECK_SUNDAY).checked = false;
+		}
+		else if(ScanSundayVal == 1)
+		{
+			$(#IDR_CHECK_SUNDAY).checked = true;
+		}
+		var ScanMondayVal = SchedScanTimeArray[iIndex].ScanMonday;
+		if(ScanMondayVal == 0)
+		{
+			$(#IDR_CHECK_MONDAY).checked = false;
+		}
+		else if(ScanMondayVal == 1)
+		{
+			$(#IDR_CHECK_MONDAY).checked = true;
+		}
+		var ScanTuesdayVal = SchedScanTimeArray[iIndex].ScanTuesday;
+		if(ScanTuesdayVal == 0)
+		{
+			$(#IDR_CHECK_TUESDAY).checked = false;
+		}
+		else if(ScanTuesdayVal == 1)
+		{
+			$(#IDR_CHECK_TUESDAY).checked = true;
+		}
+		var ScanWednesdayVal = SchedScanTimeArray[iIndex].ScanWednesday;
+		if(ScanWednesdayVal == 0)
+		{
+			$(#IDR_CHECK_WEDNESDAY).checked = false;
+		}
+		else if(ScanWednesdayVal == 1)
+		{
+			$(#IDR_CHECK_WEDNESDAY).checked = true;
+		}
+		var ScanThursdayVal = SchedScanTimeArray[iIndex].ScanThursday;
+		if(ScanThursdayVal == 0)
+		{
+			$(#IDR_CHECK_THURSDAY).checked = false;
+		}
+		else if(ScanThursdayVal == 1)
+		{
+			$(#IDR_CHECK_THURSDAY).checked = true;
+		}
+		var ScanFridayVal = SchedScanTimeArray[iIndex].ScanFriday;
+		if(ScanFridayVal == 0)
+		{
+			$(#IDR_CHECK_FRIDAY).checked = false;
+		}
+		else if(ScanFridayVal == 1)
+		{
+			$(#IDR_CHECK_FRIDAY).checked = true;
+		}
+		var ScanSaturdayVal = SchedScanTimeArray[iIndex].ScanSaturday;
+		if(ScanSaturdayVal == 0)
+		{
+			$(#IDR_CHECK_SATURDAY).checked = false;
+		}
+		else if(ScanSaturdayVal == 1)
+		{
+			$(#IDR_CHECK_SATURDAY).checked = true;
+		}
+		var ScanTypeValue = SchedScanTimeArray[iIndex].ScanType;
+		if(ScanTypeValue == 0)
+		{
+			$(#IDR_RADIO_SCHED_QUICK).checked = true;
+			$(#IDR_RADIO_SCHED_FULL).checked = false;
+			$(#IDR_RADIO_SCHED_SPEC).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = false;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+			$(#ID_SCHED_TABLE).state.disabled = true;	
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		else if(ScanTypeValue == 1)
+		{
+			$(#IDR_RADIO_SCHED_FULL).checked = true;
+			$(#IDR_RADIO_SCHED_SPEC).checked = false;
+			$(#IDR_RADIO_SCHED_QUICK).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = false;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+			$(#ID_SCHED_TABLE).state.disabled = true;	
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		else if(ScanTypeValue == 2)
+		{
+			$(#IDR_RADIO_SCHED_SPEC).checked = true;
+			$(#IDR_RADIO_SCHED_FULL).checked = false;
+			$(#IDR_RADIO_SCHED_QUICK).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = false;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+			$(#ID_SCHED_TABLE).state.disabled = false;
+			$(#ID_SHOW_HIDE_TABLE).state.expanded = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		else if(ScanTypeValue == 4)
+		{
+			$(#IDR_RADIO_SCHED_FULL).checked = false;
+			$(#IDR_RADIO_SCHED_SPEC).checked = false;
+			$(#IDR_RADIO_SCHED_QUICK).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = true;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = false;
+			$(#ID_SCHED_TABLE).state.disabled = true;	
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;
+		}
+		else if(ScanTypeValue == 5)
+		{
+			$(#IDR_RADIO_SCHED_FULL).checked = false;
+			$(#IDR_RADIO_SCHED_SPEC).checked = false;
+			$(#IDR_RADIO_SCHED_QUICK).checked = false;
+			$(#IDR_RADIO_SCHED_TFC).checked = false;
+			$(#IDR_RADIO_SCHED_REG_OPT).checked = true;
+			$(#ID_SCHED_TABLE).state.disabled = true;	
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.expanded = true;
+		}
+	}
+	</script>
+    <script type="text/tiscript">
+    function AddSchedScanEntry()
+    {
+        var iIndex = 0;
+        var TempTimeVal;
+        var iTempTimeVal;
+        var TempVal1;
+        var TempVal2;
+        var TempVal3;
+        var TempValTime;
+        var varCounter = 0;
+        SchedScanTimeArray[varTimeCount] = {selected : true, ScheduleType :"", LowBattery:"", ShutDown:"", WakeUp:"", SkipScan:"", SchedScanTime :"", ScanSunday:"", ScanMonday:"", ScanTuesday:"", ScanWednesday:"", ScanThursday:"", ScanFriday:"",ScanSaturday:"", ScanType:"", SchedScanDate:"", Reservedval1:"", Reservedval2:"", Reservedval3:"", varScanEntryID : ++varTimeCount };
+        SchedScanTimeArray[iIndex].ScheduleType = vAddArr[0].INTSCHEDULEDTYPE;
+		SchedScanTimeArray[iIndex].LowBattery = vAddArr[0].INTLOWBATTERY;
+		SchedScanTimeArray[iIndex].ShutDown = vAddArr[0].INTSHUTDOWN;
+		SchedScanTimeArray[iIndex].WakeUp = vAddArr[0].INTWAKEUP;
+		SchedScanTimeArray[iIndex].SkipScan = vAddArr[0].INTSCANSKIP;
+		
+		iTempTimeVal = vAddArr[0].SCHEDSCANTIME;
+		varEditExistTime = iTempTimeVal;
+        TempVal1 = iTempTimeVal/3600;
+        TempVal2 = iTempTimeVal - (TempVal1 * 3600);
+        TempValTime = TempVal2/60;
+        TempVal3 = TempVal2 - (TempValTime * 60);
+		SchedScanTimeArray[iIndex].SchedScanTime = TempVal1+ ":" +TempValTime+ ":" +TempVal3;                        
+		
+		SchedScanTimeArray[iIndex].ScanSunday = vAddArr[0].BSUNDAY;
+		SchedScanTimeArray[iIndex].ScanMonday = vAddArr[0].BMONDAY;
+		SchedScanTimeArray[iIndex].ScanTuesday = vAddArr[0].BTUESDAY;
+		SchedScanTimeArray[iIndex].ScanWednesday = vAddArr[0].BWEDNESDAY;
+		SchedScanTimeArray[iIndex].ScanThursday = vAddArr[0].BTHURSDAY;
+		SchedScanTimeArray[iIndex].ScanFriday = vAddArr[0].BFRIDAY;
+		SchedScanTimeArray[iIndex].ScanSaturday = vAddArr[0].BSATURDAY;
+		SchedScanTimeArray[iIndex].ScanType = vAddArr[0].INTSCANTYPE;
+		SchedScanTimeArray[iIndex].SchedScanDate = vAddArr[0].SCHEDSCANDATE;
+    }
+    </script>
+    <script type="text/tiscript">
+	$(#ID_SELECT_SCHEDULE).on("change", function() 
+	{
+		if($(#ID_SELECT_SCHEDULE).state.value == 1)
+		{
+			$(#ID_CHECK_DAILY).state.disabled = true;
+			$(#IDR_CHECK_SUNDAY).state.value = true;
+			$(#IDR_CHECK_MONDAY).state.value = true;
+			$(#IDR_CHECK_TUESDAY).state.value = true;
+			$(#IDR_CHECK_WEDNESDAY).state.value = true;
+			$(#IDR_CHECK_THURSDAY).state.value = true;
+			$(#IDR_CHECK_FRIDAY).state.value = true;
+			$(#IDR_CHECK_SATURDAY).state.value = true;
+			$(#ID_START_DATE_MONTHLY).state.collapsed = true;
+		}
+		else if($(#ID_SELECT_SCHEDULE).state.value == 2)
+		{
+			$(#ID_CHECK_DAILY).state.disabled = false;
+			$(#ID_START_DATE_MONTHLY).state.collapsed = true;
+		}
+		else if($(#ID_SELECT_SCHEDULE).state.value == 3)
+		{
+			$(#ID_CHECK_DAILY).state.disabled = true;
+			$(#IDR_CHECK_SUNDAY).state.value = false;
+			$(#IDR_CHECK_MONDAY).state.value = false;
+			$(#IDR_CHECK_TUESDAY).state.value = false;
+			$(#IDR_CHECK_WEDNESDAY).state.value = false;
+			$(#IDR_CHECK_THURSDAY).state.value = false;
+			$(#IDR_CHECK_FRIDAY).state.value = false;
+			$(#IDR_CHECK_SATURDAY).state.value = false;
+			$(#ID_START_DATE_MONTHLY).state.expanded = true;
+		}
+	});
+	</script>
+	
+	<script type="text/tiscript">
+    $(body).onClick = function()
+    {
+         $(.message_display_sched_scan).state.collapsed = false;
+    }
+	</script>
+
+	<script type="text/tiscript">
+	$(#ID_START_TIME_HH).on("focusout", function() 
+	{ 
+		if($(#ID_START_TIME_HH).value !== undefined)
+		{
+			var varTimeLimitCheck = $(#ID_START_TIME_HH).value;
+			if(varTimeFormat == false)
+			{
+				//for 24 hour format
+				if(varTimeLimitCheck > 23)
+				{
+					varTimeLimitCheck = "23";
+					$(#ID_START_TIME_HH).value = varTimeLimitCheck;
+				}
+				else
+				{
+					$(#ID_START_TIME_HH).value = varTimeLimitCheck;
+				}
+			}
+			else
+			{
+				//for 12 hour format
+				if(varTimeLimitCheck > 12)
+				{
+					varTimeLimitCheck = "12";
+					$(#ID_START_TIME_HH).value = varTimeLimitCheck;
+				}
+				else
+				{
+					$(#ID_START_TIME_HH).value = varTimeLimitCheck;
+				}
+			}
+			
+			if($(#ID_START_TIME_HH).value < 10)
+			{
+				$(#ID_START_TIME_HH).value = "0" + $(#ID_START_TIME_HH).value;
+			}
+		}
+	});
+	
+	</script>
+
+	<script type="text/tiscript">
+	
+	$(#ID_START_TIME_MM).on("focusout", function() 
+	{ 
+		if($(#ID_START_TIME_MM).value !== undefined)	
+		{
+			var varTimeLimitCheck = $(#ID_START_TIME_MM).value;
+			if(varTimeLimitCheck>59)
+			{
+				varTimeLimitCheck = "59";
+				$(#ID_START_TIME_MM).value = varTimeLimitCheck;
+			}
+			else
+			{
+				$(#ID_START_TIME_MM).value = varTimeLimitCheck;
+			}
+			
+			if($(#ID_START_TIME_MM).value < 10)
+			{
+				$(#ID_START_TIME_MM).value = "0" + $(#ID_START_TIME_MM).value;
+			}
+		}
+	});
+	
+	</script>
+
+	<script type="text/tiscript">
+	
+	$(#ID_START_TIME_SS).on("focusout", function() 
+	{ 
+		if($(#ID_START_TIME_SS).value !== undefined)	
+		{
+			var varTimeLimitCheck = $(#ID_START_TIME_SS).value;
+			if(varTimeLimitCheck > 59)
+			{
+				varTimeLimitCheck="59";
+				$(#ID_START_TIME_SS).value = varTimeLimitCheck;
+			}
+			else
+			{
+				$(#ID_START_TIME_SS).value = varTimeLimitCheck;
+			}
+			
+			if($(#ID_START_TIME_SS).value < 10)
+			{
+				$(#ID_START_TIME_SS).value = "0" + $(#ID_START_TIME_SS).value;
+			}
+		}
+	});
+	
+	</script>
+
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+	function self.ready()
+    {
+		self.language =  view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+		   OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}		
+		varTimeFormat = self.CheckforTimeFormat();
+		if(varTimeFormat == false)
+		{
+			$(#ID_12HOURS_CLOCK).state.collapsed = true;
+		}
+		else
+		{
+			$(#ID_12HOURS_CLOCK).state.expanded = true;
+		}
+		var varStartTime = new Date(); 
+		var varTimeConvert = varStartTime.hour;
+		if(varTimeFormat == true)
+		{
+			if(varTimeConvert >= 12)
+			{
+				$(#ID_AMPM_TIME).value = 2;
+				if( varTimeConvert > 12)
+				{
+					varTimeConvert = varTimeConvert - 12;
+				}
+			}
+			else if(varTimeConvert < 12)
+			{
+				$(#ID_AMPM_TIME).value = 1;
+				if(varTimeConvert == 0)
+				{
+					varTimeConvert = 12;	
+				}
+			}
+			
+		}
+		if(varTimeConvert < 10)
+		{
+			varTimeConvert = "0" + varTimeConvert;
+		}
+		$(#ID_START_TIME_HH).value = varTimeConvert;
+		$(#ID_START_TIME_MM).value = varStartTime.minute;
+		if($(#ID_START_TIME_MM).value < 10)
+		{
+			$(#ID_START_TIME_MM).value = "0" + $(#ID_START_TIME_MM).value;
+		}
+		$(#ID_START_TIME_SS).value = varStartTime.second;
+		if($(#ID_START_TIME_SS).value < 10)
+		{
+			$(#ID_START_TIME_SS).value = "0" + $(#ID_START_TIME_SS).value;
+		}
+		$(#IDR_CHECK_LOW_BATTERY).state.value = true;
+		$(#IDR_CHECK_SHUT_DOWN).state.value = false;
+		$(#IDR_CHECK_WAKE_UP).state.collapsed = true;
+		$(#IDR_CHECK_WAKE_UP).state.value = false;
+		$(#IDR_CHECK_SCAN_SKIP).state.value = true;
+		$(#ID_START_DATE_MONTHLY).state.collapsed = true;
+				
+		$(#IDR_CHECK_SUNDAY).state.value = false;
+		$(#IDR_CHECK_MONDAY).state.value = false;
+		$(#IDR_CHECK_TUESDAY).state.value = false;
+		$(#IDR_CHECK_WEDNESDAY).state.value = false;
+		$(#IDR_CHECK_THURSDAY).state.value = false;
+		$(#IDR_CHECK_FRIDAY).state.value = false;
+		$(#IDR_CHECK_SATURDAY).state.value = false;
+		$(#IDR_RADIO_SCHED_QUICK).checked = true;
+		
+		DefaultRegOptStatus();
+		
+		vlistObj = $(table#ID_SCHED_TABLE);
+		vlistObj.value = FileFolderRecords;
+		vlistObj.on("change","tbody > tr", function()
+        {											   // some change inside tr // note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAll.value = false;
+        });
+				
+		if(view.parameters.varBrowseType == "ScheduleEdit")
+		{
+			varEntryIdEdit = view.parameters.varEditId;	
+			vAddArr = view.parameters.vArrSS;				
+			AddSchedScanEntry();
+			FunSetValuesfromDB();			
+			if(vAddArr[0].FileORFolderFlag == 1 || vAddArr[0].RegOptFlag == 1 )
+			{
+				varSettingsCount = 1;
+			}
+			if(vAddArr[0].RegOptFlag == 1)
+			{
+				varSettingsCount = 1;
+			}
+			
+			if(varSettingsCount == 0)
+			{
+				$(#ID_SCHED_TABLE).state.disabled = true;				
+			}	  
+			else
+			{
+				if(vAddArr[0].FileORFolderFlag == 1)
+				{
+					showRecordset();
+				}
+				else if(vAddArr[0].RegOptFlag == 1 )
+				{
+					showRegOptimizerRecordset();
+					if( $(#COMActiveXEntries).value && $(#UninstallEntries).value && $(#FontEntries).value && $(#SharedDLLs).value && $(#ApplicationPaths).value && $(#HelpFileInformation).value && $(#WindowsStartupItems).value && $(#WindowsServices).value && $(#InvalidExtensions).value && $(#RootKits).value && $(#RogueApplications).value && $(#Worms).value && $(#SpywareThreats).value && $(#AdwareThreats).value && $(#Keyloggers).value && $(#BHO).value && $(#ExplorerEntries).value && $(#InternetExplorerEntries).value)
+						$(#RegistryOptSelectAll).value = true;
+					else
+						$(#RegistryOptSelectAll).value = false;
+				}	
+			}
+		}
+		else if(view.parameters.varBrowseType == "ScheduleAdd")
+		{
+			vAddArr = view.parameters.vArrSS;
+			$(#ID_CHECK_DAILY).state.disabled = true;
+			$(#IDR_CHECK_SUNDAY).state.value = true;
+			$(#IDR_CHECK_MONDAY).state.value = true;
+			$(#IDR_CHECK_TUESDAY).state.value = true;
+			$(#IDR_CHECK_WEDNESDAY).state.value = true;
+			$(#IDR_CHECK_THURSDAY).state.value = true;
+			$(#IDR_CHECK_FRIDAY).state.value = true;
+			$(#IDR_CHECK_SATURDAY).state.value = true;
+			$(#ID_SCHED_TABLE).state.disabled = true;
+			$(#ID_SHOW_HIDE_TABLE).state.collapsed = true;			
+			$(#ID_SHOW_HIDE_TBL_REG_OPT).state.collapsed = true;			
+		}
+    }
+    </script>
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body .schedule_scan>
+    <div .header_schedule_scan>
+        <window-caption role="window-caption">
+            <img src="IDR_IMG_SHIELD_ICO.png"></window-caption>
+        <window-button #window_close ></window-button>
+    </div>
+    <div .main_schedule_scan>
+        <div .content_display_sched>
+            <div .content_tray_type>
+                <h3><label>ID_SCHED_TYPE</label></h3>
+                <div .select_scan_type>
+                    <select #ID_SELECT_SCHEDULE>
+                        <option value=1><label>ID_SCHED_DAILY</label></option>
+                        <option value=2><label>ID_SCHED_WEEKLY</label></option>
+                        <option value=3><label>ID_SCHED_MONTHLY</label></option>
+                    </select>
+                </div>
+            </div>
+            <div .content_tray_check>
+				<div .flow_horizontal>
+					<button type="checkbox" checked #IDR_CHECK_LOW_BATTERY>
+					</button>
+					<p .margin_top_three><label>ID_SCHED_BATTERY</label></p>
+                </div>
+				<div .flow_horizontal>
+					<button type="checkbox" #IDR_CHECK_SHUT_DOWN>
+					</button>
+					<p .margin_top_three><label>ID_SCHED_SHUT_DOWN</label></p>
+                </div>
+				<div .flow_horizontal>
+                    <button type="checkbox" #IDR_CHECK_WAKE_UP>
+                        <p><label>ID_SCHED_WAKE_UP</label></p>
+                    </button>					
+                </div>
+				<div .flow_horizontal>
+					<button type="checkbox" checked #IDR_CHECK_SCAN_SKIP>
+					</button>
+					<p .margin_top_three><label>ID_SCHED_START_MISSED</label></p>
+                </div>                
+            </div>
+			<div .content_scan_days_parent_div>
+				<div .content_scan_day_date #ID_24_HOUR>
+					<div style="flow:horizontal;">
+						<h3><label>ID_SCHED_START_TIME</label>:
+							<input #ID_START_TIME_HH style="text-align:center;" maxlength="2" type="number" value="now" .scan_time_date /> :
+							<input #ID_START_TIME_MM style="margin:0dip;text-align:center;" maxlength="2" type="number" value="now" .scan_time_date /> :
+							<input #ID_START_TIME_SS style="margin:0dip;text-align:center;" maxlength="2" type="number"  value="now" .scan_time_date /> 
+						</h3>
+						<div #ID_12HOURS_CLOCK>
+							<select .timeAmPm #ID_AMPM_TIME>
+								<option value=1><label>AM</label></option>
+								<option value=2><label>PM</label></option>
+							</select>
+						</div>
+					</div>
+                    <h3 #ID_START_DATE_MONTHLY><label>ID_START_DATE</label>:<input #ID_START_DATE type="date" value="today" .scan_time_date /></h3>
+				</div>
+				<div #ID_CHECK_DAILY .content_scan_days>
+					<button type="checkbox" #IDR_CHECK_SUNDAY .btn_scan_day>
+						<label>ID_SUNDAY</label>
+					</button>
+					<button type="checkbox" #IDR_CHECK_MONDAY .btn_scan_day>
+						<label>ID_MONDAY</label>
+					</button>
+					<button type="checkbox" #IDR_CHECK_TUESDAY .btn_scan_day>
+						<label>ID_TUESDAY</label>
+					</button>
+					<button type="checkbox" #IDR_CHECK_WEDNESDAY .btn_scan_day>
+						<label>ID_WEDNESDAY</label>
+					</button>
+					<button type="checkbox" #IDR_CHECK_THURSDAY .btn_scan_day>
+						<label>ID_THURSDAY</label>
+					</button>
+					<button type="checkbox" #IDR_CHECK_FRIDAY .btn_scan_day>
+						<label>ID_FRIDAY</label>
+					</button>
+					<button type="checkbox" #IDR_CHECK_SATURDAY .btn_scan_day>
+						<label>ID_SATURDAY</label>
+					</button>
+				</div>				
+			</div>
+            <div .btn_radio_scan_type>
+                <h3><label>ID_SCAN_TYPE</label></h3>
+                <button type="radio" #IDR_RADIO_SCHED_QUICK>
+                    <label>ID_TYPE_SCAN_QUICK</label>
+                </button><br/>
+                <button type="radio" #IDR_RADIO_SCHED_FULL>
+                    <label>ID_TYPE_SCAN_FULL</label>
+                </button><br/>
+                <button type="radio" #IDR_RADIO_SCHED_SPEC>
+                    <label>ID_HTM_CUSTOM_SCAN_CUSTOM_SCAN</label>
+                </button><br/>
+                <button type="radio" #IDR_RADIO_SCHED_TFC>
+                    <label>ID_TEMPORARY_FILE_CLEANER</label>
+                </button><br/>
+                <button type="radio" #IDR_RADIO_SCHED_REG_OPT>
+                    <label>ID_REGISTRY_OPTIMIZER</label>
+                </button>
+                <div .show_hide_table #ID_SHOW_HIDE_TABLE>
+                    <div .file-drop-zone1>
+                        <table .sched_table #ID_SCHED_TABLE>
+                            <thead>
+                                <tr>
+                                    <th style="width:29dip;"></th><th style="width:364.4dip;"><label>ID_SPEC_SCAN_DESC</label></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><input(selected)|checkbox /></td><td(FileFoldName)></td></tr>
+                            </tbody>
+                        </table>
+					</div>
+					<div class="patch1">
+						<p .select_all_check><input #select-all-File|checkbox checked /> <label for="select-all-File">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></p>					
+						<ul .cstmDrop_schedule_scan .scheduledBtnMgLft>
+							<li><label>ID_HTM_CUSTOM_SCAN_ADD</label>
+								<ul class="drop2">
+									<li #ID_BROWSE_FILE><label>ID_FILE</label></li>
+									<li #ID_BROWSE_FOLDER><label>ID_FOLDER</label></li>
+								</ul>
+							</li>
+							<li #ID_DELETE_FILEFOLD><label>ID_HTM_CUSTOM_SCAN_DELETE</label></li>
+						</ul>
+					</div>
+                </div>
+				<div #ID_SHOW_HIDE_TBL_REG_OPT>
+					<div class="disAreaRegistry">
+						<div #registryOption>
+							<h4 .pdLeft8 .headingClrwht><label>ID_REGISTRY_SCAN_AREAS</label></h4>
+							<div .horizontalFlow .chkOption>
+								<div>
+									<input type="checkbox" #COMActiveXEntries><label for="COMActiveXEntries">ID_COM_OR_ACTIVEX_ENTRIES</label><br/>
+									<input type="checkbox" #UninstallEntries><label for="UninstallEntries">ID_UNINSTALL_ENTRIES</label><br/>
+									<input type="checkbox" #FontEntries><label for="FontEntries">ID_FONT_ENTRIES</label><br/>
+									<input type="checkbox" #SharedDLLs><label for="SharedDLLs">ID_SHARED_DLLS</label><br/>
+									<input type="checkbox" #ApplicationPaths><label for="ApplicationPaths">ID_APPLICATION_PATHS</label><br/>
+									<input type="checkbox" #HelpFileInformation><label for="HelpFileInformation">ID_HELP_FILE_INFORMATION</label><br/>
+									<input type="checkbox" #WindowsStartupItems><label for="WindowsStartupItems">ID_WINDOWS_STARTUP_ITEMS</label><br/>
+									<input type="checkbox" #WindowsServices><label for="WindowsServices">ID_WINDOWS_SERVICES</label><br/>
+									<input type="checkbox" #InvalidExtensions><label for="InvalidExtensions">ID_INVALID_EXTENSIONS</label><br/>
+								</div>
+								<div>
+									<input type="checkbox" #RootKits><label for="RootKits">ID_ROOTKITS</label><br/>
+									<input type="checkbox" #RogueApplications><label for="RogueApplications">ID_ROGUE_APPLICATIONS</label><br/>
+									<input type="checkbox" #Worms><label for="Worms">ID_WORMS</label><br/>
+									<input type="checkbox" #SpywareThreats><label for="SpywareThreats">ID_SPYWARE_THREATS</label><br/>
+									<input type="checkbox" #AdwareThreats><label for="AdwareThreats">ID_ADWARE_THREATS</label><br/>
+									<input type="checkbox" #Keyloggers><label for="Keyloggers">ID_KEYLOGGERS</label><br/>
+									<input type="checkbox" #BHO><label for="BHO">ID_BHO</label><br/>
+									<input type="checkbox" #ExplorerEntries><label for="ExplorerEntries">ID_EXPLORER_ENTRIES</label><br/>
+									<input type="checkbox" #InternetExplorerEntries><label for="InternetExplorerEntries">ID_INTERNET_EXPLORER_ENTRIES</label><br/>
+								</div>
+							</div><br/>
+								<span>
+									<input type="checkbox" #RegistryOptSelectAll><label for="RegistryOptSelectAll">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label>
+								</span>
+						</div>
+					</div>		
+				</div>
+				<br/>
+            </div>
+        </div>
+        <div .schedule_scan_footer>
+            <div>
+				<div class="btnCstmSchedule" .fontNormal #ID_OK><label>ID_OK</label></div>
+				<div class="btnCstmSchedule" .fontNormal #ID_CANCEL><label>ID_CANCEL</label></div>
+            </div>
+        </div>
+    </div>
+	<div .message_display_sched_scan>
+		<p #ID_Def_exception_MSG></p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,1829 @@
+<html lang="ENGLISH">
+
+<head>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <include src="IDR_HTM_FONT_AWESOME.htm" />
+    <style>
+        @import url(IDR_CSS_MAIN.css);
+        @import url(IDR_CSS_TOGGELER.css);
+        @import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+        @import url(IDR_CSS_GERMAN_LANG.css);
+
+        html {
+            behavior: WardWizDataEncDec;
+        }
+
+        #encrypt_button:collapsed {
+            visibility: none;
+        }
+
+        #decrypt_button:collapsed {
+            visibility: none;
+        }
+
+        #ID_Stop_Button:collapsed {
+            visibility: none;
+        }
+
+        #ID_Stop_Button:disabled {
+            opacity: .5;
+        }
+
+        #ID_BTN_BROWSE_DE:disabled {
+            opacity: 0.5;
+        }
+
+        input {
+            context-menu: none;
+        }
+
+        .contTopDataEncryption {
+            position: relative;
+            margin-left: 10dip;
+            flow: horizontal;
+        }
+
+        .EncryptWidth {
+            width: 200dip;
+            margin-top: 2dip;
+        }
+
+        #encrypt_radio {
+            margin-top: 1dip;
+            margin-right: 0dip;
+        }
+
+        #decrypt_radio {
+            margin-top: 1dip;
+            margin-right: 0dip;
+            margin-left: 7dip;
+        }
+
+        .EcryptBtn {
+            margin-top: 3dip;
+        }
+
+        .dataEncryptionWidget widget[type=file-name] {
+            prototype: FileName;
+            flow: horizontal;
+            width: 430dip;
+            margin-top: -8dip;
+            padding-right: -15dip;
+            margin-left: 38dip;
+        }
+
+        .dataEncryptionWidget widget[type=file-name]>input {
+            width: *;
+        }
+
+        .dataEncryptionWidget .selector {
+            color: #fff;
+            cursor: pointer;
+            background-repeat: expand stretch-left stretch-right stretch-middle !important;
+            background-position: 3dip 3dip 3dip 3dip !important;
+            height: 21dip;
+            width: 117dip;
+            text-align: center;
+            padding: 0;
+            vertical-align: middle;
+            line-height: 21dip;
+            font-weight: normal;
+            font-size: 12dip;
+            margin-left: 10dip;
+        }
+
+        .dataEncryptionWidget .selector label {
+            width: 117dip;
+            text-align: center !important;
+        }
+
+        .dataEncryptionWidget .file_folder {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dataEncryptionWidget .file_folder_div {
+            visibility: none;
+            position: absolute;
+            top: -24dip;
+            right: 12dip;
+            border-radius: 10dip 10dip 0 0;
+        }
+
+        .dataEncryptionWidget .file_folder li {
+            list-style: none;
+            display: inline-block;
+            padding: 2dip;
+            width: 54dip;
+            behavior: clickable;
+            color: #fff;
+        }
+
+        .dataEncryptionWidget .file_folder_div ul {
+            margin: 0;
+        }
+
+        .dataEncryptionWidget .file_folder li:hover {
+            color: #000;
+            cursor: pointer;
+        }
+
+        .dataEncryptionWidget .selector:hover>.file_folder_div {
+            visibility: visible;
+        }
+
+        .top12Mrgn {
+            margin-top: 12dip;
+        }
+
+        .tot_fillesDataEnc {
+            width: 180dip;
+            padding-left: 15dip;
+        }
+
+        .processed_fillesDataEnc {
+            width: 180dip;
+        }
+
+        #encrypt_button,
+        #decrypt_button {
+            margin-top: 0dip;
+            margin-left: 180dip;
+            width: 100dip;
+        }
+
+        .stop_encrypt {
+            margin-top: 0dip !important;
+            margin-left: 180dip !important;
+            width: 100dip !important;
+        }
+
+        table#theCrypttable {
+            style-set: vgrid;
+            flow: table-fixed;
+            width: 645dip;
+            height: 160dip;
+            padding: 0;
+            border-spacing: 0;
+            overflow-x: auto;
+            margin: 10dip !important;
+            horizontal-scrollbar: my-v-scrollbar;
+        }
+
+        table#theCrypttable>thead {
+            behavior: column-resizer;
+        }
+
+        table#theCrypttable>tbody {
+            overflow-y: auto;
+            vertical-scrollbar: my-v-scrollbar;
+        }
+
+        table#theCrypttable th {
+            color: white;
+            font-size: 12dip;
+            border: none;
+            padding: 4dip;
+            background-color: #DDD;
+            background-repeat: expand stretch-left stretch-right stretch-middle;
+            background-position: 3dip 3dip 3dip 3dip;
+        }
+
+        table#theCrypttable th:hover {
+            color: #ffe598;
+            transition: blend;
+        }
+
+        table#theCrypttable tr:current
+
+        /* current row */
+            {
+            color: black;
+        }
+
+        table#theCrypttable td {
+            padding: 2dip;
+            min-height: 18dip;
+        }
+
+        table#theCrypttable th:nth-child(1) {
+            width: 0.81*;
+        }
+
+        table#theCrypttable th:nth-child(2) {
+            width: 0.19*;
+        }
+
+        table#theCrypttable td:nth-child(1) {
+            text-align: left !important;
+            width: 0.81*;
+        }
+
+        /* first column */
+        table#theCrypttable td:nth-child(2)
+
+        /* last column */
+            {
+            text-align: left !important;
+            overflow: hidden;
+            /* three line below - ellipsis */
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 0.19*;
+            border-left: 1dip solid #bdbccc;
+        }
+
+        .warningDataEncryption {
+            text-align: right;
+            padding-right: 12dip;
+        }
+
+        #ID_BTN_BROWSE_DE {
+            margin-right: 20dip;
+            margin-left: 5dip;
+        }
+
+        #IDedtFilePath {
+            margin-left: 10dip;
+        }
+
+        #select_options:disabled {
+            opacity: 0.4;
+        }
+
+        .translateWindow {
+            filter: blur(5dip);
+            position: relative;
+            opacity: .4;
+        }
+
+        .translateWhenLightBox {
+            filter: blur(5dip);
+            opacity: .3;
+        }
+
+        .messageContAlert {
+            width: 300dip;
+            height: 155dip;
+            margin: *;
+            position: absolute;
+            top: 110dip;
+            left: -20dip;
+            text-align: center;
+            padding: 15dip;
+            //border-radius:30dip 0 30dip 0;
+            visibility: hidden;
+            color: #000;
+        }
+
+        .messageContAlert:expanded {
+            visibility: visible;
+        }
+
+        #ID_BUY_HIGH_VER {
+            visibility: none;
+        }
+
+        #ID_BUY_HIGH_VER:expanded {
+            visibility: visible;
+        }
+
+        #ID_BUY_HIGH_VER:collapsed {
+            visibility: none;
+        }
+
+        #ID_REGISTER_NOW {
+            visibility: none;
+        }
+
+        #ID_REGISTER_NOW:expanded {
+            visibility: visible;
+        }
+
+        #ID_REGISTER_NOW:collapsed {
+            visibility: none;
+        }
+
+        #ID_VERSION_MESSAGE2 {
+            visibility: none;
+        }
+
+        #ID_VERSION_MESSAGE2:expanded {
+            visibility: visible;
+        }
+
+        #ID_VERSION_MESSAGE2:collapsed {
+            visibility: none;
+        }
+
+        @set std-toggle {
+
+            :root {
+                display: inline-block;
+                behavior: check;
+                flow: stack;
+                border: none;
+                background: none;
+                width: max-content;
+                height: 1.4em;
+                padding: 0 0 0 38dip;
+                cursor: pointer;
+            }
+
+            :root[type="radio"] {
+                behavior: radio;
+            }
+
+            :root::marker {
+                width: 28dip;
+                height: 15dip;
+                background: threedlight;
+                border-radius: 7dip;
+                margin: * * * 3dip;
+                foreground-image: url(stock:disk);
+                foreground-repeat: no-repeat;
+                foreground-position: 1dip 50%;
+                foreground-size: 13dip;
+                fill: window;
+                stroke: threedshadow;
+                stroke-width: 1dip;
+                transition: foreground-position circ-in-out 100ms, background-color linear 100ms;
+            }
+
+            :root:checked::marker {
+                foreground-position: 14dip 50%;
+                background: highlight;
+            }
+
+            :root>option {
+                text-align: start;
+            }
+
+            :root>option:first-child {
+                visibility: visible;
+            }
+
+            :root>option:last-child {
+                visibility: hidden;
+            }
+
+            :root:checked>option:first-child {
+                visibility: hidden;
+            }
+
+            :root:checked>option:last-child {
+                visibility: visible;
+            }
+
+        }
+
+        toggle,
+        button[type="toggle"] {
+            style-set: std-toggle;
+        }
+
+        .radioIcon {
+            size: 20dip;
+            margin-top: 10dip;
+            background: none;
+        }
+
+        .buttonSwitch {
+            flow: horizontal-flow;
+            padding: 20dip;
+            /* padding-bottom: 0; */
+            padding-left: 50dip;
+        }
+
+        .mainBody {
+            flow: horizontal-flow;
+            padding: 20dip;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .half {
+            width: 1*;
+        }
+
+        .half button {
+            display: block;
+            font-size: 10dip;
+            padding-bottom: 0;
+        }
+
+        .checkTitle {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            margin-left: 3dip;
+            font-size: 11dip;
+        }
+
+        .fourth {
+            width: 1*;
+            flow: horizontal-flow;
+            /* vertical-align: middle; */
+        }
+
+        .contentFlow {
+            width: 90dip;
+            padding-left: 10dip;
+        }
+
+        .titleNew {
+            padding: 0;
+            margin: 0;
+            /* padding-bottom: 10dip; */
+            font-size: 12dip;
+        }
+
+        svg.chart.bar {
+            aspect: MicroChart.Bar url(IDR_MICRO_CHART.tis);
+            size: 40dip 16dip;
+        }
+
+        #updating {
+            width: 640dip;
+            height: 60dip;
+            margin-left: 20px;
+        }
+
+        svg.chart.custom3 {
+            aspect: MicroChart.Bar(fill: red gold green blue) url(IDR_MICRO_CHART.tis);
+            size: 600dip 52dip;
+        }
+
+        .btnNew2Sm {
+            cursor: pointer;
+            background: #0097D6;
+            width: 60dip;
+            height: 20dip;
+            padding-top: 0dip;
+            padding-left: 10dip;
+            padding-right: 10px;
+            color: #fff;
+            border-radius: 30dip;
+            position: relative;
+            margin-top: 0;
+        }
+
+        .btnNew2Sm label {
+            width: 50dip;
+            text-align: left;
+            margin-top: 3dip;
+        }
+
+        .shieldnew {
+            background: none;
+            margin-left: 90dip;
+            size: 120dip;
+        }
+        input[type=hslider] {
+        height:4dip;
+        background:#ccc;
+        padding:7dip;
+        width: 220dip;
+        border: 2dip solid #c0c0c0;
+        border-radius: 50dip;
+        margin-left: 40dip;
+      }
+      
+      input[type=hslider] > button.slider { 
+        size:10dip; 
+        foreground: none; 
+        background: #fff; 
+        border:4dip solid rgb(32,32,32);
+        border-radius:50%;
+      }
+      input[type=hslider]:focus > button.slider {
+        border-color: highlight;
+      }
+
+      input[type=hslider] {
+        background-image: url(stock:block);
+        background-repeat: no-repeat;
+        background-size: length(slider-position) 100%;
+        fill: rgb(32,32,32);
+        stroke-width:0;
+      }
+      .listSt{
+        list-style: none;
+        flow: horizontal-flow;
+        padding: 0;
+        padding-left: 50dip;
+      }
+      .listSt li{
+        padding-right: 27dip;
+        text-align: center;
+        font-size: 11dip;
+      }
+    </style>
+
+    <script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script>
+    <script type="text/tiscript">
+
+        $(#updating).timer(1s, function() {
+          var random = rand(10);
+          var values = this.value;
+          values.shift();
+          values.push(random);
+          this.value = values;
+          return true;
+        });
+        
+        
+        </script>
+    <script type="text/tiscript">
+	var isEncryptClicked = false;
+	var isDecryptClicked = false;
+	var varDlgBtnFlag = 0;
+	</script>
+
+    <script type="text/tiscript">
+	function CheckForProductStatus()
+	{
+		if(productVersion == #BASIC){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;
+			$(#ID_REGISTER_NOW).state.collapsed = true;			
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ESSENTIALPLUS || productVersion == #ESSENTIAL)
+		{
+			if(g_ProductLicenseType == #UNREGISTERED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_IS_UNREGISTERED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_A_LICENSE_OR_TO_REGISTER_FOR_30_DAYS_FREE_TRIAL");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_firewall_inner).attributes.addClass("translateWindow");
+				$(.body_firewall_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.expanded = true;
+				$(.messageContAlert).style["height"] = 190dip;
+				
+			}
+			else if(g_ProductLicenseType == #EXPIRED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_HAS_EXPIRED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_THE_COMMERCIAL_LICENSE");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_firewall_inner).attributes.addClass("translateWindow");
+				$(.body_firewall_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.collapsed = true;
+				$(.messageContAlert).style["height"] = 180dip;
+			}
+		}
+	}	
+    </script>
+
+    <script type="text/tiscript">
+	$(#ID_CLOSE_POPUP).onClick = function()
+	{
+		selectView("IDR_HTM_HOME");
+	}
+	</script>
+
+    <script type="text/tiscript">
+	self.on("closerequest", function(event)
+    {
+        self.CallContinueDataEncDec();
+    });
+	</script>
+    <script type="text/tiscript">
+    function showNotification(strMsgText)
+    {
+		BlurWhenLightBox();
+        $(#StatusMessage).value = strMsgText;
+        var res = dialog { body:$(form#simple-dialog),
+        returns: #values,
+		buttons: [ { caption: Lang.translate("ID_OK"), role:#ok, value:true }]
+        };
+        if(res == true)
+        {
+			RemoveBlurLightBox();
+            return 1;
+        }
+        else
+        {
+			RemoveBlurLightBox();
+            return 0;
+        }
+    }
+    </script>
+
+    <script type="text/tiscript">
+    var strFilePath = "";
+    var FileFoldName = "";
+    var bIsInitializeAction = false;
+    </script>
+
+    <script type="text/tiscript">
+    function IsBrowsePopUpDisplayed(bEnableRequest)
+    {
+        g_IsAnyPopUpDisplayed = bEnableRequest;
+    }
+    function showValidationMsg(strFilePath)
+    {
+        if(self.CheckIsNetworkPath(strFilePath))
+        {
+			BlurWhenLightBox();
+            $(#StatusMessage).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+            var res = dialog { body:$(form#simple-dialog),
+                        returns: #values,
+                        buttons: [ { caption: "OK", role:#ok, value:true }]
+                        };
+			RemoveBlurLightBox();		
+            $(widget).value = "";
+            return true;
+        }
+    }
+    const HTML_FILES = "All Files All Files (*.*)|*.*";
+    class FileName : Behavior {
+        function attached() {
+            this.$append( <input|text.path readonly #IDedtFilePath><button class="selector" #ID_BTN_BROWSE_DE><label>ID_UPDATE_BTN_BROWSE</label><div class="file_folder_div"><ul class="file_folder"><li #ID_BROWSE_FILE .border_right><label>ID_FILE</label></li><li #ID_BROWSE_FOLDER><label>ID_FOLDER</label></li></ul></div></button>);
+
+            var path = this.path = this.$(.path);
+
+            this.$(button.selector).onClick = function ()
+            {
+                (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+            };
+    $(#ID_BROWSE_FILE).onClick = function()
+    {
+        var bEncrypt = $(#encrypt_radio).value;
+        $(widget).value = "";
+        strFilePath = "";
+        if(bEncrypt)
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFile(#open ,  "Files (*.*)|*.*" , "files");
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+                    if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                    if(!self.OnCheckFileExists(strFilePath) && strFilePath != "")
+                    {
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_PATH_DOESNT_EXIST");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                        $(widget).value = "";
+                        g_bIsAnyTaskInProcess = false;
+                        g_IsDataEncDecRunning = false;
+                        g_varCurrentTask = #NONE;
+                        $(#ID_BTN_BROWSE_DE).state.disabled = false;
+						$(#select_options).state.disabled = false;
+                        $(#encrypt_button).state.disabled = false;
+                        $(#decrypt_button).state.disabled = false;
+                        $(#IDedtFilePath).value = "";
+                        strFilePath = "";
+                        return;
+                    }
+                $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+        }
+        else
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFile(#open ,  "Files (*.AK)|*.AK" , ".AK files");
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+                    if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                    if(!self.OnCheckFileExists(strFilePath) && strFilePath != "")
+                    {
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_PATH_DOESNT_EXIST");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                        $(widget).value = "";
+                        g_bIsAnyTaskInProcess = false;
+                        g_IsDataEncDecRunning = false;
+                        g_varCurrentTask = #NONE;
+                        $(#ID_BTN_BROWSE_DE).state.disabled = false;
+						$(#select_options).state.disabled = false;
+                        $(#encrypt_button).state.disabled = false;
+                        $(#decrypt_button).state.disabled = false;
+                        $(#IDedtFilePath).value = "";
+                        strFilePath = "";
+                        return;
+                    }
+                $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+            }
+            (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+    }
+
+    $(#ID_BROWSE_FOLDER).onClick = function()
+    {
+        var bEncrypt = $(#encrypt_radio).value;
+        $(widget).value = "";
+        strFilePath = "";
+        if(bEncrypt)
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFolder();
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+					if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+        }
+        else
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFolder();
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+                    if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+            }
+            (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+        }
+    }
+
+    property value(v) {
+        get { return this.path.value; }
+        set { this.path.value = v; }
+    }
+    }
+
+    $(widget).onValueChanged = function() {
+    stdout.println(this.value);
+    };
+    </script>
+
+    <script type="text/tiscript">
+	var vlistObj;
+	</script>
+
+    <script type="text/tiscript">
+    function setDataCryptStatus( varAppendNewFile, strCryptFileName, strCryptActiontaken)
+    {
+		if(varAppendNewFile == 33) /* 33 is CONSTANT from Native for showing status of file on UI */
+        {
+           //varFilelist[varFileCount].$content( <td>{TempFileName}</td><td>{strCryptActiontaken}</td> );
+            varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+            if(strCryptActiontaken == Lang.translate("IDS_DECR_INITIALIZING"))
+            {
+                bIsInitializeAction = true;
+            }
+            else
+            {
+                bIsInitializeAction = false;
+            }
+        }
+        if(varAppendNewFile == 7 || varAppendNewFile == 8) /* 33 is CONSTANT from Native for showing status of file on UI */
+        {
+			$(#Processed_files).value = ++varProcessedFileCount;
+            varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+        }
+        if(varAppendNewFile == 16) /* 16 is CONSTANT from Native for adding new file on UI */
+        {
+            varFileCount++;
+			varArrCount = varFileCount;
+		    //$(#Processed_files).value = ++varProcessedFileCount;
+            //varFilelist[varFileCount] = $(table>tbody).$append( <tr> <td>{strCryptFileName}</td><td>{strCryptActiontaken}</td></tr> );
+            varArrayFiles[varArrCount] = {FilePath:strCryptFileName, ActionTaken:""};
+        }
+        if(varAppendNewFile == 19) /* 19 is CONSTANT from Native for updating Total file count on UI */
+        {
+            varTotalFileCount = strCryptActiontaken;
+            $(#Total_files).value = varTotalFileCount;
+        }
+        if(varAppendNewFile == 17) /* 17 is CONSTANT from Native for CryptOperation cancelled */
+        {
+            //varFilelist[varFileCount].$content( <td>{TempFileName}</td><td>{strCryptActiontaken}</td> );
+			varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+            var bEncrypt = $(#encrypt_radio).value;
+            if(bEncrypt)
+            {
+			    $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+			}
+            else
+            {
+			    $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+			}
+        }
+        if(varAppendNewFile == 11) // Crypt operation is finished
+        {
+            if(varFileCount == -1)
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_NO_FILE_FOUND_TO_PROCESS");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				$(#select_options).state.disabled = false;
+                $(#encrypt_button).state.disabled = false;
+                $(#decrypt_button).state.disabled = false;
+                $(#IDedtFilePath).value = "";
+                strFilePath = "";
+            }
+            else
+            {
+                var bEncrypt = $(#encrypt_radio).value;
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				$(#select_options).state.disabled = false;
+                $(#encrypt_button).state.disabled = false;
+                $(#decrypt_button).state.disabled = false;
+                $(#IDedtFilePath).value = "";
+                strFilePath = "";
+                if(bEncrypt)
+                {
+                    $(#encrypt_button).state.collapsed = false;
+                    $(#decrypt_button).state.collapsed = true;
+                    $(#ID_Stop_Button).state.collapsed = true;
+                    if(varDlgBtnFlag == 0)
+                    {
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_DATA_ENCRYPTION_IS_COMPLETED_SUCCESSFULLY");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                    }
+                    else{
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_DATA_ENCRYPTION_IS_COMPLETED_SUCCESSFULLY");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                    }
+
+                }
+                else
+                {
+                    $(#encrypt_button).state.collapsed = true;
+                    $(#decrypt_button).state.collapsed = false;
+                    $(#ID_Stop_Button).state.collapsed = true;
+					BlurWhenLightBox();
+                    $(#StatusMessage).value = Lang.translate("ID_DATA_DECRYPTION_IS_COMPLETED_SUCCESSFULLY");
+                    var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+                                buttons: [ { caption: "OK", role:#ok, value:true }]
+                                };
+					RemoveBlurLightBox();
+                }
+            }
+        }
+        if(varAppendNewFile == 28 || varAppendNewFile == 31 || varAppendNewFile == 34 || varAppendNewFile == 9) /*  */
+        {
+		    var bEncrypt = $(#encrypt_radio).value;
+            g_bIsAnyTaskInProcess = false;
+            g_IsDataEncDecRunning = false;
+            g_varCurrentTask = #NONE;
+            $(#ID_BTN_BROWSE_DE).state.disabled = false;
+			$(#select_options).state.disabled = false;
+            $(#encrypt_button).state.disabled = false;
+            $(#decrypt_button).state.disabled = false;
+            $(#IDedtFilePath).value = "";
+            strFilePath = "";
+            $(#Total_files).value = Lang.translate("ID_TOTAL_FILES_0");
+            if(bEncrypt)
+            {
+                $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+            }
+            else
+            {
+                $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+            }
+            showNotification(strCryptActiontaken);
+        }
+        if(varAppendNewFile == 35) //For files in USB Drive
+        {
+            var bEncrypt = $(#encrypt_radio).value;
+            g_bIsAnyTaskInProcess = true;
+            g_IsDataEncDecRunning = true;
+            $(#ID_BTN_BROWSE_DE).state.disabled = true;
+			$(#select_options).state.disabled = true;
+            $(#encrypt_button).state.disabled = true;
+            $(#decrypt_button).state.disabled = true;
+            varDlgBtnFlag = 1;
+            $(#StatusMessage).value = strCryptActiontaken;
+            var res = dialog { body:$(form#simple-dialog),
+                        returns: #values,
+                        buttons: [ { caption: "OK", role:#ok, value:true }]
+                        };
+        }
+    }
+    </script>
+
+    <script type="text/tiscript">
+	function setDataCryptOprStatus(evt)
+	{
+		var varFinalStatus = evt.data.one.toInteger();
+		var varFilePath = evt.data.two.toString();
+		var varFileStatusMsg = evt.data.three.toString(); 
+		
+		if(varFinalStatus == 11)
+		{
+			$(#encrypt_button).state.collapsed = false;
+			$(#decrypt_button).state.collapsed = true;
+			$(#ID_Stop_Button).state.collapsed = true;
+			$(#ID_BTN_BROWSE_DE).state.disabled = false;
+			g_IsDataEncDecRunning = false;
+		}
+		if(varFinalStatus == 28 || varFinalStatus == 31 || varFinalStatus == 34 || varFinalStatus == 9) /*  */
+        {
+			showNotification(varFileStatusMsg);
+		}
+		if(varFinalStatus == 7 || varFinalStatus == 8)
+        {
+         	varProcessedFileCount = ++varProcessedFileCount;
+			$(#Processed_files).value = varProcessedFileCount;
+            varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+        }
+		else
+		{
+			setDataCryptStatus(varFinalStatus, varFilePath, varFileStatusMsg);
+		}
+	}
+	self.subscribe(setDataCryptOprStatus, Event.BEHAVIOR_EVENT, 0x100 + 23);
+	</script>
+
+    <script type="text/tiscript">
+    function showEncryptionPassDlg(FilePath, KeepOriginal, bIsRequestFromExplorer = false)
+    {
+        var arrTemp = new Array();
+        arrTemp[0] = {encryptPassword:""};
+        strFilePath = FilePath;
+        $(#IDedtFilePath).value = FilePath;
+		varTempCryptFileName = strFilePath;
+        //if(checkIsValidUser() == true)
+        //{
+            if(strFilePath == "")
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_PLEASE_SELECT_FILE_OR_FOLDERS_FOR_ENCRYPTION");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                return;
+            }
+            g_IsAnyPopUpDisplayed = true;
+            var varKeepOriginaltemp = true;
+            var dialogParameters = { varLanguageValue:g_LanguageName, varKeepOriginal:varKeepOriginaltemp, varrTemp:arrTemp, ProductVersion:productVersion, varThemeType:g_themeType};
+            var result = view.dialog{ url: self.url("IDR_HTM_ENCRYPT_PASSWORD.htm"),client:true, alignment:-5, parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+            if(result == null)
+            {
+                if(bIsRequestFromExplorer)
+                {
+                    self.ClosePasswordDialog();
+                    g_bIsAnyTaskInProcess = false;
+                    g_IsDataEncDecRunning = false;
+                    g_varCurrentTask = #NONE;
+                    g_IsAnyPopUpDisplayed = false;
+                    return;
+                }
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                self.Update();
+                return ;
+            }
+
+            var bKeepOriginal = dialogParameters.varKeepOriginal;
+            $(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = true;
+            $(#ID_Stop_Button).state.collapsed = false;
+            $(#ID_Stop_Button).state.disabled = false;
+            $(#ID_BTN_BROWSE_DE).state.disabled = true;
+            $(#encrypt_button).state.disabled = true;
+            $(#decrypt_button).state.disabled = true;
+            g_bIsAnyTaskInProcess = true;
+            g_IsDataEncDecRunning = true;
+            g_varCurrentTask = #DATACRYPTOPR;
+            varArrayFiles.length = 0;
+            varFileCount = -1;
+			varTotalFileCount = 0;
+			varArrCount = 0;
+			varProcessedFileCount = 0;
+			$(#select_options).state.disabled = true;
+            $(#Total_files).value = Lang.translate("ID_TOTAL_FILES_0");
+            $(#Processed_files).value = "0";
+			self.OnStartDataEncryption(strFilePath, arrTemp[0].encryptPassword, bKeepOriginal, setDataCryptStatus);
+            vlistObj = $(table);
+            vlistObj.value = varArrayFiles;
+        //}
+    }
+    </script>
+
+    <script type="text/tiscript">
+    function showDecryptionPassDlg(FilePath, bIsRequestFromExplorer = false)
+    {
+        var vArr = new Array();
+        vArr[0] = {decryptPassword:""};
+        if(checkIsValidUser() == true)
+        {
+            isDecryptClicked = true;
+            isEncryptClicked = false;
+            $(#encrypt_radio).checked = false;
+            $(#decrypt_radio).checked = true;
+            $(#IDedtFilePath).value = FilePath;
+            $(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = false;
+            strFilePath = FilePath;
+			varTempCryptFileName = strFilePath;
+            if(strFilePath == "")
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_PLEASE_SELECT_FILE_OR_FOLDERS_FOR_DECRYPTION");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                return;
+            }
+            var bKeepOriginal = false;
+            g_IsAnyPopUpDisplayed = true;
+            var dialogParameters = { varLanguageValue:g_LanguageName, ProductVersion:productVersion, varArr:vArr, varThemeType:g_themeType};
+            var DecResult = view.dialog{ url: self.url("IDR_HTM_DECRYPT_PASSWORD.htm"),client:true,alignment:-5, parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+            if(DecResult == null)
+            {
+                if (bIsRequestFromExplorer)
+                {
+                    self.ClosePasswordDialog();
+                    g_bIsAnyTaskInProcess = false;
+                    g_IsDataEncDecRunning = false;
+                    g_varCurrentTask = #NONE;
+                    g_IsAnyPopUpDisplayed = false;
+                    return ;
+                }
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                return ;
+            }
+            $(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = true;
+            $(#ID_Stop_Button).state.collapsed = false;
+            $(#ID_Stop_Button).state.disabled = false;
+            $(#ID_BTN_BROWSE_DE).state.disabled = true;
+			$(#select_options).state.disabled = true;
+            $(#encrypt_button).state.disabled = true;
+            $(#decrypt_button).state.disabled = true;
+            g_bIsAnyTaskInProcess = true;
+            g_IsDataEncDecRunning = true;
+            g_varCurrentTask = #DATACRYPTOPR;
+            varArrayFiles.length = 0;
+            varFileCount = -1;
+            varTotalFileCount = 0;
+			varArrCount = 0;
+            $(#Total_files).value = Lang.translate("ID_TOTAL_FILES_0");
+            $(#Processed_files).value = "0";
+
+            if(self.CheckIsNetworkPath(strFilePath))
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                $(widget).value = "";
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				$(#select_options).state.disabled = true;
+                $(#encrypt_button).state.disabled = false;
+                $(#decrypt_button).state.disabled = false;
+                $(#IDedtFilePath).value = "";
+                strFilePath = "";
+                return;
+            }
+            self.OnStartDataDecryption(strFilePath, vArr[0].decryptPassword, bKeepOriginal, setDataCryptStatus);
+            vlistObj = $(table);
+            vlistObj.value = varArrayFiles;
+       }
+    }
+    </script>
+
+    <script type="text/tiscript">
+    $(#encrypt_button).onClick = function()
+    {
+         var bKeepOriginal;
+         showEncryptionPassDlg(strFilePath,bKeepOriginal);
+    }
+    </script>
+
+    <script type="text/tiscript">
+    $(#decrypt_button).onClick = function()
+    {
+        showDecryptionPassDlg(strFilePath);
+    }
+    </script>
+
+    <script type="text/tiscript">
+    $(#ID_Stop_Button).onClick = function()
+    {
+        if(bIsInitializeAction == true)
+        {
+			BlurWhenLightBox();
+            $(#StatusMessage).value = Lang.translate("IDS_DECR_INITIALISING_PLZ_WAIT");
+            var res = dialog { body:$(form#simple-dialog),
+                        returns: #values,
+                        buttons: [ { caption: "OK", role:#ok, value:true }]
+                        };
+            event.cancel = true;
+			RemoveBlurLightBox();
+            return;
+        }
+        self.OnPauseDataCryptOpr();
+        var bEncrypt = $(#encrypt_radio).value;
+        if(bEncrypt)
+        {
+			   BlurWhenLightBox();
+               $(#StatusMessage).value = Lang.translate("ID_DATA_ENCRYPTION_IS_IN_PROGRESS_DO_YOU_WANT_TO_STOP");
+               var res = dialog { body:$(form#simple-dialog),
+							buttons: [ { caption: "OK", role:#ok, value:true },{ caption: Lang.translate("ID_SCN_CANCEL"), role:#cancel, value:false }]
+						};
+               if(res == true)
+               {   
+			       RemoveBlurLightBox();
+                   g_bIsAnyTaskInProcess = false;
+                   g_IsDataEncDecRunning = false;
+                   g_varCurrentTask = #NONE;
+                   $(#ID_Stop_Button).state.disabled = true;
+				   $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				   $(#select_options).state.disabled = false;
+				   $(#ID_Stop_Button).state.collapsed = true;
+				   $(#encrypt_button).state.collapsed = false;
+				   $(#IDedtFilePath).value = "";
+                   self.StopDataCryptOperation();
+               }
+               else
+               {
+				   RemoveBlurLightBox();
+                   self.OnResumeDataCryptOpr();
+               }
+        }
+        else
+        {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_DATA_DECRYPTION_IS_IN_PROGRESS_DO_YOU_WANT_TO_STOP");
+                var res = dialog { body:$(form#simple-dialog) };
+                if(res == true)
+                {
+				    RemoveBlurLightBox();
+                   g_bIsAnyTaskInProcess = false;
+                   g_IsDataEncDecRunning = false;
+                   g_varCurrentTask = #NONE;
+                   $(#ID_Stop_Button).state.disabled = true;
+				   $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				   $(#select_options).state.disabled = false;
+				   $(#ID_Stop_Button).state.collapsed = true;
+				   $(#decrypt_button).state.collapsed = false;
+				   $(#IDedtFilePath).value = "";
+                   self.StopDataCryptOperation();
+                }
+                else
+                {
+				   RemoveBlurLightBox();				
+                   self.OnResumeDataCryptOpr();
+                }
+        }
+    }
+    </script>
+
+    <script type="text/tiscript">
+	$(#encrypt_radio).onClick = function()
+    {
+		if(isDecryptClicked == true)
+		{
+			$(widget).value = "";
+			strFilePath = "";
+			isEncryptClicked = true;
+			isDecryptClicked = false;
+		}
+        $(#encrypt_button).state.collapsed = false;
+        $(#decrypt_button).state.collapsed = true;
+        $(#ID_Stop_Button).state.collapsed = true;
+        $(#IDedtFilePath).value = "";
+    }
+    $(#decrypt_radio).onClick = function() 
+    {
+		if(isEncryptClicked == true)
+		{
+			$(widget).value = "";
+			strFilePath = "";
+			isEncryptClicked = false;
+			isDecryptClicked = true;
+		}
+	  $(#encrypt_button).state.collapsed = true;
+      $(#decrypt_button).state.collapsed = false;
+      $(#ID_Stop_Button).state.collapsed = true;
+      $(#IDedtFilePath).value = "";
+    }
+	</script>
+
+    <script type="text/tiscript">
+	$(#ID_REGISTER_NOW).onClick = function()
+	{
+		ShowRegistrationDialog(); 
+	}
+	</script>
+
+    <script type="text/tiscript">
+	 function BlurWhenLightBox()
+	 {
+		$(#ID_BLUR_ENC_DNC).attributes.addClass("translateWhenLightBox");
+	 }
+	</script>
+
+    <script type="text/tiscript">
+	function RemoveBlurLightBox()
+	 {
+		$(#ID_BLUR_ENC_DNC).attributes.removeClass("translateWhenLightBox");
+	 }
+	</script>
+
+    <script type="text/tiscript">
+	$(#ID_BUY_HIGH_VER).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/"); 
+	}
+	</script>
+
+    <script type="text/tiscript">
+    function self.ready()
+    {
+	    g_CurrentPage = #DATAENCRYPTION;
+		self.language = g_LanguageName;
+        $(#decrypt_button).state.collapsed = true;
+        $(#ID_Stop_Button).state.collapsed = true;
+		isEncryptClicked = true;	
+		if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		if(g_LanguageName=="ENGLISH")
+		{
+			$(#IDedtFilePath).style["margin-left"] =-20dip;
+			$(#decrypt_radio).style["margin-left"] =30dip;
+		}
+		CheckForProductStatus();
+		if(g_IsDataEncDecRunning == true)
+		{
+			vlistObj = $(#theCrypttable);
+            vlistObj.value = varArrayFiles;
+			$(#Processed_files).value = varProcessedFileCount;
+			varArrCount = varArrayFiles.length - 1;
+			$(#Total_files).value = varTotalFileCount;
+			$(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = true;
+            $(#ID_Stop_Button).state.collapsed = false;
+			$(#ID_BTN_BROWSE_DE).state.disabled = true;
+			$(#select_options).state.disabled = true;
+			$(#IDedtFilePath).value = varTempCryptFileName;
+			self.OnSetTimer();
+		}		
+    }
+    </script>
+    <form #simple-dialog caption="Vibranium">
+        <p #StatusMessage></p>
+    </form>
+</head>
+
+<body>
+    <div .body_firewall_inner>
+        <div .titleCont>
+            <h1 .headingTitle1><label>Blue Dome</label></h1>
+            <p><label>Feature Coming Soon..</label></p>
+        </div>
+
+        <!-- <div class="buttonSwitch">
+            <div class="fourth">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-291 382 29 29"
+                    style="enable-background:new -291 382 29 29;" xml:space="preserve" class="radioIcon">
+                    <style type="text/css">
+                        .stff {
+                            fill: #1C1B17;
+                        }
+                    </style>
+                    <path class="stff" d="M-276.8,389.9v0.3c0,0.7,0,1.4,0,2.1c0,1.5,0,2.9,0,4.5c0,0.8-0.1,0.8-0.8,0.8c-0.1,0-0.1,0-0.3,0
+                        c0.4,0.7,1,1.4,1.4,2c0.4-0.7,1-1.3,1.4-2c-0.1,0-0.4,0-0.6,0c-0.4,0-0.6-0.1-0.6-0.6c0-2.2,0-4.5,0-6.8v-0.3H-276.8z M-278.3,398.2
+                        c-0.1-0.3-0.4-0.4-0.6-0.7c0-0.1-0.1-0.3,0-0.4c0.1-0.1,0.1-0.1,0.4-0.1s0.6,0,1,0c0-0.1,0-0.1,0-0.3c0-2.2,0-4.6,0-6.8
+                        c0-0.4,0-0.6,0.4-0.6c0.4,0,0.7,0,1.1,0s0.4,0.1,0.4,0.6c0,2.2,0,4.6,0,6.8v0.3c0.4,0,0.7,0,1,0c0.3,0,0.4,0,0.4,0.1
+                        c0.1,0.1,0,0.3,0,0.4c-0.1,0.3-0.4,0.4-0.4,0.7c0.1,0.1,0.4,0.3,0.7,0.4c0.4,0.3,0.7,0.3,1,0c0.3-0.1,0.7-0.4,1.1-0.4
+                        c0.4,0,0.7,0.1,1.1,0.4c0.1,0.1,0.3,0.3,0.4,0.3c0.3,0,0.4-0.1,0.6-0.3c0.3-0.1,0.6-0.4,0.8-0.4c0.1,0,0.3,0,0.3,0
+                        c0.3,0,0.3,0.1,0.3,0.3c0.1,0.3,0,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.7,0.3c-0.6,0.6-1.3,0.6-1.8,0c0,0-0.1,0-0.1-0.1
+                        c-0.4-0.3-0.7-0.3-1.1,0.1c-0.4,0.3-0.8,0.6-1.4,0.3c-0.1,0-0.4-0.1-0.6-0.3c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.6-0.1-0.7,0.1
+                        c-0.3,0.4-0.6,0.8-1,1.3c-0.1,0.3-0.4,0.3-0.6,0c-0.3-0.4-0.7-0.8-1-1.3c-0.1-0.3-0.4-0.4-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3
+                        c-0.4,0.4-1.1,0.4-1.7,0c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c0,0.1-0.1,0.1-0.1,0.3c-0.6,0.4-1.3,0.4-1.8,0
+                        c-0.3-0.3-0.4-0.4-0.8-0.4c-0.1,0-0.3-0.3-0.1-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,1,0c0.3-0.1,0.4-0.3,0.7-0.4c0.4-0.1,0.8,0,1.3,0.3c0.1,0.1,0.1,0.1,0.3,0.3c0.3,0.1,0.6,0.1,1,0
+                        c0-0.1,0.1-0.3,0.3-0.4C-278.7,398.3-278.6,398.2-278.3,398.2z" />
+                    <path class="stff"
+                        d="M-279.7,401.7c-0.3,0-0.6-0.1-0.8-0.3c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.4,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.1-0.4c-0.3-0.1-0.4-0.3-0.7-0.3c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3
+                        c0.1,0,0.1,0.1,0.1,0.1c0.4,0.3,0.7,0.3,1.1,0c0.3-0.3,0.6-0.4,0.8-0.4c0.4,0,0.8,0,1.1,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,0.8,0c0.1,0,0.3,0,0.3-0.1c0.6-0.4,1.3-0.4,1.8,0c0.1,0.1,0.1,0.1,0.3,0.1c0.3,0.3,0.6,0.3,0.8,0
+                        c0.3-0.1,0.6-0.4,1-0.4c0.4,0,0.7,0,1,0.3c0.1,0,0.3,0.1,0.4,0.3c0.3,0.1,0.6,0.1,0.8,0c0-0.1,0.1-0.1,0.3-0.3
+                        c0.6-0.4,1.3-0.4,1.8,0c0,0.1,0.1,0.1,0.1,0.1c0.3,0.3,0.7,0.3,1,0c0.3-0.1,0.6-0.4,1-0.4c0.3,0,0.4,0,0.4,0.3
+                        c0.1,0.3-0.1,0.4-0.3,0.4c-0.3,0-0.6,0.1-0.7,0.3c-0.3,0.3-0.7,0.4-1.3,0.4c-0.3-0.1-0.4-0.3-0.7-0.6c-0.1-0.1-0.4-0.3-0.7-0.1
+                        c-0.1,0-0.3,0.1-0.4,0.3c-0.3,0.1-0.4,0.3-0.7,0.4c-0.6,0-0.8-0.1-1.3-0.4l-0.1-0.1c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.6,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.3-0.4c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3-0.1-0.4,0-0.7,0.3C-279,401.5-279.3,401.7-279.7,401.7z" />
+                    <path class="stff"
+                        d="M-273.4,403.8c-0.3,0-0.7-0.3-1-0.6c-0.1,0-0.3-0.1-0.4-0.1c-0.3-0.1-0.4,0-0.6,0.1c-0.3,0.3-0.6,0.4-0.8,0.4
+                        c-0.4,0.1-0.8,0-1.3-0.3c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3,0-0.4,0-0.6,0.1c-0.3,0.1-0.4,0.4-0.8,0.4c-0.4,0.1-0.8,0-1.1-0.3
+                        c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.7-0.3-1,0c-0.1,0.3-0.4,0.4-0.8,0.4c-0.4,0.1-0.7,0-1.1-0.3c-0.3-0.1-0.4-0.3-0.7-0.3
+                        c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.4,0,0.7,0.1,1,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.4,0.1,0.6,0,0.8-0.3
+                        c0.3-0.3,0.7-0.4,1.3-0.3c0.3,0,0.6,0.3,0.8,0.4c0.3,0.3,0.6,0.3,1,0l0.1-0.1c0.4-0.3,0.8-0.4,1.4-0.3c0.1,0.1,0.3,0.3,0.6,0.4
+                        c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2.1,0c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2,0c0.6,0.3,0.8,0.3,1.3,0
+                        c0.3-0.3,0.6-0.4,0.8-0.4c0.3,0,0.4,0.1,0.4,0.3c0.1,0.1-0.1,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.6,0.3c-0.4,0.3-0.8,0.4-1.4,0.3
+                        c-0.3,0-0.4-0.1-0.7-0.4c-0.1-0.1-0.4-0.3-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3C-272.6,403.6-273,403.8-273.4,403.8z" />
+                    <path class="stff" d="M-276.5,382c4,0,7.7,1.7,10.3,4.2c2.5,2.6,4.2,6.3,4.2,10.3s-1.7,7.7-4.2,10.3c-2.6,2.5-6.3,4.2-10.3,4.2
+                        s-7.7-1.7-10.3-4.2c-2.5-2.6-4.2-6.3-4.2-10.3s1.7-7.7,4.2-10.3C-284.2,383.7-280.5,382-276.5,382z M-267,387
+                        c-2.4-2.4-5.7-3.9-9.5-3.9s-7.1,1.5-9.5,3.9c-2.4,2.4-3.9,5.7-3.9,9.5s1.5,7.1,3.9,9.5c2.4,2.4,5.7,3.9,9.5,3.9s7.1-1.5,9.5-3.9
+                        s3.9-5.7,3.9-9.5S-264.6,389.4-267,387z" />
+                </svg>
+                <div class="contentFlow">
+                    <p class="titleNew">DEEP DIVE</p>
+                    <button|toggler name="toggler" value="true">
+                        <caption .true><label>ON</label></caption>
+                        <caption .false><label>OFF</label></caption>
+                        </button>
+                </div>
+            </div>
+            <div class="fourth">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-291 382 29 29"
+                    style="enable-background:new -291 382 29 29;" xml:space="preserve" class="radioIcon">
+                    <style type="text/css">
+                        .stff {
+                            fill: #1C1B17;
+                        }
+                    </style>
+                    <path class="stff" d="M-276.8,389.9v0.3c0,0.7,0,1.4,0,2.1c0,1.5,0,2.9,0,4.5c0,0.8-0.1,0.8-0.8,0.8c-0.1,0-0.1,0-0.3,0
+                        c0.4,0.7,1,1.4,1.4,2c0.4-0.7,1-1.3,1.4-2c-0.1,0-0.4,0-0.6,0c-0.4,0-0.6-0.1-0.6-0.6c0-2.2,0-4.5,0-6.8v-0.3H-276.8z M-278.3,398.2
+                        c-0.1-0.3-0.4-0.4-0.6-0.7c0-0.1-0.1-0.3,0-0.4c0.1-0.1,0.1-0.1,0.4-0.1s0.6,0,1,0c0-0.1,0-0.1,0-0.3c0-2.2,0-4.6,0-6.8
+                        c0-0.4,0-0.6,0.4-0.6c0.4,0,0.7,0,1.1,0s0.4,0.1,0.4,0.6c0,2.2,0,4.6,0,6.8v0.3c0.4,0,0.7,0,1,0c0.3,0,0.4,0,0.4,0.1
+                        c0.1,0.1,0,0.3,0,0.4c-0.1,0.3-0.4,0.4-0.4,0.7c0.1,0.1,0.4,0.3,0.7,0.4c0.4,0.3,0.7,0.3,1,0c0.3-0.1,0.7-0.4,1.1-0.4
+                        c0.4,0,0.7,0.1,1.1,0.4c0.1,0.1,0.3,0.3,0.4,0.3c0.3,0,0.4-0.1,0.6-0.3c0.3-0.1,0.6-0.4,0.8-0.4c0.1,0,0.3,0,0.3,0
+                        c0.3,0,0.3,0.1,0.3,0.3c0.1,0.3,0,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.7,0.3c-0.6,0.6-1.3,0.6-1.8,0c0,0-0.1,0-0.1-0.1
+                        c-0.4-0.3-0.7-0.3-1.1,0.1c-0.4,0.3-0.8,0.6-1.4,0.3c-0.1,0-0.4-0.1-0.6-0.3c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.6-0.1-0.7,0.1
+                        c-0.3,0.4-0.6,0.8-1,1.3c-0.1,0.3-0.4,0.3-0.6,0c-0.3-0.4-0.7-0.8-1-1.3c-0.1-0.3-0.4-0.4-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3
+                        c-0.4,0.4-1.1,0.4-1.7,0c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c0,0.1-0.1,0.1-0.1,0.3c-0.6,0.4-1.3,0.4-1.8,0
+                        c-0.3-0.3-0.4-0.4-0.8-0.4c-0.1,0-0.3-0.3-0.1-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,1,0c0.3-0.1,0.4-0.3,0.7-0.4c0.4-0.1,0.8,0,1.3,0.3c0.1,0.1,0.1,0.1,0.3,0.3c0.3,0.1,0.6,0.1,1,0
+                        c0-0.1,0.1-0.3,0.3-0.4C-278.7,398.3-278.6,398.2-278.3,398.2z" />
+                    <path class="stff"
+                        d="M-279.7,401.7c-0.3,0-0.6-0.1-0.8-0.3c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.4,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.1-0.4c-0.3-0.1-0.4-0.3-0.7-0.3c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3
+                        c0.1,0,0.1,0.1,0.1,0.1c0.4,0.3,0.7,0.3,1.1,0c0.3-0.3,0.6-0.4,0.8-0.4c0.4,0,0.8,0,1.1,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,0.8,0c0.1,0,0.3,0,0.3-0.1c0.6-0.4,1.3-0.4,1.8,0c0.1,0.1,0.1,0.1,0.3,0.1c0.3,0.3,0.6,0.3,0.8,0
+                        c0.3-0.1,0.6-0.4,1-0.4c0.4,0,0.7,0,1,0.3c0.1,0,0.3,0.1,0.4,0.3c0.3,0.1,0.6,0.1,0.8,0c0-0.1,0.1-0.1,0.3-0.3
+                        c0.6-0.4,1.3-0.4,1.8,0c0,0.1,0.1,0.1,0.1,0.1c0.3,0.3,0.7,0.3,1,0c0.3-0.1,0.6-0.4,1-0.4c0.3,0,0.4,0,0.4,0.3
+                        c0.1,0.3-0.1,0.4-0.3,0.4c-0.3,0-0.6,0.1-0.7,0.3c-0.3,0.3-0.7,0.4-1.3,0.4c-0.3-0.1-0.4-0.3-0.7-0.6c-0.1-0.1-0.4-0.3-0.7-0.1
+                        c-0.1,0-0.3,0.1-0.4,0.3c-0.3,0.1-0.4,0.3-0.7,0.4c-0.6,0-0.8-0.1-1.3-0.4l-0.1-0.1c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.6,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.3-0.4c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3-0.1-0.4,0-0.7,0.3C-279,401.5-279.3,401.7-279.7,401.7z" />
+                    <path class="stff"
+                        d="M-273.4,403.8c-0.3,0-0.7-0.3-1-0.6c-0.1,0-0.3-0.1-0.4-0.1c-0.3-0.1-0.4,0-0.6,0.1c-0.3,0.3-0.6,0.4-0.8,0.4
+                        c-0.4,0.1-0.8,0-1.3-0.3c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3,0-0.4,0-0.6,0.1c-0.3,0.1-0.4,0.4-0.8,0.4c-0.4,0.1-0.8,0-1.1-0.3
+                        c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.7-0.3-1,0c-0.1,0.3-0.4,0.4-0.8,0.4c-0.4,0.1-0.7,0-1.1-0.3c-0.3-0.1-0.4-0.3-0.7-0.3
+                        c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.4,0,0.7,0.1,1,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.4,0.1,0.6,0,0.8-0.3
+                        c0.3-0.3,0.7-0.4,1.3-0.3c0.3,0,0.6,0.3,0.8,0.4c0.3,0.3,0.6,0.3,1,0l0.1-0.1c0.4-0.3,0.8-0.4,1.4-0.3c0.1,0.1,0.3,0.3,0.6,0.4
+                        c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2.1,0c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2,0c0.6,0.3,0.8,0.3,1.3,0
+                        c0.3-0.3,0.6-0.4,0.8-0.4c0.3,0,0.4,0.1,0.4,0.3c0.1,0.1-0.1,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.6,0.3c-0.4,0.3-0.8,0.4-1.4,0.3
+                        c-0.3,0-0.4-0.1-0.7-0.4c-0.1-0.1-0.4-0.3-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3C-272.6,403.6-273,403.8-273.4,403.8z" />
+                    <path class="stff" d="M-276.5,382c4,0,7.7,1.7,10.3,4.2c2.5,2.6,4.2,6.3,4.2,10.3s-1.7,7.7-4.2,10.3c-2.6,2.5-6.3,4.2-10.3,4.2
+                        s-7.7-1.7-10.3-4.2c-2.5-2.6-4.2-6.3-4.2-10.3s1.7-7.7,4.2-10.3C-284.2,383.7-280.5,382-276.5,382z M-267,387
+                        c-2.4-2.4-5.7-3.9-9.5-3.9s-7.1,1.5-9.5,3.9c-2.4,2.4-3.9,5.7-3.9,9.5s1.5,7.1,3.9,9.5c2.4,2.4,5.7,3.9,9.5,3.9s7.1-1.5,9.5-3.9
+                        s3.9-5.7,3.9-9.5S-264.6,389.4-267,387z" />
+                </svg>
+                <div class="contentFlow">
+                    <p class="titleNew">DEEP EXPLOIT</p>
+                    <button|toggler name="toggler" true>
+                        <caption .true value="true"><label>ON</label></caption>
+                        <caption .false><label>OFF</label></caption>
+                        </button>
+                </div>
+            </div>
+            <div class="fourth">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-291 382 29 29"
+                    style="enable-background:new -291 382 29 29;" xml:space="preserve" class="radioIcon">
+                    <style type="text/css">
+                        .stff {
+                            fill: #1C1B17;
+                        }
+                    </style>
+                    <path class="stff" d="M-276.8,389.9v0.3c0,0.7,0,1.4,0,2.1c0,1.5,0,2.9,0,4.5c0,0.8-0.1,0.8-0.8,0.8c-0.1,0-0.1,0-0.3,0
+                        c0.4,0.7,1,1.4,1.4,2c0.4-0.7,1-1.3,1.4-2c-0.1,0-0.4,0-0.6,0c-0.4,0-0.6-0.1-0.6-0.6c0-2.2,0-4.5,0-6.8v-0.3H-276.8z M-278.3,398.2
+                        c-0.1-0.3-0.4-0.4-0.6-0.7c0-0.1-0.1-0.3,0-0.4c0.1-0.1,0.1-0.1,0.4-0.1s0.6,0,1,0c0-0.1,0-0.1,0-0.3c0-2.2,0-4.6,0-6.8
+                        c0-0.4,0-0.6,0.4-0.6c0.4,0,0.7,0,1.1,0s0.4,0.1,0.4,0.6c0,2.2,0,4.6,0,6.8v0.3c0.4,0,0.7,0,1,0c0.3,0,0.4,0,0.4,0.1
+                        c0.1,0.1,0,0.3,0,0.4c-0.1,0.3-0.4,0.4-0.4,0.7c0.1,0.1,0.4,0.3,0.7,0.4c0.4,0.3,0.7,0.3,1,0c0.3-0.1,0.7-0.4,1.1-0.4
+                        c0.4,0,0.7,0.1,1.1,0.4c0.1,0.1,0.3,0.3,0.4,0.3c0.3,0,0.4-0.1,0.6-0.3c0.3-0.1,0.6-0.4,0.8-0.4c0.1,0,0.3,0,0.3,0
+                        c0.3,0,0.3,0.1,0.3,0.3c0.1,0.3,0,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.7,0.3c-0.6,0.6-1.3,0.6-1.8,0c0,0-0.1,0-0.1-0.1
+                        c-0.4-0.3-0.7-0.3-1.1,0.1c-0.4,0.3-0.8,0.6-1.4,0.3c-0.1,0-0.4-0.1-0.6-0.3c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.6-0.1-0.7,0.1
+                        c-0.3,0.4-0.6,0.8-1,1.3c-0.1,0.3-0.4,0.3-0.6,0c-0.3-0.4-0.7-0.8-1-1.3c-0.1-0.3-0.4-0.4-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3
+                        c-0.4,0.4-1.1,0.4-1.7,0c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c0,0.1-0.1,0.1-0.1,0.3c-0.6,0.4-1.3,0.4-1.8,0
+                        c-0.3-0.3-0.4-0.4-0.8-0.4c-0.1,0-0.3-0.3-0.1-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,1,0c0.3-0.1,0.4-0.3,0.7-0.4c0.4-0.1,0.8,0,1.3,0.3c0.1,0.1,0.1,0.1,0.3,0.3c0.3,0.1,0.6,0.1,1,0
+                        c0-0.1,0.1-0.3,0.3-0.4C-278.7,398.3-278.6,398.2-278.3,398.2z" />
+                    <path class="stff"
+                        d="M-279.7,401.7c-0.3,0-0.6-0.1-0.8-0.3c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.4,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.1-0.4c-0.3-0.1-0.4-0.3-0.7-0.3c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3
+                        c0.1,0,0.1,0.1,0.1,0.1c0.4,0.3,0.7,0.3,1.1,0c0.3-0.3,0.6-0.4,0.8-0.4c0.4,0,0.8,0,1.1,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,0.8,0c0.1,0,0.3,0,0.3-0.1c0.6-0.4,1.3-0.4,1.8,0c0.1,0.1,0.1,0.1,0.3,0.1c0.3,0.3,0.6,0.3,0.8,0
+                        c0.3-0.1,0.6-0.4,1-0.4c0.4,0,0.7,0,1,0.3c0.1,0,0.3,0.1,0.4,0.3c0.3,0.1,0.6,0.1,0.8,0c0-0.1,0.1-0.1,0.3-0.3
+                        c0.6-0.4,1.3-0.4,1.8,0c0,0.1,0.1,0.1,0.1,0.1c0.3,0.3,0.7,0.3,1,0c0.3-0.1,0.6-0.4,1-0.4c0.3,0,0.4,0,0.4,0.3
+                        c0.1,0.3-0.1,0.4-0.3,0.4c-0.3,0-0.6,0.1-0.7,0.3c-0.3,0.3-0.7,0.4-1.3,0.4c-0.3-0.1-0.4-0.3-0.7-0.6c-0.1-0.1-0.4-0.3-0.7-0.1
+                        c-0.1,0-0.3,0.1-0.4,0.3c-0.3,0.1-0.4,0.3-0.7,0.4c-0.6,0-0.8-0.1-1.3-0.4l-0.1-0.1c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.6,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.3-0.4c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3-0.1-0.4,0-0.7,0.3C-279,401.5-279.3,401.7-279.7,401.7z" />
+                    <path class="stff"
+                        d="M-273.4,403.8c-0.3,0-0.7-0.3-1-0.6c-0.1,0-0.3-0.1-0.4-0.1c-0.3-0.1-0.4,0-0.6,0.1c-0.3,0.3-0.6,0.4-0.8,0.4
+                        c-0.4,0.1-0.8,0-1.3-0.3c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3,0-0.4,0-0.6,0.1c-0.3,0.1-0.4,0.4-0.8,0.4c-0.4,0.1-0.8,0-1.1-0.3
+                        c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.7-0.3-1,0c-0.1,0.3-0.4,0.4-0.8,0.4c-0.4,0.1-0.7,0-1.1-0.3c-0.3-0.1-0.4-0.3-0.7-0.3
+                        c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.4,0,0.7,0.1,1,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.4,0.1,0.6,0,0.8-0.3
+                        c0.3-0.3,0.7-0.4,1.3-0.3c0.3,0,0.6,0.3,0.8,0.4c0.3,0.3,0.6,0.3,1,0l0.1-0.1c0.4-0.3,0.8-0.4,1.4-0.3c0.1,0.1,0.3,0.3,0.6,0.4
+                        c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2.1,0c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2,0c0.6,0.3,0.8,0.3,1.3,0
+                        c0.3-0.3,0.6-0.4,0.8-0.4c0.3,0,0.4,0.1,0.4,0.3c0.1,0.1-0.1,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.6,0.3c-0.4,0.3-0.8,0.4-1.4,0.3
+                        c-0.3,0-0.4-0.1-0.7-0.4c-0.1-0.1-0.4-0.3-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3C-272.6,403.6-273,403.8-273.4,403.8z" />
+                    <path class="stff" d="M-276.5,382c4,0,7.7,1.7,10.3,4.2c2.5,2.6,4.2,6.3,4.2,10.3s-1.7,7.7-4.2,10.3c-2.6,2.5-6.3,4.2-10.3,4.2
+                        s-7.7-1.7-10.3-4.2c-2.5-2.6-4.2-6.3-4.2-10.3s1.7-7.7,4.2-10.3C-284.2,383.7-280.5,382-276.5,382z M-267,387
+                        c-2.4-2.4-5.7-3.9-9.5-3.9s-7.1,1.5-9.5,3.9c-2.4,2.4-3.9,5.7-3.9,9.5s1.5,7.1,3.9,9.5c2.4,2.4,5.7,3.9,9.5,3.9s7.1-1.5,9.5-3.9
+                        s3.9-5.7,3.9-9.5S-264.6,389.4-267,387z" />
+                </svg>
+                <div class="contentFlow">
+                    <p class="titleNew">DEEP SCRIPT</p>
+                    <button|toggler name="toggler1" value="true">
+                        <caption .true value="true"><label>ON</label></caption>
+                        <caption .false value="false"><label>OFF</label></caption>
+                        </button>
+                </div>
+            </div>
+            <div class="fourth">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-291 382 29 29"
+                    style="enable-background:new -291 382 29 29;" xml:space="preserve" class="radioIcon">
+                    <style type="text/css">
+                        .stff {
+                            fill: #1C1B17;
+                        }
+                    </style>
+                    <path class="stff" d="M-276.8,389.9v0.3c0,0.7,0,1.4,0,2.1c0,1.5,0,2.9,0,4.5c0,0.8-0.1,0.8-0.8,0.8c-0.1,0-0.1,0-0.3,0
+                        c0.4,0.7,1,1.4,1.4,2c0.4-0.7,1-1.3,1.4-2c-0.1,0-0.4,0-0.6,0c-0.4,0-0.6-0.1-0.6-0.6c0-2.2,0-4.5,0-6.8v-0.3H-276.8z M-278.3,398.2
+                        c-0.1-0.3-0.4-0.4-0.6-0.7c0-0.1-0.1-0.3,0-0.4c0.1-0.1,0.1-0.1,0.4-0.1s0.6,0,1,0c0-0.1,0-0.1,0-0.3c0-2.2,0-4.6,0-6.8
+                        c0-0.4,0-0.6,0.4-0.6c0.4,0,0.7,0,1.1,0s0.4,0.1,0.4,0.6c0,2.2,0,4.6,0,6.8v0.3c0.4,0,0.7,0,1,0c0.3,0,0.4,0,0.4,0.1
+                        c0.1,0.1,0,0.3,0,0.4c-0.1,0.3-0.4,0.4-0.4,0.7c0.1,0.1,0.4,0.3,0.7,0.4c0.4,0.3,0.7,0.3,1,0c0.3-0.1,0.7-0.4,1.1-0.4
+                        c0.4,0,0.7,0.1,1.1,0.4c0.1,0.1,0.3,0.3,0.4,0.3c0.3,0,0.4-0.1,0.6-0.3c0.3-0.1,0.6-0.4,0.8-0.4c0.1,0,0.3,0,0.3,0
+                        c0.3,0,0.3,0.1,0.3,0.3c0.1,0.3,0,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.7,0.3c-0.6,0.6-1.3,0.6-1.8,0c0,0-0.1,0-0.1-0.1
+                        c-0.4-0.3-0.7-0.3-1.1,0.1c-0.4,0.3-0.8,0.6-1.4,0.3c-0.1,0-0.4-0.1-0.6-0.3c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.6-0.1-0.7,0.1
+                        c-0.3,0.4-0.6,0.8-1,1.3c-0.1,0.3-0.4,0.3-0.6,0c-0.3-0.4-0.7-0.8-1-1.3c-0.1-0.3-0.4-0.4-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3
+                        c-0.4,0.4-1.1,0.4-1.7,0c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c0,0.1-0.1,0.1-0.1,0.3c-0.6,0.4-1.3,0.4-1.8,0
+                        c-0.3-0.3-0.4-0.4-0.8-0.4c-0.1,0-0.3-0.3-0.1-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,1,0c0.3-0.1,0.4-0.3,0.7-0.4c0.4-0.1,0.8,0,1.3,0.3c0.1,0.1,0.1,0.1,0.3,0.3c0.3,0.1,0.6,0.1,1,0
+                        c0-0.1,0.1-0.3,0.3-0.4C-278.7,398.3-278.6,398.2-278.3,398.2z" />
+                    <path class="stff"
+                        d="M-279.7,401.7c-0.3,0-0.6-0.1-0.8-0.3c-0.1-0.1-0.1-0.1-0.3-0.3c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.4,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.1-0.4c-0.3-0.1-0.4-0.3-0.7-0.3c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.3,0,0.6,0.1,0.8,0.3
+                        c0.1,0,0.1,0.1,0.1,0.1c0.4,0.3,0.7,0.3,1.1,0c0.3-0.3,0.6-0.4,0.8-0.4c0.4,0,0.8,0,1.1,0.3c0.1,0,0.1,0.1,0.3,0.1
+                        c0.3,0.3,0.6,0.3,0.8,0c0.1,0,0.3,0,0.3-0.1c0.6-0.4,1.3-0.4,1.8,0c0.1,0.1,0.1,0.1,0.3,0.1c0.3,0.3,0.6,0.3,0.8,0
+                        c0.3-0.1,0.6-0.4,1-0.4c0.4,0,0.7,0,1,0.3c0.1,0,0.3,0.1,0.4,0.3c0.3,0.1,0.6,0.1,0.8,0c0-0.1,0.1-0.1,0.3-0.3
+                        c0.6-0.4,1.3-0.4,1.8,0c0,0.1,0.1,0.1,0.1,0.1c0.3,0.3,0.7,0.3,1,0c0.3-0.1,0.6-0.4,1-0.4c0.3,0,0.4,0,0.4,0.3
+                        c0.1,0.3-0.1,0.4-0.3,0.4c-0.3,0-0.6,0.1-0.7,0.3c-0.3,0.3-0.7,0.4-1.3,0.4c-0.3-0.1-0.4-0.3-0.7-0.6c-0.1-0.1-0.4-0.3-0.7-0.1
+                        c-0.1,0-0.3,0.1-0.4,0.3c-0.3,0.1-0.4,0.3-0.7,0.4c-0.6,0-0.8-0.1-1.3-0.4l-0.1-0.1c-0.3-0.3-0.7-0.3-1,0c-0.3,0.3-0.6,0.4-0.8,0.6
+                        c-0.4,0-0.8-0.1-1.3-0.4c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3-0.1-0.4,0-0.7,0.3C-279,401.5-279.3,401.7-279.7,401.7z" />
+                    <path class="stff"
+                        d="M-273.4,403.8c-0.3,0-0.7-0.3-1-0.6c-0.1,0-0.3-0.1-0.4-0.1c-0.3-0.1-0.4,0-0.6,0.1c-0.3,0.3-0.6,0.4-0.8,0.4
+                        c-0.4,0.1-0.8,0-1.3-0.3c-0.1-0.1-0.3-0.3-0.6-0.3c-0.3,0-0.4,0-0.6,0.1c-0.3,0.1-0.4,0.4-0.8,0.4c-0.4,0.1-0.8,0-1.1-0.3
+                        c-0.1,0-0.1-0.1-0.3-0.1c-0.3-0.3-0.7-0.3-1,0c-0.1,0.3-0.4,0.4-0.8,0.4c-0.4,0.1-0.7,0-1.1-0.3c-0.3-0.1-0.4-0.3-0.7-0.3
+                        c-0.3,0-0.4-0.3-0.3-0.4c0-0.1,0.1-0.3,0.3-0.3c0.4,0,0.7,0.1,1,0.3c0.1,0.1,0.3,0.3,0.4,0.3c0.4,0.1,0.6,0,0.8-0.3
+                        c0.3-0.3,0.7-0.4,1.3-0.3c0.3,0,0.6,0.3,0.8,0.4c0.3,0.3,0.6,0.3,1,0l0.1-0.1c0.4-0.3,0.8-0.4,1.4-0.3c0.1,0.1,0.3,0.3,0.6,0.4
+                        c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2.1,0c0.4,0.3,0.7,0.3,1.1,0c0.7-0.6,1.4-0.6,2,0c0.6,0.3,0.8,0.3,1.3,0
+                        c0.3-0.3,0.6-0.4,0.8-0.4c0.3,0,0.4,0.1,0.4,0.3c0.1,0.1-0.1,0.4-0.3,0.4c-0.3,0-0.4,0.1-0.6,0.3c-0.4,0.3-0.8,0.4-1.4,0.3
+                        c-0.3,0-0.4-0.1-0.7-0.4c-0.1-0.1-0.4-0.3-0.7-0.1c-0.1,0-0.3,0.1-0.4,0.3C-272.6,403.6-273,403.8-273.4,403.8z" />
+                    <path class="stff" d="M-276.5,382c4,0,7.7,1.7,10.3,4.2c2.5,2.6,4.2,6.3,4.2,10.3s-1.7,7.7-4.2,10.3c-2.6,2.5-6.3,4.2-10.3,4.2
+                        s-7.7-1.7-10.3-4.2c-2.5-2.6-4.2-6.3-4.2-10.3s1.7-7.7,4.2-10.3C-284.2,383.7-280.5,382-276.5,382z M-267,387
+                        c-2.4-2.4-5.7-3.9-9.5-3.9s-7.1,1.5-9.5,3.9c-2.4,2.4-3.9,5.7-3.9,9.5s1.5,7.1,3.9,9.5c2.4,2.4,5.7,3.9,9.5,3.9s7.1-1.5,9.5-3.9
+                        s3.9-5.7,3.9-9.5S-264.6,389.4-267,387z" />
+                </svg>
+                <div class="contentFlow">
+                    <p class="titleNew">DEEP LOCK</p>
+                    <button|toggler name="toggler" value="true">
+                        <caption .true><label>ON</label></caption>
+                        <caption .false><label>OFF</label></caption>
+                        </button>
+                </div>
+            </div>
+        </div>
+        <div class="mainBody">
+            <div class="half">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-230 322 150 150"
+                    style="enable-background:new -230 322 150 150;" xml:space="preserve" class="shieldnew">
+                    <style type="text/css">
+                        .st0 {
+                            clip-path: url(#SVGID_2_);
+                        }
+
+                        .st1 {
+                            fill: url(#SVGID_3_);
+                        }
+
+                        .st2 {
+                            fill: #D9DADA;
+                        }
+
+                        .st3 {
+                            fill: #0097D6;
+                        }
+
+                        .st4 {
+                            fill: #1C1B17;
+                        }
+
+                        .st5 {
+                            fill: #2B2A29;
+                        }
+                    </style>
+                    <g>
+                        <clipPath id="SVGID_2_">
+                            <use xlink:href="#SVGID_1_" style="overflow:visible;" />
+                        </clipPath>
+                        <g class="st0">
+
+                            <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-228.16" y1="399"
+                                x2="-81.84" y2="399" gradientTransform="matrix(1 0 0 -1 0 796)">
+                                <stop offset="0" style="stop-color:#E7E6E6" />
+                                <stop offset="0.2392" style="stop-color:#F2F2F2" />
+                                <stop offset="1" style="stop-color:#FEFEFE" />
+                            </linearGradient>
+                            <path class="st1" d="M-81.8,397c0-40.4-32.8-73.2-73.2-73.2c-40.4,0-73.2,32.8-73.2,73.2c0,40.4,32.8,73.2,73.2,73.2
+			C-114.6,470.2-81.8,437.4-81.8,397z" />
+                            <path class="st3" d="M-186.3,452.3c-11.7-6.7-21.1-16.9-26.7-29.3c-3.6-8-5.6-16.8-5.6-26.1c0-8.1,1.6-15.9,4.3-23
+			c5.9-15.1,17.3-27.4,31.8-34.4c8.3-4,17.7-6.3,27.5-6.3c9.8,0,19.2,2.3,27.5,6.3c14.5,7,25.9,19.3,31.8,34.4
+			c2.8,7.1,4.3,14.9,4.3,23c0,9.3-2,18.1-5.6,26.1c-5.6,12.4-15,22.6-26.7,29.3l-3.4-5.9c10.7-6.1,19.2-15.4,24.1-26.8
+			c3-6.9,4.7-14.6,4.7-22.6c0-7.5-1.5-14.6-4.1-21.2c-5.4-13.3-15.6-24.1-28.6-30.2c-7.3-3.4-15.5-5.4-24.1-5.4
+			c-8.6,0-16.8,1.9-24.1,5.4c-12.9,6.1-23.2,16.9-28.6,30.2c-2.6,6.6-4.1,13.7-4.1,21.2c0,8,1.7,15.7,4.7,22.6
+			c4.9,11.3,13.5,20.7,24.2,26.8L-186.3,452.3z" />
+                            <path class="st4" d="M-143.7,383.4c-3.1,12.6-14.2,26.7-14.2,26.7s-12.8-16.2-14.7-29.5l14.7,4.5l12.5-3.8l-12.5,15.3l-4.9-6.1
+			c-0.5-0.6-1.3-0.6-1.8-0.2c-0.5,0.5-0.6,1.3-0.2,1.8l6,7.3l1,1.2l1-1.2L-143.7,383.4z" />
+                            <path class="st5" d="M-136.3,400.2c0,0.1,0,0.3,0,0.4c-0.2,0.5-0.4,1-0.7,1.5l0-0.1l0.1-0.2l0-0.1l0-0.1l0.1-0.4
+			C-136.5,400.9-136.4,400.6-136.3,400.2z" />
+                            <path class="st3" d="M-169.6,370.3c-0.6,0.3-1.3,0.6-1.9,0.9c-0.1-0.1-0.2-0.2-0.2-0.3c0.6-0.4,1.2-0.8,1.8-1.1
+			c0.5-0.2,1.2-0.5,1.7-0.7c0,0.1,0,0.1,0,0.2C-168.6,369.6-169.1,369.9-169.6,370.3z" />
+                            <path class="st3" d="M-164.4,369.5c-0.5,0.2-1.3,0.5-1.8,0.7c-0.3-0.1-0.6-0.3-0.9-0.4c0.3-0.4,0.7-0.7,1.1-0.9
+			c0.5-0.2,1.1-0.4,1.6-0.5c0.2,0.1,0.5,0.2,0.7,0.2C-164,368.9-164.2,369.2-164.4,369.5z" />
+                            <path class="st3" d="M-158.6,369.3c-0.5,0.2-1,0.4-1.5,0.5c-0.4-0.2-1-0.3-1.4-0.5c0.1-0.3,0.2-0.6,0.3-0.9
+			c0.4-0.1,0.9-0.3,1.3-0.3c0.4,0.1,0.9,0.2,1.2,0.3C-158.7,368.7-158.7,369-158.6,369.3z" />
+                            <path class="st3" d="M-152.7,369.8c-0.3,0.1-0.7,0.3-1,0.4c-0.6-0.2-1.3-0.5-1.9-0.7c-0.2-0.3-0.4-0.6-0.6-0.9
+			c0.2-0.1,0.5-0.2,0.8-0.2c0.5,0.1,1.2,0.3,1.7,0.5C-153.4,369.1-153.1,369.4-152.7,369.8z" />
+                            <path class="st3" d="M-148,370.8c-0.1,0.1-0.2,0.2-0.2,0.3c-0.6-0.3-1.3-0.7-1.9-0.9c-0.5-0.4-1-0.7-1.5-1c0,0,0.1-0.1,0.1-0.2
+			c0.5,0.2,1.2,0.5,1.7,0.7C-149.2,370-148.6,370.4-148,370.8z" />
+                            <path class="st5"
+                                d="M-164,368c-0.1,0-0.2,0-0.3,0.1c-0.4,0.1-1,0.3-1.5,0.4c0,0,0,0,0-0.1C-165.1,368.2-164.5,368.1-164,368z" />
+                            <path class="st3" d="M-160.6,367.6c-0.1,0-0.1,0-0.2,0.1c-0.3,0.1-0.8,0.2-1.1,0.2c-0.2,0-0.4-0.1-0.6-0.1c0.1,0,0.2-0.1,0.4-0.1
+			c0.3,0,0.6,0,0.9-0.1C-161.1,367.7-160.8,367.6-160.6,367.6z" />
+                            <path class="st3" d="M-157.2,367.8c-0.2,0-0.5,0.1-0.7,0.1c-0.3-0.1-0.8-0.2-1.1-0.2c0,0-0.1-0.1-0.1-0.1h0.1l0.4,0
+			c0.1,0,0.2,0,0.4,0c0.2,0,0.5,0,0.7,0.1C-157.4,367.7-157.3,367.8-157.2,367.8z" />
+                            <path class="st5" d="M-153.8,368.4C-153.8,368.4-153.8,368.4-153.8,368.4c-0.5-0.1-1.1-0.2-1.6-0.3c-0.1,0-0.2,0-0.2-0.1
+			c0.1,0,0.2,0,0.3,0l0.2,0l0.2,0l0.4,0.1l0.4,0.1l0.2,0C-154,368.3-153.9,368.3-153.8,368.4L-153.8,368.4
+			C-153.8,368.3-153.8,368.4-153.8,368.4z" />
+                            <path class="st3" d="M-167,377.8c-0.7,0.4-1.6,1-2.3,1.4c-0.5-0.3-1.3-0.6-1.8-0.9c0.2-0.8,0.4-1.5,0.6-2.2
+			c0.7-0.4,1.5-0.9,2.2-1.3c0.5,0.2,1.2,0.5,1.7,0.8C-166.7,376.3-166.9,377-167,377.8z" />
+                            <path class="st3" d="M-158,377.4c-0.7,0.3-1.6,0.8-2.3,1.1c-0.7-0.3-1.6-0.8-2.3-1.1c0-0.7,0.1-1.5,0.1-2.1c0.7-0.3,1.5-0.7,2.2-1
+			c0.6,0.3,1.5,0.7,2.1,1C-158,376-158,376.7-158,377.4z" />
+                            <path class="st3" d="M-148.9,378.1c-0.6,0.3-1.4,0.6-2,0.9c-0.7-0.4-1.7-1-2.4-1.4c-0.1-0.7-0.2-1.5-0.3-2.1
+			c0.6-0.2,1.3-0.6,1.9-0.8c0.7,0.4,1.6,0.9,2.3,1.2C-149.3,376.7-149.1,377.4-148.9,378.1z" />
+                            <path class="st3" d="M-141.7,379.7c-0.3,0.2-0.8,0.5-1.2,0.7c-0.6-0.5-1.4-1.1-2.1-1.6c-0.2-0.8-0.5-1.5-0.7-2.2
+			c0.3-0.2,0.8-0.4,1.2-0.6c0.6,0.4,1.4,1,1.9,1.5C-142.2,378.2-141.9,379-141.7,379.7z" />
+                            <path class="st3" d="M-137.4,381.9c-0.1,0.2-0.2,0.5-0.3,0.6c-0.4-0.5-1-1.3-1.4-1.8c-0.3-0.8-0.7-1.6-1-2.3
+			c0.1-0.2,0.2-0.4,0.3-0.6c0.3,0.4,0.7,0.9,1.1,1.3c0,0.1,0.1,0.2,0.2,0.2c0.3,0.5,0.5,0.9,0.8,1.4v0
+			C-137.7,381.2-137.5,381.6-137.4,381.9z" />
+                            <path class="st3" d="M-169.5,373.3c-0.6,0.3-1.5,0.8-2.1,1.2c-0.3-0.2-0.8-0.4-1.1-0.6c0.4-0.6,0.7-1.1,1.2-1.7
+			c0.6-0.3,1.4-0.7,2-1c0.3,0.2,0.7,0.3,0.9,0.5C-168.9,372.2-169.2,372.8-169.5,373.3z" />
+                            <path class="st3" d="M-162,372.7c-0.6,0.3-1.5,0.7-2.1,1c-0.5-0.2-1.2-0.5-1.7-0.7c0.2-0.6,0.3-1.1,0.5-1.6
+			c0.6-0.2,1.3-0.6,1.9-0.8c0.5,0.2,1.1,0.4,1.5,0.6C-161.9,371.6-162,372.1-162,372.7z" />
+                            <path class="st3" d="M-154.1,372.8c-0.5,0.2-1.2,0.5-1.8,0.7c-0.6-0.3-1.5-0.7-2.1-0.9c0-0.6-0.1-1.1-0.2-1.5
+			c0.5-0.2,1.1-0.4,1.6-0.6c0.6,0.2,1.4,0.5,1.9,0.8C-154.5,371.8-154.3,372.3-154.1,372.8z" />
+                            <path class="st3" d="M-146.9,373.9c-0.3,0.2-0.8,0.4-1.1,0.6c-0.7-0.4-1.5-0.8-2.2-1.2c-0.3-0.6-0.5-1.1-0.9-1.6
+			c0.3-0.1,0.7-0.3,1-0.5c0.6,0.3,1.4,0.7,2,1C-147.6,372.7-147.2,373.3-146.9,373.9z" />
+                            <path class="st3" d="M-141.9,375.6c-0.1,0.2-0.2,0.4-0.3,0.5c-0.5-0.4-1.3-1-1.8-1.4c-0.4-0.6-0.9-1.2-1.4-1.7
+			c0.1-0.1,0.2-0.3,0.2-0.4c0.5,0.3,1.2,0.8,1.7,1.2C-143,374.3-142.4,374.9-141.9,375.6z" />
+                            <path class="st3" d="M-140.7,393c-0.6,0.3-1.3,0.7-1.9,0.9c-0.5-0.6-1.1-1.3-1.6-1.8c0.1-0.9,0.2-1.9,0.3-2.8
+			c0.6-0.3,1.3-0.7,1.9-1c0.5,0.6,1.1,1.3,1.6,1.9C-140.5,391.1-140.6,392.1-140.7,393z" />
+                            <path class="st3" d="M-136.2,395.3c-0.3,0.2-0.8,0.5-1.1,0.8c-0.2-0.6-0.5-1.4-0.7-2c0.2-0.9,0.3-1.9,0.3-2.8
+			c0.3-0.2,0.8-0.6,1.1-0.8c0.2,0.6,0.6,1.4,0.8,2C-135.9,393.5-136,394.4-136.2,395.3z" />
+                            <path class="st3" d="M-137.5,387.2c-0.3,0.3-0.8,0.6-1.1,0.8c-0.4-0.6-1-1.4-1.5-1.9c-0.1-0.9-0.2-1.8-0.3-2.7
+			c0.3-0.2,0.8-0.5,1.1-0.7c0.4,0.5,1,1.3,1.5,1.8C-137.7,385.4-137.6,386.3-137.5,387.2z" />
+                            <path class="st3" d="M-135.1,390.2c-0.2-0.5-0.3-1.2-0.5-1.7c-0.1-0.9-0.2-1.8-0.4-2.7c0-0.1,0.1-0.2,0.1-0.2
+			c0.2,0.8,0.4,1.5,0.5,2.3l0.1,0.7l0,0.1l0,0.1l0,0.2l0,0.4l0,0.4l0,0.4L-135.1,390.2z" />
+                            <path class="st3" d="M-142.2,407.5c-0.5,0.2-1.1,0.4-1.5,0.6c0-0.4,0.1-1,0.1-1.5c0.6-0.7,1.1-1.5,1.6-2.3
+			c0.5-0.2,1.1-0.5,1.6-0.7c0,0.5,0,1.2-0.1,1.7C-141,406-141.6,406.8-142.2,407.5z" />
+                            <path class="st3" d="M-138.9,405.9l-0.1,0.2l-0.1,0.2l-0.1,0.2l-0.2,0.3l-0.2,0.3c0,0.1-0.1,0.1-0.1,0.2l-0.1,0.2l-0.2,0.3
+			l-0.1,0.2c0,0.1-0.1,0.1-0.1,0.2c-0.4,0.5-0.8,1-1.3,1.5c-0.2,0.1-0.5,0.2-0.7,0.3c0.3-0.4,0.6-1,0.9-1.4c0.6-0.7,1.2-1.4,1.8-2.1
+			C-139.4,406.2-139.2,406-138.9,405.9z" />
+                            <path class="st3" d="M-139.9,400.8c-0.5,0.2-1.2,0.5-1.6,0.8c-0.2-0.5-0.5-1.2-0.7-1.8c0.3-0.9,0.6-1.7,0.9-2.6
+			c0.5-0.2,1.2-0.6,1.7-0.8c0.2,0.5,0.5,1.3,0.7,1.9C-139.2,399.1-139.5,399.9-139.9,400.8z" />
+                            <path class="st3" d="M-136.2,398.7c0,0.5-0.1,1-0.1,1.5c0,0.1,0,0.3,0,0.4c-0.2,0.5-0.4,1-0.7,1.5c-0.2,0.3-0.3,0.7-0.5,1
+			c-0.3,0.2-0.7,0.5-1,0.6c0.1-0.5,0.2-1.2,0.2-1.8c0.4-0.8,0.8-1.7,1.1-2.5C-136.8,399.2-136.4,398.9-136.2,398.7z" />
+                            <path class="st4" d="M-129.4,354.8l-15.2,13.4c0.1,0.1,0.2,0.2,0.3,0.2c0.2,0.2,0.5,0.3,0.7,0.5c0.5,0.3,0.9,0.7,1.4,1
+			c0.5,0.3,0.9,0.7,1.3,1.1c0.2,0.2,0.4,0.4,0.6,0.6l0.3,0.3l0.3,0.3l0.2,0.2l0.2,0.2l0.3,0.3l0.3,0.3l0.2,0.2
+			c0,0.1,0.1,0.1,0.1,0.2l0.3,0.3c0.1,0.1,0.2,0.2,0.3,0.3c0.2,0.2,0.3,0.5,0.5,0.7c0,0,0.1,0.1,0.1,0.2l0.1,0.2
+			c0.1,0.1,0.2,0.2,0.3,0.3c0.2,0.2,0.3,0.5,0.5,0.7c0.1,0.1,0.2,0.2,0.2,0.4l0.2,0.4l0.1,0.2l0.1,0.2l0.2,0.4c0.6,1,1.1,2,1.5,3.1
+			c0.2,0.5,0.4,1.1,0.6,1.6c0,0.1,0.1,0.3,0.1,0.4l0.1,0.4l0.1,0.2l0.1,0.2l0.1,0.4c0.3,1.1,0.5,2.2,0.7,3.4l0.1,0.8l0,0.1l0,0.1
+			l0,0.2l0,0.4l0,0.4l0,0.4l0,0.4l0,0.2v0.1v0.1l0,0.9v0.2l0,0.2l0,0.4l0,0.4c0,0,0,0.1,0,0.1v0.1l0,0.2c0,0.3,0,0.6-0.1,0.8
+			c-0.2,1.1-0.4,2.2-0.6,3.3c-0.3,1.1-0.7,2.2-1.1,3.2l-0.3,0.8c-0.1,0.1-0.1,0.3-0.2,0.4l-0.2,0.4l-0.2,0.4l0,0.1l-0.1,0.1
+			l-0.1,0.2c-0.1,0.2-0.3,0.5-0.4,0.7c-0.6,1-1.2,1.9-1.8,2.8c-0.7,0.9-1.4,1.7-2.2,2.5l-0.6,0.6c-0.1,0.1-0.1,0.1-0.2,0.2l-0.2,0.1
+			l-0.3,0.3l-0.3,0.3c-0.1,0.1-0.2,0.2-0.3,0.3l-0.3,0.3l-0.2,0.1c-0.1,0-0.1,0.1-0.2,0.1l-0.7,0.5c-0.1,0-0.1,0.1-0.2,0.1l-0.2,0.1
+			l-0.3,0.2l-0.3,0.2c-0.1,0.1-0.2,0.2-0.3,0.2l-0.3,0.2l-0.2,0.1c-0.1,0-0.1,0.1-0.2,0.1l-0.7,0.4l-0.2,0.1c-0.1,0-0.1,0.1-0.2,0.1
+			l-0.4,0.2c-0.5,0.2-1,0.4-1.5,0.7c0.9-0.6,1.8-1.2,2.6-1.9c0.1,0,0.1-0.1,0.2-0.1l0.5-0.4l0.2-0.1c0.1,0,0.1-0.1,0.2-0.1l0.3-0.3
+			l0.3-0.3l0.2-0.1c0,0,0.1-0.1,0.1-0.1l0.6-0.5c0.3-0.3,0.5-0.6,0.8-0.9c0.4-0.5,0.9-1,1.3-1.5c0,0,0.1-0.1,0.1-0.2l0.1-0.2
+			l0.2-0.3l0.1-0.2c0-0.1,0.1-0.1,0.1-0.2l0.2-0.3l0.2-0.3l0.1-0.2l0.1-0.2l0.1-0.2l0.3-0.5c0.1-0.1,0.1-0.2,0.2-0.3l0.2-0.3
+			l0.1-0.2c0,0,0.1-0.1,0.1-0.2l0.2-0.3l0.2-0.3c0-0.1,0.1-0.1,0.1-0.2l0.1-0.2l0.3-0.7l0.3-0.6c0.2-0.5,0.5-1,0.7-1.5
+			c0-0.1,0-0.3,0-0.4c0-0.1,0.1-0.2,0.1-0.4c0.3-1,0.5-2,0.7-3c0.2-1,0.3-2,0.4-3c0-0.2,0-0.5,0-0.8v-0.2l0-0.1c0,0,0-0.1,0-0.1
+			v-0.4l0-0.4v-0.2v-0.2l0-0.8v-0.1v-0.1l0-0.2l0-0.3l0-0.1l0-0.4l0-0.4l0-0.4l0-0.2l0-0.1l0-0.1l-0.1-0.7c-0.2-0.8-0.3-1.5-0.5-2.3
+			c-0.1-0.2-0.1-0.4-0.2-0.6l-0.1-0.3l-0.1-0.2l-0.1-0.2l-0.1-0.4c0-0.1-0.1-0.2-0.1-0.3c-0.2-0.5-0.4-0.9-0.6-1.4
+			c-0.2-0.4-0.4-0.8-0.6-1.2v0c-0.2-0.5-0.5-1-0.8-1.4c-0.1-0.1-0.1-0.2-0.2-0.2c-0.5-0.8-1-1.5-1.6-2.2c-0.2-0.2-0.3-0.4-0.5-0.6
+			c-0.1-0.1-0.2-0.2-0.2-0.3l-0.2-0.3c0,0-0.1-0.1-0.1-0.1l-0.1-0.1l-0.3-0.3l-0.3-0.3l-0.1-0.1l-0.1-0.1l-0.3-0.3l-0.3-0.3
+			c-0.2-0.2-0.4-0.3-0.5-0.5c-0.4-0.3-0.8-0.6-1.2-0.9c-0.4-0.3-0.8-0.6-1.2-0.9c-0.2-0.1-0.4-0.3-0.6-0.4c-0.1-0.1-0.2-0.1-0.3-0.2
+			l-0.3-0.2c-0.1,0-0.1-0.1-0.2-0.1l-0.2-0.1l-0.3-0.2l-0.3-0.2l-0.2-0.1l-0.2-0.1l-0.3-0.2l-0.3-0.2l-0.2-0.1l-0.2-0.1l-0.3-0.2
+			c-0.9-0.4-1.8-0.7-2.8-1c-0.2-0.1-0.5-0.2-0.7-0.2c-0.1,0-0.2-0.1-0.4-0.1l-0.3-0.1h0c-0.1,0-0.1,0-0.2,0l-0.2,0l-0.4-0.1
+			l-0.4-0.1l-0.2,0l-0.2,0c-0.1,0-0.2,0-0.3,0h0c-0.6-0.1-1.3-0.2-1.9-0.2c-0.3,0-0.5,0-0.7-0.1c-0.1,0-0.3,0-0.4,0l-0.4,0h-0.1
+			h-0.1h-0.2h-0.4c-0.3,0-0.6,0-0.9,0c-0.2,0-0.4,0-0.7,0c-0.3,0-0.6,0-0.9,0.1c-0.6,0.1-1.2,0.2-1.8,0.3c-0.6,0.1-1.2,0.2-1.8,0.4
+			c-0.5,0.1-1,0.3-1.5,0.4c-3.9,1.2-7.5,3.4-10.4,6.3c-1.5,1.5-2.8,3.1-3.9,4.9c-1.1,1.8-2,3.7-2.7,5.8c0.3-2.1,0.9-4.2,1.8-6.3
+			s2-3.9,3.4-5.6c1.4-1.7,3-3.3,4.8-4.6c0.9-0.7,1.9-1.3,2.9-1.8l0.7-0.4c0.3-0.1,0.5-0.2,0.8-0.4c0.5-0.2,1-0.5,1.6-0.7
+			c2.1-0.8,4.3-1.4,6.6-1.6c0.6-0.1,1.1-0.1,1.7-0.1l0.4,0h0.2h0.2l0.4,0c0.1,0,0.3,0,0.4,0c0.3,0,0.6,0,0.9,0c0.1,0,0.2,0,0.2,0
+			l0.2,0c0.1,0,0.3,0,0.4,0c0.3,0,0.6,0.1,0.9,0.1c0.1,0,0.3,0,0.4,0.1l0.4,0.1l0.2,0l0.2,0l0.4,0.1l0.4,0.1l0.2,0
+			c0.1,0,0.2,0,0.2,0l0.4,0.1c0.1,0,0.3,0.1,0.4,0.1c0.3,0.1,0.6,0.1,0.8,0.2c0.1,0,0.3,0.1,0.4,0.1l0.2,0.1c0.1,0,0.1,0,0.2,0.1
+			c0.3,0.1,0.5,0.2,0.8,0.3c0.1,0,0.2,0.1,0.3,0.1l-2-5.5c-0.3-0.7,0.1-1.5,0.8-1.7c0.6-0.2,1.4,0.1,1.7,0.7l2.8,5.4l15.9-11
+			c0.1-0.1,0.2-0.1,0.3-0.1h0.1c0.2,0,0.4,0.1,0.5,0.3C-129.1,354.2-129.2,354.6-129.4,354.8z" />
+                        </g>
+                    </g>
+                </svg>
+                <ul class="listSt">
+                    <li>OFF</li>
+                    <li>LOW</li>
+                    <li>MEDIUM</li>
+                    <li>HIGH</li>
+                </ul>
+                <input|hslider #test min=0 max=100 value=75 /> 
+                <p class="checkTitle" style="font-size: 9dip;">Note : "'Off' means low security with minimal protection. 'High' enables zero trust architecture, ensuring maximum security by strictly verifying every byte of data 
+                    in real-time traffic."</p>
+            </div>
+            <div class="half">
+                <p class="checkTitle">Kernel Protection Elements</p>
+                <button type="checkbox" name="checkboxGroup" value="true" checked>Exclude Keygens / Cracks</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Bunch of executable Archive</button>
+                <button type="checkbox" name="checkboxGroup" value="false" checked>Suspicious Locations</button>
+                <button type="checkbox" name="checkboxGroup" value="false" checked>Command Line Download/Upload</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Processes of Script Processors</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Executions from Windows Management
+                    Instrumentation</button>
+                <button type="checkbox" name="checkboxGroup" value="false" checked>Windows Process impression</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Execution from Acrobat Reader</button>
+                <button type="checkbox" name="checkboxGroup" value="false" checked>Launching shell code Command
+                    Line</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Launching of unusual Script format</button>-->
+                <!-- <button type="checkbox" name="checkboxGroup" value="false">Use of Windows Cipher Tool</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Execution in Public Folder</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Management Console links from unusual locations</button>
+                <button type="checkbox" name="checkboxGroup" value="false">Control Panel Scripts from unusal locations</button> -->
+                <!--<button .btnNew2Sm style="margin-top: 5dip;"><label>Apply</label><span
+                        style="position:absolute;bottom:0dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+            </div>
+        </div>
+        <div class="graph">
+            <p class="checkTitle" style="margin-left: 20dip;">Real Time Threat Monitoring</p>
+            <p>
+                <svg.chart.bar #updating
+                    value="5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2,,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2" />
+            </p>
+        </div> -->
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<html lang="ENGLISH">
+<head>
+<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+    <link href="IDR_TIS_BANGLA.tis" hreflang="BANGLA" rel="translation">	
+    <link href="IDR_TIS_HINDI.tis" hreflang="HINDI" rel="translation">	
+    <link href="IDR_TIS_URDU.tis" hreflang="URDU" rel="translation">	
+<style>
+@import url(IDR_CSS_NOTIFICATION_TRAY_INFINITE_POPUP.css);
+@import url(IDR_CSS_GERMAN_LANG.css);
+
+.product_heading{
+	text-align:center;font-weight:500;font-size:16dip;color:#e94d00;margin:0dip;width:200dip;
+}
+.product_description{
+	padding-left:15dip;padding-right:15dip;text-align:center;
+}
+.popup_header{
+	background:#074a81;
+	padding:8dip;
+	padding-top:2dip;
+	padding-bottom:2dip;
+	border-bottom:3dip solid #2189ca;
+}
+.des_div{
+	padding-top:13dip;
+	margin-left:43dip;
+	text-align:center;
+}
+#logo_size{
+ width:90dip!important;
+ height:auto;
+}
+.remind_later{
+    color:#2189ca;
+}
+</style>
+<script type="text/tiscript">
+		include "IDR_TIS_MAIN.tis";
+		include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script> 
+<script type="text/tiscript">
+if(productVersion == #BASIC){
+          $(head).$append(<style>@import url(IDR_CSS_TRAY_BASIC.css);</style>);
+      }
+	  else if(productVersion == #PROVANTAGE || productVersion == #ELITE)
+	  {
+		$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+	  }
+</script> 
+<script type="text/tiscript">
+    function OnCallPopUp(varDiskVal)
+    {
+		var varDiskValue = varDiskVal;
+		Notification.show("<div .popup_header .popup_header_g><img #logo_size src='IDR_PNG_TRAY_LOGO.png'></div> <div .des_div><p class='product_heading'><label>ID_BACKUP_UTILITY</label></p></div><p class='product_description'><label>ID_VAULT_TRAY_DESC</label><span #ID_DISK_NAME><label>.</label></span><label>ID_VAULT_TRAY_DES</label></p><div .remind_later .remind_later_g><p style='text-align:center;behavior: button;margin-bottom:0dip;cursor:pointer;' #IDR_ID_IGNORE> <label>ID_CLOSE</label></p></div>");
+		$(#ID_DISK_NAME).text = varDiskValue+"\\";
+        $(#IDR_ID_IGNORE).onClick = function()
+        {
+			view.close(null);
+        }
+    }
+
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+		view.OnGetLowSpaceDiskVal(OnCallPopUp);
+    }
+</script>
+
+</head>
+<body>
+
+<popup #notification>
+  <header>Question:</header>
+  <content>
+	
+  </content>
+</popup>
+</body>
+</html>

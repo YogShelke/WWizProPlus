@@ -1,0 +1,146 @@
+<html window-frame="transparent" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+    <title>Resizeable dialog</title>
+  <style>
+  @import url(IDR_CSS_GERMAN_LANG.css);
+    html 
+    { 
+      width:300dip;           /* preferred/initial width */
+      height:150dip;          /* content will not overflow, no vertical scrollbars on the window */  
+      min-height:min-content; 
+      overflow:none;
+      padding:0; 
+	  margin:0;
+      background-color:#fff;
+    }
+    
+    window-button  { display:inline-block; width:max-content; font-family: Marlett; font-size:14dip; outline-color:red; behavior:clickable; }
+    window-caption { display:block; flow:text; width:*; font:system;padding:0;margin:0;font-size:18dip; }
+    window-button#window-close {  color:white;margin-top:10dip; }
+    window-button#window-close:hover { background-color:red; outline:5dip glow red -1dip; transition: outline(linear,200ms) background-color(linear,200ms); }
+        
+    body { 
+      padding:0; 
+	  margin:0;
+    }
+    
+    html > body > section { height:*;border:2dip solid #1c709c;padding:4dip 10dip; }
+
+    #content { flow:horizontal; size:*; }    
+    .logo{
+	width:80dip!important;
+    height:auto;
+}
+.header{
+	background:#074a81;
+	padding:3dip 10dip;
+	flow:horizontal;
+}
+.buttonPassword{
+	width:100dip;
+	height:30dip;
+	border-radius:100dip;
+	background:#2189ca;
+	color:#fff;
+	border:3dip solid #1a7ebd;
+	margin-top:15dip;
+}
+
+		.message_display_block p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:10dip;
+	    }
+		.message_display_block {
+		background:rgba(0,8,44,.95);
+		position:absolute;
+		top:-50dip;
+		left:0;
+		width:300dip;
+		height:43dip;
+		visibility:none;
+	    }
+	    .message_display_block:collapsed {
+		visibility:visible;
+		top:36dip;
+		transition:top(sine-in-out, 600ms);
+	    }
+  </style>
+  <script type="text/tiscript">
+  
+    include "IDR_TIS_DECORATORS.tis";
+	@click @on "#ID_OK_Button" :: ValidatePassword();  
+    @click @on "#close-dialog" :: view.close( $(input).value );
+    @click @on "#cancel-dialog" :: view.close( null );
+
+    </script>
+	<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+	<script type="text/tiscript">
+		$(#ID_LOGO).onClick = function()
+		{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://wardwiz.com");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://wardwiz.de"); //german for basic
+		}
+    </script>
+    <script type="text/tiscript">
+    $(body).onClick = function ()
+    {
+        $(.message_display_block).state.collapsed = false;
+    }
+    </script>
+	<script type="text/tiscript">
+    $(#ChkUserPwd).onFocus = function ()
+    {
+		$(.message_display_block).state.collapsed = false;
+    }
+    </script>	
+	<script type="text/tiscript">
+	function ValidatePassword()
+    {
+		var varPassword = $(#ChkUserPwd).value;
+		if(varPassword =="")
+		{
+		   $(#message).text =Lang.translate("ID_PLEASE_ENTER_PASSWORD");
+		   $(.message_display_block).state.collapsed = true;
+		   return;		   
+		}
+	view.close( $(input).value )
+	}
+    </script>
+	<script type="text/tiscript">
+	function self.ready()
+	{    
+		  //$(#CheckPassword).state.value = view.parameters.one;
+	}
+</script>
+
+</head>
+<body>
+  <div class='header'>
+	  <window-caption role="window-caption"><img src="IDR_PNG_LOGO.png" class='logo'></window-caption>
+	  <window-button #window-close role="window-close">r</window-button>
+  </div>
+  <section>
+    <p>Enter your password</p>
+    <div #content>
+      <input type='password' #ChkUserPwd novalue="Password.." style='width:*;height:30dip;padding-left:10dip;'/>
+    </div>
+    <p style='text-align:center;'>
+      <button class='buttonPassword' #ID_OK_Button style='border-radius:100dip 0 0 100dip;'>Ok</button>
+      <button class='buttonPassword' id="cancel-dialog" tabindex=1  style='border-radius:0 100dip 100dip 0;'>Cancel</button>
+    </p>
+		<div .message_display_block>
+			<p #message style="color:red;text-align:center;font-weight:bold;"></p>
+		</div>
+  </section>  
+</body>
+</html>
+</html>

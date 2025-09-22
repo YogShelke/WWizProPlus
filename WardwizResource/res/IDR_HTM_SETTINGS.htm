@@ -1,0 +1,4184 @@
+<html custom-frame="solid" lang="ENGLISH">
+	<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_TOGGELER.css);
+	html{
+        behavior:WardWizSettings;  
+	}
+	.passwordLockSettings{
+		width:635dip;
+		height:300dip;
+		position:relative;
+	}
+	.passwordLockSettings:collapsed{
+		visibility:none;
+	}
+    .passwordLockSettings:expanded{
+        visibility:visible;
+    }
+	.paswdprmpt{
+		margin-left:200dip;
+		margin-top:50dip;
+	}
+	.smbtn{
+		line-height:20dip;
+		margin-top:0!important;
+	}
+	.lgBtn{
+		margin-top:0!important;
+		line-height:20dip;
+		width:116dip;
+	}
+	.btnmrg{
+		margin-top:12dip;
+	}	
+	.btnTray{
+		width:75dip;
+		margin-top:15dip;
+		/* margin-left:15dip; */
+		margin-right:15dip;
+		margin-left:5dip;
+	}
+	#ID_BTN_DELETE_OLDER_REPORT_DISABLED:disabled{
+		opacity:.5;
+	}
+	.mouseHover{
+		cursor:pointer;
+	}
+	.cntnt_arw{
+		margin:10dip;
+		cursor:pointer;
+	}
+	#ID_DOWN_ARROW{
+		visibility:visible;
+	}
+	#ID_DOWN_ARROW:collapsed{
+		visibility:none;
+	}
+	#ID_UP_ARROW{
+		visibility:none;
+	}
+	#ID_UP_ARROW:expanded{
+		visibility:visible;
+	}
+	.arrow_setting{
+		size:15dip;
+	}
+	.showDevice{
+		margin:10dip;
+		visibility:none;
+	}
+	.showDevice:expanded{
+		visibility:visible;
+	}
+	.btnTrayRadio{
+		margin-top:10dip;
+		margin-right:10dip;
+	}
+	#ID_DOWN_ARROW_ACTION{
+		visibility:visible;
+	}
+	#ID_DOWN_ARROW_ACTION:collapsed{
+		visibility:none;
+	}
+	#ID_UP_ARROW_ACTION{
+		visibility:none;
+	}
+	#ID_UP_ARROW_ACTION:expanded{
+		visibility:visible;
+	}
+	.showSelectAction{
+		margin:10dip;
+		visibility:none;
+	}
+	.showSelectAction:expanded{
+		visibility:visible;
+	}
+	.action_radio_btn .contentTray h4{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		font-size:12dip;
+		font-weight:bold;
+	}
+	.ContentDisplay{
+		width:460dip;
+		height:295dip;
+		visibility:none;
+	}
+	.ContentDisplay.activeTab{
+		visibility:visible;
+		vertical-scrollbar: my-v-scrollbar;
+		min-height:295dip;
+		max-height:295dip;
+		overflow-y:auto;	
+	}
+	#ID_SCHED_SCAN_CONTENT .contentContSetting p{
+		font-size:12dip;
+		margin-top:2dip;
+		width:405dip;
+	}
+	#ID_SCHED_SCAN_CONTENT:disabled{
+		opacity:0.5;
+	}
+	#ID_LBL_NXT_SCHED_START{
+		visibility: none;
+	}
+	#ID_LBL_NXT_SCHED_START:collapsed{
+		visibility: none;
+	}
+	#ID_LBL_NXT_SCHED_START:expanded{
+		visibility: visible;
+	}
+	#ID_DAYS{
+		visibility: none;
+	}
+	#ID_DAYS:collapsed{
+		visibility: none;
+	}
+	#ID_DAYS:expanded{
+		visibility: visible;
+	}
+	#ID_LBL_SCAN_DAYS{
+	visibility: none;
+	}
+	#ID_LBL_SCAN_DAYS:collapsed{
+		visibility: none;
+	}
+	#ID_LBL_SCAN_DAYS:expanded{
+		visibility: visible;
+	}
+	#ID_HOURS{
+		visibility: none;
+	}
+	#ID_HOURS:collapsed{
+		visibility: none;
+	}
+	#ID_HOURS:expanded{
+		visibility: visible;
+	}
+	#ID_LBL_SCAN_HOURS{
+	visibility: none;
+	}
+	#ID_LBL_SCAN_HOURS:collapsed{
+		visibility: none;
+	}
+	#ID_LBL_SCAN_HOURS:expanded{
+		visibility: visible;
+	}
+	#ID_MIN{
+		visibility: none;
+	}
+	#ID_MIN:collapsed{
+		visibility: none;
+	}
+	#ID_MIN:expanded{
+		visibility: visible;
+	}
+	#ID_SEC{
+		visibility: none;
+	}
+	#ID_SEC:collapsed{
+		visibility: none;
+	}
+	#ID_SEC:expanded{
+		visibility: visible;
+	}
+	#ID_LBL_SCAN_MINUTES{
+		visibility: none;
+	}
+	#ID_LBL_SCAN_MINUTES:collapsed{
+		visibility: none;
+	}
+	#ID_LBL_SCAN_MINUTES:expanded{
+		visibility: visible;
+	}
+	#ID_LBL_SCAN_SECONDS{
+		visibility: none;
+	}
+	#ID_LBL_SCAN_SECONDS:collapsed{
+		visibility: none;
+	}
+	#ID_SHOW_INFO{
+		visibility: none;
+	}
+	#ID_SHOW_INFO:collapsed{
+		visibility:none;
+	}
+	#ID_SHOW_INFO:expanded{
+		visibility:visible;
+	}
+	.img_sched_icon:hover> div.img_sched_info{
+		background:url(IDR_PNG_INFO_HOVER.png) no-repeat;
+		background-size:cover;
+	}
+	.img_sched_icon:hover> div.img_sched_refresh{
+		background:url(IDR_PNG_REFRESH_HOVER.png) no-repeat;
+		background-size:cover;
+	}
+	.tooltip_schd_scn {
+		cursor:pointer;
+	}
+	.tooltip_schd_scn .tooltiptext {
+		visibility: hidden;
+		min-width: 255dip;
+		min-height: 32dip;
+		text-align: left;
+		padding: 3dip;
+		display:inline-block;
+		/* Position the tooltip */
+		z-index: 1;
+		position:absolute;
+		left:143dip;
+		margin-right:2dip;
+	}
+	.tooltip_schd_scn:hover .tooltiptext {
+		visibility: visible;
+	}
+	.img_sched_info{
+		height:17dip;
+		width:17dip;
+		margin-left:3dip;
+		margin-top:3dip;
+		float:right;
+		background:url(IDR_PNG_INFO.png) no-repeat;
+		background-size:cover;
+	}
+	#ID_SHOW_REFRESH{
+		visibility: none;
+	}
+	#ID_SHOW_REFRESH:collapsed{
+		visibility:none;
+	}
+	#ID_SHOW_REFRESH:expanded{
+		visibility:visible;
+	}
+	form#data-dialog > table#schedulescantable > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#schedulescantable { 
+		style-set: vgrid; 
+		flow:table-fixed;
+		width:456dip;
+		height:160dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		/* margin:10dip!important; */
+	}
+	table#schedulescantable > thead {
+		behavior:column-resizer;
+	}
+	table#schedulescantable > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#schedulescantable th 
+	{
+		font-size:12dip; 
+		border:none;
+		padding:4dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	table#schedulescantable th:nth-child(1)  {  width:0.08*; }
+	table#schedulescantable th:nth-child(2)  {  width:0.22*; }		
+	table#schedulescantable th:nth-child(3)  {  width:0.22*; }
+	table#schedulescantable th:nth-child(4)  {  width:0.475*; }			
+	
+	table#schedulescantable th:hover 
+	{ 
+		transition:blend;
+	}		
+	table#schedulescantable td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	}
+	table#schedulescantable td:nth-child(1) {  text-align:center; width:0.08*;padding-top:2dip; } /* first column */
+	table#schedulescantable td:nth-child(2) {  
+		text-align:left; 
+		width:0.03*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	
+	table#schedulescantable td:nth-child(3) {  
+		text-align:left; 
+		width:0.04*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* third column */
+	table#schedulescantable td:nth-child(4) {  
+		text-align:left; 
+		width:0.05*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	}/* fourth column */
+	.btnSettingSchedule{
+		flow:horizontal;
+		margin-top:10dip;	
+	}
+	.btnSchedule{
+		margin-left:54dip;
+	}
+	.enableDisbl #IDR_ADD_SCHED:disabled{
+		opacity:.7;
+	}
+	.enableDisbl #IDR_EDIT_SCHED:disabled{
+		opacity:.7;
+	}
+	.enableDisbl #IDR_DELETE_SCHED:disabled{
+		opacity:.7;
+	}
+	/*Table for update server*/
+	form#data-dialog > table#updateserver > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#updateserver { 
+		style-set: vgrid; 
+		flow:table-fixed;
+		width:429dip;
+		height:170dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#updateserver > thead {
+		behavior:column-resizer;  
+	}
+	table#updateserver > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#updateserver th 
+	{ 
+		font-size:13dip; 
+		border:none;
+		padding:4dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	
+	table#updateserver th:nth-child(1)  {  width:*; }
+	
+	table#updateserver th:hover 
+	{ 
+		transition:blend;
+	}
+	table#updateserver td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	}
+	
+	table#updateserver td:nth-child(1) {  text-align:center; width:*;padding-top:2dip; } /* first column */
+	
+	.updtInpt1{
+		width:143dip;
+		height:19.8dip;
+	}
+	#ID_BTN_ADD_SERVER{
+		width:80dip;
+	}
+	#ID_BTN_EDIT_SERVER{
+		width:133dip;
+	}
+	.horizontalFlow #ID_BTN_EDIT_SERVER:disabled{
+		opacity:.7;
+	}
+	.horizontalFlow #IDR_DELETE_SERVER:disabled{
+		opacity:.7;
+	}
+	#IDR_DELETE_SERVER{
+		width:63dip;
+	}
+	.col3{
+		width:148dip;
+		display:inline-block;
+		text-align:center;
+		margin-bottom:10dip;
+		cursor:pointer;
+		position:relative;
+	}
+	.themeTitle1{
+		width:148dip;
+		display:block;
+		/* margin-left:3dip;*/
+		height:25dip;
+		padding-top:5dip;
+		background:#d0f2ff;
+	}
+	.themeTitle2{
+		width:148dip;
+		display:block;
+		/* margin-left:3dip;*/
+		height:25dip;
+		padding-top:5dip;
+		background:#dcdcdc;
+	}
+	.themeTitle3{
+		width:148dip;
+		display:block;
+		/* margin-left:3dip; */
+		height:25dip;
+		padding-top:5dip;
+		background:#c5ffea;
+	}
+	.btnTrayForLang{
+		width:75dip;
+		margin-top:15dip;
+	}
+	.defltbtn{
+		float:right;
+		margin-right:9dip;
+	}
+	.defltbtn:collapsed{
+		visibility:none;
+	}
+	.defltbtn:expanded{
+		visibility:visible;
+	}
+	#ID_BTN_GO{
+		width:63dip;
+	}
+	.chkBoxScheduleScn{
+		margin-left:8dip;
+	}
+	.btnMrgnSchScan{
+		margin-right:23dip;
+		margin-left:57dip;
+	}
+	.tabsCstm 
+	{
+		behavior:tabs;
+		/* height:100%;
+		width:100%; */
+		overflow:hidden;
+		flow:horizontal;
+		/* padding-left:13dip; */
+	}
+	.strip /* tab strip */
+	{
+		flow: vertical;
+		width:170dip;
+	}
+	.strip > .mnuItem /* all tabs, passive by default */
+	{
+		padding: 7dip 8dip!important;
+	}
+	.arrow_setting{
+		background:transparent;
+	}
+	#ID_SCAN_AT_START_DISABLED:disabled{
+		opacity:.5;
+	}
+	#SELECT_ALL_RECORDS_SCHED_SCN:disabled{
+		opacity:.5;
+	}
+	.img_sched_refresh{
+		height:17dip;
+		width:17dip;
+		margin-left:3dip;
+		margin-top:3dip;
+		float:right;
+		background:url(IDR_PNG_REFRESH.png) no-repeat;
+		background-size:cover!important;
+	}
+	.settingIcon{
+		margin-left:6dip;
+		margin-top:-3dip;
+	}
+	.radioHeight{
+		height:15dip!important;
+	}
+	.mrgntop4{
+		margin-top:4dip;
+	}
+	</style>
+	<style #ID_CSS_GERMAN_LANG />
+	<script type="text/tiscript">
+		const styleBag = $(style#ID_CSS_GERMAN_LANG);
+		styleBag.attributes["src"] = "IDR_CSS_GERMAN_LANGUAGE.css";
+	</script>
+	<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	include "IDR_TIS_SQLITE.tis";
+	</script>
+
+	<script type="text/tiscript">
+	var ArraySettings = new Array(0);
+	var arrServerNameEntries = new Array(0);
+	var SchedScanTimeRecords = new Array(0);
+	var vCheckBox = $(body);
+	var vlistObj;
+	var varRecEntryCount = 0;
+	var DataBase;
+	var g_password = "";
+	var varSetScanTimeCount = 0;
+	var varSchedScanType = 0;
+	var varTimeCount = 0;
+	var varGetRecordSetTime;
+	var varClosetSchedTime;
+	var varRecordSet;
+	var varDBPath;
+	var varWeekDay;
+	var varSettingsVal = 0;
+	var IsAnyEntrySelected = 0;
+	var bIsEditDisable = false;
+	var bIsSchedMenuClicked = false;
+	var arrPasswordCurrentVal = new Array();
+	var arrPasswordUpdatedVal = new Array();
+	var vPrevLang;
+	</script>
+
+	<script type="text/tiscript">
+    namespace WARDWIZSETTINGS
+    {
+        const ID_TRAY_NOTIFICATION = 1;
+        const ID_DEL_OLD_REPORTS = 2;
+        const ID_SHOW_TOOLTIP = 3;
+        const ID_SCAN_AT_STARTUP = 4;
+        const ID_ENABLE_SOUND = 5;
+        const ID_AUTO_LIVE_UPDATE = 6;
+        const ID_RADIO_CACHE = 7;
+        const ID_CHECK_CACHE = 8;
+        const IDR_PROMPT = 9;
+        const IDR_QUARTINE = 10;
+        const ID_HEUR_SCAN = 11;
+        const ID_EMAIL_SCAN = 12;
+        const ID_BTN_AUTO_PRODUCT_UPDATE = 13;
+        const ID_BTN_BLOCK_AUTORUN = 14;
+        const ID_BTN_EXECUTE_BLOCK = 15;
+        const ID_BTN_WRITE_BLOCK = 16;
+        const ID_BTN_SCHED_SCAN = 17;
+        const ID_BTN_WIDGET = 18;
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_TRAY_NOTIFICATION).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_TRAY_NOTIFICATION).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_TRAY_NOTIFICATION, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_DEL_OLD_REPORTS).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_DEL_OLD_REPORTS).state.value;
+        if(bToggleState == true){
+            $(#ID_BTN_DELETE_OLDER_REPORT_DISABLED).state.disabled = false;
+        }
+        else {
+            $(#ID_BTN_DELETE_OLDER_REPORT_DISABLED).state.disabled = true;
+        }
+        onClickNotification(WARDWIZSETTINGS.ID_DEL_OLD_REPORTS, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_SHOW_TOOLTIP).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_SHOW_TOOLTIP).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_SHOW_TOOLTIP, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_SCAN_AT_STARTUP).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_SCAN_AT_STARTUP).state.value;
+        if(bToggleState == true)
+        {
+            $(#ID_SCAN_AT_START_DISABLED).state.disabled = false;
+        }
+        else{
+            $(#ID_SCAN_AT_START_DISABLED).state.disabled = true;
+        }
+        onClickNotification(WARDWIZSETTINGS.ID_SCAN_AT_STARTUP, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_WIDGET_SHOW_HIDE).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_WIDGET_SHOW_HIDE).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_BTN_WIDGET, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_SCHED_SCAN).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_SCHED_SCAN).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_BTN_SCHED_SCAN, bToggleState);
+        if(bToggleState == true)
+        {
+            $(#ID_SCHED_SCAN_CONTENT).state.disabled = false;		
+			$(#IDR_ADD_SCHED).state.disabled = false;                       		
+			if(SchedScanTimeRecords.length == 0)
+			{
+                $(#IDR_DELETE_SCHED).state.disabled = true;	
+                $(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = true;				
+				$(#IDR_EDIT_SCHED).state.disabled = true;								
+			}
+			else{
+                $(#IDR_EDIT_SCHED).state.disabled = false;
+				$(#IDR_DELETE_SCHED).state.disabled = false;
+				$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = false;
+			}
+        }
+        else
+        {
+            $(#ID_SCHED_SCAN_CONTENT).state.disabled = true;
+            $(#IDR_ADD_SCHED).state.disabled = true;
+            $(#IDR_EDIT_SCHED).state.disabled = true;
+            $(#IDR_DELETE_SCHED).state.disabled = true;
+			$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = true;
+        }
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_ENABLE_SOUND).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_ENABLE_SOUND).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_ENABLE_SOUND, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_AUTO_LIVE_UPDATE).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_AUTO_LIVE_UPDATE).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_AUTO_LIVE_UPDATE, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_AUTO_PRODUCT_UPDATE).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_AUTO_PRODUCT_UPDATE).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_BTN_AUTO_PRODUCT_UPDATE, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_EXECUTE_BLOCK).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_EXECUTE_BLOCK).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_BTN_EXECUTE_BLOCK, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_BLOCK_AUTORUN).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_BLOCK_AUTORUN).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_BTN_BLOCK_AUTORUN, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_WRITE_BLOCK).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_WRITE_BLOCK).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_BTN_WRITE_BLOCK, bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_USB_BLOCK).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_USB_BLOCK).state.value;
+        self.OnClickChangeUsbBlock(bToggleState);
+    }
+</script>
+
+<script type="text/tiscript">
+    var bRadioState = 0;
+    $(#IDR_RADIO_MOMENTARY).onClick = function()
+    {
+        bRadioState = 0;
+        onClickNotification(WARDWIZSETTINGS.ID_RADIO_CACHE, bRadioState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#IDR_RADIO_TENACIOUS).onClick = function()
+    {
+        bRadioState = 1;
+        onClickNotification(WARDWIZSETTINGS.ID_RADIO_CACHE, bRadioState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#IDR_CHECK_CACHE).onClick = function()
+    {
+        var bCheckState = $(#IDR_CHECK_CACHE).value;
+        onClickNotification(WARDWIZSETTINGS.ID_CHECK_CACHE, bCheckState);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_RADIO_PROMPT_USER).onClick = function()
+    {
+        var bRadioState = $(#ID_RADIO_PROMPT_USER).value;
+        onClickNotification(WARDWIZSETTINGS.IDR_PROMPT, bRadioState, 1);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_RADIO_DO_NOT_PROMPT).onClick = function()
+    {
+        var bRadioState = $(#ID_RADIO_DO_NOT_PROMPT).value;
+        onClickNotification(WARDWIZSETTINGS.IDR_PROMPT, bRadioState,0);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_RADIO_AUTOSCAN).onClick = function()
+    {
+        var bRadioState = $(#ID_RADIO_AUTOSCAN).value;
+        onClickNotification(WARDWIZSETTINGS.IDR_PROMPT, bRadioState,2);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_RADIO_REPAIR).onClick = function()
+    {
+        var bRadioState = $(#ID_RADIO_REPAIR).value;
+        onClickNotification(WARDWIZSETTINGS.IDR_QUARTINE, bRadioState,1);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_RADIO_DELETE).onClick = function()
+    {
+        var bRadioState = $(#ID_RADIO_DELETE).value;
+        onClickNotification(WARDWIZSETTINGS.IDR_QUARTINE, bRadioState,2);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_RADIO_SKIP).onClick = function()
+    {
+        var bRadioState = $(#ID_RADIO_SKIP).value;
+        onClickNotification(WARDWIZSETTINGS.IDR_QUARTINE, bRadioState,0);
+    }
+</script>
+
+<script type="text/tiscript">
+    $(#ID_BTN_HEURISTIC_SCAN).onClick = function()
+    {
+        var bToggleState = $(#ID_BTN_HEURISTIC_SCAN).state.value;
+        onClickNotification(WARDWIZSETTINGS.ID_HEUR_SCAN, bToggleState);
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function FunCheckInternetAccessBlock()
+	{
+		if(view.FunCheckInternetAccessBlock())
+		{
+			return true;
+		}
+		return false;
+	}
+	</script>
+	
+	<script type="text/tiscript">	
+	function OpenExcludeDialog()
+    {   
+		g_IsAnyPopUpDisplayed = true;
+        var dialogParameters = { ProductVersion:productVersion, FunCheckInternetAccessBlock:FunCheckInternetAccessBlock,varLanguageValue:g_LanguageName, varThemeType:g_themeType};
+        var dialogRetVal = view.dialog { url: self.url("IDR_HTM_EXCLUDE.htm"), client:true, alignment:-5, parameters: dialogParameters};
+        g_IsAnyPopUpDisplayed = false;		
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function ApplyCurrentSettings(ArrCurrentSettings)
+    {
+		$(#ID_BTN_TRAY_NOTIFICATION).state.value = (ArrCurrentSettings[1].value).toInteger();
+        $(#ID_BTN_DEL_OLD_REPORTS).state.value = (ArrCurrentSettings[2].value).toInteger();
+        if($(#ID_BTN_DEL_OLD_REPORTS).state.value == true)
+        {
+           $(#ID_BTN_DELETE_OLDER_REPORT_DISABLED).state.disabled = false;
+        }
+		else
+		{
+			$(#ID_BTN_DELETE_OLDER_REPORT_DISABLED).state.disabled = true;
+		}
+        $(#ID_BTN_SHOW_TOOLTIP).state.value = (ArrCurrentSettings[3].value).toInteger();
+        $(#ID_BTN_SCAN_AT_STARTUP).state.value = (ArrCurrentSettings[4].value).toInteger();
+		$(#ID_BTN_WIDGET_SHOW_HIDE).state.value = (ArrCurrentSettings[18].value).toInteger();
+        var svscan = $(#ID_BTN_SCAN_AT_STARTUP).state.value;
+        if(svscan == 0)
+        {
+         $(#ID_BTN_SCAN_AT_STARTUP).state.value = 0;
+         $(#ID_SCAN_AT_START_DISABLED).state.disabled = true;
+        }
+        else if(svscan == 1)
+        {
+         $(#ID_BTN_SCAN_AT_STARTUP).state.value = 1;
+         $(#ID_SCAN_AT_START_DISABLED).state.disabled = false;
+        }
+        else if(svscan == 2)
+        {
+         $(#ID_BTN_SCAN_AT_STARTUP).state.value = 1;
+         $(#ID_SCAN_AT_START_DISABLED).state.disabled = false;
+        }
+
+        $(#ID_BTN_ENABLE_SOUND).state.value = (ArrCurrentSettings[5].value).toInteger();
+        $(#ID_BTN_AUTO_LIVE_UPDATE).state.value = (ArrCurrentSettings[6].value).toInteger();
+
+        var iPrompt = (ArrCurrentSettings[7].value).toInteger();
+        if(iPrompt == 0)
+        {
+             $(#ID_RADIO_DO_NOT_PROMPT).checked = true;
+             $(#ID_RADIO_PROMPT_USER).checked = false;
+             $(#ID_RADIO_AUTOSCAN).checked = false;
+        }
+        else if(iPrompt == 1)
+        {
+            $(#ID_RADIO_PROMPT_USER).checked = true;
+            $(#ID_RADIO_DO_NOT_PROMPT).checked = false;
+            $(#ID_RADIO_AUTOSCAN).checked = false;
+        }
+        else if(iPrompt == 2)
+        {
+            $(#ID_RADIO_AUTOSCAN).checked = true;
+            $(#ID_RADIO_PROMPT_USER).checked = false;
+            $(#ID_RADIO_DO_NOT_PROMPT).checked = false;
+        }
+
+        var iQuarnt = (ArrCurrentSettings[8].value).toInteger();
+        if(iQuarnt == 0)
+        {
+            $(#ID_RADIO_SKIP).checked = true;
+            $(#ID_RADIO_REPAIR).checked = false;
+            $(#ID_RADIO_DELETE).checked = false;
+        }
+        else if(iQuarnt == 1)
+        {
+            $(#ID_RADIO_REPAIR).checked = true;
+            $(#ID_RADIO_DELETE).checked = false;
+            $(#ID_RADIO_SKIP).checked = false;
+        }
+        else if(iQuarnt == 2)
+        {
+            $(#ID_RADIO_DELETE).checked = true;
+            $(#ID_RADIO_SKIP).checked = false;
+            $(#ID_RADIO_REPAIR).checked = false;
+        }
+        var iHeuScan= (ArrCurrentSettings[9].value).toInteger();
+        $(#ID_BTN_HEURISTIC_SCAN).state.value = iHeuScan;
+        var iBkCache = (ArrCurrentSettings[10].value).toInteger();
+        $(#IDR_CHECK_CACHE).checked = iBkCache;
+        var iCachingtype = (ArrCurrentSettings[11].value).toInteger();
+        if(iCachingtype == 1)
+        {
+         $(#IDR_RADIO_MOMENTARY).checked = false;
+         $(#IDR_RADIO_TENACIOUS).checked = true;
+        }
+        else if(iCachingtype == 0)
+        {
+         $(#IDR_RADIO_MOMENTARY).checked = true;
+         $(#IDR_RADIO_TENACIOUS).checked = false;
+        }
+        $(#ID_BTN_AUTO_PRODUCT_UPDATE).state.value = (ArrCurrentSettings[12].value).toInteger();
+		var id = (ArrCurrentSettings[12].value).toInteger()
+        var iEmailScan= (ArrCurrentSettings[13].value).toInteger();
+        $(#ID_BTN_BLOCK_AUTORUN).state.value = (ArrCurrentSettings[14].value).toInteger();
+        $(#ID_BTN_EXECUTE_BLOCK).state.value = (ArrCurrentSettings[15].value).toInteger();
+        $(#ID_BTN_WRITE_BLOCK).state.value = (ArrCurrentSettings[16].value).toInteger();
+		var iSchScan = (ArrCurrentSettings[17].value).toInteger();
+		$(#ID_BTN_SCHED_SCAN).state.value = iSchScan;
+		if(iSchScan == 0)
+		{
+			$(#ID_SCHED_SCAN_CONTENT).state.disabled = true;
+			$(#IDR_ADD_SCHED).state.disabled = true;
+		    $(#IDR_EDIT_SCHED).state.disabled = true;
+			$(#IDR_DELETE_SCHED).state.disabled = true;
+			$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = true;
+		}
+		else
+		{
+			$(#ID_SCHED_SCAN_CONTENT).state.disabled = false;
+			$(#IDR_ADD_SCHED).state.disabled = false;
+		    $(#IDR_EDIT_SCHED).state.disabled = false;
+			$(#IDR_DELETE_SCHED).state.disabled = false;
+			$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = false;
+		}
+     }
+	
+	function ApplyDefaultSettings()
+    {
+		$(#ID_BTN_TRAY_NOTIFICATION).state.value = true;
+		$(#ID_BTN_DEL_OLD_REPORTS).state.value = true;
+		$(#ID_BTN_DELETE_OLDER_REPORT_DISABLED).state.disabled = false;
+		$(#ID_BTN_HEURISTIC_SCAN).state.value = true;
+		$(#ID_BTN_SHOW_TOOLTIP).state.value = true;
+		$(#ID_RADIO_PROMPT_USER).state.value = false;
+		$(#ID_RADIO_DO_NOT_PROMPT).checked = false;
+		$(#ID_RADIO_AUTOSCAN).checked = true;
+		$(#ID_BTN_SCAN_AT_STARTUP).state.value = false;
+		$(#ID_SCAN_AT_START_DISABLED).state.disabled = false;
+		$(#ID_RADIO_REPAIR).checked = true;
+		$(#ID_RADIO_DELETE).checked = false;
+		$(#ID_RADIO_SKIP).checked = false;
+		$(#ID_BTN_ENABLE_SOUND).state.value = true;
+		$(#ID_BTN_AUTO_LIVE_UPDATE).state.value = true;
+		$(#IDR_RADIO_MOMENTARY).checked = true;
+		$(#IDR_RADIO_TENACIOUS).checked = false;
+		$(#IDR_CHECK_CACHE).checked = false;
+		$(#ID_BTN_AUTO_PRODUCT_UPDATE).state.value = true;
+		$(#ID_BTN_BLOCK_AUTORUN).state.value = true;
+		$(#ID_BTN_EXECUTE_BLOCK).state.value = false;
+		$(#ID_BTN_WRITE_BLOCK).state.value = false;
+		$(#ID_BTN_SCHED_SCAN).state.value = false;
+		$(#ID_BTN_WIDGET_SHOW_HIDE).state.value = true;
+		$(#ID_SCHED_SCAN_CONTENT).state.disabled = true;
+		$(#ID_BTN_USB_BLOCK).state.value = false;
+    } 
+	</script>
+	
+	<script type="text/tiscript">
+	function onClickNotification(ID_BUTTON_CLICK, bToggleState, varRegistryValue=0)
+    {
+		self.OnClickChangeSettings(ID_BUTTON_CLICK,bToggleState,varRegistryValue);
+    }
+	
+	function CurrentSettingsValues(iKey, iValue)
+    {
+        var varKey = iKey.toInteger();
+        ArraySettings[varKey] = {Key : iKey , value : iValue};
+    }
+	
+	function onClickDefaultButton()
+    {
+        self.OnClickApplyDefaultSettings();
+    }
+	</script>
+	
+	<script type="text/tiscript">   
+	function AddServerName_FireEvent(evt)
+    {
+	    var strServerName = evt.data.one.toString();
+        arrServerNameEntries[varRecEntryCount] = {/*index: varRecEntryCount, */ServerName: strServerName};
+        varRecEntryCount++;
+		if(varRecEntryCount < 2)
+		{
+			$(#ID_BTN_EDIT_SERVER).state.disabled = true;
+		}
+		else
+		{
+			$(#ID_BTN_EDIT_SERVER).state.disabled = false;
+		}
+		if(varRecEntryCount == 0)
+		{
+			$(#IDR_DELETE_SERVER).state.disabled = true;
+		}
+		else 
+		{
+			$(#IDR_DELETE_SERVER).state.disabled = false;
+		}
+    }
+    const ADD_ENTRY_SERVERNAME_EVENT = 0x100 + 12;
+    self.subscribe(AddServerName_FireEvent, Event.BEHAVIOR_EVENT, ADD_ENTRY_SERVERNAME_EVENT);
+		
+	$(#ID_BTN_EDIT_SERVER).onClick = function()
+	{
+		var intval = vlistObj.tbody.currentIndex;
+		if(intval == -1)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("IDS_SERVERNAME_CONTINUE");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return false;
+		}
+		var arrTempVal = new Array(0);
+		var iVal;
+		var varTempVal1 = arrServerNameEntries[intval].ServerName;
+		
+		for(var i = 0; i < varRecEntryCount; i++)
+		{	
+			arrTempVal[i] = arrServerNameEntries[i].ServerName;
+		}
+		for(var i = 1; i <= intval; i++)
+		{
+			iVal = i-1;
+			var val = arrServerNameEntries[iVal].ServerName;
+			arrTempVal[i] = val;
+		}
+		arrTempVal[0] = varTempVal1;
+		for(var i = 0; i < varRecEntryCount; i++)
+		{
+			arrServerNameEntries[i].ServerName = arrTempVal[i];
+		}
+		vlistObj.tbody.currentIndex = 0;
+		self.OnResetPriority(arrServerNameEntries);
+	}
+	
+	$(#ID_BTN_ADD_SERVER).onClick = function()
+	{	
+		var varServerName = $(#ID_INPUT_SERVER_VAL).value;
+		varServerName = varServerName.toLowerCase();
+		varServerName = varServerName.replace(/^(ftps?:)\/\//, "");
+		if(varServerName.charAt(varServerName.length-1) == "/")
+		{
+			varServerName = varServerName.substr(0, varServerName.length - 1);
+		}
+		if(varServerName == "")
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_VALID_ENTRY");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return false;
+		}
+		else
+		{
+			for(var i = 0; i < varRecEntryCount; i++)
+			{
+				if(arrServerNameEntries[i].ServerName == varServerName)
+				{
+					$(#ID_INPUT_SERVER_VAL).value = "";
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SERVER_ALREADY_EXIST");
+					var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								};
+					return false;
+				}
+			}
+		}
+		var arrTempValue = new Array(0);
+		var iVal;
+		var varVal;
+		if(varRecEntryCount == 0)
+		{	
+			varVal = varServerName;
+		}
+		else
+		{
+			for(var i = 0; i < varRecEntryCount; i++)
+			{	
+				arrTempValue[i] = arrServerNameEntries[i].ServerName;
+			}
+			varVal = arrServerNameEntries[varRecEntryCount-1].ServerName;
+			
+			for(var i = 1; i < varRecEntryCount; i++)
+			{
+				iVal = i-1;
+				var value = arrServerNameEntries[iVal].ServerName;
+				arrTempValue[i] = value;
+			}
+			arrTempValue[0] = varServerName;
+			for(var i = 0; i < varRecEntryCount; i++)
+			{
+				arrServerNameEntries[i].ServerName = arrTempValue[i];
+			}
+		}
+		arrServerNameEntries[varRecEntryCount] = {ServerName:varVal};
+		varRecEntryCount++;
+		vlistObj.tbody.currentIndex = 0;
+		$(#ID_INPUT_SERVER_VAL).value = "";
+		if(varRecEntryCount < 2)
+		{
+			$(#ID_BTN_EDIT_SERVER).state.disabled = true;
+		}
+		else
+		{
+			$(#ID_BTN_EDIT_SERVER).state.disabled = false;
+		}
+		if(varRecEntryCount == 0)
+		{
+			$(#IDR_DELETE_SERVER).state.disabled = true;
+		}
+		else 
+		{
+			$(#IDR_DELETE_SERVER).state.disabled = false;
+		}
+		self.OnResetPriority(arrServerNameEntries);
+	}
+	
+	$(#IDR_DELETE_SERVER).onClick = function()
+	{	
+		var intval = vlistObj.tbody.currentIndex;
+		if(intval == -1)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("IDS_CUSTOM_SCAN_NO_ENTRY_SELECTED_FOR_DELETE");
+			var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: "OK", role:#ok, value:true }]
+					};
+			return false;
+		}
+		if(arrServerNameEntries[intval].ServerName == "www.vibranium.co.in")
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DEFAULT_ENTRY");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								};
+			return false;
+		}
+		arrServerNameEntries.remove(intval);
+		varRecEntryCount--;
+		vlistObj.tbody.currentIndex = intval;
+		if(varRecEntryCount < 2)
+		{
+			$(#ID_BTN_EDIT_SERVER).state.disabled = true;
+		}
+		else
+		{
+			$(#ID_BTN_EDIT_SERVER).state.disabled = false;
+		}
+		if(varRecEntryCount == 0)
+		{
+			$(#IDR_DELETE_SERVER).state.disabled = true;
+		}
+		else 
+		{
+			$(#IDR_DELETE_SERVER).state.disabled = false;
+		}
+		self.OnResetPriority(arrServerNameEntries);
+	}
+	
+    $(#ID_SELECT_LANG).on("change", function()
+    {		
+       this.post(showDialog); 			
+	});
+	
+	function showDialog() {
+		if(g_IsFullScanRunning == true || g_IsQuickScanRunning == true || g_IsCustomScanRunning == true || g_IsRegOptimizerRunning == true || g_IsDataEncDecRunning == true || g_IsRegOptimizerRunning == true || g_IsRecoverFilesRunning == true)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TASK_IN_PROCESS");
+			var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: "OK", role:#ok, value:true }]
+					};	
+			$(#ID_SELECT_LANG).value = vPrevLang;					
+			return;		
+		}
+	  $(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_LANG_CHANGE_QUESTION");		
+	  var result = dialog { body:$(form#simple-dialog), 
+	  				returns: #values,
+	  				caption : Lang.translate("ID_WARNING"),
+	  				buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]};
+	  
+	  if(result == true)
+	  {
+        var varLangValue= $(#ID_SELECT_LANG).value;
+		var bToggleState = $(#ID_BTN_WIDGET_SHOW_HIDE).state.value;
+		if(varLangValue == 0)
+		{
+			g_LanguageName = "ENGLISH";
+			g_LanguageID = LANGUAGE_TYPE.ENGLISH;
+		}
+		else if(varLangValue == 2)
+		{
+			g_LanguageName = "GERMAN";
+			g_LanguageID = LANGUAGE_TYPE.GERMAN;
+		}
+		self.ChangeLanguageID(varLangValue,bToggleState);
+		var doc = selectView("IDR_HTM_SETTINGS");
+		ResetIndexPage();				
+	  }
+	  else
+	  {
+	  	$(#ID_SELECT_LANG).value = vPrevLang;				
+	  }
+	} 
+	</script>
+	<script type="text/tiscript">
+	function FunCallSelectedEntry()
+    {
+        IsAnyEntrySelected = 0;
+		for( var record in SchedScanTimeRecords )
+        {
+			if(record.selected)
+            {
+                IsAnyEntrySelected++;
+            }
+        }
+    }
+	</script>
+	<script type="text/tiscript">
+	$(#ID_BTN_DELETE_OLDER_REPORT_DISABLED).onClick = function(){
+		g_IsAnyPopUpDisplayed = true;
+        var dialogParameters = { ProductVersion:productVersion, varLanguageValue:g_LanguageName, varThemeType:g_themeType};
+        var dialogRetVal = view.dialog { url: self.url("IDR_POPUP_DELETE_OLDER_REPORT.htm"), client:true, alignment:-5, parameters: dialogParameters};
+        g_IsAnyPopUpDisplayed = false;
+        self.SetDelRepDays(dialogRetVal);
+	}
+	
+	$(#ID_BUTTON_DEFAULT_SETTINGS).onClick = function()
+    {
+        onClickDefaultButton();
+        ApplyDefaultSettings();
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DEFAULT_SETTING_SUCCESS");
+		var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: "OK", role:#ok, value:true }]
+					};
+    }
+	
+	$(#ID_SCAN_AT_START_DISABLED).onClick = function(){
+		g_IsAnyPopUpDisplayed = true;
+        var dlgParameters = {ProVersion:productVersion,varLanguageValue:g_LanguageName, varThemeType:g_themeType};
+        var dlgRetVal = view.dialog { url: self.url("IDR_POPUP_SCAN_AT_STARTUP.htm"), client:true, alignment:-5, parameters: dlgParameters};
+        g_IsAnyPopUpDisplayed = false;
+        self.SetScanStartup(dlgRetVal);
+	}
+	
+	$(#ID_EXCLUDE_FILES).onClick = function(){
+		OpenExcludeDialog();
+    }
+	
+	$(#ID_SCAN_BY_NAME).onClick = function()
+	{
+		g_IsAnyPopUpDisplayed = true;
+		var dialogParameters = { ProductVersion:productVersion,varLanguageValue:g_LanguageName, varThemeType:g_themeType};
+		var dialogRetVal = view.dialog { url: self.url("IDR_HTM_SCAN_BY_NAME.htm"), client:true, alignment:-5, parameters: dialogParameters};
+		g_IsAnyPopUpDisplayed = false;
+	}
+	
+	$(#ID_SAFE_QUAR).onClick = function()
+	{
+		var doc = selectView("IDR_HTM_RECOVER_FILES");
+	}
+	
+	function CreateInternetSettingsTable()
+	{
+		DataBase = DB.open(self.GetDBPathforSched());
+		var varCheckTable = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZPROXYSETTINGS'");
+		if(varCheckTable == 101)
+		{
+			//DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZPROXYSETTINGS(ID INT PRIMARY KEY, PROXY_SETTINGS INT, SERVER NVARCHAR(260), PORT INT, USERNAME NVARCHAR(260), PASSWORD NVARCHAR(260), RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+			//DataBase.exec("INSERT INTO WWIZPROXYSETTINGS(ID, PROXY_SETTINGS) VALUES(2, 1)");
+			DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZPROXYSETTINGS(ID INT PRIMARY KEY, SERVER NVARCHAR(260), PORT INT, USERNAME NVARCHAR(260), PASSWORD NVARCHAR(260), RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+			DataBase.exec("INSERT INTO WWIZPROXYSETTINGS(ID) VALUES(2)");
+		}
+		else
+		{
+			varCheckTable.close();		
+			var vCheckServerPort = DataBase.exec("SELECT ID,SERVER,PORT FROM WWIZPROXYSETTINGS");	
+			if(vCheckServerPort instanceof Recordset)
+			{
+				if(vCheckServerPort["ID"] == "1")
+				{
+					var vServer = vCheckServerPort["SERVER"];
+					var vPort = vCheckServerPort["PORT"];
+					vCheckServerPort.close();
+					if(vServer == 0 || vPort == 0)
+					{
+						DataBase.exec("DROP TABLE WWIZPROXYSETTINGS");
+						//DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZPROXYSETTINGS(ID INT PRIMARY KEY, PROXY_SETTINGS INT, SERVER NVARCHAR(260), PORT INT, USERNAME NVARCHAR(260), PASSWORD NVARCHAR(260), RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+						//DataBase.exec("INSERT INTO WWIZPROXYSETTINGS(ID, PROXY_SETTINGS) VALUES(2, 1)");
+						DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZPROXYSETTINGS(ID INT PRIMARY KEY, SERVER NVARCHAR(260), PORT INT, USERNAME NVARCHAR(260), PASSWORD NVARCHAR(260), RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+						DataBase.exec("INSERT INTO WWIZPROXYSETTINGS(ID) VALUES(2)");
+						self.SetRegvalforProxy(false);
+					}
+					else 
+					{	
+						var vSetting = 	DataBase.exec("SELECT ENABLE_SETTINGS FROM WWIZPROXYSETTINGS");	
+						if(vSetting instanceof Recordset)
+						{
+							if(vSetting["ENABLE_SETTINGS"] == 1)
+								self.SetRegvalforProxy(true);
+							else
+								self.SetRegvalforProxy(false);
+							vSetting.close();	
+						}
+						else
+							self.SetRegvalforProxy(false);
+						
+						DataBase.exec("DROP TABLE WWIZPROXYSETTINGS");
+						//DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZPROXYSETTINGS(ID INT PRIMARY KEY, PROXY_SETTINGS INT, SERVER NVARCHAR(260), PORT INT, USERNAME NVARCHAR(260), PASSWORD NVARCHAR(260), RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+						//DataBase.exec("INSERT INTO WWIZPROXYSETTINGS(ID, PROXY_SETTINGS, SERVER, PORT) VALUES(2, 2, ?, ?)",vServer, vPort);
+						DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZPROXYSETTINGS(ID INT PRIMARY KEY, SERVER NVARCHAR(260), PORT INT, USERNAME NVARCHAR(260), PASSWORD NVARCHAR(260), RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+						DataBase.exec("INSERT INTO WWIZPROXYSETTINGS(ID, SERVER, PORT) VALUES(2, ?, ?)",vServer, vPort);
+					}
+				}				
+			}
+		}
+		DataBase.close();	
+	}	
+	
+	function GetPrevSchedTime(vArrPrevSchedScanTime)
+	{
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCANTIME(ID INTEGER PRIMARY KEY, INTSCHEDULEDTYPE INT, INTLOWBATTERY INT, INTSHUTDOWN INT, INTWAKEUP INT, INTSCANSKIP INT, SCHEDSCANTIME INT, BSUNDAY BOOL, BMONDAY BOOL, BTUESDAY BOOL, BWEDNESDAY BOOL, BTHURSDAY BOOL, BFRIDAY BOOL, BSATURDAY BOOL, INTSCANTYPE INT, SCHEDSCANDATE REAL, RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+		var vResult = DataBase.exec("SELECT ID, SCHEDSCANTIME FROM WWIZSCHEDSCANTIME");
+		if(vResult instanceof Recordset)
+		{
+			var vIndex = 0;
+			var varCounter = 0;
+			do
+			{
+				varCounter = 0;
+				vArrPrevSchedScanTime[vIndex] = {ID :0, SCHEDSCANTIME:0};            
+				for (var varVirtualDBData in vResult)
+				{
+					switch(varCounter)
+					{
+						case 0:
+								vArrPrevSchedScanTime[vIndex].ID = varVirtualDBData;
+								break;
+						case 1:
+								vArrPrevSchedScanTime[vIndex].SCHEDSCANTIME = varVirtualDBData;
+								break;
+					}
+					varCounter++;
+				}			
+				vIndex++;
+			}while(vResult.next());					
+			vResult.close();
+		}
+		DataBase.close();
+	}
+	$(#IDR_ADD_SCHED).onClick = function()
+    {
+		SchedScanTimeRecords.length = 0;
+		g_IsAnyPopUpDisplayed = true;
+		var vArrSchedScan = new Array(0);
+		var vArrCustomScan = new Array(0);
+		var vArrRegOptimizer = new Array(0);
+		var vArrPrevSchedScanTime = new Array(0);
+			
+		varDBPath = self.GetDBPathforSched();
+		GetPrevSchedTime(vArrPrevSchedScanTime);
+		vArrSchedScan[0] = {INTSCHEDULEDTYPE:1, INTLOWBATTERY:1, INTSHUTDOWN:0, INTWAKEUP:0, INTSCANSKIP:1, SCHEDSCANTIME:0, BSUNDAY:1, BMONDAY:1, BTUESDAY:1, BWEDNESDAY:1, BTHURSDAY:1, BFRIDAY:1, BSATURDAY:1, INTSCANTYPE:1, SCHEDSCANDATE:"", SAVE_DATA_FLAG:-1, FileORFolderFlag:-1, vArrCstmScn:vArrCustomScan, RegOptFlag:-1, vArrRegOpt:vArrRegOptimizer};
+		var dialogParameters = { ProductVersion:productVersion,varLanguageValue:g_LanguageName,varDB:self.GetDBPathforSched(), varThemeType:g_themeType, varBrowseType:"ScheduleAdd", varEditId:"", vArrSS:vArrSchedScan, vArrPrevSS:vArrPrevSchedScanTime};
+		var dlgRetVal = view.dialog { url: self.url("IDR_POPUP_SET_SCAN_SCHED.htm"), client:true, alignment:-5, parameters: dialogParameters};		
+		if(vArrSchedScan[0].SAVE_DATA_FLAG == 1)
+		{
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("insert into WWIZSCHEDSCANTIME(INTSCHEDULEDTYPE, INTLOWBATTERY, INTSHUTDOWN, INTWAKEUP, INTSCANSKIP, SCHEDSCANTIME, BSUNDAY, BMONDAY, BTUESDAY, BWEDNESDAY, BTHURSDAY, BFRIDAY, BSATURDAY, INTSCANTYPE, SCHEDSCANDATE) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			vArrSchedScan[0].INTSCHEDULEDTYPE, vArrSchedScan[0].INTLOWBATTERY, vArrSchedScan[0].INTSHUTDOWN, vArrSchedScan[0].INTWAKEUP, 
+			vArrSchedScan[0].INTSCANSKIP, vArrSchedScan[0].SCHEDSCANTIME, vArrSchedScan[0].BSUNDAY, vArrSchedScan[0].BMONDAY, vArrSchedScan[0].BTUESDAY, vArrSchedScan[0].BWEDNESDAY,
+			vArrSchedScan[0].BTHURSDAY, vArrSchedScan[0].BFRIDAY,vArrSchedScan[0].BSATURDAY, vArrSchedScan[0].INTSCANTYPE, vArrSchedScan[0].SCHEDSCANDATE);
+			DataBase.close();			
+		}		
+		if(vArrSchedScan[0].FileORFolderFlag == 1)
+		{
+			DataBase = DB.open(varDBPath);
+			var vID = DataBase.exec("SELECT MAX(ID) FROM WWIZSCHEDSCANTIME WHERE INTSCANTYPE = 2");
+			var vSchdID = -1;
+			if(vID instanceof Recordset)
+			{
+				vSchdID = vID["MAX(ID)"];
+				vID.close();
+			}
+			DataBase.close();	
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCAN(ID INTEGER PRIMARY KEY, FILEFOLDPATH VARCHAR (1000) NOT NULL, SCHEDSCAN_ID INT, RESERVEDINT1 INT, RESERVEDINT2 INT)");
+			for( var vCounter=0; vCounter < vArrCustomScan.length; vCounter++)
+			{
+				var strFileName =  vArrCustomScan[vCounter].FileOrFolderData;
+				DataBase.exec("insert into WWIZSCHEDSCAN (FILEFOLDPATH, SCHEDSCAN_ID) values (?, ?)", vArrCustomScan[vCounter].FileOrFolderData, vSchdID);
+			}
+			DataBase.close();
+		}		
+		if(vArrSchedScan[0].RegOptFlag == 1)
+		{
+			DataBase = DB.open(varDBPath);
+			var vID = DataBase.exec("SELECT MAX(ID) FROM WWIZSCHEDSCANTIME WHERE INTSCANTYPE = 5");
+			var vSchdID = -1;
+			if(vID instanceof Recordset)
+			{
+				vSchdID = vID["MAX(ID)"];
+				vID.close();
+			}
+			DataBase.close();	
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("create table IF NOT EXISTS WWIZREGOPTIMIZER(ID INTEGER PRIMARY KEY, SCHEDSCAN_ID INT, BComEntry BOOL, BUninstEntry BOOL, BFontEntry BOOL, BShareDll BOOL, BAppPath BOOL, BHelpFileInfo BOOL, BWindStartItem BOOL, BWindSrv BOOL, BInvalidExt BOOL, BRootkit BOOL, BRougeApp BOOL, BWorms BOOL, BSpyThreat BOOL, BAdwThreat BOOL, BKeyLog BOOL, BBho BOOL, BExplEntry BOOL, BInetExpEntry BOOL, BSelectAll BOOL, Reserved1 INT, Reserved2 INT, Reserved3 INT)");
+			DataBase.exec("insert into WWIZREGOPTIMIZER(SCHEDSCAN_ID, BComEntry, BUninstEntry, BFontEntry, BShareDll, BAppPath, BHelpFileInfo, BWindStartItem, BWindSrv, BInvalidExt, BRootkit, BRougeApp, BWorms, BSpyThreat, BAdwThreat, BKeyLog, BBho, BExplEntry, BInetExpEntry, BSelectAll) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+							vSchdID, vArrRegOptimizer[0].bSelect_1, vArrRegOptimizer[0].bSelect_2
+							, vArrRegOptimizer[0].bSelect_3, vArrRegOptimizer[0].bSelect_4
+							, vArrRegOptimizer[0].bSelect_5, vArrRegOptimizer[0].bSelect_6
+							, vArrRegOptimizer[0].bSelect_7, vArrRegOptimizer[0].bSelect_8
+							, vArrRegOptimizer[0].bSelect_9, vArrRegOptimizer[0].bSelect_10
+							, vArrRegOptimizer[0].bSelect_11, vArrRegOptimizer[0].bSelect_12
+							, vArrRegOptimizer[0].bSelect_13, vArrRegOptimizer[0].bSelect_14
+							, vArrRegOptimizer[0].bSelect_15, vArrRegOptimizer[0].bSelect_16
+							, vArrRegOptimizer[0].bSelect_17, vArrRegOptimizer[0].bSelect_18, vArrRegOptimizer[0].bSelecteAll);
+				DataBase.close();
+		}
+		dlgRetVal = dlgRetVal.hour+":"+dlgRetVal.minute+":"+dlgRetVal.second;
+		g_IsAnyPopUpDisplayed = false;		
+
+		DataBase = DB.open(varDBPath);
+        varRecordSet = DataBase.exec("select count(ID) from WWIZSCHEDSCANTIME");
+        if ( varRecordSet instanceof Recordset )
+        {
+            if ( varRecordSet instanceof Recordset )
+			{
+				varSetScanTimeCount = varRecordSet["count(ID)"];
+				varRecordSet.close();
+			}
+            varRecordSet.close();
+        }
+        DataBase.close();		
+
+		if(varSetScanTimeCount == 0)
+        {
+            $(#schedulescantable).state.disabled = true;
+        }
+        else
+        {
+			$(#IDR_DELETE_SCHED).state.disabled = false;
+			$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = false;
+			$(#IDR_EDIT_SCHED).state.disabled = false;
+            DataBase = DB.open(varDBPath);
+            varGetRecordSetTime = DataBase.exec("select ID, SCHEDSCANTIME, BSUNDAY, BMONDAY, BTUESDAY, BWEDNESDAY, BTHURSDAY, BFRIDAY, BSATURDAY, INTSCHEDULEDTYPE, SCHEDSCANDATE, INTSCANTYPE from WWIZSCHEDSCANTIME");
+            if (varGetRecordSetTime instanceof Recordset)
+            {
+                showRecordSetTime(varGetRecordSetTime);
+                varGetRecordSetTime.close();
+            }
+            DataBase.close();
+            
+            self.OnChangeSchedule();
+
+            vlistObj = $(#schedulescantable);
+            vlistObj.value = SchedScanTimeRecords;
+            const selectAll = vCheckBox.$(input#select-all-File);  
+                  
+			vlistObj.on("change","tbody > tr", function() { 	// some change inside tr
+            this.data.selected = this.value.selected; 			// input(selected).value to record.selected in this case
+            if( !this.data.selected )
+				selectAll.value = false;
+            });  
+			
+			const selectAllVal = vCheckBox.$(#select-all);
+            vCheckBox.on("change","#select-all", function()
+            { 													// select/deselect all
+                var selected = this.value;				
+                for( var record in SchedScanTimeRecords )
+                {
+                    record.selected = selected;
+                }
+            });      
+
+			vlistObj.on("change","tbody > tr", function()
+            {											   // some change inside tr 	// note: each row (this) is a form here so its value is structure:
+                this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+                if( !this.data.selected )
+                    selectAllVal.value = false;
+            });				
+        }
+
+        DataBase = DB.open(varDBPath);
+        varClosetSchedTime = DataBase.exec("select MAX(ID), INTSCHEDULEDTYPE from WWIZSCHEDSCANTIME");
+        varSchedScanType = varClosetSchedTime#INTSCHEDULEDTYPE;
+        varClosetSchedTime.close();
+        DataBase.close();
+        FunSetRemainingTime();
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	function showRecordSetTime(varGetRecordSetTime)
+    {
+		varTimeCount = SchedScanTimeRecords.length;
+		var iIndex = 0;
+		var ScanSundayVal;
+		var ScanMondayVal;
+		var ScanTuesdayVal;
+		var ScanWednesdayVal;
+		var ScanThursdayVal;
+		var ScanFridayVal;
+		var ScanSaturdayVal;
+		var TempTimeVal;
+		var iTempTimeVal;
+		var TempVal1;
+		var TempVal2;
+		var TempVal3;
+		var varTemp;
+		var TempValTime;
+		var varCheckRemTime;
+		var SchScanType;
+		var varScanType;
+		var Is12HourFormat = self.CheckforTimeFormat();
+        do
+        {
+			var varCounter = 0;
+            SchedScanTimeRecords[varTimeCount] = {selected : true, SchedScanDetail :"", SchedScanTime :"", ScanSunday:"", ScanMonday:"", ScanTuesday:"", ScanWednesday:"", ScanThursday:"", ScanFriday:"",ScanSaturday:"",ScanType:"", ScanOrgTime:"", SchedScanDate:"", SchedScanType:"", Reservedval1:"", Reservedval2:"", Reservedval3:"", varScanEntryID : ++varTimeCount };
+			for (var varVirtualDBData in varGetRecordSetTime)
+            {
+				switch(varCounter)
+                {
+                    case 0:
+                            SchedScanTimeRecords[iIndex].varScanEntryID = varVirtualDBData;
+                            break;
+                    case 1:
+							iTempTimeVal = varVirtualDBData;
+							TempVal1 = iTempTimeVal/3600;
+							TempVal2 = iTempTimeVal - (TempVal1 * 3600);
+							TempValTime = TempVal2/60;
+							varTemp = TempValTime;
+							TempVal3 = TempVal2 - (TempValTime * 60);
+							if(TempVal3 < 10)
+							{
+								TempVal3 = "0" +TempVal3;
+							}
+							if(Is12HourFormat)
+							{
+								if(TempVal1 == 12)
+								{
+									TempVal3 = TempVal3 + " PM";
+								}
+								else if(TempVal1 > 12)
+								{
+									TempVal1 = TempVal1 - 12;
+									TempVal3 = TempVal3 + " PM";
+								}
+								else
+								{
+									if(TempVal1 == 0)
+									{
+										TempVal1 = 12;
+									}
+									TempVal3 = TempVal3 + " AM";
+								}
+							}
+							if(TempVal1 < 10)
+							{
+								TempVal1 = "0" +TempVal1;
+							}
+							if(varTemp < 10)
+							{
+								varTemp = "0" +varTemp;
+							}
+							SchedScanTimeRecords[iIndex].SchedScanTime = TempVal1+ ":" +varTemp+ ":" +TempVal3;
+							SchedScanTimeRecords[iIndex].ScanOrgTime = iTempTimeVal;
+							break;
+                    case 2:
+							SchedScanTimeRecords[iIndex].ScanSunday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanSundayVal = ""; 
+							}
+							else
+							{
+								ScanSundayVal = Lang.translate("ID_SUN");
+							}
+                            break;
+                    case 3:
+							SchedScanTimeRecords[iIndex].ScanMonday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanMondayVal = ""; 
+							}
+							else
+							{
+								ScanMondayVal = Lang.translate("ID_MON");
+							}
+                            break;
+                    case 4:
+							SchedScanTimeRecords[iIndex].ScanTuesday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanTuesdayVal = ""; 
+							}
+							else
+							{
+								ScanTuesdayVal = Lang.translate("ID_TUE");
+							}
+                            break;
+                    case 5:
+							SchedScanTimeRecords[iIndex].ScanWednesday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanWednesdayVal = ""; 
+							}
+							else
+							{
+								ScanWednesdayVal = Lang.translate("ID_WED");
+							}
+                            break;
+                    case 6:
+							SchedScanTimeRecords[iIndex].ScanThursday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanThursdayVal = ""; 
+							}
+							else
+							{
+								ScanThursdayVal = Lang.translate("ID_THU");
+							}
+                            break;
+                    case 7:
+							SchedScanTimeRecords[iIndex].ScanFriday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanFridayVal = ""; 
+							}
+							else
+							{
+								ScanFridayVal = Lang.translate("ID_FRI");
+							}
+                            break;
+                    case 8:
+							SchedScanTimeRecords[iIndex].ScanSaturday = varVirtualDBData;
+							if(varVirtualDBData == 0)
+							{
+								ScanSaturdayVal = ""; 
+							}
+							else
+							{
+								ScanSaturdayVal = Lang.translate("ID_SAT");
+							}
+                            break;
+					case 9:
+							varScanType = varVirtualDBData;
+							if(varScanType == 1)
+							{
+								varScanType = Lang.translate("ID_SCHED_DAILY");
+							}
+							else if(varScanType == 2)
+							{
+								varScanType = Lang.translate("ID_SCHED_WEEKLY");
+							}
+							else if(varScanType == 3)
+							{
+								varScanType = Lang.translate("ID_SCHED_MONTHLY");
+							}
+							SchedScanTimeRecords[iIndex].ScanType = varScanType;
+							break;
+					case 10:
+							SchedScanTimeRecords[iIndex].SchedScanDate = varVirtualDBData;
+							break;
+					case 11:
+							SchScanType = varVirtualDBData;
+							if(SchScanType == 0)
+							{
+								SchScanType = Lang.translate("ID_HTM_QUICK_SCAN");
+							}
+							else if(SchScanType == 1)
+							{
+								SchScanType = Lang.translate("ID_FULL_SCAN");
+							}
+							else if(SchScanType == 2)
+							{
+								SchScanType = Lang.translate("ID_CUSTOM_SCAN");
+							}
+							else if(SchScanType == 4)
+							{
+								SchScanType = Lang.translate("TEMP_FILE_CLEANER_SAVE");
+							}
+							else if(SchScanType == 5)
+							{
+								SchScanType = Lang.translate("ID_REGISTRY_OPTIMIZER");
+							}
+							SchedScanTimeRecords[iIndex].SchedScanType = SchScanType;
+							break;
+				}
+                varCounter++;
+            }
+			SchedScanTimeRecords[iIndex].SchedScanDetail = SchedScanTimeRecords[iIndex].SchedScanTime + ScanSundayVal + ScanMondayVal + ScanTuesdayVal + ScanWednesdayVal + ScanThursdayVal + ScanFridayVal + ScanSaturdayVal;
+			if(varScanType == Lang.translate("ID_SCHED_MONTHLY"))
+			{
+				SchedScanTimeRecords[iIndex].SchedScanDetail = SchedScanTimeRecords[iIndex].SchedScanTime + " " +SchedScanTimeRecords[iIndex].SchedScanDate;
+			}
+            iIndex++;
+        }
+        while( varGetRecordSetTime.next());
+		varGetRecordSetTime.close();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#IDR_DELETE_SCHED).onClick = function()
+    {
+	    var bselected = false;
+			var varSelectedIndexVal;
+			FunCallSelectedEntry();
+			if(IsAnyEntrySelected > 0)
+			{
+				bselected = true;
+			}
+	    if(!bselected)
+	        {
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION");
+			        var res = dialog { body:$(form#simple-dialog),
+			        returns: #values,
+			        caption : Lang.translate("ID_WARNING"),
+			        buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+				return;
+	        }
+	            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SCHUDE_SCAN_DELETE");
+		            var result = dialog { body:$(form#simple-dialog), 
+			        returns: #values, 
+			        caption : Lang.translate("ID_WARNING"),
+			        buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]};
+        if(result==true)
+	    {
+			for(var FileCount = SchedScanTimeRecords.length; FileCount>0; )
+			{
+				bselected = SchedScanTimeRecords[--FileCount].selected;
+				if(bselected == true)
+				{
+					varSelectedIndexVal = SchedScanTimeRecords[FileCount].varScanEntryID;			
+					DataBase = DB.open(varDBPath);
+					var varRecordSetVal = DataBase.exec("select INTSCANTYPE from WWIZSCHEDSCANTIME where ID = ?", varSelectedIndexVal);
+					varSettingsVal = varRecordSetVal#INTSCANTYPE;
+					varRecordSetVal.close();
+					DataBase.close();
+					if(varSettingsVal == 2)
+					{
+						DataBase = DB.open(varDBPath);
+						DataBase.exec("delete from WWIZSCHEDSCAN where SCHEDSCAN_ID= ?", varSelectedIndexVal);
+						DataBase.close();
+					}
+					else if(varSettingsVal == 5)
+					{
+						DataBase = DB.open(varDBPath);
+						DataBase.exec("delete from WWIZREGOPTIMIZER where SCHEDSCAN_ID= ?", varSelectedIndexVal);
+						DataBase.close();
+					}
+					DataBase = DB.open(varDBPath);
+					DataBase.exec("delete from WWIZSCHEDSCANTIME where ID = ?", varSelectedIndexVal);
+					DataBase.close();
+					SchedScanTimeRecords.remove(FileCount);				
+				}
+				else
+				{
+					continue;
+				}
+			}
+			if(SchedScanTimeRecords.length == 0)              // entries not in table make it 0
+			{
+				$(#IDR_DELETE_SCHED).state.disabled = true;
+				$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = true;
+				$(#IDR_EDIT_SCHED).state.disabled = true;
+	
+				$(#ID_DAYS).state.collapsed = true;
+				$(#ID_HOURS).state.collapsed = true;
+				$(#ID_MIN).state.collapsed = true;
+				$(#ID_SEC).state.collapsed = true;
+	
+				$(#ID_LBL_NXT_SCHED_START).state.collapsed = true;
+				$(#ID_SHOW_INFO).state.collapsed = true;
+				$(#ID_SHOW_REFRESH).state.collapsed = true;
+				$(#ID_LBL_SCAN_DAYS).state.collapsed = true;
+				$(#ID_LBL_SCAN_HOURS).state.collapsed = true;
+				$(#ID_LBL_SCAN_MINUTES).state.collapsed = true;
+				$(#ID_LBL_SCAN_SECONDS).state.collapsed = true;
+			}
+			const selectAllVal = vCheckBox.$(#select-all);
+			vCheckBox.on("change","#select-all", function()
+			{ 													// select/deselect all
+				var selected = this.value;
+				for( var record in SchedScanTimeRecords)
+				{
+					record.selected = selected;
+				}
+			});
+			FunSetRemainingTime();
+		}
+	    else
+	    {
+			return;
+	    }
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	function FunSetInernetDB()
+    {
+		DataBase = DB.open(self.GetDBPathforSched());
+		var vInternetSettArr = new Array(0);
+		var vProxySett = self.GetRegvalforProxy();
+		if(vProxySett != 2)
+        {
+			vProxySett = 0;
+		}
+		//var vDBDetail = DataBase.exec("SELECT ID,PROXY_SETTINGS,SERVER,PORT,USERNAME,PASSWORD FROM WWIZPROXYSETTINGS");	
+		var vDBDetail = DataBase.exec("SELECT ID ,SERVER,PORT,USERNAME,PASSWORD FROM WWIZPROXYSETTINGS");	
+		if(vDBDetail instanceof Recordset)
+        {
+			vInternetSettArr[0] = { id:vDBDetail["ID"], proxy_settings:vProxySett, server:vDBDetail["SERVER"], port:vDBDetail["PORT"], username:vDBDetail["USERNAME"], password:vDBDetail["PASSWORD"]};
+			vDBDetail.close();
+        }
+		DataBase.close();	
+		var dialogParameters = { ProductVersion:productVersion,varLanguageValue:g_LanguageName, arrInternetSett:vInternetSettArr,varThemeType:g_themeType};
+		view.dialog { 
+			url: self.url("IDR_HTM_INTERNET_SETTINGS.htm"),
+			client:true,
+			alignment:-5; 
+			parameters: dialogParameters
+		};
+		DataBase = DB.open(self.GetDBPathforSched());
+		var vDBVal = DataBase.exec("SELECT ID FROM WWIZPROXYSETTINGS");
+		if(vDBVal instanceof Recordset)
+        {
+			DataBase.exec("UPDATE WWIZPROXYSETTINGS SET PORT = ?, SERVER = ?, USERNAME = ?, PASSWORD = ? WHERE ID = ?",vInternetSettArr[0].port, vInternetSettArr[0].server, vInternetSettArr[0].username, vInternetSettArr[0].password, vInternetSettArr[0].id);
+			vDBVal.close();
+		}
+		if(vInternetSettArr[0].proxy_settings == 2)
+			self.SetRegvalforProxy(true);
+		else	
+			self.SetRegvalforProxy(false);
+		DataBase.close();
+    }
+	$(#ID_INTRT_SETT).onClick = function(){
+		FunSetInernetDB();
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	$(#IDR_EDIT_SCHED).onClick = function()
+    {
+        var varSelectedIndexVal;
+        g_IsAnyPopUpDisplayed = true;
+        FunCallSelectedEntry();
+        if(IsAnyEntrySelected == 1)
+        {
+            bIsEditDisable = false;
+        }
+        else
+        {
+            bIsEditDisable = true;
+        }
+        if(bIsEditDisable)
+        {
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_ONE_ENTRY_EDIT");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+					};
+            return;
+        }
+        else
+        {
+            for(var FileCount = SchedScanTimeRecords.length; FileCount>0; )
+            {
+                if(SchedScanTimeRecords[--FileCount].selected == true)
+                {
+                    varSelectedIndexVal = SchedScanTimeRecords[FileCount].varScanEntryID;
+                    break;
+                }
+            }
+            SchedScanTimeRecords.length = 0;
+            
+			var vArrCustomScan = new Array(0);
+			var vArrSchedScan = new Array(0);
+			var vArrRegOptimizer = new Array(0);
+			var vArrPrevSchedScanTime = new Array(0);
+			
+			GetPrevSchedTime(vArrPrevSchedScanTime);
+			
+			vArrSchedScan[0] = {INTSCHEDULEDTYPE:1, INTLOWBATTERY:1, INTSHUTDOWN:0, INTWAKEUP:0, INTSCANSKIP:1, SCHEDSCANTIME:0, BSUNDAY:1, BMONDAY:1, BTUESDAY:1, BWEDNESDAY:1, BTHURSDAY:1, BFRIDAY:1, BSATURDAY:1, INTSCANTYPE:1, SCHEDSCANDATE:"", UPDATE_DATA_FLAG:-1, FileORFolderFlag:-1, vArrCstmScn:vArrCustomScan, RegOptFlag:-1, vArrRegOpt:vArrRegOptimizer};
+			DataBase = DB.open(varDBPath);
+			var vResult = DataBase.exec("SELECT INTSCHEDULEDTYPE, INTLOWBATTERY, INTSHUTDOWN, INTWAKEUP, INTSCANSKIP, SCHEDSCANTIME, BSUNDAY, BMONDAY, BTUESDAY, BWEDNESDAY, BTHURSDAY, BFRIDAY, BSATURDAY, INTSCANTYPE, SCHEDSCANDATE FROM WWIZSCHEDSCANTIME WHERE ID = ?", varSelectedIndexVal);
+			if(vResult instanceof Recordset)
+			{
+				vArrSchedScan[0].INTSCHEDULEDTYPE = vResult["INTSCHEDULEDTYPE"];
+				vArrSchedScan[0].INTSCHEDULEDTYPE = vResult["INTSCHEDULEDTYPE"];
+				vArrSchedScan[0].INTSHUTDOWN = vResult["INTSHUTDOWN"];
+				vArrSchedScan[0].INTWAKEUP = vResult["INTWAKEUP"];
+				vArrSchedScan[0].INTSCANSKIP = vResult["INTSCANSKIP"];
+				vArrSchedScan[0].SCHEDSCANTIME = vResult["SCHEDSCANTIME"];
+				vArrSchedScan[0].BSUNDAY = vResult["BSUNDAY"];
+				vArrSchedScan[0].BMONDAY = vResult["BMONDAY"];
+				vArrSchedScan[0].BTUESDAY = vResult["BTUESDAY"];
+				vArrSchedScan[0].BWEDNESDAY = vResult["BWEDNESDAY"];
+				vArrSchedScan[0].BTHURSDAY = vResult["BTHURSDAY"];
+				vArrSchedScan[0].BFRIDAY = vResult["BFRIDAY"];
+				vArrSchedScan[0].BSATURDAY = vResult["BSATURDAY"];
+				vArrSchedScan[0].INTSCANTYPE = vResult["INTSCANTYPE"];
+				vArrSchedScan[0].SCHEDSCANDATE = vResult["SCHEDSCANDATE"];
+				vResult.close();
+			}
+			
+			DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCAN(ID INTEGER PRIMARY KEY, FILEFOLDPATH VARCHAR (1000) NOT NULL, SCHEDSCAN_ID INT, RESERVEDINT1 INT, RESERVEDINT2 INT)");
+			varRecordSet = DataBase.exec("select ID, FILEFOLDPATH from WWIZSCHEDSCAN WHERE SCHEDSCAN_ID = ?",varSelectedIndexVal);
+			if ( varRecordSet instanceof Recordset )
+			{
+				var vIndex = 0;
+				var varCounter = 0;
+				vArrSchedScan[0].FileORFolderFlag = 1; 
+				do
+				{
+					varCounter = 0;
+					vArrCustomScan[vIndex] = {selected : true,FileFoldName : "", varEntriesID:"" };            
+					for (var varVirtualDBData in varRecordSet)
+					{
+						switch(varCounter)
+						{
+							case 0:
+									vArrCustomScan[vIndex].FileORFolderID = varVirtualDBData;
+									break;
+							case 1:
+									vArrCustomScan[vIndex].FileORFolderData = varVirtualDBData;
+									break;
+						}
+						varCounter++;
+					}
+					vIndex++;
+				}while(varRecordSet.next());					
+				varRecordSet.close();
+			}	
+			
+			DataBase.exec("create table IF NOT EXISTS WWIZREGOPTIMIZER(ID INTEGER PRIMARY KEY, SCHEDSCAN_ID INT, BComEntry BOOL, BUninstEntry BOOL, BFontEntry BOOL, BShareDll BOOL, BAppPath BOOL, BHelpFileInfo BOOL, BWindStartItem BOOL, BWindSrv BOOL, BInvalidExt BOOL, BRootkit BOOL, BRougeApp BOOL, BWorms BOOL, BSpyThreat BOOL, BAdwThreat BOOL, BKeyLog BOOL, BBho BOOL, BExplEntry BOOL, BInetExpEntry BOOL, BSelectAll BOOL, Reserved1 INT, Reserved2 INT, Reserved3 INT)");
+			varRecordSet = DataBase.exec("select BComEntry, BUninstEntry, BFontEntry, BShareDll, BAppPath, BHelpFileInfo, BWindStartItem, BWindSrv, BInvalidExt, BRootkit, BRougeApp, BWorms, BSpyThreat, BAdwThreat, BKeyLog, BBho, BExplEntry, BInetExpEntry, BSelectAll from WWIZREGOPTIMIZER WHERE SCHEDSCAN_ID = ?",varSelectedIndexVal);
+			if ( varRecordSet instanceof Recordset )
+			{
+				var vIndex = 0;
+				var varCounter = 0;
+				vArrSchedScan[0].RegOptFlag = 1; 
+				do
+				{
+					varCounter = 0;
+					vArrRegOptimizer[vIndex] = {ID:0, bSelect_1:false, bSelect_2:false, bSelect_3:false,  
+							bSelect_4:false, bSelect_5:false, bSelect_6:false, bSelect_7:false, 
+							bSelect_8:false, bSelect_9:false, bSelect_10:false, bSelect_11:false, 
+							bSelect_12:false, bSelect_13:false, bSelect_14:false, bSelect_15:false, 
+							bSelect_16:false, bSelect_17:false, bSelect_18:false, bSelecteAll:false};            
+					for (var varVirtualDBData in varRecordSet)
+					{
+						switch(varCounter)
+						{
+							case 0:
+									vArrRegOptimizer[vIndex].bSelect_1 = varVirtualDBData;
+									break;
+							case 1:
+									vArrRegOptimizer[vIndex].bSelect_2 = varVirtualDBData;
+									break;
+							case 2:
+									vArrRegOptimizer[vIndex].bSelect_3 = varVirtualDBData;
+									break;
+							case 3:
+									vArrRegOptimizer[vIndex].bSelect_4 = varVirtualDBData;
+									break;
+							case 4:
+									vArrRegOptimizer[vIndex].bSelect_5 = varVirtualDBData;
+									break;
+							case 5:
+									vArrRegOptimizer[vIndex].bSelect_6 = varVirtualDBData;
+									break;
+							case 6:
+									vArrRegOptimizer[vIndex].bSelect_7 = varVirtualDBData;
+									break;
+							case 7:
+									vArrRegOptimizer[vIndex].bSelect_8 = varVirtualDBData;
+									break;
+							case 8:
+									vArrRegOptimizer[vIndex].bSelect_9 = varVirtualDBData;
+									break;
+							case 9:
+									vArrRegOptimizer[vIndex].bSelect_10 = varVirtualDBData;
+									break;
+							case 10:
+									vArrRegOptimizer[vIndex].bSelect_11 = varVirtualDBData;
+									break;
+							case 11:
+									vArrRegOptimizer[vIndex].bSelect_12 = varVirtualDBData;
+									break;
+							case 12:
+									vArrRegOptimizer[vIndex].bSelect_13 = varVirtualDBData;
+									break;
+							case 13:
+									vArrRegOptimizer[vIndex].bSelect_14 = varVirtualDBData;
+									break;
+							case 14:
+									vArrRegOptimizer[vIndex].bSelect_15 = varVirtualDBData;
+									break;
+							case 15:
+									vArrRegOptimizer[vIndex].bSelect_16 = varVirtualDBData;
+									break;
+							case 16:
+									vArrRegOptimizer[vIndex].bSelect_17 = varVirtualDBData;
+									break;
+							case 17:
+									vArrRegOptimizer[vIndex].bSelect_18 = varVirtualDBData;
+									break;
+							case 18:
+									vArrRegOptimizer[vIndex].bSelecteAll = varVirtualDBData;
+									break;
+						}
+						varCounter++;
+					}
+					vIndex++;
+				}while(varRecordSet.next());
+        					
+				varRecordSet.close();
+			}	
+			DataBase.close();			
+			
+			var dlgParameters = {ProVersion:productVersion,varLanguageValue:g_LanguageName,varBrowseType:"ScheduleEdit", varThemeType:g_themeType, vArrSS:vArrSchedScan, vArrPrevSS:vArrPrevSchedScanTime};
+            var dlgRetVal = view.dialog { url: self.url("IDR_POPUP_SET_SCAN_SCHED.htm"), client:true, alignment:-5,  parameters: dlgParameters};
+            
+			if(vArrSchedScan[0].UPDATE_DATA_FLAG == 1)
+			{
+				DataBase = DB.open(varDBPath);
+				DataBase.exec("UPDATE WWIZSCHEDSCANTIME SET INTSCHEDULEDTYPE = ?, INTLOWBATTERY = ?, INTSHUTDOWN = ?, INTWAKEUP = ?, INTSCANSKIP = ?, SCHEDSCANTIME = ?, BSUNDAY = ?, BMONDAY = ?, BTUESDAY = ?, BWEDNESDAY = ?, BTHURSDAY = ?, BFRIDAY = ?, BSATURDAY = ?, INTSCANTYPE = ?, SCHEDSCANDATE = ? WHERE ID = ?",
+				vArrSchedScan[0].INTSCHEDULEDTYPE, vArrSchedScan[0].INTLOWBATTERY, vArrSchedScan[0].INTSHUTDOWN, vArrSchedScan[0].INTWAKEUP, 
+				vArrSchedScan[0].INTSCANSKIP, vArrSchedScan[0].SCHEDSCANTIME, vArrSchedScan[0].BSUNDAY, vArrSchedScan[0].BMONDAY, vArrSchedScan[0].BTUESDAY, vArrSchedScan[0].BWEDNESDAY,
+				vArrSchedScan[0].BTHURSDAY, vArrSchedScan[0].BFRIDAY,vArrSchedScan[0].BSATURDAY, vArrSchedScan[0].INTSCANTYPE, vArrSchedScan[0].SCHEDSCANDATE, varSelectedIndexVal);
+				DataBase.exec("DELETE FROM WWIZSCHEDSCAN WHERE SCHEDSCAN_ID = ?",varSelectedIndexVal);						
+				DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCAN(ID INTEGER PRIMARY KEY, FILEFOLDPATH VARCHAR (1000) NOT NULL, SCHEDSCAN_ID INT, RESERVEDINT1 INT, RESERVEDINT2 INT)");
+				if(vArrSchedScan[0].FileORFolderFlag == 1 && vArrSchedScan[0].INTSCANTYPE == 2)
+				{
+					for( var vCounter=0; vCounter < vArrCustomScan.length; vCounter++)
+					{
+						var strFileName =  vArrCustomScan[vCounter].FileOrFolderData;
+						DataBase.exec("insert into WWIZSCHEDSCAN (FILEFOLDPATH, SCHEDSCAN_ID) values (?, ?)", vArrCustomScan[vCounter].FileOrFolderData, varSelectedIndexVal);
+					}	
+				}	
+				DataBase.exec("DELETE FROM WWIZREGOPTIMIZER WHERE SCHEDSCAN_ID = ?",varSelectedIndexVal);						
+				DataBase.exec("create table IF NOT EXISTS WWIZREGOPTIMIZER(ID INTEGER PRIMARY KEY, SCHEDSCAN_ID INT, BComEntry BOOL, BUninstEntry BOOL, BFontEntry BOOL, BShareDll BOOL, BAppPath BOOL, BHelpFileInfo BOOL, BWindStartItem BOOL, BWindSrv BOOL, BInvalidExt BOOL, BRootkit BOOL, BRougeApp BOOL, BWorms BOOL, BSpyThreat BOOL, BAdwThreat BOOL, BKeyLog BOOL, BBho BOOL, BExplEntry BOOL, BInetExpEntry BOOL, BSelectAll BOOL, Reserved1 INT, Reserved2 INT, Reserved3 INT)");
+				if(vArrSchedScan[0].RegOptFlag == 1 && vArrSchedScan[0].INTSCANTYPE == 5)
+				{
+						DataBase.exec("insert into WWIZREGOPTIMIZER(SCHEDSCAN_ID, BComEntry, BUninstEntry, BFontEntry, BShareDll, BAppPath, BHelpFileInfo, BWindStartItem, BWindSrv, BInvalidExt, BRootkit, BRougeApp, BWorms, BSpyThreat, BAdwThreat, BKeyLog, BBho, BExplEntry, BInetExpEntry, BSelectAll) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ", 
+										varSelectedIndexVal, vArrRegOptimizer[0].bSelect_1, vArrRegOptimizer[0].bSelect_2
+										, vArrRegOptimizer[0].bSelect_3, vArrRegOptimizer[0].bSelect_4
+										, vArrRegOptimizer[0].bSelect_5, vArrRegOptimizer[0].bSelect_6
+										, vArrRegOptimizer[0].bSelect_7, vArrRegOptimizer[0].bSelect_8
+										, vArrRegOptimizer[0].bSelect_9, vArrRegOptimizer[0].bSelect_10
+										, vArrRegOptimizer[0].bSelect_11, vArrRegOptimizer[0].bSelect_12
+										, vArrRegOptimizer[0].bSelect_13, vArrRegOptimizer[0].bSelect_14
+										, vArrRegOptimizer[0].bSelect_15, vArrRegOptimizer[0].bSelect_16
+										, vArrRegOptimizer[0].bSelect_17, vArrRegOptimizer[0].bSelect_18
+										, vArrRegOptimizer[0].bSelecteAll);
+						DataBase.close();
+				}
+				DataBase.close();				
+			}	
+		
+			dlgRetVal = dlgRetVal.hour+":"+dlgRetVal.minute+":"+dlgRetVal.second;
+            g_IsAnyPopUpDisplayed = false;
+            DataBase = DB.open(varDBPath);
+            varRecordSet = DataBase.exec("select count(ID) from WWIZSCHEDSCANTIME");
+            if ( varRecordSet instanceof Recordset )
+            {
+                if ( varRecordSet instanceof Recordset )
+				{
+					varSetScanTimeCount = varRecordSet["count(ID)"];
+					varRecordSet.close();
+				}
+                varRecordSet.close();
+            }
+            DataBase.close();
+
+            self.OnChangeSchedule();
+
+            if(varSetScanTimeCount == 0)
+            {
+                $(#theFiletable).state.disabled = true;
+            }
+            else
+            {
+                vlistObj = $(#schedulescantable);
+                vlistObj.value = SchedScanTimeRecords;
+                vlistObj.on("change","tbody > tr", function()
+                {											   // some change inside tr 	// note: each row (this) is a form here so its value is structure:
+                    this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+                    if( !this.data.selected )
+                        selectAllVal.value = false;
+                });
+                DataBase = DB.open(varDBPath);
+                varGetRecordSetTime = DataBase.exec("select ID, SCHEDSCANTIME, BSUNDAY, BMONDAY, BTUESDAY, BWEDNESDAY, BTHURSDAY, BFRIDAY, BSATURDAY, INTSCHEDULEDTYPE, SCHEDSCANDATE, INTSCANTYPE from WWIZSCHEDSCANTIME");
+
+                if (varGetRecordSetTime instanceof Recordset)
+                {
+                    showRecordSetTime(varGetRecordSetTime);
+                    varGetRecordSetTime.close();
+                }
+                DataBase.close();
+            }
+        }
+        FunSetRemainingTime();
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	
+	</script>
+	
+	<script type="text/tiscript">
+	function FunSetRemainingTime()
+    {
+        var iIndex = 0;
+        var ScanDayVal;
+        var iTempRem;
+        var iRemTime = 0;
+        var varStartTime = new Date();
+        var isDailyEntry = false;
+        var isWeeklyEntry = false;
+        var varRetScan;
+        var varFinalScan = 0;
+        var varFinalWeekDay = 0;
+        var variIndex = 0;
+        var varTempFlag = false;
+        var varFinalVal = 7;
+        var varTimeVal = 86399;
+		var varIsTodaysEntry = false;
+		var varIsPreviousEntry = false;
+		var varIsEntryAdded = false;
+        varStartTime = varStartTime.hour * 3600+ varStartTime.minute * 60 + varStartTime.second;
+		for(var iIndex = 0; iIndex < SchedScanTimeRecords.length; iIndex++)
+        {
+            var ScheduleTypeVal = SchedScanTimeRecords[iIndex].ScanType;
+			if(ScheduleTypeVal == Lang.translate("ID_SCHED_DAILY") || varSchedScanType == 1)
+            {
+                isDailyEntry = true;
+                var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+
+                iRemTime = ScanTimeVal - varStartTime;
+                iRemTime = iRemTime.toInteger();
+				if(iRemTime > 0)
+                {
+					varIsTodaysEntry = true;
+					if(varFinalScan == 0)
+					{
+						varFinalScan = iRemTime;
+						variIndex = iIndex;
+						varIsEntryAdded = true;
+					}
+					else
+					{
+						if(iRemTime < varFinalScan)
+						{
+							varFinalScan = iRemTime;
+							variIndex = iIndex;
+							varIsEntryAdded = true;
+						}
+						if(varIsPreviousEntry == true && varIsEntryAdded == false)
+						{
+							varFinalScan = iRemTime;
+							variIndex = iIndex;
+							varIsEntryAdded = true;
+						}
+					}
+				}
+				else
+				{
+					if(varIsTodaysEntry == false)
+					{
+						varIsPreviousEntry = true;
+						if(varFinalScan == 0)
+						{
+							varFinalScan = iRemTime;
+							variIndex = iIndex;
+						}
+						else
+						{
+							if(iRemTime < varFinalScan)
+							{
+								varFinalScan = iRemTime;
+								variIndex = iIndex;
+							}
+						}
+					}
+				}
+                
+				$(#ID_DAYS).text = "00";
+                var varTempVal1 = varFinalScan/3600;
+                var varTempVal2 = varFinalScan - (varTempVal1 * 3600);
+                var varTempValTime = varTempVal2/60;
+                var varTempVal3 = varTempVal2 - (varTempValTime * 60);
+                if(varFinalScan > 0)
+                {
+                    $(#ID_HOURS).text = varTempVal1;
+                    $(#ID_MIN).text = varTempValTime + 1;
+                    $(#ID_SEC).text = Lang.translate("ID_APPROX");
+                }
+                else
+                {
+                    $(#ID_HOURS).text = 23 + varTempVal1;
+                    $(#ID_MIN).text = 60 + varTempValTime;
+                    $(#ID_SEC).text = Lang.translate("ID_APPROX");
+                }
+            }
+			
+            else if(ScheduleTypeVal == Lang.translate("ID_SCHED_WEEKLY") || varSchedScanType == 2)
+            {
+				if(isDailyEntry == true)
+                {
+                    return;
+                }
+                isWeeklyEntry = true;
+                var varTempWeekDay = 0;
+                var varIsScanDay = 0;
+                var varTempScanRec = 1;
+                var varIsRecentDay = false;
+                var varTempDayVal = 0;
+				varWeekDay = self.GetCurrentDay();
+				varWeekDay = varWeekDay.toInteger();
+                if(SchedScanTimeRecords[iIndex].ScanSunday == "1")
+                {
+					var varTempScanDay = 1;
+                    varIsScanDay = 1;
+                    if(varWeekDay > varTempScanDay)
+                    {
+						var varTemp = 7-(varWeekDay - varIsScanDay);
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay == varTempScanDay)
+                    {
+						var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                }
+                if(SchedScanTimeRecords[iIndex].ScanMonday == "1")
+                {
+                    var varTempScanDay = 2;
+                    varIsScanDay = 2;
+                    if(varWeekDay > varTempScanDay)
+                    {
+                        var varTemp = 7-(varWeekDay - varIsScanDay);
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay < varTempScanDay)
+                    {
+                        var varTemp = varIsScanDay - varWeekDay;
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay == varTempScanDay)
+                    {
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                }
+
+                if(SchedScanTimeRecords[iIndex].ScanTuesday == "1")
+                {
+                    var varTempScanDay = 3;
+                    varIsScanDay = 3;
+                    if(varWeekDay > varTempScanDay)
+                    {
+                        var varTemp = 7-(varWeekDay - varIsScanDay);
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay < varTempScanDay)
+                    {
+                        var varTemp = varIsScanDay - varWeekDay;
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay == varTempScanDay)
+                    {
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                }
+
+                if(SchedScanTimeRecords[iIndex].ScanWednesday == "1")
+                {
+                    var varTempScanDay = 4;
+                    varIsScanDay = 4;
+                    if(varWeekDay > varTempScanDay)
+                    {
+                        var varTemp = 7-(varWeekDay - varIsScanDay);
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay < varTempScanDay)
+                    {
+                        var varTemp = varIsScanDay - varWeekDay;
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay == varTempScanDay)
+                    {
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                }
+
+                if(SchedScanTimeRecords[iIndex].ScanThursday == "1")
+                {
+                    var varTempScanDay = 5;
+                    varIsScanDay = 5;
+                    if(varWeekDay > varTempScanDay)
+                    {
+                        var varTemp = 7-(varWeekDay - varIsScanDay);
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay < varTempScanDay)
+                    {
+                        var varTemp = varIsScanDay - varWeekDay;
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay == varTempScanDay)
+                    {
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                }
+
+                if(SchedScanTimeRecords[iIndex].ScanFriday == "1")
+                {
+                    var varTempScanDay = 6;
+                    varIsScanDay = 6;
+                    if(varWeekDay > varTempScanDay)
+                    {
+                        var varTemp = 7-(varWeekDay - varIsScanDay);
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay < varTempScanDay)
+                    {
+                        var varTemp = varIsScanDay - varWeekDay;
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                    else if(varWeekDay == varTempScanDay)
+                    {
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                }
+
+                if(SchedScanTimeRecords[iIndex].ScanSaturday == "1")
+                {
+                    varIsScanDay = 7;
+                    var varTempScanDay = 7;
+                    if(varWeekDay == varTempScanDay)
+                    {
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        var varTempVal = ScanTimeVal - varStartTime;
+                        if(varTempVal > 0)
+                        {
+                            varFinalVal = varWeekDay - varIsScanDay;
+                            var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                            if(ScanTimeVal < varTimeVal)
+                            {
+                                variIndex = iIndex;
+                            }
+                        }
+                    }
+                    else if(varWeekDay < varTempScanDay)
+                    {
+                        varIsScanDay = 7;
+                        var varTemp = varIsScanDay - varWeekDay;
+                        if(varFinalVal > varTemp)
+                        {
+                            varFinalVal = varTemp;
+                        }
+                        var ScanTimeVal = SchedScanTimeRecords[iIndex].ScanOrgTime;
+                        if(ScanTimeVal < varTimeVal)
+                        {
+                            variIndex = iIndex;
+                        }
+                    }
+                }
+
+                var varScanTimeVal = SchedScanTimeRecords[variIndex].ScanOrgTime;
+                iRemTime = varScanTimeVal - varStartTime;
+                iRemTime = iRemTime.toInteger();
+                var varTempVal1 = iRemTime/3600;
+                var varTempVal2 = iRemTime - (varTempVal1 * 3600);
+                var varTempValTime = varTempVal2/60;
+                var varTempVal3 = varTempVal2 - (varTempValTime * 60);
+                if(iRemTime > 0)
+                {
+                    $(#ID_HOURS).text = varTempVal1;
+                    $(#ID_MIN).text = varTempValTime + 1;
+                    $(#ID_SEC).text = Lang.translate("ID_APPROX");
+                    $(#ID_DAYS).text = varFinalVal;
+                }
+                else
+                {
+                    $(#ID_HOURS).text = 23 + varTempVal1;
+                    $(#ID_MIN).text = 60 + varTempValTime;
+                    $(#ID_SEC).text = Lang.translate("ID_APPROX");
+                    $(#ID_DAYS).text = varFinalVal - 1;
+                }
+            }
+
+            else if(ScheduleTypeVal == Lang.translate("ID_SCHED_MONTHLY") || varSchedScanType == 3) 
+            {
+				if(isDailyEntry == false || isWeeklyEntry == false)
+                {
+					var ScanTimeVal = SchedScanTimeRecords[variIndex].ScanOrgTime;
+                    var varScanTime = false;
+					iRemTime = ScanTimeVal - varStartTime;
+                    iRemTime = iRemTime.toInteger();
+                    if(iRemTime < 0)
+					{
+						varScanTime = true;
+					}
+					else
+					{
+						varScanTime = false;
+					}
+					var ScanDateVal = SchedScanTimeRecords[iIndex].SchedScanDate;
+                    var SchedScanYear = ScanDateVal.splice(4, 10);
+                    var SchedScanMonth = ScanDateVal.splice(0, 5);
+					var varTemp = SchedScanMonth.splice(2,3);
+					var varTempVal = varTemp.splice(0, 1);
+					if(varTempVal == "-")
+					{
+						varTemp = varTemp.splice(1, 2);
+						SchedScanMonth = "0" + varTemp;
+					}
+					else
+					{
+						SchedScanMonth = SchedScanMonth.splice(2, 6);
+					}
+					var SchedScanDay;
+					var varStringLen = ScanDateVal.length;
+					varStringLen = varStringLen - 2;
+					var varTempDay = ScanDateVal.splice(0, 6);
+					var varTempDayVal = varTempDay.splice(1, 2);
+					if(varTempDayVal == "-")
+					{
+						varTempDay = varTempDay.splice(0, 1);
+						SchedScanDay = "0" + varTempDay;
+					}
+					else 
+					{
+						SchedScanDay = ScanDateVal.splice(0, 8);
+					}
+                    varRetScan = self.CheckForMonthlyScan(SchedScanYear, SchedScanMonth, SchedScanDay, varScanTime);
+                    if(varFinalScan == 0)
+                    {
+                        varFinalScan = varRetScan;
+                        variIndex = iIndex;
+                    }
+                    else
+                    {
+                        if(varRetScan < varFinalScan)
+                        {
+                            varFinalScan = varRetScan;
+                            variIndex = iIndex;
+                        }
+                    }
+                    if(isWeeklyEntry == false && isDailyEntry == false)
+                    {
+                        $(#ID_DAYS).text = varFinalScan;
+                    }
+                    var varTempVal1 = iRemTime/3600;
+                    var varTempVal2 = iRemTime - (varTempVal1 * 3600);
+                    var varTempValTime = varTempVal2/60;
+                    var varTempVal3 = varTempVal2 - (varTempValTime * 60);
+                    if(iRemTime > 0)
+                    {
+                        $(#ID_HOURS).text = varTempVal1;
+                        $(#ID_MIN).text = varTempValTime + 1;
+                        $(#ID_SEC).text = Lang.translate("ID_APPROX");
+                        if(isWeeklyEntry == false && isDailyEntry == false)
+                        {
+                            if(varRetScan == 0 || varRetScan == 1 || varRetScan > 0)
+							{
+								$(#ID_DAYS).text = varFinalScan;
+							}
+							else if(varRetScan < 0)
+							{
+								$(#ID_DAYS).text = 0 - varFinalScan;
+							}
+                        }
+                    }
+                    else
+                    {
+						$(#ID_HOURS).text = 23 + varTempVal1;
+                        $(#ID_MIN).text = 60 + varTempValTime;
+                        $(#ID_SEC).text = Lang.translate("ID_APPROX");
+                        if(isWeeklyEntry == false && isDailyEntry == false && varFinalScan != 0)
+                        {
+						    if(varRetScan == 0 || varRetScan == 1)
+							{
+								$(#ID_DAYS).text = varFinalScan;
+							}
+							else if(varRetScan < 0)
+							{
+								$(#ID_DAYS).text = 0 - varFinalScan;
+							}
+							else if(varRetScan > 0)
+							{
+								$(#ID_DAYS).text = varFinalScan - 1;
+							}
+						}
+                    }
+                }
+            }
+            if(SchedScanTimeRecords.length > 0)
+            {
+				var bShowTimeCount = 0;
+				if($(#ID_DAYS).text == 0)
+				{
+					$(#ID_LBL_SCAN_DAYS).state.collapsed = true;
+					$(#ID_DAYS).state.collapsed = true;
+				}
+				else
+				{
+					bShowTimeCount = 1;
+					$(#ID_LBL_NXT_SCHED_START).state.expanded = true;
+					$(#ID_SHOW_INFO).state.expanded = true;
+					$(#ID_SHOW_REFRESH).state.expanded = true;
+					$(#ID_LBL_SCAN_DAYS).state.expanded = true;
+					$(#ID_DAYS).state.expanded = true;
+				}
+				if($(#ID_HOURS).text == 0)
+				{
+					$(#ID_LBL_SCAN_HOURS).state.collapsed = true;
+					$(#ID_HOURS).state.collapsed = true;
+				}
+				else
+				{
+					bShowTimeCount = 1;
+					$(#ID_LBL_SCAN_HOURS).state.expanded = true;
+					$(#ID_HOURS).state.expanded = true;
+				}
+				if($(#ID_MIN).text == 0)
+				{
+					$(#ID_LBL_SCAN_MINUTES).state.collapsed = true;
+					$(#ID_MIN).state.collapsed = true;
+				}
+				else
+				{
+					bShowTimeCount = 1;
+					$(#ID_LBL_SCAN_MINUTES).state.expanded = true;
+					$(#ID_MIN).state.expanded = true;
+				}
+				if($(#ID_SEC).text == 0)
+				{
+					$(#ID_LBL_SCAN_SECONDS).state.collapsed = true;
+					$(#ID_SEC).state.collapsed = true;
+				}
+				else
+				{
+					$(#ID_LBL_SCAN_SECONDS).state.collapsed = true;
+					$(#ID_SEC).state.expanded = true;
+					bShowTimeCount = 1;
+				}
+				if(bShowTimeCount == 1)
+				{
+					$(#ID_LBL_NXT_SCHED_START).state.expanded = true;
+					$(#ID_SHOW_INFO).state.expanded = true;
+					$(#ID_SHOW_REFRESH).state.expanded = true;
+				}
+				else
+				{
+					$(#ID_LBL_NXT_SCHED_START).state.collapsed = true;
+					$(#ID_SHOW_INFO).state.collapsed = true;
+					$(#ID_SHOW_REFRESH).state.collapsed = true;
+				}
+				$(#schedulescantable).state.disabled = false;
+				$(#IDR_DELETE_SCHED).state.disabled = false;
+				$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = false;
+				$(#IDR_EDIT_SCHED).state.disabled = false;
+			}
+        }
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_REFRESH).onClick = function()
+	{
+		FunSetRemainingTime();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function ReleaseInstance(vInstance)
+	{
+		if(vInstance instanceof Recordset)
+		{
+			vInstance.close();
+		}
+	}
+	
+	function SetFeature(DataBase)
+	{
+		//"FOLDER_LOCKER":1,	"PARENTAL_CONTROL":2,	"APPLICATION_SETTING":3,	"UNINSTALL":4
+		var ArrFeature = [1,2,3,4];
+		var vCheck;	
+		for(var record in ArrFeature)
+		{
+			switch(record)
+			{
+				case 1: vCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = ?",record);
+						if(vCheck["SELECTED"] == true)
+						{
+							arrPasswordCurrentVal[0].folder_locker = true;									
+						}								  
+						break;
+				case 2: vCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = ?",record);
+						if(vCheck["SELECTED"] == true)
+						{
+							arrPasswordCurrentVal[0].parental_control = true;
+						}
+						break;
+				case 4: vCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = ?",record);
+						if(vCheck["SELECTED"] == true)
+						{
+							arrPasswordCurrentVal[0].uninstall = true;
+						}
+						break;
+				case 3: vCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = ?",record);
+						if(vCheck["SELECTED"] == true)
+						{
+							arrPasswordCurrentVal[0].settings = true;
+						}
+						break;
+			}
+			ReleaseInstance(vCheck);
+		}	
+		DataBase.close();
+	}
+	
+	function setCurrentFeatures()
+	{
+		DataBase = DB.open(view.GetDBPath());
+		var varCheckPwd = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+		if(varCheckPwd != 101)
+		{
+			varCheckPwd.close();
+			varCheckPwd = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+			if(varCheckPwd != 101)
+			{
+				varCheckPwd.close();
+			}	
+			varCheckPwd = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'");
+			if(varCheckPwd != 101)
+			{
+				varCheckPwd.close();
+				SetFeature(DataBase);			
+			}	
+		}
+		DataBase.close();	
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function setPasswordScope()
+	{
+		DataBase = DB.open(view.GetDBPath());
+		if(arrPasswordUpdatedVal[0].folder_locker != -1 ||
+			arrPasswordUpdatedVal[0].parental_control != -1 ||
+			arrPasswordUpdatedVal[0].uninstall != -1 ||
+			arrPasswordUpdatedVal[0].settings != -1)
+		{
+			if(productVersion == #BASIC || productVersion  == #ESSENTIAL)
+			{
+				SetPasswordForBasicEssential(DataBase);
+			}
+			else if(productVersion == #ESSENTIALPLUS)
+			{
+				SetPasswordForEssPlus(DataBase);
+			}
+			else
+			{			
+				//"FOLDER_LOCKER":1,	"PARENTAL_CONTROL":2,	"APPLICATION_SETTING":3,	"UNINSTALL":4
+				var ArrFeature = [1,2,3,4];
+				var varCheckVal = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'");
+				if(varCheckVal == 101)
+				{
+					DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_PWDSCOPELIST(ID INTEGER PRIMARY KEY, SELECTED BOOL NOT NULL, FEATURENAME TINYINT NOT NULL, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250))");
+					DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 1)");
+					DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 2)");
+					DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 3)");
+					DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 4)");
+				}
+				else{
+					varCheckVal.close();
+				}
+				for(var record in ArrFeature)
+				{
+					switch(record)
+					{
+						case 2: if(arrPasswordUpdatedVal[0].parental_control == 1)
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+								else	
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);
+								break;
+							
+						case 1: if(arrPasswordUpdatedVal[0].folder_locker == 1)
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+								else	
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);
+								break;
+							
+						case 3: if(arrPasswordUpdatedVal[0].settings == 1)
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+								else	
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);	
+								break;
+
+						case 4: if(arrPasswordUpdatedVal[0].uninstall == 1)
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+								else	
+									DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);	
+								break;						
+					}
+				}
+			}
+		}
+		DataBase.close();
+	}
+	
+	//set password scope for #BASIC
+	function SetPasswordForBasicEssential(DataBase)
+	{
+		//"FOLDER_LOCKER":1,	"PARENTAL_CONTROL":2,	"APPLICATION_SETTING":3,	"UNINSTALL":4
+		var ArrFeature = [3,4];
+		var varCheckVal = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'");
+		if(varCheckVal == 101)
+		{
+			DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_PWDSCOPELIST(ID INTEGER PRIMARY KEY, SELECTED BOOL NOT NULL, FEATURENAME TINYINT NOT NULL, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250))");
+			DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 3)");
+			DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 4)");
+		}
+		else{
+			varCheckVal.close();
+		}
+		for(var record in ArrFeature)
+		{
+			switch(record)
+			{
+				case 3: if(arrPasswordUpdatedVal[0].settings == true)
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+						else	
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);	
+						break;
+					
+				case 4: if(arrPasswordUpdatedVal[0].uninstall == true)
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+						else	
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);	
+						break;						
+			}
+		}
+	}
+	
+	//set password scope for #ESSENTIALPLUS
+	function SetPasswordForEssPlus(DataBase)
+	{
+		//"FOLDER_LOCKER":1,	"PARENTAL_CONTROL":2,	"APPLICATION_SETTING":3,	"UNINSTALL":4
+		var ArrFeature = [3,4,2];	
+		var varCheckVal = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'");
+		if(varCheckVal == 101)
+		{
+			DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_PWDSCOPELIST(ID INTEGER PRIMARY KEY, SELECTED BOOL NOT NULL, FEATURENAME TINYINT NOT NULL, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250))");
+			DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 2)");
+			DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 3)");
+			DataBase.exec("INSERT INTO WWIZ_PWDSCOPELIST(SELECTED, FEATURENAME) VALUES (0, 4)");
+		}
+		else{
+			varCheckVal.close();
+		}
+		for(var record in ArrFeature)
+		{
+			switch(record)
+			{
+				case 2: if(arrPasswordUpdatedVal[0].parental_control == true)
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+						else	
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);
+						break;
+					
+				case 3: if(arrPasswordUpdatedVal[0].settings == true)
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+						else	
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);	
+						break;
+					
+				case 4: if(arrPasswordUpdatedVal[0].uninstall == true)
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 1 WHERE FEATURENAME = ?",record);
+						else	
+							DataBase.exec("UPDATE WWIZ_PWDSCOPELIST SET SELECTED = 0 WHERE FEATURENAME = ?",record);	
+						break;						
+			}
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_FORGET_PASSWORD).onClick = function()
+	{
+		arrPasswordCurrentVal[0]={folder_locker:false, parental_control:false, uninstall:false, settings:false};
+		arrPasswordUpdatedVal[0]={password:"", question:"", answer:"", folder_locker:-1, parental_control:-1, uninstall:-1, settings:-1, flag:-1};
+		DataBase = DB.open(view.GetDBPath());	
+		var vFlag = false;
+		var varCheckPwd = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+		if(varCheckPwd != 101)
+		{
+			varCheckPwd.close();
+			varCheckPwd = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+			if(varCheckPwd != 101)
+			{
+				varCheckPwd.close();
+				vFlag = true;				
+			}				
+		}
+		if(!vFlag)
+		{	
+			var params = { Flag:vFlag, ProductVersion:productVersion, varLanguageValue:g_LanguageName, varThemeType:g_themeType, vArrCurrentVal:arrPasswordCurrentVal, vArrUpdatedVal:arrPasswordUpdatedVal}; // parameters to pass		
+			view.dialog{
+					url: self.url("IDR_HTM_CHANGE_REMOVE_PASSWORD.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+						
+			if(arrPasswordUpdatedVal[0].question != "" && arrPasswordUpdatedVal[0].answer != "")
+			{
+				var varCheckTable = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+				if(varCheckTable == 101)
+				{
+					DataBase.exec("create table IF NOT EXISTS WWIZ_PWDFORPWDSCOPE(ID INTEGER PRIMARY KEY,PASSWORD VARCHAR (20) NOT NULL)");
+				}
+				else
+				{
+					varCheckTable.close();
+				}
+				var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+				if(varPasswordFromDB == 101)//not sure about this 101 value every time on each pc.
+				{
+					if(arrPasswordUpdatedVal[0].password != "")
+					{
+						DataBase.exec("INSERT INTO WWIZ_PWDFORPWDSCOPE (PASSWORD) VALUES (?)",arrPasswordUpdatedVal[0].password);
+						g_IsPasswordEntered = true;
+					}
+				}
+				else{
+					varPasswordFromDB.close();
+				}
+				
+				var vCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_FORGETPASSWORD'");
+				if(vCheck == 101)
+				{
+					DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_FORGETPASSWORD(ID INTEGER PRIMARY KEY, QUESTION VARCHAR(100), ANSWER VARCHAR(100))");
+				}
+				else{
+					vCheck.close();			
+				}		
+				DataBase.exec("INSERT INTO WWIZ_FORGETPASSWORD(QUESTION, ANSWER) VALUES(?,?)",arrPasswordUpdatedVal[0].question,arrPasswordUpdatedVal[0].answer);
+				setPasswordScope();
+			}
+			DataBase.close();	
+		}
+		else 
+		{	
+			if(!g_IsPasswordEntered)
+			{
+				var vCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'");
+				if(vCheck != 101)
+				{
+					vCheck.close();
+					var varCheckAppSetting = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = 3");//"APPLICATION_SETTING":3
+					if(varCheckAppSetting["SELECTED"] == false)
+					{
+						var vFlag = new Array(1);
+						vFlag[0] = {iFlag:0};
+						
+						var params = { vardb: view.GetDBPath(),
+								Flag:vFlag,
+							   ProductVersion:productVersion,
+							   varLanguageValue:g_LanguageName,
+							   varThemeType:g_themeType,
+							   varPassword:g_password}; // parameters to pass		
+						view.dialog{
+								url: self.url("IDR_HTM_VALIDATE_PASSWORD.htm"),
+								client:true,
+								alignment:-5,
+								parameters:params};						
+						if(vFlag[0].iFlag == 0)
+						{
+							if(varCheckAppSetting instanceof Recordset)
+							{
+								varCheckAppSetting.close();
+							}
+							DataBase.close();
+							return;
+						}				
+					}
+					if(varCheckAppSetting instanceof Recordset)
+					{
+						g_IsPasswordEntered = true;
+						varCheckAppSetting.close();
+					}			
+				}		
+			}
+			DataBase.close();
+			setCurrentFeatures();
+			var params = { ProductVersion:productVersion,
+						   varLanguageValue:g_LanguageName,
+						   varThemeType:g_themeType,
+						   vArrCurrentVal:arrPasswordCurrentVal,
+						   vArrUpdatedVal:arrPasswordUpdatedVal}; // parameters to pass	
+	
+			view.dialog{
+				url: self.url("IDR_HTM_PASSWORD_PROTECTION.htm"),
+				client:true,
+				alignment:-5,
+				parameters:params};	
+				
+			DataBase = DB.open(view.GetDBPath());	
+			if(arrPasswordUpdatedVal[0].password == "" && (arrPasswordUpdatedVal[0].folder_locker != -1 ||
+													arrPasswordUpdatedVal[0].parental_control != -1 ||
+													arrPasswordUpdatedVal[0].uninstall != -1 ||
+													arrPasswordUpdatedVal[0].settings != -1 ))
+			{	
+				if(arrPasswordUpdatedVal[0].flag == 0)
+				{
+					setPasswordScope();
+				}
+				else
+				{
+					DataBase.exec("DROP TABLE WWIZ_PWDFORPWDSCOPE");
+					DataBase.exec("DROP TABLE WWIZ_PWDSCOPELIST");
+					DataBase.exec("DROP TABLE WWIZ_FORGETPASSWORD");
+					g_IsPasswordEntered = false;
+				}
+			}
+			else if(arrPasswordUpdatedVal[0].password != "" && (arrPasswordUpdatedVal[0].folder_locker != -1 ||
+														 arrPasswordUpdatedVal[0].parental_control != -1 ||
+														 arrPasswordUpdatedVal[0].uninstall != -1 ||
+														 arrPasswordUpdatedVal[0].settings != -1 ))
+			{
+				DataBase.exec("UPDATE WWIZ_PWDFORPWDSCOPE SET PASSWORD=?",arrPasswordUpdatedVal[0].password);
+				setPasswordScope();
+			}
+			else if(arrPasswordUpdatedVal[0].password == "" && (arrPasswordUpdatedVal[0].folder_locker == -1 ||
+														 arrPasswordUpdatedVal[0].parental_control == -1 ||
+														 arrPasswordUpdatedVal[0].uninstall == -1 ||
+														 arrPasswordUpdatedVal[0].settings == -1 ))
+			{
+				setPasswordScope();
+			}
+			
+			DataBase.close();
+		}		
+		DataBase = DB.open(view.GetDBPath());	
+		var vCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'");
+		if(vCheck == 101)
+		{
+			$(#ID_TXT_CHANGE_PWD).value = Lang.translate("ID_SET_PWD_PROTECT");
+		}
+		else
+		{
+			vCheck.close();
+			$(#ID_TXT_CHANGE_PWD).value = Lang.translate("ID_CHG_PWD");
+		}		
+		DataBase.close();		
+	}
+	
+	function CheckPasswordScope()
+	{
+		var vFlag = false;
+		var varDB = view.GetDBPath();
+		DataBase = DB.open(varDB);
+		var varCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'"); 
+		if(varCheck != 101)
+		{				
+			varCheck.close();
+			varCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = 3");//"APPLICATION_SETTING":3				if(varCheck instanceof Recordset)
+			{
+				if(varCheck["SELECTED"] == 0)
+				{
+					$(.passwordLockSettings).state.collapsed = true;
+					$(.inner_body).state.expanded = true;
+					$(.defltbtn).state.expanded = true;					
+					vFlag = true;
+				}
+				varCheck.close();					
+			}
+		}
+		else{
+			$(.passwordLockSettings).state.collapsed = true;
+			$(.inner_body).state.expanded = true;
+			$(.defltbtn).state.expanded = true;
+			$(#ID_TXT_CHANGE_PWD).value = Lang.translate("ID_SET_PWD_PROTECT");
+			vFlag = true;
+		}	
+		DataBase.close();
+		return vFlag;		
+	}
+	
+	function ValidatePassword()
+	{
+		var varPassword = $(#EnterPassword).value;
+		if(g_password == varPassword)
+		{
+			g_IsPasswordEntered = true;
+			$(.passwordLockSettings).state.collapsed = true;
+			$(.inner_body).state.expanded = true;
+			$(.defltbtn).state.expanded = true;
+		}
+		else
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_ENTER_VALID_PWD");
+					var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+			$(#EnterPassword).value = "";
+		}
+	}
+		
+	$(#ID_BTN_FORGET_PWD).onClick = function()
+	{
+		var vArr = new Array();
+		vArr[0] = {isMailSent:0};
+		DataBase = DB.open(view.GetDBPath());			
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");		
+		if(varPassword != 101)
+		{
+			varPassword.close();	
+			var params = { 	ProductVersion:productVersion,
+							varLanguageValue:g_LanguageName,
+							vardb:view.GetDBPath(),
+							vArr:vArr,
+							varThemeType:g_themeType}; // parameters to pass
+			view.dialog{
+						url: self.url("IDR_HTM_FORGOT_PASSWORD.htm"),
+						client:true,
+						alignment:-5,
+						parameters:params};	
+			if(vArr[0].isMailSent == 1)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAIL_HAS_BEEN_SENT");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			}
+		}
+		DataBase.close();
+	}
+	
+	function PasswordEnter(pwd) {
+		var t = pwd.value;
+		if(	pwd.attributes["type"] == "password")
+		{
+			pwd.attributes["type"] = "text";
+		}	
+		else
+		{
+			pwd.attributes["type"] = "password";
+		}			
+	  pwd.value = t;			
+	}
+	
+	function ChangePwdAttr(pwd) {
+		var t = pwd.value;
+		pwd.attributes["type"] = "password";
+		pwd.value = t;			
+	} 
+	
+	$(#BTN_TOGGLE).on("mousedown", function(evt){
+		PasswordEnter($(input#EnterPassword));
+	});
+	
+	$(#BTN_TOGGLE).on("mouseup", function(evt){
+		ChangePwdAttr($(input#EnterPassword));
+	});
+	
+	$(#ID_BTN_GO).onClick = function()
+	{
+		ValidatePassword();
+	}
+	
+	$(#EnterPassword).on("keyup",function(event) {  
+		if( event.keyCode == Event.VK_RETURN)
+		{
+			ValidatePassword();
+		}	  
+	});
+	</script>
+	<script type="text/tiscript">
+	function DisplayScanSettingsTab()
+	{
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id2).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#scan).attributes.addClass("activemnu");
+	}
+	
+	function GetSchdScnTableData()
+	{
+		varDBPath = self.GetDBPathforSched();
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCANTIME(ID INTEGER PRIMARY KEY, INTSCHEDULEDTYPE INT, INTLOWBATTERY INT, INTSHUTDOWN INT, INTWAKEUP INT, INTSCANSKIP INT, SCHEDSCANTIME INT, BSUNDAY BOOL, BMONDAY BOOL, BTUESDAY BOOL, BWEDNESDAY BOOL, BTHURSDAY BOOL, BFRIDAY BOOL, BSATURDAY BOOL, INTSCANTYPE INT, SCHEDSCANDATE REAL, RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+		varRecordSet = DataBase.exec("select count(ID) from WWIZSCHEDSCANTIME");
+		if ( varRecordSet instanceof Recordset )
+		{
+			varSetScanTimeCount = varRecordSet["count(ID)"];
+			varRecordSet.close();
+		}				
+		DataBase.close();		
+		if(varSetScanTimeCount == 0)
+		{
+		    $(#schedulescantable).state.disabled = true;		
+			$(#IDR_DELETE_SCHED).state.disabled = true;
+			$(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = true;			
+			$(#IDR_EDIT_SCHED).state.disabled = true;			
+		}
+		else
+		{
+		    $(#SELECT_ALL_RECORDS_SCHED_SCN).state.disabled = false;
+			vlistObj = $(#schedulescantable);
+			vlistObj.value = SchedScanTimeRecords;
+			vlistObj.on("change","tbody > tr", function()
+			{												 // some change inside tr 	// note: each row (this) is a form here so its value is structure:
+				this.data.selected = this.value.selected;	 // input(selected).value to record.selected in this case
+				if( !this.data.selected )
+				{
+					selectAllVal.value = false;
+				}	
+			});
+			DataBase = DB.open(varDBPath);
+			var vCount = DataBase.exec("select count(ID) from WWIZSCHEDSCANTIME");
+			vCount.close();
+			varGetRecordSetTime = DataBase.exec("select ID, SCHEDSCANTIME, BSUNDAY, BMONDAY, BTUESDAY, BWEDNESDAY, BTHURSDAY, BFRIDAY, BSATURDAY, INTSCHEDULEDTYPE, SCHEDSCANDATE, INTSCANTYPE from WWIZSCHEDSCANTIME");
+			if (varGetRecordSetTime instanceof Recordset)
+			{
+				showRecordSetTime(varGetRecordSetTime);
+				varGetRecordSetTime.close();
+			}
+			DataBase.close();
+
+			varWeekDay = self.GetCurrentDay();
+			varWeekDay = varWeekDay.toInteger();
+			FunSetRemainingTime();
+		}	
+	}
+	
+	function DisplaySchedScanSettingsTab()
+	{
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id3).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#schedule).attributes.addClass("activemnu");
+		if(bIsSchedMenuClicked)
+		{
+			return;
+		}
+		else
+		{	
+			bIsSchedMenuClicked = true;			
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCANFINISH(ID INTEGER PRIMARY KEY, INTSCHEDTYPEFIN INT, SCHEDSCANTIMEFIN INT, INTSCANTYPEFIN INT, SCHEDSCANDATEFIN REAL, RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+			DataBase.close();
+			
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("create table IF NOT EXISTS WWIZSCHEDSCANMISS(ID INTEGER PRIMARY KEY, SCHEDMISSID INT, INTSCHEDTYPEFIN INT, SCHEDSCANTIMEFIN INT, INTSCANTYPEFIN INT, SCHEDSCANDATEFIN REAL, RESERVEDVAL1 INT, RESERVEDVAL2 INT, RESERVEDVAL3 INT)");
+			DataBase.close();
+		}
+	}
+	</script>
+	<script type="text/tiscript">
+	const selectAllVal = vCheckBox.$(#select-all);
+    vCheckBox.on("change","#select-all", function()
+    { 	
+        var selected = this.value;
+        for( var record in SchedScanTimeRecords )
+			record.selected = selected;
+    });
+    </script>
+ <script type="text/tiscript">
+    $(#general).onClick = function()
+    {
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id1).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#general).attributes.addClass("activemnu");
+    }
+    $(#scan).onClick = function()
+    {
+		DisplayScanSettingsTab();
+    }
+    $(#schedule).onClick = function()
+    {
+		DisplaySchedScanSettingsTab();
+    }
+    $(#updates).onClick = function()
+    {
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id4).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#updates).attributes.addClass("activemnu");
+		$(#ID_INPUT_SERVER_VAL).attributes["novalue"] = Lang.translate("IDS_SERVERNAME_ENTER");
+		vlistObj = $(#updateserver);
+		vlistObj.value = arrServerNameEntries;
+    }
+    $(#performance).onClick = function()
+    {
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id5).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#performance).attributes.addClass("activemnu");
+    }
+    $(#external).onClick = function()
+    {
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id6).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#external).attributes.addClass("activemnu");
+    }
+    $(#theme).onClick = function()
+    {
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id7).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#theme).attributes.addClass("activemnu");
+    }            
+	$(#language).onClick = function()
+	{
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id8).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#language).attributes.addClass("activemnu");
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_DOWN_ARROW).onClick = function()
+    {
+		$(.showDevice).state.expanded=true;
+		$(#ID_DOWN_ARROW).state.collapsed = true;
+		$(#ID_UP_ARROW).state.expanded = true;
+    }
+	
+	$(#ID_UP_ARROW).onClick = function()
+    {
+		$(.showDevice).state.expanded=false;
+		$(#ID_DOWN_ARROW).state.collapsed = false;
+		$(#ID_UP_ARROW).state.expanded = false;
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_DOWN_ARROW_ACTION).onClick = function()
+    {
+		$(.showSelectAction).state.expanded=true;
+		$(#ID_DOWN_ARROW_ACTION).state.collapsed = true;
+		$(#ID_UP_ARROW_ACTION).state.expanded = true;
+    }
+	
+	$(#ID_UP_ARROW_ACTION).onClick = function()
+    {
+		$(.showSelectAction).state.expanded=false;
+		$(#ID_DOWN_ARROW_ACTION).state.collapsed = false;
+		$(#ID_UP_ARROW_ACTION).state.expanded = false;
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    var hideShowCounter = 0;
+    $(#ID_SCN_PROMPT).onClick = function()
+    {
+        if(hideShowCounter == 0){
+            $(.showDevice).state.expanded=true;
+			$(#ID_DOWN_ARROW).state.collapsed = true;
+			$(#ID_UP_ARROW).state.expanded = true;
+            hideShowCounter = 1;
+        }
+        else if(hideShowCounter == 1){
+            $(.showDevice).state.expanded=false;
+			$(#ID_DOWN_ARROW).state.collapsed = false;
+			$(#ID_UP_ARROW).state.expanded = false;
+            hideShowCounter = 0;
+         }
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    var hideShowCounter_action = 0;
+    $(#ID_REPAIR_OPT).onClick = function()
+    {
+        if(hideShowCounter_action == 0){
+            $(.showSelectAction).state.expanded=true;
+			$(#ID_DOWN_ARROW_ACTION).state.collapsed = true;
+			$(#ID_UP_ARROW_ACTION).state.expanded = true;
+            hideShowCounter_action = 1;
+        }
+        else if(hideShowCounter_action == 1){
+            $(.showSelectAction).state.expanded=false;
+			$(#ID_DOWN_ARROW_ACTION).state.collapsed = false;
+			$(#ID_UP_ARROW_ACTION).state.expanded = false;
+            hideShowCounter_action = 0;
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#ID_THEME_DEFAULT).onClick = function()
+    {
+		if(g_themeType == "defaultTheme")
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_THEME_ALREADY_APPLIED");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};	
+			return;					
+		}
+		else
+		{
+			if(g_QuickScanFinish == false || g_FullScanFinish == false || g_CstmScanFinish == false || g_ARootScanFinish == false || g_RegOptFinish == false || g_RecoverFileFinish == false)
+            {
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TASK_IN_PROCESS");
+				var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};		
+				return;		
+			}
+		}
+		g_themeType = "defaultTheme";
+		var bToggleState = $(#ID_BTN_WIDGET_SHOW_HIDE).state.value;
+		self.OnChangeTheme(g_themeType, bToggleState);
+		var doc = selectView("IDR_HTM_HOME");
+		OnSetDefaultTheme();
+    }
+    $(#ID_THEME_DARK).onClick = function()
+    {
+		if(g_themeType == "darkTheme")
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_THEME_ALREADY_APPLIED");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};		
+			return;					
+		}
+		else
+		{
+			if(g_QuickScanFinish == false || g_FullScanFinish == false || g_CstmScanFinish == false || g_ARootScanFinish == false || g_RegOptFinish == false || g_RecoverFileFinish == false)
+            {
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TASK_IN_PROCESS");
+				var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};		
+				return;		
+			}
+		}
+		g_themeType = "darkTheme";
+		var bToggleState = $(#ID_BTN_WIDGET_SHOW_HIDE).state.value;
+		self.OnChangeTheme(g_themeType, bToggleState);
+		var doc = selectView("IDR_HTM_HOME");
+		OnSetDarkTheme();
+    }
+    $(#ID_THEME_BLACK).onClick = function()
+    {
+		if(g_themeType == "crystalTheme")
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_THEME_ALREADY_APPLIED");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};		
+			return;					
+		}
+		else
+		{
+			if(g_QuickScanFinish == false || g_FullScanFinish == false || g_CstmScanFinish == false || g_ARootScanFinish == false || g_RegOptFinish == false || g_RecoverFileFinish == false)
+            {
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TASK_IN_PROCESS");
+				var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};		
+				return;		
+			}
+		}
+		g_themeType = "crystalTheme";
+		var bToggleState = $(#ID_BTN_WIDGET_SHOW_HIDE).state.value;
+		self.OnChangeTheme(g_themeType, bToggleState);
+		var doc = selectView("IDR_HTM_HOME");
+		OnSetCrystalTheme();
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+        self.language = g_LanguageName;
+		g_CurrentPage = #SETTINGS;
+		self.SetPage();
+		$(#ID_SELECT_LANG).value = self.FunGetLanguageID();
+		vPrevLang = $(#ID_SELECT_LANG).value;
+        $(.passwordLockSettings).state.expanded = true;
+        $(.inner_body).state.collapsed = true;
+        $(.defltbtn).state.collapsed = true;
+		
+		if(g_LanguageName == "ENGLISH")
+		{
+			styleBag.deactivate();
+		}
+		else if(g_LanguageName == "GERMAN")
+		{
+			styleBag.deactivate();
+			styleBag.activate();
+		}
+        if(!g_IsPasswordEntered)
+        {
+            if(!CheckPasswordScope())
+            {
+                var varDB = view.GetDBPath();
+                DataBase = DB.open(varDB);
+                var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+                if(varPassword != 101)//if db not exist
+                {
+                    if( varPassword instanceof Recordset)
+                    {
+
+                        var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+                        if(varPasswordFromDB instanceof Recordset)
+                        {
+                            for(var l_varpass in varPasswordFromDB)
+                                g_password = l_varpass;
+                            varPasswordFromDB.close();
+                        }
+                    }
+                    varPassword.close();
+                }
+                DataBase.close();
+            }
+        }
+        else
+        {
+            $(.passwordLockSettings).state.collapsed = true;
+            $(.inner_body).state.expanded = true;
+			$(.defltbtn).state.expanded = true;
+        }
+		
+		self.ReadCurrentSettingsValues(CurrentSettingsValues);
+		if(self.ReadCurrentUSBRegValue())
+			$(#ID_BTN_USB_BLOCK).state.value = true;
+		ApplyCurrentSettings(ArraySettings);
+		if(productVersion != #ELITE)
+		{
+			self.ReadUpdateServerName();
+		}
+		GetSchdScnTableData();		
+		CreateInternetSettingsTable();
+        if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+	}
+	</script>
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+	<div .consPadd>
+		<div .titleCont style="width:620dip;">
+			<h1 .headingTitle1 style="font-family: Roboto-Medium;"><label>ID_STR_SETTINGS</label></h1>
+			<p><label>ID_ACCESS_SETTINGS</label></p>
+		</div>
+		<div class="passwordLockSettings">
+			<div .paswdprmpt>
+				<div>
+					<p .headingClrwht><label>ID_PASSWORD</label>:</p>
+					<widget>
+						<input type="password" .input_password #EnterPassword maxlength="24">
+						<div class="eye"><button .null_button #BTN_TOGGLE>
+							<svg version="1.1" id="Layer_14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="eyeIcon">
+							<path fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M31,243c0,0,91-129,225-123s214,123,214,123
+								s-97,91.2-231,91c-80.3-0.1-166-50.5-208-97"/>
+							<circle fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" cx="245.5" cy="222.5" r="69.5"/>
+							<path stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M302,250c0,24-35.2,41.7-59.2,41.7S189,272.3,189,248.2
+								s29.8-43.5,53.8-43.5S302,226,302,250z"/>
+							</svg>
+						</button></div>
+					</widget>	
+				</div>
+				<div>
+					<div .btnCstmSmall .btnmrg #ID_BTN_GO><label>ID_GO</label></div>
+					<div .btnCstmSmall .btnmrg #ID_BTN_FORGET_PWD><label>ID_FORGOT_PASSWORD</label></div>
+				</div>
+			</div>			
+		</div>
+		<div class="tabsCstm inner_body">
+			<div class="strip">
+				<div .mnuItem #general .activemnu><span .icons>&fa-angle-double-right;</span> <label>IDS_SETTINGS_GENERAL</label></div>
+				<div .mnuItem #scan><span .icons>&fa-angle-double-right;</span> <label>IDS_SHELL_EXT_SCAN</label></div>
+				<div .mnuItem #schedule><span .icons>&fa-angle-double-right;</span> <label>ID_SCHED_TYPE_TITLE</label></div>         
+				<div .mnuItem #updates><span .icons>&fa-angle-double-right;</span> <label>ID_UPDATE</label></div>         
+				<div .mnuItem #performance><span .icons>&fa-angle-double-right;</span> <label>ID_PERFORMANCE</label></div>         
+				<div .mnuItem #external><span .icons>&fa-angle-double-right;</span> <label>ID_EXTERNAL_DEVICES</label></div>         
+				<!-- <div .mnuItem #theme><span .icons>&fa-angle-double-right;</span> <label>ID_CHANGE_THEME</label></div>         
+				<div .mnuItem #language><span .icons>&fa-angle-double-right;</span> <label>ID_CHANGE_LANG</label></div>  -->        
+			</div>
+			<div id="panel-id1" .ContentDisplay .activeTab>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>IDS_AVTRAY_TRAY_NOTIFICATION</label></h4>
+						<p><label>ID_DISPLAYTRAY</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_TRAY_NOTIFICATION>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray #ID_DELETE_REPORT>
+						<h4><label>ID_DELETEOLDER</label></h4>
+						<p><label>ID_DELETEOLDERSCHED</label></p>
+					</div>
+					<div .btnTray .horizontalFlow>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_DEL_OLD_REPORTS>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>	
+						<div>
+							<button .null_button .settingIcon #ID_BTN_DELETE_OLDER_REPORT_DISABLED>
+							<svg version="1.2" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+								 x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" style="background:transparent;width:17dip;height:17dip;margin-top:3dip;">
+							<g id="Settings">
+								<g>
+									<path fill="#334d61" d="M498.4,222.2c-0.8-7-9-12.3-16.1-12.3c-22.9,0-43.2-13.5-51.8-34.3c-8.7-21.3-3.1-46.2,14-61.8
+										c5.4-4.9,6-13.1,1.5-18.9c-11.7-14.9-25.1-28.3-39.6-40c-5.7-4.6-14.1-3.9-19,1.5c-14.9,16.5-41.7,22.6-62.4,14
+										c-21.5-9.1-35.1-30.9-33.8-54.3c0.4-7.4-4.9-13.7-12.3-14.6c-18.7-2.2-37.5-2.2-56.2-0.1c-7.2,0.8-12.6,7-12.4,14.3
+										c0.8,23.2-12.9,44.6-34.2,53.3c-20.4,8.3-47,2.3-61.9-14.1c-4.9-5.4-13.1-6-18.9-1.6c-15,11.8-28.6,25.2-40.4,40
+										c-4.6,5.7-3.9,14.1,1.5,19c17.4,15.8,23,40.8,14,62.4c-8.6,20.5-30,33.8-54.4,33.8c-7.9-0.3-13.6,5.1-14.4,12.3
+										c-2.2,18.8-2.2,37.9-0.1,56.9c0.8,7.1,9.2,12.3,16.4,12.3c21.8-0.6,42.7,12.9,51.4,34.3c8.7,21.3,3.1,46.1-14,61.8
+										c-5.3,4.9-6,13.1-1.5,18.8c11.6,14.8,24.9,28.3,39.5,40c5.7,4.6,14.1,4,19-1.5c15-16.5,41.7-22.7,62.3-14
+										c21.6,9,35.2,30.8,33.8,54.3c-0.4,7.4,5,13.8,12.3,14.6c9.6,1.1,19.2,1.7,28.8,1.7c9.1,0,18.3-0.5,27.4-1.5
+										c7.2-0.8,12.6-7,12.4-14.3c-0.8-23.2,12.9-44.6,34.2-53.3c20.6-8.4,47-2.3,61.9,14.1c4.9,5.4,13.1,6,18.9,1.6
+										c15-11.7,28.6-25.2,40.4-40c4.6-5.7,4-14.1-1.5-19c-17.4-15.8-23-40.8-14-62.4c8.5-20.3,29-33.9,51.1-33.9l3.1,0.1
+										c7.2,0.6,13.8-4.9,14.6-12.3C500.5,260.3,500.5,241.2,498.4,222.2z M250.4,333.9c-46,0-83.4-37.4-83.4-83.4
+										c0-46,37.4-83.4,83.4-83.4c46,0,83.4,37.4,83.4,83.4C333.8,296.5,296.4,333.9,250.4,333.9z"/>
+								</g>
+							</g>
+							</svg>
+
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_SHOWTOOLTIP</label></h4>
+						<p><label>ID_DISPLAYPRODTIPS</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_SHOW_TOOLTIP>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting style="visibility:none;">
+                    <div .contenttray>
+                        <h4><label>ID_SHOW_WW_GADGET</label></h4>
+                        <p><label>ID_SHOW_WW_GADGET_DSC</label></p>
+                    </div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_WIDGET_SHOW_HIDE>
+                                <caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray #ID_FORGET_PASSWORD .mouseHover>
+						<h4><label #ID_TXT_CHANGE_PWD>ID_CHG_PWD</label></h4>
+						<p><label>ID_CHG_PWD_DETAIL</label></p>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray #ID_INTRT_SETT .mouseHover>
+						<h4><label>ID_INTR_SETT</label></h4>
+						<p><label>ID_INTR_SETT_DETAIL</label></p>
+					</div>
+				</div>
+			</div>
+			<div id="panel-id2" .ContentDisplay>
+				<div .contentContSetting>
+					<div .contentTray #ID_EXCLUDE_FILES .mouseHover>
+						<h4><label>ID_EXCLUDE_FILES</label></h4>
+						<p><label>ID_EXCLUDE_FILES_DESC</label></p>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray #ID_SCAN_BY_NAME .mouseHover>
+						<h4><label>ID_SCAN_BY_NAME</label></h4>
+						<p><label>ID_SCAN_BY_NAME_SET_DESC</label></p>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray #ID_SAFE_QUAR .mouseHover>
+						<h4><label>ID_SAFEGUARD_QUAR</label></h4>
+						<p><label>ID_SAFEGUARD_QUAR_DESC</label></p>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_HEURISTIC_SCAN</label></h4>
+						<p><label>ID_ENABLE_DETECTION</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_HEURISTIC_SCAN>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting .mouseHover>
+					<div .contentTray #ID_SCN_PROMPT>
+						<h4><label>ID_SCAN_EXTERNAL</label></h4>
+						<p><label>ID_SCAN_EXT_DESC</label></p>
+					</div>
+					<div .cntnt_arw>
+						<span #ID_DOWN_ARROW><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 500 333.4" enable-background="new 0 0 500 333.4" xml:space="preserve" class="arrow_setting">
+							<polygon fill="#515251" points="1.5,0 498.7,0 250.1,321 "/>
+						</svg></span>
+						<span #ID_UP_ARROW><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 500 333.4" enable-background="new 0 0 500 333.4" xml:space="preserve" class="arrow_setting">
+							<polygon fill="#515251" points="1.5,321 498.7,321 250.1,0 "/>
+						</svg></span>
+					</div>
+				</div>
+				<div .showDevice .mouseHover>
+					<div .contentContSetting>
+						<div .btnTrayRadio>
+							<button type="radio"(group) #ID_RADIO_PROMPT_USER .radioHeight>
+						</div>
+						<div .contentTray >
+							<h4><label for="ID_RADIO_PROMPT_USER">ID_PROMPT_USER</label></h4>
+							<p><label for="ID_RADIO_PROMPT_USER">ID_PROMPT_USER_DESC</label></p>
+						</div>
+					</div>
+					<div .contentContSetting>
+						<div .btnTrayRadio>
+							<button type="radio"(group) #ID_RADIO_DO_NOT_PROMPT .radioHeight>
+						</div>
+						<div .contentTray>
+							<h4><label for="ID_RADIO_DO_NOT_PROMPT">ID_DONOT_PROMPT</label></h4>
+							<p><label for="ID_RADIO_DO_NOT_PROMPT">ID_DONOT_PROMPT_DESC</label></p>
+						</div>
+					</div>
+					<div .contentContSetting>
+						<div .btnTrayRadio>
+							<button type="radio" (group) #ID_RADIO_AUTOSCAN .radioHeight>
+						</div>
+						<div .contentTray>
+							<h4><label for="ID_RADIO_AUTOSCAN">ID_SCAN_AUTOM</label></h4>
+							<p><label for="ID_RADIO_AUTOSCAN">ID_SCAN_AUTOM_DESC</label></p>
+						</div>
+					</div>
+				</div>					
+				<div .contentContSetting .mouseHover>
+					<div .contentTray #ID_REPAIR_OPT>
+						<h4><label>ID_SELECT_ACTION</label></h4>
+						<p><label>ID_SELECT_ACTION_PERF</label></p>
+					</div>
+					<div .cntnt_arw>
+						<span #ID_DOWN_ARROW_ACTION><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 500 333.4" enable-background="new 0 0 500 333.4" xml:space="preserve" class="arrow_setting">
+							<polygon fill="#515251" points="1.5,0 498.7,0 250.1,321 "/>
+						</svg></span>
+						<span #ID_UP_ARROW_ACTION><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							viewBox="0 0 500 333.4" enable-background="new 0 0 500 333.4" xml:space="preserve" class="arrow_setting">
+							<polygon fill="#515251" points="1.5,321 498.7,321 250.1,0 "/>
+						</svg></span>
+					</div>
+				</div>
+				<div .showSelectAction>
+					<div .contentContSetting>
+						<button type="radio" (group1) .action_radio_btn #ID_RADIO_REPAIR>
+							<div .contentTray>
+								<h4><label>ID_REPAIR_RECOM</label></h4>
+							</div>
+						</button>	
+					</div>
+					<div .contentContSetting>
+						<button type="radio" (group1) .action_radio_btn #ID_RADIO_DELETE>
+							<div .contentTray>
+								<h4><label>ID_QUARANTINE</label></h4>
+							</div>
+						</button>
+					</div>
+					<div .contentContSetting>
+						<button type="radio" (group1) .action_radio_btn #ID_RADIO_SKIP>
+						<div .contentTray>
+							<h4><label>ID_SKIP</label></h4>
+						</div>
+					</button>
+				</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_SCAN_STARTUP</label></h4>
+						<p><label>ID_SCAN_STARTUP_DESC</label></p>
+					</div>
+					<div .btnTray .horizontalFlow>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_SCAN_AT_STARTUP>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+						<div>
+							<button .null_button .settingIcon #ID_SCAN_AT_START_DISABLED>
+							<svg version="1.2" baseProfile="tiny" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+								 x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" style="background:transparent;width:17dip;height:17dip;margin-top:3dip;">
+							<g id="Settings">
+								<g>
+									<path fill="#FFFFFF" d="M498.4,222.2c-0.8-7-9-12.3-16.1-12.3c-22.9,0-43.2-13.5-51.8-34.3c-8.7-21.3-3.1-46.2,14-61.8
+										c5.4-4.9,6-13.1,1.5-18.9c-11.7-14.9-25.1-28.3-39.6-40c-5.7-4.6-14.1-3.9-19,1.5c-14.9,16.5-41.7,22.6-62.4,14
+										c-21.5-9.1-35.1-30.9-33.8-54.3c0.4-7.4-4.9-13.7-12.3-14.6c-18.7-2.2-37.5-2.2-56.2-0.1c-7.2,0.8-12.6,7-12.4,14.3
+										c0.8,23.2-12.9,44.6-34.2,53.3c-20.4,8.3-47,2.3-61.9-14.1c-4.9-5.4-13.1-6-18.9-1.6c-15,11.8-28.6,25.2-40.4,40
+										c-4.6,5.7-3.9,14.1,1.5,19c17.4,15.8,23,40.8,14,62.4c-8.6,20.5-30,33.8-54.4,33.8c-7.9-0.3-13.6,5.1-14.4,12.3
+										c-2.2,18.8-2.2,37.9-0.1,56.9c0.8,7.1,9.2,12.3,16.4,12.3c21.8-0.6,42.7,12.9,51.4,34.3c8.7,21.3,3.1,46.1-14,61.8
+										c-5.3,4.9-6,13.1-1.5,18.8c11.6,14.8,24.9,28.3,39.5,40c5.7,4.6,14.1,4,19-1.5c15-16.5,41.7-22.7,62.3-14
+										c21.6,9,35.2,30.8,33.8,54.3c-0.4,7.4,5,13.8,12.3,14.6c9.6,1.1,19.2,1.7,28.8,1.7c9.1,0,18.3-0.5,27.4-1.5
+										c7.2-0.8,12.6-7,12.4-14.3c-0.8-23.2,12.9-44.6,34.2-53.3c20.6-8.4,47-2.3,61.9,14.1c4.9,5.4,13.1,6,18.9,1.6
+										c15-11.7,28.6-25.2,40.4-40c4.6-5.7,4-14.1-1.5-19c-17.4-15.8-23-40.8-14-62.4c8.5-20.3,29-33.9,51.1-33.9l3.1,0.1
+										c7.2,0.6,13.8-4.9,14.6-12.3C500.5,260.3,500.5,241.2,498.4,222.2z M250.4,333.9c-46,0-83.4-37.4-83.4-83.4
+										c0-46,37.4-83.4,83.4-83.4c46,0,83.4,37.4,83.4,83.4C333.8,296.5,296.4,333.9,250.4,333.9z"/>
+								</g>
+							</g>
+							</svg>
+
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_ENABLE_SOUND</label></h4>
+						<p><label>ID_ENABLE_SOUND1</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_ENABLE_SOUND>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="panel-id3" .ContentDisplay>
+				<div .contentContSetting .horizontalFlow style="padding-top:5dip;">
+					<div .contentTray>
+						<h4><label>ID_SCHED_SCAN</label></h4>
+					</div>
+					<div .btnTray style="margin:0;margin-left:30dip;width:80dip;">
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_SCHED_SCAN>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div #ID_SCHED_SCAN_CONTENT>
+					<div .contentContSetting style="height:18dip;padding-bottom:5dip;">
+                        <p>
+                           <span #ID_LBL_NXT_SCHED_START><label>ID_NEXT_SCHED_STARTS</label></span><span #ID_DAYS>00</span> <span #ID_LBL_SCAN_DAYS><label>ID_SCAN_DAYS</label></span><span #ID_HOURS>00</span> <span #ID_LBL_SCAN_HOURS><label>ID_SCAN_HOURS</label></span> <span #ID_MIN>00</span><span #ID_LBL_SCAN_MINUTES><label>ID_SCAN_MINUTES</label></span> <span #ID_SEC>00</span> <span #ID_LBL_SCAN_SECONDS><label>ID_SCAN_SECONDS</label></span>
+                        </p>
+						<div #ID_SHOW_INFO .img_sched_icon .tooltip_schd_scn>
+							<div #ID_INFO class="img_sched_info">
+								<span class="tooltiptext"><label>ID_TOOLTIP_TEXT</label></span>
+							</div>
+						</div>		
+						<div #ID_SHOW_REFRESH .img_sched_icon .tooltip_schd_scn>
+							<div #ID_REFRESH class="img_sched_refresh"></div>
+						</div>
+					</div>
+					<div .schedule_table_div>
+						<table resizeable id="schedulescantable" style="margin-top:12dip;">
+							<thead>
+								<th></th><th><label>ID_REPORTS_SCAN_TYPE</label></th><th><label>ID_SCH_TYPE</label></th><th><label>ID_SCAN_START_TIME</label></th>
+							</thead>
+							<tbody>
+								<tr><td><input(selected)|checkbox /></td><td(SchedScanType)></td><td(ScanType)></td><td(SchedScanDetail)></td></tr>
+							</tbody>
+						</table>
+						<div .btnSettingSchedule>
+							<div .sched_scn_select_all .chkBoxScheduleScn #SELECT_ALL_RECORDS_SCHED_SCN><input #select-all|checkbox checked /> <span><label for="select-all">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></span></div>
+							<div .btnSchedule .sched_scan_btn .enableDisbl .btnMrgnSchScan>
+								<div class="btnCstmSchedule" #IDR_ADD_SCHED><label>ID_HTM_CUSTOM_SCAN_ADD</label></div>
+								<div class="btnCstmSchedule" #IDR_EDIT_SCHED><label>ID_EDIT</label></div>
+								<div class="btnCstmSchedule" #IDR_DELETE_SCHED><label>ID_HTM_CUSTOM_SCAN_DELETE</label></div>
+							</div>	
+						</div>	
+					</div>
+				</div>
+			</div>
+			<div id="panel-id4" .ContentDisplay> 
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_AUTO_LIVEUPDATE</label></h4>
+						<p><label>ID_AUTO_LIVEUPDATE_DESC</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_AUTO_LIVE_UPDATE>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_PRODUCT_UPDATE</label></h4>
+						<p><label>ID_PRODUCT_UPDATE_DESC</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_AUTO_PRODUCT_UPDATE>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_UPDATE_SERVER</label></h4>
+						<p><label>ID_UPDATE_SERVER_DES</label></p>
+					</div>
+				</div>
+				<div .mgTop10>
+					<table resizeable id="updateserver">
+						<thead>
+							<tr>
+								<th><label>ID_SERVER_NAME</label></th>
+							</tr>
+						</thead>  
+						<tbody>
+							<tr><td(ServerName)></td></tr>
+						</tbody>
+					</table>
+				</div>
+				<div .horizontalFlow>
+					<input type="text" #ID_INPUT_SERVER_VAL .updtInpt1 />
+					<div .btnCstmSmall .smbtn #ID_BTN_ADD_SERVER><label>ID_HTM_CUSTOM_SCAN_ADD</label></div>
+					<div .btnCstmSmall .smbtn #IDR_DELETE_SERVER><label>ID_HTM_CUSTOM_SCAN_DELETE</label></div>
+					<div .btnCstmSmall .lgBtn #ID_BTN_EDIT_SERVER><label>ID_BRING_TO_TOP</label></div>
+				</div><br/>	
+			</div> 
+			<div id="panel-id5" .ContentDisplay>
+				<div .contentContSetting>
+					<div .btnRadio .mrgntop4>
+						<button type="radio" (group2) #IDR_RADIO_MOMENTARY checked .radioHeight>
+					</div>
+					<div .contentTray>
+						<h4><label for="IDR_RADIO_MOMENTARY">ID_MOM_CACH</label></h4>
+						<p><label for="IDR_RADIO_MOMENTARY">ID_MOM_CACH_DESC</label></p>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .btnRadio .mrgntop4>
+						<button type="radio" (group2) #IDR_RADIO_TENACIOUS .radioHeight>
+					</div>
+					<div .contentTray>
+						<h4><label for="IDR_RADIO_TENACIOUS">ID_TEN_CACH</label></h4>
+						<p><label for="IDR_RADIO_TENACIOUS">ID_TEN_CACH_DESC</label></p>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .btnRadio .mrgntop4>
+						<button type="checkbox" #IDR_CHECK_CACHE>
+					</div>
+					<div .contentTray>
+						<h4><label for="IDR_CHECK_CACHE">ID_PREP_CACH</label></h4>
+						<p><label for="IDR_CHECK_CACHE">ID_PREP_CACH_SILENT</label></p>
+					</div>
+				</div>
+			</div> 
+			<div id="panel-id6" .ContentDisplay>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_SETTINGS_BLOCK_AUTO_RUN</label></h4>
+						<p><label>ID_AUTO_RUN_SCAN_DESC</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_BLOCK_AUTORUN>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_EXECUTE_BLOCK</label></h4>
+						<p><label>ID_EXECUTE_BLOCK_DESC</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_EXECUTE_BLOCK>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_WRITE_BLOCK</label></h4>
+						<p><label>ID_WRITE_BLOCK_DESC</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_WRITE_BLOCK>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_USB_BLOCK</label></h4>
+						<p><label>ID_USB_BLOCK_DESC</label></p>
+					</div>
+					<div .btnTray>
+						<div .togller_button>
+							<button|toggler name="toggler" #ID_BTN_USB_BLOCK>
+								<caption .true><label>ID_ON</label></caption>
+								<caption .false><label>ID_OFF</label></caption>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div> 
+			<div id="panel-id7" .ContentDisplay>
+				<div #theme1 .col3>
+					<img src="IDR_JPG_DEFAULT_BACKGRUND.jpg" style="width:148dip;height:150dip;">
+					<span .themeTitle1> <label>ID_DEFAULT_THEME</label> </span>
+					<span class="btnCstm small_fnt" #ID_THEME_DEFAULT><label>ID_APPLY_NOW</label> </span>
+				</div>
+				<div #theme2 .col3>
+					<img src="IDR_JPG_DARK_THEME.jpg" style="width:148dip;height:150dip;">
+					<span .themeTitle2> <label>ID_DARK_THEME</label> </span>
+					<span class="btnCstm small_fnt" #ID_THEME_DARK><label>ID_APPLY_NOW</label> </span>
+				</div>
+				<div #theme3 .col3>
+					<img src="IDR_JPG_CRYSTAL_BACKGRUND.jpg" style="width:148dip;height:150dip;">
+					<span .themeTitle3> <label>ID_CRYSTAL_THEME</label> </span>
+					<span class="btnCstm small_fnt" #ID_THEME_BLACK><label>ID_APPLY_NOW</label> </span>
+				</div>
+			</div>
+			<div id="panel-id8" .ContentDisplay>
+				<div .contentContSetting>
+					<div .contentTray>
+						<h4><label>ID_CHANGE_LANGUAGE</label></h4>
+						<p><label>ID_SELECT_LANGUAGE</label></p>
+					</div>
+					<div .btnTrayForLang>
+						<select #ID_SELECT_LANG>
+							<option value=0><label>English</label></option>
+							<option value=2><label>Deutsch</label></option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div .btnCstmSmall .defltbtn #ID_BUTTON_DEFAULT_SETTINGS style="margin-top:8dip"><label>ID_DEFAULT</label></div>
+	</div>
+</body>
+</html>

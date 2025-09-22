@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title></title>
+	<style>
+		html{
+			background:transparent;
+		}
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+			background:transparent;
+		}
+		.main{
+			flow:horizontal;
+			height:120dip;
+		}
+		.size{
+			width:360dip;
+			height:120dip;
+			flow:horizontal;
+			color:#fff;
+			text-align:center;
+		}
+		.size_img{
+			width:80dip;
+			height:120dip;
+			color:#fff;
+			text-align:center;
+			padding-top:60dip;
+		}
+		.size_content{
+			width:280dip;
+			height:120dip;
+			color:#fff;
+			text-align:left;
+			padding-top:40dip;
+		}
+		.size img{
+			width:50dip;
+			height:50dip;
+		}
+		.size:hover> .size_img img{
+			transform:scale(1.1); 
+			transition:transform(quad-in-out, 400ms);
+		}
+		.size h1{
+			font-size:19dip;
+			font-weight:400;
+			text-shadow:1dip 1dip 6dip #292929;
+			cursor:pointer;
+			margin:0;
+			margin-top:15dip;
+		}
+		.size h3{
+			font-weight:100;
+			cursor:pointer;
+			font-size:14dip;
+			margin:0;
+		}
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:100dip;
+			height:25dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+	</style>
+</head>
+<body>
+	<div .main style="margin-top:20dip;padding-top:20dip;">
+		<div .size   .frame_display_src src="IDR_HTM_VIRUS_SCAN.htm" style="padding-left:50dip;width:310dip;">
+			<div .size_img>
+				<img src="IDR_PNG_EMAIL_VIRUS.png">
+			</div>
+			<div .size_content>
+				<h1>Virus Scan</h1>
+				<h3>Scans email attachments.</h3>
+				<!-- <button .scan_button .frame_display_src src="IDR_HTM_REGISTRY_OPTIMIZER.htm" style="margin-top:22dip;">SCAN NOW</button> -->
+			</div>
+		</div>
+		<div .size  .frame_display_src src="IDR_HTM_SPAM_FILTER.htm">
+			<div .size_img>
+				<img src="IDR_PNG_EMAIL_SPAM.png">
+			</div>
+			<div .size_content>
+				<h1>Spam Filter</h1>
+				<h3>Allow / Block senders.</h3>
+				<!-- <button .scan_button .frame_display_src src="" style="margin-top:22dip;">CHANGE SETTINGS</button> -->
+			</div>
+		</div>
+	</div>
+	<div .main>
+		<div .size  .frame_display_src src="IDR_HTM_CONTENT_FILTER.htm" style="padding-left:50dip;width:310dip;">
+			<div .size_img>
+				<img src="IDR_PNG_EMAIL_CONTENT.png">
+			</div>
+			<div .size_content>
+				<h1>Content Filter</h1>
+				<h3>Allow / Block mails as per <br/>user defined rules.</h3>
+				<!-- <button .scan_button .frame_display_src src="">CHANGE SETTINGS</button> -->
+			</div>
+		</div>
+		
+	</div>
+	<frame #footer_frame src="IDR_HTM_FOOTER.htm" />
+</body>
+</html>

@@ -1,0 +1,1216 @@
+<html lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+		behavior:WardWizDataEncDec;
+	}
+	#encrypt_button:collapsed{
+		visibility:none;
+	}
+	#decrypt_button:collapsed{
+		visibility:none;
+	}
+	#ID_Stop_Button:collapsed{
+		visibility:none;
+	}
+    #ID_Stop_Button:disabled{
+        opacity:.5;
+    }
+	#ID_BTN_BROWSE_DE:disabled{
+		opacity:0.5;
+	}
+	input  { context-menu:none; }
+	.contTopDataEncryption{
+		position:relative;margin-left:10dip;flow:horizontal;
+	}
+	.EncryptWidth{
+		width:200dip;
+		margin-top:2dip;
+	}
+	#encrypt_radio{
+		margin-top:1dip;
+		margin-right:0dip;
+	}
+	#decrypt_radio{
+		margin-top:1dip;
+		margin-right:0dip;
+		margin-left:7dip;
+	}
+	.EcryptBtn{
+		margin-top:3dip;
+	}
+	.dataEncryptionWidget widget[type=file-name] {
+		prototype: FileName;
+		flow:horizontal;
+		width:430dip;
+		margin-top:-8dip;
+		padding-right:-15dip;
+		margin-left:38dip;
+	}
+	.dataEncryptionWidget widget[type=file-name] > input { width:*;}
+	.dataEncryptionWidget .selector{
+		color: #fff;
+		cursor: pointer;
+		background-repeat:expand stretch-left stretch-right stretch-middle!important;
+		background-position:3dip 3dip 3dip 3dip!important;
+		height:21dip;
+		width:117dip;
+		text-align:center;
+		padding:0;
+		vertical-align:middle;
+		line-height:21dip;
+		font-weight:normal;
+		font-size:12dip;
+		margin-left:10dip;
+	}
+	.dataEncryptionWidget .selector label{
+		width:117dip;
+		text-align:center!important;
+	}
+	.dataEncryptionWidget .file_folder{
+		margin:0;
+		padding:0;
+	}
+	.dataEncryptionWidget .file_folder_div{
+		visibility:none;
+		position:absolute;
+		top:-24dip;
+		right:12dip;
+		border-radius:10dip 10dip 0 0;
+	}
+	.dataEncryptionWidget .file_folder li{
+		list-style:none;
+		display:inline-block;
+		padding:2dip;
+		width:54dip;
+		behavior:clickable;
+		color:#fff;
+	}
+	.dataEncryptionWidget .file_folder_div ul{
+		margin:0;
+	}
+	.dataEncryptionWidget .file_folder li:hover{
+		color:#000;
+		cursor:pointer;
+	}
+	.dataEncryptionWidget .selector:hover >.file_folder_div{
+		visibility:visible;
+	}
+	.top12Mrgn{
+		margin-top:12dip;
+	}
+	.tot_fillesDataEnc{
+		width:180dip;
+		padding-left:15dip;
+	}
+	.processed_fillesDataEnc{
+		width:180dip;
+	}	
+	#encrypt_button,#decrypt_button{
+		margin-top:0dip;
+		margin-left:180dip;
+		width:100dip;
+	}
+	.stop_encrypt{
+		margin-top:0dip!important;
+		margin-left:180dip!important;
+		width:100dip!important;
+	}
+	table#theCrypttable 
+	{ 
+		style-set: vgrid;
+		flow:table-fixed;
+		width:645dip;
+		height:160dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		margin:10dip!important;
+		horizontal-scrollbar: my-v-scrollbar;
+	}
+	table#theCrypttable > thead {
+		behavior:column-resizer;  
+	}	
+	table#theCrypttable > tbody {
+		overflow-y: auto;
+		vertical-scrollbar: my-v-scrollbar;	
+	} 
+	table#theCrypttable th 
+	{ 
+		color: white;
+		font-size:12dip; 
+		border:none;
+		padding:4dip; 
+		background-color:#DDD; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}  
+	table#theCrypttable th:hover 
+	{ 
+		color: #ffe598;
+		transition:blend;
+	}  
+	table#theCrypttable tr:current /* current row */ 
+	{ 
+		color:black;
+	}   
+	table#theCrypttable td 
+	{ 
+		padding:2dip; 
+		min-height:18dip;
+	}
+	table#theCrypttable th:nth-child(1)  {  width:0.81*; }
+	table#theCrypttable th:nth-child(2)  {  width:0.19*; }		
+
+	table#theCrypttable td:nth-child(1) {text-align:left!important; width:0.81*; } /* first column */
+	table#theCrypttable td:nth-child(2) /* last column */
+	{ 
+		 text-align:left!important;
+		 overflow:hidden;        /* three line below - ellipsis */
+		 text-overflow:ellipsis;
+		 white-space:nowrap;
+		 width:0.19*;
+		 border-left:1dip solid #bdbccc;
+	}
+	.warningDataEncryption{
+		text-align:right;
+		padding-right:12dip;
+	}
+	#ID_BTN_BROWSE_DE{
+		margin-right:20dip;
+		margin-left:5dip;
+	}
+	#IDedtFilePath{
+		margin-left:10dip;
+	}
+	#select_options:disabled{
+		opacity:0.4;
+	}
+	.translateWindow{
+		filter: blur(5dip);
+		position:relative;
+		opacity:.4;
+	}
+	.translateWhenLightBox{
+		filter: blur(5dip);
+		opacity:.3;
+	}
+	.messageContAlert{
+		width:300dip;
+		height:155dip;
+		margin:*;
+		position:absolute;
+		top:110dip;
+		left:-20dip;
+		text-align:center;
+		padding:15dip;
+		//border-radius:30dip 0 30dip 0;
+		visibility:hidden;
+		color:#000;
+	}
+	.messageContAlert:expanded{
+		visibility:visible;
+	}
+	
+	#ID_BUY_HIGH_VER{
+		visibility:none;
+	}
+	#ID_BUY_HIGH_VER:expanded{
+		visibility:visible;
+	}
+	#ID_BUY_HIGH_VER:collapsed{
+		visibility:none;
+	}
+	#ID_REGISTER_NOW{
+		visibility:none;
+	}
+	#ID_REGISTER_NOW:expanded{
+		visibility:visible;
+	}
+	#ID_REGISTER_NOW:collapsed{
+		visibility:none;
+	}
+	#ID_VERSION_MESSAGE2{
+		visibility:none;
+	}
+	#ID_VERSION_MESSAGE2:expanded{
+		visibility:visible;
+	}
+	#ID_VERSION_MESSAGE2:collapsed{
+		visibility:none;
+	}
+	</style>
+		
+	<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script>
+	
+	<script type="text/tiscript">
+	var isEncryptClicked = false;
+	var isDecryptClicked = false;
+	var varDlgBtnFlag = 0;
+	</script>
+	
+	<script type="text/tiscript">	
+	function CheckForProductStatus()
+	{
+		if(productVersion == #BASIC){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;
+			$(#ID_REGISTER_NOW).state.collapsed = true;			
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ESSENTIALPLUS || productVersion == #ESSENTIAL)
+		{
+			if(g_ProductLicenseType == #UNREGISTERED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_IS_UNREGISTERED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_A_LICENSE_OR_TO_REGISTER_FOR_30_DAYS_FREE_TRIAL");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_firewall_inner).attributes.addClass("translateWindow");
+				$(.body_firewall_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.expanded = true;
+				$(.messageContAlert).style["height"] = 190dip;
+				
+			}
+			else if(g_ProductLicenseType == #EXPIRED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_HAS_EXPIRED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_THE_COMMERCIAL_LICENSE");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_firewall_inner).attributes.addClass("translateWindow");
+				$(.body_firewall_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.collapsed = true;
+				$(.messageContAlert).style["height"] = 180dip;
+			}
+		}
+	}	
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_CLOSE_POPUP).onClick = function()
+	{
+		selectView("IDR_HTM_HOME");
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	self.on("closerequest", function(event)
+    {
+        self.CallContinueDataEncDec();
+    });
+	</script>
+	<script type="text/tiscript">
+    function showNotification(strMsgText)
+    {
+		BlurWhenLightBox();
+        $(#StatusMessage).value = strMsgText;
+        var res = dialog { body:$(form#simple-dialog),
+        returns: #values,
+		buttons: [ { caption: Lang.translate("ID_OK"), role:#ok, value:true }]
+        };
+        if(res == true)
+        {
+			RemoveBlurLightBox();
+            return 1;
+        }
+        else
+        {
+			RemoveBlurLightBox();
+            return 0;
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    var strFilePath = "";
+    var FileFoldName = "";
+    var bIsInitializeAction = false;
+    </script> 
+	
+	<script type="text/tiscript">
+    function IsBrowsePopUpDisplayed(bEnableRequest)
+    {
+        g_IsAnyPopUpDisplayed = bEnableRequest;
+    }
+    function showValidationMsg(strFilePath)
+    {
+        if(self.CheckIsNetworkPath(strFilePath))
+        {
+			BlurWhenLightBox();
+            $(#StatusMessage).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+            var res = dialog { body:$(form#simple-dialog),
+                        returns: #values,
+                        buttons: [ { caption: "OK", role:#ok, value:true }]
+                        };
+			RemoveBlurLightBox();		
+            $(widget).value = "";
+            return true;
+        }
+    }
+    const HTML_FILES = "All Files All Files (*.*)|*.*";
+    class FileName : Behavior {
+        function attached() {
+            this.$append( <input|text.path readonly #IDedtFilePath><button class="selector" #ID_BTN_BROWSE_DE><label>ID_UPDATE_BTN_BROWSE</label><div class="file_folder_div"><ul class="file_folder"><li #ID_BROWSE_FILE .border_right><label>ID_FILE</label></li><li #ID_BROWSE_FOLDER><label>ID_FOLDER</label></li></ul></div></button>);
+
+            var path = this.path = this.$(.path);
+
+            this.$(button.selector).onClick = function ()
+            {
+                (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+            };
+    $(#ID_BROWSE_FILE).onClick = function()
+    {
+        var bEncrypt = $(#encrypt_radio).value;
+        $(widget).value = "";
+        strFilePath = "";
+        if(bEncrypt)
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFile(#open ,  "Files (*.*)|*.*" , "files");
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+                    if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                    if(!self.OnCheckFileExists(strFilePath) && strFilePath != "")
+                    {
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_PATH_DOESNT_EXIST");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                        $(widget).value = "";
+                        g_bIsAnyTaskInProcess = false;
+                        g_IsDataEncDecRunning = false;
+                        g_varCurrentTask = #NONE;
+                        $(#ID_BTN_BROWSE_DE).state.disabled = false;
+						$(#select_options).state.disabled = false;
+                        $(#encrypt_button).state.disabled = false;
+                        $(#decrypt_button).state.disabled = false;
+                        $(#IDedtFilePath).value = "";
+                        strFilePath = "";
+                        return;
+                    }
+                $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+        }
+        else
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFile(#open ,  "Files (*.AK)|*.AK" , ".AK files");
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+                    if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                    if(!self.OnCheckFileExists(strFilePath) && strFilePath != "")
+                    {
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_PATH_DOESNT_EXIST");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                        $(widget).value = "";
+                        g_bIsAnyTaskInProcess = false;
+                        g_IsDataEncDecRunning = false;
+                        g_varCurrentTask = #NONE;
+                        $(#ID_BTN_BROWSE_DE).state.disabled = false;
+						$(#select_options).state.disabled = false;
+                        $(#encrypt_button).state.disabled = false;
+                        $(#decrypt_button).state.disabled = false;
+                        $(#IDedtFilePath).value = "";
+                        strFilePath = "";
+                        return;
+                    }
+                $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+            }
+            (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+    }
+
+    $(#ID_BROWSE_FOLDER).onClick = function()
+    {
+        var bEncrypt = $(#encrypt_radio).value;
+        $(widget).value = "";
+        strFilePath = "";
+        if(bEncrypt)
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFolder();
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+					if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+        }
+        else
+        {
+                IsBrowsePopUpDisplayed(true);
+                var fn = view.selectFolder();
+                if(fn)
+                {
+                    FileFoldName = fn;
+                    strFilePath = URL.toPath(FileFoldName);
+                    strFilePath = strFilePath.replace("\/","\\");
+                    if(showValidationMsg(strFilePath) == true)
+                    {
+                        strFilePath = "";
+                    }
+                    else
+                    {
+                        path.value = strFilePath;
+                    }
+                }
+                $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+                IsBrowsePopUpDisplayed(false);
+            }
+            (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+        }
+    }
+
+    property value(v) {
+        get { return this.path.value; }
+        set { this.path.value = v; }
+    }
+    }
+
+    $(widget).onValueChanged = function() {
+    stdout.println(this.value);
+    };
+    </script>
+	
+	<script type= "text/tiscript">
+	var vlistObj;
+	</script>
+	
+	<script type= "text/tiscript">
+    function setDataCryptStatus( varAppendNewFile, strCryptFileName, strCryptActiontaken)
+    {
+		if(varAppendNewFile == 33) /* 33 is CONSTANT from Native for showing status of file on UI */
+        {
+           //varFilelist[varFileCount].$content( <td>{TempFileName}</td><td>{strCryptActiontaken}</td> );
+            varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+            if(strCryptActiontaken == Lang.translate("IDS_DECR_INITIALIZING"))
+            {
+                bIsInitializeAction = true;
+            }
+            else
+            {
+                bIsInitializeAction = false;
+            }
+        }
+        if(varAppendNewFile == 7 || varAppendNewFile == 8) /* 33 is CONSTANT from Native for showing status of file on UI */
+        {
+			$(#Processed_files).value = ++varProcessedFileCount;
+            varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+        }
+        if(varAppendNewFile == 16) /* 16 is CONSTANT from Native for adding new file on UI */
+        {
+            varFileCount++;
+			varArrCount = varFileCount;
+		    //$(#Processed_files).value = ++varProcessedFileCount;
+            //varFilelist[varFileCount] = $(table>tbody).$append( <tr> <td>{strCryptFileName}</td><td>{strCryptActiontaken}</td></tr> );
+            varArrayFiles[varArrCount] = {FilePath:strCryptFileName, ActionTaken:""};
+        }
+        if(varAppendNewFile == 19) /* 19 is CONSTANT from Native for updating Total file count on UI */
+        {
+            varTotalFileCount = strCryptActiontaken;
+            $(#Total_files).value = varTotalFileCount;
+        }
+        if(varAppendNewFile == 17) /* 17 is CONSTANT from Native for CryptOperation cancelled */
+        {
+            //varFilelist[varFileCount].$content( <td>{TempFileName}</td><td>{strCryptActiontaken}</td> );
+			varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+            var bEncrypt = $(#encrypt_radio).value;
+            if(bEncrypt)
+            {
+			    $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+			}
+            else
+            {
+			    $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+			}
+        }
+        if(varAppendNewFile == 11) // Crypt operation is finished
+        {
+            if(varFileCount == -1)
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_NO_FILE_FOUND_TO_PROCESS");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				$(#select_options).state.disabled = false;
+                $(#encrypt_button).state.disabled = false;
+                $(#decrypt_button).state.disabled = false;
+                $(#IDedtFilePath).value = "";
+                strFilePath = "";
+            }
+            else
+            {
+                var bEncrypt = $(#encrypt_radio).value;
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				$(#select_options).state.disabled = false;
+                $(#encrypt_button).state.disabled = false;
+                $(#decrypt_button).state.disabled = false;
+                $(#IDedtFilePath).value = "";
+                strFilePath = "";
+                if(bEncrypt)
+                {
+                    $(#encrypt_button).state.collapsed = false;
+                    $(#decrypt_button).state.collapsed = true;
+                    $(#ID_Stop_Button).state.collapsed = true;
+                    if(varDlgBtnFlag == 0)
+                    {
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_DATA_ENCRYPTION_IS_COMPLETED_SUCCESSFULLY");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                    }
+                    else{
+						BlurWhenLightBox();
+                        $(#StatusMessage).value = Lang.translate("ID_DATA_ENCRYPTION_IS_COMPLETED_SUCCESSFULLY");
+                        var res = dialog { body:$(form#simple-dialog),
+                                    returns: #values,
+                                    buttons: [ { caption: "OK", role:#ok, value:true }]
+                                    };
+						RemoveBlurLightBox();
+                    }
+
+                }
+                else
+                {
+                    $(#encrypt_button).state.collapsed = true;
+                    $(#decrypt_button).state.collapsed = false;
+                    $(#ID_Stop_Button).state.collapsed = true;
+					BlurWhenLightBox();
+                    $(#StatusMessage).value = Lang.translate("ID_DATA_DECRYPTION_IS_COMPLETED_SUCCESSFULLY");
+                    var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+                                buttons: [ { caption: "OK", role:#ok, value:true }]
+                                };
+					RemoveBlurLightBox();
+                }
+            }
+        }
+        if(varAppendNewFile == 28 || varAppendNewFile == 31 || varAppendNewFile == 34 || varAppendNewFile == 9) /*  */
+        {
+		    var bEncrypt = $(#encrypt_radio).value;
+            g_bIsAnyTaskInProcess = false;
+            g_IsDataEncDecRunning = false;
+            g_varCurrentTask = #NONE;
+            $(#ID_BTN_BROWSE_DE).state.disabled = false;
+			$(#select_options).state.disabled = false;
+            $(#encrypt_button).state.disabled = false;
+            $(#decrypt_button).state.disabled = false;
+            $(#IDedtFilePath).value = "";
+            strFilePath = "";
+            $(#Total_files).value = Lang.translate("ID_TOTAL_FILES_0");
+            if(bEncrypt)
+            {
+                $(#encrypt_button).state.collapsed = false;
+                $(#decrypt_button).state.collapsed = true;
+                $(#ID_Stop_Button).state.collapsed = true;
+            }
+            else
+            {
+                $(#encrypt_button).state.collapsed = true;
+                $(#decrypt_button).state.collapsed = false;
+                $(#ID_Stop_Button).state.collapsed = true;
+            }
+            showNotification(strCryptActiontaken);
+        }
+        if(varAppendNewFile == 35) //For files in USB Drive
+        {
+            var bEncrypt = $(#encrypt_radio).value;
+            g_bIsAnyTaskInProcess = true;
+            g_IsDataEncDecRunning = true;
+            $(#ID_BTN_BROWSE_DE).state.disabled = true;
+			$(#select_options).state.disabled = true;
+            $(#encrypt_button).state.disabled = true;
+            $(#decrypt_button).state.disabled = true;
+            varDlgBtnFlag = 1;
+            $(#StatusMessage).value = strCryptActiontaken;
+            var res = dialog { body:$(form#simple-dialog),
+                        returns: #values,
+                        buttons: [ { caption: "OK", role:#ok, value:true }]
+                        };
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function setDataCryptOprStatus(evt)
+	{
+		var varFinalStatus = evt.data.one.toInteger();
+		var varFilePath = evt.data.two.toString();
+		var varFileStatusMsg = evt.data.three.toString(); 
+		
+		if(varFinalStatus == 11)
+		{
+			$(#encrypt_button).state.collapsed = false;
+			$(#decrypt_button).state.collapsed = true;
+			$(#ID_Stop_Button).state.collapsed = true;
+			$(#ID_BTN_BROWSE_DE).state.disabled = false;
+			g_IsDataEncDecRunning = false;
+		}
+		if(varFinalStatus == 28 || varFinalStatus == 31 || varFinalStatus == 34 || varFinalStatus == 9) /*  */
+        {
+			showNotification(varFileStatusMsg);
+		}
+		if(varFinalStatus == 7 || varFinalStatus == 8)
+        {
+         	varProcessedFileCount = ++varProcessedFileCount;
+			$(#Processed_files).value = varProcessedFileCount;
+            varArrayFiles[varArrCount].ActionTaken = strCryptActiontaken;
+        }
+		else
+		{
+			setDataCryptStatus(varFinalStatus, varFilePath, varFileStatusMsg);
+		}
+	}
+	self.subscribe(setDataCryptOprStatus, Event.BEHAVIOR_EVENT, 0x100 + 23);
+	</script>
+	
+	<script type="text/tiscript">
+    function showEncryptionPassDlg(FilePath, KeepOriginal, bIsRequestFromExplorer = false)
+    {
+        var arrTemp = new Array();
+        arrTemp[0] = {encryptPassword:""};
+        strFilePath = FilePath;
+        $(#IDedtFilePath).value = FilePath;
+		varTempCryptFileName = strFilePath;
+        //if(checkIsValidUser() == true)
+        //{
+            if(strFilePath == "")
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_PLEASE_SELECT_FILE_OR_FOLDERS_FOR_ENCRYPTION");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                return;
+            }
+            g_IsAnyPopUpDisplayed = true;
+            var varKeepOriginaltemp = true;
+            var dialogParameters = { varLanguageValue:g_LanguageName, varKeepOriginal:varKeepOriginaltemp, varrTemp:arrTemp, ProductVersion:productVersion, varThemeType:g_themeType};
+            var result = view.dialog{ url: self.url("IDR_HTM_ENCRYPT_PASSWORD.htm"),client:true, alignment:-5, parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+            if(result == null)
+            {
+                if(bIsRequestFromExplorer)
+                {
+                    self.ClosePasswordDialog();
+                    g_bIsAnyTaskInProcess = false;
+                    g_IsDataEncDecRunning = false;
+                    g_varCurrentTask = #NONE;
+                    g_IsAnyPopUpDisplayed = false;
+                    return;
+                }
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                self.Update();
+                return ;
+            }
+
+            var bKeepOriginal = dialogParameters.varKeepOriginal;
+            $(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = true;
+            $(#ID_Stop_Button).state.collapsed = false;
+            $(#ID_Stop_Button).state.disabled = false;
+            $(#ID_BTN_BROWSE_DE).state.disabled = true;
+            $(#encrypt_button).state.disabled = true;
+            $(#decrypt_button).state.disabled = true;
+            g_bIsAnyTaskInProcess = true;
+            g_IsDataEncDecRunning = true;
+            g_varCurrentTask = #DATACRYPTOPR;
+            varArrayFiles.length = 0;
+            varFileCount = -1;
+			varTotalFileCount = 0;
+			varArrCount = 0;
+			varProcessedFileCount = 0;
+			$(#select_options).state.disabled = true;
+            $(#Total_files).value = Lang.translate("ID_TOTAL_FILES_0");
+            $(#Processed_files).value = "0";
+			self.OnStartDataEncryption(strFilePath, arrTemp[0].encryptPassword, bKeepOriginal, setDataCryptStatus);
+            vlistObj = $(table);
+            vlistObj.value = varArrayFiles;
+        //}
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    function showDecryptionPassDlg(FilePath, bIsRequestFromExplorer = false)
+    {
+        var vArr = new Array();
+        vArr[0] = {decryptPassword:""};
+        if(checkIsValidUser() == true)
+        {
+            isDecryptClicked = true;
+            isEncryptClicked = false;
+            $(#encrypt_radio).checked = false;
+            $(#decrypt_radio).checked = true;
+            $(#IDedtFilePath).value = FilePath;
+            $(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = false;
+            strFilePath = FilePath;
+			varTempCryptFileName = strFilePath;
+            if(strFilePath == "")
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_PLEASE_SELECT_FILE_OR_FOLDERS_FOR_DECRYPTION");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                return;
+            }
+            var bKeepOriginal = false;
+            g_IsAnyPopUpDisplayed = true;
+            var dialogParameters = { varLanguageValue:g_LanguageName, ProductVersion:productVersion, varArr:vArr, varThemeType:g_themeType};
+            var DecResult = view.dialog{ url: self.url("IDR_HTM_DECRYPT_PASSWORD.htm"),client:true,alignment:-5, parameters: dialogParameters};
+            g_IsAnyPopUpDisplayed = false;
+            if(DecResult == null)
+            {
+                if (bIsRequestFromExplorer)
+                {
+                    self.ClosePasswordDialog();
+                    g_bIsAnyTaskInProcess = false;
+                    g_IsDataEncDecRunning = false;
+                    g_varCurrentTask = #NONE;
+                    g_IsAnyPopUpDisplayed = false;
+                    return ;
+                }
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                return ;
+            }
+            $(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = true;
+            $(#ID_Stop_Button).state.collapsed = false;
+            $(#ID_Stop_Button).state.disabled = false;
+            $(#ID_BTN_BROWSE_DE).state.disabled = true;
+			$(#select_options).state.disabled = true;
+            $(#encrypt_button).state.disabled = true;
+            $(#decrypt_button).state.disabled = true;
+            g_bIsAnyTaskInProcess = true;
+            g_IsDataEncDecRunning = true;
+            g_varCurrentTask = #DATACRYPTOPR;
+            varArrayFiles.length = 0;
+            varFileCount = -1;
+            varTotalFileCount = 0;
+			varArrCount = 0;
+            $(#Total_files).value = Lang.translate("ID_TOTAL_FILES_0");
+            $(#Processed_files).value = "0";
+
+            if(self.CheckIsNetworkPath(strFilePath))
+            {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+                var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+                            buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+				RemoveBlurLightBox();
+                $(widget).value = "";
+                g_bIsAnyTaskInProcess = false;
+                g_IsDataEncDecRunning = false;
+                g_varCurrentTask = #NONE;
+                $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				$(#select_options).state.disabled = true;
+                $(#encrypt_button).state.disabled = false;
+                $(#decrypt_button).state.disabled = false;
+                $(#IDedtFilePath).value = "";
+                strFilePath = "";
+                return;
+            }
+            self.OnStartDataDecryption(strFilePath, vArr[0].decryptPassword, bKeepOriginal, setDataCryptStatus);
+            vlistObj = $(table);
+            vlistObj.value = varArrayFiles;
+       }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#encrypt_button).onClick = function()
+    {
+         var bKeepOriginal;
+         showEncryptionPassDlg(strFilePath,bKeepOriginal);
+    }
+    </script>
+
+	<script type="text/tiscript">
+    $(#decrypt_button).onClick = function()
+    {
+        showDecryptionPassDlg(strFilePath);
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#ID_Stop_Button).onClick = function()
+    {
+        if(bIsInitializeAction == true)
+        {
+			BlurWhenLightBox();
+            $(#StatusMessage).value = Lang.translate("IDS_DECR_INITIALISING_PLZ_WAIT");
+            var res = dialog { body:$(form#simple-dialog),
+                        returns: #values,
+                        buttons: [ { caption: "OK", role:#ok, value:true }]
+                        };
+            event.cancel = true;
+			RemoveBlurLightBox();
+            return;
+        }
+        self.OnPauseDataCryptOpr();
+        var bEncrypt = $(#encrypt_radio).value;
+        if(bEncrypt)
+        {
+			   BlurWhenLightBox();
+               $(#StatusMessage).value = Lang.translate("ID_DATA_ENCRYPTION_IS_IN_PROGRESS_DO_YOU_WANT_TO_STOP");
+               var res = dialog { body:$(form#simple-dialog),
+							buttons: [ { caption: "OK", role:#ok, value:true },{ caption: Lang.translate("ID_SCN_CANCEL"), role:#cancel, value:false }]
+						};
+               if(res == true)
+               {   
+			       RemoveBlurLightBox();
+                   g_bIsAnyTaskInProcess = false;
+                   g_IsDataEncDecRunning = false;
+                   g_varCurrentTask = #NONE;
+                   $(#ID_Stop_Button).state.disabled = true;
+				   $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				   $(#select_options).state.disabled = false;
+				   $(#ID_Stop_Button).state.collapsed = true;
+				   $(#encrypt_button).state.collapsed = false;
+				   $(#IDedtFilePath).value = "";
+                   self.StopDataCryptOperation();
+               }
+               else
+               {
+				   RemoveBlurLightBox();
+                   self.OnResumeDataCryptOpr();
+               }
+        }
+        else
+        {
+				BlurWhenLightBox();
+                $(#StatusMessage).value = Lang.translate("ID_DATA_DECRYPTION_IS_IN_PROGRESS_DO_YOU_WANT_TO_STOP");
+                var res = dialog { body:$(form#simple-dialog) };
+                if(res == true)
+                {
+				    RemoveBlurLightBox();
+                   g_bIsAnyTaskInProcess = false;
+                   g_IsDataEncDecRunning = false;
+                   g_varCurrentTask = #NONE;
+                   $(#ID_Stop_Button).state.disabled = true;
+				   $(#ID_BTN_BROWSE_DE).state.disabled = false;
+				   $(#select_options).state.disabled = false;
+				   $(#ID_Stop_Button).state.collapsed = true;
+				   $(#decrypt_button).state.collapsed = false;
+				   $(#IDedtFilePath).value = "";
+                   self.StopDataCryptOperation();
+                }
+                else
+                {
+				   RemoveBlurLightBox();				
+                   self.OnResumeDataCryptOpr();
+                }
+        }
+    }
+    </script>
+		
+	<script type="text/tiscript">
+	$(#encrypt_radio).onClick = function()
+    {
+		if(isDecryptClicked == true)
+		{
+			$(widget).value = "";
+			strFilePath = "";
+			isEncryptClicked = true;
+			isDecryptClicked = false;
+		}
+        $(#encrypt_button).state.collapsed = false;
+        $(#decrypt_button).state.collapsed = true;
+        $(#ID_Stop_Button).state.collapsed = true;
+        $(#IDedtFilePath).value = "";
+    }
+    $(#decrypt_radio).onClick = function() 
+    {
+		if(isEncryptClicked == true)
+		{
+			$(widget).value = "";
+			strFilePath = "";
+			isEncryptClicked = false;
+			isDecryptClicked = true;
+		}
+	  $(#encrypt_button).state.collapsed = true;
+      $(#decrypt_button).state.collapsed = false;
+      $(#ID_Stop_Button).state.collapsed = true;
+      $(#IDedtFilePath).value = "";
+    }
+	</script>
+
+	<script type= "text/tiscript">
+	$(#ID_REGISTER_NOW).onClick = function()
+	{
+		ShowRegistrationDialog(); 
+	}
+	</script>
+	
+	<script type= "text/tiscript">
+	 function BlurWhenLightBox()
+	 {
+		$(#ID_BLUR_ENC_DNC).attributes.addClass("translateWhenLightBox");
+	 }
+	</script>
+	
+	<script type= "text/tiscript">
+	function RemoveBlurLightBox()
+	 {
+		$(#ID_BLUR_ENC_DNC).attributes.removeClass("translateWhenLightBox");
+	 }
+	</script>
+	
+	<script type= "text/tiscript">
+	$(#ID_BUY_HIGH_VER).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/"); 
+	}
+	</script>
+	
+	<script type= "text/tiscript">
+    function self.ready()
+    {
+	    g_CurrentPage = #DATAENCRYPTION;
+		self.language = g_LanguageName;
+        $(#decrypt_button).state.collapsed = true;
+        $(#ID_Stop_Button).state.collapsed = true;
+		isEncryptClicked = true;	
+		if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		if(g_LanguageName=="ENGLISH")
+		{
+			$(#IDedtFilePath).style["margin-left"] =-20dip;
+			$(#decrypt_radio).style["margin-left"] =30dip;
+		}
+		CheckForProductStatus();
+		if(g_IsDataEncDecRunning == true)
+		{
+			vlistObj = $(#theCrypttable);
+            vlistObj.value = varArrayFiles;
+			$(#Processed_files).value = varProcessedFileCount;
+			varArrCount = varArrayFiles.length - 1;
+			$(#Total_files).value = varTotalFileCount;
+			$(#encrypt_button).state.collapsed = true;
+            $(#decrypt_button).state.collapsed = true;
+            $(#ID_Stop_Button).state.collapsed = false;
+			$(#ID_BTN_BROWSE_DE).state.disabled = true;
+			$(#select_options).state.disabled = true;
+			$(#IDedtFilePath).value = varTempCryptFileName;
+			self.OnSetTimer();
+		}		
+    }
+    </script>
+	<form #simple-dialog caption="Vibranium">
+		<p #StatusMessage></p>
+	</form>
+</head>
+<body> 
+	<div .body_firewall_inner>
+    <div .titleCont>
+		<h1 .headingTitle1><label>ID_DATA_ENCRYPTION</label></h1>
+		<p><label>ID_ENCRYPTION_OR_DECRYPTION</label></p>
+	</div>
+	<div .contTopDataEncryption #ID_BLUR_ENC_DNC>
+		<div .horizontalFlow .EncryptWidth .clickable_cl #select_options>
+			<input type="radio" #encrypt_radio checked><span .EcryptBtn><label for="encrypt_radio">ID_ENCRYPT</label></span></input>
+			<input type="radio" #decrypt_radio><span .EcryptBtn><label for="decrypt_radio">ID_DECRYPT</label></span></input>
+		</div>
+		<div .dataEncryptionWidget>
+			<widget|file-name name=test />
+		</div>
+	</div>
+	<div .horizontalFlow .txtColorDE .top12Mrgn>
+        <div #Total_files .tot_fillesDataEnc style="padding-top:5dip;"><label>ID_TOTAL_FILES</label> 0</div>
+		<div .processed_fillesDataEnc style="padding-top:5dip;">
+			<label>ID_PROCESSED_FILES</label> <span #Processed_files>0</span>
+		</div>
+			<span class="btnCstmSmall " #encrypt_button><label>ID_ENCRYPT</label></span>
+			<div class="btnCstmSmall " #decrypt_button><label>ID_DECRYPT</label></button></div>
+			<div class="btnCstmSmall " .stop_encrypt #ID_Stop_Button><label>ID_BTN_STOP</label></button></div>
+	</div>
+	<table id="theCrypttable">
+		<thead>
+			<tr>
+				<th><label>ID_FILE_PATH</label></th>
+				<th style="width:70dip;"><label>ID_ACTION</label></th>
+			</tr>
+		</thead>  
+		<tbody>
+			<tr>
+				<td(FilePath)></td>
+				<td(ActionTaken)></td>
+			</tr>
+		</tbody>
+	</table>
+	<p .warningDataEncryption><label>ID_PLEASE_SELECT_FILES_OR_FOLDERS_ENCRYPT_OR_DECRYPT</label></p>
+	</div>
+	
+	
+	<div class="messageContAlert">
+		<div .clickable_cl .BuyHighVersionClose #ID_CLOSE_POPUP>
+				<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIconVersionUpgrade">
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+				</svg>
+		</div>
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 511 511" enable-background="new 0 0 511 511" xml:space="preserve" style="size:45dip;background:transparent;">
+		<path fill="#E58E13" d="M311.5,434.9c0,35-23.6,64.4-55.7,73.3c-6.5,1.8-13.3,2.8-20.3,2.8c-42,0-76.1-34.1-76.1-76.1l76.2-39.2
+			L311.5,434.9z"/>
+		<path fill="#F7D360" d="M307.8,458.4c-7.8,24.2-27.4,43-52.1,49.9c-15.5-4.3-29-13.3-38.8-25.5c-7.9-9.8-0.8-24.4,11.8-24.4H307.8z"
+			/>
+		<path fill="#F7D360" d="M431.8,358.9l-163.4,35.3L39,358.9c18,0,28.2-9.4,34-25c27.9-75.4-46.5-295.1,162.5-295.1
+			s134.5,219.7,162.5,295.1C403.7,349.4,413.8,358.9,431.8,358.9z"/>
+		<path fill="#E58E13" d="M469.9,396.9c0,21-17,38-38,38H39c-10.5,0-20-4.3-26.9-11.1C5.2,416.9,1,407.4,1,396.9c0-21,17-38,38-38
+			h392.8c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M397.9,333.8H193.7c-22,0-39.6-18.2-38.9-40.2c2.9-93.1-12-253.1,79.1-254.8
+			c-250,1.3-90.2,320.1-194.9,320.1h392.8C413.8,358.9,403.7,349.4,397.9,333.8z"/>
+		<path fill="#F7D360" d="M469.9,396.9c0,21-17,38-38,38H148.9c-10.5,0-20-4.3-26.9-11.1c-6.9-6.9-11.1-16.4-11.1-26.9
+			c0-21,17-38,38-38h282.9c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M274.1,41.7c0.1-1,0.1-1.9,0.1-2.9c0-21.4-17.4-38.8-38.8-38.8c-21.4,0-38.8,17.4-38.8,38.8c0,1,0,2,0.1,2.9
+			"/>
+		<g>
+			<path fill="#E6E6E6" d="M424.2,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-36.2-9.3-67.1-27.7-91.8c-13.7-18.5-27.6-26.4-27.8-26.5
+				c-3.8-2.1-5.1-6.9-3-10.6c2.1-3.8,6.8-5.1,10.6-3c0.7,0.4,16.5,9.3,32.2,30.1c14.3,19,31.3,52,31.3,101.9
+				C432.1,163.9,428.6,167.4,424.2,167.4z"/>
+			<path fill="#E6E6E6" d="M458.7,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-49.9-29.6-69.8-30.8-70.6c-3.6-2.4-4.7-7.2-2.3-10.8
+				c2.3-3.6,7.1-4.7,10.8-2.4c1.6,1,38,24.9,38,83.8C466.5,119.1,463,122.6,458.7,122.6z"/>
+			<path fill="#E6E6E6" d="M46.6,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-49.8,17-82.9,31.3-101.9c15.7-20.8,31.5-29.7,32.2-30.1
+				c3.8-2.1,8.5-0.7,10.6,3.1c2.1,3.8,0.7,8.5-3,10.6c-0.3,0.2-14.1,8.1-27.8,26.5c-18.4,24.7-27.7,55.6-27.7,91.8
+				C54.4,163.9,50.9,167.4,46.6,167.4z"/>
+			<path fill="#E6E6E6" d="M12.2,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-58.9,36.5-82.8,38-83.8c3.6-2.3,8.5-1.2,10.8,2.4
+				c2.3,3.6,1.3,8.5-2.4,10.8C49.5,45,20,64.8,20,114.7C20,119.1,16.5,122.6,12.2,122.6z"/>
+		</g>
+		</svg><br/>
+		<p style="color:#000;" #ID_VERSION_MESSAGE><label>ID_BUY_HIGHER_VERSION</label></p>
+		<p style="color:#000;" #ID_VERSION_MESSAGE2><label>ID_BUY_HIGHER_VERSION</label></p>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_BUY_HIGH_VER><label>ID_BUY_NOW</label></div>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_REGISTER_NOW><label>ID_REGISTER_NOW</label></div>
+	</div>
+</body>
+</html>

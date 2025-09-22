@@ -1,0 +1,396 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+<title>Registry Tool</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+ <style> 
+	@import url(IDR_CSS_MAIN.css); 
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);			
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		
+	html{
+		padding:0dip;
+		margin:0dip;
+		overflow:hidden; 
+		width:562.5dip;
+		height:387dip;
+	}
+
+	body{
+		width:560dip;
+		height:385dip;
+		margin:0;
+		padding:0;
+		background-size:cover;
+		background-repeat: no-repeat;
+		position:relative;	
+		overflow:hidden;
+		//border:0.5dip solid #3d748e;
+	}
+    .clickable_cl{
+		behavior:clickable;
+		cursor:pointer;
+	}
+	.header{
+		width:557dip!important;
+	}
+	.left_colTemp{
+		width:227dip;
+	}
+	.footer_buttonsTemp{
+		width:520dip;
+		text-align:right;
+		height:25dip;
+		margin-left:10dip;
+	}
+	.footer_buttonsTemp .btnCstmSmall{
+		margin-top:0;
+	}
+	table#ID_REG_TOOL_TABLE 
+	{ 
+		style-set: vgrid;
+		flow:table-fixed;
+		font-size:12dip; 
+		width:492dip;
+		height:220dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: scroll;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin-top:5dip;
+		margin-bottom:10dip;
+		margin-left:35dip;
+	}
+	table#ID_REG_TOOL_TABLE > thead {
+		behavior:column-resizer;  
+	}
+	table#ID_REG_TOOL_TABLE > tbody {
+		overflow-y: auto;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#ID_REG_TOOL_TABLE th 
+	{ 
+		font-size:12.5dip;
+		padding:4dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	table#ID_REG_TOOL_TABLE th:nth-child(1)  {  width:0.08*; }
+	table#ID_REG_TOOL_TABLE th:nth-child(2)  {  width:0.3*; }
+	table#ID_REG_TOOL_TABLE th:hover 
+	{ 
+		transition:blend;
+	}
+	table#ID_REG_TOOL_TABLE td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+		text-align:center;
+	}
+	table#ID_REG_TOOL_TABLE td:nth-child(1) {  text-align:left; width:0.08*;padding-top:2dip; } /* first column */
+	table#ID_REG_TOOL_TABLE td:nth-child(2) {  text-align:left; width:0.2*;padding-top:2dip; text-align:center; } /* first column */
+	.midContent{
+		flow:horizontal;
+	}
+	.titleCont_utilities{
+		text-align:center;
+		min-height:10dip;
+		width:555dip;
+		padding-top:1dip;
+	}
+	.MenuSpacing{
+		margin:2dip;
+		margin-top:0dip;
+	}
+	.menu_utility_reg{
+		width:300dip;
+		flow:horizontal;
+	}
+	.drag_zone_utility_reg{
+		width:475dip;
+		height:40dip;
+	}
+</style>
+	
+	<script type="text/tiscript">
+    include "IDR_TIS_MAIN.tis";
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+	
+	
+	<script type="text/tiscript">
+    var ArrRecords = new Array(0);
+	var vCheckBox = $(body);
+	var TableVal = 0;	
+	var vlistObj;
+    </script>
+	
+    <script type="text/tiscript">
+	if(productVersion == #BASIC){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC";
+	}
+	else if(productVersion == #ESSENTIAL){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL";
+	}
+	else if(productVersion == #PROVANTAGE){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE";
+	}
+	else if(productVersion == #ELITE){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE";
+	}
+	else if(productVersion == #ESSENTIALPLUS){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS";
+	}
+    </script>
+		
+	<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/"); //german for basic
+	}
+    </script>
+
+	<script type="text/tiscript">
+    function CloseUI()
+    {		
+        view.OnClose();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    const selectAll = vCheckBox.$(input#select-all);
+
+    vCheckBox.on("change","#select-all", function()
+    { 		
+        var selected = this.value;
+        for( var record in ArrRecords )
+            record.selected = selected;
+    });
+	</script>
+	
+	<script type="text/tiscript">
+	vCheckBox.on("change","tbody > tr", function()
+	{											
+		this.data.selected = this.value.selected;
+		var currIndex = this.index;
+		
+		if( !this.data.selected )
+			selectAll.value = false;
+			
+	});
+	</script>
+	
+	<script type="text/tiscript">
+	$(.OnClickMinimize).onClick = function()
+    {
+       view.OnMinimize();
+    }
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        CloseUI();
+    }
+	$(#ID_BTN_CLOSE).onClick = function()
+    {
+		CloseUI();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function funSetStatus(FlagRestart)
+	{
+		if(FlagRestart)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_FIX_RESTART");
+			var res = dialog { 	body:$(form#simple-dialog),
+								returns: #values,
+                                caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },
+										{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							 };
+			if(res == true)
+				 view.OnGetRestart();
+			else
+				return;
+		}
+		else
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_REG_CHANGES_DONE_MSG");
+			var res = dialog {  body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },
+										{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							 };
+			if(res == true)
+				 view.OnGetRestart();
+			else
+				return;
+		}
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_OK).onClick = function()
+	{
+		view.OnChangeKeyValue(funSetStatus, ArrRecords);	
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	function funSetValueToTable(Key, value)
+	{
+        ArrRecords[TableVal] = {Key : GetLangString(Key), selected : value};
+		TableVal++;
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function GetLangString(varString)
+	{
+		switch(varString)
+		{
+			case "Task Manager": 
+				return Lang.translate("ID_TASK_MGR");
+			case "Display properties": 
+				return Lang.translate("ID_DISP_PROP");
+			case "Change Password": 
+				return Lang.translate("ID_CHANGE_PASS");
+			case "Lock Computer": 
+				return Lang.translate("ID_LOCK_COMP");
+			case "Registry Tools": 
+				return Lang.translate("ID_REG_TOOL");
+			case "Computer Shutdown": 
+				return Lang.translate("ID_COMP_SHUTDOWN");
+			case "Taskbar Menu": 
+				return Lang.translate("ID_TASKBAR_MENU");
+			case "Run Dialog": 
+				return Lang.translate("ID_RUN_DIALOG");
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function SetChkStatus()
+	{
+		TableVal = 0;
+		var ArrLength = ArrRecords.length;
+        while(TableVal <= ArrLength)
+		{
+			if(ArrRecords[TableVal].selected != true)
+			{
+				selectAll.value = false;
+				return;
+			}
+			TableVal++;
+		}
+	}
+	</script>
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+	</script>	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+        vlistObj = $(table);
+        vlistObj.value = ArrRecords;
+
+		if(g_themeType == "defaultTheme")
+		{
+			OnSetDefaultTheme();
+		}
+		else if(g_themeType == "darkTheme")
+		{
+            OnSetDarkTheme();
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+            OnSetCrystalTheme();
+		}
+		
+		view.OnGetRegValue(funSetValueToTable, SetChkStatus);
+	}
+    </script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+	<div .mainContent>
+		<div .header>
+			<div .tempLogo>
+				<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+			</div>
+			<div .menu_utility_reg>
+				<div .drag_zone_utility_reg role="window-caption">
+					<h4 style="margin-top:10dip">VIBRANIUM</h4>
+				</div>
+				<div .topMenuUtility >
+					<ul>
+						<li .clickable_cl .OnClickMinimize .MenuSpacing>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+							</svg>
+						</li>
+						<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE .MenuSpacing>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+							</svg>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div .titleCont_utilities>
+			<h1 .headingTitle1 style="margin-bottom:0;margin-top:0"><label>ID_REG_TOOL_HEADER</label></h1>
+			<p style="margin-top:0"><label>ID_REG_TOOL_TITLE</label></p>
+		</div>
+		<table #ID_REG_TOOL_TABLE>
+			<thead>
+				<tr>
+					<th style="width:135dip"><input name="all_check" #select-all|checkbox checked/><label for="all_check">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></th>
+					<th style="width:340dip"><label>ID_REG_TOOL_KEY_OPTION</label></th>
+				</tr>
+			</thead>  
+			<tbody>
+				<tr><td><input(selected)|checkbox style="margin-top:5dip;"/></td><td(Key)></td></tr><!-- <td(FilePath)></td><td(ActionTaken)></td> -->
+			</tbody>
+		</table>
+		<div .midContent>
+			<!-- <div .left_colTemp .clickable_cl> -->
+				<!-- <input name="all_check" #select-all|checkbox style="margin-left:31dip;" checked/><label for="all_check">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label> -->
+			<!-- </div> -->
+			<div .footer_buttonsTemp>
+				<div style="position:relative;display:inline-block;"><div class="btnCstmSmall" #ID_OK><label>ID_FIX_IT</label></button></div></div>
+				<div style="position:relative;display:inline-block;"><div class="btnCstmSmall" #ID_BTN_CLOSE><label>ID_CLOSE</label></button></div></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

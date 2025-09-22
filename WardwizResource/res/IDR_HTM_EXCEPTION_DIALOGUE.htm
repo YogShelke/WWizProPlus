@@ -1,0 +1,1299 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+<title>Packet Rule Settings</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+<include src="IDR_HTM_FONT_AWESOME.htm" />	
+<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_TOGGELER.css);
+
+	html 
+	{ 
+		width:421dip;           /* preferred/initial width */
+		height:300dip;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+		behavior:WardWizFirewall;
+	}
+	.exception_body { 
+		padding:0; margin:0; 
+	}	
+	input  { context-menu:none; }
+	
+	.header_exp_dialogue{
+		flow:horizontal;
+		width:420dip;        
+		height:40dip;
+	}
+	window-button#window-close:hover {  
+		transition: outline(linear,200ms)  
+	}
+	.exception_body .section{
+		width:410dip;
+		height:190dip;
+		margin-left:10dip!important;
+		margin-top:20dip!important;
+	}
+	.side_menu_packet {
+		margin-left:20dip;
+	 }
+	.side_menu_packet_sub_div{
+		margin-top:17dip;
+		margin-left:290dip;
+		width:82dip;
+		height:40dip;
+	}
+	.togller_btn_exc{
+		width:52dip;
+		border-radius:20dip;
+		flow:horizontal;
+		padding:2dip;
+		height:18dip;
+		margin-top:2dip;
+		margin-left:20dip;
+	}
+	.side_menu_packet_sub_div1{
+		margin-top:-54dip;
+		height:16dip;
+		width:280dip;
+	}
+	#ID_PROG_PATH{
+		margin-top:20dip;
+	}
+	#ID_PROGRAM_PATH{
+		width:245dip;
+	}
+	#ID_BTN_BROWSE{
+		margin-top:0dip;
+	}
+	#ID_PROTOCOL_SEMI{
+		height:10dip;
+	}
+	#ID_TCP {margin-left:10dip;} 
+	#ID_UDP {margin-left:10dip;} 
+	//#ID_ICMP{margin-left:10dip;} 
+	.side_menu_packet_footer{
+		margin-top:3dip;
+	}
+	.ip_address_div{
+		width:136dip;
+		position:relative;
+		margin-top:-25dip;
+	}
+	.local_ip_subdiv1 h4{
+		margin-top:10dip;
+		height:10dip;
+	}
+	.id_remote_ip_addr{
+		width:136dip;
+		position:relative;
+		margin-top:-25dip;
+	}
+	.local_ip_footer{
+		margin-top:27dip;
+	}
+	.local_port_subdiv h4{
+		margin-top:20dip;
+		height:10dip;
+	}
+	.width_inline_block{
+		width:136dip;
+		display:inline-block;
+	}
+	.local_port_subdiv1 h4{
+		margin-top:11dip;height:10dip;
+	}
+	.local_port_footer{
+		margin-top:21dip;
+	}
+	.local_port_footer div{
+		margin-top:14dip;
+	}
+	#ID_SELECT_ACCESS{
+		margin-top:30dip;
+		height:10dip;
+	}
+	#ID_ALLOW{margin-top:6dip;} 
+	#ID_DENY {margin-top:6dip;} 
+	#ID_DIRECTION{height:10dip;}
+	#ID_BOTH{margin-top:6dip;} 
+	#ID_INBOUND{margin-left:10dip;margin-top:6dip;}
+	#ID_OUTBOUND{margin-left:10dip;margin-top:6dip;}
+	.final_exception_footer{margin-top:40dip;}
+	.final_exception_footer div{margin-top:14dip;}
+	.right_section_exc{
+		text-align:right;
+		position:absolute;
+		right:10dip;
+		margin-top:-5dip;
+	}
+	.local_ip{
+		visibility:none; 
+		margin-left:20dip;
+	}
+	.local_ip_subdiv h4{
+		margin-top:20dip;
+		height:10dip;
+	}	
+	.cstmMasked{
+		width:170dip;
+		height:23dip;
+		border-radius:4dip;
+		margin-left:170dip;
+		background:#fff;
+	}
+	.ipClass{
+		width:29dip;
+		height:18dip;
+		border:none;
+		background:transparent;
+		text-align:center;
+		font-size:14dip;
+	}
+	.local_port{
+		visibility:none; 
+		margin-left:20dp;
+	}
+	.input_port{
+		margin-left:10dip;
+	}
+	.final_exception {
+		visibility: none;
+		margin-left: 20dp;
+	}
+</style>
+
+<script type="text/tiscript">  
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+</script>
+
+<script type="text/tiscript">
+	var vlistPacketRules;
+	var ArrPacketRule;
+	var ArrTempPacketRule = new Array(0);
+	var bUpdated;
+	var currentIndex;
+	var ArrPrevRule = new Array(0);
+	var vPrevPath = "";
+	var vPrevID = 0;
+</script>
+
+<script type="text/tiscript">
+	event ~keypress $(.ipClass) (evt){
+		if(evt.keyCode !in ['0','1','2','3','4','5','6','7','8','9'])
+			return true;
+	}
+</script>
+
+<script type="text/tiscript">
+	$(#ID_NEXT_IP).onClick = function()
+	{	
+		if($(#ID_PROGRAM_PATH).value == "" && $(#ID_TOGGLE_BTN_ALL_APP).state.checked == false)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_VALID_PROG_PATH");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};			
+			return true;
+		}
+		$(.side_menu_packet).style["visibility"] = "none";
+		$(.local_ip).style["visibility"] = "visible";
+	}
+	  
+	$(#ID_CANCEL_EXCEPTION).onClick = function()
+	{
+		view.close( null );										
+	}
+</script>	
+
+<script type="text/tiscript">	
+	$(#ID_NEXT_LOCAL_PORT).onClick = function()
+	{
+		if($(#ip_address).state.checked == true)
+		{	
+			var IP1 = $(#ID_TXT_IP_1_1).value.trim();
+			var IP2 = $(#ID_TXT_IP_1_2).value.trim();
+			var IP3 = $(#ID_TXT_IP_1_3).value.trim();
+			var IP4 = $(#ID_TXT_IP_1_4).value.trim();
+			
+			if(IP1.length == 0 || IP2.length == 0 || IP3.length == 0 || IP4.length == 0)	
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_VALID_IP_ADDR");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};			
+				return;
+			}
+			else if(IP1.toInteger() == "000".toInteger() && IP2.toInteger() == "000".toInteger() &&
+					IP3.toInteger() == "000".toInteger() && IP4.toInteger() == "000".toInteger())
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_VALID_IP_ADDR");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};			
+				return;
+			}	
+		}
+		if( $(#ID_REMOTE_IP_ADDRESS).state.checked == true)
+		{
+			var IP1 = $(#ID_TXT_IP_2_1).value.trim();
+			var IP2 = $(#ID_TXT_IP_2_2).value.trim();
+			var IP3 = $(#ID_TXT_IP_2_3).value.trim();
+			var IP4 = $(#ID_TXT_IP_2_4).value.trim();
+			
+			if(IP1.length == 0 || IP2.length == 0 || IP3.length == 0 || IP4.length == 0)	
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_VALID_IP_ADDR");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};			
+				return;
+			}
+			else if(IP1.toInteger() == "000".toInteger() && IP2.toInteger() == "000".toInteger() &&
+					IP3.toInteger() == "000".toInteger() && IP4.toInteger() == "000".toInteger())
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_VALID_IP_ADDR");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};			
+				return;
+			}
+		}	
+		
+		$(.local_ip).style["visibility"] = "none";
+		$(.local_port).style["visibility"] = "visible";
+	}
+		
+	$(#ID_LOCAL_IP).onClick = function()
+	{			
+		view.close( null );
+	}
+		
+	$(#ID_BACK_EXCEPTION).onClick = function()
+	{
+		$(.local_ip).style["visibility"] = "none";
+		$(.side_menu_packet).style["visibility"] = "visible";
+	}
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_ANY_IP).onClick = function()
+	{
+		if($(#ID_ANY_IP).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ip_address).state.checked = false;
+			$(#ID_TXT_IP_1_1).value="";
+			$(#ID_TXT_IP_1_2).value="";
+			$(#ID_TXT_IP_1_3).value="";
+			$(#ID_TXT_IP_1_4).value="";
+			$(#ID_TXT_IP_1_1).state.disabled=true;
+			$(#ID_TXT_IP_1_2).state.disabled=true;
+			$(#ID_TXT_IP_1_3).state.disabled=true;
+			$(#ID_TXT_IP_1_4).state.disabled=true;
+		}
+	}
+		
+	$(#ip_address).onClick = function()
+	{
+		if($(#ip_address).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_ANY_IP).state.checked = false;
+			$(#ID_TXT_IP_1_1).state.disabled=false;
+			$(#ID_TXT_IP_1_2).state.disabled=false;
+			$(#ID_TXT_IP_1_3).state.disabled=false;
+			$(#ID_TXT_IP_1_4).state.disabled=false;	
+		}	
+	}				
+
+	event change $(#ID_TXT_IP_1_1)
+	{
+		var vText = $(#ID_TXT_IP_1_1).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_1_1).value = vText;		
+		}
+		if($(#ID_TXT_IP_1_1).value.length == 3)
+		{	
+			$(#ID_TXT_IP_1_2).state.focus = true;
+		}
+		CheckAvailability();
+	}
+
+	event change $(#ID_TXT_IP_1_2)
+	{
+		var vText = $(#ID_TXT_IP_1_2).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_1_2).value = vText;
+		}
+		if($(#ID_TXT_IP_1_2).value.length == 3)
+		{	
+			$(#ID_TXT_IP_1_3).state.focus = true;
+		}
+		CheckAvailability();
+	}
+
+	event change $(#ID_TXT_IP_1_3)
+	{
+		var vText = $(#ID_TXT_IP_1_3).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_1_3).value = vText;				
+		}
+		if($(#ID_TXT_IP_1_3).value.length == 3)
+		{	
+			$(#ID_TXT_IP_1_4).state.focus = true;
+		}
+		CheckAvailability();
+	}
+
+	event change $(#ID_TXT_IP_1_4)
+	{
+		var vText = $(#ID_TXT_IP_1_4).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_1_4).value = vText;		
+		}
+		CheckAvailability();
+	}
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_CANCEL_LOCAL_PORT).onClick = function()
+	{
+		view.close( null );
+	}
+		
+	$(#ID_BACK_LOCAL_IP).onClick = function()
+	{
+		$(.local_port).style["visibility"] = "none";		
+		$(.local_ip).style["visibility"] = "visible";
+	}
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_ALL_PORTS).onClick = function()
+	{
+		if($(#ID_ALL_PORTS).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_SPECIFIC_PORT).state.checked = false;
+			$(#ID_INPUT_PORT).value="";
+			$(#ID_INPUT_PORT).state.disabled=true;
+		}	
+	}
+		
+	$(#ID_SPECIFIC_PORT).onClick = function()
+	{
+		if($(#ID_SPECIFIC_PORT).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_ALL_PORTS).state.checked = false;
+			$(#ID_INPUT_PORT).state.disabled=false;
+		}	
+	}
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_ANY_REMOTE_IP).onClick = function()
+	{
+		if($(#ID_ANY_REMOTE_IP).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_REMOTE_IP_ADDRESS).state.checked = false;
+			$(#ID_TXT_IP_2_1).value="";
+			$(#ID_TXT_IP_2_2).value="";
+			$(#ID_TXT_IP_2_3).value="";
+			$(#ID_TXT_IP_2_4).value="";
+			$(#ID_TXT_IP_2_1).state.disabled=true;
+			$(#ID_TXT_IP_2_2).state.disabled=true;
+			$(#ID_TXT_IP_2_3).state.disabled=true;
+			$(#ID_TXT_IP_2_4).state.disabled=true;
+		}	
+	}
+		
+	$(#ID_REMOTE_IP_ADDRESS).onClick = function()
+	{
+		if($(#ID_REMOTE_IP_ADDRESS).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_ANY_REMOTE_IP).state.checked = false;
+			$(#ID_TXT_IP_2_1).state.disabled=false;
+			$(#ID_TXT_IP_2_2).state.disabled=false;
+			$(#ID_TXT_IP_2_3).state.disabled=false;
+			$(#ID_TXT_IP_2_4).state.disabled=false;
+		}
+	}
+
+	event change $(#ID_TXT_IP_2_1)
+	{
+		var vText = $(#ID_TXT_IP_2_1).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_2_1).value = vText;		
+		}
+		if($(#ID_TXT_IP_2_1).value.length == 3)
+		{	
+			$(#ID_TXT_IP_2_2).state.focus = true;
+		}
+		CheckAvailability();
+	}
+
+	event change $(#ID_TXT_IP_2_2)
+	{
+		var vText = $(#ID_TXT_IP_2_2).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_2_2).value = vText;
+		}
+		if($(#ID_TXT_IP_2_2).value.length == 3)
+		{	
+			$(#ID_TXT_IP_2_3).state.focus = true;
+		}
+		CheckAvailability();
+	}
+
+	event change $(#ID_TXT_IP_2_3)
+	{
+		var vText = $(#ID_TXT_IP_2_3).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_2_3).value = vText;				
+		}
+		if($(#ID_TXT_IP_2_3).value.length == 3)
+		{	
+			$(#ID_TXT_IP_2_4).state.focus = true;
+		}
+		CheckAvailability();
+	}
+
+	event change $(#ID_TXT_IP_2_4)
+	{
+		var vText = $(#ID_TXT_IP_2_4).value;
+		if(vText.toInteger() > 255)
+		{
+			vText = "255";
+			$(#ID_TXT_IP_2_4).value = vText;		
+		}
+		CheckAvailability();
+	}
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_NEXT_FINISH).onClick = function()
+	{
+		if($(#ID_SPECIFIC_PORT).state.checked == true && 
+			($(#ID_INPUT_PORT).value.toInteger() > 65535 || $(#ID_INPUT_PORT).value.toInteger() == 0 || $(#ID_INPUT_PORT).value == "" || 
+				$(#ID_INPUT_PORT).value[$(#ID_INPUT_PORT).value.length - 1] == 44 ||
+				$(#ID_INPUT_PORT).value[0] == 44))
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_PORT_NO_BETWEEN");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};			
+			return;
+		}
+		if($(#ID_REMOTE_SPECIFIC_PORT).state.checked == true && 
+			($(#ID_INPUT_PORT).value.toInteger() > 65535 || $(#ID_REMOTE_INPUT_PORT).value.toInteger() == 0 || $(#ID_REMOTE_INPUT_PORT).value == "" || 
+			$(#ID_REMOTE_INPUT_PORT).value[$(#ID_REMOTE_INPUT_PORT).value.length - 1] == 44 ||
+			$(#ID_REMOTE_INPUT_PORT).value[0] == 44))
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_PORT_NO_BETWEEN");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};			
+			return;
+		}
+		$(.local_port).style["visibility"] = "none";
+		$(.final_exception).style["visibility"] = "visible";
+	}
+		
+	$(#ID_BACK_LOCAL_PORT).onClick = function()
+	{
+		$(.final_exception).style["visibility"] = "none";
+		$(.local_port).style["visibility"] = "visible";
+	}
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_ALL_REMOTE_PORTS).onClick = function()
+	{
+		if($(#ID_ALL_REMOTE_PORTS).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_REMOTE_SPECIFIC_PORT).state.checked = false;
+			$(#ID_REMOTE_INPUT_PORT).value="";
+			$(#ID_REMOTE_INPUT_PORT).state.disabled=true;
+		}	
+	}
+		
+	$(#ID_REMOTE_SPECIFIC_PORT).onClick = function()
+	{
+		if($(#ID_REMOTE_SPECIFIC_PORT).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_ALL_REMOTE_PORTS).state.checked = false;
+			$(#ID_REMOTE_INPUT_PORT).state.disabled=false;
+		}	
+	}	
+</script>	
+
+<script type="text/tiscript">
+	$(#ID_ALLOW).onClick = function()
+	{
+		if($(#ID_ALLOW).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_DENY).state.checked = false;
+		}	
+	}
+		
+	$(#ID_DENY).onClick = function()
+	{
+		if($(#ID_DENY).state.checked == true)
+		{
+			CheckAvailability();
+			$(#ID_ALLOW).state.checked = false;
+		}	
+	}
+</script>
+
+<script type="text/tiscript">
+	function CheckRuleExistance(bAllAppRule)
+	{
+		var vPath = "";
+		if(bAllAppRule == 1)
+		{
+			vPath = "IDS_ALL_APP";
+		}
+		else
+		{
+			vPath = ArrPacketRule[currentIndex].ProgramPath;
+		}
+		for(var iIndex=0; iIndex < ArrPrevRule.length; iIndex++)
+		{	
+			if(ArrPrevRule[iIndex].ProgramPath == vPath)
+			{
+				if(((ArrPrevRule[iIndex].Local_ip == ArrPacketRule[currentIndex].Local_ip) &&
+					(ArrPrevRule[iIndex].Local_ip_data == ArrPacketRule[currentIndex].Local_ip_data))
+				 && ((ArrPrevRule[iIndex].Remote_ip == ArrPacketRule[currentIndex].Remote_ip) &&
+					(ArrPrevRule[iIndex].Remote_ip_data == ArrPacketRule[currentIndex].Remote_ip_data))
+				 && ((ArrPrevRule[iIndex].Local_port == ArrPacketRule[currentIndex].Local_port) &&
+					(ArrPrevRule[iIndex].Local_port_data == ArrPacketRule[currentIndex].Local_port_data))
+				 && ((ArrPrevRule[iIndex].Remote_port == ArrPacketRule[currentIndex].Remote_port) &&
+					(ArrPrevRule[iIndex].Remote_port_data == ArrPacketRule[currentIndex].Remote_port_data))
+				 && (ArrPrevRule[iIndex].Protocol == ArrPacketRule[currentIndex].Protocol)
+				 && (ArrPrevRule[iIndex].NetworkType == ArrPacketRule[currentIndex].NetworkType)
+				 && (ArrPrevRule[iIndex].Direction == ArrPacketRule[currentIndex].Direction))
+				{
+					if(ArrPrevRule[iIndex].ID == ArrPacketRule[currentIndex].ID)
+					{
+						return 1;
+					}
+					return -1;
+				}				
+			}	
+		}
+		return 1;
+	}
+
+	$(#ID_CANCEL_FINAL_EXCEPTION).onClick = function()
+	{			
+		view.close( null );	
+	}
+				
+	$(#ID_FINISH_BUTTON).onClick = function()
+	{			
+		ArrPacketRule[currentIndex].ProgramPath = $(#ID_PROGRAM_PATH).value;	
+		if($(#ID_TOGGLE_BTN_ALL_APP).state.checked == false)
+		{
+			ArrPacketRule[currentIndex].ProgramName = $(#ID_PROGRAM_PATH).value.split("\\")[$(#ID_PROGRAM_PATH).value.split("\\").length-1];
+		}
+		if($(#ID_ANY_PROTOCOL).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Protocol = 0;
+		}
+		else if($(#ID_TCP).state.checked == true)	
+		{
+			ArrPacketRule[currentIndex].Protocol = 6;
+		}
+		else if($(#ID_UDP).state.checked == true)	
+		{	
+			ArrPacketRule[currentIndex].Protocol = 17;
+		}
+		/*else if($(#ID_ICMP).state.checked == true)	
+		{
+			ArrPacketRule[currentIndex].Protocol = 1;
+		}*/
+		if($(#ID_BOTH).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Direction = 3;
+		}
+		else if($(#ID_INBOUND).state.checked == true)	
+		{
+			ArrPacketRule[currentIndex].Direction = 1;
+		}
+		else if($(#ID_OUTBOUND).state.checked == true)	
+		{
+			ArrPacketRule[currentIndex].Direction = 2;
+		}		
+		if($(#ID_ALLOW).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Access = 1;
+		}
+		else if($(#ID_DENY).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Access = 2;
+		}
+		
+		if($(#ip_address).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Local_ip = 1;
+			ArrPacketRule[currentIndex].Local_ip_data = $(#ID_TXT_IP_1_1).value+"."+$(#ID_TXT_IP_1_2).value+"."+$(#ID_TXT_IP_1_3).value+"."+$(#ID_TXT_IP_1_4).value;
+		}
+		else if($(#ID_ANY_IP).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Local_ip = 0;
+			ArrPacketRule[currentIndex].Local_ip_data = "";
+		}
+		if($(#ID_REMOTE_IP_ADDRESS).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Remote_ip = 1;
+			ArrPacketRule[currentIndex].Remote_ip_data = $(#ID_TXT_IP_2_1).value+"."+$(#ID_TXT_IP_2_2).value+"."+$(#ID_TXT_IP_2_3).value+"."+$(#ID_TXT_IP_2_4).value;
+		}
+		else if($(#ID_ANY_REMOTE_IP).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Remote_ip = 0;
+			ArrPacketRule[currentIndex].Remote_ip_data = "";
+		}	
+		/*if($(#ID_HOME).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].NetworkType = 2;
+		}
+		else if($(#ID_DYNAMIC).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].NetworkType = 1;
+		}
+		else if($(#ID_PUBLIC).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].NetworkType = 3;
+		}*/
+		if($(#ID_ALL_PORTS).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Local_port = 0;
+			ArrPacketRule[currentIndex].Local_port_data = "";
+		}
+		else if($(#ID_SPECIFIC_PORT).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Local_port = 1;
+			ArrPacketRule[currentIndex].Local_port_data = $(#ID_INPUT_PORT).value;
+		}
+		
+		if($(#ID_ALL_REMOTE_PORTS).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Remote_port = 0;
+			ArrPacketRule[currentIndex].Remote_port_data = "";
+		}
+		else if($(#ID_REMOTE_SPECIFIC_PORT).state.checked == true)
+		{
+			ArrPacketRule[currentIndex].Remote_port = 1;
+			ArrPacketRule[currentIndex].Remote_port_data = $(#ID_REMOTE_INPUT_PORT).value;
+		}
+		if(CheckDataChanged() == 0 || CheckDataChanged() == 1)
+		{	
+			if($(#ID_TOGGLE_BTN_ALL_APP).state.checked == true)
+			{
+				if(CheckRuleExistance(1) == -1)
+				{
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_RULE_ALREADY_EXISTS");
+					var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								};			
+					ArrPacketRule[currentIndex].bChanged = -1;
+					return;
+				}
+				else
+				{
+					if((bUpdated[0].bUpdated == -1 && CheckAvailability()== 1) ||
+						bUpdated[0].bUpdated == 0)
+					{
+						bUpdated[0].bUpdated = 1;
+					}	
+				}		
+			}
+			else
+			{
+				if(CheckRuleExistance(0) == -1)
+				{
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_RULE_ALREADY_EXISTS");
+					var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								};			
+					ArrPacketRule[currentIndex].bChanged = -1;
+					return;
+				}
+				else
+				{
+					if((bUpdated[0].bUpdated == -1 && CheckAvailability()== 1) ||
+						bUpdated[0].bUpdated == 0)
+					{
+						bUpdated[0].bUpdated = 1;
+					}
+				}					
+			}	
+		}
+		view.close(null);
+	}
+
+	function CheckDataChanged()
+	{
+		if(ArrTempPacketRule.length != 0)
+		{
+			if(ArrTempPacketRule[0].ID == ArrPacketRule[currentIndex].ID &&
+				ArrTempPacketRule[0].Local_ip == ArrPacketRule[currentIndex].Local_ip &&
+				ArrTempPacketRule[0].Local_ip_data == ArrPacketRule[currentIndex].Local_ip_data &&
+				ArrTempPacketRule[0].Local_port == ArrPacketRule[currentIndex].Local_port &&
+				ArrTempPacketRule[0].Local_port_data == ArrPacketRule[currentIndex].Local_port_data &&
+				ArrTempPacketRule[0].Remote_ip == ArrPacketRule[currentIndex].Remote_ip &&
+				ArrTempPacketRule[0].Remote_ip_data == ArrPacketRule[currentIndex].Remote_ip_data &&
+				ArrTempPacketRule[0].Remote_port == ArrPacketRule[currentIndex].Remote_port &&
+				ArrTempPacketRule[0].Remote_port_data == ArrPacketRule[currentIndex].Remote_port_data &&
+				ArrTempPacketRule[0].ProgramPath == ArrPacketRule[currentIndex].ProgramPath &&
+				ArrTempPacketRule[0].Protocol == ArrPacketRule[currentIndex].Protocol &&
+				ArrTempPacketRule[0].Access == ArrPacketRule[currentIndex].Access &&
+				ArrTempPacketRule[0].NetworkType == ArrPacketRule[currentIndex].NetworkType &&
+				ArrTempPacketRule[0].Direction == ArrPacketRule[currentIndex].Direction)
+			{
+				return -1;
+			}
+			return 1;
+		}	
+		return 0;
+	}
+</script>	
+
+<script type="text/tiscript">
+	event ~keypress $(#ID_INPUT_PORT) (evt){
+		if(evt.keyCode !in ['0','1','2','3','4','5','6','7','8','9'])
+			return true;
+	}
+	event ~keypress $(#ID_REMOTE_INPUT_PORT) (evt){
+		if(evt.keyCode !in ['0','1','2','3','4','5','6','7','8','9'])
+			return true;
+	}
+</script> 
+
+<script type="text/tiscript">
+	$(#window-close).onClick = function()
+	{				
+		view.close(null);
+	}
+</script> 
+
+<script type="text/tiscript">
+	/*$(#ID_ICMP).onClick = function()
+	{
+		CheckAvailability();
+	}*/
+	
+	$(#ID_UDP).onClick = function()
+	{
+		CheckAvailability();
+	}
+
+	$(#ID_TCP).onClick = function()
+	{
+		CheckAvailability();
+	}
+
+	$(#ID_ANY_PROTOCOL).onClick = function()
+	{	
+		CheckAvailability();
+	}
+	
+	$(#ID_TOGGLE_BTN_ALL_APP).onClick = function()
+	{	
+		if($(#ID_TOGGLE_BTN_ALL_APP).state.value == true)
+		{
+			$(#ID_PROGRAM_PATH).value = Lang.translate("IDS_ALL_APP");
+			if(ArrPacketRule[currentIndex].ProgramName.length == 0)
+			{
+				ArrPacketRule[currentIndex].ProgramName = Lang.translate("IDS_ALL_APP");
+			}
+			$(#ID_PROGRAM_PATH).state.disabled = true;
+			$(#ID_BTN_BROWSE).state.disabled = true;
+		}
+		else
+		{
+			if(vPrevPath == Lang.translate("IDS_ALL_APP"))
+			{
+				$(#ID_PROGRAM_PATH).value = "";
+			}
+			else
+			{
+				$(#ID_PROGRAM_PATH).value = vPrevPath;
+			}	
+			$(#ID_PROGRAM_PATH).state.disabled = false;
+			
+			if($(#ID_PROGRAM_PATH).value.length != 0)
+			{
+				$(#ID_BTN_BROWSE).state.disabled = true;
+			}
+			else
+			{
+				$(#ID_BTN_BROWSE).state.disabled = false;
+			}		
+		}	
+	}
+	
+	$(#ID_BTN_BROWSE).onClick = function()
+	{
+		var fn = view.selectFile(#open ,  "Executable Files (*.exe)|*.exe" , "exe");
+		if(fn)
+		{					
+			var FileFoldName = fn;
+			var strFilePath = URL.toPath(FileFoldName);
+			strFilePath = strFilePath.replace("\/","\\");
+		   
+			var file = Stream.openFile(strFilePath);
+			if(!file){
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PATH_DOESNT_EXIST");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};			
+				return;	
+			}
+			file.close();
+			
+			if(self.CheckIsNetworkPath(strFilePath))
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};			
+				return;
+			}
+			$(#ID_PROGRAM_PATH).value = strFilePath.toLowerCase();
+			CheckAvailability();
+		}
+	}
+</script> 
+
+<script type="text/tiscript">
+	/*$(#ID_HOME).onClick = function()
+	{
+		CheckAvailability();
+		$(.message_display_block).state.collapsed = false;			
+	}
+
+	$(#ID_PUBLIC).onClick = function()
+	{
+		CheckAvailability();
+		$(.message_display_block).state.collapsed = false;			
+	}
+
+	$(#ID_DYNAMIC).onClick = function()
+	{
+		CheckAvailability();
+		$(.message_display_block).state.collapsed = false;
+	}*/
+
+	$(#ID_BOTH).onClick = function()
+	{
+		CheckAvailability();
+	}
+
+	$(#ID_INBOUND).onClick = function()
+	{
+		CheckAvailability();
+	}
+
+	$(#ID_OUTBOUND).onClick = function()
+	{
+		CheckAvailability();	
+	}
+</script> 
+
+<script type="text/tiscript">
+$(body).onClick = function() {	
+	$(.message_display_block).state.collapsed = false;
+}	
+</script>	
+<script type="text/tiscript">
+	function setElementsinDialog()
+	{	
+		if(ArrPacketRule[currentIndex].ProgramPath.length != 0)
+		{
+			if(ArrPacketRule[currentIndex].ProgramPath == Lang.translate("IDS_ALL_APP"))
+			{
+				$(#ID_TOGGLE_BTN_ALL_APP).state.checked = true;
+			}
+			$(#ID_PROGRAM_PATH).value = ArrPacketRule[currentIndex].ProgramPath;	
+			$(#ID_PROGRAM_PATH).state.disabled = true;
+			$(#ID_BTN_BROWSE).state.disabled = true;
+		}
+		else
+		{
+			$(#ID_PROGRAM_PATH).value = "";	
+			$(#ID_PROGRAM_PATH).state.disabled = false;
+			$(#ID_BTN_BROWSE).state.disabled = false;
+		}			
+		switch(ArrPacketRule[currentIndex].Protocol)
+		{
+			case 0:$(#ID_ANY_PROTOCOL).state.checked = true;
+					$(#ID_TCP).state.checked = false;
+					$(#ID_UDP).state.checked = false;
+					//$(#ID_ICMP).state.checked = false;
+					break;
+			case 6:	$(#ID_ANY_PROTOCOL).state.checked = false;
+					$(#ID_TCP).state.checked = true;
+					$(#ID_UDP).state.checked = false;
+					//$(#ID_ICMP).state.checked = false;
+					break;
+			case 17:$(#ID_ANY_PROTOCOL).state.checked = false;
+					$(#ID_TCP).state.checked = false;
+					$(#ID_UDP).state.checked = true;
+					//$(#ID_ICMP).state.checked = false;
+					break;
+			/*case 1: $(#ID_ANY_PROTOCOL).state.checked = false;
+					$(#ID_TCP).state.checked = false;
+					$(#ID_UDP).state.checked = false;
+					$(#ID_ICMP).state.checked = true;
+					break;*/
+		}
+		switch(ArrPacketRule[currentIndex].Direction)
+		{
+			case 3:	$(#ID_BOTH).state.checked = true;
+					$(#ID_INBOUND).state.checked = false;
+					$(#ID_OUTBOUND).state.checked = false;
+					break;
+			case 1:	$(#ID_BOTH).state.checked = false;
+					$(#ID_INBOUND).state.checked = true;
+					$(#ID_OUTBOUND).state.checked = false;
+					break;
+			case 2:	$(#ID_BOTH).state.checked = false;
+					$(#ID_INBOUND).state.checked = false;
+					$(#ID_OUTBOUND).state.checked = true;
+					break;
+		}
+		switch(ArrPacketRule[currentIndex].Local_ip)
+		{
+			case 0: $(#ID_ANY_IP).state.checked = true;
+					$(#ip_address).state.checked = false;
+					break;
+			case 1: $(#ID_ANY_IP).state.checked = false;
+					$(#ip_address).state.checked = true;
+					$(#ID_TXT_IP_1_1).value = ArrPacketRule[currentIndex].Local_ip_data.split(".")[0];
+					$(#ID_TXT_IP_1_2).value = ArrPacketRule[currentIndex].Local_ip_data.split(".")[1];
+					$(#ID_TXT_IP_1_3).value = ArrPacketRule[currentIndex].Local_ip_data.split(".")[2];
+					$(#ID_TXT_IP_1_4).value = ArrPacketRule[currentIndex].Local_ip_data.split(".")[3];
+					$(#ID_TXT_IP_1_1).state.disabled=false;
+					$(#ID_TXT_IP_1_2).state.disabled=false;
+					$(#ID_TXT_IP_1_3).state.disabled=false;
+					$(#ID_TXT_IP_1_4).state.disabled=false;
+					break;
+		}
+		switch(ArrPacketRule[currentIndex].Local_port)
+		{
+			case 0:	$(#ID_ALL_PORTS).state.checked = true;
+					$(#ID_SPECIFIC_PORT).state.checked = false;
+					break;		
+			case 1:$(#ID_ALL_PORTS).state.checked = false;
+					$(#ID_SPECIFIC_PORT).state.checked = true;
+					$(#ID_INPUT_PORT).value = ArrPacketRule[currentIndex].Local_port_data;
+					$(#ID_INPUT_PORT).state.disabled = false;
+					break;										
+		}
+		switch(ArrPacketRule[currentIndex].Remote_ip)
+		{
+			case 0: $(#ID_ANY_REMOTE_IP).state.checked = true;
+					$(#ID_REMOTE_IP_ADDRESS).state.checked = false;
+					break;
+			case 1: $(#ID_ANY_REMOTE_IP).state.checked = false;
+					$(#ID_REMOTE_IP_ADDRESS).state.checked = true;
+					$(#ID_TXT_IP_2_1).value = ArrPacketRule[currentIndex].Remote_ip_data.split(".")[0];
+					$(#ID_TXT_IP_2_2).value = ArrPacketRule[currentIndex].Remote_ip_data.split(".")[1];
+					$(#ID_TXT_IP_2_3).value = ArrPacketRule[currentIndex].Remote_ip_data.split(".")[2];
+					$(#ID_TXT_IP_2_4).value = ArrPacketRule[currentIndex].Remote_ip_data.split(".")[3];
+					$(#ID_TXT_IP_2_1).state.disabled=false;
+					$(#ID_TXT_IP_2_2).state.disabled=false;
+					$(#ID_TXT_IP_2_3).state.disabled=false;
+					$(#ID_TXT_IP_2_4).state.disabled=false;
+					break;
+		}
+			
+		switch(ArrPacketRule[currentIndex].Remote_port)
+		{
+			case 0:	$(#ID_ALL_REMOTE_PORTS).state.checked = true;
+					$(#ID_REMOTE_SPECIFIC_PORT).state.checked = false;
+					break;		
+			case 1:$(#ID_ALL_REMOTE_PORTS).state.checked = false;
+					$(#ID_REMOTE_SPECIFIC_PORT).state.checked = true;
+					$(#ID_REMOTE_INPUT_PORT).value = ArrPacketRule[currentIndex].Remote_port_data;
+					$(#ID_REMOTE_INPUT_PORT).state.disabled = false;
+					break;										
+		}	
+		/*$(#ID_HOME).state.checked = false;	
+		$(#ID_DYNAMIC).state.checked = false;	
+		$(#ID_PUBLIC).state.checked = false;*/	
+		switch(ArrPacketRule[currentIndex].Access)
+		{
+			case 1:$(#ID_ALLOW).state.checked = true;
+					$(#ID_DENY).state.checked = false;
+					break;
+			case 2: $(#ID_ALLOW).state.checked = false;
+					$(#ID_DENY).state.checked = true;
+					break;
+		}
+		/*switch(ArrPacketRule[currentIndex].NetworkType)
+		{
+			case 1:$(#ID_DYNAMIC).state.checked = true;
+					$(#ID_HOME).state.checked = false;
+					$(#ID_PUBLIC).state.checked = false;
+					break;
+			case 2:$(#ID_DYNAMIC).state.checked = false;
+					$(#ID_HOME).state.checked = true;
+					$(#ID_PUBLIC).state.checked = false;
+					break;
+			case 3:$(#ID_DYNAMIC).state.checked = false;
+					$(#ID_HOME).state.checked = false;
+					$(#ID_PUBLIC).state.checked = true;
+					break;
+		}*/				
+		$(.side_menu_packet).state.expanded = true;		
+	} 
+
+	function CheckAvailability()
+	{
+		if(bUpdated[0].bUpdated == -1)
+		{
+			ArrPacketRule[currentIndex].bChanged = 1;
+			return 1;
+		}
+		return 0;
+	}
+
+	function MaintainPrevData()
+	{
+		ArrTempPacketRule[0] = {ID:0,Local_ip:0,Local_ip_data:"",Local_port:0,Local_port_data:"",Remote_ip:0,Remote_ip_data:"",Remote_port:0,Remote_port_data:"",ProgramPath:"",ProgramName:"",Protocol:0,Access:0,NetworkType:1,Direction:1};
+		ArrTempPacketRule[0].ID = ArrPacketRule[currentIndex].ID;
+		ArrTempPacketRule[0].Local_ip = ArrPacketRule[currentIndex].Local_ip;
+		ArrTempPacketRule[0].Local_ip_data = ArrPacketRule[currentIndex].Local_ip_data;
+		ArrTempPacketRule[0].Local_port = ArrPacketRule[currentIndex].Local_port;
+		ArrTempPacketRule[0].Local_port_data = ArrPacketRule[currentIndex].Local_port_data;
+		ArrTempPacketRule[0].Remote_ip = ArrPacketRule[currentIndex].Remote_ip;
+		ArrTempPacketRule[0].Remote_ip_data = ArrPacketRule[currentIndex].Remote_ip_data;
+		ArrTempPacketRule[0].Remote_port = ArrPacketRule[currentIndex].Remote_port;
+		ArrTempPacketRule[0].Remote_port_data = ArrPacketRule[currentIndex].Remote_port_data;
+		ArrTempPacketRule[0].ProgramPath = ArrPacketRule[currentIndex].ProgramPath;
+		ArrTempPacketRule[0].ProgramName = ArrPacketRule[currentIndex].ProgramName + " Rule-"+0;
+		ArrTempPacketRule[0].Protocol = ArrPacketRule[currentIndex].Protocol;
+		ArrTempPacketRule[0].Access = ArrPacketRule[currentIndex].Access;
+		ArrTempPacketRule[0].NetworkType = ArrPacketRule[currentIndex].NetworkType;
+		ArrTempPacketRule[0].Direction = ArrPacketRule[currentIndex].Direction;
+	}
+
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+	
+	function self.ready() {		
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();	
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();	
+		}
+		vlistPacketRules = view.parameters.tableHandle;
+		ArrPacketRule = view.parameters.arr_of_table;
+		bUpdated = view.parameters.bUpdated;	
+		currentIndex = view.parameters.index;
+		ArrPrevRule	= view.parameters.All_Rules;
+		if(bUpdated[0].bUpdated == 0)
+		{
+			vPrevID = -1;
+			vPrevPath = "";
+		}
+		else if(bUpdated[0].bUpdated == -1)
+		{
+			MaintainPrevData();
+			vPrevID = ArrPacketRule[currentIndex].ID;
+			vPrevPath = ArrPacketRule[currentIndex].ProgramPath;			
+		}
+		setElementsinDialog();
+		$(#ID_PROGRAM_PATH).state.readonly = true;
+	}
+</script> 
+<form #simple-dialog>
+    <label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+</head>
+<body .exception_body>	
+	<div .header_exp_dialogue>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:26dip;">
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>
+
+	<div .section>
+		<div .side_menu_packet>	
+			<div .side_menu_packet_sub_div>
+				<div .togller_btn_exc>
+					<button|toggler name="toggler" #ID_TOGGLE_BTN_ALL_APP>
+						<caption .true><label>ID_ON</label></caption>
+						<caption .false><label>ID_OFF</label></caption>
+					</button>
+				</div>	
+			</div>
+			<div .side_menu_packet_sub_div1>
+				<h4><label>ID_APPLY_RULE_ALL_APP</label></h4>
+			</div>
+			<h4 #ID_PROG_PATH><label>ID_PROG_PATH</label></h4>
+			<input #ID_PROGRAM_PATH type="text" disabled> 
+			<div class="btnCstmSmall" #ID_BTN_BROWSE><label>ID_UPDATE_BTN_BROWSE</label></div>  
+			<h4 #ID_PROTOCOL_SEMI><label>ID_PROTOCOL_SEMI</label></h4>
+			<button type="radio" #ID_ANY_PROTOCOL><label>ID_ANY</label></button>
+			<button type="radio" #ID_TCP><label>ID_TCP_CAP</label></button>
+			<button type="radio" #ID_UDP><label>ID_UDP_CAP</label></button>
+			<!-- <button type="radio" #ID_ICMP><label>ID_ICMP_CAP</label></button> -->
+			<br/><br/>
+			<div .right_section_exc .side_menu_packet_footer>
+				<div class="btnCstmSmall" #ID_NEXT_IP><label>ID_NEXT_ONLINE</label></div>  
+				<div class="btnCstmSmall" #ID_CANCEL_EXCEPTION><label>ID_CANCEL</label></div>  
+			</div>
+		</div>
+		
+		<div .local_ip style="margin-left:13dip;">
+			<div .local_ip_subdiv>
+				<h4><label>ID_LOC_IP_ADDR</label></h4> 
+				<button type="radio" #ID_ANY_IP checked><label>ID_ANY_IP_ADDR</label></button>
+				<br/>	
+				<div class="cstmMasked">
+					<input type="text" maxlength="3" .ipClass #ID_TXT_IP_1_1 disabled><span style="color:#000;">.</span>
+					<input type="text" maxlength="3" .ipClass #ID_TXT_IP_1_2 disabled><span style="color:#000;">.</span>
+					<input type="text" maxlength="3" .ipClass #ID_TXT_IP_1_3 disabled><span style="color:#000;">.</span>
+					<input type="text" maxlength="3" .ipClass #ID_TXT_IP_1_4 disabled>
+				</div>	
+				<div .ip_address_div>
+					<button type="radio" #ip_address><label >ID_IP_ADDR</label></button>
+				</div>
+			</div>
+			<div .local_ip_subdiv1>
+			<h4><label>ID_REMOTE_IP_ADDR</label></h4> 
+			<button type="radio" #ID_ANY_REMOTE_IP checked><label>ID_ANY_IP_ADDR</label></button>
+			<br/>
+			<div class="cstmMasked">
+				<input type="text" maxlength="3" .ipClass #ID_TXT_IP_2_1 disabled><span style="color:#000;">.</span>
+				<input type="text" maxlength="3" .ipClass #ID_TXT_IP_2_2 disabled><span style="color:#000;">.</span>
+				<input type="text" maxlength="3" .ipClass #ID_TXT_IP_2_3 disabled><span style="color:#000;">.</span>
+				<input type="text" maxlength="3" .ipClass #ID_TXT_IP_2_4 disabled>
+			</div>	
+			<div .id_remote_ip_addr>
+				<button type="radio" #ID_REMOTE_IP_ADDRESS><label>ID_IP_ADDR</label></button>		
+			</div>
+			</div>
+			<div .right_section_exc .local_ip_footer style="margin-top:12.5dip;">
+				<div class="btnCstmSmall" #ID_BACK_EXCEPTION><label>ID_BTN_BACK</label></div>  
+				<div class="btnCstmSmall" #ID_NEXT_LOCAL_PORT><label>ID_NEXT_ONLINE</label></div>  
+				<div class="btnCstmSmall" #ID_LOCAL_IP><label>ID_CANCEL</label></div>  
+			</div>
+		</div>
+		
+		<div .local_port>
+			<div .local_port_subdiv>	
+				<h4><label>ID_LOC_TCP_UDP_PORT</label></h4> 
+				<button type="radio" #ID_ALL_PORTS checked><label>ID_ALL_PORTS</label></button>
+				<br/>
+				<div .width_inline_block><button type="radio" #ID_SPECIFIC_PORT><label>ID_SPECIFIC_PORT</label></button></div>
+				<input #ID_INPUT_PORT .input_port type="text" disabled>
+			</div>
+			<div .local_port_subdiv1>
+				<h4><label>ID_REM_TCP_UDP_PORT</label></h4> 
+				<button type="radio" #ID_ALL_REMOTE_PORTS checked><label>ID_ALL_PORTS</label></button>
+				<br/>
+				<div .width_inline_block>
+					<button type="radio" #ID_REMOTE_SPECIFIC_PORT><label>ID_SPECIFIC_PORT</label></button>
+				</div>
+				<input #ID_REMOTE_INPUT_PORT .input_port type="text" disabled>
+			</div>
+			<div .right_section_exc .local_port_footer style="margin-top:12dip;">
+				<div class="btnCstmSmall" #ID_BACK_LOCAL_IP><label>ID_BTN_BACK</label></div>  
+				<div class="btnCstmSmall" #ID_NEXT_FINISH><label>ID_NEXT_ONLINE</label></div>  
+				<div class="btnCstmSmall" #ID_CANCEL_LOCAL_PORT><label>ID_CANCEL</label></div>  
+			</div>
+		</div>
+		
+		<div .final_exception>
+			<h4 #ID_SELECT_ACCESS><label>ID_SELECT_ACCESS</label></h4> 
+			<div>
+				<button type="radio" #ID_ALLOW checked ><label>ID_ALLOW</label></button>
+				<button type="radio" #ID_DENY><label>ID_DENY</label></button>
+			</div>
+			<div>	
+			<h4 #ID_DIRECTION><label>ID_DIRECTION</label></h4>
+			<button type="radio" #ID_BOTH ><label>ID_BOTH</label></button>
+			<button type="radio" #ID_INBOUND ><label >ID_INBOUND</label></button>
+			<button type="radio" #ID_OUTBOUND ><label>ID_OUTBOUND</label></button>
+			</div>
+			<div .right_section_exc .final_exception_footer style="margin-top:35dip;">
+				<div class="btnCstmSmall" #ID_BACK_LOCAL_PORT><label>ID_BTN_BACK</label></div>  
+				<div class="btnCstmSmall" #ID_FINISH_BUTTON><label>ID_FINISH</label></div>  
+				<div class="btnCstmSmall" #ID_CANCEL_FINAL_EXCEPTION><label>ID_CANCEL</label></div>  
+			</div>
+		</div>	
+	</div>	
+</body>
+</html>

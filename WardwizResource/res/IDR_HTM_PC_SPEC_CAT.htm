@@ -1,0 +1,1068 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+    <title>PC_Web_Cat</title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+    <style>
+		@import url(IDR_CSS_MAIN.css);
+        @import url(IDR_CSS_VGRID.css);
+        @import url(IDR_CSS_GERMAN_LANG.css);
+        @import url(IDR_CSS_TOGGELER.css);
+        @import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+
+        html {
+            width: 720dip;
+            height: 500dip;
+            overflow: hidden;
+            behavior:WardWizParControl;
+        }
+        body {
+            color: #000;
+        }
+        window-button {
+            display: inline-block;
+            size: 19dip;
+            outline-color: red;
+            behavior: clickable;
+            clear: after;
+        }
+
+        window-caption {
+            display: block;
+            flow: text;
+            font: system;
+            padding: 4dip 8dip;
+        }
+
+        window-button#window-close {
+            color: white;
+            margin-left: 4dip;
+            margin-top: 7dip;
+            background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0 l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269 c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73 L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+            background-size: 10dip;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            fill: #fff;
+        }
+
+        window-button#window-close:hover {
+            //background-color: red;
+            //outline: 5dip glow red -1dip;
+            //transition: outline(linear,200ms) background-color(linear,200ms);
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+		
+        html > body > .section {
+            padding: 8dip;
+        }
+
+        #content {
+            flow: horizontal;
+            size: *;
+        }
+
+        #content > picture {
+            display: block;
+            size: auto;
+            margin: 6dip;
+        }
+
+        #content > textarea {
+            display: block;
+            size: *;
+            min-width: 16em;
+            min-height: 6em;
+        }
+
+        //************************Resizable Table CSS ************************// 
+		table {
+            color: white;
+            font-size: 10pt;
+            border: none;
+            padding: 4dip;
+            background-color: #DDD;
+            background-image: url(IDR_PNG_HEADER.png);
+            background-repeat: expand stretch-left stretch-right stretch-middle;
+            background-position: 3dip 3dip 3dip 3dip;
+            margin-bottom: 2dip;
+        }
+
+        .fixed_size {
+            min-height: 200dip;
+            overflow-y: auto;
+            vertical-scrollbar: my-v-scrollbar;
+        }
+
+        .inner_content_div {
+            flow: horizontal;
+            //border:1dip solid yellow;
+            //size:*;
+            //change height:auto;
+            padding-bottom: 5dip;
+        }
+
+        .inner_content_div:hover {
+            background: rgba(0,0,0,.1);
+        }
+
+        .content_tray {
+            width: 570dip;
+            padding-left: 10dip;
+            padding-top: 5dip;
+            padding-bottom: 5dip;
+            color: #000;
+            //border:1dip solid #fff;
+        }
+
+        .content_tray h3 {
+            font-weight: 500;
+            margin-top: 0dip;
+            color: #000;
+            margin-bottom: 0;
+            font-size: 16dip;
+            cursor: pointer;
+        }
+
+        .content_tray p {
+            margin: 0dip;
+            padding: 0dip;
+            color: #555;
+            margin-top: 3dip;
+        }
+
+        .togller_button_general {
+            width: 70dip;
+            padding-top: 15dip;
+            float: left;
+            position: absolute;
+            margin-left: 20dip;
+        }
+        /* style block defining vertical scrollbar */
+        @set my-v-scrollbar {
+            .prev {
+                display: none;
+            }
+
+            .next {
+                display: none;
+            }
+
+            .base,
+            .next-page,
+            .prev-page {
+                background: white;
+            }
+
+            .slider {
+                background: gray;
+            }
+
+            .base:disabled {
+                background: #aaa;
+            }
+
+            .slider:hover {
+                background: gold;
+                border-left: 1dip solid #AAA;
+            }
+
+            .slider:active {
+                background: khaki;
+            }
+
+            .base {
+                width: 5dip;
+                height: 5dip;
+            }
+            /* explicit declaration of its width */
+            .corner {
+                background: transparent;
+            }
+        }
+        .section {
+            text-align: left;
+			margin-left:1dip;
+			//margin-top:30dip;
+        }
+        .section.active-target {
+            background: rgba(0,0,0,.5);
+        }
+		
+        @set my-v-scrollbar {
+            .prev {
+                display: none;
+			}
+
+            .next {
+                display: none;
+            }
+
+            .base,
+            .next-page,
+            .prev-page {
+                background: white;
+            }
+
+            .slider {
+                background: gray;
+            }
+
+            .base:disabled {
+                background: #aaa;
+            }
+
+            .slider:hover {
+                background: gold;
+                border-left: 1dip solid #AAA;
+            }
+
+            .slider:active {
+                background: khaki;
+            }
+
+            .base {
+                width: 5dip;
+                height: 5dip;
+            }
+            /* explicit declaration of its width */
+            .corner {
+                background: transparent;
+            }
+        }
+
+        .content_display {
+            width: 700dip;
+            height: 304dip;
+            background: rgba(0,0,0,.3.5);
+            overflow: hidden;
+            overflow-y: auto;
+            vertical-scrollbar: my-v-scrollbar;
+            border: 1dip solid grey;
+        }
+
+        .logo {
+            width: 200dip;
+        }
+
+        .logo img {
+            padding-left: 15dip;
+            padding-top: 5dip;
+            width: 125dip;
+            height: 40dip;
+        }
+
+        div#lightbox-shim {
+            width: 720dip !important;
+            top: 45dip;
+        }
+
+        div#lightbox-shim > div.dialog-frame {
+            width: 720dip !important;
+            height: 95dip !important;
+            left: 0 !important;
+        }
+		
+		.footer_buttons {	
+			float:right;
+			margin-top:5dip; 
+			margin-left:10dip;
+		}
+		.btn_tab {
+			margin-left:1dip;
+			width:69dip;
+		}
+		.header_pc_dialogue{
+			flow:horizontal;
+			width:715dip;
+			height:30dip;
+		}
+		window-button#window-close:hover {  
+			transition: outline(linear,200ms);
+		}
+		.heading {
+			color:#000;
+			text-align:center;
+			margin-top:0dip;
+			//position:absolute;
+		}
+		.label_cl{ 
+			font-size:12dip;
+			font-weight:bold;
+			cursor:pointer;
+		}
+    </style>
+	
+    <script type="text/tiscript">
+        include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+
+    <script type="text/tiscript">
+        var bToggleState;
+        var varDBPathDB;
+        var DataBase;
+        var ToggleID;
+        var iGroupID;
+        var g_CurrentUser;
+        var arrHoldVal4AgeCat = new Array(22);
+        var barrbModifyVal = new Array(1);
+    </script>
+
+    <script type="text/tiscript">
+        $(#window-close) << event click()
+        {
+            view.close(null);
+        }
+    </script>
+
+    <script type="text/tiscript">
+        function ApplyDefaultSettings()
+        {
+            if($(#ID_SELECT_AGEGRP).state.value == 1)
+            {
+                $(#ID_TG_ADULT).state.value = false;
+                $(#ID_TG_ADVT).state.value = false;
+                $(#ID_TG_AGGRESSIVE).state.value = false;
+                $(#ID_TG_BANK).state.value = false;
+                $(#ID_TG_BITCOIN).state.value = false;
+                $(#ID_TG_CHAT).state.value = false;
+                $(#ID_TG_CHILD).state.value = true;
+                $(#ID_TG_DATING).state.value = false;
+                $(#ID_TG_DOWNLOAD_SHARING).state.value = false;
+                $(#ID_TG_DRUG).state.value = false;
+                $(#ID_TG_FINANCIAL).state.value = true;
+                $(#ID_TG_FREEMAIL).state.value = false;
+                $(#ID_TG_GAMBLING).state.value = false;
+                $(#ID_TG_GAME).state.value = true;
+                $(#ID_TG_JOBSEARCH).state.value = false;
+                $(#ID_TG_SEXUAL_EDU).state.value = false;
+                $(#ID_TG_SHOPPING).state.value = false;
+                $(#ID_TG_SOCIAL_NET).state.value = false;
+                $(#ID_TG_SPORTS).state.value = true;
+                $(#ID_TG_VIDEOSTREAM).state.value = false;
+                $(#ID_TG_ALLOTHERS).state.value = true;
+            }
+            if($(#ID_SELECT_AGEGRP).state.value == 2)
+            {
+                $(#ID_TG_ADULT).state.value = false;
+                $(#ID_TG_ADVT).state.value = false;
+                $(#ID_TG_AGGRESSIVE).state.value = false;
+                $(#ID_TG_BANK).state.value = false;
+                $(#ID_TG_BITCOIN).state.value = false;
+                $(#ID_TG_CHAT).state.value = false;
+                $(#ID_TG_CHILD).state.value = true;
+                $(#ID_TG_DATING).state.value = false;
+                $(#ID_TG_DOWNLOAD_SHARING).state.value = false;
+                $(#ID_TG_DRUG).state.value = false;
+                $(#ID_TG_FINANCIAL).state.value = true;
+                $(#ID_TG_FREEMAIL).state.value = false;
+                $(#ID_TG_GAMBLING).state.value = false;
+                $(#ID_TG_GAME).state.value = false;
+                $(#ID_TG_JOBSEARCH).state.value = false;
+                $(#ID_TG_SEXUAL_EDU).state.value = false;
+                $(#ID_TG_SHOPPING).state.value = false;
+                $(#ID_TG_SOCIAL_NET).state.value = false;
+                $(#ID_TG_SPORTS).state.value = true;
+                $(#ID_TG_VIDEOSTREAM).state.value = false;
+                $(#ID_TG_ALLOTHERS).state.value = true;
+            }
+            if($(#ID_SELECT_AGEGRP).state.value == 3)
+            {
+                $(#ID_TG_ADULT).state.value = false;
+                $(#ID_TG_ADVT).state.value = false;
+                $(#ID_TG_AGGRESSIVE).state.value = false;
+                $(#ID_TG_BANK).state.value = true;
+                $(#ID_TG_BITCOIN).state.value = false;
+                $(#ID_TG_CHAT).state.value = true;
+                $(#ID_TG_CHILD).state.value = true;
+                $(#ID_TG_DATING).state.value = false;
+                $(#ID_TG_DOWNLOAD_SHARING).state.value = false;
+                $(#ID_TG_DRUG).state.value = false;
+                $(#ID_TG_FINANCIAL).state.value = true;
+                $(#ID_TG_FREEMAIL).state.value = false;
+                $(#ID_TG_GAMBLING).state.value = false;
+                $(#ID_TG_GAME).state.value = false;
+                $(#ID_TG_JOBSEARCH).state.value = false;
+                $(#ID_TG_SEXUAL_EDU).state.value = false;
+                $(#ID_TG_SHOPPING).state.value = true;
+                $(#ID_TG_SOCIAL_NET).state.value = false;
+                $(#ID_TG_SPORTS).state.value = true;
+                $(#ID_TG_VIDEOSTREAM).state.value = true;
+                $(#ID_TG_ALLOTHERS).state.value = true;
+            }
+            if($(#ID_SELECT_AGEGRP).state.value == 4)
+            {
+                $(#ID_TG_ADULT).state.value = false;
+                $(#ID_TG_ADVT).state.value = false;
+                $(#ID_TG_AGGRESSIVE).state.value = false;
+                $(#ID_TG_BANK).state.value = true;
+                $(#ID_TG_BITCOIN).state.value = false;
+                $(#ID_TG_CHAT).state.value = true;
+                $(#ID_TG_CHILD).state.value = true;
+                $(#ID_TG_DATING).state.value = false;
+                $(#ID_TG_DOWNLOAD_SHARING).state.value = true;
+                $(#ID_TG_DRUG).state.value = false;
+                $(#ID_TG_FINANCIAL).state.value = true;
+                $(#ID_TG_FREEMAIL).state.value = true;
+                $(#ID_TG_GAMBLING).state.value = false;
+                $(#ID_TG_GAME).state.value = true;
+                $(#ID_TG_JOBSEARCH).state.value = true;
+                $(#ID_TG_SEXUAL_EDU).state.value = true;
+                $(#ID_TG_SHOPPING).state.value = true;
+                $(#ID_TG_SOCIAL_NET).state.value = true;
+                $(#ID_TG_SPORTS).state.value = true;
+                $(#ID_TG_VIDEOSTREAM).state.value = true;
+                $(#ID_TG_ALLOTHERS).state.value = true;
+            }
+            if($(#ID_SELECT_AGEGRP).state.value == 5)
+            {
+                $(#ID_TG_ADULT).state.value = false;
+                $(#ID_TG_ADVT).state.value = false;
+                $(#ID_TG_AGGRESSIVE).state.value = false;
+                $(#ID_TG_BANK).state.value = true;
+                $(#ID_TG_BITCOIN).state.value = false;
+                $(#ID_TG_CHAT).state.value = true;
+                $(#ID_TG_CHILD).state.value = true;
+                $(#ID_TG_DATING).state.value = true;
+                $(#ID_TG_DOWNLOAD_SHARING).state.value = true;
+                $(#ID_TG_DRUG).state.value = false;
+                $(#ID_TG_FINANCIAL).state.value = true;
+                $(#ID_TG_FREEMAIL).state.value = true;
+                $(#ID_TG_GAMBLING).state.value = false;
+                $(#ID_TG_GAME).state.value = true;
+                $(#ID_TG_JOBSEARCH).state.value = true;
+                $(#ID_TG_SEXUAL_EDU).state.value = true;
+                $(#ID_TG_SHOPPING).state.value = true;
+                $(#ID_TG_SOCIAL_NET).state.value = true;
+                $(#ID_TG_SPORTS).state.value = true;
+                $(#ID_TG_VIDEOSTREAM).state.value = true;
+                $(#ID_TG_ALLOTHERS).state.value = true;
+            }
+            //insert query
+            InsertDataInDB();
+        }
+    </script>
+    <script type="text/tiscript">
+        $(#ID_BTN_DEFAULT).onClick = function()
+        {
+            ApplyDefaultSettings();
+        }
+
+        $(#ID_BTN_OK).onClick = function()
+        {
+			var ageGroupType = "";
+            var ageGroupVal = $(#ID_SELECT_AGEGRP).state.value;
+            switch(ageGroupVal)
+            {
+                case 1:
+                    ageGroupType = Lang.translate("ID_UNDER_FIVE_YEARS");
+                    break;
+                case 2:
+                    ageGroupType = Lang.translate("ID_SIX_TO_NINE_YEARS");
+                    break;
+                case 3:
+                    ageGroupType = Lang.translate("ID_TEN_TO_THIRTEEN_YEARS");
+                    break;
+                case 4:
+                    ageGroupType = Lang.translate("ID_FOURTEEN_TO_SEVENTEEN_YEARS");
+                    break;
+                case 5:
+                    ageGroupType = Lang.translate("ID_ABOVE_EIGHTEEN");
+                    break;
+
+                default:
+                    break;
+            }
+            var ageCheckMsg = Lang.translate("ID_SELECTED_AGE_GRP1") +" "+ageGroupType;
+            $(#StatusMessage).value = ageCheckMsg +" "+ Lang.translate("ID_SELECTED_AGE_GRP2");
+
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+
+            if(res == true)
+            {
+                barrbModifyVal = view.parameters.IsDBModified;
+                InsertDataInDB();
+                view.close(null);
+            }
+        }
+
+        $(#ID_BTN_CANCEL).onClick = function()
+        {
+            view.close(null);
+        }
+    </script>
+
+    <script type="text/tiscript">
+        function InsertDataInDB()
+        {
+            var bFlag = false;
+            DataBase = DB.open(varDBPathDB);
+            DataBase.exec("UPDATE WWIZ_AGE_WEB_CATEGORIES SET db_LastStatus=?,db_Adult=?,db_Advertisement=?,db_Aggressive=?,db_Bank=?,db_Bitcoin=?,db_Chat=?,db_Child=?,db_Dating=?,db_Download=?,db_Drug=?,db_Financial=?,db_FreeWebEmails=?,db_Grambling=?,db_Games=?,db_JobSearch=?,db_SexEducation=?,db_Shopping=?,db_SocNetworking=?,db_Sports=?,db_VideoStreaming=?,db_AllOther=? WHERE db_AgeGroupId = ? and FK_USERNAME = ?",1,$(#ID_TG_ADULT).state.value,$(#ID_TG_ADVT).state.value,$(#ID_TG_AGGRESSIVE).state.value,$(#ID_TG_BANK).state.value,$(#ID_TG_BITCOIN).state.value,$(#ID_TG_CHAT).state.value,$(#ID_TG_CHILD).state.value,$(#ID_TG_DATING).state.value,$(#ID_TG_DOWNLOAD_SHARING).state.value,$(#ID_TG_DRUG).state.value,$(#ID_TG_FINANCIAL).state.value,$(#ID_TG_FREEMAIL).state.value,$(#ID_TG_GAMBLING).state.value,$(#ID_TG_GAME).state.value,$(#ID_TG_JOBSEARCH).state.value,$(#ID_TG_SEXUAL_EDU).state.value,$(#ID_TG_SHOPPING).state.value,$(#ID_TG_SOCIAL_NET).state.value,$(#ID_TG_SPORTS).state.value,$(#ID_TG_VIDEOSTREAM).state.value,$(#ID_TG_ALLOTHERS).state.value,iGroupID, g_CurrentUser);
+			DataBase.exec("UPDATE WWIZ_AGE_WEB_CATEGORIES SET db_LastStatus=? WHERE db_AgeGroupId != ? and FK_USERNAME = ?",0,iGroupID, g_CurrentUser);
+			DataBase.close();
+			
+            if(arrHoldVal4AgeCat[21] == $(#ID_SELECT_AGEGRP).state.value)
+            {
+                if( (arrHoldVal4AgeCat[0] != $(#ID_TG_ADULT).state.value) ||
+                (arrHoldVal4AgeCat[1] != $(#ID_TG_ADVT).state.value) ||
+                (arrHoldVal4AgeCat[2] != $(#ID_TG_AGGRESSIVE).state.value) ||
+                (arrHoldVal4AgeCat[3] != $(#ID_TG_BITCOIN).state.value) ||
+                (arrHoldVal4AgeCat[4] != $(#ID_TG_CHAT).state.value) ||
+                (arrHoldVal4AgeCat[5] != $(#ID_TG_CHILD).state.value) ||
+                (arrHoldVal4AgeCat[6] != $(#ID_TG_DATING).state.value) ||
+                (arrHoldVal4AgeCat[7] != $(#ID_TG_DOWNLOAD_SHARING).state.value) ||
+                (arrHoldVal4AgeCat[8] != $(#ID_TG_DRUG).state.value) ||
+                (arrHoldVal4AgeCat[9] != $(#ID_TG_FINANCIAL).state.value) ||
+                (arrHoldVal4AgeCat[10] != $(#ID_TG_FREEMAIL).state.value) ||
+                (arrHoldVal4AgeCat[11] != $(#ID_TG_GAMBLING).state.value) ||
+                (arrHoldVal4AgeCat[12] != $(#ID_TG_GAME).state.value) ||
+                (arrHoldVal4AgeCat[13] != $(#ID_TG_JOBSEARCH).state.value) ||
+                (arrHoldVal4AgeCat[14] != $(#ID_TG_SEXUAL_EDU).state.value) ||
+                (arrHoldVal4AgeCat[15] != $(#ID_TG_SHOPPING).state.value) ||
+                (arrHoldVal4AgeCat[16] != $(#ID_TG_SOCIAL_NET).state.value) ||
+                (arrHoldVal4AgeCat[17] != $(#ID_TG_SPORTS).state.value) ||
+                (arrHoldVal4AgeCat[18] != $(#ID_TG_VIDEOSTREAM).state.value) ||
+                (arrHoldVal4AgeCat[19] != $(#ID_TG_ALLOTHERS).state.value) ||
+                (arrHoldVal4AgeCat[20] != $(#ID_TG_BANK).state.value) )
+                {
+                    bFlag = true;
+                }
+                else
+                {
+                    bFlag = false;
+                }
+            }
+            else
+            {
+                bFlag = true;
+            }
+
+            if(bFlag == true)
+            {
+                barrbModifyVal[0] = 1;
+            }
+        }
+    </script>
+    <script type="text/tiscript">
+        function ReleaseInstance(varRec)
+        {
+            if(varRec instanceof Recordset)
+            {
+                varRec.close();
+            }
+        }
+
+        function setAgeCategory()
+        {
+            var varDataBase = DB.open(varDBPathDB);
+            var varRecVal = varDataBase.exec("SELECT db_AgeGroupId FROM WWIZ_AGE_WEB_CATEGORIES WHERE db_LastStatus = 1 and FK_USERNAME = ?",g_CurrentUser);
+            if(varRecVal instanceof Recordset)
+            {
+                for(var varValue in varRecVal)
+                {
+                    $(#ID_SELECT_AGEGRP).state.value = varValue;
+                    iGroupID = varValue;
+                }
+            }
+            ReleaseInstance(varRecVal);
+            varDataBase.close();
+            SetLastStatus($(#ID_SELECT_AGEGRP).state.value);
+
+            arrHoldVal4AgeCat[0] = $(#ID_TG_ADULT).state.value;
+            arrHoldVal4AgeCat[1] = $(#ID_TG_ADVT).state.value;
+            arrHoldVal4AgeCat[2] = $(#ID_TG_AGGRESSIVE).state.value;
+            arrHoldVal4AgeCat[3] = $(#ID_TG_BITCOIN).state.value;
+            arrHoldVal4AgeCat[4] = $(#ID_TG_CHAT).state.value;
+            arrHoldVal4AgeCat[5] = $(#ID_TG_CHILD).state.value;
+            arrHoldVal4AgeCat[6] = $(#ID_TG_DATING).state.value;
+            arrHoldVal4AgeCat[7] = $(#ID_TG_DOWNLOAD_SHARING).state.value;
+            arrHoldVal4AgeCat[8] = $(#ID_TG_DRUG).state.value;
+            arrHoldVal4AgeCat[9] = $(#ID_TG_FINANCIAL).state.value;
+            arrHoldVal4AgeCat[10] = $(#ID_TG_FREEMAIL).state.value;
+            arrHoldVal4AgeCat[11] = $(#ID_TG_GAMBLING).state.value;
+            arrHoldVal4AgeCat[12] = $(#ID_TG_GAME).state.value;
+            arrHoldVal4AgeCat[13] = $(#ID_TG_JOBSEARCH).state.value;
+            arrHoldVal4AgeCat[14] = $(#ID_TG_SEXUAL_EDU).state.value;
+            arrHoldVal4AgeCat[15] = $(#ID_TG_SHOPPING).state.value;
+            arrHoldVal4AgeCat[16] = $(#ID_TG_SOCIAL_NET).state.value;
+            arrHoldVal4AgeCat[17] = $(#ID_TG_SPORTS).state.value;
+            arrHoldVal4AgeCat[18] = $(#ID_TG_VIDEOSTREAM).state.value;
+            arrHoldVal4AgeCat[19] = $(#ID_TG_ALLOTHERS).state.value;
+            arrHoldVal4AgeCat[20] = $(#ID_TG_BANK).state.value;
+            arrHoldVal4AgeCat[21] = $(#ID_SELECT_AGEGRP).state.value;
+        }
+
+        function SetLastStatus(vID)
+        {
+            var ArrApplications = new Array();
+            var varDataBase = DB.open(varDBPathDB);
+            var varRecVal = varDataBase.exec("SELECT db_Adult , db_Advertisement , db_Aggressive , db_Bank , db_Bitcoin , db_Chat , db_Child , db_Dating , db_Download , db_Drug, db_Financial , db_FreeWebEmails , db_Grambling , db_Games , db_JobSearch , db_SexEducation , db_Shopping, db_SocNetworking , db_Sports , db_VideoStreaming , db_AllOther FROM WWIZ_AGE_WEB_CATEGORIES WHERE db_AgeGroupId = ? and FK_USERNAME = ?", vID, g_CurrentUser);
+            if( varRecVal instanceof Recordset)
+            {
+                //do
+                //{
+                    var cnt=0;
+                    for(var varValue in varRecVal)
+                    {
+                        switch(cnt)
+                        {
+                            case 0: if(varValue == 1)
+                                        $(#ID_TG_ADULT).state.value = true;
+                                    else
+                                        $(#ID_TG_ADULT).state.value = false;
+                                    break;
+                            case 1: if(varValue == 1)
+                                        $(#ID_TG_ADVT).state.value = true;
+                                    else
+                                        $(#ID_TG_ADVT).state.value = false;
+                                    break;
+
+                            case 2: if(varValue == 1)
+                                        $(#ID_TG_AGGRESSIVE).state.value = true;
+                                    else
+                                        $(#ID_TG_AGGRESSIVE).state.value = false;
+                                    break;
+                            case 3: if(varValue == 1)
+                                        $(#ID_TG_BANK).state.value = true;
+                                    else
+                                        $(#ID_TG_BANK).state.value = false;
+                                    break;
+                            case 4: if(varValue == 1)
+                                        $(#ID_TG_BITCOIN).state.value = true;
+                                    else
+                                        $(#ID_TG_BITCOIN).state.value = false;
+                                    break;
+                            case 5: if(varValue == 1)
+                                        $(#ID_TG_CHAT).state.value = true;
+                                    else
+                                        $(#ID_TG_CHAT).state.value = false;
+                                    break;
+                            case 6: if(varValue == 1)
+                                        $(#ID_TG_CHILD).state.value = true;
+                                    else
+                                        $(#ID_TG_CHILD).state.value = false;
+                                    break;
+                            case 7: if(varValue == 1)
+                                        $(#ID_TG_DATING).state.value = true;
+                                    else
+                                        $(#ID_TG_DATING).state.value = false;
+                                    break;
+                            case 8: if(varValue == 1)
+                                        $(#ID_TG_DOWNLOAD_SHARING).state.value = true;
+                                    else
+                                        $(#ID_TG_DOWNLOAD_SHARING).state.value = false;
+                                    break;
+                            case 9: if(varValue == 1)
+                                        $(#ID_TG_DRUG).state.value = true;
+                                    else
+                                        $(#ID_TG_DRUG).state.value = false;
+                                    break;
+                            case 10: if(varValue == 1)
+                                        $(#ID_TG_FINANCIAL).state.value = true;
+                                    else
+                                        $(#ID_TG_FINANCIAL).state.value = false;
+                                    break;
+                            case 11: if(varValue == 1)
+                                        $(#ID_TG_FREEMAIL).state.value = true;
+                                    else
+                                        $(#ID_TG_FREEMAIL).state.value = false;
+                                    break;
+                            case 12: if(varValue == 1)
+                                        $(#ID_TG_GAMBLING).state.value = true;
+                                    else
+                                        $(#ID_TG_GAMBLING).state.value = false;
+                                    break;
+                            case 13: if(varValue == 1)
+                                        $(#ID_TG_GAME).state.value = true;
+                                    else
+                                        $(#ID_TG_GAME).state.value = false;
+                                    break;
+                            case 14: if(varValue == 1)
+                                        $(#ID_TG_JOBSEARCH).state.value = true;
+                                    else
+                                        $(#ID_TG_JOBSEARCH).state.value = false;
+                                    break;
+                            case 15: if(varValue == 1)
+                                        $(#ID_TG_SEXUAL_EDU).state.value = true;
+                                    else
+                                        $(#ID_TG_SEXUAL_EDU).state.value = false;
+                                    break;
+                            case 16: if(varValue == 1)
+                                        $(#ID_TG_SHOPPING).state.value = true;
+                                    else
+                                        $(#ID_TG_SHOPPING).state.value = false;
+                                    break;
+                            case 17: if(varValue == 1)
+                                        $(#ID_TG_SOCIAL_NET).state.value = true;
+                                    else
+                                        $(#ID_TG_SOCIAL_NET).state.value = false;
+                                    break;
+                            case 18: if(varValue == 1)
+                                        $(#ID_TG_SPORTS).state.value = true;
+                                    else
+                                        $(#ID_TG_SPORTS).state.value = false;
+                                    break;
+                            case 19: if(varValue == 1)
+                                        $(#ID_TG_VIDEOSTREAM).state.value = true;
+                                    else
+                                        $(#ID_TG_VIDEOSTREAM).state.value = false;
+                                    break;
+                            case 20: if(varValue == 1)
+                                        $(#ID_TG_ALLOTHERS).state.value = true;
+                                    else
+                                        $(#ID_TG_ALLOTHERS).state.value = false;
+                                    break;
+                        }
+                        cnt++;
+                    }
+                //}while(varRecVal.next());
+            }
+            ReleaseInstance(varRecVal);
+            varDataBase.close();
+        };
+    </script>
+
+    <script type="text/tiscript">
+    $(#ID_SELECT_AGEGRP).on("change",function(){
+        var ageGroupID = $(#ID_SELECT_AGEGRP).value;
+        iGroupID = ageGroupID;
+        SetLastStatus(iGroupID);
+    });
+    </script>
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+    }
+    function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script> 
+	<script type="text/tiscript">
+        function self.ready() {
+            self.language = view.parameters.varLanguageValue;
+			
+			if(view.parameters.varThemeType == "defaultTheme"){
+				OnSetDefaultTheme();
+			}
+			else if(view.parameters.varThemeType == "darkTheme"){
+				OnSetDarkTheme();
+			}
+			else if(view.parameters.varThemeType == "crystalTheme"){
+				OnSetCrystalTheme();
+			}
+		
+            varDBPathDB = view.parameters.vardb;
+            g_CurrentUser = view.parameters.g_CurrentUser;
+            setAgeCategory();
+            //GetData();
+        }
+    </script>
+
+    <form #simple-dialog>
+        <p #StatusMessage></p>
+    </form>
+</head>
+<body>
+	<div .header_pc_dialogue>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:26dip;">
+		</window-caption>	
+		<window-button #window-close></window-button>
+    </div>
+    <h2 .heading ><label>ID_SPECIFIC_WEBSITE_CATEGORY</label></h2>
+    <div .section >
+        <div style="flow:horizontal">
+            <div style="width:435dip; font-size:14dip"><label>ID_BLOCK_SPECIFIC_WEBSITE_CATEGORY_AGE_GROUP</label></div>
+            <select #ID_SELECT_AGEGRP style="margin-left:150dip;width:110dip;">
+                <option value=1><label>ID_UNDER_FIVE_YEARS</label></option>
+                <option value=2><label>ID_SIX_TO_NINE_YEARS</label></option>
+                <option value=3><label>ID_TEN_TO_THIRTEEN_YEARS</label></option>
+                <option value=4><label>ID_FOURTEEN_TO_SEVENTEEN_YEARS</label></option>
+                <option value=5><label>ID_ABOVE_EIGHTEEN</label></option>
+            </select>
+        </div>
+        <p style="margin-top:7dip;"><label>ID_ACTION_PERFORM_WEBSITE</label></p>
+        <div .fixed_size .content_display style="margin-top:-5dip">
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label style="font-weight:bold;cursor:pointer;">ID_ADULT</label><br />
+                    <p><label>ID_ADULT_CONTENT</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_ADULT>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_ADVERTISEMENT</label><br />
+                    <p><label>ID_ADV_DESC</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_ADVT>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_AGGRESSIVE</label><br />
+                    <p><label>ID_AGGRESSIVE_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_AGGRESSIVE>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_BANK</label><br />
+                    <p><label>ID_BANK_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_BANK>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_BITCOIN</label><br />
+                    <p><label>ID_BITCOIN_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_BITCOIN>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_CHAT</label><br />
+                    <p><label>ID_CHAT_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_CHAT>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_CHILD</label><br />
+                    <p><label>ID_CHILD_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_CHILD>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_DATING</label><br />
+                    <p><label>ID_DATING_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_DATING>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_DOWNLOAD_AND_SHARING</label><br />
+                    <p><label>ID_DOWNLOAD_SHARING_CONTENT</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_DOWNLOAD_SHARING>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_DRUG</label><br />
+                    <p><label>ID_DRUG_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_DRUG>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_FINANCIAL</label><br />
+                    <p><label>ID_FINANCIAL_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_FINANCIAL>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_FREEWMAIL</label><br />
+                    <p><label>ID_FREEWMAIL_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_FREEMAIL>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_GAMBLING</label><br />
+                    <p><label>ID_GAMBLING_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_GAMBLING>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_GAMES</label><br />
+                    <p><label>ID_GAMES_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_GAME>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_JOBSEARCH</label><br />
+                    <p><label>ID_JOBSEARCH_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_JOBSEARCH>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_SEXUAL_EDUCATION</label><br />
+                    <p><label>ID_SEXUAL_EDUCATION_SITE</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_SEXUAL_EDU>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_SHOPPING</label><br />
+                    <p><label>ID_SHOPPING_DESCRIP</label><br />
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_SHOPPING>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_SOCIAL_MEDIA</label><br />
+                    <p><label>ID_SOCIAL_MEDIA_SITE</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_SOCIAL_NET>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_SPORTS</label><br />
+                    <p><label>ID_SPORTS_DESCRIP</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_SPORTS>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_VIDEOSTREAMING</label><br />
+                    <p><label>ID_VIDEOSTREAMING_DESCRIP</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_VIDEOSTREAM>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+            <div .inner_content_div>
+                <div .content_tray>
+                    <label .label_cl >ID_ALLOTHERS</label><br />
+                    <p><label>ID_ALLOTHERS_DESC</label></p>
+                </div>
+                <div .togller_button_general>
+                    <button|toggler name="toggler" #ID_TG_ALLOTHERS>
+                        <caption .true .dfn><label>ID_ALLOW</label></caption>
+                        <caption .false .dfn><label>ID_BLOCK</label></caption>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div .footer_buttons>
+			<div .btnCstmSmall #ID_BTN_DEFAULT ><label>ID_DEFAULT</label></div>
+			<div .btnCstmSmall #ID_BTN_OK ><label>ID_OK</label></div>
+			<div .btnCstmSmall #ID_BTN_CANCEL ><label>ID_CANCEL</label></div>
+        </div>
+    </div>
+    <div .message_display_block>
+        <p #id_def_exception_msg style="color:#000;"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<html>
+<head>
+	<title></title>
+	<style>
+		html{
+			background:transparent;
+		}
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			flow:horizontal;
+		}
+		.minimize{
+			text-align:center;
+			padding-top:5dip;
+			position:absolute;
+			bottom:0dip;
+			visibility:visible;
+		}
+		.minimize li{
+			list-style:none;
+			display:inline-block;
+			color:#fff;
+			padding:5dip 20dip;
+			padding-top:15dip;
+		}
+		.minimize li img{
+			width:20dip;
+			height:auto;
+		}
+		.minimize ul{
+			background:url(IDR_PNG_FOOTER_BG_MIN.png) no-repeat;
+			background-size:cover;
+			margin-left:170dip;
+			padding:10dip 30dip;
+		}
+		.arrow{
+			width:48dip;
+			height:23dip;
+			position:absolute;
+			left:335dip;
+			top:-3dip;
+			padding-top:5dip;
+			background:url(IDR_PNG_ARROW_BG.png) no-repeat;
+			background-size:cover;
+			cursor:pointer;
+		}
+		.arrow_min{
+			width:20dip;
+			height:auto;
+		}
+		.minimize:collapsed { 
+			visibility:hidden;
+			
+		}
+		
+		
+		
+	//**Maximize footer**//
+		
+		.maximize{
+			text-align:center;
+			padding-top:5dip;
+			position:absolute;
+			bottom:0dip;
+			visibility:hidden;
+		}
+		.maximize li{
+			list-style:none;
+			display:inline-block;
+			color:#fff;
+			padding:0dip 10dip;
+			padding-top:25dip;
+			width:75dip;
+		}
+		.maximize li:hover{
+			color:#0094ff;
+		}
+		.maximize li img{
+			width:25dip;
+			height:auto;
+		}
+		.maximize ul{
+			background:url(IDR_PNG_FOOTER_BG_MAX.png) no-repeat;
+			background-size:cover;
+			margin-left:85dip;
+			padding:10dip 30dip;
+			z-index:99;
+		}
+		.arrow_max_block{
+			width:48dip;
+			height:23dip;
+			position:absolute;
+			left:335dip;
+			top:12dip;
+			background:url(IDR_PNG_ARROW_BG.png) no-repeat;
+			background-size:cover;
+		}
+		.arrow_max{
+			width:20dip;
+			height:auto;
+			padding-top:5dip;
+			cursor:pointer;
+		}
+		.maximize:collapsed { 
+			visibility:visible;
+			
+		}
+		
+		.scan_menu{
+			position:absolute;
+			top:-26dip;
+			left:105dip;
+			opacity:0;
+			transition:opacity(sine-in-out, 700ms);
+		}
+		.scan_menu:collapsed { 
+			opacity:1;	
+		}
+		.scan_menu_bg{
+			width:120dip!important;
+			height:auto!important;
+		}
+		.menu_float{
+			position:absolute;
+		}
+		.scan_menu_quick{
+			width:23dip!important;
+			height:auto!important;
+			margin-left:10dip;
+			margin-top:39dip;
+			cursor:pointer;
+		}
+		.scan_menu_full{
+			width:20dip!important;
+			height:auto!important;
+			margin-left:-7dip;
+			margin-top:-43dip;
+			cursor:pointer;
+		}
+		.scan_menu_custom{
+			width:22dip!important;
+			height:auto!important;
+			margin-left:2dip;
+			margin-top:-49dip;
+			cursor:pointer;
+		}
+		.scan_menu_antirootkit{
+			width:22dip!important;
+			height:auto!important;
+			margin-left:-3dip;
+			margin-top:-35dip;
+			cursor:pointer;
+		}
+		
+		
+		
+		
+		
+		//**Icon Animation**//
+		
+		.home_menu li:hover{
+			transform:scale(1.3);
+			transition:transform(sine-in-out, 200ms);
+		}
+		.scan_menu_item:hover >.scan_ico{
+			filter: drop-shadow(5dip 5dip 5dip #fff);
+			transform:rotate(90deg);
+			transition:transform(sine-in-out, 400ms);
+		}
+		.tool_ico2{
+			margin-left:-25dip;
+		}
+		.tools_menu_item:hover > .tool_ico1{
+			transform:rotate(90deg);
+			transition:transform(sine-in-out, 400ms);
+		}
+		.tools_menu_item:hover > .tool_ico2{
+			transform:rotate(-90deg);
+			transition:transform(sine-in-out, 400ms);
+		}
+		.update_menu_item:hover > .update_ico{
+			transform:rotate(90deg);
+			transition:transform(sine-in-out, 400ms);
+		}
+		.utilities_menu_item:hover > .utilities_ico{
+			transform:rotate(135deg);
+			transition:transform(sine-in-out, 400ms);
+		}
+		.email_ico2{
+			margin-left:-25dip;
+			margin-top:-3dip;
+		}
+		.email_menu_item:hover > .email_ico2{
+			transform: scale(1, -1);
+			transform-origin:top;
+			transition:transform(sine, 400ms);
+		}
+		.zoom_in:hover{
+			transform:scale(1.5);
+			transition:transform(sine-in-out, 300ms);
+		}
+	</style>
+	<script type="text/tiscript">
+		//function self.ready() { 
+		//  $(.maximize).state.collapsed = true;
+		//}
+		
+		$(.minimize).on("mouseenter", function(evt) {
+			$(.maximize).state.collapsed = true;
+			$(.minimize).state.collapsed = true;
+		})
+		
+		
+		$(.maximize).on("mouseleave", function(evt) {
+			$(.maximize).state.collapsed = false;
+			$(.minimize).state.collapsed = false;
+		})
+		
+		$(.scan_menu_item).on("mouseenter", function(evt) {
+			$(.scan_menu).state.collapsed = true;
+		})
+		
+		
+		$(.scan_menu_item).on("mouseleave", function(evt) {
+			$(.scan_menu).state.collapsed = false;
+		})
+	</script>
+</head>
+<body>
+	<div .main>
+		<div .minimize>
+			<div .arrow>
+				<img .arrow_min src="IDR_PNG_ARROW_MAX.png">
+			</div>
+			<ul>
+				<li><img src="IDR_PNG_SCAN.png"></li>
+				<li><img src="IDR_PNG_TOOLS.png"></li>
+				<li><img src="IDR_PNG_ANIM_UPDATE.png"></li>
+				<li><img src="IDR_PNG_UTILITIES.png"></li>
+				<!-- <li><img src="IDR_PNG_EMAIL.png"></li> -->
+				<li><img src="IDR_PNG_REPORT.png"></li>
+			</ul>
+		</div>
+		
+		
+		
+		
+		<div .maximize>
+			<div .arrow_max_block>
+				<img .arrow_max src="IDR_PNG_ARROW_MIN.png">
+			</div>
+			
+			<ul>
+				<li .scan_menu_item .frame_display_src src="IDR_HTM_SCAN.htm"><img .scan_ico src="IDR_PNG_SCAN.png"><br/>Scan
+					<div .scan_menu>
+					<div .menu_float>
+						<span .frame_display_src #ID_LOAD_QUICK_SCAN src="IDR_HTM_QUICK_SCAN.htm"><img .scan_menu_quick .zoom_in src="IDR_PNG_QUICK_SCAN_ICO.png" title="Quick Scan"></span>
+						<span .frame_display_src #ID_LOAD_FULL_SCAN src="IDR_HTM_FULL_SCAN.htm"><img .scan_menu_full .zoom_in src="IDR_PNG_FULL_SCAN_ICO.png" title="Full Scan"></span>
+						<span .frame_display_src src="IDR_HTM_CUSTOM_SCAN.htm"><img .scan_menu_custom .zoom_in src="IDR_PNG_CUSTOM_SCAN_ICO.png" title="Custom Scan"></span>
+						<span .frame_display_src src="IDR_HTM_ANTIROOTKIT_SCAN.htm"><img .scan_menu_antirootkit .zoom_in src="IDR_PNG_ANITROOTKIT_SCAN_ICO.png" title="Antirootkit Scan"></span>
+					</div>
+						<img .scan_menu_bg src="IDR_PNG_MENU_BG.png">
+					</div>
+				</li>
+				<li .tools_menu_item .frame_display_src src="IDR_HTM_TOOLS.htm"><img .tool_ico1 src="IDR_PNG_ANIM_TOOL_1.png"><img .tool_ico2 src="IDR_PNG_ANIM_TOOL_2.png"><br/>Tools</li>
+				<li .update_menu_item .frame_display_src src="IDR_HTM_UPDATE.htm"><img .update_ico src="IDR_PNG_ANIM_UPDATE.png"><br/>Update</li>
+				<li .utilities_menu_item .frame_display_src src="IDR_HTM_UTILITIES.htm"><img .utilities_ico src="IDR_PNG_UTILITIES.png"><br/>Utilities</li>
+				<!-- <li .email_menu_item .frame_display_src src="IDR_HTM_EMAIL.htm"><img .email_ico1 src="IDR_PNG_EMAIL_BG.png"><img .email_ico2 src="IDR_PNG_EMAIL_ANIM.png"><br/>Email Scan</li> -->
+				<li .email_menu_item .frame_display_src src="IDR_HTM_REPORTS.htm"><img src="IDR_PNG_REPORTS_ANIM_1.png"><img  style="margin-left:-25dip;margin-top:-3dip;"src="IDR_PNG_REPORTS_ANIM_2.png"><br/>Reports</li>
+			</ul>
+		</div> 
+	</div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+.boot_radio_btn{
+	margin-left:75dip;
+        }
+.rootkit_mrgn{
+	margin-left:170dip;
+		}
+.sched_scan_btn{
+	margin-left:25dip!important;
+        }
+.mrgn_german{
+	margin-left:6dip;
+        }
+.small_fnt{
+	font-size:12dip!important;
+		}
+		.button_size_dynamic{
+			min-width:120dip;
+		}
+		.checkbox_align{
+			text-align:left;
+			margin-left:200dip;
+		}
+		.obj_scanned_g{
+			text-align:center;
+		}
+		.threat_found_g{
+			text-align:left;
+		}
+		.left_block{
+			width:310dip;	
+			margin-left:55dip;
+			text-align:right;
+		}
+		.left_block p{
+			color:#fff;
+			font-size:16dip;
+			padding-right:35dip;
+		}
+		.left_block button{
+			margin-right:73dip;
+		}
+		.right_block{
+			width:307dip;
+			text-align:left;
+			}
+		.right_block p{
+			color:#fff;
+			font-size:16dip;
+			padding-left:23dip;
+		}
+		.right_block button{
+			margin-left:73dip;
+		}
+		.align_basic{
+			flow:vertical;
+			color:#fff;
+			position:absolute;
+			left:450dip;
+		}
+		#ID_BUTTON_EXCLUDE_RECOVER{
+			width:180dip;
+		}
+		.scan_button2{
+			width:140dip!important;
+		}
+		.custom_height_main{
+			height:87dip!important;
+		}
+		.size_img_custom{
+			padding-top:15dip;
+		}
+		.select_all_german{
+			width:157dip;
+			margin-right:55dip;
+		}
+		.tooltip .tooltiptext {
+			width:453dip;
+		}
+		.slct_scan
+		{
+			margin-bottom:0!important;
+		}
+		.error_msg_align p{
+			padding-top:-13dip;
+		}
+
+		/* 24-08-2018 -Soumitra Nath - Essential plus home page Menu */
+		.gergmanCstmWidth1{
+			width:80dip!important;
+		}
+		.gergmanCstmWidth2{
+			width:70dip!important;
+		}
+		.carousel_ess_plus{
+			margin-left:-90dip!important;
+		}
+		.list.essPlus{
+			width:510dip!important;
+		}
+		
+		.essPlus li.box {  
+			margin-left:17dip!important;
+			margin-right:17dip!important;
+		} 
+		li.box:nth-child(4) {  
+			/* width:90dip!important; */
+			margin-left:34dip!important;
+			margin-right:18dip!important;
+		} 
+		li.box:nth-child(6) {  
+			/* width:90dip!important; */
+			margin-left:14dip!important;
+		} 
+		.germanTableHeight{
+			height:155dip;
+			border:1dip solid white;
+		}
+		.cstmMargin{
+			margin-right:50dip;
+		}
+		.QscanProgress{
+			width:150dip;
+			margin-top:18dip;
+		}
+		.FscanProgress{
+			width:150dip;
+			margin-top:34dip;
+		}
+		.CscanProgress{
+			width:150dip;
+			margin-top:18dip;
+		}
+		.AtrkScanProgress{
+			width:150dip;
+			margin-top:40dip;
+		}
+		.messageContAlert{
+			height:190dip;
+		}
+		 .smallContentSm {
+            padding: 8dip;
+            background: #2b5a7e;
+            color: #fff;
+			width:310dip;
+			flow:horizontal;
+			text-align:left;
+			margin-bottom:-3dip!important;
+			border: 1dip solid #c0c0c0!important;
+        }
+		.ActionTakenDiv1{
+			width:284dip!important;
+			height:20dip;
+			margin-top:10dip;
+		}
+		#ID_ACTION1{
+			border:1dip solid #fff;
+			background-color:#fff;
+			border-radius:20dip;
+			width:215dip!important;
+			text-align:center;
+			margin:auto;
+			font-weight:bold;
+			font-size:14dip;
+		}
+		

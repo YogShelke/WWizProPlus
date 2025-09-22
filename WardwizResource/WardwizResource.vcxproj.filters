@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardwizResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WardwizResource.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\aero_link.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\WardwizResource.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_HTM_USB_VACCIN.htm" />
+    <None Include="res\IDR_HTM_TEMP_FILE_CLEANER.htm" />
+    <None Include="res\IDR_HTM_AUTORUN_SCAN.htm" />
+    <None Include="res\IDR_HTM_REGISTRY_OPTIMIZER.htm" />
+    <None Include="res\IDR_HTM_INDEX.htm" />
+    <None Include="res\IDR_HTM_CUSTOM_SCAN.htm" />
+    <None Include="res\IDR_HTM_FONT_AWESOME.htm" />
+    <None Include="res\IDR_HTM_FULL_SCAN.htm" />
+    <None Include="res\IDR_HTM_HOME.htm" />
+    <None Include="res\IDR_HTM_PARENTAL_CONTROL.htm" />
+    <None Include="res\IDR_HTM_QUICK_SCAN.htm" />
+    <None Include="res\IDR_HTM_REPORTS.htm" />
+    <None Include="res\IDR_HTM_SCAN.htm" />
+    <None Include="res\IDR_HTM_SETTINGS.htm" />
+    <None Include="res\IDR_HTM_VIEW_REPORTS.htm" />
+    <None Include="res\IDR_POPUP_DELETE_OLDER_REPORT.htm" />
+    <None Include="res\IDR_POPUP_SCAN_AT_STARTUP.htm" />
+    <None Include="res\IDR_HTM_SCAN_BY_NAME.htm" />
+    <None Include="res\IDR_HTM_RECOVER_FILES.htm" />
+    <None Include="res\IDR_HTM_ACCOUNT.htm" />
+    <None Include="res\IDR_HTM_INTERNET_SETTINGS.htm" />
+    <None Include="res\IDR_HTM_VALIDATE_PASSWORD.htm" />
+    <None Include="res\IDR_HTM_CHANGE_REMOVE_PASSWORD.htm" />
+    <None Include="res\IDR_HTM_PASSWORD_PROTECTION.htm" />
+    <None Include="res\IDR_HTM_FORGET_PASSWORD_SETTING.htm" />
+    <None Include="res\IDR_HTM_FORGOT_PASSWORD.htm" />
+    <None Include="res\IDR_POPUP_BOOTTIME_SCAN.htm" />
+    <None Include="res\IDR_HTM_TRAY_LIVE_UPDATE.htm" />
+    <None Include="res\IDR_HTM_TRAY_RESTART_POPUP.htm" />
+    <None Include="res\IDR_HTM_TRAY_SCHED_SCAN_MISS.htm" />
+    <None Include="res\IDR_HTM_TRAY_PARCTRL_POPUP.htm" />
+    <None Include="res\IDR_HTM_TRAY_UPDATE_SUCCESS.htm" />
+    <None Include="res\IDR_HTM_TRAY_PORT_SCAN.htm" />
+    <None Include="res\IDR_HTM_TRAY_BLOCK_APPLICATION_POPUP.htm" />
+    <None Include="res\IDR_POPUP_SET_SCAN_SCHED.htm" />
+    <None Include="res\IDR_HTM_DATA_ENCRYPTION.htm" />
+    <None Include="res\IDR_HTM_USB_SCAN.htm" />
+    <None Include="res\IDR_HTM_EMAIL_SCAN.htm" />
+    <None Include="res\IDR_HTM_REGISTER.html" />
+    <None Include="res\IDR_HTM_DECRYPT_PASSWORD.htm" />
+    <None Include="res\IDR_HTM_ENCRYPT_PASSWORD.htm" />
+    <None Include="res\IDR_HTM_FORGET_PASSWORD.htm" />
+    <None Include="res\IDR_HTM_PASSWORD_SCOPE.htm" />
+    <None Include="res\IDR_HTM_USB_SCAN_FIRST_POP_UP.htm" />
+    <None Include="res\IDR_HTM_MANAGE_RESTRICTION.htm" />
+    <None Include="res\IDR_HTM_RESTRICT_USE_APP.htm" />
+    <None Include="res\IDR_HTM_EXCEPTION_DIALOGUE.htm" />
+    <None Include="res\IDR_HTM_EXCLUDE.htm" />
+    <None Include="res\IDR_HTM_EXCLUDE_FILE_EXT.htm" />
+    <None Include="res\IDR_HTM_FIREWALL.htm" />
+    <None Include="res\IDR_HTM_RULES_TABLE.htm" />
+    <None Include="res\IDR_HTM_UNINSTALL.htm" />
+    <None Include="res\IDR_HTM_ANTIROOTKIT_SCAN.htm" />
+    <None Include="res\IDR_HTM_REGISTRATION.htm" />
+    <None Include="res\IDR_HTM_TRAY_VIRUS_PROTECT.htm" />
+    <None Include="res\IDR_HTM_TRAY_POPUP_THREAT_DETECT.htm" />
+    <None Include="res\IDR_HTM_WIDGET.htm" />
+    <None Include="res\IDR_HTM_TOOLTIP.htm" />
+    <None Include="res\IDR_HTM_PREINSTALATION_SCAN.htm" />
+    <None Include="res\IDR_HTM_SUPPORT.htm" />
+    <None Include="res\IDR_HTM_WARDWIZ_RESCUEDISK.htm" />
+    <None Include="res\IDR_HTM_TRAY_TEMP_FILE_CLNR.htm" />
+    <None Include="res\IDR_HTM_TRAY_USB_POPUP.htm" />
+    <None Include="res\IDR_HTM_BROWSER_SECURITY.htm" />
+    <None Include="res\IDR_HTM_MANAGE_BROWSER_EXCLUSION.htm" />
+    <None Include="res\IDR_HTM_BROWSER_SPEC_WEBSITE.htm" />
+    <None Include="res\IDR_HTM_TRAY_BLK_SPECIFIC_WEBSITE.htm" />
+    <None Include="res\IDR_HTM_BLOCK_SPECIFIC_WEBSITE.htm" />
+    <None Include="res\IDR_HTM_RESTRICT_SPECIFIED_WEBSITE.htm" />
+    <None Include="res\IDR_HTM_PC_SPEC_CAT.htm" />
+    <None Include="res\IDR_HTM_MANAGE_EXCLUSION.htm" />
+    <None Include="res\IDR_HTM_REM_ASSIST_AGREEMENT.htm" />
+    <None Include="res\IDR_HTM_RESCUE.htm" />
+    <None Include="res\IDR_HTM_REG_ENABLE_TOOL.htm" />
+    <None Include="res\IDR_CSS_GERMAN_LANG.css" />
+    <None Include="res\IDR_CSS_GERMAN_LANGUAGE.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG.css" />
+    <None Include="res\IDR_CSS_MAIN.css" />
+    <None Include="res\IDR_CSS_TOGGELER.css" />
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\IDR_CSS_MAIN_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_CHARTS.css" />
+    <None Include="res\IDR_CSS_NOTIFICATION_TRAY_INFINITE_POPUP.css" />
+    <None Include="res\IDR_CSS_NOTIFICATION.css" />
+    <None Include="res\IDR_CSS_CAROUSEL.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_DARK.css" />
+    <None Include="res\IDR_CSS_POPUP_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_MAIN_CRYSTAL_THEME.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css" />
+    <None Include="res\IDR_TIS_ENGLISH.tis" />
+    <None Include="res\IDR_TIS_GERMAN.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG_TOOL.tis" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+    <None Include="res\IDR_TIS_MAIN.tis" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\IDR_TIS_SQLITE.tis" />
+    <None Include="res\IDR_TIS_CHARTS.tis" />
+    <None Include="res\IDR_TIS_CHARTS_PARTS.tis" />
+    <None Include="res\IDR_TIS_NOTIFICATION_TRAY_INFINITE_POPUP.tis" />
+    <None Include="res\IDR_TIS_DESKTOP_WIDGET.tis" />
+    <None Include="res\IDR_TIS_NOTIFICATION.tis" />
+    <None Include="res\IDR_TIS_RECT_TRACKER.tis" />
+    <None Include="res\IDR_TIS_CAROUSEL.tis" />
+    <None Include="res\IDR_TIS_PLUS.tis" />
+    <None Include="res\logo.svg" />
+    <None Include="res\IDR_HTM_BLUE_DOME.htm" />
+    <None Include="res\IDR_HTM_BACKUP_UTILITY.htm" />
+    <None Include="res\IDR_HTM_DATA_VAULT_AGREEMENT.htm" />
+    <None Include="res\IDR_HTM_TRAY_DATA_VAULT.htm" />
+    <None Include="res\IDR_MICRO_CHART.tis" />
+    <None Include="res\IDR_POPUP_BACKUP_EXCL_ADD.htm" />
+    <None Include="res\IDR_POPUP_BACKUP_EXT_ADD.htm" />
+    <None Include="res\IDR_POPUP_BACKUP_RESTORE.htm" />
+    <None Include="res\IDR_POPUP_BACKUP_UTIL.htm" />
+    <None Include="res\IDR_TIS_DECORATORS.tis" />
+    <None Include="res\commondataprovider.tis" />
+    <None Include="res\sqlite.tis" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardwizResource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\103x21.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\103x21_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\150x17.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\150x17_dis.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\150x17_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\32x32Preloader.GIF">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\57x21Button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\57x21Button_dis.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\57x21Button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_103x22_disable_WhiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_103x22_hover_WhiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_103x22_normal_WhiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_disable_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_hover_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_normal_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Calender_BG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Change Password_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\check mark.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Check mark_01.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button_onAceesss.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cross mark.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cross.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cross_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Data Encryption_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Download.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Drop_down_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Drop_up_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\email_icon.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\facebook.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\facebook_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Header.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\help.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\help_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\home.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\home_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\info.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\info_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\inner dilog registration.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\InnerDialog.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\linkedin.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\linkedin_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\lock_new.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\MainUIBk.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\maxi_ button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\maxi_ button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mini_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mini_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\MsgBox_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Non Protected.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Password Dialog BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\preloader.GIF">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Protected_Button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Protected_Button_HOVER.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\protected_HEADER.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Radio_button_normal.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Radio_button_select.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Register now button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Register now button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Registration.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Registration_header.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Registry Optimizer Button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Registry Optimizer Disabled.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Registry Optimizer Hand Over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Registry Optimizer_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Restart.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\scan img.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\services.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\services_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\setting_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\setting_button 50x17.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\setting_H_over 50x17.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\setting_inner_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\setting_logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ShowTipOnStartUp_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ShowTipOnStartUpBulb.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ShowTipOnStartUpHeader.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\splash.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\splash_Logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Tray PopUp BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Tray PopUp Multi Dlg BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Tray_Popup.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Tray_PopUp_Button_Next.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Tray_PopUp_Button_Prev.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\tray_popup_header_icon.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\twitter.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\twitter_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\unlock_new.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_Detect_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_dis_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_H_over_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_Implementation_logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_popup_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_popup_Button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_popup_Button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\UsbProg.GIF">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Uudate_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Warning MSG BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_THREAT_SECURITY.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_POPUP_BACKGROUND.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WIDGET_BG.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_BASIC.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_BASIC_REVERSE.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_SCAN_RUNNING.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_DEFAULT_BACKGRUND.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_DARK_THEME.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\splash_german.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_CRYSTAL_BACKGRUND.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_OFFLINE_AMBASSADOR.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_OFFLINE_AMBASSADOR_GERMAN.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_IMG_SHIELD_ICO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TICK_ICO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LOGO_BLACK.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TRAY_LOGO.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_UNPROTECTED.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WID_GREEN.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WID_YELLOW.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WID_RED.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WIDGET_WW_LOGO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WID_MENU_BG.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_DOWN_ARROW_WIDGET.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_OK.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_DROP_FILES.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FAILED.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_USER_IMG.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_BULB.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FB.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FB_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LINKEDIN.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LINKEDIN_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_NEXT_BUTTON.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PREVIOUS_BUTTON.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TWITTER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TWITTER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_REFRESH.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_REFRESH_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_INFO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_INFO_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WIDGET_BG_DARK.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_WID_MENU_BG_DARK.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PROTECTED.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_OPTIONS.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ID_PNG_NAVIGATION.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ID_PNG_START_NAVIGATION.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_DOT.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_NEXT_WHITE.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_INSTA.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_INSTA_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PHONE_SUPPORT.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\AdvanceSecurity.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PROTECTION_ON.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PROTECTIONON.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_VIBRO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_VIBRANIUM.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_VIBRO_NEW.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_LOGO_ANIMATION.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_LOADING_GLOBE.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION_BOTTOM.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\COMPANYLOGO.ICO">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PROTECTION_OFF.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PROTECTION_PARTIAL.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_BUTTON_BG.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_BUTTON_BG_REV.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_VIBRO_LG.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardwizResource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\IDR_TTF_FONTAWESOME-WEBFONT.ttf" />
+  </ItemGroup>
+</Project>

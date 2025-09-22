@@ -1,0 +1,869 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_TOGGELER.css);
+		@import url(IDR_CSS_MAIN.css);
+		html{
+			background:transparent;
+			behavior:WardWizEmailScan;
+		}
+		.togller_button_email_scn{
+			width:70dip;
+			margin-top:35dip;
+			float:right;
+		}
+		.titleCont_email_scan{
+			text-align:center;
+			min-height:0dip;
+			width:650dip;
+			padding-top:15dip;
+			margin-bottom:-15dip;
+		}
+		.inner_content_email_scan{
+			vertical-scrollbar: my-v-scrollbar;
+			min-height:305dip;
+			max-height:310dip;
+			min-width:630dip;
+			max-width:630dip;
+			overflow-y:auto;
+			padding-left:20dip;
+		}
+		.email_contentTray_width {
+			width:400dip;
+		}
+		.contentDiv .id_scn_attch_sub{
+			margin-top:0;
+			font-size:14dip;
+			font-weight:bold;
+			height:18dip;
+			margin-bottom:0dip;
+		}
+		.validation_msg_email_scn{
+			//height:20dip;
+			width:250dip;
+		}
+		#validationMessage_email_scn{
+			color:red;
+			margin-left:10dip;
+			margin-top:0dip;
+		}
+		#validationMessage_email_scn:collapsed{
+			visibility:none;
+		}
+		#validationMessage_email_scn:expanded{
+			visibility:visible;
+		}
+		.contentDiv .btnCstmSmall{
+			margin-top:0;
+		}
+		.btnTrayRadio{
+			margin-top:10dip;
+			margin-right:10dip;
+		}
+		.body_firewall_inner{
+		max-height:max-content;
+		}
+		.translateWindow{
+			filter: blur(5dip);
+			position:relative;
+			opacity:.4;
+		}
+		.messageContAlert{
+			width:300dip;
+			height:155dip;
+			margin:*;
+			position:absolute;
+			top:110dip;
+			left:-20dip;
+			text-align:center;
+			padding:15dip;
+			//border-radius:30dip 0 30dip 0;
+			visibility:hidden;
+		}
+		.messageContAlert:expanded{
+			visibility:visible;
+		}
+		#ID_BUY_HIGH_VER{
+			visibility:none;
+		}
+		#ID_BUY_HIGH_VER:expanded{
+			visibility:visible;
+		}
+		#ID_BUY_HIGH_VER:collapsed{
+			visibility:none;
+		}
+		#ID_REGISTER_NOW{
+			visibility:none;
+		}
+		#ID_REGISTER_NOW:expanded{
+			visibility:visible;
+		}
+		#ID_REGISTER_NOW:collapsed{
+			visibility:none;
+		}
+		#ID_VERSION_MESSAGE2{
+			visibility:none;
+		}
+		#ID_VERSION_MESSAGE2:expanded{
+			visibility:visible;
+		}
+		#ID_VERSION_MESSAGE2:collapsed{
+			visibility:none;
+		}
+	</style>
+	
+    <script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_CLOSE_POPUP).onClick = function()
+	{
+		selectView("IDR_HTM_HOME");
+	}
+	</script>
+    	
+	<script type="text/tiscript">
+    self.on("closerequest", function(event)
+    {
+		self.SetOtherPage();
+    });
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_BTN_EMAIL_SCAN_NOTIFICATION).onClick = function()
+    {
+		var bToggleState = $(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value;
+		if(bToggleState == true)
+        {
+			bToggleState = 1;
+        }
+        else
+        {
+		    bToggleState = 0;
+        }
+		setRegVal(bToggleState);
+    }
+    </script>
+	 <script type="text/tiscript">
+		/*function UpdateSecurityLevelRadio(UpdateHighLevelRadio,UpdateMediumLevelRadio,UpdateLowLevelProtectionRadio)
+		{
+		    DataBase = DB.open(varDBPath);
+		    DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET HIGH_LEVEL = ?  WHERE ID = 1",UpdateHighLevelRadio);
+		    DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET MEDIUM_LEVEL = ?  WHERE ID = 1",UpdateMediumLevelRadio);
+		    DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET LOW_LEVEL_PROTECTION = ?  WHERE ID = 1",UpdateLowLevelProtectionRadio);
+		    DataBase.close();
+		}*/
+	 </script>
+     <script type="text/tiscript">
+		/*function UpdateOnDetectionOfThreatsRadio(UpdateRepairRadio,UpdateQUARANTINERadio,UpdateSkipRadio)
+		{
+		    DataBase = DB.open(varDBPath);
+		    DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET REPAIR = ? WHERE ID = 1",UpdateRepairRadio);
+		    DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET QUARANTINE = ? WHERE ID = 1",UpdateQUARANTINERadio);
+		    DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET SKIP = ? WHERE ID = 1",UpdateSkipRadio);
+		    DataBase.close();
+		}*/
+	 </script>
+	 <script type="text/tiscript">
+     function UpdateScanSettingsRadio(UpdateScanInOutMailsRadio,UpdateScanInComeMailsRadio)
+	 {
+	     DataBase = DB.open(varDBPath);
+	     DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET SCAN_INCOMING_AND_OUTGOING_MAILS = ? WHERE ID = 1",UpdateScanInOutMailsRadio);
+	     DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET SCAN_INCOMING_MAILS_ONLY = ? WHERE ID = 1",UpdateScanInComeMailsRadio);
+	     DataBase.close();
+	 }
+     </script>
+	 <script type="text/tiscript">
+	 function UpdateScanSettingsMailWithAttachmentRadio(UpdateScanAttachmentsRadio,UpdateDoNotScanAttachmentsRadio)
+	 {
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET SCAN_ATTACHMENTS = ? WHERE ID = 1",UpdateScanAttachmentsRadio);
+		DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET DO_NOT_SCAN_ATTACHMENTS = ? WHERE ID = 1",UpdateDoNotScanAttachmentsRadio);
+		DataBase.close();
+	 }
+	 </script>
+	 
+	<script type= "text/tiscript">
+	$(#ID_BUY_HIGH_VER).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/"); 
+	}
+	</script>
+	
+	 <script type="text/tiscript">
+	 namespace WWIZEMAILSETTINGS
+     {
+         const IDR_QUARTINE = 1;
+     }
+    </script>
+	<script type="text/tiscript">
+    var varDBPath;
+    var DataBase;
+    var varRecordSet;
+    var vlistObj;
+    var FileFolderRecords;
+    </script>
+	
+    <script type="text/tiscript">
+		/*$(#IDR_RADIO_HIGH_LEVEL).onClick = function()
+		{
+			var bHighLevelRadioState = $(#IDR_RADIO_HIGH_LEVEL).state.value;
+			var bMediumLevelRadioState  = $(#IDR_RADIO_MEDIUM_LEVEL).state.value;
+			var bLowLevelProtectionRadioState = $(#IDR_RADIO_LOW_LEVEL_PROTECTION).state.value;
+			UpdateSecurityLevelRadio(bHighLevelRadioState,bMediumLevelRadioState,bLowLevelProtectionRadioState);
+		}
+		$(#IDR_RADIO_MEDIUM_LEVEL).onClick = function()
+		{
+			var bHighLevelRadioState = $(#IDR_RADIO_HIGH_LEVEL).state.value;
+			var bMediumLevelRadioState  = $(#IDR_RADIO_MEDIUM_LEVEL).state.value;
+			var bLowLevelProtectionRadioState = $(#IDR_RADIO_LOW_LEVEL_PROTECTION).state.value;
+			UpdateSecurityLevelRadio(bHighLevelRadioState,bMediumLevelRadioState,bLowLevelProtectionRadioState);
+		}
+		$(#IDR_RADIO_LOW_LEVEL_PROTECTION).onClick = function()
+		{
+			var bHighLevelRadioState = $(#IDR_RADIO_HIGH_LEVEL).state.value;
+			var bMediumLevelRadioState  = $(#IDR_RADIO_MEDIUM_LEVEL).state.value;
+			var bLowLevelProtectionRadioState = $(#IDR_RADIO_LOW_LEVEL_PROTECTION).state.value;
+			UpdateSecurityLevelRadio(bHighLevelRadioState,bMediumLevelRadioState,bLowLevelProtectionRadioState);
+		}*/
+    </script>
+
+    <script type="text/tiscript">
+	    /*$(#IDR_RADIO_REPAIR).onClick = function()
+        {
+	      var bRepairRadioState = $(#IDR_RADIO_REPAIR).state.value;
+	      var bQUARANTINERadioState = $(#IDR_RADIO_QUARANTINE).state.value;
+	      var bSkipRadioState = $(#IDR_RADIO_SKIP).state.value;
+	      UpdateOnDetectionOfThreatsRadio(bRepairRadioState,bQUARANTINERadioState,bSkipRadioState);
+        }
+	
+	    $(#IDR_RADIO_QUARANTINE).onClick = function()
+        {
+	      var bRepairRadioState = $(#IDR_RADIO_REPAIR).state.value;
+	      var bQUARANTINERadioState = $(#IDR_RADIO_QUARANTINE).state.value;
+	      var bSkipRadioState = $(#IDR_RADIO_SKIP).state.value;
+	       UpdateOnDetectionOfThreatsRadio(bRepairRadioState,bQUARANTINERadioState,bSkipRadioState);
+        }
+	 
+	    $(#IDR_RADIO_SKIP).onClick = function()
+        {
+          var bRepairRadioState = $(#IDR_RADIO_REPAIR).state.value;
+	      var bQUARANTINERadioState = $(#IDR_RADIO_QUARANTINE).state.value;
+	      var bSkipRadioState = $(#IDR_RADIO_SKIP).state.value;
+	       UpdateOnDetectionOfThreatsRadio(bRepairRadioState,bQUARANTINERadioState,bSkipRadioState);
+	    }*/
+    </script>
+
+   <script type="text/tiscript">
+	    $(#IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS).onClick = function()
+        {
+		    var bScanInOutMailsRadioState = $(#IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS).state.value;
+	        var bScanInComeMailsRadioState = $(#IDR_RADIO_SCAN_INCOMING_MAILS).state.value;
+			if(($(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value) == false)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TRUN_ON_EMAIL_SCN");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							};
+				if(res == true)
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = true;
+					setRegVal(1);
+				}
+				else
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = false; //no need but secured.
+					return;
+				}
+			}
+			UpdateScanSettingsRadio(bScanInOutMailsRadioState,bScanInComeMailsRadioState);
+	    }
+	 
+	    $(#IDR_RADIO_SCAN_INCOMING_MAILS).onClick = function()
+        {
+		    var bScanInOutMailsRadioState = $(#IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS).state.value;
+	        var bScanInComeMailsRadioState = $(#IDR_RADIO_SCAN_INCOMING_MAILS).state.value;
+			if(($(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value) == false)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TRUN_ON_EMAIL_SCN");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							};
+				if(res == true)
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = true;
+					setRegVal(1);
+				}
+				else
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = false; //no need but secured.
+					return;
+				}
+			}
+		    UpdateScanSettingsRadio(bScanInOutMailsRadioState,bScanInComeMailsRadioState);
+	    }
+   </script>
+
+    <script type="text/tiscript">
+	    $(#IDR_RADIO_SCAN_ATTACHMENTS).onClick = function()
+        {
+		    var bScanAttachmentsRadioState = $(#IDR_RADIO_SCAN_ATTACHMENTS).state.value;
+		    var bDoNotScanAttachmentsRadioState = $(#IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS).state.value;
+			if(($(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value) == false)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TRUN_ON_EMAIL_SCN");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							};
+				if(res == true)
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = true;
+					setRegVal(1);
+				}
+				else
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = false; //no need but secured.
+					return;
+				}
+			}
+		    UpdateScanSettingsMailWithAttachmentRadio(bScanAttachmentsRadioState,bDoNotScanAttachmentsRadioState);
+	    }
+	 
+	    $(#IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS).onClick = function()
+        {
+		    var bScanAttachmentsRadioState = $(#IDR_RADIO_SCAN_ATTACHMENTS).state.value;
+		    var bDoNotScanAttachmentsRadioState = $(#IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS).state.value;
+			if(($(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value) == false)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TRUN_ON_EMAIL_SCN");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							};
+				if(res == true)
+				{
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = true;
+					setRegVal(1);
+				}
+				else
+				{	
+					$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = false; //no need but secured.
+					return;
+				}
+			}
+	        UpdateScanSettingsMailWithAttachmentRadio(bScanAttachmentsRadioState,bDoNotScanAttachmentsRadioState);
+	    }
+    </script> 
+     
+	<script type="text/tiscript">
+		/*$(#ID_CHECK_HEURISTIC).onClick = function()
+		 {
+			var bHeuristicCheckBoxState = $(#ID_CHECK_HEURISTIC).state.value;
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET ENABLE_ANALYSIS_USING_HEURISTICS = ? WHERE ID = 1",bHeuristicCheckBoxState);
+			DataBase.close();
+		 }
+		 
+		 $(#ID_CHECK_SCAN_TRAFFIC).onClick = function()
+		 {
+			var bTrafficScanCheckBoxState = $(#ID_CHECK_SCAN_TRAFFIC).state.value;
+			DataBase = DB.open(varDBPath);
+			DataBase.exec("UPDATE WWIZEMAILSCANDETAILS SET SCAN_POP3_SMTP_NNTP_TRAFFIC = ? WHERE ID = 1",bTrafficScanCheckBoxState);
+			DataBase.close();
+		 }*/
+  </script>
+	<script type="text/tiscript">
+    function funDatabase()
+    {
+        varDBPath = self.GetDBPath();
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("create table IF NOT EXISTS WWIZEMAILSCAN(ID INTEGER PRIMARY KEY, NAME VARCHAR (1000) NOT NULL)");
+		DataBase.exec("create table IF NOT EXISTS WWIZEMAILSCANDETAILS(ID INTEGER PRIMARY KEY,HIGH_LEVEL BOOLEAN NOT NULL DEFAULT 0,MEDIUM_LEVEL BOOLEAN NOT NULL DEFAULT 0,LOW_LEVEL_PROTECTION BOOLEAN NOT NULL DEFAULT 0,REPAIR BOOLEAN NOT NULL DEFAULT 0,QUARANTINE BOOLEAN NOT NULL DEFAULT 0,SKIP BOOLEAN NOT NULL DEFAULT 0,SCAN_INCOMING_AND_OUTGOING_MAILS BOOLEAN NOT NULL DEFAULT 0,SCAN_INCOMING_MAILS_ONLY BOOLEAN NOT NULL DEFAULT 0,SCAN_ATTACHMENTS BOOLEAN NOT NULL DEFAULT 0,DO_NOT_SCAN_ATTACHMENTS BOOLEAN NOT NULL DEFAULT 0,ENABLE_ANALYSIS_USING_HEURISTICS BOOLEAN NOT NULL DEFAULT 0,SCAN_POP3_SMTP_NNTP_TRAFFIC BOOLEAN NOT NULL DEFAULT 0)");
+		
+        //DataBase.exec("INSERT INTO WWIZEMAILSCAN VALUES (10, 'Name' )");
+		/*var varRecordSet = DataBase.exec("select ID, Name from WWIZEMAILSCAN");
+        if ( varRecordSet instanceof Recordset )
+        {
+            showRecordset(varRecordSet);
+        }
+        else
+        {
+            DataBase.close();
+        }*/
+		var varRecordSetVal = DataBase.exec("select ID from WWIZEMAILSCANDETAILS");
+		if(varRecordSetVal == 101)
+        {
+			DataBase.exec("insert into WWIZEMAILSCANDETAILS(ID,HIGH_LEVEL,MEDIUM_LEVEL,LOW_LEVEL_PROTECTION,REPAIR,QUARANTINE,SKIP,SCAN_INCOMING_AND_OUTGOING_MAILS,SCAN_INCOMING_MAILS_ONLY,SCAN_ATTACHMENTS,DO_NOT_SCAN_ATTACHMENTS,ENABLE_ANALYSIS_USING_HEURISTICS,SCAN_POP3_SMTP_NNTP_TRAFFIC)values(1,1,0,0,1,0,0,1,0,1,0,0,0)");
+        }
+		var varRecordSet = DataBase.exec("select * from WWIZEMAILSCANDETAILS");
+		/*var varHighLevelVal = varRecordSet["HIGH_LEVEL"];
+		if(varHighLevelVal == 0)
+		{
+			$(#IDR_RADIO_HIGH_LEVEL).checked = false;
+		}
+		else if(varHighLevelVal == 1)
+		{
+			$(#IDR_RADIO_HIGH_LEVEL).checked = true;
+		}
+		var varMediuLevelVal = varRecordSet["MEDIUM_LEVEL"];
+		if(varMediuLevelVal == 0)
+		{
+			$(#IDR_RADIO_MEDIUM_LEVEL).checked = false;;
+		}
+		else if(varMediuLevelVal == 1)
+		{
+			$(#IDR_RADIO_MEDIUM_LEVEL).checked = true;
+		}
+		var varLowLevelProtectionVal = varRecordSet["LOW_LEVEL_PROTECTION"];
+		if(varLowLevelProtectionVal == 0)
+		{
+			$(#IDR_RADIO_LOW_LEVEL_PROTECTION).checked = false;
+		}
+		else if(varLowLevelProtectionVal == 1)
+		{
+			$(#IDR_RADIO_LOW_LEVEL_PROTECTION).checked = true;
+		}*/
+		/*var varRepairVal = varRecordSet["REPAIR"];
+		if(varRepairVal == 0)
+		{
+			$(#IDR_RADIO_REPAIR).checked = false;
+		}
+		else if(varRepairVal == 1)
+		{
+			$(#IDR_RADIO_REPAIR).checked = true;
+		}
+		var varQuartineVal = varRecordSet["QUARANTINE"];
+		if(varQuartineVal == 0)
+		{
+			$(#IDR_RADIO_QUARANTINE).checked = false;
+		}
+		else if(varQuartineVal == 1)
+		{
+			$(#IDR_RADIO_QUARANTINE).checked = true;
+		}
+		var varSkipVal = varRecordSet["SKIP"];
+		if(varSkipVal == 0)
+		{
+			$(#IDR_RADIO_SKIP).checked = false;
+		}
+		else if(varSkipVal == 1)
+		{
+			$(#IDR_RADIO_SKIP).checked = true;
+		}*/
+		var varIncomeingAndOutcomeingMailsVal = varRecordSet["SCAN_INCOMING_AND_OUTGOING_MAILS"];
+		if(varIncomeingAndOutcomeingMailsVal == 0)
+		{
+			$(#IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS).checked = false;
+		}
+		else if(varIncomeingAndOutcomeingMailsVal == 1)
+		{
+			$(#IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS).checked = true;
+		}
+		var varScanIncomeingMailsOnlyVal = varRecordSet["SCAN_INCOMING_MAILS_ONLY"];
+		if(varScanIncomeingMailsOnlyVal == 0)
+		{
+			$(#IDR_RADIO_SCAN_INCOMING_MAILS).checked = false;
+		}
+		else if(varScanIncomeingMailsOnlyVal == 1)
+		{
+			$(#IDR_RADIO_SCAN_INCOMING_MAILS).checked = true;
+		}
+		var varScanAttachmentsVal = varRecordSet["SCAN_ATTACHMENTS"];
+		if(varScanAttachmentsVal == 0)
+		{
+			$(#IDR_RADIO_SCAN_ATTACHMENTS).checked = false;
+		}
+		else if(varScanAttachmentsVal == 1)
+		{
+			$(#IDR_RADIO_SCAN_ATTACHMENTS).checked = true;
+		}
+		var varDoNotScanAttachmentsVal = varRecordSet["DO_NOT_SCAN_ATTACHMENTS"];
+		if(varDoNotScanAttachmentsVal == 0)
+		{
+			$(#IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS).checked = false;
+		}
+		else if(varDoNotScanAttachmentsVal == 1)
+		{
+			$(#IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS).checked = true;
+		}
+		/*var varEnableAnlysisUsingHeuristicsVal = varRecordSet["ENABLE_ANALYSIS_USING_HEURISTICS"];
+		if(varEnableAnlysisUsingHeuristicsVal == 0)
+		{
+			$(#ID_CHECK_HEURISTIC).checked = false;
+		}
+		else if(varEnableAnlysisUsingHeuristicsVal == 1)
+		{
+			$(#ID_CHECK_HEURISTIC).checked = true;
+		}
+		var varScanPop3SmtpNntpTrafficVal = varRecordSet["SCAN_POP3_SMTP_NNTP_TRAFFIC"];
+		if(varScanPop3SmtpNntpTrafficVal == 0)
+		{
+			$(#ID_CHECK_SCAN_TRAFFIC).checked = false;
+        }
+		else if(varScanPop3SmtpNntpTrafficVal == 1)
+        {
+			$(#ID_CHECK_SCAN_TRAFFIC).checked = true;
+		}*/
+    }
+    </script>
+ <script type="text/tiscript">
+	/*$(#ID_BTN_RECOVER).onClick = function()
+	{
+		ShowStaticData();
+		$(.report_data).state.expanded = true;
+	}*/
+ </script>
+ <script type="text/tiscript">
+	/*$(#ID_RDO_BTN_REPAIR).onClick = function()
+	{
+		var bRadioState = $(#ID_RDO_BTN_REPAIR).value;
+		onClickNotification(WWIZEMAILSETTINGS.IDR_QUARTINE, bRadioState,1);
+	}
+	$(#ID_RDO_BTN_QUARANTINE).onClick = function()
+	{
+		var bRadioState = $(#ID_RDO_BTN_QUARANTINE).value;
+		onClickNotification(WWIZEMAILSETTINGS.IDR_QUARTINE, bRadioState,2);
+	}
+	$(#ID_RDO_BTN_SKIP).onClick = function()
+	{
+		var bRadioState = $(#ID_RDO_BTN_SKIP).value;
+		onClickNotification(WWIZEMAILSETTINGS.IDR_QUARTINE, bRadioState,0);
+	}
+	
+	function onClickNotification(ID_BUTTON_CLICK, bToggleState, varRegistryValue=0)
+    {
+		self.OnClickChangeSettings(ID_BUTTON_CLICK,bToggleState,varRegistryValue);
+	}*/
+ </script>
+<script type="text/tiscript">
+	function setRegVal(bToggleState)
+	{
+		bToggleState?bToggleState = 1:bToggleState=0;
+		self.OnSetRegVal(bToggleState);
+	}
+</script>
+ <script type="text/tiscript">
+	$(#ID_BTN_ADD_SUBJECT).onClick = function()
+	{
+		if(($(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value) == false)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_TRUN_ON_EMAIL_SCN");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+						};
+			if(res == true)
+			{
+				$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = true;
+				setRegVal(1);
+			}
+			else
+			{
+				var szSubjectName = self.GetSubjectFromINI();
+				if(szSubjectName.length > 0)
+					$(#ID_EDT_EML_SUBJECT).state.value = szSubjectName;
+				else
+					$(#ID_EDT_EML_SUBJECT).state.value = "";
+				return;
+			}
+		}
+		if(!$(#ID_EDT_EML_SUBJECT).value)
+		{
+			$(#validationMessage_email_scn).text=Lang.translate("ID_VALID_SUB");
+		}
+		else
+		{
+			$(#validationMessage_email_scn).state.collapsed = true;
+			self.WriteSubjectInINI($(#ID_EDT_EML_SUBJECT).value);
+			$(#validationMessage_email_scn).value="";
+		}
+	}
+	</script>
+	<script type="text/tiscript">
+	/*var records = new Array();
+	var vlist = $(table);*/
+	</script>
+	<script type="text/tiscript">
+	/*function ShowStaticData()
+	{
+		vlist.value = records;
+		vlist.tbody.currentIndex = 0;
+		records[0] = {selected:0, Subject: "strFileName", ReceivedDate: "strFilePath"};
+		records[1] = {selected:1, Subject: "strFileName2", ReceivedDate: "strFilePath2"};
+	}*/
+	</script>
+	
+<script type="text/tiscript">
+	$(#ID_REGISTER_NOW).onClick = function()
+	{
+		ShowRegistrationDialog(); 
+	}
+</script>
+
+	<script type="text/tiscript">	
+	if(productVersion == #BASIC){
+		$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+		$(.messageContAlert).state.expanded = true;
+		$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+		$(.body_firewall_inner).attributes.addClass("translateWindow");
+		$(.body_firewall_inner).state.disabled = true;
+		$(#ID_BUY_HIGH_VER).state.expanded = true;
+		$(#ID_REGISTER_NOW).state.collapsed = true;			
+	}
+	else if(productVersion == #ESSENTIAL){
+		$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+		$(.messageContAlert).state.expanded = true;
+		$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+		$(.body_firewall_inner).attributes.addClass("translateWindow");
+		$(.body_firewall_inner).state.disabled = true;
+		$(#ID_BUY_HIGH_VER).state.expanded = true;	
+		$(#ID_REGISTER_NOW).state.collapsed = true;	
+	}
+	else if(productVersion == #PROVANTAGE){
+		$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+		$(.messageContAlert).state.expanded = true;
+		$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+		$(.body_firewall_inner).attributes.addClass("translateWindow");
+		$(.body_firewall_inner).state.disabled = true;
+		$(#ID_BUY_HIGH_VER).state.expanded = true;	
+		$(#ID_REGISTER_NOW).state.collapsed = true;	
+	}
+	else if(productVersion == #ELITE){
+		$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+		$(.messageContAlert).state.expanded = true;
+		$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+		$(.body_firewall_inner).attributes.addClass("translateWindow");
+		$(.body_firewall_inner).state.disabled = true;
+		$(#ID_BUY_HIGH_VER).state.expanded = true;	
+		$(#ID_REGISTER_NOW).state.collapsed = true;	
+	}
+	else if(productVersion == #ESSENTIALPLUS)
+	{
+		if(g_ProductLicenseType == #UNREGISTERED)
+		{
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_IS_UNREGISTERED");
+			$(#ID_VERSION_MESSAGE2).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_A_LICENSE_OR_TO_REGISTER_FOR_30_DAYS_FREE_TRIAL");
+			$(.messageContAlert).state.expanded = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.expanded = true;
+			$(.messageContAlert).style["height"] = 190dip;
+			
+		}
+		else if(g_ProductLicenseType == #EXPIRED)
+		{
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_HAS_EXPIRED");
+			$(#ID_VERSION_MESSAGE2).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_THE_COMMERCIAL_LICENSE");
+			$(.messageContAlert).state.expanded = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;
+			$(.messageContAlert).style["height"] = 180dip;
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+		g_CurrentPage = #EMAIL_SCAN;
+		$(#DISABLE_BTN).state.disabled = true;
+		if(g_LanguageName == "GERMAN")
+		{
+			$(.id_scn_attch_sub).style["margin-bottom"] = 17dip;
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		
+		var szSubjectName = self.GetSubjectFromINI();
+		if(szSubjectName.length > 0)
+			$(#ID_EDT_EML_SUBJECT).state.value = szSubjectName;
+		else
+			$(#ID_EDT_EML_SUBJECT).state.value = "";
+		
+		var bRegVal = self.GetRegVal();
+		if(bRegVal == 0)
+		{
+			$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = false;
+		}
+		else
+		{
+			$(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value = true;
+		}
+			
+		var bToggleState = $(#ID_BTN_EMAIL_SCAN_NOTIFICATION).state.value;
+		
+		self.SetPage();
+		funDatabase();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_CS_PROT).on("click",function()
+	{
+		SetOnProtectionEvent();
+	});
+	</script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+	
+</head>
+<body>
+	<div .body_firewall_inner>
+	<div class="breadcrumbNav">
+			<ul class="listDisplayRow">
+				<li #ID_CS_PROT><label>ID_PROTECTION</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #DISABLE_BTN style="padding-left:5dip;"><label>ID_EMAIL_SCAN</label></li>
+			</ul>
+	</div>
+	<div .togller_button_email_scn>
+		<button|toggler name="toggler" #ID_BTN_EMAIL_SCAN_NOTIFICATION>
+			<caption .true><label>ID_ON</label></caption>
+			<caption .false><label>ID_OFF</label></caption>
+		</button>
+	</div>
+	<div .titleCont_email_scan style="width:650dip;">
+		<h1 .headingTitle1><label>ID_EMAIL_SCAN</label></h1>
+		<p style="margin-top:0dip;margin-bottom:23dip;"><label .textColor>ID_SCN_INC_OUT_MAIL_ATTCH</label></p>
+	</div>
+	<div .inner_content_email_scan>
+	<div .contentDiv>
+		<h2><label>ID_SCAN_SETTINGS</label></h2>
+		<div .contentContSetting>
+			<div .btnTrayRadio>
+				<button type="radio"(group) #IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS checked>
+			</div>
+			<div .contentTray .email_contentTray_width>
+				<h4><label for="IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS">ID_SCN_INC_OUT_MAIL</label></h4>
+				<p><label for="IDR_RADIO_SCAN_INCOMING_OUTGOING_MAILS">ID_SCN_ALL_INC_OUT_MAIL</label></p>
+			</div>
+		</div>
+		<div .contentContSetting>
+			<div .btnTrayRadio>
+				<button type="radio"(group) #IDR_RADIO_SCAN_INCOMING_MAILS>
+			</div>
+			<div .contentTray >
+				<h4><label for="IDR_RADIO_SCAN_INCOMING_MAILS">ID_SCN_INC_MAIL</label></h4>
+				<p><label for="IDR_RADIO_SCAN_INCOMING_MAILS">ID_OPT_SCN_INC_MAIL_ONLY</label></p>
+			</div>
+		</div>
+	</div>
+	<div .contentDiv>
+		<h2><label>ID_SCN_SET_MAIL_ATTCH</label></h2>
+		<div .contentContSetting>
+			<div .btnTrayRadio>
+				<button type="radio"(group1) #IDR_RADIO_SCAN_ATTACHMENTS checked>
+			</div>
+			<div .contentTray >
+				<h4><label for="IDR_RADIO_SCAN_ATTACHMENTS">ID_SCN_ATTCH</label></h4>
+				<p><label for="IDR_RADIO_SCAN_ATTACHMENTS">ID_SCN_ATTCH_MAIL</label></p>
+			</div>
+		</div>
+		<div .contentContSetting>
+			<div .btnTrayRadio>
+				<button type="radio"(group1) #IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS>
+			</div>
+			<div .contentTray >
+				<h4><label for="IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS">ID_DONT_SCN_ATTCH</label></h4>
+				<p><label for="IDR_RADIO_DO_NOT_SCAN_ATTACHMENTS">ID_SCN_ATTCH_SKIP</label></p>
+			</div>
+		</div>
+	</div>
+	<div .contentDiv>
+		<h2 .id_scn_attch_sub><label>ID_SCN_ATTCH_SUB</label></h2>
+		<div>
+			<label>ID_SUB_TAG</label>
+			<input type="text" maxlength="30" #ID_EDT_EML_SUBJECT>
+			<div .btnCstmSmall #ID_BTN_ADD_SUBJECT><label>ID_REPORTS_SAVE</label></div>
+		</div>
+	</div>
+	</div>
+	<div .validation_msg_email_scn>
+		<p #validationMessage_email_scn></p>
+	</div>
+	</div>
+	
+	
+	<div class="messageContAlert">
+		<div .clickable_cl .BuyHighVersionClose #ID_CLOSE_POPUP>
+				<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIconVersionUpgrade">
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+				</svg>
+		</div>
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 511 511" enable-background="new 0 0 511 511" xml:space="preserve" style="size:45dip;background:transparent;">
+		<path fill="#E58E13" d="M311.5,434.9c0,35-23.6,64.4-55.7,73.3c-6.5,1.8-13.3,2.8-20.3,2.8c-42,0-76.1-34.1-76.1-76.1l76.2-39.2
+			L311.5,434.9z"/>
+		<path fill="#F7D360" d="M307.8,458.4c-7.8,24.2-27.4,43-52.1,49.9c-15.5-4.3-29-13.3-38.8-25.5c-7.9-9.8-0.8-24.4,11.8-24.4H307.8z"
+			/>
+		<path fill="#F7D360" d="M431.8,358.9l-163.4,35.3L39,358.9c18,0,28.2-9.4,34-25c27.9-75.4-46.5-295.1,162.5-295.1
+			s134.5,219.7,162.5,295.1C403.7,349.4,413.8,358.9,431.8,358.9z"/>
+		<path fill="#E58E13" d="M469.9,396.9c0,21-17,38-38,38H39c-10.5,0-20-4.3-26.9-11.1C5.2,416.9,1,407.4,1,396.9c0-21,17-38,38-38
+			h392.8c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M397.9,333.8H193.7c-22,0-39.6-18.2-38.9-40.2c2.9-93.1-12-253.1,79.1-254.8
+			c-250,1.3-90.2,320.1-194.9,320.1h392.8C413.8,358.9,403.7,349.4,397.9,333.8z"/>
+		<path fill="#F7D360" d="M469.9,396.9c0,21-17,38-38,38H148.9c-10.5,0-20-4.3-26.9-11.1c-6.9-6.9-11.1-16.4-11.1-26.9
+			c0-21,17-38,38-38h282.9c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M274.1,41.7c0.1-1,0.1-1.9,0.1-2.9c0-21.4-17.4-38.8-38.8-38.8c-21.4,0-38.8,17.4-38.8,38.8c0,1,0,2,0.1,2.9
+			"/>
+		<g>
+			<path fill="#E6E6E6" d="M424.2,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-36.2-9.3-67.1-27.7-91.8c-13.7-18.5-27.6-26.4-27.8-26.5
+				c-3.8-2.1-5.1-6.9-3-10.6c2.1-3.8,6.8-5.1,10.6-3c0.7,0.4,16.5,9.3,32.2,30.1c14.3,19,31.3,52,31.3,101.9
+				C432.1,163.9,428.6,167.4,424.2,167.4z"/>
+			<path fill="#E6E6E6" d="M458.7,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-49.9-29.6-69.8-30.8-70.6c-3.6-2.4-4.7-7.2-2.3-10.8
+				c2.3-3.6,7.1-4.7,10.8-2.4c1.6,1,38,24.9,38,83.8C466.5,119.1,463,122.6,458.7,122.6z"/>
+			<path fill="#E6E6E6" d="M46.6,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-49.8,17-82.9,31.3-101.9c15.7-20.8,31.5-29.7,32.2-30.1
+				c3.8-2.1,8.5-0.7,10.6,3.1c2.1,3.8,0.7,8.5-3,10.6c-0.3,0.2-14.1,8.1-27.8,26.5c-18.4,24.7-27.7,55.6-27.7,91.8
+				C54.4,163.9,50.9,167.4,46.6,167.4z"/>
+			<path fill="#E6E6E6" d="M12.2,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-58.9,36.5-82.8,38-83.8c3.6-2.3,8.5-1.2,10.8,2.4
+				c2.3,3.6,1.3,8.5-2.4,10.8C49.5,45,20,64.8,20,114.7C20,119.1,16.5,122.6,12.2,122.6z"/>
+		</g>
+		</svg><br/>
+		<p style="color:#000;" #ID_VERSION_MESSAGE><label>ID_BUY_HIGHER_VERSION</label></p>
+		<p style="color:#000;" #ID_VERSION_MESSAGE2><label>ID_BUY_HIGHER_VERSION</label></p>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_BUY_HIGH_VER><label>ID_BUY_NOW</label></div>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_REGISTER_NOW><label>ID_REGISTER_NOW</label></div>
+	</div>
+</body>
+</html>

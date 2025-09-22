@@ -1,0 +1,401 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_MAIN.css);
+
+	html 
+	{ 
+		width:375dip;           /* preferred/initial width */
+		height:280dip;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+	}
+	.message_display_block_internetSetting:collapsed {
+		visibility:visible;
+		top:0;
+		transition:top(sine-in-out, 600ms);
+	}
+	.enblPrxy{
+		margin-top:5dip;
+		margin-left:21dip;
+	}
+	legend{
+		padding:1 5dip;
+	}
+	.radio_button{
+		margin-top:5dip;
+		margin-left:21dip;
+	}
+	.set_server_port{
+		margin-top:10dip;
+		margin-left:27dip;
+	}
+	.authenticate{
+		margin-top:10dip;
+		margin-left:27dip;
+		height:80dip;
+	}
+	.buttons{
+		text-align:center;
+	}
+	body.internetSetting{ 
+		width:374dip;
+		background-size:cover;
+		padding:0; margin:0; 
+	}
+	.header_internetSetting{
+		flow:horizontal;
+		width:374dip;        
+		height:40dip;
+	}
+	#ID_TXT_SERVER{
+		margin-left:10dip;
+		margin-right:15dip;
+	}
+	#ID_TXT_PORT{
+		width:55dip; 
+		margin-left:10dip;
+	}
+	.width110{
+		width:110dip;
+	}
+	.internet_Setting_fieldset{
+		width:303dip;
+		height:72dip;
+	}
+	.width105{
+		width:105dip;
+	}
+	.unameInternetSetting{
+		margin-left:40dip;
+		margin-top:5dip;
+	}
+	.mrgnTop3dip{
+		margin-top:3dip;
+	}
+	.pswrdInternetSetting{
+		margin-top:5dip;
+		margin-left:40dip;
+	}
+	.btnCstmSmall_intr_sett{
+		cursor: pointer;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		height:21dip;
+		width:80dip;
+		overflow:hidden;
+		text-align:center;
+		transition: background-image(cubic-in-out, duration:0.3s);
+		padding:0;
+		vertical-align:middle;
+		line-height:21dip;
+		font-weight:normal;
+		display:inline-block;
+		font-size:12dip;
+	}
+	.btnCstmSmall_intr_sett .bgClrSmall{
+		min-height:33dip;
+		width:122dip;
+		position:absolute;
+		z-index:-1;
+		left:-310dip;
+	}
+	.btnCstmSmall_intr_sett:hover{
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	.btnCstmSmall_intr_sett:hover > .bgClrSmall{
+		left:-1dip;
+	}
+	.btnCstmSmall_intr_sett:hover > .buttonIcons{
+		visibility:visible;
+	}
+	.message_display_block_internetSetting {
+		position:absolute;
+		width:373dip;
+		height:40dip;
+		visibility:none;
+		margin-top:40dip; 
+	}
+	.message_display_block_internetSetting p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:0dip;
+	}
+	</style>
+	
+	<script type="text/tiscript">
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+		var arrDB = new Array(0);
+		var varRadioState;
+	</script>
+	
+	<script type="text/tiscript">
+	event ~keypress $(#ID_TXT_PORT) (evt){
+		if(evt.keyCode !in ['0','1','2','3','4','5','6','7','8','9'])
+			return true;
+	}	
+	
+	function EnableDisable(bFlag)
+	{
+		$(#ID_TXT_PORT).state.disabled = bFlag;
+		$(#ID_TXT_SERVER).state.disabled = bFlag;
+		$(#ID_TXT_UNAME).state.disabled = bFlag;
+		$(#ID_TXT_PWD).state.disabled = bFlag;
+	}
+	
+	function SetFieldValue()
+	{
+		if(arrDB[0].port != null)
+			$(#ID_TXT_PORT).value = arrDB[0].port;
+		else	
+			$(#ID_TXT_PORT).value = "";			
+		if(arrDB[0].server != null)	
+			$(#ID_TXT_SERVER).value = arrDB[0].server;
+		else
+			$(#ID_TXT_SERVER).value = "";
+		if(arrDB[0].username != null)	
+			$(#ID_TXT_UNAME).value = arrDB[0].username;
+		else
+			$(#ID_TXT_UNAME).value = "";
+		if(arrDB[0].password != null)	
+			$(#ID_TXT_PWD).value = arrDB[0].password;
+		else
+			$(#ID_TXT_PWD).value = "";
+		
+		varRadioState = arrDB[0].proxy_settings;
+		if(varRadioState == 0)
+		{	
+			$(#ID_RADIO_DIRECT_CON).checked = true;
+			$(#ID_RADIO_SPECIFY_PROXY).checked = false;
+			EnableDisable(true);
+		}	
+		else if(varRadioState == 2)
+		{
+			$(#ID_RADIO_SPECIFY_PROXY).checked = true;
+			$(#ID_RADIO_DIRECT_CON).checked = false;
+			EnableDisable(false);
+		}		
+	}
+	
+	function SetCurrentProxyValue()
+	{
+		var ArrProxy = [1,2];
+		var vProxySett = 0;
+		for(var record in ArrProxy)
+		{
+			switch(record)
+	        {
+				case 1: if($(#ID_RADIO_DIRECT_CON).checked == true)
+		                {
+							vProxySett = 0;
+						}
+						break;
+					
+				case 2: if($(#ID_RADIO_SPECIFY_PROXY).checked == true)
+		                {
+							vProxySett = 2;
+		                }
+						break;					
+			    }
+		  }
+		DataBase.close();
+        return vProxySett;
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_BTN_SAVE).onClick = function()
+	{
+		if($(#ID_RADIO_SPECIFY_PROXY).checked == true)
+		{
+			if($(#ID_TXT_PORT).value.trim() == "" || $(#ID_TXT_SERVER).value.trim() == "")
+			{
+				self.timer(50ms,function(){
+                    $(.message_display_block_internetSetting).state.collapsed = true;
+					$(#ID_STATUS_MESSAGE).value = Lang.translate("ID_PROXY_SETT_ERROR");
+                });				
+				return;
+			}
+			if($(#ID_TXT_UNAME).value.trim() == "" && $(#ID_TXT_PWD).value.trim() != "")
+			{
+				self.timer(50ms,function(){
+					$(.message_display_block_internetSetting).state.collapsed = true;
+					$(#ID_STATUS_MESSAGE).value = Lang.translate("ID_PLZ_ENTER_USERNAME");
+				});				
+				return;
+			}
+			else if($(#ID_TXT_UNAME).value.trim() != "" && $(#ID_TXT_PWD).value.trim() == "")
+		    {
+				self.timer(50ms,function(){
+					$(.message_display_block_internetSetting).state.collapsed = true;
+					$(#ID_STATUS_MESSAGE).value = Lang.translate("ID_PLZ_ENTER_PWD");
+				});				
+				return;
+			}
+		}
+		var vProxySett = SetCurrentProxyValue();	
+		arrDB[0].proxy_settings = vProxySett;
+		arrDB[0].port = $(#ID_TXT_PORT).value.trim();
+		arrDB[0].server = $(#ID_TXT_SERVER).value.trim();
+		arrDB[0].username = $(#ID_TXT_UNAME).value.trim();
+		arrDB[0].password = $(#ID_TXT_PWD).value.trim();
+		view.close(null);
+	}
+	
+	$(#ID_BTN_CANCEL).onClick = function()
+	{
+		view.close(null);
+	}
+	</script>
+
+	<script type="text/tiscript">
+	$(#ID_RADIO_DIRECT_CON).onClick = function()
+	{
+		$(.message_display_block_internetSetting).state.collapsed = false;
+		EnableDisable(true);
+	}
+	
+	$(#ID_RADIO_SPECIFY_PROXY).onClick = function()
+	{
+		$(.message_display_block_internetSetting).state.collapsed = false;
+		EnableDisable(false);
+	}
+	
+	$(body).onClick = function()
+	{				
+		$(.message_display_block_internetSetting).state.collapsed = false;
+	}
+	
+	event change $(#ID_TXT_PORT)
+	{
+		$(.message_display_block_internetSetting).state.collapsed = false;
+	}
+	
+	event change $(#ID_TXT_UNAME)
+	{
+		$(.message_display_block_internetSetting).state.collapsed = false;
+	}
+	
+	event change $(#ID_TXT_PWD)
+	{
+		$(.message_display_block_internetSetting).state.collapsed = false;
+	}
+	
+	event change $(#ID_TXT_SERVER)
+	{
+		$(.message_display_block_internetSetting).state.collapsed = false;
+	}
+	
+	event change $(#ID_TXT_UNAME)
+	{
+		$(.message_display_block).state.collapsed = false;
+	}
+	
+	event change $(#ID_TXT_PWD)
+	{
+		$(.message_display_block).state.collapsed = false;
+	}
+	
+	$(#window-close) << event click()
+	{				
+		view.close(null);
+	}
+	</script> 
+
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+	    $(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+	    $(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+	    $(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+	    $(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script>	
+
+	<script type="text/tiscript">
+	function self.ready() {		
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+	    }
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		if(self.language == "ENGLISH")
+		{
+			$(.buttons).style["margin-top"] = 10dip;
+		}	
+		arrDB = view.parameters.arrInternetSett;
+		SetFieldValue();		
+	}
+	</script> 
+</head>
+<body .internetSetting>
+	<div .header_internetSetting>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:23dip;">
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>
+	<div .enblPrxy>
+		<label>ID_PLZ_SEL_PROXY_SETT</label>
+	</div>	
+	<div .radio_button>
+		<input type="radio" #ID_RADIO_DIRECT_CON><label for="ID_RADIO_DIRECT_CON">ID_DIRECT_CONN</label> <br/>
+		<input type="radio" #ID_RADIO_SPECIFY_PROXY><label for="ID_RADIO_SPECIFY_PROXY">ID_SPECIFY_PROXY</label> 
+	</div>
+	<div .set_server_port>
+		<label>ID_SERVER</label>
+		<input #ID_TXT_SERVER type="text" .width110>
+		<label>ID_PORT</label>
+		<input #ID_TXT_PORT type="text" maxlength="5">
+	</div>	
+	<div .authenticate>
+		<fieldset .internet_Setting_fieldset>
+			<legend .authenticationClr><label>ID_AUTHENTICATION</label></legend>
+			<div .flow_horizontal>
+				<div .width105 .unameInternetSetting>
+					<label>ID_UNAME</label>
+			    </div>
+				<div .mrgnTop3dip>	
+					<input #ID_TXT_UNAME type="text" .width110>
+		        </div>
+			</div>
+			<div .flow_horizontal>
+				<div .width105 .pswrdInternetSetting>
+					<label>ID_PASSWD</label>
+				</div>
+				<div .mrgnTop3dip>	
+					<input #ID_TXT_PWD type="password" .width110>
+				</div>
+			</div>		
+		</fieldset>
+	</div>
+	<div .buttons>
+		<div .btnCstmSmall_intr_sett #ID_BTN_SAVE><label>ID_OK</label></div>
+		<div .btnCstmSmall_intr_sett #ID_BTN_CANCEL><label>ID_CANCEL</label></div>
+	</div>
+	<div .message_display_block_internetSetting>
+	    <p #ID_STATUS_MESSAGE></p>
+	</div> 
+</body>
+</html>

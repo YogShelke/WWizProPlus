@@ -1,0 +1,323 @@
+popup#notification { style-set: notification-message; }
+
+@set notification-message {
+
+  :root {
+    prototype: Notification url(IDR_TIS_NOTIFICATION_TRAY_INFINITE_POPUP.tis);
+    background: #fff;
+    border: 2dip solid #031a30!important;
+    /* border-radius: 10dip; */
+    margin:2dip;
+    width: 300dip;
+    display:none;
+    transform: translate(0,0); opacity:1.0;
+    /* font:system; */
+	font:PadaukRegular;
+  }
+  
+  :root[state] {display:block;}
+  :root[state=initial] { transform: translate(0,100%); opacity:0.0; } /* offstage */
+  :root[state=shown]   { transform: translate(0,0);    opacity:1.0; transition: transform(quad-out,500ms) opacity(linear,500ms);  }
+  :root[state=closed]  { transform: translate(100%,0); opacity:0.0; transition: transform(linear,500ms) opacity(linear,500ms);  }
+  
+  header { display:block; border-bottom: 1dip dashed gray; padding: 4dip; visibility:none;/* To hide title bar */
+  
+  }
+  content { display:block; /* padding: 8dip; */padding-bottom: 8dip;border:1dip solid #CCD1D1;}
+}
+
+/* Common popup CSS */
+@font-face {
+    font-family: MyAwesome;
+    src: url(IDR_TTF_FONTAWESOME-WEBFONT.ttf);
+}
+.icons{
+	font-family: MyAwesome;
+}
+.bodyBg{
+	background:url(IDR_JPG_POPUP_BACKGROUND.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.btnCstm{
+  /* position: relative; */
+  border: 1dip solid #031a30;
+  color: #fff;
+  cursor: pointer;
+  background: #053360;
+  height:30dip;
+  width:120dip;
+  overflow:hidden;
+  text-align:center;
+  transition: left(cubic-in-out, duration:0.3s)
+			  color(cubic-in-out, duration:0.4s)
+			  border(cubic-in-out, duration:0.4s);
+  padding:0;
+  vertical-align:middle;
+  line-height:30dip;
+  font-weight:bold;
+  display:inline-block;
+  font-size:14dip;
+}
+.btnCstm .bgClr{
+	background:#fff;
+  min-height:33dip;
+  width:122dip;
+  position:absolute;
+  z-index:-1;
+  left:-310dip;
+  transition: left(cubic-in-out, duration:0.3s);
+}
+.btnCstm:hover{
+  color:#053360;
+  border:1dip solid #053360;
+}
+.btnCstm:hover > .bgClr{
+  left:-1dip;
+}
+.buttonIcons{
+	font-family: MyAwesome;
+	visibility:none;
+}
+.btnCstm:hover > .buttonIcons{
+	visibility:visible;
+}
+.rndCorner{
+	border-radius:30dip;
+}
+/* Medium buttons */
+.btnCstmMd{
+  /* position: relative; */
+  border: 1dip solid #031a30;
+  color: #fff;
+  cursor: pointer;
+  background: #053360;
+  height:30dip;
+  width:170dip;
+  overflow:hidden;
+  text-align:center;
+  transition: left(cubic-in-out, duration:0.3s)
+			  color(cubic-in-out, duration:0.4s)
+			  border(cubic-in-out, duration:0.4s);
+  padding:0;
+  vertical-align:middle;
+  line-height:30dip;
+  font-weight:bold;
+  margin-top:15dip;
+  display:inline-block;
+  font-size:14dip;
+}
+.btnCstmMd .bgClr{
+	background:#fff;
+  min-height:33dip;
+  width:172dip;
+  position:absolute;
+  z-index:-1;
+  left:-310dip;
+  transition: left(cubic-in-out, duration:0.3s);
+}
+.buttonIcons{
+	font-family: MyAwesome;
+	visibility:none;
+}
+.btnCstmMd:hover > .buttonIcons{
+	visibility:visible;
+}
+/* Live update CSS */
+.product_heading_liveUpdate{
+	text-align:center;font-weight:500;font-size:15dip;color:#e90000;margin-top:-3dip;margin-bottom:0dip;
+}
+.product_description_liveUpdate{
+	padding-left:15dip;padding-right:15dip;text-align:center;
+	margin-top:10dip!important;
+	margin-bottom:-5dip;
+	font-size:13dip;
+}
+.popup_header_liveUpdate{
+	background:#053360;
+	padding:8dip;
+	padding-top:2dip;
+	padding-bottom:2dip;
+	border-bottom:2dip solid #031a30;
+}
+.des_div_liveUpdate{
+	text-align:center;
+	height:30dip;
+	margin-top:-3dip;
+}
+#logo_size_liveUpdate{
+ width:93dip!important;
+ height:38dip;
+}
+.remind_later_liveUpdate{
+    color:#053360;
+}
+
+/* Restart popup CSS */
+.popup_header_RestartPopup{
+	background:#053360;
+	padding:8dip;
+	padding-top:2dip;
+	padding-bottom:2dip;
+	border-bottom:3dip solid #031a30;
+}
+#logo_size_restartPopup{
+ width:90dip!important;
+ height:35dip!important;
+}
+.des_div_RestartPopup{
+	text-align:center;
+	height:40dip;
+}
+.product_heading_RestartPopup{
+	text-align:center;
+	font-weight:500;
+	font-size:16dip;
+	color:#e90000;
+	margin:0dip;
+	margin-top:-10dip;
+}
+.product_description_RestartPopup{
+	padding-left:15dip;
+	padding-right:15dip;
+	text-align:center;
+	margin-top:-5dip;
+	font-size:13dip;
+}
+.select_option_RestartPopup {
+    background: #f5f5f5;
+    width: 100dip;
+    border: 1dip solid #031a30;
+    color: #000000;
+}
+.select_opt_desc{
+	padding-left:70dip;
+}
+.mrglft{
+	margin-left:10dip;
+}
+.custmbtn{
+	padding-left:22dip;
+	padding-bottom:10dip;
+}
+.smfnt{
+	font-size:12dip;
+}
+
+
+/* Scheduled Scan CSS */
+.product_heading_sched_scan{
+	text-align:center;font-weight:500;font-size:16dip;color:#e90000;margin:0dip;margin-top:-10dip;
+}
+.product_description_sched_scan{
+	padding-left:15dip;padding-right:15dip;text-align:center;margin-top:-3dip;
+}
+.popup_header_sched_scan{
+	background:#2b5a7e;
+	padding:8dip;
+	padding-top:1dip;
+	padding-bottom:2dip;
+	margin-bottom:0dip;
+}
+.des_div_sched_scan{
+	text-align:center;
+	height:40dip;
+}
+#logo_size_sched_scan{
+ width:90dip!important;
+ height:35dip!important;
+}
+.remind_later_sched_scan{
+    color:#053360;
+}
+.header {
+    background:#053360;
+    border-bottom: 3dip solid #9ac0cc;
+}
+.logo img{
+	padding-left:1dip;
+	padding-top:5dip;
+	width:90dip!important;
+	height:auto;
+}
+.title {
+    text-align: center;
+    color: #e90000;
+    font-size: 17dip;
+}
+.details {
+    text-align: center;
+    width: 390dip;
+    font-size: 13dip;
+    padding-left: 15dip;
+    padding-right: 15dip;
+    padding-bottom: 0;
+    padding-top: 0dip;
+}
+.timer {
+    font-size: 40dip;
+    padding: 0;
+    margin: 0;
+    color: #e90000;
+    margin-top: -5dip;
+}
+form.window {
+    prototype: Widget url(IDR_TIS_DESKTOP_WIDGET.tis);
+    background: #dcdcdc;
+    background-repeat: expand stretch-left stretch-right stretch-center;
+    margin: 0dip;
+    transform: translate(0,0);
+    opacity: 1.0;
+    font: system;
+    padding: 0dip;
+    background-repeat: no-repeat;
+    text-align: center;
+    width: 421dip;
+    height: 201dip;
+}
+.scheduleScanBody {
+	padding: 0dip;
+	margin: 0dip;
+	border: 1dip solid #CCD1D1!important ;
+	width: 421dip;
+	height: 201dip;
+	position: relative;
+	overflow: hidden;
+}
+.product_heading_PortScan{
+	text-align:center;
+	font-weight:500;
+	font-size:16dip;
+	color:#e90000;
+	margin:0dip;
+	margin-top:-15dip;
+}
+.product_description_PortScan{
+	padding-left:15dip;
+	padding-right:15dip;
+	text-align:center;
+	font-size:13dip!important;
+	margin-top:2dip;
+}
+.popup_header_PortScan{
+	background:#2b5a7e;
+	padding:8dip;
+	padding-top:2dip;
+	padding-bottom:2dip;
+}
+#logo_size_PortScan{
+ width:90dip!important;
+ height:auto;
+}
+.clsbtn{
+	margin-top:9dip;
+	height:auto;
+	float:right;
+	color:White;
+}
+.clickable_cl{
+	behavior:clickable;
+	cursor:pointer;
+}
+

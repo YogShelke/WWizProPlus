@@ -1,0 +1,1123 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+		@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);
+        @import url(IDR_CSS_VGRID.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		
+		html{
+			padding:0dip;
+		    margin:0dip;
+		    width:620dip;
+		    height:314dip;
+			overflow:hidden;
+		    behavior:WardWizMemScanDlg;
+		}
+		body{
+			padding:0dip;
+			margin:0dip;
+			color:#fff;
+			width:620dip;
+		    height:320dip;
+			position: relative;
+			object-fit:fill!important;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background:url(IDR_JPG_CRYSTAL_BACKGRUND.jpg);
+		}
+		
+		.header{
+			background:rgba(25,33,43, .2);
+			width:615dip;
+			height:40dip;
+			color:#fff;
+			flow:horizontal;
+		}
+		/******** Menu Bar CSS *********/
+		
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+			margin-left:70dip
+		}
+		.inner_body_rescuedisk{
+			width:617dip;
+			height:220dip;
+			overflow:hidden;
+		}
+		.scan_progress{
+			width:616dip;
+			height:208dip;
+		}
+		.scan_report{
+			width:600dip;
+			height:204dip;
+			margin-top:8dip;
+			padding-left:2dip;
+		}
+		.footer_button{
+			width:200dip;
+			height:30dip;
+            margin-left:210dip;
+		}
+		.btn_scan_stop{
+			width:178dip;
+			height:20dip;
+			text-align:center;
+            margin-left:218dip;
+			margin-top:12dip;
+			flow:horizontal;
+		}
+		.btn_scan_stop label{
+			text-align:center;
+			position:relative;
+			display:block;
+		}
+		.scan_button:hover{
+			background-image:url(IDR_PNG_HEADER_HOVER.png)!important;
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #39505e;
+			color: #fff;
+		}
+		.clean_btn:hover{
+			background-image:url(IDR_PNG_HEADER_HOVER.png)!important;
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #39505e;
+			color: #fff;
+		}
+		
+		.scan_button {
+			width:90dip;
+			height:18dip;
+			border: 1dip solid #39505e;
+			color: #fff;
+			background-image:url(IDR_PNG_HEADER.png)!important;
+			font-size:11dip;
+			text-align:center;
+			border-radius:20dip;
+		}
+		.footer_button .scan_button{
+			width:180dip!important;
+			text-align:center;
+			height:26dip!important;
+			position:relative;
+			display:block;
+		}
+		.footer_button .scan_button label{
+			text-align:center;
+			position:relative;
+			display:block;
+		}
+
+		.button_small{
+			width:70dip!important;
+			height:18dip!important;
+			text-align:center;
+		}
+		button:disabled{
+			opacity:.5;
+		}
+		div#lightbox-shim{
+			top: 60dip;
+		}
+		.cl_welcome{
+			text-align:center;
+			font-size:20dip;
+			margin-top:4dip;
+			margin-bottom:0;
+			width:618dip;
+		}
+		.cl_scan_type{
+			text-align:center;
+			font-size:15dip;
+			margin-top:10dip;
+			width:618dip;
+		}
+		.cl_btn_radio{
+			margin-top:30dip;
+			margin-left:50dip;
+			flow:vertical;
+		}
+		.btnRadio{
+			width:500dip;
+			padding:5dip;
+			border-radius:20dip;
+		}
+		.btnRadio:hover{
+			background:rgba(0,0,0,.2);
+			box-shadow:inset 0 -1dip 10dip 5dip rgba(59, 152, 183, .7);
+		}
+		#ID_BTN_OPEN:collapsed{
+			visibility:none;
+		}
+		#ID_BTN_OPEN:expanded{
+			visibility:visible;
+		}
+		.folderPath{
+			margin-left:2dip;
+			margin-top:4dip;
+			margin-bottom:0;
+			padding-bottom:0;
+		}
+		.ScanPath{
+			margin-left:13dip;
+			margin-top:5dip;
+			margin-bottom:5dip;
+			padding-bottom:0;
+			text-align:center;
+		}
+		#SetScanStatus{
+			margin-top:0dip;
+			text-align:center;
+		}
+		.folderPath span{
+			font-weight:bold;
+		}
+		.folderPath:expanded{
+			visibility:visible;
+		}
+		.folderPath:collapsed{
+			visibility:none;
+		}
+		.SelectFolder{
+			height:25dip;
+			margin-top:5dip;
+			margin-left:10dip;
+			width:550dip;
+			margin-bottom:15dip;
+		}
+		.inner_body_rescuedisk:expanded{
+			visibility:visible;
+		}
+		.inner_body_rescuedisk:collapsed{
+			visibility:none;
+		}
+		.AnimatedDiv { 
+			aspect: AnimationFunction; 
+			border-radius:200dip;
+			overflow:hidden;
+			box-shadow:0 0 20dip #7cbbd2;/* see below */ 
+		}
+		.AnimatedDiv:expanded { 
+			text-shadow: 0 0 5dip #7cbbd2; 
+			transform: scale(1.05); 
+			transition: transform(sine-in-out, 900ms);		
+		}
+		.scan_progress:expanded{
+			visibility:visible;
+		}
+		.scan_progress:collapsed{
+			visibility:none;
+		}
+		#progress_bar_loader{
+			size:100dip;
+			font-size:30dip;
+			color:#7cbbd2;
+			vertical-align:middle;
+			text-align:center;
+			position:relative;
+			margin-left:255dip;
+			margin-top:30dip;
+			display:block;
+		}
+		.action{
+			flow:horizontal;
+			height:10dip;
+			width:618dip;
+			margin-left:0;
+		}
+		.action p{
+			text-align:center;
+			width:308dip;
+		}
+		.display_scan_path{
+			height:25dip;
+			margin-top:5dip;
+			width:618dip;
+			text-align:center;
+			font-size:12dip;
+		}
+		.show_hide{
+			height:15dip;
+			width:150dip;
+			margin-left:235dip;
+			text-align:center;
+			margin-top:0;
+		}
+		.show_hide p{
+			cursor:pointer;
+			margin:0;
+		}
+		#show_details:collapsed{
+			visibility:none;
+		}
+		#show_details:expanded{
+			visibility:visible;
+		}
+		#hide_details:collapsed{
+			visibility:none;
+		}
+		#hide_details:expanded{
+			visibility:visible;
+		}
+		.scan_report:expanded{
+			visibility:visible;
+		}
+		.scan_report:collapsed{
+			visibility:none;
+		}
+		.clean_btn{
+			width:90dip;
+			height:18dip;
+			font-size:11dip;
+			border-radius:20dip;
+			float:right;
+			margin-top:6dip;
+			border: 1dip solid #39505e;
+			color: #fff;
+			background-image:url(IDR_PNG_HEADER.png)!important;
+		}
+		.final_block{
+			width:620dip;
+			height:270dip;
+			overflow:hidden;
+			text-align:center;
+		}
+		.final_block h1{
+			color:#fff; 
+			font-weight:250;
+			height:20dip;
+			text-align:center;
+		}
+		.final_block img{
+			margin-top:20dip;
+		}
+		.final_block:expanded{
+			visibility:visible;
+		}
+		.final_block:collapsed{
+			visibility:none;
+		}
+		#ID_BUTTON_NEXT{
+			margin-top:10dip;
+		}
+		.show_hide:expanded{
+			visibility:visible;
+		}
+		.show_hide:collapsed{
+			visibility:none;
+		}
+		.text_color{
+			color:#109323!important;
+			font-weight:500;
+		}
+		.next_scan:collapsed{
+			visibility:none;
+		}
+		.next_scan:expanded{
+			visibility:visible;
+		}
+		.next_scan{
+			float:right; 
+		}
+		.message_display_block {
+			background:rgba(0,8,44,.95);
+			position:absolute;
+			top:-60dip;
+			width:617dip;
+			height:60dip;
+			visibility:none;
+			text-align:center;
+			margin-top:40dip;
+			color: #fff;
+		}
+		.message_display_block:expanded {
+			visibility:visible;
+			top:0;
+			transition:top(sine-in-out, 700ms);
+		}
+		.message_display_block:collapsed {
+			transform:scale(1);
+			transition: transform(linear,10s);
+		}
+		.table_chk_box{
+			margin-top:5dip;
+		}
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:590dip;
+			height:200dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin-left:10dip!important;
+		}
+	
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+			.prev { display:none; }
+			.next { display:none; }
+			
+			.base,
+			.next-page, 
+			.prev-page { background:white;}
+			
+			.slider    { background: gray;}
+			
+			.base:disabled { background: #aaa;}
+				
+			.slider:hover  { background: gold; border-left:1dip solid #AAA;}
+			
+			.slider:active { background: khaki; }
+			
+			.base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+			.corner { background: transparent; }
+		}
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		
+		table th:nth-child(1)  {  width:0.05*; }
+		table th:nth-child(2)  {  width:0.10*; }
+		table th:nth-child(3)  {  width:0.70*; }		
+		table th:nth-child(4)  {  width:0.15*; }
+		
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		table tr:current
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		}
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}		
+		table td:nth-child(1) {  text-align:center; width:0.15*;padding-top:2dip; } /* first column */
+		table td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		}
+		
+		table td:nth-child(3) {  
+			text-align:left; 
+			width:0.15*;
+			width:0.4*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* third column */
+		
+		table td:nth-child(4){ 
+			text-align:left;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+			width:.1*;
+			border-left:1dip solid #bdbccc;
+		}
+		#ID_STOP_BTN{
+			margin-left:5dip;
+		}
+		.close_btn{
+			size:10dip;
+			background:none;
+			fill: #fff;
+			cursor:pointer;
+			stroke:#fff;
+		}
+		.menu_utility{
+			width:684dip;
+			flow:horizontal;
+		}
+		.close_cl{
+			position:relative; 
+			margin-left:560dip; 
+			margin-top:8dip; 
+			padding:2dip;
+		}
+</style>
+
+<script type="text/tiscript">
+	include "IDR_TIS_MAIN.tis";
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+</script>
+
+<script type="text/tiscript">
+	var records = new Array(0);
+	var ArrQuarantineRecords = new Array(0);
+	var csFolderPath = new Array(0);
+	var varFlagScanType = 0;
+	var varThreatFoundCount = 0;
+	var varStartScanFlag = 0;
+	var vlistObj;
+	var IsScanning = 1;
+	var RecordLength = 0;
+	var vCheckBoxSelectAll = $(body);
+</script>
+
+<script type="text/tiscript">    
+	var chart = $(#progress_bar_loader);	
+</script>
+
+<script type="text/tiscript">
+function AnimationFunction()
+{
+	function flipflop() { this.state.expanded = !this.state.expanded; }
+
+	this.start = function() {
+		this.state.expanded = true; // triggers transition/animation
+		this.on("animationend.AnimatedDiv", flipflop );
+	}
+	this.stop = function() {
+		this.state.expanded = false;
+		this.off("animationend.AnimatedDiv");
+	}
+}
+</script>
+<script type="text/tiscript">
+function PieChartOn(element)
+{
+    const strokeWidth = 6; // dip
+    var strokeColor = color(124,187,210); // blue
+    const circleColor = color(241,241,241); // gray 
+
+    var start = 0;
+    var value = 0;
+
+    function render(gfx)
+    {
+      var (w,h) = this.box(#dimension);
+      var (x,y) = (w/2, h/2);
+      var r = Integer.min(w,h) / 2 - strokeWidth / 2;
+
+      gfx.strokeWidth(strokeWidth + 0.5)
+         .strokeColor(circleColor)
+         .arc(x,y,r,r, 0deg, 360deg)
+         .strokeColor(strokeColor)
+         .arc(x,y,r,r, 90deg, 360deg * value);
+    }
+    element.paintContent = render;
+    element["value"] = property(v) {
+      get return value;
+      set {
+        value = v;
+        element.text = String.$({ (value * 100).toInteger() }%);
+        element.refresh();
+      }
+    };
+}
+PieChartOn(chart);
+</script>
+
+<script type="text/tiscript">
+const selectAll = vCheckBoxSelectAll.$(input#select-all);
+vCheckBoxSelectAll.on("change","#select-all", function()		// select/deselect all
+{
+    var selected = this.value;
+    for( var record in records)
+		record.selected = selected;
+	$(#ID_BUTTON_CLEAN).state.disabled = false;
+	$(.message_display_block).state.collapsed = true;
+});
+</script>
+
+<script type="text/tiscript">
+vCheckBoxSelectAll.on("change","tbody > tr", function()
+{															// some change inside tr 
+    this.data.selected = this.value.selected; 				// note: each row (this) is a form here so its value is structure:
+    if( !this.data.selected )								// input(selected).value to record.selected in this case
+        selectAll.value = false;
+	$(#ID_BUTTON_CLEAN).state.disabled = false;
+	$(.message_display_block).state.collapsed = true;
+});
+</script>
+
+<script type="text/tiscript"> 
+$(#ID_SELECT_FOLDER).on("change", function() {
+	$(#ID_BTN_OPEN).state.expanded = true;
+	varFlagScanType = 1;
+	$(.message_display_block).state.collapsed = true;
+});
+$(#ID_ALL_DRIVES).on("change", function() {
+	varFlagScanType = 0;
+	$(#ID_BTN_OPEN).state.collapsed = true;
+	$(.folderPath).state.collapsed = true;
+	$(.message_display_block).state.collapsed = true;
+});
+</script>
+
+<script type="text/tiscript">	
+$(body).onClick = function() {
+	if(varQuarantineFlag == 0)
+		$(.message_display_block).state.collapsed = true;
+}	
+</script>
+
+<script type="text/tiscript">
+ $(#ID_BUTTON_CLOSE).onClick = function()
+ {
+	if(varStartScanFlag == 0 && varThreatFoundCount == 0)
+		view.OnCloseButton();
+		
+	if(varStartScanFlag == 1)
+	{	
+		self.OnPauseCustomScan(SetScanStatus);
+		$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_RESUME");
+		$(#simple-dialog).value = Lang.translate("SCAN_PROGRESS_DO_YOU_STOP_SCANNING");
+	}
+	
+	if(varThreatFoundCount != 0)
+		$(#simple-dialog).value = Lang.translate("ID_THREAT_FOUND_CLOSE_DLG_MSG");
+		
+	var res = dialog { 	body:$(form#simple-dialog),
+						returns: #values,
+						buttons: [  { caption: Lang.translate("ID_YES"), role:#ok, value:true },
+									{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+					 };
+	if(res == true)
+	{
+		view.OnCloseButton();
+	}
+	else
+	{
+		if(varStartScanFlag == 1)
+		{
+			self.OnResumeCustomScan(SetScanStatus);
+			$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+		}
+	}
+ }
+</script>
+
+<script type="text/tiscript">
+$(#ID_BTN_OPEN).onClick = function()
+{
+	$(.message_display_block).state.collapsed = true;
+	var varFolderPath = view.onGetFolderPath();
+	if(varFolderPath != "")
+	{
+		$(.folderPath).state.expanded = true;
+		csFolderPath[0] = {selected:true ,File_Path:varFolderPath};
+		$(#ID_PATH).value = varFolderPath;
+	}
+}
+</script>
+
+<script type= "text/tiscript"> 
+function AddVirusFoundEntry( strThreatName, strFileName, strActiontaken, SpyID)
+{
+	var varThreatName;
+	if(strThreatName == "USER_DEFINED")
+		varThreatName = Lang.translate("ID_USER_DEFINED");
+	else
+		varThreatName = strThreatName;
+	records[varThreatFoundCount] = {selected:true, ThreatName:varThreatName, FilePath:strFileName, ActionTaken:strActiontaken, WardWizID:SpyID };
+	
+	varThreatFoundCount++;
+	$(#ID_TOTAL_THREATS_DETECTED).value = " " + varThreatFoundCount;
+	if(varThreatFoundCount > 0)
+		$(#select-all).state.disabled = false;
+}
+</script>
+
+<script type="text/tiscript">
+function ShowScanFinishedMsg()
+{
+   if(varThreatFoundCount == 0)
+    {
+		$(#ID_FILE_SCANED).text = $(#ID_TOTAL_OBJ_SCANNED).value;
+		$(.show_hide).state.collapsed = true;
+		$(.scan_report).state.collapsed = true;
+		$(#show_details).state.collapsed = true;
+		$(#hide_details).state.collapsed = true;
+		$(.inner_body_rescuedisk).state.collapsed = true;
+		$(.scan_progress).state.collapsed = true;
+		$(.final_block).state.expanded = true;
+
+        $(#ID_STATUS).text = Lang.translate("NO_THREATS_FOUND");
+		$(#ID_STATUS).attributes.addClass("text_color");
+		$(#ID_FILE_SCAN_COUNT).attributes.addClass("text_color");
+    }
+	else 
+	{
+		$(.show_hide).state.collapsed = true;
+		$(#ID_BUTTON_CLEAN).state.disabled = false;
+		$(.scan_progress).state.collapsed = true;
+		$(.final_block).state.collapsed = true;
+		$(.scan_report).state.expanded = true;
+    }
+	varStartScanFlag = 0;
+}
+</script>
+
+<script type="text/tiscript"> 
+function SetScanFinishedStatus(str)
+{
+	chart.value = 1;
+    function SetScanFinishedStatusDelayed()
+    {
+        g_bIsAnyTaskInProcess = false;
+        g_varCurrentTask = #NONE;
+        ShowScanFinishedMsg();
+        $(#ID_PATH).text = "";
+		$(.folderPath).state.collapsed = true;
+    }
+    self.timer(500ms, SetScanFinishedStatusDelayed);
+	RecordLength = records.length;
+    return 1;
+}
+</script>
+
+<script type="text/tiscript">
+function ShowNotificationMessage(varMsgType, strMessageText)
+{
+    if(varMsgType == 1)
+	{
+		//ShowScanFinishedMsg();
+	}
+}
+</script>
+
+<script type="text/tiscript">
+$(#ID_BTN_START_SCAN).onClick = function()
+{
+	chart.value = 0;
+	if(varFlagScanType == 1 && $(#ID_PATH).value == "")
+	{
+		$(.message_display_block).state.expanded = true;
+		$(#ID_STATUS_MSG).value = Lang.translate("IDS_SERVERNAME_CONTINUE");
+		return;
+	}
+	else
+	{
+		$(.message_display_block).state.collapsed = true;
+		$(.inner_body_rescuedisk).state.collapsed = true;
+		$(.scan_progress).state.expanded = true;
+		$(.final_block).state.collapsed = true;
+		$(.show_hide).state.expanded = true;
+		$(#show_details).state.expanded = true;
+		$(#hide_details).state.collapsed = true;
+		
+		IsScanning = 1;
+		varStartScanFlag = 1;
+		if(varFlagScanType == 1)
+			view.OnStartCustomScan(csFolderPath, SetScanStatus, AddVirusFoundEntry,SetScanFinishedStatus,ShowNotificationMessage);
+		else
+			view.OnStartFullScan(SetScanStatus, AddVirusFoundEntry, SetScanFinishedStatus,ShowNotificationMessage); // for start scan		
+	}
+}
+</script>
+
+<script type="text/tiscript"> 
+function SetScanStatus(str)
+{
+	$(#SetScanStatus).text = str;
+	return 1;
+}
+</script>
+
+<script type="text/tiscript">
+	function SetStatus(evt) {
+		$(#SetScanStatus).text = evt.data;
+		self.update();
+	}
+	function SetCurrentFileCount(evt) {
+		var varCurrentFile = evt.data.one.toInteger();
+		var varTotalFile = evt.data.two.toInteger();
+		$(#ID_TOTAL_OBJ_SCANNED).value = " "+varCurrentFile;
+		var varScanPercentage = 1;
+		if(varTotalFile != 0)
+		{
+			varScanPercentage = varCurrentFile * 100;
+			varScanPercentage = varScanPercentage /  varTotalFile;
+		}
+		chart.value = varScanPercentage.toFloat()/100;
+		if(chart.value == 0.0)
+		{
+			chart.value = 0.01;
+		}
+		if(chart.value == 1)
+		{
+			chart.value = 0.99;
+		}
+		else if(chart.value > 1)
+		{
+			chart.value = 1;
+		}
+		self.update();
+	}
+	
+	self.subscribe(SetStatus, Event.BEHAVIOR_EVENT, 0x100 + 1);
+	self.subscribe(SetCurrentFileCount, Event.BEHAVIOR_EVENT, 0x100 + 2);
+</script>
+
+<script type="text/tiscript">
+$(#show_details).onClick = function()
+{
+	$(#show_details).state.collapsed = true;
+	$(#hide_details).state.expanded = true;
+	$(.show_hide).state.expanded = true;
+	$(.scan_progress).state.collapsed = true;
+	$(.scan_report).state.expanded = true;
+	SetTableValue();
+}
+$(#hide_details).onClick = function()
+{
+	$(#hide_details).state.collapsed = true;
+	$(#show_details).state.expanded = true;
+	$(.show_hide).state.expanded = true;
+	$(.scan_progress).state.expanded = true;
+	$(.scan_report).state.collapsed = true;
+	SetTableValue();
+}
+</script> 
+
+<script type= "text/tiscript">
+var varFlagSelected = 0;
+var varQuarantineFlag = 0;
+function CheckSelectedEntries()
+{
+	var bselected = false;
+	var i = 0;
+	var varArrLength = records.length;
+	
+	if(varArrLength > 0)
+    {
+		for(var iCount = 0; iCount < records.length; iCount++)
+		{
+			if(records[iCount].selected == true)
+			{
+				ArrQuarantineRecords[i] = records[iCount];
+				records.remove(iCount);
+				iCount--;
+				i++;
+				varFlagSelected = 1;
+			}
+		}
+	}
+}
+</script> 
+
+<script type= "text/tiscript">
+$(#ID_BUTTON_CLEAN).onClick = function()
+{
+	function ThreatCleanProcess()
+	{
+		varQuarantineFlag = 1;
+		if(varThreatFoundCount != 0)
+		{
+			CheckSelectedEntries();
+			if(varFlagSelected == 0)
+			{
+				$(.message_display_block).state.expanded = true;
+				$(#ID_STATUS_MSG).value = Lang.translate("IDS_SERVERNAME_CONTINUE");
+			}
+			else
+			{
+				$(#ID_BUTTON_CLEAN).state.disabled = true;
+				$(.message_display_block).state.expanded = true;
+				$(#ID_STATUS_MSG).text = Lang.translate("QUARANTINE_PROGRESS_PLEASE_WAIT");
+				self.OnClickScanCleanBtn(ArrQuarantineRecords, FunFlagQuarantine);
+				SetTableValue();
+			}
+		}
+	}
+	self.timer(100ms, ThreatCleanProcess);
+}
+</script> 
+
+<script type= "text/tiscript">
+function FunFlagQuarantine()
+{
+	self.timer(50ms,FunGetRecord);
+}
+</script> 
+
+<script type= "text/tiscript">
+function FunGetRecord()
+{
+	$(.message_display_block).state.collapsed = true;
+	$(#hide_details).state.disabled = false;
+	$(#ID_BUTTON_CLEAN).state.disabled = false;
+	if(records.length == 0)
+	{
+		self.timer(100ms, ShowFinalBlock);
+		varThreatFoundCount = 0;
+	}
+}
+</script>
+
+<script type= "text/tiscript">
+function ShowFinalBlock()
+{	
+	$(#ID_FILE_SCAN_COUNT).attributes.addClass("text_color");
+	$(#ID_FILE_SCANED).attributes.addClass("text_color");
+	$(#ID_STATUS).attributes.addClass("text_color");
+	$(#ID_STATUS).text = Lang.translate("ID_FINISHED");
+	$(#ID_FILE_SCANED).text = $(#ID_TOTAL_OBJ_SCANNED).value;
+	$(.show_hide).state.collapsed = true;
+	$(.scan_report).state.collapsed = true;
+	$(#show_details).state.collapsed = true;
+	$(#hide_details).state.collapsed = true;
+	$(.inner_body_rescuedisk).state.collapsed = true;
+	$(.scan_progress).state.collapsed = true;
+	$(.final_block).state.expanded = true;
+	varQuarantineFlag = 0 ;
+}
+</script>
+
+<script type= "text/tiscript">
+$(#ID_BUTTON_NEXT).onClick = function()
+{
+	$(.scan_progress).state.collapsed = true;
+	$(.final_block).state.collapsed = true;
+	$(.scan_report).state.collapsed = true;
+	$(.inner_body_rescuedisk).state.expanded = true;
+	records.splice(0,records.length);
+	varThreatFoundCount = 0;
+	$(#ID_TOTAL_THREATS_DETECTED).value = " 0";
+	$(#ID_TOTAL_OBJ_SCANNED).value = " 0";
+}
+</script>
+
+<script type= "text/tiscript">
+$(#ID_STOP_BTN).onClick = function()
+{
+	if(varStartScanFlag == 1)
+	{	
+		IsScanning = 2;
+		self.OnPauseCustomScan(SetScanStatus);
+		$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_RESUME");
+		$(#simple-dialog).value = Lang.translate("SCAN_PROGRESS_DO_YOU_STOP_SCANNING");
+	}
+		
+	var res = dialog { 	body:$(form#simple-dialog),
+						returns: #values,
+						buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },
+								   { caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+	};
+	if(res == true)
+	{
+		$(.scan_progress).state.collapsed = true;
+		$(.final_block).state.collapsed = true;
+		$(.scan_report).state.collapsed = true;
+		$(.show_hide).state.collapsed = true;
+		$(.folderPath).state.collapsed = true;
+		$(#ID_ALL_DRIVES).state.checked = true;
+		$(#ID_SELECT_FOLDER).state.checked = false;
+		$(#ID_BTN_OPEN).state.collapsed = true;
+		
+		varFlagScanType = 0;
+		$(#ID_PATH).text = "";
+		records.splice(0,records.length);
+		varThreatFoundCount = 0;
+		$(#ID_TOTAL_THREATS_DETECTED).value = " 0";
+		$(#ID_TOTAL_OBJ_SCANNED).value = " 0";
+		$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+		varStartScanFlag = 0;
+		view.OnCloseThreads();
+	}
+	else
+	{
+		if(varStartScanFlag == 1)
+		{
+			IsScanning = 1;
+			self.OnResumeCustomScan(SetScanStatus);
+			$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+		}
+		else
+		{
+			varStartScanFlag = 1;
+		}
+	}
+}
+</script>
+
+<script type="text/tiscript">
+	$(#ID_BTN_RESUME_SCAN).onClick = function()
+	{
+		if(IsScanning == 1)
+		{	$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_RESUME");
+			IsScanning = 2;
+			self.OnPauseCustomScan(SetScanStatus);
+		}
+		else if(IsScanning == 2)
+		{
+			$(#ID_BTN_RESUME_SCAN).text = Lang.translate("ID_BTN_PAUSE");
+			IsScanning = 1;
+			self.OnResumeCustomScan(SetScanStatus);
+		}
+	}
+</script>
+
+<script type="text/tiscript">
+function SetTableValue()
+{
+	vlistObj = $(table);
+	vlistObj.value = records;
+	vlistObj.on("change","tbody > tr", function()
+	{	
+		this.data.selected = this.value.selected;
+		if( !this.data.selected )
+			selectAll.value = false;
+	});
+}
+</script>
+<script type="text/tiscript"> 
+function self.ready()
+{
+	self.language = g_LanguageName;
+	$(.inner_body_rescuedisk).state.expanded = true;
+	$(.final_block).state.collapsed = true;
+	$(.scan_progress).state.collapsed = true;
+	$(.scan_report).state.collapsed = true;
+	$(.show_hide).state.expanded = true;
+	$(.folderPath).state.collapsed = true;
+	
+	$(#ID_BTN_OPEN).state.collapsed = true;
+	$(#show_details).state.collapsed = true;
+	$(#hide_details).state.collapsed = true;
+	$(.message_display_block).state.collapsed = true;
+	
+	$(#ID_BTN_RESUME_SCAN).state.value = Lang.translate("ID_BTN_PAUSE");
+	$(#ID_BUTTON_CLEAN).state.disabled = true;
+	$(#select-all).state.disabled = true;
+	SetTableValue();
+}
+</script>
+
+<form #simple-dialog caption="WardWiz Rescue Disk">
+    <p #StatusMessage .dfn >This is notifications....?</p>
+</form>
+</head>
+
+<body>
+<div .message_display_block>
+	<p #ID_STATUS_MSG><label></label></p>
+</div>
+	<div .header>
+		<div .tempLogo>
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+		</div>
+		<div .menu_utility role="window-caption">
+			<div>
+				<div .clickable_cl #ID_BUTTON_CLOSE .MenuSpacing .close_cl>
+					<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" 
+					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="close_btn">
+					<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+					<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div> <P .cl_welcome><label>ID_WWIZ_WELCOME_RESCUE_DISK</label></P> </div>
+	<div .inner_body_rescuedisk>
+		<P .cl_scan_type><label>ID_RESCUE_DISK_HEADER</label></P>
+		<div .cl_btn_radio>
+			<div .btnRadio>
+				<button type="radio" (group) #ID_ALL_DRIVES checked><label>ID_ALL_DISK_DRIVES</label></button>
+			</div>
+			<div .btnRadio>
+				<button type="radio" (group) #ID_SELECT_FOLDER ><label>ID_SELECT_FOLDER_AND_DISK</label></button>
+				<button .scan_button #ID_BTN_OPEN .dfn><label>ID_SELECT_FOLDER</label></button>
+			</div>
+			<div .SelectFolder>
+				<p .folderPath><span><label>ID_SELECTED_FOLDER</label></span> <label #ID_PATH></label></p>
+			</div>	
+		</div>
+		<div .footer_button>
+			<button .scan_button .button_small #ID_BTN_START_SCAN ><label>ID_HTM_CUSTOM_SCAN_SCAN_NOW</label></button>
+		</div>
+	</div>
+	<div .final_block>
+		<img src="IDR_PNG_OK.png">
+		<h1 #ID_STATUS ><label>ID_FINISHED</label></h1>
+		<h1 #ID_FILE_SCAN_COUNT> <span #ID_FILE_SCANED> 0 </span> <label>ID_FILES_SCANNED</label></h1>
+		<button .scan_button #ID_BUTTON_NEXT .dfn><label>ID_NEXT_SCAN</label></button>
+	</div>
+	<div .scan>
+		<div .scan_progress>
+			<div .AnimatedDiv #progress_bar_loader></div>
+			<div .display_scan_path><p .ScanPath #SetScanStatus><span></span> <label></label></p></div>
+			<div .action>
+				<p><img src="IDR_PNG_OBJECT.png"> <label>ID_OBJECTS_SCANNED</label><span #ID_TOTAL_OBJ_SCANNED> 0 </span></p> 
+				<p><img src="IDR_PNG_THREAT.png"> <label>ID_THREATS_FOUND</label><span #ID_TOTAL_THREATS_DETECTED> 0 </span></p>
+			</div>
+			<div .btn_scan_stop>
+				<button .scan_button .button_small #ID_BTN_RESUME_SCAN .dfn><label></label></button>
+				<button .scan_button .button_small #ID_STOP_BTN .dfn><label>ID_BTN_STOP</label></button>
+			</div>	
+		</div>
+		<div .scan_report>
+			<table>
+				<thead>
+					<tr>
+						<th style="width:40dip;"><input #select-all|checkbox checked /></th>
+						<th style="width:135dip;"><label>ID_THREAT_NAME</label></th>
+						<th style="width:320dip;"><label>ID_FILE_PATH</label></th>
+						<th><label>ID_ACTION</label></th>
+					</tr>
+				</thead>  
+				<tbody>
+					<tr><td><input(selected)|checkbox .table_chk_box /></td><td(ThreatName)></td><td(FilePath)></td><td(ActionTaken)></td></tr>
+				</tbody>
+			</table>
+			<button .clean_btn #ID_BUTTON_CLEAN .dfn><label>ID_BTN_CLEAN</label></button>
+		</div>
+		<div .show_hide>
+			<p #show_details><label>ID_SHOW_DETAILS</label></p>
+			<p #hide_details><label>ID_HIDE_DETAILS</label></p>
+		</div>	
+	</div>
+</body>
+</html>

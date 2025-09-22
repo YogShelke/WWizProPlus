@@ -1,0 +1,109 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+		@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:402dip;
+		   height:202dip;
+           overflow:hidden;
+		}
+		  body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:0.5dip solid #3d748e;
+		}
+		h3{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:400dip;
+			height:200dip;
+			background-size:cover;
+		}		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}	
+	</style>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+        self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			self.update();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			self.update();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		}
+        if(view.parameters.ProductLicenseType == #EXPIRED)
+        {
+            $(#ID_HEADING_POPUP).text=Lang.translate("ID_YOUR_PRODUCT_HAS_EXPIRED");
+            $(#ID_POPUP_EXPLANATION).text=Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_THE_COMMERCIAL_LICENSE");
+            $(#ID_BUTTON_REGISTER).state.collapsed = false;
+        }
+        else if(view.parameters.ProductLicenseType == #UNREGISTERED)
+        {
+            $(#ID_HEADING_POPUP).text=Lang.translate("ID_YOUR_PRODUCT_IS_UNREGISTERED");
+            $(#ID_POPUP_EXPLANATION).text=Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_A_LICENSE_OR_TO_REGISTER_FOR_30_DAYS_FREE_TRIAL");
+            $(#ID_BUTTON_REGISTER).state.collapsed = false;
+        }        
+    }
+    </script>
+	
+	<script type= "text/tiscript">
+        $(#window-close).onClick = function()
+        {
+            view.close();
+        }
+		$(#ID_BUTTON_BUY).onClick = function()
+        {
+			view.parameters.LaunchWebURL();
+			view.close();
+        }
+		$(#ID_BUTTON_REGISTER).onClick = function()
+        {
+            view.parameters.LaunchRegDlg();
+			view.close();
+        }
+    </script>
+</head>
+<body .register_body>
+<div .main>	
+	<div .header_register>
+		<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO style="width:25dip;">
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>
+	<div .inner_body>
+		<div .inner_content_register>
+			<div style="text-align:center;">
+				<h4><span .heading_color #ID_HEADING_POPUP></span></h4>
+				<p #ID_POPUP_EXPLANATION style="margin-top:0;"></p>
+			</div>
+		</div>
+		<div .content_display11>
+            <div .footer_buttonsll>
+                <div class="btnCstmMd" #ID_BUTTON_BUY><span .bgClrSmall></span><label>ID_BUY_NOW</label></div>
+				<div class="btnCstmMd" #ID_BUTTON_REGISTER><span .bgClrSmall></span><label>ID_REGISTER_NOW</label></div>
+            </div>
+		</div>
+	</div>	
+</div>
+</body>
+</html>

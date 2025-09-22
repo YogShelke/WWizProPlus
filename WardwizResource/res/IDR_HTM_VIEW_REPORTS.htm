@@ -1,0 +1,2135 @@
+﻿<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+<title>Wardwiz</title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_MAIN.css);		 
+	html 
+    { 
+      width:670dip;          
+      height:500dip;  	  
+	  overflow:hidden;
+      behavior:WardWizReports;
+    }
+    body {
+        padding: 0dip;
+        margin: 0dip;
+        position: relative;
+        background-size: cover;
+        border:0.5dip solid #3d748e;
+        background-repeat: no-repeat;		
+    }
+	.main{
+		background-size:cover;
+	}
+	.logo{
+		width:60dip;
+		height:45dip;
+	}
+	.logo_text{
+		width:565dip;
+		height:45dip;
+		padding-top:0;
+	}
+	.logo img{
+		padding-left:15dip;
+		padding-top:5dip;
+		width:30dip;
+		height:auto;
+	}
+	.side_menu{
+		width:40dip;
+		height:45dip;
+		flow:vertical;
+	}
+	.dragable_zone2{
+		width:90dip;
+		height:20dip;
+	}
+	.button_command{
+		width:80dip;
+		height:20dip;
+		padding-top:5dip;
+		text-align:left;
+		padding-right:15dip;
+		padding-left:0dip;
+	}
+	.button_command li{
+		display:inline-block;
+		list-style:none;
+		padding-left:5dip;
+		padding-top:0;
+	}
+    .button_command li:nth-child(1){
+       padding-left: 0dip;
+       margin-top: 3dip;
+     }
+	.clickable_cl{
+		behavior:clickable;
+		cursor:pointer;
+	}
+	input[type="checkbox"]{
+		padding-left:15dip;
+		
+	}
+    td{
+        margin-left: 10dip;
+		border:none;
+    } 
+	table .static_table{
+		width:*;
+	}
+    table.static_table td:nth-child(1) {  text-align:left; width:180dip;} /* first column */
+    table.static_table td:nth-child(2) {  text-align:left; width:180dip;} /* second column */
+    #scanning{
+        visibility:none;
+    }
+    #scanning:collapsed{
+        visibility:visible;
+    }    
+    #Registry_optimizer{
+        visibility:none;
+    }
+    #Registry_optimizer:collapsed{
+        visibility:visible;
+    }	
+	#temp_file_cleaner{
+        visibility:none;
+    }
+    #temp_file_cleaner:collapsed{
+        visibility:visible;
+    }	
+	#Update_Details{
+        visibility:none;
+    }
+    #Update_Details:collapsed{
+        visibility:visible;
+    }	
+	#USB_vaccinator{
+        visibility:none;
+    }
+    #USB_vaccinator:collapsed{
+        visibility:visible;
+    }	
+	#Autorun_scan{
+        visibility:none;
+    }
+    #Autorun_scan:collapsed{
+        visibility:visible;
+    }	
+	#Firewall_Details{
+        visibility:none;
+    }
+    #Firewall_Details:collapsed{
+        visibility:visible;
+    }	
+	#Parental_Control_Details{
+        visibility:none;
+    }
+    #Parental_Control_Details:collapsed{
+        visibility:visible;
+    }
+	#Browser_Security_Details{
+        visibility:none;
+    }
+    #Browser_Security_Details:collapsed{
+        visibility:visible;
+    }
+	#Browser_Security_Details h3{
+		margin-left:2dip;
+	}
+	#Browser_Security_Details #containerauto{
+		margin-left:3dip;
+	}
+    #HEURISTIC_SCAN:collapsed{
+        visibility:none;
+    }    
+    #HEURISTIC_SCAN_AUTO:collapsed{
+        visibility:none;
+    }    
+    #QUARANTINE_OPTION:collapsed{
+        visibility:none;
+    }    
+    .ScanningTable:collapsed{
+        visibility:none;
+    }    
+    #NO_THREAT:collapsed{
+        visibility:none;
+    }
+    #NO_THREAT:{
+        visibility:visible;
+    }    
+	#THREAT_FOUND:collapsed{
+        visibility:none;
+    }    
+    #THREATS_FOUND:{
+        visibility:visible;
+    }    
+    #AUTORUN_NO_THREAT:collapsed{
+        visibility:none;
+    }    
+    #AUTORUN_NO_THREAT:{
+        visibility:visible;
+    }       
+	.ScanTypeDetails:collapsed{
+        visibility:none;
+    }	
+	.AutoRunTable:collapsed{
+        visibility:none;
+    }    
+    #ID_FILES_UNHIDDEN:collapsed{
+        visibility:none;
+    }	
+	#ID_SCROLL_BAR:collapsed{
+        visibility:none;
+    }	
+	#ID_SCROLL_BAR:expanded{
+        visibility:visible;
+    }	
+	#ID_SCROLL_AUTO:collapsed{
+        visibility:none;
+    }	
+	#ID_SCROLL_AUTO:expanded{
+        visibility:visible;
+    }    
+    .USBVaccineDetails:collapsed{
+		visibility:none;
+	}    
+	/* style block defining vertical scrollbar */
+	@set my-v-scrollbar
+	{
+	  .prev { display:none; }
+	  .next { display:none; }
+	  
+	  .base,
+	  .next-page, 
+	  .prev-page { background:white; border-left:1dip solid #AAA; }
+	  
+	  .slider    { background: gray; }
+	 
+	  .base:disabled { background: #aaa; }
+		
+	  .slider:hover  { background: gold; border-left:1px solid #AAA; }
+	  
+	  .slider:active { background: khaki; }
+	  
+	  .base { width: 5dip;height: 5dip; } /* explicit declaration of its width */
+	  .corner { background: transparent; }
+	}
+	.message_display_block p{
+	    margin-top:10dip;
+	    margin-bottom:0dip;
+	    text-align:center;
+	    padding-top:10dip;
+	}
+	.message_display_block:collapsed {
+	    visibility:visible;
+	    top:45dip;
+	    transition:top(sine-in-out, 600ms);
+	}
+	.message_display_block_save p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:10dip;
+    }
+	.message_display_block_save:collapsed {
+	    visibility:visible;
+	    top:45dip;
+	    transition:top(sine-in-out, 600ms);
+	}
+    #container {
+		height:318dip;
+		width:633dip;
+		overflow:auto;
+		vertical-scrollbar: my-v-scrollbar;
+		horizontal-scrollbar: my-v-scrollbar;
+    }
+	#container > div {
+		size:*;
+	}
+	#container > widget {
+		height:*;
+		width:auto;
+	}
+    #containerauto {
+        height:318dip;
+        width:633dip;
+        overflow:auto;
+        vertical-scrollbar: my-v-scrollbar;
+        horizontal-scrollbar: my-v-scrollbar;
+    }
+	#containerauto > div {
+		size:*;
+	}
+	#containerauto > widget {
+		height:*;
+		width:auto;
+	} 
+	#ID_BUTTON_SAVE:disabled{
+	 	opacity:0.5;
+	}
+	#ID_PC_TABLE {
+	 	style-set:vgrid;
+	 	width:*;
+	 	height:*;
+	 	border:1dip solid transparent!important;
+    }  
+	#ID_PC_TABLE th:nth-child(1) {
+	  	width: 0.2*;
+	  	text-align:left!important;			
+	}			
+	#ID_PC_TABLE  td:nth-child(1) {
+	  	width: 0.1*;
+	  	text-align:left!important;
+	}
+	#ID_PC_TABLE tr:hover {
+		background:rgba(0,0,0,0)!important;
+		border:none!important;
+	}
+	#ID_PC_TABLE tr:checked,
+	#ID_PC_TABLE tr:current		{
+		background:rgba(0,0,0,0)!important;
+		border:none!important;
+	}	
+	#scanning h3{
+		margin-left:1dip;
+	}
+	#scanning #container .static_table{
+		margin-left:1dip;
+	}
+	#scanning #container h3{
+		margin-left:2dip;
+	}
+	.ScanTypeDetails h3{
+		margin-left:1dip;
+	}
+	.ScanTypeDetails .ScanDetails{
+		margin-left:1dip;
+	}
+	#Firewall_Details h3{
+		margin-left:2dip;
+	}
+	#Firewall_Details #containerauto .static_table{
+		margin-left:1dip;
+	}
+	.firewall_user{
+		margin-left:5dip;
+	}
+	#Parental_Control_Details h3{
+		margin-left:2dip;
+	}
+	#Parental_Control_Details #containerauto{
+		margin-left:3dip;
+	}
+	.reports_reg_scan_area{
+		margin-left:4dip;
+	}
+	.registry_optimizer_table{
+		margin-left:4dip;
+	}
+	#Update_Details h3{
+		margin-left:3dip;
+	}
+	#USB_vaccinator h3{
+		margin-left:3dip;
+	}
+	.update_details_table{
+		flow:horizontal;
+		margin-left:3dip;
+	}
+	.usb_vaccinator_table{
+		flow:horizontal;
+		margin-left:3dip;
+	}
+	#temp_file_cleaner h3{
+		margin-left:3dip;
+	}
+	.temp_file_cleaner_table{
+		flow:horizontal;
+		margin-left:3dip;
+	}
+	#Autorun_scan h3{
+		margin-left:1dip;
+	}
+	#Autorun_scan #containerauto .static_table
+	{
+		margin-left:1dip;
+	}
+	#Autorun_scan #containerauto h3
+	{
+		margin-left:2dip;
+	}
+	.AutoRunTable h3{
+		margin-left:1dip;
+	}
+	.AutoRunTable .AutoScanDetails{
+		margin-left:1dip;
+	}
+	.headerViewReport{
+		flow:horizontal;
+		width:668.4dip;
+	}
+	.message_display_block_save {
+		background:rgba(238,246,248,.95);
+		position:absolute;
+		top:-70dip;
+		width:670dip;
+		height:60dip;
+		visibility:none;
+		color:#555;
+		left:0;
+	}
+	.ScanTypeDetails h3{
+		font-size:14dip;
+		margin-bottom:6dip!important;
+	}
+	.static_bg_container{
+		background:#fff;
+		margin-left:11dip;
+		width:635dip;
+		padding:8dip 0 8dip 8dip;
+		height:370dip;
+		overflow-y:auto;
+		overflow-x:auto;
+		vertical-scrollbar: my-v-scrollbar;
+		horizontal-scrollbar: my-v-scrollbar;		
+	}
+	.static_bg_container_scan{
+		background:#fff;
+		margin-left:11dip;
+		width:635dip;
+		padding:8dip 0 8dip 8dip;
+		height:370dip;
+		overflow-y:auto;
+		overflow-x:auto
+		margin-top:11dip;
+		vertical-scrollbar: my-v-scrollbar;
+		horizontal-scrollbar: my-v-scrollbar;
+	}
+	.footer_bottom{
+		flow:horizontal;
+		width:668.4dip;
+		padding-bottom:15dip;
+		min-height:32dip;
+		padding-top:15dip;
+		bottom:0;
+		text-align:right;
+	}
+	.cstMgl{
+		margin-left:405dip;
+	}
+	.cstMgl .btnCstm{
+		margin-top:3dip;
+	}
+	#ID_BROWSE_SECURITY_REPORT{
+		visibility:none;
+	}
+	#ID_BROWSE_SECURITY_REPORT:collapsed{
+		visibility:none;
+	}
+	#ID_BROWSE_SECURITY_REPORT:expanded{
+		visibility:visible;
+	}
+    #ID_PARENTAL_DATETIME_REPORT {
+        visibility: none;
+    }
+    #ID_PARENTAL_DATETIME_REPORT:collapsed {
+        visibility: none;
+    }
+    #ID_PARENTAL_DATETIME_REPORT:expanded {
+        visibility: visible;
+    }	
+</style>
+    
+    <script type="text/tiscript">
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+    <script type="text/tiscript">
+    var DataBase;
+    var varRecordSet;
+	var RecordCount;
+	var varTotalSeconds;
+	var varTimeScan;
+	var bIsLoadForSave = false;
+	var bIsLoadFinish = false;
+	var varTempRecCount = 11;
+	var varTempTotalVal = 0;
+	var varTempCount = 0;
+	var vListPCDetails;
+	var vArrPC = new Array(0);
+	var vArrBrowserSec = new Array(0);
+	var vWebSecurityFlag = false;
+    </script>
+	
+	 <script type="text/tiscript">
+    function AddBrowserSecurityData(vArrData)
+	{
+		var tbl = new Element("table");
+		self.$(.BrowseSecurityDetails).insert(tbl);
+		var tr = new Element("tr");
+        for (var n = 0; n < 3; ++n)
+        {
+            var th = new Element("th");
+            tr.insert(th);
+        }
+        tbl.insert(tr);		
+		
+		for(var vIndex=0; vIndex < vArrData.length; vIndex++)
+		{
+			for(var vCnt=0; vCnt < 4; vCnt++)
+			{
+				tr = new Element("tr");
+				var td;				
+				for(var vCnt1=0; vCnt1 < 3; vCnt1++)
+				{
+					if(vCnt == 0)
+					{	
+						if(vIndex != 0 && vCnt1 == 0)					
+							tbl.insert("\n&nbsp;");
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_WEBSITE_NAME"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2: td = new Element("td",  vArrData[vIndex].varWebsiteName);
+									tr.insert(td);break;	   
+						}
+					}
+					else if(vCnt == 1)
+					{
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_WEBSITE_CATEGORY"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2:
+									if(vArrData[vIndex].varWebCategory==125)
+									{
+										td = new Element("td", Lang.translate("ID_MALWARE_SITE") );
+									}
+									else if(vArrData[vIndex].varWebCategory==122)
+									{
+										td = new Element("td", Lang.translate("ID_PHISHING_SITE") );
+									}
+									tr.insert(td);break;	   
+						}
+					}
+					else if(vCnt == 2)
+					{
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_ACCESSED_TIME"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2: td = new Element("td",  vArrData[vIndex].varTime);
+									tr.insert(td);break;	   
+						}
+					}
+					else if(vCnt == 3)
+					{
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_ACTION_TAKEN"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2: td = new Element("td",  Lang.translate("ID_BLOCKED"));
+									tr.insert(td);break;	   
+						}
+					}
+				}
+				tbl.insert(tr);
+				tbl.insert("\n&nbsp;");
+			}
+			tbl.insert("<hr>")	
+		}		
+	}
+	 </script>
+	 
+    <script type="text/tiscript">
+    function AddWebSecurityData(vArrData)
+	{
+		var tbl = new Element("table");
+		self.$(.BrowseDetails).insert(tbl);
+		var tr = new Element("tr");
+        for (var n = 0; n < 3; ++n)
+        {
+            var th = new Element("th");
+            tr.insert(th);
+        }
+        tbl.insert(tr);		
+		
+		for(var vIndex=0; vIndex < vArrData.length; vIndex++)
+		{
+			for(var vCnt=0; vCnt < 3; vCnt++)
+			{
+				tr = new Element("tr");
+				var td;				
+				for(var vCnt1=0; vCnt1 < 3; vCnt1++)
+				{
+					if(vCnt == 0)
+					{	
+						if(vIndex != 0 && vCnt1 == 0)					
+							tbl.insert("\n&nbsp;");
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_WEBSITE_NAME"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2: td = new Element("td",  vArrData[vIndex].varWebsiteName);
+									tr.insert(td);break;	   
+						}
+					}
+					else if(vCnt == 1)
+					{
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_WEBSITE_CATEGORY"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2: td = new Element("td", vArrData[vIndex].varWebCategory);	
+									tr.insert(td);break;	   
+						}
+					}
+					else if(vCnt == 2)
+					{
+						switch(vCnt1)
+						{
+							case 0: td = new Element("td", Lang.translate("ID_ACCESSED_TIME"));
+									tr.insert(td);break;
+							case 1: td = new Element("td", " : ");
+									tr.insert(td);break;
+							case 2: td = new Element("td",  vArrData[vIndex].varTime);
+									tr.insert(td);break;	   
+						}
+					}
+				}
+				tbl.insert(tr);
+				tbl.insert("\n&nbsp;");
+			}
+			tbl.insert("<hr>")	
+		}		
+	}
+	
+    function ShowScanDetailsReport(varRecordSet, varTimeScan)
+    {
+        var tbl = new Element("table");
+        if(g_ScanType < 6)
+        {
+            self.$(.ScanDetails).insert(tbl);
+        }
+        else if(g_ScanType == 9)
+        {
+            self.$(.USBVaccineDetails).insert(tbl);
+        }
+        else if(g_ScanType == 10)
+        {
+            self.$(.AutoScanDetails).insert(tbl);
+        }
+        if(g_ScanType == 11 || g_ScanType == 12)
+        {
+            self.$(.ScanDetails).insert(tbl);
+        }
+        var tr = new Element("tr");
+        for (var n = 0; n < varRecordSet.length; ++n)
+        {
+            var th = new Element("th");
+            tr.insert(th);
+        }
+        tbl.insert(tr);
+
+        do
+        {
+            tr = new Element("tr:");
+
+            var td;
+            var counter = 0;
+            for (var varVirtualDBData in varRecordSet)
+            {
+                if(varTempCount < varTempRecCount)
+                {
+                    switch(counter)
+                    {
+                                    case 0:
+                                            $(#ID_START_TIME).value = varVirtualDBData;
+                                            $(#ID_START_TIME_AUTO).value = varVirtualDBData;
+                                            $(#ID_START_TIME_TEMP).value = varVirtualDBData;
+                                            $(#ID_START_TIME_USB).value = varVirtualDBData;
+                                            break;
+                                    case 1:
+                                            $(#ID_END_TIME).value = varVirtualDBData;
+                                            $(#ID_END_TIME_AUTO).value = varVirtualDBData;
+                                            $(#ID_END_TIME_TEMP).value = varVirtualDBData;
+                                            $(#ID_END_TIME_USB).value = varVirtualDBData;
+                                            break;
+                                    case 2:
+                                                if(varVirtualDBData == "null")
+                                                {
+                                                    break;
+                                                }
+                                                else if(g_ScanType == 9)
+                                                {
+                                                    $(#ID_UNHIDDEN_COUNT_USB).value = varVirtualDBData;
+                                                    break;
+                                                }
+                                                    td = new Element("td", varVirtualDBData);
+                                                    tr.insert(td);
+                                                    break;
+                                    case 3:
+                                            if(varVirtualDBData == "null")
+                                                {
+                                                    break;
+                                                }
+                                            else if(varVirtualDBData == "null" && g_ScanType == 9)
+                                                {
+                                                    td = new Element("td", view.parameters.varArrayDetails.ThreatsFound);
+                                                    tr.insert(td);
+                                                    break;
+                                                }
+
+                                            if(varVirtualDBData == "IDS_USB_VACCINE_NO_FILE_FOLDER")
+                                                {
+                                                    td = new Element("td", Lang.translate("ID_NO_FILE_FOLD_UNHIDE"));
+                                                    tr.insert(td);
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    td = new Element("td", varVirtualDBData);
+                                                    tr.insert(td);
+                                                    break;
+                                                }
+                                    case 4:
+                                            if(varVirtualDBData == "USBVACCINE")
+                                                {
+                                                    $(#ID_FILES_UNHIDDEN).state.collapsed = true;
+                                                    $(#ID_SET_VACCINTED).value = Lang.translate("ID_REPORTS_VACCIN_DRIVE");
+                                                    $(#ID_SET_VACCINTED_DRIVE).value = view.parameters.varArrayDetails.ThreatsFound;
+                                                    $(.USBVaccineDetails).state.collapsed =  true;
+                                                    varVirtualDBData = Lang.translate("ID_USB_VACCINE");
+                                                    $(#ID_OPTION_SELECTED_USB).value = varVirtualDBData;
+                                                }
+                                                else if( varVirtualDBData == "HIDEUNHIDEFOLDERS")
+                                                {
+                                                    varVirtualDBData = Lang.translate("ID_UNHIDE_FILES_FOLDERS");
+                                                    $(#ID_OPTION_SELECTED_USB).value = varVirtualDBData;
+                                                }
+                                            break;
+                                    case 5:
+                                            $(#ID_SCAN_TIME).value = varTimeScan;
+                                            $(#ID_SCAN_TIME_AUTO).value = varTimeScan;
+                                            $(#ID_SCAN_TIME_TEMP).value = varTimeScan;
+                                            $(#ID_SCAN_TIME_USB).value = varTimeScan;
+                                            break;
+                                    case 6:
+                                            if(varVirtualDBData == 0)
+                                            {
+                                                $(#ID_QUARANTINE_OPTION).text = Lang.translate("ID_SKIP");
+                                            }
+                                            else if(varVirtualDBData == 1)
+                                            {
+                                                $(#ID_QUARANTINE_OPTION).text = Lang.translate("ID_REPAIR");
+                                            }
+                                            else if(varVirtualDBData == 2)
+                                            {
+                                                $(#ID_QUARANTINE_OPTION).text = Lang.translate("ID_QUARANTINE");
+                                            }
+                                            break;
+                                    case 7:
+                                            if(varVirtualDBData == 1)
+                                            {
+                                                $(#ID_HEURISTIC_FLAG).text = Lang.translate("ID_ON");
+                                            }
+                                            else
+                                            {
+                                                $(#ID_HEURISTIC_FLAG).text = Lang.translate("ID_OFF");
+                                            }
+                                            break;
+                                    case 8:
+                                            $(#ID_FILES_SCANNED).value = varVirtualDBData;
+                                            $(#ID_FILES_SCANNED_AUTO).value = varVirtualDBData;
+                                            $(#ID_FILES_FOUND).value = varVirtualDBData;
+                                            break;
+                                    case 9:
+                                            $(#ID_THREATS_FOUND).value = varVirtualDBData;
+                                            $(#ID_THREATS_FOUND_COUNT).value = varVirtualDBData;
+                                            $(#ID_FILES_CLEANED).value = varVirtualDBData;
+                                            break;
+
+                    } // end of switch
+                    counter++;
+                }
+                else
+                {
+                    break;
+                }
+            }//end of for loop
+            varTempCount++;
+
+            if(varTempCount != 11)
+            {
+                tbl.insert(tr);
+				tbl.insert("<br/>");
+            }
+            if(varTempCount == varTempRecCount)
+            {
+                if(bIsLoadForSave == true)
+                {
+                    OnDisplayContent(varRecordSet);
+                }
+                break;
+            }
+
+            varTempTotalVal++;
+            if(varTempTotalVal == RecordCount)
+            {
+                bIsLoadFinish = true;
+                if(bIsLoadForSave == true)
+                {
+                    $(#ID_BUTTON_SAVE).state.disabled = false;
+                    OnSaveRecords();
+                }
+            }
+        } while( varRecordSet.next() );
+    }
+</script> 
+<script type="text/tiscript">
+function ShowScanDetails(varRecordSet, varTimeScan)
+    {
+        var tbl = new Element("table");
+        if(g_ScanType < 6)
+        {
+            self.$(.ScanDetails).insert(tbl);
+        }
+        else if(g_ScanType == 9)
+        {
+            self.$(.USBVaccineDetails).insert(tbl);
+        }
+        else if(g_ScanType == 10)
+        {
+             self.$(.AutoScanDetails).insert(tbl);
+        }
+
+        var tr = new Element("tr");
+
+        for (var n = 0; n < varRecordSet.length; ++n)
+        {
+            var th = new Element("th");
+            tr.insert(th);
+        }
+        tbl.insert(tr);
+
+        do
+        {
+        tr = new Element("tr");
+        tbl.insert("<br/>");
+
+        var td;
+        var counter = 0;
+        for (var varVirtualDBData in varRecordSet)
+        {
+          switch(counter)
+          {
+                          case 0:
+                                  $(#ID_START_TIME).value = varVirtualDBData;
+                                  $(#ID_START_TIME_AUTO).value = varVirtualDBData;
+                                  $(#ID_START_TIME_TEMP).value = varVirtualDBData;
+                                  $(#ID_START_TIME_USB).value = varVirtualDBData;
+                                  break;
+                          case 1:
+                                  $(#ID_END_TIME).value = varVirtualDBData;
+                                  $(#ID_END_TIME_AUTO).value = varVirtualDBData;
+                                  $(#ID_END_TIME_TEMP).value = varVirtualDBData;
+                                  $(#ID_END_TIME_USB).value = varVirtualDBData;
+                                  break;
+                          case 2:
+                                    if(varVirtualDBData == "null")
+                                    {
+                                          break;
+                                    }
+                                    else if(g_ScanType == 9)
+                                    {
+                                        $(#ID_UNHIDDEN_COUNT_USB).value = varVirtualDBData;
+                                          break;
+                                    }
+                                        td = new Element("td", varVirtualDBData);
+                                        tr.insert(td);
+                                        break;
+                          case 3:
+                                  if(varVirtualDBData == "null")
+                                    {
+                                        break;
+                                    }
+                                   else if(varVirtualDBData == "null" && g_ScanType == 9)
+                                     {
+                                        td = new Element("td", view.parameters.varArrayDetails.ThreatsFound);
+                                        tr.insert(td);
+                                        break;
+                                     }
+
+                                  if(varVirtualDBData == "IDS_USB_VACCINE_NO_FILE_FOLDER")
+                                      {
+                                          td = new Element("td", Lang.translate("ID_NO_FILE_FOLD_UNHIDE"));
+                                          tr.insert(td);
+                                          break;
+                                      }
+                                      else
+                                      {
+                                          td = new Element("td", varVirtualDBData);
+                                          tr.insert(td);
+                                          break;
+                                      }
+                          case 4:
+                                  if(varVirtualDBData == "USBVACCINE")
+                                      {
+                                          $(#ID_FILES_UNHIDDEN).state.collapsed = true;
+                                          $(#ID_SET_VACCINTED).value = Lang.translate("ID_REPORTS_VACCIN_DRIVE");
+                                          $(#ID_SET_VACCINTED_DRIVE).value = view.parameters.varArrayDetails.ThreatsFound;
+                                          $(.USBVaccineDetails).state.collapsed =  true;
+                                          varVirtualDBData = Lang.translate("ID_USB_VACCINE");
+                                          $(#ID_OPTION_SELECTED_USB).value = varVirtualDBData;
+                                      }
+                                      else if( varVirtualDBData == "HIDEUNHIDEFOLDERS")
+                                      {
+                                          varVirtualDBData = Lang.translate("ID_UNHIDE_FILES_FOLDERS");
+                                          $(#ID_OPTION_SELECTED_USB).value = varVirtualDBData;
+                                      }
+                                  break;
+                          case 5:
+                                  $(#ID_SCAN_TIME).value = varTimeScan;
+                                  $(#ID_SCAN_TIME_AUTO).value = varTimeScan;
+                                  $(#ID_SCAN_TIME_TEMP).value = varTimeScan;
+                                  $(#ID_SCAN_TIME_USB).value = varTimeScan;
+                                  break;
+                          case 6:
+								  if(varVirtualDBData == 0)
+                                  {
+                                      $(#ID_QUARANTINE_OPTION).text = Lang.translate("ID_SKIP");
+                                  }
+                                 else if(varVirtualDBData == 1)
+                                  {
+                                      $(#ID_QUARANTINE_OPTION).text = Lang.translate("ID_REPAIR");
+                                  }
+                                 else if(varVirtualDBData == 2)
+                                  {
+                                      $(#ID_QUARANTINE_OPTION).text = Lang.translate("ID_QUARANTINE");
+                                  }
+                                  break;
+                          case 7:
+                                  if(varVirtualDBData == 1)
+                                  {
+                                      $(#ID_HEURISTIC_FLAG).text = Lang.translate("ID_ON");
+                                  }
+                                  else
+                                  {
+                                      $(#ID_HEURISTIC_FLAG).text = Lang.translate("ID_OFF");
+                                  }
+                                  break;
+                          case 8:
+                                  $(#ID_FILES_SCANNED).value = varVirtualDBData;
+                                  $(#ID_FILES_SCANNED_AUTO).value = varVirtualDBData;
+                                  $(#ID_FILES_FOUND).value = varVirtualDBData;
+                                  break;
+                          case 9:
+                                  $(#ID_THREATS_FOUND).value = varVirtualDBData;
+                                  $(#ID_THREATS_FOUND_COUNT).value = varVirtualDBData;
+                                  $(#ID_FILES_CLEANED).value = varVirtualDBData;
+                                  break;
+
+          }
+        counter++;
+      }
+        tbl.insert(tr);
+      } while( varRecordSet.next() );
+    }
+</script> 
+<script type="text/tiscript">
+	function OnSaveRecords() 
+	{
+        $(.message_display_block_save).state.collapsed = false;
+		var varRet = self.funOnSaveRecords();	
+        if(varRet == "")
+        {
+			return;
+        }
+
+		var stream = Stream.openFile(varRet, "uw");
+        if(g_ScanType < 6 || g_ScanType == 12)
+        {
+            stream << $(#scanning).value;
+        }
+        else if(g_ScanType == 6)
+        {
+            stream << $(#Registry_optimizer).value;
+        }
+        else if(g_ScanType == 7)
+        {
+            stream << $(#Update_Details).value;
+        }
+        else if(g_ScanType == 8)
+        {
+            stream << $(#temp_file_cleaner).value;
+        }
+        else if(g_ScanType == 9)
+        {
+            stream << $(#USB_vaccinator).value;
+        }
+        else if(g_ScanType == 10)
+        {
+            stream << $(#Autorun_scan).value;
+        }
+		else if(g_ScanType == 11)
+		{
+            stream << $(#scanning).value;
+		}
+		else if(g_ScanType == 13)
+		{
+			var Report = $(#Firewall_Details).value.split("\n");
+            var Details = "";
+			for(var v=0; v < Report.length; v++)
+			{
+				Details += Report[v].trim();
+				Details +="\n";
+			}	
+			stream << Details;
+		}
+		else if(g_ScanType == 14)
+		{
+			if(vWebSecurityFlag == false)
+			{				
+				var Report = $(#ID_PARENTAL_DATETIME_REPORT).value.split("\n");
+			    var Details = "";
+			    for(var v=0; v < Report.length; v++)
+			    {
+			    	Details += Report[v].trim();
+			    	Details +="\n";
+			    }	
+			    stream << Details;
+		    }
+			else if(vWebSecurityFlag == true)
+			{
+				stream << $(#ID_BROWSE_SECURITY_REPORT).value;
+			}
+		}
+		else if(g_ScanType == 15)
+		{
+			var Report = $(#Browser_Security_Details).value.split("\n");
+			    var Details = "";
+			    for(var v=0; v < Report.length; v++)
+			    {
+			    	Details += Report[v].trim();
+			    	Details +="\n";
+			    }	
+			    stream << Details;
+		}
+        stream.close();
+		self.timer(50ms,function(){
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_REPORTS_SAVE_SUCCESS");
+			$(.message_display_block).state.collapsed = true;
+		});
+	}
+</script> 
+<script type="text/tiscript">
+	function InsertDataForScan()
+	{	
+		varTempCount = 0;
+		if(bIsLoadFinish == true)
+		{
+			return;
+		}
+		ShowScanDetailsReport(varRecordSet, varTimeScan);
+	}
+</script> 
+    <script type="text/tiscript">
+	function OnDisplayContent(varRecordSet)
+	{
+		self.timer(7ms,InsertDataForScan);	
+	}
+	</script> 
+    <script type="text/tiscript">
+      var containerauto = $(#containerauto);
+      var vsbval = $(#containerauto>widget);
+      vsbval.setValues(
+          0,   // position
+          0,   // min
+          100, // max (a.k.a. document size)
+          25,  // page (a.k.a. view size)
+          10   // step ( inc/dec on arrow buttons )
+      );
+
+      // by default standalone scrollbar sends onScroll event to its parent:
+      containerauto.onScroll = function(evt)
+      {
+        var div = $(#containerauto>div);//.text = this.value.toString();
+        switch(evt.type) {
+          case Event.SCROLL_HOME:            
+			vsbval.value = evt.scrollPos; 
+			break;
+          case Event.SCROLL_END:              
+			vsbval.value = evt.scrollPos;
+			if(vsbval.value > 70)
+			{
+				self.timer(10ms,InsertDataForScan);				
+			} 
+			else
+			{
+				break;
+			}
+			break;
+          case Event.SCROLL_STEP_PLUS:        
+			vsbval.value = evt.scrollPos; 
+			if(vsbval.value > 70)
+			{
+				self.timer(10ms,InsertDataForScan);
+			}
+			else
+			{
+				break;
+			}
+			break;
+          case Event.SCROLL_STEP_MINUS:      
+			vsbval.value = evt.scrollPos; 
+			break;
+          case Event.SCROLL_PAGE_PLUS:       
+			vsbval.value = evt.scrollPos; 
+			if(vsbval.value > 70)
+			{
+				self.timer(10ms,InsertDataForScan);
+			}
+			else
+			{
+				break;
+			}
+			break;
+          case Event.SCROLL_PAGE_MINUS:      
+			vsbval.value = evt.scrollPos; 
+			break;
+          case Event.SCROLL_POS       :       
+			vsbval.value = evt.scrollPos; 
+			if(vsbval.value > 70)// && bIsLoadFinish == false)
+			{
+				self.timer(10ms,InsertDataForScan);
+			}
+			else
+			{
+				break;
+			}
+			break;
+        }
+      }
+    </script>
+	<script type="text/tiscript">
+      var container = $(#container);
+      var vsb = $(#container>widget);
+      vsb.setValues(
+          0,   // position
+          0,   // min
+          100, // max (a.k.a. document size)
+          25,  // page (a.k.a. view size)
+          10   // step ( inc/dec on arrow buttons )
+      );
+
+      // by default standalone scrollbar sends onScroll event to its parent:
+      container.onScroll = function(evt)
+      {
+        var div = $(#container>div);//.text = this.value.toString();
+        switch(evt.type) {
+          case Event.SCROLL_HOME:            
+			vsb.value = evt.scrollPos; 
+			break;
+          case Event.SCROLL_END:              
+			vsb.value = evt.scrollPos;
+			if(vsb.value > 70)
+			{
+				self.timer(10ms,InsertDataForScan);				
+			} 
+			else
+			{
+				break;
+			}
+			break;
+          case Event.SCROLL_STEP_PLUS:        
+			vsb.value = evt.scrollPos; 
+			if(vsb.value > 70)
+			{
+				self.timer(10ms,InsertDataForScan);
+			}
+			else
+			{
+				break;
+			}
+			break;
+          case Event.SCROLL_STEP_MINUS:      
+			vsb.value = evt.scrollPos; 
+			break;
+          case Event.SCROLL_PAGE_PLUS:       
+			vsb.value = evt.scrollPos; 
+			if(vsb.value > 70)
+			{
+				self.timer(10ms,InsertDataForScan);
+			}
+			else
+			{
+				break;
+			}
+			break;
+          case Event.SCROLL_PAGE_MINUS:      
+			vsb.value = evt.scrollPos; 
+			break;
+          case Event.SCROLL_POS       :       
+			vsb.value = evt.scrollPos; 
+			if(vsb.value > 70)// && bIsLoadFinish == false)
+			{
+				self.timer(10ms,InsertDataForScan);
+			}
+			else
+			{
+				break;
+			}
+			break;
+        }
+      }
+    </script>
+	
+<script type="text/tiscript">
+    function TotalScanTime(varTotalSeconds)
+    {
+        var varTotalTime;
+        var varHour,varMinute,varSecond;
+        varHour = varTotalSeconds/3600;
+        if(varHour < 10)
+        {
+            varHour = "0" + varHour;
+        }
+        varMinute = (varTotalSeconds % 3600) /60;
+        if(varMinute < 10)
+        {
+            varMinute = "0" + varMinute;
+        }
+        varSecond = (varTotalSeconds % 3600) % 60;
+        if(varSecond < 10)
+        {
+            varSecond = "0" + varSecond;
+        }
+        varTotalTime =varHour + ":" + varMinute + ":" + varSecond;
+        return varTotalTime;
+    }
+</script>
+	
+<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language =  view.parameters.varLanguageValue;
+		var varSessionID = 0;
+		if(view.parameters.ThemeType == "defaultTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			self.update();
+		}
+		else if(view.parameters.ThemeType == "darkTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			self.update();
+		}
+		else if(view.parameters.ThemeType == "crystalTheme")
+		{
+			$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			self.update();
+		}
+		if(g_ScanType != 14)
+		{
+			varSessionID = view.parameters.varArrayDetails.varStartTime;
+			RecordCount = view.parameters.varArrayDetails.ThreatsFound;
+		}	
+        $(#scanning).state.collapsed = true;
+        $(#Registry_optimizer).state.collapsed = false;
+        $(#temp_file_cleaner).state.collapsed = false;
+        $(#Update_Details).state.collapsed = false;
+        $(#USB_vaccinator).state.collapsed = false;
+        $(#Autorun_scan).state.collapsed = false;
+        $(#HEURISTIC_SCAN).state.collapsed = false;
+        $(#QUARANTINE_OPTION).state.collapsed = false;
+        $(.ScanTypeDetails).state.collapsed = false;
+        $(.AutoRunTable).state.collapsed = false;
+        $(#ID_FILES_UNHIDDEN).state.collapsed = false;
+        $(.USBVaccineDetails).state.collapsed =  false;
+		$(#Firewall_Details).state.collapsed = false;
+		$(#Parental_Control_Details).state.collapsed = false;
+			
+		if(g_ScanType != 14)
+		{
+			if(view.parameters.varArrayDetails.ThreatsFound == 0)
+			{
+				$(.AutoRunTable).state.collapsed = true;
+				$(.ScanTypeDetails).state.collapsed = true;
+				$(#THREATS_FOUND).value = "";
+				$(#THREATS_FOUND_AUTO).value = "";
+				$(#NO_THREAT).state.collapsed = false;
+				$(#NO_THREAT).value = Lang.translate("NO_THREATS_FOUND");
+				$(#AUTORUN_NO_THREAT).state.collapsed = false;
+				$(#AUTORUN_NO_THREAT).value = Lang.translate("NO_THREATS_FOUND");
+			}
+			else
+			{
+				$(.AutoRunTable).state.collapsed = false;
+				$(.ScanTypeDetails).state.collapsed = false;
+				$(#THREATS_FOUND).state.collapsed = false;
+				$(#NO_THREAT).state.collapsed = true;
+				$(#AUTORUN_NO_THREAT).state.collapsed = true;
+			}
+		}			
+        switch(g_ScanType)
+        {
+            case 1:
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_FULL_SCAN");
+                    $(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_FULL_SCAN");
+                    break;
+            case 2:
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_QUICK_SCAN");
+                    $(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_QUICK_SCAN");
+                    break;
+            case 3:
+					//$(#ID_SCAN_TYPE).value = Lang.translate("ID_CUSTOM_SCAN");
+                    //$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_CUSTOM_SCAN");
+                    break;
+            case 4:
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_ACTIVE_SCAN");
+                    $(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_ACTIVE_SCAN");
+                    break;
+            case 5:
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_ANTIROOTKIT_SCAN");
+                    $(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_ANTIROOTKIT_SCAN");
+                    break;
+            case 6:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_REGISTRY_OPTIMIZER");
+                    break;
+            case 7:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_UPDATES_SMALL");
+                    break;
+            case 8:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_TEMP_FILE_CLEANER1");
+                    break;
+            case 9:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_USB_VACCINATOR");
+                    break;
+            case 10:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_AUTORUN_SCANNER");
+                    break;
+			case 11:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_BOOT_TIME_SCAN");
+					break;
+			case 12:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_EMAIL_SCAN");
+					break;
+			case 13:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_FIREWALL");
+					break;
+			case 14:
+					if(view.parameters.vWebSecFlag == true)
+						$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_BROWSER_SECURITY");
+					else	
+						$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_PARENTAL_CONTROL");
+					break;
+			case 15:
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_BROWSER_SECURITY");
+					break;
+        }
+
+
+       if(g_ScanType < 6)
+        {
+            $(#scanning).state.collapsed = true;
+			$(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+            $(#ID_THREATS_CLEANED).value = view.parameters.varArrayDetails.varActionTaken;
+
+            if(g_ScanType == 5)
+            {
+                $(#HEURISTIC_SCAN).state.collapsed = true;
+                $(#QUARANTINE_OPTION).state.collapsed = true;
+            }
+			if(RecordCount < 5)
+			{
+				$(#ID_SCROLL_BAR).state.collapsed = true;
+			}
+			DataBase = DB.open(varReportDBPath);
+            varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionStartTime],SSD.[db_ScanSessionEndTime], db_VirusName,
+            db_ThreatPath, db_ActionTaken,
+            (strftime('%s',db_ScanSessionEndTime) - strftime('%s',db_ScanSessionStartTime)) AS db_TotalSessionScanTime,
+            SSD.[db_QuarantineOpt],SSD.[db_IsHeuristicEnb],SSD.[db_TotalFilesScanned],SSD.[db_TotalThreatsFound],SSD.[db_ScanTypeId]
+            FROM  Wardwiz_ScanSessionDetails SSD
+            LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+            ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+            WHERE  SSD.[db_ScanSessionID] = ?",varSessionID);
+			if ( varRecordSet instanceof Recordset )
+			{
+				if(g_ScanType==3 && varRecordSet[10] == 1)
+				{
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_CUSTOM_SCAN");
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_CUSTOM_SCAN");
+				}
+				else if(g_ScanType==3 && varRecordSet[10] == 3)
+				{	
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_USB_SCAN");
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_USB_SCAN");
+				}
+				varTotalSeconds = varRecordSet[5];
+				varTimeScan = TotalScanTime(varTotalSeconds);
+				ShowScanDetailsReport(varRecordSet, varTimeScan);
+			}
+			else
+				DataBase.close();
+        }
+        else if(g_ScanType == 6)
+        {
+            $(#scanning).state.collapsed = false;
+            $(#Registry_optimizer).state.collapsed = true;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+            $(#TotalFilesScanned).value = view.parameters.varArrayDetails.ThreatsFound;
+            $(#ThreatsFoundCount).value = view.parameters.varArrayDetails.varVirusName;
+            if(view.parameters.varArrayDetails.varActionTaken == 1)
+            {
+                $(#COMActiveXEntries).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#COMActiveXEntries).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varUninstallEntriesEnabled == 1)
+            {
+                $(#UninstallEntries).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#UninstallEntries).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.vardFontEntriesEnabled == 1)
+            {
+                $(#FontEntries).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#FontEntries).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varSharedDllsEnabled == 1)
+            {
+                $(#SharedDLLs).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#SharedDLLs).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varApplicationPathsEnabled == 1)
+            {
+                $(#ApplicationPaths).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#ApplicationPaths).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varHelpFileInfoEnabled == 1)
+            {
+                $(#HelpFileInformation).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#HelpFileInformation).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varWindowsStartupItemEnabled == 1)
+            {
+                $(#WindowsStartupItems).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#WindowsStartupItems).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varWindowsServicesEnabled == 1)
+            {
+                $(#WindowsServices).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#WindowsServices).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varInvalidExtensionEnabled == 1)
+            {
+                $(#InvalidExtensions).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#InvalidExtensions).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varRootkitEnabled == 1)
+            {
+                $(#RootKits).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#RootKits).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varRogueAppsEnabled == 1)
+            {
+                $(#RogueApplications).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#RogueApplications).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varWormsEnabled == 1)
+            {
+                $(#Worms).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#Worms).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varSpywareThreatsEnabled == 1)
+            {
+                $(#SpywareThreats).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#SpywareThreats).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varAdwareThreatsEnabled == 1)
+            {
+                $(#AdwareThreats).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#AdwareThreats).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varKeyLoggersEnabled == 1)
+            {
+                $(#Keyloggers).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#Keyloggers).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varBHOEnabled == 1)
+            {
+                $(#BHO).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#BHO).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varExplorerEntriesEnabled == 1)
+            {
+                $(#ExplorerEntries).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#ExplorerEntries).value = Lang.translate("ID_OFF");
+            }
+
+            if(view.parameters.varArrayDetails.varInternetExpEntriesEnabled  == 1)
+            {
+                $(#InternetExplorerEntries).value = Lang.translate("ID_ON");
+            }
+            else
+            {
+                $(#InternetExplorerEntries).value = Lang.translate("ID_OFF");
+            }
+        }
+        else if(g_ScanType == 7)
+        {
+            $(#scanning).state.collapsed = false;
+            $(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = true;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;	
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+            $(#ID_START_TIME_UPDATES).value = view.parameters.varArrayDetails.DateTimeActiveScan;
+            $(#ID_END_TIME_UPDATES).value = view.parameters.varArrayDetails.varEndTime;
+            $(#ID_FILE_SIZE_UPDATES).value = view.parameters.varArrayDetails.varActionTaken;
+            $(#ID_FILES_COUNT).value = view.parameters.varArrayDetails.ThreatsFound;
+            $(#ID_TIME_UPDATES).value = view.parameters.varArrayDetails.varScanTime;
+        }
+        else if(g_ScanType == 8)
+        {
+            $(#scanning).state.collapsed = false;
+            $(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = true;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+				
+            DataBase = DB.open(varReportDBPath);
+            varRecordSet = DataBase.exec("SELECT db_CleanerSessionStartTime, db_CleanerSessionEndTime, db_CleanerSessionStartDate, db_CleanerSessionEndDate, db_TempCleanerId, (strftime('%s',db_CleanerSessionEndTime) - strftime('%s',db_CleanerSessionStartTime)) AS db_TotalScanTime, TCS.[db_TempCleanerSessionId], db_ActionTaken, TCS.[db_FilesScanCount], TCS.[db_FilesCleanCount]
+            FROM Wardwiz_TempFilesCleanerSessionDetails TCS
+            LEFT OUTER JOIN Wardwiz_TempFilesCleanerDetails TC
+            ON TCS.[db_TempCleanerSessionId] = TC.[db_TempCleanerSessionId]
+            WHERE TCS.[db_TempCleanerSessionId] = ?",varSessionID);
+            if ( varRecordSet instanceof Recordset )
+			{
+                varTotalSeconds = varRecordSet[5];
+				varTimeScan = TotalScanTime(varTotalSeconds);
+                ShowScanDetails(varRecordSet, varTimeScan);
+			}
+            else
+                DataBase.close();
+
+        }
+        else if(g_ScanType == 9)
+        {
+            $(#scanning).state.collapsed = false;
+            $(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = true;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+            DataBase = DB.open(varReportDBPath);
+            varRecordSet = DataBase.exec("SELECT USD.[db_USBSessionStartTime],USD.[db_USBSessionEndTime], db_FilesUnHideCount,ifnull(UD.[db_VaccinatedDrive],'IDS_USB_VACCINE_NO_FILE_FOLDER' )as db_VaccinatedDrive, USD.[db_VaccinatorType],
+            (strftime('%s',db_USBSessionEndTime) - strftime('%s',db_USBSessionStartTime)) AS db_TotalVaccinatorTime
+            FROM Wardwiz_USBVaccinatorSessionDetails USD
+            LEFT OUTER JOIN Wardwiz_USBVaccinatorDetails UD
+            ON USD.[db_USBVaccinatorSessionId] = UD.[db_USBVaccinatorSessionId]
+            WHERE USD.[db_USBVaccinatorSessionId] = ?",varSessionID);
+            if ( varRecordSet instanceof Recordset )
+			{
+				varTotalSeconds = varRecordSet[5];
+				varTimeScan = TotalScanTime(varTotalSeconds);
+                ShowScanDetails(varRecordSet, varTimeScan);
+			}
+            else
+                DataBase.close();
+
+        }
+        else if(g_ScanType == 10)
+        {
+            $(#scanning).state.collapsed = false;
+            $(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = true;
+            $(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+			$(#ID_THREATS_FOUND_AUTO).value = view.parameters.varArrayDetails.ThreatsFound;
+			if(RecordCount < 5)
+			{
+				$(#ID_SCROLL_AUTO).state.collapsed = true;
+			}
+            DataBase = DB.open(varReportDBPath);
+            varRecordSet = DataBase.exec(" SELECT ASD.[db_ScanSessionStartTime], ASD.[db_ScanSessionEndTime], AD.[db_VirusName], AD.[db_ThreatPath], AD.[db_ActionTaken],
+            (strftime('%s',db_ScanSessionEndTime) - strftime('%s',db_ScanSessionStartTime)) AS db_TotalScanTime, AD.[db_AutorunScanId],AD.[db_ScanSessionId], db_FilesScannedCount, db_FilesCleanedCount
+            FROM  [Wardwiz_AutorunScanSessionDetails] ASD
+            LEFT OUTER JOIN  [Wardwiz_AutorunScanDetails] AD
+            ON AD.[db_ScanSessionID] = ASD.[db_ScanSessionID]
+            WHERE  ASD.[db_ScanSessionID] = ?",varSessionID);
+            if ( varRecordSet instanceof Recordset )
+			{
+                varTotalSeconds = varRecordSet[5];
+				varTimeScan = TotalScanTime(varTotalSeconds);
+				ShowScanDetailsReport(varRecordSet, varTimeScan);
+			}
+            else
+                DataBase.close();
+
+        }
+		else if(g_ScanType == 11)
+		{
+			$(#scanning).state.collapsed = true;
+			$(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+            $(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			$(#ID_THREATS_CLEANED).value = view.parameters.varArrayDetails.varActionTaken;
+
+            if(g_ScanType == 5)
+            {
+                $(#HEURISTIC_SCAN).state.collapsed = true;
+                $(#QUARANTINE_OPTION).state.collapsed = true;
+            }
+			if(RecordCount < 5)
+			{
+				$(#ID_SCROLL_BAR).state.collapsed = true;
+			}
+			DataBase = DB.open(varReportDBPath);
+            varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionStartTime],SSD.[db_ScanSessionEndTime], db_VirusName,
+            db_ThreatPath, db_ActionTaken,
+            (strftime('%s',db_ScanSessionEndTime) - strftime('%s',db_ScanSessionStartTime)) AS db_TotalSessionScanTime,
+            SSD.[db_QuarantineOpt],SSD.[db_IsHeuristicEnb],SSD.[db_TotalFilesScanned],SSD.[db_TotalThreatsFound],SSD.[db_ScanTypeId]
+            FROM  Wardwiz_ScanSessionDetails SSD
+            LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+            ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+            WHERE  SSD.[db_ScanSessionID] = ?",varSessionID);
+            if ( varRecordSet instanceof Recordset )
+			{
+				if(g_ScanType==11 && varRecordSet[10] == 11)
+				{
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_BOOT_TIME_SCAN");
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_BOOT_TIME_SCAN");
+				}
+				varTotalSeconds = varRecordSet[5];
+				varTimeScan = TotalScanTime(varTotalSeconds);
+				ShowScanDetailsReport(varRecordSet, varTimeScan);
+			}
+			else
+				DataBase.close();
+		}
+		else if(g_ScanType == 12)
+		{
+			$(#ID_REPORTS_FILE).state.value = Lang.translate("ID_TOT_ATTACH_SCN");
+			$(#ID_REPORTS_THREATS).state.value = Lang.translate("ID_TOT_ATTACH_CLEAN");
+			$(#scanning).state.collapsed = true;
+			$(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#ID_SCROLL_BAR).state.collapsed = true;
+			$(#Browser_Security_Details).state.collapsed = false;
+            $(#ID_THREATS_CLEANED).value = view.parameters.varArrayDetails.varActionTaken;
+
+            if(g_ScanType == 5)
+            {
+                $(#HEURISTIC_SCAN).state.collapsed = true;
+                $(#QUARANTINE_OPTION).state.collapsed = true;
+            }
+			/*if(RecordCount < 5)
+			{
+				$(#ID_SCROLL_BAR).state.collapsed = true;
+			}*/
+			DataBase = DB.open(varReportDBPath);
+            varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionStartTime],SSD.[db_ScanSessionEndTime], db_VirusName,
+            db_ThreatPath, db_ActionTaken,
+            (strftime('%s',db_ScanSessionEndTime) - strftime('%s',db_ScanSessionStartTime)) AS db_TotalSessionScanTime,
+            SSD.[db_QuarantineOpt],SSD.[db_IsHeuristicEnb],SSD.[db_TotalFilesScanned],SSD.[db_TotalThreatsFound],SSD.[db_ScanTypeId]
+            FROM  Wardwiz_ScanSessionDetails SSD
+            LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+            ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+            WHERE  SSD.[db_ScanSessionID] = ?",varSessionID);
+			if ( varRecordSet instanceof Recordset )
+			{
+				if(g_ScanType==12 && varRecordSet[10] == 12)
+				{
+					$(#ID_SCAN_TYPE).value = Lang.translate("ID_EMAIL_SCAN");
+					$(#ID_SCAN_TYPE_HEADER).value = Lang.translate("ID_EMAIL_SCAN");
+				}
+				varTotalSeconds = varRecordSet[5];
+				varTimeScan = TotalScanTime(varTotalSeconds);
+				ShowScanDetailsReport(varRecordSet, varTimeScan);
+			}
+			else
+				DataBase.close();
+		}
+		else if(g_ScanType == 13)
+		{
+			$(#scanning).state.collapsed = false;
+			$(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = true;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+			if(view.parameters.varArrayDetails.varUsername)
+			{	
+				var currentStatus = "";	
+				if(view.parameters.varArrayDetails.varEnabled == 1)
+					currentStatus = " "+Lang.translate("ID_ENABLED");
+				else	
+					currentStatus = " "+Lang.translate("ID_DISABLED");
+				$(#firewall_user).value = view.parameters.varArrayDetails.varUsername + currentStatus;				
+			}
+			else
+			{
+				$(#firewall_user).value = Lang.translate("ID_PORT_SCN_BLOCK");
+	        }
+			$(#ID_FIREWALL_DATE).value = view.parameters.varArrayDetails.varDate;
+			$(#ID_FIREWALL_TIME).value = view.parameters.varArrayDetails.varTime;				
+		}
+		else if(g_ScanType == 14)
+		{
+			$(#scanning).state.collapsed = false;
+			$(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = true;
+			$(#Browser_Security_Details).state.collapsed = false;
+			
+			if(view.parameters.vWebSecFlag == true)
+			{
+				vWebSecurityFlag = true;
+				$(#ID_PROD_VERSION).state.value = view.parameters.vAccProdVersion;
+				$(#ID_DB_VERSION).state.value = view.parameters.vDBVersion;
+
+				$(#ID_BROWSE_SECURITY_REPORT).state.expanded = true;
+				AddWebSecurityData(view.parameters.varArrayDetails);
+			}	
+			else	
+			{
+				vWebSecurityFlag = false;
+				$(#ID_PARENTAL_DATETIME_REPORT).state.expanded = true;
+				$(#ID_BROWSE_SECURITY_REPORT).state.collapsed = true;
+				vListPCDetails = $(#ID_PC_TABLE > tbody);
+				for(var vindex=0; vindex < view.parameters.varArrayDetails.length; vindex++)
+				{
+					vArrPC[vindex] = {varTime:"",varActivity:""};
+					vArrPC[vindex].varTime = view.parameters.varArrayDetails[vindex].varTime; 
+					if(view.parameters.varArrayDetails[vindex].varActivity == 0)
+					{
+						vArrPC[vindex].varTime = vArrPC[vindex].varTime+Lang.translate("ID_LOG_IN");
+					}
+					else if(view.parameters.varArrayDetails[vindex].varActivity == 2)
+					{
+						vArrPC[vindex].varTime = vArrPC[vindex].varTime+Lang.translate("ID_LOG_OUT");
+					}
+					else if(view.parameters.varArrayDetails[vindex].varActivity == 1)
+					{
+						vArrPC[vindex].varTime = vArrPC[vindex].varTime+Lang.translate("ID_ADMIN_BLK_ACCESS");
+					}			
+					else if(view.parameters.varArrayDetails[vindex].varActivity == 3)
+					{
+						vArrPC[vindex].varTime = vArrPC[vindex].varTime+" "+Lang.translate("ID_PARCTRL_ENABLE");
+					}
+					else if(view.parameters.varArrayDetails[vindex].varActivity == 4)
+					{
+						vArrPC[vindex].varTime = vArrPC[vindex].varTime+" "+Lang.translate("ID_PARCTRL_DISABLE");	
+					}
+				}
+				vListPCDetails.value = vArrPC;					
+				$(#ID_PC_USER).value = view.parameters.varUser.toUpperCase();
+			}
+		}
+		else if(g_ScanType == 15)
+		{
+			$(#scanning).state.collapsed = false;
+			$(#Registry_optimizer).state.collapsed = false;
+            $(#temp_file_cleaner).state.collapsed = false;
+            $(#Update_Details).state.collapsed = false;
+            $(#USB_vaccinator).state.collapsed = false;
+            $(#Autorun_scan).state.collapsed = false;
+			$(#Firewall_Details).state.collapsed = false;
+			$(#Parental_Control_Details).state.collapsed = false;
+			$(#Browser_Security_Details).state.collapsed = true;
+			
+			$(#ID_PROD_VERSION_BROWSE_SEC).state.value = view.parameters.vAccProdVersion;
+			$(#ID_DB_VERSION_BROWSE_SEC).state.value = view.parameters.vDBVersion;
+
+			AddBrowserSecurityData(view.parameters.varArrayDetails);
+		}
+    }
+	
+    $(#ID_BUTTON_SAVE).onClick = function()
+    {
+		if((g_ScanType < 6 || g_ScanType == 10 || g_ScanType == 11) && RecordCount > 0)
+        {
+			$(#ID_STATUS_MSG_SAVE).text = Lang.translate("ID_REPORTS_LOADING");
+			$(.message_display_block_save).state.collapsed = true;
+			$(#ID_BUTTON_SAVE).state.disabled = true;
+			if(bIsLoadFinish == true)
+			{
+				$(#ID_BUTTON_SAVE).state.disabled = false;
+				OnSaveRecords();
+			}
+			else
+			{
+				bIsLoadForSave = true;
+				OnDisplayContent(varRecordSet);	
+			}
+		}
+		else
+		{
+			OnSaveRecords();
+		}
+    }
+
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+	    view.close(null);
+    }
+	$(#ID_BTN_CLOSE).onClick = function()
+    {
+        view.close(null);
+    }
+	$(body).onClick = function ()
+    {
+		$(.message_display_block).state.collapsed = false;
+    }    
+    </script>
+	
+</head>
+<body>
+<div .main>
+	<div .headerViewReport>
+		<div .logo role="window-caption">
+            <img src="IDR_IMG_SHIELD_ICO.png">
+		</div>
+		<div .logo_text role="window-caption">
+            <p style="font-size:16dip;"><label>ID_REPORT_FOR</label> : <span #ID_SCAN_TYPE_HEADER > </span></p>
+		</div>
+		
+		<div .side_menu>
+			<div style="flow:horizontal;">
+				<div .button_command>
+					<ul style="margin-top:2dip;">
+						<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+							</svg>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div type="html" #scanning .static_bg_container_scan>
+	<h3><label>ID_SCANNING_DETAILS</label>:</h3>
+	<div #container>
+		<table .static_table>
+			<tr><td><label>ID_REPORTS_SCAN_TYPE</label></td><td>: <span #ID_SCAN_TYPE></span></td></tr>
+			<tr><td><label #ID_REPORTS_FILE>ID_REPORTS_FILE_SCANNED</label></td><td>: <span #ID_FILES_SCANNED></span></td></tr>
+			<tr><td><label>ID_REPORTS_THREATS_FOUND</label></td><td>: <span #ID_THREATS_FOUND></span></td></tr>
+			<tr><td><label #ID_REPORTS_THREATS>ID_REPORTS_THREATS_CLEANED</label></td><td>: <span #ID_THREATS_CLEANED></span></td></tr>
+			<tr><td><label>ID_REPORTS_START_TIME</label></td><td>: <span #ID_START_TIME></span></td></tr>
+			<tr><td><label>ID_REPORTS_END_TIME</label></td><td>: <span #ID_END_TIME></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOTAL_TIME</label></td><td>: <span #ID_SCAN_TIME></span></td></tr>
+			<tr #QUARANTINE_OPTION><td><label>ID_REPORTS_AUTO_QUAR</label></td><td>: <span #ID_QUARANTINE_OPTION></span></td></tr>
+			<tr #HEURISTIC_SCAN><td><label>ID_REPORTS_HEUR_SCAN</label></td><td>: <span #ID_HEURISTIC_FLAG></span></td></tr>
+		</table>
+		<h3 #NO_THREAT></h3>
+		<div .ScanTypeDetails><h3 #THREATS_FOUND><label>ID_REPORTS_THREATS_FOUND</label>:</h3>
+			<div .ScanDetails>
+			</div>
+		</div> 
+		<widget|vscrollbar #ID_SCROLL_BAR /> 
+	</div>
+</div>
+
+<div #Registry_optimizer .static_bg_container>
+	<div .reports_reg_scan_area>
+		<table .static_table>
+			<tr><td><label>ID_REPORTS_INVALID_REG</label>          </td><td>: <span #TotalFilesScanned></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOTAL_REG</label>         </td><td>: <span #ThreatsFoundCount></span></td></tr>
+		</table>
+		<h4><label>ID_REPORTS_REG_SCAN_AREA</label>: </h4>
+	</div>
+	<table .registry_optimizer_table .static_table>
+		<tr><td><label>ID_REPORTS_COM_ENTRY</label></td><td>: <span #COMActiveXEntries></span></td></tr>
+		<tr><td><label>ID_REPORTS_UNINS_ENTRY</label></td><td>: <span #UninstallEntries></span></td></tr>
+		<tr><td><label>ID_REPORTS_FONT_ENTRY</label></td><td>: <span #FontEntries></span></td></tr>
+		<tr><td><label>ID_REPORTS_SHARE_DLL</label></td><td>: <span #SharedDLLs></span></td></tr>
+		<tr><td><label>ID_REPORTS_APP_PATH</label></td><td>: <span #ApplicationPaths></span></td></tr>
+		<tr><td><label>ID_REPORTS_HELP_FILE</label></td><td>: <span #HelpFileInformation></span></td></tr>
+		<tr><td><label>ID_REPORTS_WIN_START</label></td><td>: <span #WindowsStartupItems></span></td></tr>
+		<tr><td><label>ID_REPORTS_WIN_SERV</label></td><td>: <span #WindowsServices></span></td></tr>
+		<tr><td><label>ID_REPORTS_INV_EXT</label></td><td>: <span #InvalidExtensions></span></td></tr>
+		<tr><td><label>ID_REPORTS_ROOTKIT</label></td><td>: <span #RootKits></span></td></tr>
+		<tr><td><label>ID_REPORTS_ROGUE_APP</label></td><td>: <span #RogueApplications></span></td></tr>
+		<tr><td><label>ID_REPORTS_WORM</label></td><td>: <span #Worms></span></td></tr>
+		<tr><td><label>ID_REPORTS_SPY_THREAT</label></td><td>: <span #SpywareThreats></span></td></tr>
+		<tr><td><label>ID_REPORTS_ADWARE_THREAT</label></td><td>: <span #AdwareThreats></span></td></tr>
+		<tr><td><label>ID_REPORTS_KEYLOG</label></td><td>: <span #Keyloggers></span></td></tr>
+		<tr><td><label>ID_REPORTS_BHO</label></td><td>: <span #BHO></span></td></tr>
+		<tr><td><label>ID_REPORTS_EXP_ENTRY</label></td><td>: <span #ExplorerEntries></span></td></tr>
+		<tr><td><label>ID_REPORTS_INT_EXP</label></td><td>: <span #InternetExplorerEntries></span></td></tr>
+	</table>
+</div>
+
+<div #temp_file_cleaner .static_bg_container>
+	<h3><label>ID_REPORTS_TEMP_DETAIL</label>:</h3>
+	<div .temp_file_cleaner_table>
+		<table .static_table>
+			<tr><td><label>ID_REPORTS_TEMP_FILE_FOUND</label></td><td>: <span #ID_FILES_FOUND></span></td></tr>
+			<tr><td><label>ID_REPORTS_TEMP_FILE_CLEANED</label></td><td>: <span #ID_FILES_CLEANED></span></td></tr>
+			<tr><td><label>ID_REPORTS_START_TIME</label></td><td>: <span #ID_START_TIME_TEMP></span></td></tr>
+			<tr><td><label>ID_REPORTS_END_TIME</label></td><td>: <span #ID_END_TIME_TEMP></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOTAL_TIME</label></td><td>: <span #ID_SCAN_TIME_TEMP></span></td></tr>
+		</table>
+	</div>
+</div>
+
+<div #Update_Details .static_bg_container>
+	<h3><label>ID_REPORTS_UPDATE_DETAIL</label>:</h3>
+	<div .update_details_table>
+		<table .static_table>
+			<tr><td><label>ID_REPORTS_FILE_DOWN</label></td><td>: <span #ID_FILES_COUNT></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOTAL_DOWN</label></td><td>: <span #ID_FILE_SIZE_UPDATES></span>  KB</td></tr>
+			<tr><td><label>ID_REPORTS_START_TIME</label></td><td>: <span #ID_START_TIME_UPDATES></span></td></tr>
+			<tr><td><label>ID_REPORTS_END_TIME</label></td><td>: <span #ID_END_TIME_UPDATES></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOT_TIME</label></td><td>: <span #ID_TIME_UPDATES></span>  Min</td></tr>
+		</table>
+	</div>
+</div>
+
+<div #USB_vaccinator .static_bg_container>
+	<h3><label>ID_REPORTS_USB_DETAIL</label>:</h3>
+	<div .usb_vaccinator_table>
+		<table .static_table>
+			<tr><td><label>ID_REPORTS_USB_OPTION</label></td><td>: <span #ID_OPTION_SELECTED_USB></span></td></tr>
+			<tr #ID_FILES_UNHIDDEN><td><label>ID_REPORTS_USB_UNHIDDEN</label></td><td>: <span #ID_UNHIDDEN_COUNT_USB></span></td></tr>
+			<tr><td><label>ID_REPORTS_START_TIME</label></td><td>: <span #ID_START_TIME_USB></span></td></tr>
+			<tr><td><label>ID_REPORTS_END_TIME</label></td><td>: <span #ID_END_TIME_USB></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOTAL_TIME</label></td><td>: <span #ID_SCAN_TIME_USB></span></td></tr>
+			
+			<h3 #ID_SET_VACCINTED><label>ID_REPORTS_FILE_UNHIDDEN</label>:</h3>
+			<p #ID_SET_VACCINTED_DRIVE></p>
+			<div .USBVaccineDetails>
+			</div>
+		</table>
+	</div>
+</div>
+
+<div type="html" #Autorun_scan .static_bg_container_scan>
+	<h3><label>ID_REPORTS_AUTORUN_DETAIL</label>:</h3>
+	<div #containerauto>
+		<table .static_table>
+			<tr><td><label>ID_REPORTS_FILE_SCANNED</label></td><td> : <span #ID_FILES_SCANNED_AUTO></span></td></tr>
+			<tr><td><label>ID_REPORTS_THREATS_FOUND</label></td><td>: <span #ID_THREATS_FOUND_AUTO></span></td></tr>
+			<tr><td><label>ID_REPORTS_THREATS_CLEANED</label></td><td>: <span #ID_THREATS_FOUND_COUNT></span></td></tr>
+			<tr><td><label>ID_REPORTS_START_TIME</label></td><td>: <span #ID_START_TIME_AUTO></span></td></tr>
+			<tr><td><label>ID_REPORTS_END_TIME</label></td><td>: <span #ID_END_TIME_AUTO></span></td></tr>
+			<tr><td><label>ID_REPORTS_TOTAL_TIME</label></td><td>: <span #ID_SCAN_TIME_AUTO></span></td>
+			</tr>
+		</table>
+		<h3 #AUTORUN_NO_THREAT></h3>
+		<div .AutoRunTable>
+			<h3 style="" #THREATS_FOUND_AUTO><label>ID_REPORTS_THREATS_FOUND</label>:</h3>
+			<div .AutoScanDetails>
+			</div>
+		</div>
+		<widget|vscrollbar #ID_SCROLL_AUTO /> 
+	</div>
+</div>
+
+<div type="html" #Firewall_Details .static_bg_container_scan>
+	<h3><label>ID_REPORTS_FIREWALL</label>:</h3>
+	<div #containerauto>
+		<table .static_table>
+			<tr>
+			<td><label>ID_REPORTS_DATE</label></td><td> : <span #ID_FIREWALL_DATE></span></td>
+			</tr>
+			<tr>
+			<td><label>ID_REPORTS_TIME</label></td><td>: <span #ID_FIREWALL_TIME></span></td>
+			</tr>
+			</tr>
+		</table>
+		<br/>
+		<div .firewall_user>
+			<label #firewall_user></label> 
+		</div>
+	</div>
+</div>	
+
+<div type="html" #Parental_Control_Details .static_bg_container_scan>
+	<div #ID_PARENTAL_DATETIME_REPORT>
+		<h3><label>ID_REPORTS_PARENTAL_CONTROL</label>:</h3>
+		<div #containerauto>
+			<label>ID_PC_ACCESS</label> <label #ID_PC_USER></label>. 
+			<br/>
+			<table resizeable #ID_PC_TABLE >
+				<tbody>
+					<tr>
+						<td(varTime)></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>	
+	<div #ID_BROWSE_SECURITY_REPORT>
+		<h3><label>ID_BROWSER_SECURITY_REPORT</label>:</h3>
+		<div #containerauto>
+			<div style='flow:horizontal;height:20dip;'><div style="width:150dip;"><label>IDS_PRODINFO_PRODVERSION_TEXT</label></div> : <span #ID_PROD_VERSION></span></div>
+			<div style='flow:horizontal;height:20dip;'><div style="width:150dip;"><label>IDS_STATIC_ABOUTGUI_DBVERSION</label></div> : <span #ID_DB_VERSION></span></div><br/>
+			<h3><label>ID_WEBSITE_ACCESSED</label>:</h3>
+			<div .BrowseDetails></div>
+		</div>
+	</div>
+</div>
+
+<div type="html" #Browser_Security_Details .static_bg_container_scan>
+		<h3><label>ID_BROWSER_SECURITY_REPORT</label>:</h3>
+		<div #containerauto>
+			<div style='flow:horizontal;height:20dip;'><div style="width:150dip;"><label>IDS_PRODINFO_PRODVERSION_TEXT</label></div> : <span #ID_PROD_VERSION_BROWSE_SEC style='margin-left:2dip;'></span></div>
+			<div style='flow:horizontal;height:20dip;'><div style="width:150dip;"><label>IDS_STATIC_ABOUTGUI_DBVERSION</label></div> : <span #ID_DB_VERSION_BROWSE_SEC style='margin-left:2dip;'></span></div><br/>
+			<h3><label>ID_WEBSITE_ACCESSED</label>:</h3>
+			<div .BrowseSecurityDetails></div>
+		</div>
+</div>
+	
+	<div .message_display_block>
+		<p #ID_STATUS_MSG><label>ID_REPORTS_SAVE_SUCCESS</label></p>
+	</div>
+	
+	<div .message_display_block_save>
+		<p #ID_STATUS_MSG_SAVE><label>ID_REPORTS_LOADING</label></p>
+	</div>
+	
+	<div .footer_bottom>
+		<div .cstMgl>
+			<div class="btnCstm" #ID_BUTTON_SAVE><label>ID_REPORTS_SAVE</label></div>
+			<div class="btnCstm" #ID_BTN_CLOSE><label>ID_CLOSE</label></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

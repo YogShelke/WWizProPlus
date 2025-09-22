@@ -1,0 +1,66 @@
+﻿.popup_header{
+	background:gray;
+	padding:8dip;
+	padding-top:2dip;
+	padding-bottom:2dip;
+	border-bottom:3dip solid #bab7b7;
+}
+.OK_button{
+	background:#2189ca;
+	width:100dip;
+	border:1dip solid #2189ca;
+	border-radius:5dip;
+	color:#fff;
+	margin-left:80dip;
+}
+
+.product_heading{
+	text-align:center;font-weight:500;font-size:16dip;color:#e90000;margin:0dip;
+}
+.product_description{
+	padding-left:15dip;text-align:left;
+}
+.Next_Prev_Button{
+	behavior:clickable;
+}
+.close_btt{
+	float:right;
+	cursor:pointer;
+	behavior:clickable;
+	margin-top:10dip;
+	margin-right:5dip;
+}
+#ID_ACTION{
+    color:#555555;
+}
+.clickable {
+            cursor: pointer;
+        }
+
+popup #notification { style-set: notification-message; }
+
+@set notification-message {
+
+  :root {
+    prototype: Notification url(IDR_TIS_NOTIFICATION.tis);
+    background: #dcdcdc;
+    border: 1dip solid gray;
+    /* border-radius: 10dip; */
+    margin:2dip;
+    width: 300dip;
+    display:none;
+    transform: translate(0,0); opacity:1.0;
+    font:system;
+  }
+  
+  :root[state] {display:block;}
+  :root[state=initial] { transform: translate(0,100%); opacity:0.0; } /* offstage */
+  :root[state=shown]   { transform: translate(0,0);    opacity:1.0; transition: transform(quad-out,500ms) opacity(linear,500ms);  }
+  :root[state=closed]  { transform: translate(100%,0); opacity:0.0; transition: transform(linear,500ms) opacity(linear,500ms);  }
+  
+  header { display:block; border-bottom: 1dip dashed gray; padding: 4dip; visibility:none;/* To hide title bar */
+  
+  }
+  content { display:block; /* padding: 8dip; */padding-bottom: 8dip; }
+
+}

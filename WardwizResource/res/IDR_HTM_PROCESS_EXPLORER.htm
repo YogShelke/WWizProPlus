@@ -1,0 +1,741 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<style>
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_VGRID.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		    margin:0dip;
+		    width:722dip;
+		    height:502dip;
+           overflow:hidden; 
+		}
+		  body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:1dip solid #000;
+           height:500dip;
+		   color:#fff;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:720dip;
+			height:500dip;
+		}
+		
+		//******** Menu Bar CSS *********//	
+	
+		.header{
+			flow:horizontal;			
+		}
+		
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		
+		.inner_body{
+			width:720dip;
+			height:460dip;
+			overflow:hidden;
+		}
+		
+		.footer_buttons{
+			width:280dip;
+			text-align:right;
+			height:30dip;
+            margin-left:405dip;
+		}
+		
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		
+		.scan_button{
+			width:70dip;
+			height:18dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			font-size:11dip;
+		}
+		
+		.button_small{
+			width:70dip!important;
+			height:18dip!important;
+		}
+		
+		#header_content{
+			flow:horizontal;
+			background:rgba(0,0,0,.05);
+		}
+		
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:697dip;
+			height:240dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: scroll;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:10dip!important;
+		}
+		
+        /* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+			
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: auto;
+			vertical-scrollbar: my-v-scrollbar; 
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		
+		/*
+		table th:nth-child(1)  {  width:0.08*; }
+		table th:nth-child(2)  {  width:0.3*; }		
+		table th:nth-child(3)  {  width:0.3*; }	
+        table th:nth-child(4)  {  width:0.3*; }	
+		*/
+		
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+			text-align:left!important;
+		}
+		  
+		/*table td:nth-child(1) {  text-align:left; width:0.08*;padding-top:2dip; border-left:0 solid #fff!important;border-right:0 solid #fff!important;}*/ 
+		table td:nth-child(1) {  text-align:left; width:0.2*;padding-top:2dip; border-left:0 solid #fff!important;border-right:0 solid #fff!important;} 
+        
+		table {
+			width:200dip;
+			height:224dip!important;			
+		}
+	  
+	//*******************************************************************//
+	  .scan_container{
+		flow:horizontal;
+		padding-top:20dip;
+	  }
+	  
+	  .message_display_block p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:10dip;
+	  }
+	  
+	  .message_display_block {
+		background:rgba(0,8,44,.95);
+		position:absolute;
+		top:-70dip;
+		width:720dip;
+		height:60dip;
+		visibility:none;
+		
+	  }
+	  
+	  .message_display_block:collapsed {
+		visibility:visible;
+		top:0;
+		transition:top(sine-in-out, 600ms);
+	  }
+	  
+	  button:disabled{
+		opacity:.5;
+	  }
+	 
+	 #header_frame{
+		height:60dip;
+		width:445dip;
+	 }
+
+	 #header_close_bt{
+		height:60dip;
+		width:125dip;
+	 }
+    
+  	 #header_close_bt li{
+		list-style:none;
+        display:inline-block;
+        padding-left:4dip;
+        padding-top:-5dip;
+	 }
+	
+	div#lightbox-shim 
+	{
+		top: 60dip;
+	}
+	
+	.basic_background{
+		background:url(IDR_JPG_BACKGROUND_BASIC.jpg) no-repeat;
+		background-size:cover;
+	}
+	
+	.essential_background{
+		background:url(IDR_JPG_BACKGROUND.jpg) no-repeat;
+		background-size:cover;
+	} 
+	
+	.provantage_background{
+		background:url(IDR_JPG_BG_PROVANTAGE.jpg) no-repeat;
+		background-size:cover;
+	}
+    
+	.essential_plus_background{
+		background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+		background-size:cover;
+	}
+	
+	.elite_background{
+		background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+		background-size:cover;
+	}
+	.exe_desc
+	{
+		padding-left:10dip;
+		border:1dip solid #888888; 
+		width:400dip; 
+		height:225dip; 
+		overflow-y:auto;
+		vertical-scrollbar:my-v-scrollbar;
+	}
+</style>
+<script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_DECORATORS.tis";
+</script>
+<script type="text/tiscript">
+    include "IDR_TIS_MAIN.tis";
+</script>
+<script type="text/tiscript">
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script>
+<script type="text/tiscript">
+	if(productVersion == #BASIC){
+          $(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+          $(.main).attributes.addClass("basic_background");
+          $(.dialog-frame).attributes.addClass("basic_popup_background");
+      }
+	  else if(productVersion == #ESSENTIAL){
+          $(.main).attributes.addClass("essential_background");
+      }
+	  else if(productVersion == #PROVANTAGE)
+      {
+          $(.main).attributes.addClass("provantage_background");
+		  $(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+      }
+	  else if(productVersion == #ELITE)
+      {
+          $(.main).attributes.addClass("elite_background");
+		  $(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+      }
+	  else if(productVersion == #ESSENTIALPLUS)
+      {
+          $(.main).attributes.addClass("essential_plus_background");
+		  $(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+      }
+	if(g_LanguageName == "GERMAN")
+    {
+		//$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+    }		
+</script>
+<script type="text/tiscript"> 
+	var ArrProcessName = new Array(0);
+	var ArrStartupPrograms = new Array(0);
+	var vlistObj;
+	var g_iIndex = 0;	
+</script>	
+<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://wardwiz.com");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://wardwiz.de"); //german for basic
+	}
+</script> 	
+<script type="text/tiscript">	
+	 function ClearDivContents()
+	 {
+		$(#ID_TXT_EXE_PATH).text = "";
+		$(#ID_TXT_FILE_NAME).text = "";
+		$(#ID_TXT_FILE_VERSION).text = "";
+		$(#ID_TXT_DESCRIPTION).text = "";
+		$(#ID_TXT_COPYRIGHT).text = "";
+		$(#ID_TXT_PUBLISHER).text = "";
+	 }
+</script>
+<script type="text/tiscript">
+	$(#ID_SELECT_SYS_SETT).on("change",function()
+	{
+		ClearDivContents();
+		var vCurrSysSett = $(#ID_SELECT_SYS_SETT).state.value;
+		ArrProcessName.splice(0,ArrProcessName.length);
+		g_iIndex = 0;
+		switch(vCurrSysSett)
+		{
+			case 0:	$(#ID_BTN_TERMINATE).text = Lang.translate("ID_TERMINATE");
+					view.GetActiveProcessesName(GetProcessesName);
+					break;
+			case 1: 
+					break;
+			case 2:
+					break;
+			case 3:
+					break;
+			case 4:
+					break;
+			case 5:
+					break;
+			case 6: $(#ID_BTN_TERMINATE).text = Lang.translate("ID_REMOVE");
+					view.GetStartUpProgram(GetProcessesName);					
+					break;
+			case 7:
+					break;
+			case 8:			
+					break;		
+		}	
+	});
+	
+	$(#ID_BTN_TERMINATE).onClick = function()
+	{
+		if($(#ID_BTN_TERMINATE).text == Lang.translate("ID_TERMINATE"))	
+		{
+			if(vlistObj.tbody.currentIndex != -1)
+			{
+				$(#StatusMessage).text = Lang.translate("ID_DO_U_WANT_TO_TERMINATE");		
+				var result = dialog { body:$(form#simple-dialog), 
+					returns: #values, 
+					buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]};
+				if(result == true)
+				{						
+					var vProcIndex = vlistObj.tbody.currentIndex;
+					var vFlag = view.OnTerminateProcess(ArrProcessName[vProcIndex].ExeName);
+					if(vFlag == 1)
+					{
+						ArrProcessName.splice(vProcIndex,1);
+						ClearDivContents();
+					}
+				}
+			}
+		}	
+		if($(#ID_BTN_TERMINATE).text == Lang.translate("ID_REMOVE"))	
+		{
+			if(vlistObj.tbody.currentIndex != -1)
+			{
+				$(#StatusMessage).text = Lang.translate("ID_DO_U_WANT_TO_REMOVE_STRT_UP");		
+				var result = dialog { body:$(form#simple-dialog), 
+					returns: #values, 
+					buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]};
+				if(result == true)
+				{
+					var vProcIndex = vlistObj.tbody.currentIndex;
+					var vFlag = view.OnRemoveStartUp(ArrProcessName[vProcIndex].ExeFullPath);
+					if(vFlag == 1)
+					{
+						ArrProcessName.splice(vProcIndex,1);
+						ClearDivContents();
+					}	
+				}
+			}
+		}
+	}
+	
+	$(#ID_BTN_REFRESH).onClick = function()
+	{
+		ClearDivContents();
+		var vCurrSysSett = $(#ID_SELECT_SYS_SETT).state.value;
+		ArrProcessName.splice(0,ArrProcessName.length);
+		g_iIndex = 0;
+		switch(vCurrSysSett)
+		{
+			case 0:	view.GetActiveProcessesName(GetProcessesName);
+					break;
+			case 1: 
+					break;
+			case 2:
+					break;
+			case 3:
+					break;
+			case 4:
+					break;
+			case 5:
+					break;
+			case 6: view.GetStartUpProgram(GetProcessesName);					
+					break;
+			case 7:
+					break;
+			case 8:			
+					break;		
+		}
+	}
+	
+    $(#ID_BUTTON_MINIMIZE).onClick = function()
+    {
+       view.OnMinimize();
+    }
+
+    $(#ID_BTN_CLOSE).onClick = function()
+    {
+       view.OnCloseButton();
+    }
+
+    $(#close-dialog).onClick = function()
+    {
+        view.OnCloseButton();
+    }
+	
+    $(body).onClick = function ()
+    {
+        $(.message_display_block).state.collapsed = false;
+    }
+</script>
+<script type="text/tiscript">
+		function GetFileVersion(strVersion, strCopyRight, strDescription, strProductName)
+		{
+			var vVersion = strVersion;
+			var reg_exp = /[~,`,!,@,#,$,%,^,&,*,(),_,-,+,=,{},|,\,?,\/,',:,;,<>,a-zA-z_]/gi;	
+			var match_data = vVersion.search(reg_exp);
+			if(match_data>0)
+			{
+				if(vVersion.charAt(match_data) != ",")
+				{				
+					strVersion = vVersion.split(vVersion.charAt(match_data));
+					vVersion = strVersion[0];
+				}	
+			}					
+			$(#ID_TXT_FILE_VERSION).text = vVersion; 
+			$(#ID_TXT_DESCRIPTION).text = strDescription;
+			$(#ID_TXT_COPYRIGHT).text = strCopyRight;
+			$(#ID_TXT_PUBLISHER).text = strProductName;
+		}
+</script>
+<script type="text/tiscript">
+	function GetProcessesName(strProcessName, strProcessPathName)
+	{	
+		var FullPath = "";
+		if($(#ID_SELECT_SYS_SETT).state.value == 6)
+		{
+			FullPath = strProcessName;	
+			var tempVal = strProcessName.split("\\");
+			strProcessName = tempVal[tempVal.length - 1].split(".");			
+			strProcessName = strProcessName[0] + ".exe";
+			
+			tempVal = "";
+			var bDoubleQuote =  FullPath.indexOf("\"");
+			if(bDoubleQuote != -1)
+			{
+				tempVal = FullPath.split("\"");
+				FullPath = tempVal[1];
+			}			
+		}
+		else if($(#ID_SELECT_SYS_SETT).state.value == 0)
+		{
+			FullPath = strProcessPathName;
+		}
+		ArrProcessName[g_iIndex] = { index: g_iIndex, ExeName:strProcessName, ExeFullPath:FullPath};
+		g_iIndex++;		
+		
+	}
+</script>
+
+<script type="text/tiscript"> 
+	$(#ID_BTN_CLOSE).onClick = function()
+	{
+		view.OnCloseButton();
+	}
+	
+	function OpenHelpFile()
+	{
+		var varCommandlinestr = "-mapid";
+		var varHelpFilePath;
+		var varHelpFileIndex;
+		var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+		var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+		var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+		var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+		var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+		var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+		switch(g_LanguageID)
+		{
+			case LANGUAGE_TYPE.ENGLISH	:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varEngEssential;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varEngBasic;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varEngEssPlus;
+					varHelpFileIndex = "75";
+				}
+			break;
+		
+			case LANGUAGE_TYPE.GERMAN:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varGerEssential;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varGerBasic;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varGerEssPlus;
+					varHelpFileIndex = "75";
+				}
+			break;
+		}
+		System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+	}
+	  
+	$(#help_click).onClick = function()
+	{
+		OpenHelpFile();	
+	}
+	
+	$(#ID_BUTTON_MINIMIZE).onClick = function()
+    {
+        view.OnMinimize();
+    }
+</script>
+<script type="text/tiscript">
+	function self.ready()
+	{
+		view.GetActiveProcessesName(GetProcessesName);
+		vlistObj = $(table);
+		vlistObj.value = ArrProcessName;
+		$(#ID_BTN_TERMINATE).text = Lang.translate("ID_TERMINATE");
+				
+		vlistObj.on("click","tbody > tr",function(){
+			var vIndex = vlistObj.tbody.currentIndex;
+			ClearDivContents();
+			$(#ID_TXT_FILE_NAME).text =  ArrProcessName[vIndex].ExeName;
+			$(#ID_TXT_EXE_PATH).text =  ArrProcessName[vIndex].ExeFullPath;			
+			view.GetCurrFileVersion(ArrProcessName[vIndex].ExeFullPath, GetFileVersion);
+		});
+		vlistObj.onKey = function(evt){
+			if(evt.type == (Event.KEY_DOWN | Event.SINKING))
+			{
+				var vIndex = vlistObj.tbody.currentIndex;
+				switch(evt.keyCode)
+				{
+				  case Event.VK_UP:  
+								if(vIndex != -1)
+								{
+									if(vIndex >= 0)
+										vIndex--;
+								}
+								break;
+				 case Event.VK_DOWN:  
+								if(vIndex != -1)
+								{
+									if(vIndex < ArrProcessName.length)
+										vIndex++;
+								}		
+								break;
+				}
+				if(vIndex != -1 && vIndex < ArrProcessName.length)
+				{	
+					ClearDivContents();
+					$(#ID_TXT_FILE_NAME).text =  ArrProcessName[vIndex].ExeName;
+					$(#ID_TXT_EXE_PATH).text =  ArrProcessName[vIndex].ExeFullPath;			
+					view.GetCurrFileVersion(ArrProcessName[vIndex].ExeFullPath, GetFileVersion);
+					vlistObj.tbody.currentIndex = vIndex;
+				}	
+				return true;
+			}
+		}		
+    }
+</script>	
+<form #simple-dialog caption="Simple!">
+    <p #StatusMessage .dfn >This is notifications....?</p>
+</form>
+</head>
+<body>
+<div .main>
+	<div #header_content .header>
+		<div .logo  .frame_display_src src="IDR_HTM_HOME.htm">
+			<img src="IDR_PNG_LOGO.png" #ID_LOGO style="cursor:pointer;">
+		</div>
+		<div #header_frame role="window-caption">
+		</div>
+		<div #header_close_bt style="margin-right:25dip;">
+			<ul>
+				<li .clickable_cl #help_click><label>ID_STR_HELP</label></li>
+				<li .clickable_cl  #ID_BUTTON_MINIMIZE><img src="IDR_PNG_MINIMIZE.png"></li>
+                <li .clickable_cl  #close-dialog><img src="IDR_PNG_CLOSE.png"></li>
+			</ul>
+		</div>
+	</div>
+	<div .inner_body>
+	
+		<h2 style="color:#fff;text-align:center; font-weight:300;padding:0;margin:0;margin-top:0;padding-top:0;"><label>ID_PROC_EXPLORER</label></h2>
+		<p style="margin-left:35dip;margin-top:40dip;">
+			<label>ID_SEL_SYS_SETTING</label>
+			<select|dropdown #ID_SELECT_SYS_SETT style="width:200dip;margin-left:5dip;">
+				<option value=0><label>ID_PROCESSES</label></option>
+				<!--<option value=1><label>ID_IE_BHOS</label></option>
+				<option value=2><label>ID_IE_TOOLBARS</label></option>
+				<option value=3><label>ID_ACTIVEX</label></option>
+				<option value=4><label>ID_HOSTS</label></option>
+				<option value=5><label>ID_LSPS</label></option>-->
+				<option value=6><label>ID_STRT_PROGRAM</label></option>
+				<!--<option value=7><label>ID_IE_SETTINGS</label></option>
+				<option value=8><label>ID_ACTIVE_NW_CONN</label></option>-->
+			</select>
+		</p>
+		<div style="flow:horizontal;">
+			<div style="margin-left:20dip;">
+				<p style="margin-left:15dip;height:10dip;"><label>ID_PROCESSES</label></p>
+				<table  style="margin:20dip">
+					<thead>
+						<tr>
+							<th style="width:192dip;"><label>Exe name</label></th>
+						</tr>
+					</thead>  
+					<tbody>
+						<tr>
+							<td(ExeName)></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div .contents style="margin-left:30dip;height:auto"> <!--border:1dip solid #0780d8;-->
+				<p style="margin-left:8dip;height:10dip;"><label>ID_DESCRIPTION_1</label></p>
+				<div .exe_desc>
+					<div style="height:auto;margin-bottom:20dip;margin-top:5dip;"> 
+						<div style="flow:horizontal;">
+							<div style="width:90dip;"><label>ID_FILE_NAME</label></div>
+							<div style="width:300dip;"><label #ID_TXT_FILE_NAME></label></div>
+						</div>
+					</div>	
+					<div style="height:auto;margin-bottom:20dip;"> 
+						<div style="flow:horizontal;">
+							<div style="width:90dip;"><label>ID_DESCRIPTION_2</label></div>
+							<div style="width:300dip;"><label #ID_TXT_DESCRIPTION></label></div>
+						</div>	
+					</div>
+					<div style="height:auto;margin-bottom:20dip;"> 
+						<div style="flow:horizontal;">
+							<div style="width:90dip;"><label>ID_PUBLISHER</label></div>
+							<div style="width:300dip;"><label #ID_TXT_PUBLISHER></label></div>
+						</div>	
+					</div>
+					<div style="height:auto;margin-bottom:20dip;"> 
+						<div style="flow:horizontal;">
+							<div style="width:90dip;"><label>ID_EXE_PATH</label></div>
+							<div style="width:300dip;"><label #ID_TXT_EXE_PATH></label></div>
+						</div>
+					</div>
+					<div style="height:auto;margin-bottom:20dip;"> 
+						<div style="flow:horizontal;">
+							<div style="width:90dip;"><label>ID_FILE_VERSION</label></div>
+							<div style="width:300dip;"><label #ID_TXT_FILE_VERSION></label></div>
+						</div>	
+					</div>
+					<div style="height:auto;margin-bottom:8dip;"> 
+						<div style="flow:horizontal;">
+							<div style="width:90dip;"><label>ID_COPYRIGHT</label></div>
+							<div style="width:300dip;"><label #ID_TXT_COPYRIGHT></label></div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div .scan_container>
+			<div .footer_buttons>
+				<button .scan_button .button_small #ID_BTN_TERMINATE .dfn><label>ID_TERMINATE</label></button>
+				<button .scan_button .button_small #ID_BTN_REFRESH .dfn><label>ID_REFRESH</label></button>
+				<button .scan_button .button_small #ID_BTN_CLOSE .dfn><label>ID_CLOSE</label></button>
+			</div>
+		</div>
+		
+		<div .message_display_block>
+			<p #ID_STATUS_MSG></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

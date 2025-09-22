@@ -1,0 +1,1085 @@
+<html custom-frame="solid" lang="ENGLISH">  
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style> 
+		@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   behavior:WardWizScan;
+		}
+		#ID_BTN_SMALL_DONE{
+			visibility:none;
+		}
+		#ID_BTN_SMALL_DONE:expanded{
+			visibility:visible;
+		}
+		#selectCustomPath{
+			margin-left:14dip;
+		}
+		#scanWindowCustom:collapsed{
+			visibility:none;
+		}
+		#selectCustomPath:collapsed{
+			visibility:none;
+		}
+		.CstmScanIconDrag{
+			background:transparent;
+			margin:0;
+			width:80dip;
+			height:80dip;
+		}
+		.paddMgZero{
+			padding:0;
+			margin:0;
+			margin-left:9dip;
+			margin-right:-4dip;
+		}
+		.patch1{
+			flow:horizontal;
+			position:relative;
+		}
+        .dragDropCont1{
+            width:80dip;
+            height:80dip;
+            margin-left:110dip;
+            margin-bottom:45dip;
+        }
+		.file-drop-zone {
+			prototype: FileDropZone;
+			vertical-align:middle;
+			text-align:center;
+			position:absolute;
+		}
+		.zone1 {
+			width:320dip;
+			height:230dip;
+			margin-left:330dip;
+			position:relative;
+		}
+		#ID_BTN_PAUSE:disabled{
+			opacity:0.5;
+		}
+		#ID_BTN_STOP:disabled{
+			opacity:0.5;
+		}	
+		.translateWhenLightBox{
+			filter: blur(5dip);
+			opacity:.3;
+		}
+	</style>
+	<style #ID_CSS_GERMAN_LANG />
+	<script type="text/tiscript">
+		const styleBag = $(style#ID_CSS_GERMAN_LANG);
+		styleBag.attributes["src"] = "IDR_CSS_GERMAN_LANGUAGE.css";
+	</script>
+	<script type="text/tiscript">	
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	</script>
+		
+	<script type="text/tiscript">
+	var FileFoldName;
+	var strFilePath;
+	var IsMaxLimitReached = false; 
+	var arrCustomScanEntries = new Array(0);
+    var varDroppedFileCount = 0;	
+	var vlistObj;    
+    var vlistObject;
+	var vCheckBoxDragDrop = $(body);
+	var m_bIsManualStop = false;	
+	var chart = $(pie-chart);		
+	var varThreatFoundCount = 0;
+	var varIsScanningDone = false;
+	var vDropFlag = false;
+    </script>
+	
+	<script type="text/tiscript">
+	$(body).onClick = function(){
+		$(.message_display_block_cstm_scan).state.collapsed = false;				
+	}
+	</script>
+
+	<script type="text/tiscript">
+	$(#ID_BTN_DONE).onClick = function()
+	{
+		selectView("IDR_HTM_SCAN");
+	}
+	$(#ID_BTN_SMALL_DONE).onClick = function()
+	{
+		selectView("IDR_HTM_SCAN");
+	}
+	$(#ID_CS_PROT).onClick = function()
+	{
+		SetOnProtectionEvent();
+	}
+	$(#ID_CS_SCAN).onClick = function()
+	{
+		selectView("IDR_HTM_SCAN");
+	}
+	$(#ID_BTN_STOP).onClick = function()
+	{
+		self.OnPauseCustomScan(SetScanStatus);
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_CUSTOM_SCAN_IS_IN_PROGRESS_DO_YOU_WANT_TO_STOP");
+		var res = dialog { body:$(form#simple-dialog),
+							caption : Lang.translate("ID_WARNING"), 
+							buttons: [ { caption: "OK", role:#ok, value:true },{ caption: Lang.translate("ID_SCN_CANCEL"), role:#cancel, value:false }]
+						};
+		if(res == true)
+        {
+            varIsScanningDone = true;
+			$(#ID_DIV_SHUTDOWN).state.collapsed = true;
+            $(#ShowReports).state.collapsed = true;
+			$(#HideDtls).state.collapsed = true;            
+			m_bIsManualStop = false;
+			//g_bIsAnyTaskInProcess = false;
+			g_varCurrentTask = #NONE;
+			//g_bIsAnyTaskInProcess = false;
+			g_IsCustomScanRunning = false;
+			g_CstmScanFinish = true;	
+			g_bCustomScanShutdown = false;
+            self.OnStopCustomScan(m_bIsManualStop);
+			ShowScanFinishedMsg();
+			SetTableValues();
+        }
+        else
+        {
+            $(#ID_LBL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+            self.OnResumeCustomScan(SetScanStatus);
+		}
+        g_IsCstmScnPause = false;			
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	self.on("closerequest", function(event)
+	{
+		self.CallContinueCustomScan();
+	});
+    </script>
+	
+	<script type="text/tiscript">     
+     function SetStatus(evt) {
+		$(#SetScanStatus).text = evt.data;
+		//self.update();
+     }
+
+     function SetCurrentFileCount(evt) {
+		$(#ID_BTN_PAUSE).state.disabled = false;
+		$(#ID_BTN_STOP).state.disabled = false;
+		var varCurrentFile = evt.data.one.toInteger();
+        var varTotalFile = evt.data.two.toInteger();
+        varThreatFoundCount = evt.data.three.toInteger();
+        $(#ID_TOTAL_OBJ_SCANNED).value = " " + varCurrentFile;
+        $(#ID_TOTAL_THREATS_DETECTED).value = " " + varThreatFoundCount;
+        $(#ID_TOTAL_OBJ_SCANNED_FINISH_PAGE).value = " " + varCurrentFile;
+        $(#ID_TOTAL_THREATS_DETECTED_FINISH_PAGE).value = " " + varThreatFoundCount;
+
+        var varScanPercentage = 1;
+        if(varTotalFile != 0)
+        {
+            varScanPercentage = varCurrentFile * 100;
+            varScanPercentage = varScanPercentage /  varTotalFile;
+        }
+        chart.value = varScanPercentage.toFloat()/100;
+        if(chart.value <= .01)
+        {
+            chart.value = 0.00;
+
+        }
+        else if(chart.value > .01  && chart.value<.98)
+        {
+
+        }
+        else if(chart.value>=.98)
+        {
+             chart.value=.99;
+        }
+        //self.update();
+      }
+
+     const MY_EVENT = 0x100 + 1;
+     self.subscribe(SetStatus, Event.BEHAVIOR_EVENT, MY_EVENT);
+     self.subscribe(SetCurrentFileCount, Event.BEHAVIOR_EVENT, 0x100 + 2);
+    </script>
+
+	
+	<script type="text/tiscript">
+	$(#ID_BROWSE_FILE).onClick = function()
+     {      	 
+        var fn = view.selectFile(#open ,  "Files (*.*)|*.*" , "files");
+		if(fn)
+        {
+            FileFoldName = fn;
+			strFilePath = URL.toPath(FileFoldName);
+			strFilePath = strFilePath.replace("\/","\\");
+			if(self.CheckIsNetworkPath(strFilePath))
+            {
+				self.timer(50ms,function(){
+					$(#ID_STATUS_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+					$(.message_display_block_cstm_scan).state.collapsed = true;                    									 
+				});
+				return;		
+            }
+            AddDroppedFileEntry(strFilePath);
+		}
+		if(vDropFlag)
+		{
+			BlurWhenLightBox();
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								}; 
+			RemoveBlurLightBox();
+			vDropFlag = false;
+		}
+		if(IsMaxLimitReached)
+		{
+			BlurWhenLightBox();
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_CUSTOM_SCAN");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								}; 
+			RemoveBlurLightBox();
+			IsMaxLimitReached = false;
+		}
+      return true;			
+     }
+	 
+	 $(#ID_BROWSE_FOLDER).onClick = function()
+     {          
+        var fn = view.selectFolder();  
+ 		if(fn)
+        {
+            FileFoldName = fn;			
+			strFilePath = URL.toPath(FileFoldName);
+			strFilePath = strFilePath.replace("\/","\\");
+ 			if(self.CheckIsNetworkPath(strFilePath))
+            {
+ 				self.timer(50ms,function(){
+					$(#ID_STATUS_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+					$(.message_display_block_cstm_scan).state.collapsed = true;                    									 
+				});
+				return;
+            }
+            AddDroppedFileEntry(strFilePath);
+ 		}
+		if(vDropFlag)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								}; 
+			vDropFlag = false;
+		}
+ 		if(IsMaxLimitReached )
+ 		{
+			BlurWhenLightBox();
+ 			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_CUSTOM_SCAN");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								}; 
+			RemoveBlurLightBox();
+ 			IsMaxLimitReached = false;
+ 		}
+      return true;			
+     }
+	</script>
+	<script type= "text/tiscript">
+    function AddDroppedFileEntry(strFileFolderName)
+    {
+        var varListEntriesLength = 0;
+        var varLastIndex = strFileFolderName.lastIndexOf("\\");
+        var varFileLength = strFileFolderName.length;
+        if(varLastIndex == --varFileLength)
+        {
+            strFileFolderName = strFileFolderName.splice(varLastIndex, varFileLength);
+        }
+        var arrFileCount = arrCustomScanEntries.length;
+        var IsNewFile = false;
+		if(varDroppedFileCount > 0)
+        {
+            for(var FileCount = 0; FileCount<arrFileCount; FileCount++)
+            {
+                var varCurrentFilePath = arrCustomScanEntries[FileCount].FilePath;
+                if(varCurrentFilePath == strFileFolderName)
+                {
+                    IsNewFile = false;
+					vDropFlag = true;
+                    break;
+                }
+                else
+                {
+                    varListEntriesLength += varCurrentFilePath.length;
+                    varListEntriesLength++;
+                    IsNewFile = true;
+                }
+            }
+        }
+        else
+        {
+            $(.paddMgZero).state.disabled = true;
+            IsNewFile = true;
+        }
+        if(IsNewFile == true)
+        {
+            if((varListEntriesLength +strFileFolderName.length) < 1000)
+            {
+                arrCustomScanEntries[varDroppedFileCount] = {selected : true, FilePath:strFileFolderName};
+				vlistObj.tbody.scrollTo(0, 9999999, true, true);
+                varDroppedFileCount++;
+                $(.paddMgZero).state.disabled = false;
+                varListEntriesLength += strFileFolderName.length;
+                varListEntriesLength++;
+            }
+            else
+            {
+                IsMaxLimitReached = true;
+            }
+        }   
+		const selectAll = vCheckBoxDragDrop.$(input#ID_SELECTALL);
+        vlistObj.on("change","tbody > tr", function() { // some change inside tr
+          // note: each row (this) is a form here so its value is structure:
+		 this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+          if( !this.data.selected )
+            selectAll.value = false;
+        });		
+         vlistObj.on("change","#ID_SELECTALL", function() { // select/deselect all
+          var selected = this.value;
+          for( var record in arrCustomScanEntries )
+            record.selected = selected;
+        });
+    }
+    </script>
+	<script type= "text/tiscript">
+	$(#ID_BTN_PAUSE).onClick = function()
+	{
+		if(g_IsCstmScnPause == false)
+		{   
+            $(#ID_LBL_PAUSE).text = Lang.translate("ID_RESUME");
+			g_IsCstmScnPause = true;
+			self.OnPauseCustomScan(SetScanStatus);
+        }
+		else 
+		{
+			$(#ID_LBL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+			g_IsCstmScnPause = false;
+			self.OnResumeCustomScan(SetScanStatus);
+        }
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    $(#DeleteEntry).onClick = function()
+    {
+        var arrFileCount = arrCustomScanEntries.length;
+        var bselected = false;
+        if(arrCustomScanEntries.length == 0)
+        {
+			BlurWhenLightBox();
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("IDS_CUSTOM_SCAN_NO_ENTRY_AVAILABLE_FOR_DELETE");
+			var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};  
+			RemoveBlurLightBox();
+            return;
+        }
+        for( var record in arrCustomScanEntries )
+        {
+            bselected = record.selected;
+            if(record.selected)
+            {
+                bselected = true;
+                break;
+            }
+        }
+        if(!bselected)
+        {
+			BlurWhenLightBox();
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("IDS_CUSTOM_SCAN_NO_ENTRY_SELECTED_FOR_DELETE");
+			var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							}; 
+			RemoveBlurLightBox();
+            return;
+        }
+        for(var FileCount = arrCustomScanEntries.length; FileCount>0; )
+        {
+            if(arrCustomScanEntries[--FileCount].selected == true)
+            {
+                arrCustomScanEntries.remove(FileCount);
+                varDroppedFileCount --;
+            }
+        }
+        if(arrCustomScanEntries.length == 0)
+        {
+            $(.paddMgZero).state.disabled = true;
+            varDroppedFileCount = 0;
+        }
+        else
+        {
+            $(.paddMgZero).state.disabled = false;
+        }
+        self.AddDeleteEditCustomScanEntryToINI(arrCustomScanEntries);
+    }
+    </script>	
+	
+	<script type= "text/tiscript">
+	class FileDropZone :Behavior
+    {
+		function onExchange(evt)
+		{
+			if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+			{
+				this.attributes.addClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG_LEAVE )
+			{
+				this.attributes.removeClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+			{
+				stdout.println(evt.x,evt.y);
+				return true;
+			}
+			else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+			{
+				this.attributes.removeClass("active-target");
+				var fn = evt.dragging;
+				var strFileName = fn.toString();
+				var arrstrFileName =  strFileName.split(",");
+				for (var i = 0; i<arrstrFileName.length; i++)
+				{
+					if(i == 0)
+					{
+						var varFirstFile = arrstrFileName[i];
+						varFirstFile = URL.toPath(varFirstFile);
+						varFirstFile = varFirstFile.replace("\/","\\");
+						if(self.CheckIsNetworkPath(varFirstFile))
+						{
+							self.timer(50ms,function(){
+							    $(#ID_STATUS_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+							    $(.message_display_block_cstm_scan).state.collapsed = true;                    									 
+							});
+							return;
+						}
+						AddDroppedFileEntry(varFirstFile);
+					}
+					else
+					{
+						var varFirstFile = arrstrFileName[i];
+						varFirstFile = URL.toPath(varFirstFile);
+						varFirstFile = varFirstFile.replace("\/","\\");
+						var NextFile = varFirstFile;
+						if(self.CheckIsNetworkPath(NextFile))
+						{
+							self.timer(50ms,function(){
+								$(#ID_STATUS_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+								$(.message_display_block_cstm_scan).state.collapsed = true;                    									 
+							});
+							return;
+						}
+						AddDroppedFileEntry(NextFile);
+					}
+				}
+				if(vDropFlag)
+				{
+					BlurWhenLightBox();
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+					var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]
+										}; 
+					RemoveBlurLightBox();
+					vDropFlag = false;
+				}
+				if(IsMaxLimitReached )
+				{
+					BlurWhenLightBox();
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_CUSTOM_SCAN");
+					var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]
+										}; 
+					RemoveBlurLightBox();
+					IsMaxLimitReached = false;
+				}
+				return true;
+			}
+		}
+    }
+    </script>
+	
+	<script type="text/tiscript"> 
+	function SetScanStatus( str)
+	{
+		$(#SetScanStatus).text =  str;
+		return 1;
+	}
+	</script>
+	<script type= "text/tiscript"> 
+	function SetScanFinishStatus(evt){
+        //g_bIsAnyTaskInProcess = false;
+		g_IsCustomScanRunning = false;
+		g_CstmScanFinish = true;
+		g_IsCstmScnPause = false;
+		g_bCustomScanShutdown = false;
+		$(#ID_TOTAL_OBJ_SCANNED).value = " " + evt.data.one.toInteger();
+        $(#ID_TOTAL_THREATS_DETECTED).value = " " + evt.data.two.toInteger();
+        ShowScanFinishedMsg();
+		SetTableValues();
+	}
+	self.subscribe(SetScanFinishStatus, Event.BEHAVIOR_EVENT, 0x100 + 16);
+	</script>
+	<script type= "text/tiscript"> 
+	function AddVirusFoundEntry( strThreatName, strFileName, strActiontaken, SpyID)
+	{
+		var varThreatName;
+		if(strThreatName == "USER_DEFINED")
+			varThreatName = Lang.translate("ID_USER_DEFINED");
+		else
+			varThreatName = strThreatName;		
+		arrVirusFoundEntries[varThreatFoundCount] = {selected: true, ThreatName: varThreatName, FilePath:strFileName, ActionTaken:strActiontaken, WardWizID:SpyID };
+		varThreatFoundCount++;
+	}
+	</script>
+			
+	<script type="text/tiscript">
+	function ShowScanReportsPage()
+	{
+		$(.scan_report).state.collapsed = true;			
+		$(#ScanDisplayCont).state.collapsed = true;	
+		$(.finishScanCont).state.collapsed = true;	
+		$(.action).state.collapsed = true;	
+		$(#ID_BTN_SMALL_DONE).state.expanded = true;
+	}
+	
+	$(#ID_BTN_Show_Reports).onClick = function() 
+	{
+		ShowScanReportsPage();
+	}		
+	</script> 
+	
+	<script type= "text/tiscript">
+    function ShowScanFinishedMsg()
+    {
+		varThreatFoundCount = arrVirusFoundEntries.length;
+        if(varThreatFoundCount == 0)
+        {
+            $(#ID_BTN_Show_Reports).state.collapsed = true;
+            $(.action).state.collapsed = false;
+            $(#ID_FILE_SCANED).text = $(#ID_TOTAL_OBJ_SCANNED).value;
+            $(#ID_FILE_SCAN_COUNT).state.collapsed = true;
+            $(#ID_STATUS).text = Lang.translate("NO_THREATS_FOUND");
+            $(#ID_STATUS).attributes.addClass("text_color");
+        }
+        else
+        {
+            $(#ID_STATUS).attributes.removeClass("text_color");
+        }
+        $(.finishScanCont).state.collapsed = false;
+        $(#ScanDisplayCont).state.collapsed = true;
+        $(.scan_report).state.collapsed = false;
+        $(#ShowReports).state.collapsed = true;
+        $(#HideDtls).state.collapsed = true;
+        $(#ID_DIV_SHUTDOWN).state.collapsed = true;
+    }
+
+    function SetTableValues()
+    {
+        vlistObject = $(#customscantable);
+        vlistObject.value = arrVirusFoundEntries;
+
+        vlistObj.on("change","tbody > tr", function()
+        {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAll.value = false;
+        });
+    }
+
+    function SetScanFinishedStatus( str)
+    {
+        function SetScanFinishedStatusDelayed()
+        {
+            chart.value=1.0;
+            self.timer(50ms,function(){
+                //g_bIsAnyTaskInProcess = false;
+                g_varCurrentTask = #NONE;
+                g_IsCustomScanRunning = false;
+				g_CstmScanFinish = true;
+				g_IsCstmScnPause = false;
+				g_bCustomScanShutdown = false;
+                 ShowScanFinishedMsg();
+                $(#SetScanStatus).text =  str;
+                SetTableValues();
+            });
+        }
+        self.timer(500ms, SetScanFinishedStatusDelayed);
+        return 1;
+    }
+	
+	function GetScanFinishedFlag()
+	{		
+		g_CstmScanFinish = true;
+		if(g_CurrentPage != #CUSTOMSCAN && g_CurrentPage == #ID_SCAN_HTML)
+		{
+			var doc = selectView("IDR_HTM_SCAN");
+			doc.ns.CloseCstmScn();
+		}
+	}
+    </script> 
+	
+	<script type= "text/tiscript">
+	 function BlurWhenLightBox()
+	 {
+		$(.blueCustScanWindow).attributes.addClass("translateWhenLightBox");
+		$(.zone1).attributes.addClass("translateWhenLightBox");
+	 }
+	</script>
+	
+	<script type= "text/tiscript">
+	function RemoveBlurLightBox()
+	 {
+		$(.blueCustScanWindow).attributes.removeClass("translateWhenLightBox");
+		$(.zone1).attributes.removeClass("translateWhenLightBox");
+	 }
+	</script>
+	
+	<script type="text/tiscript">
+	$(#scanNowCustomScan).onClick = function()
+	{
+		var bselected = false;
+		if(arrCustomScanEntries.length == 0)
+        {
+			BlurWhenLightBox();
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_FILES_OR_FOLDERS_FOR_CUSTOM_SCAN");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								}; 
+			RemoveBlurLightBox();
+			return;
+        }
+		for( var record in arrCustomScanEntries )
+        {
+            bselected = record.selected;
+            if(record.selected)
+            {
+                bselected = true;
+                break;
+            }
+        }
+        if(!bselected)
+        {
+			BlurWhenLightBox();
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_SCANNING");
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+			RemoveBlurLightBox();
+            return;
+        }
+        m_bIsManualStop = false;
+        $(#scanWindowCustom).state.collapsed = false;		
+        $(#selectCustomPath).state.collapsed = true;		
+		$(.quickResultCont).state.collapsed = true;
+        $(#ShowReports).state.collapsed = false;
+		$(#HideDtls).state.collapsed = true;
+        //g_bIsAnyTaskInProcess = true;
+        g_varCurrentTask = #CUSTOMSCAN;
+		$(#ID_DIV_SHUTDOWN).state.expanded = true;
+        g_IsCustomScanRunning = true;
+		g_CstmScanFinish = false;
+        varThreatFoundCount = 0;
+		arrVirusFoundEntries.length = 0;
+		self.ScanFinishedCall(GetScanFinishedFlag);
+		self.OnStartCustomScan(arrCustomScanEntries, SetScanStatus, AddVirusFoundEntry, SetScanFinishedStatus, ShowNotificationMessage);		
+	}	
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_SHUTDOWN).on("change", function(){
+        if($(#ID_SHUTDOWN).value == true)
+        {
+			g_bCustomScanShutdown = true;
+            self.OnClickShutDwonScan(true);    
+        }
+        else if($(#ID_SHUTDOWN).value == false)
+        {
+			g_bCustomScanShutdown = false;
+            self.OnClickShutDwonScan(false);
+        }
+    });
+    </script>
+	
+	<script type="text/tiscript">
+    function ShowNotificationMessage(varMsgType, strMessageText)
+    {
+        if(varMsgType == 1)
+		{
+			ShowScanFinishedMsg();
+            //g_bIsAnyTaskInProcess = false;
+			g_IsCustomScanRunning = false;
+			g_CstmScanFinish = true;
+			g_bCustomScanShutdown = false;
+			BlurWhenLightBox();
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),
+							caption : Lang.translate("ID_WARNING"), 
+							buttons: [ { caption: "OK", role:#ok, value:true } ]
+						};
+			RemoveBlurLightBox();
+		}
+		else
+		{
+			BlurWhenLightBox();
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING"), 
+							buttons: [ { caption: "OK", role:#ok, value:true },{ caption: Lang.translate("ID_SCN_CANCEL"), role:#cancel, value:false }]
+							};
+			RemoveBlurLightBox();
+			if(res == true)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function funGetScanStatus()
+	{
+		if(g_bQuickScanShutdown == true || g_bFullScanShutdown == true || g_bAntiRootScanShutdown == true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function Pie(params = {}) 
+	{
+		const strokeWidth = params.band || 10dip; 
+		const strokeColor = params.sector || color(100,0,0); 
+		const circleColor = params.circle || color(230,230,230); 
+	
+		var start = 1; 
+		var value = 0;  
+	
+		function render(gfx) 
+		{
+
+			const sw = this.toPixels(strokeWidth, #width); 
+	
+			var (w,h) = this.box(#dimension); 
+			var (x,y) = (w/2, h/2);  
+			var r = Integer.min(w,h) / 2 - sw / 2;  
+			
+			gfx.strokeWidth(sw + 0.5)
+			.strokeColor(circleColor)
+			.arc(x,y,r,r, 0deg, 360deg)
+			.strokeColor(strokeColor)
+			//.arc(x,y,r,r, 360deg * start, 360deg * value); Commented Due to Shift Start Point
+			.arc(x,y,r,r, 90deg * start, 360deg * value);
+		}  
+		
+		this.paintContent = render;
+		
+		// redefining property 'value' on that element
+		this["value"] = property(v) {
+			get return value;
+			set {
+				value = v;
+				this.text = String.$({(value * 100).toInteger() }%) ;
+				this.refresh();
+			}
+		};
+		this.value = this.attributes["value"].toFloat(0.0);
+	}
+	
+	
+	function self.ready() {
+		self.language = g_LanguageName;
+		g_CurrentPage = #CUSTOMSCAN;
+		$(#ID_CS_CSCAN).state.disabled = true;
+		
+        if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		
+		if(g_bCustomScanShutdown == true)
+		{
+			$(#ID_SHUTDOWN).value = true;
+            self.OnClickShutDwonScan(true); 
+        }
+        else
+        {
+            self.OnClickShutDwonScan(false);
+        }
+		
+		if(g_IsCustomScanRunning == true)
+        {
+			$(#ID_BTN_PAUSE).state.disabled = true;
+			$(#ID_BTN_STOP).state.disabled = true;
+			if(g_IsCstmScnPause == true)
+			{	
+				SetScanStatus(Lang.translate("ID_SCANNING_PAUSE"));
+				$(#ID_LBL_PAUSE).text = Lang.translate("ID_RESUME");				
+			}
+            $(#scanWindowCustom).state.collapsed = false;
+            $(#selectCustomPath).state.collapsed = true;
+            $(.quickResultCont).state.collapsed = true;
+            $(#ShowReports).state.collapsed = false;
+            $(#HideDtls).state.collapsed = true;
+           //g_bIsAnyTaskInProcess = true;
+            g_varCurrentTask = #CUSTOMSCAN;
+            $(.finishScanCont).state.collapsed = true;
+            varThreatFoundCount = arrVirusFoundEntries.length;
+            vlistObject = $(#customscantable);
+            vlistObject.value = arrVirusFoundEntries;
+            self.OnSetTimer();
+            return;
+        }
+        else
+        {
+		    $(#scanWindowCustom).state.collapsed = true;
+		    $(.finishScanCont).state.collapsed = true;
+		    $(.scan_report).state.collapsed = false;
+		}
+		
+		/*if(g_LanguageName == "ENGLISH")
+		{
+			styleBag.deactivate();
+		}
+		else if(g_LanguageName == "GERMAN")
+		{
+			styleBag.deactivate();
+			styleBag.activate();
+		}*/
+		
+		//to add german lang css changes
+		if(g_LanguageName == "GERMAN")
+		{	
+			$(.cstmDrop).style["margin-left"] = 6dip;
+			$(.cstmScnBtnMrgn).style["margin-left"] = 21.6dip;
+		}
+		function AddCustomScanEntryFromINI(strFilePath)
+        {
+            arrCustomScanEntries.push({selected : true, FilePath :strFilePath });
+        }
+        self.LoadCutomScanINI(AddCustomScanEntryFromINI);
+        
+		vlistObj = $(#dropedfiletable);
+        vlistObj.value = arrCustomScanEntries;
+		const selectAll = vCheckBoxDragDrop.$(input#ID_SELECTALL);
+        
+		varDroppedFileCount = arrCustomScanEntries.length;
+		
+        if(varDroppedFileCount ==0)
+        {
+            $(.paddMgZero).state.disabled = true;
+        }
+        else
+        {
+            $(.paddMgZero).state.disabled = false;
+        }			
+		vCheckBoxDragDrop.on("change","#ID_SELECTALL", function() { // select/deselect all
+             var selected = this.value;
+             for( var record in arrCustomScanEntries )
+             record.selected = selected;
+
+		});
+		self.GetCustomScanStatus(funGetScanStatus);
+ 	}
+	</script>
+	<script type="text/tiscript">
+	$(#HideDtls).state.collapsed = true;
+	$(#ShowReports).state.collapsed = true;
+	$(#HideDtls).onClick = function()
+	{
+		$(.disAreaScan).attributes.removeClass("activeTabView");
+		$(#HideDtls).state.collapsed = true;
+		$(.scan_report).state.collapsed = false;
+		$(#ShowReports).state.collapsed = false;
+		self.timer(500ms, SetTableValues);
+	}
+	$(#ShowReports).onClick = function()
+	{
+		$(.disAreaScan).attributes.addClass("activeTabView");
+		$(.scan_report).state.collapsed = true;
+		$(#HideDtls).state.collapsed = false;
+		$(#ShowReports).state.collapsed = true;
+		self.timer(500ms, SetTableValues);
+	}
+	</script>
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+	<div .message_display_block_cstm_scan>
+		<p #ID_STATUS_MSG><label>ID_REPORTS_SAVE_SUCCESS</label></p>
+	</div>
+	<div .scan_main_div>
+		<div .titleCont>
+		<div class="breadcrumbNav">
+			<ul class="listDisplayRow">
+				<li #ID_CS_PROT><label>ID_PROTECTION</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #ID_CS_SCAN><label>ID_SCANS</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #ID_CS_CSCAN><label>ID_HTM_CUSTOM_SCAN_CUSTOM_SCAN</label></li>
+			</ul>
+		</div>
+		<br/>
+			<h1 .headingTitle1 style="margin-top:8dip;margin-bottom:7dip;"><label>ID_HTM_CUSTOM_SCAN_CUSTOM_SCAN</label></h1>
+			<p><label>ID_LETS_YOU_SELECT_SPECIFIC_FOLDER</label></p>
+		</div>
+		<div .titleCont #selectCustomPath style="flow:horizontal;">
+			<div .file-drop-zone #custom .blueCustScanWindow>
+                <table id="dropedfiletable">
+					<thead>
+						<tr>
+							<th style="width:29dip;"></th><th style="width:280dip;"><label>ID_HTM_CUSTOM_SCAN_DROPPED_FILES_AND_FOLDERS</label></th>
+						</tr>
+					</thead>  
+					<tbody>
+						<tr><td><input(selected)|checkbox /></td><td(FilePath)></td></tr>
+					</tbody>
+				</table>
+				<div class="patch1 bottonContWidth">
+					<p .paddMgZero><input type="checkbox" #ID_SELECTALL checked/><label for="ID_SELECTALL">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></p>
+					<ul .cstmDrop .mrgn_german .cstmScnBtnMrgn>
+						<li><label>ID_HTM_CUSTOM_SCAN_ADD</label>
+							<ul class="drop2" style="margin-left:-1dip;">
+								<li #ID_BROWSE_FILE><label>ID_FILE</label></li>
+								<li #ID_BROWSE_FOLDER><label>ID_FOLDER</label></li>
+							</ul>
+						</li>
+						<li #DeleteEntry><label>ID_HTM_CUSTOM_SCAN_DELETE</label></li>
+					</ul>
+				</div>
+			</div>
+			<div .zone1 .blueCustScanWindow>
+			<div .file-drop-zone style="padding-right:120dip;">
+					<div class="dragDropCont1" style="margin-top:0dip;">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve" class="CstmScanIconDrag">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M19.9,77.4l-5.2-36.9c-3.6-0.1-7.8-0.1-11.5-0.1c-2.7,0.3-3.6,2.3-2.9,6.2
+							c3.5,20.3,7,40.5,10.5,60.8c0.6,2.8,2,4.1,3.6,4.1c-0.6-0.5-1-1.3-0.8-2.2L19.9,77.4z"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-miterlimit="2.6131" d="
+							M28.4,50.6H116c1.4,0,2.4,1.2,2.1,2.6l-11.2,56c-0.3,1.4-1.7,2.6-3.1,2.6H16.2c-1.4,0-2.4-1.2-2.1-2.6l11.2-56
+							C25.6,51.8,27,50.6,28.4,50.6z"/>
+						<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" points="
+							19.9,79 13.7,32.3 32,16.6 73.9,11.2 78.5,50.3 "/>
+						<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" points="
+							32.3,16.5 27,38.9 14,32.5 "/>
+						<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" x1="42.1" y1="27.2" x2="68.1" y2="24"/>
+						<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" d="
+							M43.2,35.2l8.6-1.1 M58.7,33.3l10.6-1.3"/>
+						<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" x1="22.2" y1="45.5" x2="70.6" y2="39.4"/>
+						<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" x1="76" y1="27" x2="84.4" y2="27.1"/>
+						<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" x1="77" y1="35" x2="84.4" y2="35"/>
+						<line fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" x1="77.6" y1="42.5" x2="84.4" y2="42.5"/>
+						<polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="2.6131" points="
+							91.1,50.6 90.9,15.4 74.9,15.8 "/>
+						</svg>										
+					</div>			
+				</div>
+				<h4 style="margin-top:130dip;"><label>ID_HTM_CUSTOM_SCAN_DRAG_AND_DROP_OBJ_FOR_CUSTOM_SCAN</label></h4>
+				<div class="btnCstmMd" #scanNowCustomScan><label>ID_HTM_CUSTOM_SCAN_SCAN_NOW</label></div>
+			</div>
+		</div>
+		<div .disAreaScan #scanWindowCustom>
+		<div #ScanDisplayCont>
+			<div .mgLeftSc>
+				<div .scanAnimation>
+					<div .shieldGif>
+						<!--<img src="IDR_GIF_LOGO_ANIMATION.gif">-->
+					</div>
+					<pie-chart value=0.0 />
+				</div>
+			</div>
+			<div .pathDisplay>
+				<p #SetScanStatus><label>ID_SCANNING_STARTED</label></p>
+			</div>
+			<div class="quickResultCont">
+				<div class="quickScanResult">
+					<h4><label>ID_OBJECTS_SCANNED</label><span #ID_TOTAL_OBJ_SCANNED> 0 </span></h4>
+					<div class="btnCstm" #ID_BTN_PAUSE><label #ID_LBL_PAUSE>ID_BTN_PAUSE</label></div>
+				</div>
+				<div class="quickScanResult">
+					<h4><label>ID_THREATS_FOUND</label><span #ID_TOTAL_THREATS_DETECTED> 0 </span></h4>
+					<div class="btnCstm" #ID_BTN_STOP><label>ID_BTN_STOP</label></div>
+				</div>
+			</div>
+			<div .pathDisplay #ID_DIV_SHUTDOWN>
+				<p><input type="checkbox" #ID_SHUTDOWN><label for="ID_SHUTDOWN">ID_SHUTDOWN_COMP</label></p>
+			</div>
+		</div>
+		<div .scan_report #scanReportHdeShow>
+			<table id="customscantable">
+				<thead>
+					<tr>
+						<th style="width:95dip;"><label>ID_THREAT_NAME</label></th>
+						<th style="width:395dip;"><label>ID_FILE_PATH</label></th>
+						<th style="min-width:83dip;"><label>ID_ACTION</label></th>
+					</tr>
+				</thead>  
+				<tbody>
+					<tr><td(ThreatName)></td><td(FilePath)></td><td(ActionTaken)></td></tr>
+				</tbody>
+			</table>
+		</div>
+		</div>		
+		<div .action >
+			<p .objects_scanned> <label>ID_OBJECTS_SCANNED</label><span #ID_TOTAL_OBJ_SCANNED_FINISH_PAGE> 0 </span></p> 
+			<p .threats_found> <label>ID_THREATS_FOUND</label><span #ID_TOTAL_THREATS_DETECTED_FINISH_PAGE> 0 </span></p>
+			<div class="btnCstmSmall" #ID_BTN_SMALL_DONE style="margin-left:60dip;margin-bottom:10dip;"><label>ID_DONE</label></div>
+		</div>
+		<div .finishScanCont .txtcenter>
+			<img src="IDR_PNG_OK.png" .mgTop10>
+			<h1 #ID_STATUS><label>ID_FINISHED</label></h1>
+			<h1 #ID_FILE_SCAN_COUNT> <span #ID_FILE_SCANED> 0 </span> <label>ID_FILES_SCANNED</label></h1>
+			<div class="btnCstm" #ID_BTN_Show_Reports><label>ID_VIEW_DETAILS</label></div>
+			<div class="btnCstm" #ID_BTN_DONE><label>ID_DONE</label></div>
+		</div>
+		<p class="reportsTabButton" style="margin-top:5dip;"><span #ShowReports><label>ID_SHOW_DETAILS</label></span><span #HideDtls><label>ID_HIDE_DETAILS</label></span></p>		
+	</div>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title>Backup Restore</title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+    <link href="IDR_TIS_BANGLA.tis" hreflang="BANGLA" rel="translation">	
+    <link href="IDR_TIS_HINDI.tis" hreflang="HINDI" rel="translation">	
+    <link href="IDR_TIS_URDU.tis" hreflang="URDU" rel="translation">	
+	<style>
+	@import url(IDR_CSS_VGRID.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		form#data-dialog > table > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			//text-align:right;
+			vertical-align:top;
+		}
+		@font-face 
+		{
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html
+		{
+		   padding:0dip;
+		   margin:0dip;
+		   width:620dip;
+		   height:400dip;
+		   overflow:hidden;
+           background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat!important;
+		   background-size:cover!important;
+		}
+		body{
+		   padding:0dip;
+		   margin:0dip;
+		   color:#000;
+		   //overflow-y:my-v-scrollbar;
+		}
+		h1,h2,h3,h4,h5
+		{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main
+		{
+			width:620dip;
+			height:400dip;
+		}
+		.content_display_sched{
+			width:587dip;
+			height:297dip;
+			//background:rgba(0,0,0,.3.5);
+			overflow:hidden;
+			overflow-y:auto;
+			margin-left:30dip;
+			vertical-scrollbar: my-v-scrollbar;
+		}		window-button  { display:inline-block; size: 19dip; behavior:clickable; clear:after;}
+
+		window-caption { display:block; flow:text; width:500dip; font:system; }
+
+		window-button#window-close { 
+			color:#000;margin-right:5dip;margin-top:7dip;
+			background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 
+										c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0
+										l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269
+										c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73
+										L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+			background-size: 10dip;
+			background-position: 50% 50%;
+			background-repeat:no-repeat;
+			fill: #000;
+		}
+
+		window-button#window-close:hover { 
+			/* background-color:red; 
+			outline:5dip glow red -1dip;  */
+			transition: outline(linear,200ms) 
+			background-color(linear,200ms); 
+		}
+		
+		//******** Menu Bar CSS *********//	
+	
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		#header_content{
+			flow:horizontal;
+			background:rgba(0,0,0,.05);
+		}
+		.basic_background{
+			background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+		}
+		.essential_background{
+			background:url(IDR_JPG_BACKGROUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.provantage_background{
+			background:url(IDR_JPG_BG_PROVANTAGE.jpg)!important;
+		}
+		.essential_plus_background{
+			background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+			background-size:cover;
+		}
+		.elite_background{
+			background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+			background-size:cover;
+		}
+		.content_tray h3{
+			font-weight:500;
+			margin-top:0dip;
+			color:#000;
+			margin-bottom:0;
+			font-size:16dip;
+			cursor:pointer;
+		}
+		.content_tray p{
+			margin:0dip;
+			padding:0dip;
+			color:#000;
+		}
+		.content_tray:hover > h3{
+			color:#2bc900;
+		}
+		.content_tray:hover > span h3{
+			color:#2bc900;
+		}
+		.content_tray:hover{
+			color:#2bc900;
+		}
+	//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:540dip;
+			height:100dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: scroll;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:10dip!important;
+			margin-left:3dip!important;
+			color:#000;
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			vertical-scrollbar: my-v-scrollbar; 
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-image:none!important;
+			background-color:#0097D6!important; 
+			/* background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip; */
+		}
+		  
+		table th:nth-child(1)  {  width:0.02*; }
+		table th:nth-child(2)  {  width:0.2*; }
+		  
+		table th:hover 
+		{ 
+			color: #ffe598;
+			/* transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png); */
+		}
+		  
+		//table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		//table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center; width:0.05*;padding-top:2dip; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		
+	  
+	  
+		//*******************************************************************//
+		
+		.message_display_block p{
+			margin-top:10dip;
+			margin-bottom:0dip;
+			margin-left:10dip;
+			margin-right:10dip;
+			text-align:center;
+			padding-top:10dip;
+			color: #fff;
+		}
+		.message_display_block {
+			background:rgba(0, 150, 214, 1);;
+			position:absolute;
+			top:-50dip;
+			width:720dip;
+			height:63dip;
+			visibility:none;
+			margin-top:50dip;
+			margin-left:0;
+		}
+		.message_display_block:expanded {
+			visibility:visible;
+			top:0;
+			transition:top(sine-in-out, 600ms);
+		}
+		.message_display_block:collapsed {
+			visibility:none;
+		}
+		div.file-drop-zone1 {
+			prototype: FileDropZone;
+			width:560dip;
+			height:120dip;
+		}
+		div.file-drop-zone1.active-target {
+			background:rgba(0,0,0,.5);
+		}
+	    #select-all-File:disabled{
+			opacity:.7;
+	    }
+	    #ID_BTN_BROWSE:disabled{
+			opacity:.5;
+	    }
+		.content_display_job{
+			height:260dip;
+			width:550dip;
+			margin-left:20dip;
+			padding:10dip;
+			margin-top:10dip;
+			visibility:none;
+		}
+		.content_display_source_dest{
+			height:260dip;
+			width:580dip;
+			margin-left:10dip;
+			padding:10dip;
+			margin-top:10dip;
+			visibility:visible;
+		}
+		.content_display_file_types{
+			height:260dip;
+			width:550dip;
+			margin-left:20dip;
+			padding:10dip;
+			margin-top:10dip;
+			visibility:visible;
+		}
+		.content_display_exclude{
+			height:260dip;
+			width:550dip;
+			margin-left:20dip;
+			padding:10dip;
+			margin-top:10dip;
+			visibility:none;
+		}
+		.header{
+			background:rgba(255, 255, 255, .5);
+			flow:horizontal;
+			width:620dip;        
+			height:47dip;
+		}
+		.content_display_job:expanded{
+			visibility:visible;
+		}
+		.content_display_source_dest:expanded{
+			visibility:visible;
+		}
+		.content_display_file_types:expanded{
+			visibility:visible;
+		}
+		.content_display_exclude:expanded{
+			visibility:visible;
+		}
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:70dip!important;
+			height:20dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			font-size:11dip;
+			text-align:center;  
+			line-height:18dip;
+		}		
+		.button_small{
+			width:70dip!important;
+			height:18dip!important;
+		}
+		legend{
+			background:#fff;
+			padding:2dip;
+			padding-left: 10dip;
+			padding-right: 10dip;
+			color: #000;
+		}
+		.input_loc{
+			width:307dip;
+			height:17dip;
+			border:1dip solid #c0c0c0;
+			padding:0;
+			margin-left:10dip;
+		}
+		#ID_RESTORE:disabled{
+			opacity:0.5;
+		}
+		.btnNew2Sm{
+	cursor:pointer;
+	/* background: linear-gradient(top, #0097D6 0%, rgb(175, 211, 253) 100%);; */
+	background: #0097D6;
+	width:70dip;
+	height:28dip;
+	padding-top:0dip;
+	padding-left:10dip;
+	padding-right: 10px;
+	color:#fff;
+	border-radius: 30dip;
+	position: relative;
+	margin-top:0;
+}
+.btnNew2Sm label{
+	width:50dip;
+	text-align: left;
+	margin-top: 5dip;
+}
+	</style>
+	<script type="text/tiscript">    
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    </script>
+    <script type="text/tiscript">
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+	<script type="text/tiscript">
+	$(body).onClick = function()
+	{
+	   $(.message_display_block).state.collapsed = true;
+    }
+	</script>
+	<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		Sciter.launch("http://www.wardwiz.com/");
+	}
+    </script>
+    <script type="text/tiscript">
+    $(#ID_OK).onClick = function()
+    {
+		view.close();
+    }
+    </script>
+
+    <script type="text/tiscript">
+		var vlistResObj;
+		var arrRestoreDetailRecords = new Array(0);
+		var arrRestoreSelectRecords;
+		var varIsDateTimeLoading = false;
+		var varSelectedIndex;
+	</script>
+
+    <script type="text/tiscript">
+		if(view.parameters.ProVersion == #BASIC)
+		{
+			$(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+			$(body).attributes.addClass("basic_background");
+		}
+		else if(view.parameters.ProVersion == #ESSENTIAL)
+		{
+			$(body).attributes.addClass("essential_background");
+		}
+		else if(view.parameters.ProVersion == #PROVANTAGE)
+		{
+			$(body).attributes.addClass("provantage_background");
+			$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+		}
+		else if(view.parameters.ProVersion == #ELITE)
+		{
+			$(body).attributes.addClass("elite_background");
+			$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+		}
+		else if(view.parameters.ProVersion == #ESSENTIALPLUS)
+		{
+			$(body).attributes.addClass("essential_plus_background");
+			$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+		}
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+	</script>
+
+    <script type="text/tiscript">
+		function LoadDateTimeEntries()
+		{
+			$(#ID_RESTORE_TITLE).value = Lang.translate("ID_LOADING_TITLE");
+			$(#ID_RESTORE).state.disabled = true;
+			$(#ID_BTN_BROWSE).state.disabled = true;
+			varIsDateTimeLoading = true;
+			arrRestoreDetailRecords = view.parameters.varRestoreDetailRecords;
+			for(var vindex = 0; vindex < view.parameters.varRestoreDetailRecords.length; vindex++)
+			{
+				arrRestoreDetailRecords[vindex].RestoreDateTime =  view.parameters.varRestoreDetailRecords[vindex].RestoreDateTime;
+				if(vindex == view.parameters.varRestoreDetailRecords.length-1)
+				{
+					$(#ID_RESTORE_TITLE).value = Lang.translate("ID_RESTORE_FILES");
+					$(#ID_RESTORE).state.disabled = false;
+					varIsDateTimeLoading = false;
+				}
+			}
+		}
+		$(#ID_BTN_BROWSE).onClick = function()
+        {
+			function msgboxNetworkValue()
+			{
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+				$(.message_display_block).state.expanded = true;
+                return;
+			}
+            var varBrowsePath = view.selectFolder();
+			if(varBrowsePath == "undefined")
+			{
+				$(#ID_INPUT_NEW_LOC).value = "";
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_SELECT_VALID_FILE_FOLDER");
+				$(.message_display_block).state.expanded = true;
+			}
+            varBrowsePath = varBrowsePath.replace("\/","\\");
+			$(#ID_INPUT_NEW_LOC).value = varBrowsePath;
+			view.parameters.CheckIsNetworkPathPara(varBrowsePath, msgboxNetworkValue);
+        }
+		$(#ID_CANCEL).onClick = function()
+        {
+			if(varIsDateTimeLoading)
+			{
+				$(#StatusMessage).text = Lang.translate("ID_FETCHING_LIST");
+				var res = dialog { body:$(form#simple-dialog),
+				returns: #values,
+				buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+				};
+				if(res == true)
+				{
+					view.close();
+				}
+				else
+				{
+					return;
+				}
+			}
+			else
+			{
+				view.close(null);
+			}
+		}
+		$(#ID_RESTORE).onClick = function()
+        {
+			if(varSelectedIndex == "undefined")
+			{
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_PLEASE_SELECT_DATE_TIME_2_RESTORE");
+				$(.message_display_block).state.expanded = true;
+                return;
+			}
+			arrRestoreSelectRecords =  view.parameters.varRestoreDetailRecords[varSelectedIndex].RestoreDateTime;
+			view.close(arrRestoreSelectRecords);
+        }
+	</script>
+
+    <script type="text/tiscript">
+	$(#ID_RADIO_NEW_LOCATION).on("change", function()
+    {
+        $(#ID_BTN_BROWSE).state.disabled = false;
+    });
+	$(#ID_RADIO_ORG_LOCATION).on("change", function()
+    {
+        $(#ID_BTN_BROWSE).state.disabled = true;
+		$(#ID_INPUT_NEW_LOC).state.value = "";
+    });
+	</script>
+
+    <script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = view.parameters.varLanguageValue;
+		LoadDateTimeEntries();
+		vlistResObj = $(#theRestoretable);
+		vlistResObj.value = arrRestoreDetailRecords;
+		vlistResObj.on("change","tbody > tr", function() { // some change inside tr
+          this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+        });
+		
+		vlistResObj.on("click", ".RestoreTable", function(evt)
+		{
+			var record = this.$p(tr).data;
+            varSelectedIndex = arrRestoreDetailRecords.indexOf(record);
+		});
+    }
+  </script>
+		<form #simple-dialog caption="Simple!">
+			<p #StatusMessage>Do you want to stop process?</p>
+	</form>
+</head>
+<body>
+<div .main>
+		<div .header>
+			<!-- <div .logo> -->
+				<window-caption role="window-caption" style="width:580dip;padding-top:14dip;padding-left:15dip;font-size:13dip;height:34dip">
+				<!-- <img src="IDR_PNG_LOGO.png" #ID_LOGO style="cursor:pointer;width:100dip;"> -->
+				<b><label #ID_RESTORE_TITLE>ID_RESTORE_FILES</label></b>
+				</window-caption>	
+			<!-- </div> -->
+			<window-button #window-close role="window-close"></window-button>
+		</div>
+		<div .content_display_source_dest>
+			<div style="padding-left:0;margin-bottom:10dip;">
+				<fieldset style="width:560dip;height:140dip;border:1dip solid #dcdcdc;padding-left:12dip;">
+					<legend><label>Source</label></legend>
+					<div style="flow:vertical">
+						 <div  .file-drop-zone1>
+							 <table #theRestoretable style="margin:0">
+							<thead> 
+								<tr>
+									<th style="width:*;"><label>ID_DATE_TIME</label></th> 
+								 </tr> 
+							 </thead> 
+							<tbody> 
+								<tr .RestoreTable><td(RestoreDateTime)></td></tr>
+							</tbody>
+							</table>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div style="padding-left:0;margin-bottom:10dip;">
+				<fieldset style="width:570dip;height:100dip;border:1dip solid #dcdcdc">
+					<legend><label>ID_RESTORE_TO</label></legend>
+					<br/>
+					<input type="radio" style="margin-left:7dip;" #ID_RADIO_ORG_LOCATION checked><label for="ID_RADIO_ORG_LOCATION">ID_ORG_LOCATION</label><br/>
+					<input type="radio" style="margin-left:7dip;" #ID_RADIO_NEW_LOCATION><label for="ID_RADIO_NEW_LOCATION">ID_NEW_LOCATION</label>
+						<input type="text" #ID_INPUT_NEW_LOC .input_loc style=""/>
+						<button .btnNew2Sm #ID_BTN_BROWSE style="margin-left:30dip;float:right;margin-top:-20dip;"><label>ID_UPDATE_BTN_BROWSE</label></button>
+				</fieldset>
+			</div>
+		</div>
+		<div .message_display_block>
+			<p #ID_STATUS_MSG>Scanning has been completed successfully!!</p>
+		</div>
+		<div style="height:70dip;padding:10dip;padding-right:20dip;">
+			<div style="text-align:right;">
+				<button id="close-dialog" .btnNew2Sm #ID_RESTORE><label>ID_RESTORE</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+				<button id="cancel-dialog" tabindex=1 .btnNew2Sm #ID_CANCEL><label>ID_CANCEL</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+			</div>
+        </div>		
+</div>
+</body>
+</html>

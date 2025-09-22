@@ -1,0 +1,57 @@
+.main{
+	width:720dip;
+	height:540dip;
+	background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+	background-size:cover;
+}
+.scan_button:hover{
+	background: linear-gradient(bottom, #888888, #000);
+	transition: background(quart-out,0.5s,quart-in);
+	border:1dip solid #888888;
+	color:#fff;
+}
+.scan_button{
+	width:70dip;
+	height:18dip;
+	background: linear-gradient(bottom, #000, #888888);
+	border:1dip solid #888888;
+	color:#fff;
+	border-radius:4dip;
+}
+ th 
+{ 
+	color: white;
+	font-size:10pt; 
+	border:none;
+	padding:4dip; 
+	background-color:#DDD; 
+	background-image:url(IDR_PNG_HEADER_BASIC.png)!important;
+	background-repeat:expand stretch-left stretch-right stretch-middle;
+	background-position:3dip 3dip 3dip 3dip;
+}
+table{
+	border:1dip solid #888888 !important; 
+}
+.selector{
+	width:100dip;
+	height:22dip;
+	background: linear-gradient(bottom, #000, #888888);
+	border:1dip solid #888888;
+	color:#fff;
+	border-radius:4dip;
+	margin-left:15dip;
+}
+.selector:hover{
+	width:100dip;
+	height:22dip;
+	background: linear-gradient(bottom, #888888, #000);
+	transition: background(quart-out,0.5s,quart-in);
+	border:1dip solid #888888;
+	color:#fff;
+	border-radius:4dip;
+	margin-left:15dip;
+}
+
+.message_display_block {
+		background:rgba(0,0,0,.8)!important;
+	  }

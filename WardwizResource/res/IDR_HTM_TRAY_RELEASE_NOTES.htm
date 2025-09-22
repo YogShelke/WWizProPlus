@@ -1,0 +1,159 @@
+<html custom-frame="layered" lang="ENGLISH">
+<head>
+    <title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">			
+    <style>
+        @import url(IDR_CSS_NOTIFICATION.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+
+        .OK_button {
+            background: #2189ca;
+            width: 100dip;
+            border: 1dip solid #2189ca;
+            border-radius: 5dip;
+            color: #fff;
+            margin-left: 80dip;
+        }
+
+        .product_heading {
+            text-align: center;
+            font-weight: 500;
+            font-size: 18dip;
+            color: #197e01;
+            margin: 0dip;
+        }
+
+        .product_description {
+            padding-left: 15dip;
+            text-align: left;
+        }
+
+        .close_btt {
+            float: right;
+            cursor: pointer;
+            behaviour: clickable;
+            margin-top: 10dip;
+        }
+
+        .popup_header {
+            background: #074a81;
+            padding: 8dip;
+            padding-top: 2dip;
+            padding-bottom: 2dip;
+            border-bottom: 3dip solid #0167f7;
+        }
+
+        popup#notification {
+            style-set: notification-message;
+        }
+
+        @set notification-message {
+
+            :root {
+                prototype: Notification url(IDR_TIS_NOTIFICATION.tis);
+                background: #dcdcdc;
+                border: 4dip solid #074a81;
+                /* border-radius: 10dip; */
+                margin: 2dip;
+                width: 300dip;
+                min-height: 240dip;
+                display: none;
+                transform: translate(0,0);
+                opacity: 1.0;
+                font: system;
+            }
+
+                :root[state] {
+                    display: block;
+                }
+
+                :root[state=initial] {
+                    transform: translate(0,100%);
+                    opacity: 0.0;
+                }
+                /* offstage */
+                :root[state=shown] {
+                    transform: translate(0,0);
+                    opacity: 1.0;
+                    transition: transform(quad-out,500ms) opacity(linear,500ms);
+                }
+
+                :root[state=closed] {
+                    transform: translate(100%,0);
+                    opacity: 0.0;
+                    transition: transform(linear,500ms) opacity(linear,500ms);
+                }
+
+            header {
+                display: block;
+                border-bottom: 1dip dashed gray;
+                padding: 4dip;
+                visibility: none; /* To hide title bar */
+            }
+
+            content {
+                display: block; /* padding: 8dip; */
+                padding-bottom: 8dip;
+            }
+        }
+	#logo_size{
+	 width:90dip!important;
+	 height:auto;
+	}
+    </style>
+	<script type="text/tiscript">
+		include "IDR_TIS_MAIN.tis";
+		include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script>
+    <script type="text/tiscript">
+     function setValues(dbVersion,releseInfo)
+     {
+      var svInfo = releseInfo;
+      var sub1 = svInfo.substr(1,60);
+      var sub2 = svInfo.substr(61,33);
+      var sub3 = releseInfo.substr(94,39);
+
+      $(#ID_DBVersion).value = dbVersion;
+      $(#ID_proInfo1).value = sub1;
+      $(#ID_proInfo2).value = sub2;
+      $(#ID_proInfo3).value = sub3;
+    }
+
+    function ShowPopup()
+     {
+       Notification.show("<div class='popup_header'><img #logo_size src='IDR_PNG_TRAY_LOGO.png'><img .close_btt #IDR_ID_CLOSE src='IDR_PNG_CLOSE.png'></div><p class='product_heading'><b><br/><span #ID_DBVersion></span></b></p><p class='product_description'><b> <label>ID_NEW_FEATURES</label> :</b><br/><span #ID_proInfo1> </span> <br/><img src='IDR_PNG_LIST_STYLE.png'><span #ID_proInfo2></span><br/><img src='IDR_PNG_LIST_STYLE.png'> <span #ID_proInfo3> </span></p><p><button .OK_button #OKbutton style='margin-left:95dip;'>OK</button></p>");
+
+       $(#OKbutton).onClick = function()
+        {
+          view.OnOK();
+        }
+
+      $(#IDR_ID_CLOSE).onClick = function()
+       {
+        view.close(null);
+       }
+    }
+    </script>
+
+    <script type="text/tiscript">
+        function self.ready()
+        {
+		  self.language = g_LanguageName;
+          view.getReleaseNotesinfo(setValues);
+          ShowPopup();
+        }
+    </script>
+
+</head>
+<body>
+
+    <popup#notification>
+        <header>Question:</header>
+        <content>
+
+        </content>
+        </popup>
+</body>
+</html>

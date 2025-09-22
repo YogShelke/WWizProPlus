@@ -1,0 +1,163 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+	<head>
+	<title>Remote Assist</title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_MAIN.css);
+    html 
+    {
+        width:450dip;           /* preferred/initial width */
+        height:auto!important;          /* content will not overflow, no vertical scrollbars on the window */
+        overflow:hidden;
+    }
+	body.changeRemovePassword{ 
+		height:auto!important;
+		background-size:cover;
+		padding:0; 
+		margin:0; 
+		border:0.5dip solid #3d748e; 
+		padding-bottom:15dip;
+		padding-left:0dip;
+	}
+	.header_changeRemovePassword{
+		background:rgba(0,0,0,.3);
+		flow:horizontal;
+		width:448dip;        
+		height:40dip!important;
+	}
+	.btnIcon_changeRemovePassword{
+		margin-left:105dip;
+	}
+	div.licence
+    {
+		background:white;
+		border:2dip solid;
+		width:425dip;
+		height:200dip;
+		overflow:auto;
+		margin-top:10dip;
+		margin-left:10dip;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	div.licence > div { 
+		margin:4dip;
+		color:#000;
+	}
+	.font_size_12{
+		font-size:12dip;
+	}
+	</style>
+	
+	<script type="text/tiscript">	
+	$(#ID_BTN_AGREE).onClick = function()
+	{
+		view.parameters.bAgree[0].bFlag = 1;
+		view.close(null);		
+	}
+	
+	$(#ID_BTN_DISAGREE).onClick = function()
+	{
+		view.parameters.bAgree[0].bFlag = 0;
+		view.close(null);
+	}
+	</script> 
+		
+	<script type="text/tiscript">
+	$(#window-close) << event click()
+	{				
+		view.close(null);
+	}
+	</script> 
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script> 
+	
+	<script type="text/tiscript">
+	function self.ready() {	
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}	
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		self.language = view.parameters.varLanguageValue;			
+	}
+	</script> 
+</head>
+<body .changeRemovePassword>
+	<div .header_changeRemovePassword>
+		<window-caption role="window-caption">
+			<label>ID_WARDWIZ_REMOTE_ASSISTANCE_TITLE</label>
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>		
+	
+	<div .licence>
+		<div>
+			<h5 style="height:2dip;margin-bottom:10dip;margin-top:0;"><label .font_size_12>ID_WARDWIZ_REMOTE_ASSISTANCE</label></h5>
+			<p style="margin-bottom:0;">----------------------------------</p>					
+			<p style="font-size:12dip;margin-bottom:8dip;margin-top:5dip;"> 
+				<label>ID_REM_ASSIST_DESC_P_1</label>
+			</p>	
+			<h5 style="height:7dip;margin-bottom:10dip;margin-top:0"><label style="font-size:12dip;">ID_DISCLAIMER</label></h5>					
+			<p style="font-size:12dip;margin-bottom:5dip;">
+				<label>ID_REM_ASSIST_DESC_P_2</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_3</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_4</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_5</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_6</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_7</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_8</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_9</label>
+			</p>
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_10</label>
+			</p>
+			
+			<p .font_size_12>
+				<label>ID_REM_ASSIST_DESC_P_11_1</label><b><label>ID_REM_ASSIST_DESC_P_11_2</label></b><label>ID_REM_ASSIST_DESC_P_11_3</label>
+			</p>					
+		</div>
+	</div>
+	
+	<div .btnIcon_changeRemovePassword>
+		<div .btnCstmSmall style="width:110dip;" #ID_BTN_AGREE><label>ID_AGREE</label></div>
+		<div .btnCstmSmall style="width:110dip;" #ID_BTN_DISAGREE><label>ID_DISAGREE</label></div>
+	</div>
+</body>
+</html>

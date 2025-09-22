@@ -1,0 +1,252 @@
+<html custom-frame="solid">
+<head>
+<title>Add Website</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+<style>
+@import url(IDR_CSS_VGRID.css);
+@import url(IDR_CSS_GERMAN_LANG.css);
+
+html 
+{ 
+    background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+    background-size:cover;
+	width:313dip;           /* preferred/initial width */
+	height:228dip;          /* content will not overflow, no vertical scrollbars on the window */  
+	overflow:hidden;
+}
+
+window-button  { display:inline-block; size: 19dip; outline-color:red; behavior:clickable; clear:after;}
+window-caption { display:block; flow:text; width:*; font:system; padding: 4dip 8dip; }
+window-button#window-close { color:white;margin-left:4dip;margin-top:7dip;
+background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 
+							c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0
+							l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269
+							c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73
+							L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+background-size: 10dip;
+background-position: 50% 50%;
+background-repeat:no-repeat;
+fill: #fff;
+}
+
+window-button#window-close:hover { 
+background-color:red; 
+outline:5dip glow red -1dip; 
+transition: outline(linear,200ms) 
+background-color(linear,200ms); }
+	
+body { 
+padding:0; margin:0; 
+border:1dip solid #555555;  
+}
+
+.header{
+background:rgba(0,0,0,.4);
+flow:horizontal;
+width:500dip;        
+height:40dip;
+}
+
+html > body > .section { padding:10dip;}
+
+h1, p { text-align:center; }
+
+#content { flow:horizontal; size:*; }   
+#content > picture { display:block; size:auto; margin:6dip; }
+#content > textarea { display:block; size:*; min-width:16em; min-height:6em; }  
+	
+.message_display_block p{
+margin-top:10dip;
+margin-bottom:0dip;
+text-align:center;
+padding-top:0dip;
+}
+
+.message_display_block {
+background:rgba(0,8,44,.95);
+position:absolute;
+width:313dip;
+height:37dip;
+visibility:none;
+margin-top:35dip;
+margin-left:0dip;
+color:#fff;
+}
+
+.message_display_block:collapsed {
+visibility:visible;
+top:0;
+transition:top(sine-in-out, 600ms);
+}
+
+.set_label_information{
+margin-top:8dip;
+margin-left:3dip;
+}
+
+.set_label_information_font{
+color:#fff;
+font-size:11dip;
+}
+
+.set_input_type_text{
+width:230dip;
+margin-left:2dip;
+margin-top:5dip;
+}
+
+.set_chkbox_block{
+margin-top:3dip;
+height:16dip;
+}
+
+.basic_background{
+	background:url(IDR_JPG_BACKGROUND_BASIC.jpg)!important;
+}
+.essential_background{
+	background:url(IDR_JPG_POPUP_BACKGROUND.jpg)!important;
+}
+.provantage_background{
+	background:url(IDR_JPG_BG_PROVANTAGE.jpg)!important;
+}
+.essential_plus_background{
+	background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+	background-size:cover;
+}
+.elite_background{
+	background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+	background-size:cover;
+}	
+</style>
+<script type="text/tiscript">  
+include "IDR_TIS_DECORATORS.tis";
+include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+include "IDR_TIS_SQLITE.tis";
+</script>
+
+    <script type="text/tiscript">
+        var ArrCategories = view.parameters.ArrSitenames;
+    </script>
+
+<script type="text/tiscript">
+    $(body).onClick = function ()
+    {
+		$(.message_display_block).state.collapsed = false;
+    }
+	
+	$(#ID_CHK_BLOCK_SUBDOMAIN).onClick = function()
+	{
+		$(.message_display_block).state.collapsed = false;
+	}	
+</script>
+
+<script type="text/tiscript">
+	
+	$(#ID_BTN_OK).onClick = function()
+	{
+		var varWebSite = $(#ID_TEXT_WEBSITE).value.trim();		
+		if(varWebSite.length > 0 )
+		{
+			if(varWebSite[varWebSite.length - 1] == '.' || varWebSite[0] == '.' || varWebSite.split(".").length <= 1) 
+			{		
+				$(.message_display_block).state.collapsed = true;
+				$(#ID_Def_exception_MSG).value = "Please enter valid URL.";
+				return;
+			}		
+			if(ArrSitenames.length == 0)
+			{
+				ArrSitenames.push {index:ArrSitenames.length,selected:$(#ID_CHK_BLOCK_SUBDOMAIN).state.checked,urlstring:varWebSite};		
+			}
+			else
+			{	
+				for(var vindex = 0; vindex < ArrSitenames.length; vindex++)
+				{		
+					if(ArrSitenames[vindex].urlstring == varWebSite)
+					{
+						$(.message_display_block).state.collapsed = true;
+						$(#ID_Def_exception_MSG).value = "URL is already listed.";
+						return;
+					}
+				}
+				ArrSitenames.push {index:ArrSitenames.length,selected:$(#ID_CHK_BLOCK_SUBDOMAIN).state.checked,urlstring:varWebSite};		
+			}			
+		}
+		view.close(null);
+	}
+	
+	$(#ID_BTN_CANCEL).onClick = function()
+	{
+		view.close(null);
+	}	
+	
+</script> 
+
+<script type="text/tiscript">
+	$(#window-close) << event click()
+		{				
+			view.close(null);
+		}
+</script> 
+
+<script type="text/tiscript">
+function self.ready() {	
+	self.language = view.parameters.varLanguageValue;
+    if(view.parameters.ProductVersion == #BASIC)
+    {
+        $(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+        $(body).attributes.addClass("basic_background");
+    }
+    else if(view.parameters.ProductVersion == #ESSENTIAL)
+    {
+        $(body).attributes.addClass("essential_background");
+    }
+    else if(view.parameters.ProductVersion == #PROVANTAGE)
+    {
+        $(body).attributes.addClass("provantage_background");
+		$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+    }
+    else if(view.parameters.ProductVersion == #ELITE)
+    {
+        $(body).attributes.addClass("elite_background");
+		$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+    }
+    else if(view.parameters.ProductVersion == #ESSENTIALPLUS)
+    {
+        $(body).attributes.addClass("essential_plus_background");
+		$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+    }
+}
+
+</script> 
+</head>
+<body>
+
+<div .header>
+<window-caption role="window-caption" style="padding-top:14dip;width:267dip;color:#fff;font-size:13dip;">
+	<b><label>Add Website</label></b>
+</window-caption>	
+<window-button #window-close role="window-close"></window-button>
+</div>
+<div .section>
+<label style="color:#fff;font-size:14dip;"><b>Enter Website</b></label><br/>
+<input #ID_TEXT_WEBSITE .set_input_type_text type="text">	
+<div .set_chkbox_block> <input #ID_CHK_BLOCK_SUBDOMAIN|checkbox /><label style="color:#fff;">Block Subdomain</label>
+</div>
+
+<div .set_label_information>
+<label .set_label_information_font style="margin-left:15dip;">(By click on this option subdomain of added domain </label><br/>
+<label .set_label_information_font> will be blocked. e.g., If you add 'XYZ.COM' and </label><br/>
+<label .set_label_information_font> enabled the checkbox 'Block Subdomain' , the </label><br/>
+<label .set_label_information_font> 'mail.xyz.com' will also be blocked.)</label><br/>
+</div>
+
+<button .scan_button style="margin-top:5dip;" #ID_BTN_OK>Ok</button>
+<button .scan_button #ID_BTN_CANCEL>Cancel</button>    	
+</div> 
+ 
+<div .message_display_block>
+	<p #ID_Def_exception_MSG style="color:#fff;"></p>
+</div>
+</body>
+</html>

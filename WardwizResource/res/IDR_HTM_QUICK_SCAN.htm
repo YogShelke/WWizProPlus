@@ -1,0 +1,521 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+        behavior:WardWizQuickScan;  
+    }
+	#ID_BTN_SMALL_DONE{
+		visibility:none;
+	}
+	#ID_BTN_SMALL_DONE:expanded{
+		visibility:visible;
+	}
+	#ID_BTN_PAUSE:disabled{
+		opacity:0.5;
+	}
+	#ID_BTN_STOP:disabled{
+		opacity:0.5;
+	}
+	</style>
+		
+	<script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	</script>
+			
+	<script type="text/tiscript"> 
+	var vlistObj;
+	var m_bIsManualStop = false;
+	var varThreatFoundCount = 0;
+	var chart = $(pie-chart);
+    </script>
+		
+    <script type="text/tiscript">
+        self.on("closerequest", function(event)
+		{ 
+            self.CallContinueQuickScan();
+        });
+    </script>
+	<script type= "text/tiscript"> 
+	function SetScanFinishStatus(evt){
+		//g_bIsAnyTaskInProcess = false;
+		g_IsQuickScanRunning = false;
+		g_QuickScanFinish = true;
+		g_IsQuickScnPause = false;
+		g_bQuickScanShutdown = false;
+        $(#ID_TOTAL_OBJ_SCANNED).value = " " + evt.data.one.toInteger();
+        $(#ID_TOTAL_THREATS_DETECTED).value = " " + evt.data.two.toInteger();
+		ShowScanFinishedMsg();
+		SetTableValues();
+	}
+	self.subscribe(SetScanFinishStatus, Event.BEHAVIOR_EVENT, 0x100 + 3);
+	</script>
+		  
+	<script type="text/tiscript">
+    $(#ID_QS_PROT).onClick = function()
+	{ 
+		SetOnProtectionEvent();
+	}
+	$(#ID_QS_SCAN).onClick = function()
+	{ 
+		selectView("IDR_HTM_SCAN");
+	}
+	$(#ID_BTN_DONE).onClick = function()
+	{ 
+		selectView("IDR_HTM_SCAN");
+	} 
+	$(#ID_BTN_SMALL_DONE).onClick = function()
+	{ 
+		selectView("IDR_HTM_SCAN");
+	}
+	</script>
+	
+    <script type="text/tiscript">
+	$(#ID_BTN_PAUSE).onClick = function()
+    {
+		if(g_IsQuickScnPause == false)
+        {
+			$(#ID_LABEL_PAUSE).text = Lang.translate("ID_RESUME");
+			g_IsQuickScnPause = true;
+            self.OnPauseQuickScan(SetScanStatus);
+         }
+         else
+         {
+		  $(#ID_LABEL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+		  g_IsQuickScnPause = false;
+             self.OnResumeQuickScan(SetScanStatus);
+         }
+    }
+	
+	$(#ID_BTN_STOP).onClick = function() 
+    {
+		self.OnPauseQuickScan(SetScanStatus);
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("QUICK_SCAN_PROGRESS_DO_YOU_STOP_SCANNING");
+		var res = dialog { body:$(form#simple-dialog),
+							caption : Lang.translate("ID_WARNING"), 
+							buttons: [ { caption: "OK", role:#ok, value:true },{ caption: Lang.translate("ID_SCN_CANCEL"), role:#cancel, value:false }]
+						};
+        if(res == true)
+        {
+			$(#ID_DIV_SHUTDOWN).state.collapsed = true;
+			$(#ShowReports).state.collapsed = true;
+			$(#HideDtls).state.collapsed = true;
+            m_bIsManualStop = true;
+    		//g_bIsAnyTaskInProcess = false;
+                g_varCurrentTask = #NONE;
+	    	//g_bIsAnyTaskInProcess = false;
+			g_IsQuickScanRunning = false;
+			g_QuickScanFinish = true;
+			g_bQuickScanShutdown = false;
+            self.OnStopQuickScan(m_bIsManualStop);
+			ShowScanFinishedMsg();
+			SetTableValues();
+       }
+       else
+       {
+            $(#ID_LABEL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+            self.OnResumeQuickScan(SetScanStatus);
+		}
+		g_IsQuickScnPause = false;
+	}
+    </script>
+		
+	<script type="text/tiscript">
+		function ShowScanReportsPage()
+		{
+			$(.scan_report).state.collapsed = true;	
+		    $(#ScanDisplayCont).state.collapsed = true;	
+		    $(.finishScanCont).state.collapsed = true;	
+			$(.action).state.collapsed = true;	
+		    $(#ID_BTN_SMALL_DONE).state.expanded = true;
+		}
+		
+		$(#ID_BTN_Show_Reports).onClick = function() 
+		{
+			ShowScanReportsPage();
+		}
+	</script> 
+
+	<script type= "text/tiscript"> 
+    function ShowScanFinishedMsg()
+	{
+		varThreatFoundCount = arrQuickScanEntries.length;
+        if(varThreatFoundCount == 0)
+		{	
+            $(#ID_BTN_Show_Reports).state.collapsed = true;
+            $(.action).state.collapsed = false;
+			$(#ID_FILE_SCANED).text = $(#ID_TOTAL_OBJ_SCANNED).value;
+            $(#ID_FILE_SCAN_COUNT).state.collapsed = true;
+            $(#ID_STATUS).text = Lang.translate("NO_THREATS_FOUND");
+            $(#ID_STATUS).attributes.addClass("text_color");
+		}
+        else
+		{
+            $(#ID_STATUS).attributes.removeClass("text_color");
+		}
+        $(.finishScanCont).state.collapsed = false;
+        $(#ScanDisplayCont).state.collapsed = true;
+        $(.scan_report).state.collapsed = false;
+		$(#ShowReports).state.collapsed = true;
+		$(#HideDtls).state.collapsed = true;		
+		$(#ID_DIV_SHUTDOWN).state.collapsed = true;
+	}
+
+	function SetTableValues()
+	{
+		vlistObj = $(table);
+		vlistObj.value = arrQuickScanEntries;
+		vlistObj.on("change","tbody > tr", function()
+		{	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+			this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+			if( !this.data.selected )
+				selectAll.value = false;
+		});
+	}
+	function SetScanStatus( str)
+    {
+            //chart.value=0.99;
+			//g_bIsAnyTaskInProcess = false;
+			//g_varCurrentTask = #NONE
+			//ShowScanFinishedMsg();
+			$(#SetScanStatus).text =  str;	
+			//self.update();
+            return 1;
+    }
+     function SetStatus(evt) {
+        $(#SetScanStatus).text = evt.data;
+        //self.update();
+    }
+    function SetCurrentFileCount(evt) {
+		$(#ID_BTN_PAUSE).state.disabled = false;
+		$(#ID_BTN_STOP).state.disabled = false;
+        var varCurrentFile = evt.data.one.toInteger();
+        var varTotalFile = evt.data.two.toInteger();
+        varThreatFoundCount = evt.data.three.toInteger();
+        $(#ID_TOTAL_OBJ_SCANNED).value = " " + varCurrentFile;
+        $(#ID_TOTAL_THREATS_DETECTED).value = " " + varThreatFoundCount;
+        $(#ID_TOTAL_OBJ_SCANNED_FINISH_PAGE).value = " " + varCurrentFile;
+        $(#ID_TOTAL_THREATS_DETECTED_FINISH_PAGE).value = " " + varThreatFoundCount;
+
+        var varScanPercentage = 1;
+        if(varTotalFile != 0)
+        {
+            varScanPercentage = varCurrentFile * 100;
+            varScanPercentage = varScanPercentage /  varTotalFile;
+        }
+        chart.value = varScanPercentage.toFloat()/100;
+        if(chart.value <= .01)
+        {
+            chart.value = 0.00;
+        }
+        else if(chart.value > .01  && chart.value<.98)
+        {
+
+        }
+        else if(chart.value>=.98)
+        {
+             chart.value=.99;
+        }
+        //self.update();
+       }
+
+     const MY_EVENT = 0x100 + 1;
+     self.subscribe(SetStatus, Event.BEHAVIOR_EVENT, MY_EVENT);
+     self.subscribe(SetCurrentFileCount, Event.BEHAVIOR_EVENT, 0x100 + 2);
+
+	function AddVirusFoundEntry( strThreatName, strFileName, strActiontaken, SpyID)
+	{
+		var varThreatName;
+		if(strThreatName == "USER_DEFINED")
+			varThreatName = Lang.translate("ID_USER_DEFINED");
+		else
+			varThreatName = strThreatName;
+
+		arrQuickScanEntries[varThreatFoundCount] = {selected: false, ThreatName: varThreatName, FilePath:strFileName, ActionTaken:strActiontaken, WardWizID:SpyID };
+		varThreatFoundCount++;
+	}
+
+	function SetScanFinishedStatus(str)
+    {
+        function SetScanFinishedStatusDelayed()
+        {
+			chart.value=1;
+    		//g_bIsAnyTaskInProcess = false;
+            g_varCurrentTask = #NONE;
+            g_IsQuickScanRunning = false;
+			g_QuickScanFinish = true;
+			g_IsQuickScnPause = false;
+			g_bQuickScanShutdown = false;
+            ShowScanFinishedMsg();
+			$(#SetScanStatus).text =  str;	
+			SetTableValues();			
+        }
+		self.timer(500ms, SetScanFinishedStatusDelayed);
+        return 1;
+    }
+	
+	function GetScanFinishedFlag()
+    {
+		g_QuickScanFinish = true;
+		if(g_CurrentPage != #QUICKSCAN && g_CurrentPage == #ID_SCAN_HTML)
+        {
+			var doc = selectView("IDR_HTM_SCAN");
+			doc.ns.CloseQuickScn();
+        }
+    }
+	
+    function ShowNotificationMessage(varMsgType, strMessageText)
+    {
+        if(varMsgType == 1)
+		{
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+		}
+		else
+		{
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+			if(res == true)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+    }
+    </script>
+		
+	<script type="text/tiscript">
+    $(#ID_SHUTDOWN).on("change", function(){
+        if($(#ID_SHUTDOWN).value == true)
+        {
+			g_bQuickScanShutdown = true;
+            self.OnClickShutDwonScan(true);    
+        }
+        else if($(#ID_SHUTDOWN).value == false)
+        {
+			g_bQuickScanShutdown = false;
+            self.OnClickShutDwonScan(false);
+        }
+    });
+    </script>
+	
+	<script type="text/tiscript"> 
+	$(#HideDtls).state.collapsed = true;
+	$(#HideDtls).onClick = function()
+	{
+		$(.disAreaScan).attributes.removeClass("activeTabView");
+		$(#HideDtls).state.collapsed = true;
+		$(.scan_report).state.collapsed = false;
+		$(#ShowReports).state.collapsed = false;
+		self.timer(500ms, SetTableValues);
+	}
+	$(#ShowReports).onClick = function()
+	{
+		$(.disAreaScan).attributes.addClass("activeTabView");
+		$(.scan_report).state.collapsed = true;
+		$(#HideDtls).state.collapsed = false;
+		$(#ShowReports).state.collapsed = true;
+		self.timer(500ms, SetTableValues);		
+	}   
+	</script>
+
+	<script type="text/tiscript">
+    function Pie(params = {}) 
+    {
+        const strokeWidth = params.band || 10dip; 
+        const strokeColor = params.sector || color(100,0,0); 
+        const circleColor = params.circle || color(230,230,230); 
+
+        var start = 1; 
+        var value = 0;  
+
+        function render(gfx) 
+        {
+
+          const sw = this.toPixels(strokeWidth, #width); 
+
+          var (w,h) = this.box(#dimension); 
+          var (x,y) = (w/2, h/2);  
+          var r = Integer.min(w,h) / 2 - sw / 2;  
+          
+          gfx.strokeWidth(sw + 0.5)
+             .strokeColor(circleColor)
+             .arc(x,y,r,r, 0deg, 360deg)
+             .strokeColor(strokeColor)
+             //.arc(x,y,r,r, 360deg * start, 360deg * value); Commented Due to Shift Start Point
+			 .arc(x,y,r,r, 90deg * start, 360deg * value);
+        }	
+        
+        this.paintContent = render;
+        
+        // redefining property 'value' on that element
+        this["value"] = property(v) {
+          get return value;
+          set {
+            value = v;
+            this.text = String.$({(value * 100).toInteger() }%) ;
+            this.refresh();
+          }
+        };
+        this.value = this.attributes["value"].toFloat(0.0);
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	function funGetScanStatus()
+	{
+		if(g_bFullScanShutdown == true || g_bCustomScanShutdown == true || g_bAntiRootScanShutdown == true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		g_CurrentPage = #QUICKSCAN;
+		self.language = g_LanguageName;
+        m_bIsManualStop = false;
+		$(.finishScanCont).state.collapsed = true;
+		$(#ID_QS_QSCAN).state.disabled = true;
+		if(g_bQuickScanShutdown == true)
+		{
+			$(#ID_SHUTDOWN).checked = true;
+            self.OnClickShutDwonScan(true); 
+		}
+		else
+		{
+			self.OnClickShutDwonScan(false); 
+		}
+        if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		
+        if(g_IsQuickScanRunning == true)
+        {
+			$(#ID_BTN_PAUSE).state.disabled = true;
+			$(#ID_BTN_STOP).state.disabled = true;
+			if(g_IsQuickScnPause == true)
+			{	
+				SetScanStatus(Lang.translate("ID_SCANNING_PAUSE"));
+				$(#ID_LABEL_PAUSE).text = Lang.translate("ID_RESUME");				
+			}	
+			vlistObj = $(table);
+			vlistObj.value = arrQuickScanEntries;
+            self.OnSetTimer();
+        }
+        else
+        {
+            g_varCurrentTask = #QUICKSCAN;
+    		//g_bIsAnyTaskInProcess = true;
+            g_IsQuickScanRunning = true;
+			g_QuickScanFinish = false;
+            varThreatFoundCount = 0;
+			arrQuickScanEntries.length = 0;
+			self.ScanFinishedCall(GetScanFinishedFlag);
+            self.OnStartQuickScan(SetScanStatus, AddVirusFoundEntry,SetScanFinishedStatus,ShowNotificationMessage);
+        }
+		self.GetQuickScanStatus(funGetScanStatus);
+    }
+    </script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	 </form>
+</head>
+
+<body>
+	<div .scan_main_div>
+		<div .titleCont>
+            <div class="breadcrumbNav">
+                <ul class="listDisplayRow">
+                    <li #ID_QS_PROT><label>ID_PROTECTION</label><span .icons1>	&fa-angle-double-right;</span></li>
+                    <li #ID_QS_SCAN><label>ID_SCANS</label><span .icons1>	&fa-angle-double-right;</span></li>
+                    <li #ID_QS_QSCAN><label>ID_QUICK_SCAN</label></li>
+                </ul>
+            </div>
+            <br/>
+            <h1 .headingTitle1 style="margin-top:0dip;"><label>ID_HTM_QUICK_SCAN</label></h1>
+			<p><label>ID_SCAN_ESS_FILE_FOLDERS</label></p>
+		</div>
+		<div class="disAreaScan">
+			<div #ScanDisplayCont>
+				<div .mgLeftSc>
+					<div .scanAnimation>
+						<div .shieldGif>
+							<!-- <img src="IDR_GIF_LOGO_ANIMATION.gif"> -->
+			            </div>
+						<pie-chart value=0.0 />
+			        </div>
+		        </div>
+			    <div .pathDisplay>
+			          <p #SetScanStatus><label>ID_SCANNING_STARTED</label></p>
+                </div>
+				<div class="quickResultCont">
+					<div class="quickScanResult">
+						<h4><label>ID_OBJECTS_SCANNED</label><span #ID_TOTAL_OBJ_SCANNED> 0 </span></h4>
+						<div class="btnCstm" #ID_BTN_PAUSE><label #ID_LABEL_PAUSE>ID_BTN_PAUSE</label></div>
+			        </div>
+					<div class="quickScanResult">
+						<h4><label>ID_THREATS_FOUND</label><span #ID_TOTAL_THREATS_DETECTED> 0 </span></h4>
+						<div class="btnCstm" #ID_BTN_STOP><label>ID_BTN_STOP</label></button></div>
+		            </div>
+	            </div>
+				<div .pathDisplay #ID_DIV_SHUTDOWN>
+					<p><input type="checkbox" #ID_SHUTDOWN><label for="ID_SHUTDOWN">ID_SHUTDOWN_COMP</label></p>
+                </div>
+	        </div>
+			<div .scan_report #scanReportHdeShow>
+				<table id="quickscantable">
+			        <thead>
+				        <tr>
+							<th style="width:120dip;"><label>ID_THREAT_NAME</label></th>
+							<th style="width:380dip;"><label>ID_FILE_PATH</label></th>
+					        <th><label>ID_ACTION</label></th>
+				        </tr>
+			        </thead>  
+			        <tbody>
+						<tr><td(ThreatName)></td><td(FilePath)></td><td(ActionTaken)></td></tr>
+			        </tbody>
+		        </table>
+	        </div>
+		</div>
+		<div .action>
+			<p .objects_scanned> <label>ID_OBJECTS_SCANNED</label><span #ID_TOTAL_OBJ_SCANNED_FINISH_PAGE> 0 </span></p> 
+			<p .threats_found> <label>ID_THREATS_FOUND</label><span #ID_TOTAL_THREATS_DETECTED_FINISH_PAGE> 0 </span></p>
+			<div class="btnCstmSmall" #ID_BTN_SMALL_DONE style="margin-left:60dip;margin-bottom:10dip;"><label>ID_DONE</label></div>
+		</div>
+		<div .finishScanCont .txtcenter>
+			<img src="IDR_PNG_OK.png" .mgTop10>
+			<h1 #ID_STATUS><label>ID_FINISHED</label></h1>
+			<h1 #ID_FILE_SCAN_COUNT> <span #ID_FILE_SCANED> 0 </span> <label>ID_FILES_SCANNED</label></h1>
+			<div class="btnCstm" #ID_BTN_Show_Reports><label>ID_VIEW_DETAILS</label></div>
+			<div class="btnCstm" #ID_BTN_DONE><label>ID_DONE</label></div>
+	    </div>
+		<p class="reportsTabButton"><span #ShowReports><label>ID_SHOW_DETAILS</label></span><span #HideDtls><label>ID_HIDE_DETAILS</label></span></p>
+	</div>	
+</body>
+</html>

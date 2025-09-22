@@ -1,0 +1,4737 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+    <include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+        @import url(IDR_CSS_GERMAN_LANG.css);
+        @import url(IDR_CSS_TOGGELER.css);
+		html{
+			behavior:WardWizParControl;
+		}
+	.body_parental .strip 
+	{
+	  flow: vertical;
+	  width:150dip;
+		}
+	.arrow_parental_cntrl{
+		font-family: MyAwesome;
+		margin-top:20dip;
+		float:left;
+			cursor:pointer;
+		}
+	.arrow_parental_cntrl:collapsed{
+		visibility:none;
+		}
+	.arrow_parental_cntrl:expanded{
+		visibility:visible;
+		}
+	.title_par_cntrl{
+		text-align:center;
+		min-height:100dip;
+		width:630dip;
+		padding-top:0dip;
+		margin-left:0dip;
+		}
+	.togller_button_parental_cntrl{
+		width:50dip;
+		margin-top:5dip;
+		padding-right:0dip;
+		margin-left:570dip;
+		position:absolute;
+		}
+	.togller_button_parental_cntrl #ID_BTN_TRAY_NOTIFICATION:collapsed{
+		visibility:none;
+		}
+	.togller_button_parental_cntrl #ID_BTN_TRAY_NOTIFICATION:expanded{
+		visibility:visible;
+		}
+	.passwordLockParental{
+		width:635dip;
+		height:300dip;
+		position:relative;
+		}
+	.passwordLockParental:collapsed{
+		visibility:none;
+		}
+	.paswdprmpt_parental{
+		margin-left:200dip;
+		margin-top:50dip;
+		}
+	/********* table for user list in parental control ************/
+	table#ID_TABLE_USER_LIST { style-set: vgrid; // see vgrid.css
+		width:*;border:0 solid #fff!important;
+		height:*; } 
+		  
+	table#ID_TABLE_USER_LIST th:nth-child(1) { width:50dip;visibility:hidden; }
+	table#ID_TABLE_USER_LIST th:nth-child(2) { width:6*;visibility:hidden; }
+	table#ID_TABLE_USER_LIST th:nth-child(3) { width:3*;visibility:hidden;}
+	table#ID_TABLE_USER_LIST td:nth-child(3) { text-align:right;border:none;}
+	table#ID_TABLE_USER_LIST td:nth-child(1) {border:0 solid #fff!important;}
+	table#ID_TABLE_USER_LIST td:nth-child(2) {border:0 solid #fff!important;}
+	table#ID_TABLE_USER_LIST td:nth-child(3) {border:0 solid #fff!important;}
+		  
+	table#ID_TABLE_USER_LIST{
+		style-set: vgrid; 
+		 height:200dip;
+		}
+	table#ID_TABLE_USER_LIST tbody > tr {
+		background-color:transparent!important;
+		background-image:none!important;
+		}
+	.usrlst_img{
+		width:20dip;
+		height:20dip;
+		border-radius:20%;
+		}
+	.usrname_usrlist{
+		text-transform:uppercase;
+		font-weight:bold;
+		}
+	.conf_restrict{
+		background:none;
+		border:none;
+		padding:0dip;
+		cursor:pointer;
+		font-weight:bold;
+		color:#2783C4;
+		text-decoration:underline;			
+		}
+	.usrlist_td{
+		width:205dip;
+			flow:horizontal;
+		height:30dip;
+		}
+	.usrlist_curstatus{
+		height:30dip;
+		width:130dip;
+		text-align:left;
+		}
+	.usrlst_togglr{
+		height:30dip;
+		margin-left:5dip;
+		margin-top:5dip;
+		}
+	.inner_body_parcntrl:collapsed{
+			visibility:none;
+		}
+	.inner_body_parcntrl:expanded{
+			visibility:visible;
+		}
+	.ContentDisplay_parental{
+		width:500dip;
+		border:1dip solid rgba(0,0,0,0);
+		visibility:none;
+		flow:vertical;
+		margin-left:1dip;
+		}
+	.ContentDisplay_parental.activeTab{
+			visibility:visible;
+		min-height:310dip;
+		max-height:310dip;
+		}
+	.typeButtons_Parental{
+		flow:horizontal;
+		float:left;
+		width:*;
+		height:27dip;
+		margin-right:5dip;
+		text-align:center;
+		margin-left:-5dip;
+		}
+	.typeButtons_Parental div{
+		width:80dip;
+		height:22dip;
+		padding-top:2dip;
+		cursor:pointer;
+		}
+	.disArea_Parental{
+		width:504dip;
+		margin-left:-5dip;
+		height:250dip;
+		overflow-x:hidden;
+		flow:horizontal;
+		border:1dip solid #273746;
+		}
+	#ListDisplay, #CalendarDisplay{
+		width:488dip;
+		/* height:315dip; */
+		}	
+	.activeTabView #ListDisplay{
+			visibility:none;
+		}
+	.cntent_parcntrl{
+		width:460dip!important;
+		padding-top:5dip;
+		}
+	.cntent_parcntrl h4{
+		padding-bottom:5dip;
+		}
+	#ID_OPTN_WDAY_STRT:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_WDAY_END:disabled{
+		opacity:0.65;
+		}
+	#RESTRCT_ACCESS_WDAY:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_WKEND_STRT:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_WKEND_END:disabled{
+		opacity:0.65;
+		}
+	#RESTRCT_ACCESS_WEND:disabled{
+		opacity:0.65;
+		}
+	.parcntrl_calendr_dspl{
+		float:right;
+		flow:horizontal;
+		}
+	.alow_parcntrl{
+		background:#03516d;
+		width:16.5dip;
+		height:16.5dip;
+		margin-left:5dip;
+		margin-right:3dip;
+		margin-top:10dip;
+		}
+	.blk_parcntrl{
+		background:gold;
+		width:16.5dip;
+		height:16.5dip;
+		margin-left:5dip;
+		margin-right:3dip;
+		margin-top:10dip;
+		}
+	.settime_parcntrl{
+		padding-top:10dip;
+		}
+	.sandboxhours
+	{
+		margin-left:19dip;
+		margin-top:20dip;
+		flow:h-flow;
+		color:#fff;
+		}
+	.stuffs
+	{
+		font-size:9dip;
+		width:11.5dip;
+		height:11.5dip;
+		margin-left:7dip;
+		}
+	.dys_rect{
+		flow:horizontal;
+		padding:0!important;
+		margin-top:0;
+		}
+	.rect_div{
+		width:18dip;
+		margin-left:0dip;
+		margin-top:-1dip;
+		}
+	.rect_div p{
+		font-size:9dip;
+		margin-top:-2.4dip;
+		}
+	div#sandbox
+	{
+		padding:4dip;
+		border-spacing:2dip;
+		flow:h-flow;
+		width:460dip;
+		aspect:RectTracker; 
+		}
+	.contentTray_Parental{
+		width:460dip;
+		color:#106888;
+		padding-left:5dip;
+		}
+	.contentTray_Parental h4{
+		margin-top:0;
+		margin-bottom:5dip;
+		font-size:12dip;
+		font-weight:bold;
+		}
+	.contentTray_Parental p{
+		margin-top:5dip;
+		margin-bottom:10dip;
+		font-size:12dip;
+			cursor:pointer;
+			text-decoration:underline;			
+		}
+	.contentContSetting:hover > .contentTray_Parental h4 {
+		color:#000;
+		}
+	.disArea_Inet{
+		width:504dip;
+		height:250dip;
+		margin-left:-5dip;
+		flow:horizontal;
+		border:1dip solid #273746;
+		overflow-y:auto;
+		visibility:visible;
+		vertical-scrollbar: my-v-scrollbar;
+		}
+	#ListDisplayInet, #CalendarDisplayInet{
+		width:488dip;
+		/* height:315dip; */
+	}
+	.activeTabViewInet #ListDisplayInet{
+			visibility:none;
+		}
+	#ID_OPTN_INET_WDAY_STRT:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_INET_WDAY_END:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_RESTRICT_HOURS_WKDAY:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_INET_WEND_STRT:disabled{
+		opacity:0.65;
+		}
+	#ID_OPTN_INET_WEND_END:disabled{
+		opacity:0.65;
+		}		
+	#ID_OPTN_RESTRICT_HOURS_WKEND:disabled{
+		opacity:0.65;
+		}
+	div#sandboxforapp
+	{
+		padding:4dip;
+		border-spacing:2dip;
+		flow:h-flow;
+		height:*;
+		width:460dip;
+		aspect:InternetRectTracker; 
+		}
+	.stuff > * {margin:1dip; height:*; color:white;}
+	.stuff[selected] { background:gold; } // it is covered by the box
+	.stuff
+	{
+		background:#03516d;
+		width:16.5dip;
+		height:16.5dip;
+		}
+	#ID_BTN_SKIP_PARCNTRL:expanded{
+			visibility:visible;
+		}
+	#ID_BTN_SKIP_PARCNTRL{
+			visibility:none;
+		}
+	.skipbtnparental{
+		cursor:pointer;
+		margin-left:20dip;
+		margin-top:19dip;
+	}
+	.user_list:expanded{
+			visibility:visible;
+		}
+	.user_list:collapsed{
+			visibility:none;
+		}
+	.user_list{
+		width:635dip;
+		height:300dip;
+		position:relative;
+		}
+	.title_par_cntrl{
+		text-align:center;
+		min-height:100dip;
+		width:630dip;
+		padding-top:0dip;
+		margin-left:0dip;
+		}
+	.tabsCstm 
+		{
+		behavior:tabs;
+		/* height:100%;
+		width:100%; */
+		overflow:hidden;
+		flow:horizontal;
+		/* padding-left:13dip; */
+		}
+	.strip /* tab strip */
+		{
+		flow: vertical;
+		width:170dip;
+		}
+	.strip > .mnuItem /* all tabs, passive by default */
+		{
+		padding: 7dip 8dip!important;
+		}
+	.lgBtn{
+		margin-top:0;
+		line-height:20dip;
+		width:116dip;
+		}
+	.translateWindow{
+		filter: blur(5dip);
+		position:relative;
+		opacity:.4;
+		}
+	.messageContAlert{
+		width:300dip;
+		height:155dip;
+		margin:*;
+		position:absolute;
+		top:110dip;
+		left:-20dip;
+		text-align:center;
+		padding:15dip;
+		//border-radius:30dip 0 30dip 0;
+		visibility:hidden;
+		}
+	.messageContAlert:expanded{
+			visibility:visible;
+		}
+	.fontStyleLink_Blk{
+		font-weight:bold;
+		text-decoration:underline;
+		}
+	.enb_dis1:disabled{
+		opacity:.5;
+		}
+	.enb_dis2:disabled{
+		opacity:.5;
+		}
+	#ID_BUY_HIGH_VER{
+		visibility:none;
+	}
+	#ID_BUY_HIGH_VER:expanded{
+		visibility:visible;
+	}
+	#ID_BUY_HIGH_VER:collapsed{
+		visibility:none;
+	}
+	#ID_REGISTER_NOW{
+		visibility:none;
+	}
+	#ID_REGISTER_NOW:expanded{
+		visibility:visible;
+	}
+	#ID_REGISTER_NOW:collapsed{
+		visibility:none;
+	}
+	#ID_VERSION_MESSAGE2{
+		visibility:none;
+	}
+	#ID_VERSION_MESSAGE2:expanded{
+		visibility:visible;
+	}
+	#ID_VERSION_MESSAGE2:collapsed{
+		visibility:none;
+	}
+	</style>
+	
+	<script type="text/tiscript">
+	include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	include "IDR_TIS_RECT_TRACKER.tis";
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	var DataBase;
+	var varDBPath;
+	var g_password = "";
+	var SetGeneralArray = new Array(0);
+	var varGetRecordSet;
+	var varCount;
+	var arrFirstRow = new Array(24);
+	var arrSecondRow = new Array(24);
+	var arrThirdRow = new Array(24);
+	var arrFourthRow = new Array(24);
+	var arrFifthRow = new Array(24);
+	var arrSixthRow = new Array(24);
+	var arrSeventhRow = new Array(24);
+	var arrUserList = new Array(0); 
+	var arrbModifyVal = new Array(1);
+	var arrbModifyVal4MngExc = new Array(1);
+	var vUserList = $(#ID_TABLE_USER_LIST);
+	var varTotUser = 1;	
+	var arrbModifyVal4BlkSpecWeb = new Array(1);
+	var BrowseProtectionID = 0;
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_CLOSE_POPUP).onClick = function()
+	{
+		selectView("IDR_HTM_HOME");
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    var varIsCreatedforApp = false;
+    var varIsCreated = false;
+    var varIsWDayChanged = false;
+    var varIsWEndChanged = false;
+	var ArrApplications = new Array();
+			
+    function CreateTableForRestriction()
+    {
+        var varDBPathDB = self.GetDBPathBlockList();
+        DataBase = DB.open(varDBPathDB);
+        DataBase.exec("create table IF NOT EXISTS PARCTRL_BLOCK_APP_CATEGORY(ID INTEGER PRIMARY KEY, APP_CATEGORY NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+        var varIDValuetemp = DataBase.exec("SELECT ID FROM PARCTRL_BLOCK_APP_CATEGORY");
+        if(varIDValuetemp == 101)
+        {
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_CD/DVD_APP')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_CHAT_APP')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_DOWNLOAD_MGR')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_EMAIL_CLIENTS')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_FILE_SHARE_APP')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_GAMES')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_MEDIA_PLAYERS')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_WEB_PROXY')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_USB_MODEMS')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_WEB_BROWSERS')");
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_CATEGORY (APP_CATEGORY)values ('ID_MISCELLANEOUS')");
+		}
+        else
+        {
+            varIDValuetemp.close();			
+		}
+		var varRecVal = DataBase.exec("SELECT APP_CATEGORY FROM PARCTRL_BLOCK_APP_CATEGORY");
+		if( varRecVal instanceof Recordset)
+		{
+			var i = 0;
+			do
+			{
+				for(var varValue in varRecVal)
+				{
+					ArrApplications[i] = {index:ArrApplications.length,selected:true,Application:varValue};
+					i++;
+				}
+			}
+			while(varRecVal.next());
+		}
+		ReleaseInstance(varRecVal);
+        DataBase.close();
+        DataBase = DB.open(varDBPathDB);
+        DataBase.exec("create table IF NOT EXISTS PARCTRL_BLOCK_APP_LIST(ID INTEGER PRIMARY KEY, APP_NAME NVARCHAR(250), BLOCK_CATEGORY INT, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+        var varIDValue = DataBase.exec("SELECT ID FROM PARCTRL_BLOCK_APP_LIST");
+        if(varIDValue == 101)
+        {
+            DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('lync','2')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('vlc','7')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('chrome','10')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('mspaint','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('firefox','10')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('iexplore','10')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('MicrosoftEdge','10')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('MicrosoftEdgeCP','10')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('IDMan','3')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('FreeBurningStudio','1')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('OUTLOOK','4')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('SHAREit','5')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('game','6')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('WGEngMon','8')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('WGLauncher','8')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('WGOptions','8')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('WinGate','8')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('GateKeeper','8')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('HuaWeiDataCard','9')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('AnyDesk','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('Autoruns','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('Autoruns64','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('autorunsc','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('autorunsc64','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('checksumcontrol','11	')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('APPServerClient','11')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('PhotonPlus','9')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('wmplayer','7')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('Eudora','4')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('IncMail','4')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('thunderbird','4')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('wrapgame','6')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('Skype','2')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('Azureus','3')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('nero','1')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('launcher','10')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('operamail','4')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('psiphon3','8')");
+			DataBase.exec("insert into PARCTRL_BLOCK_APP_LIST (APP_NAME, BLOCK_CATEGORY)values ('airtel','9')");			
+		}
+        else
+        {
+            varIDValue.close();
+		}
+        DataBase.close();
+		}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_BTN_SKIP_PARCNTRL).onClick = function()
+	{
+		$(.passwordLockParental).state.collapsed = true;
+		$(#ID_BTN_TRAY_NOTIFICATION).state.expanded = true; 
+		self.GetWindowsUserList(GetUserList);
+		SetUserList();
+		$(.user_list).state.expanded = true;
+		$(#DISABLE_BTN).state.disabled = true;
+		var varRegVal = self.GetSetRegistryVal();
+		if(varRegVal == 0)
+		{
+			$(#ID_BTN_TRAY_NOTIFICATION).state.value = false;
+		}
+		else
+		{
+			$(#ID_BTN_TRAY_NOTIFICATION).state.value = true;
+		}
+		}
+	
+	$(#DISABLE_BTN).onClick = function()
+	{
+		$(#ID_USER_SELECT).text = Lang.translate("ID_PARENTAL_CONTROL");
+		$(.user_list).state.expanded = true;
+		$(.inner_body_parcntrl).state.collapsed = true;
+		$(.arrow_parental_cntrl).state.collapsed = true;
+		$(#DISABLE_BTN).state.disabled = true;
+		}
+	
+	$(#ID_BTN_TRAY_NOTIFICATION).onClick = function()
+	{
+		var bToggleState = $(#ID_BTN_TRAY_NOTIFICATION).state.value;
+		self.OnChangeRegVal(bToggleState);
+	      }
+	</script>
+	
+	<script type="text/tiscript">
+	function GetUserList(varUserList)
+	{
+		var iUserID = 0;
+		var bUserExist = false;
+		DataBase = DB.open(varDBPath);
+		varUserList = varUserList.toLowerCase();
+		var varUserID = DataBase.exec("SELECT USERID from WWiz_PC_UserList WHERE USERNAME = ?",varUserList);
+		if(varUserID == 101)
+		{
+			DataBase.exec("insert into WWiz_PC_UserList(USERNAME,ISCONTROL)values(?,?)",varUserList, 0);
+	      }
+		else
+		{
+			varUserID.close();
+		}
+		for(var vIndex=0; vIndex < arrUserList.length; vIndex++)
+		{
+			if(arrUserList[vIndex].username == varUserList)
+			{
+				bUserExist = true;
+				break;
+		}
+	}
+		if(bUserExist != true)
+		{
+			arrUserList[varTotUser-1] = {index:(varTotUser-1), username:varUserList, currentstatus:"", status:false};
+	}
+		DataBase.close();
+		varTotUser++;
+	}
+	
+	function SetUserList()
+	{
+		DataBase = DB.open(varDBPath);
+		for(var iIndex=0; iIndex < arrUserList.length; iIndex++)
+		{
+			var vResult = DataBase.exec("SELECT USERNAME, ISCONTROL FROM WWiz_PC_UserList WHERE USERNAME = ?",arrUserList[iIndex].username);
+			if(vResult instanceof Recordset)
+			{
+				if(vResult["ISCONTROL"] == 0)
+				{
+					arrUserList[iIndex].currentstatus = Lang.translate("ID_CTRL_DISABLED");
+					arrUserList[iIndex].status = false;
+	}
+				else
+				{		
+					arrUserList[iIndex].currentstatus = Lang.translate("ID_CTRL_ENABLED");
+					arrUserList[iIndex].status = true;
+	}
+				vResult.close();
+			}			
+		}
+		DataBase.close();
+	}	
+	</script>
+	
+	<script type="text/tiscript">
+	function blurParctrlPage()
+	{
+		$(#ID_PARENTAL_BLUR).attributes.addClass("translateWindow");
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function RemoveblurParctrl()
+	{
+		$(#ID_PARENTAL_BLUR).attributes.removeClass("translateWindow");
+	}
+	</script>	
+	
+	<script type="text/tiscript">
+	function FunCheckParCtrlUsers()
+	{
+		g_ParCtrlUserActive = false;	
+		for(var vIndex=0; vIndex < arrUserList.length; vIndex++)
+		{
+			if( arrUserList[vIndex].status == true)
+			{
+				g_ParCtrlUserActive = true;
+			}
+			break;
+		}
+	}
+	</script>	
+	
+	<script type="text/tiscript">
+	vUserList.on("change","tbody > tr ", function() 
+	{
+		this.data.status = this.value.status;
+		var currIndex = this.data.index;
+		DataBase = DB.open(varDBPath);
+		if( arrUserList[currIndex].status == true)
+	{
+			arrUserList[currIndex].currentstatus = Lang.translate("ID_CTRL_ENABLED");
+			DataBase.exec("UPDATE WWiz_PC_UserList SET ISCONTROL = 1 WHERE USERNAME = ?", arrUserList[currIndex].username);			
+	}
+		else
+	{
+			DataBase.exec("UPDATE WWiz_PC_UserList SET ISCONTROL = 0 WHERE USERNAME = ?", arrUserList[currIndex].username);
+			arrUserList[currIndex].currentstatus = Lang.translate("ID_CTRL_DISABLED");
+	}
+		DataBase.close();	
+		self.OnSetUserTogglerVal(arrUserList[currIndex].username,arrUserList[currIndex].status);	
+		FunCheckParCtrlUsers();
+	});
+	
+	vUserList.on("click","tbody > tr > td > .conf_restrict", function()
+	{
+		var currIndex = this.selectParent("tr").data.index;
+		if( arrUserList[currIndex].status == true)
+		{
+			$(.arrow_parental_cntrl).state.expanded = true;
+			$(.user_list).state.collapsed = true;		
+			$(.inner_body_parcntrl).state.expanded = true;
+			$(#DISABLE_BTN).state.disabled = false;			
+			g_CurrentUserSelect = arrUserList[currIndex].username;
+			$(#ID_USER_SELECT).value = g_CurrentUserSelect;
+			SetDefaultDiv();
+			SetValuesOnSelection();
+		}
+		else{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DO_U_WANT_ENABLE_USER");
+			blurParctrlPage();
+			var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+					};
+			if(res == true)
+				{
+				g_CurrentUserSelect = arrUserList[currIndex].username;
+				$(#ID_USER_SELECT).value = g_CurrentUserSelect;
+				arrUserList[currIndex].status = true
+				DataBase = DB.open(varDBPath);
+				arrUserList[currIndex].currentstatus = Lang.translate("ID_CTRL_ENABLED");
+				DataBase.exec("UPDATE WWiz_PC_UserList SET ISCONTROL = 1 WHERE USERNAME = ?", arrUserList[currIndex].username);
+				DataBase.close();		
+				$(.arrow_parental_cntrl).state.expanded = true;
+				$(.user_list).state.collapsed = true;		
+				$(.inner_body_parcntrl).state.expanded = true;	
+				$(#DISABLE_BTN).state.disabled = false;					
+				g_CurrentUserSelect = arrUserList[currIndex].username;
+				SetDefaultDiv();
+				SetValuesOnSelection();
+				self.OnSetUserTogglerVal(arrUserList[currIndex].username,arrUserList[currIndex].status);
+				FunCheckParCtrlUsers();
+				}
+				RemoveblurParctrl();
+		}
+		self.OnChangeAppRestriction();
+	});
+	</script>
+	
+	<script type="text/tiscript">
+	function SetDefaultDiv()
+	{	
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id1).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#comp_usage).attributes.addClass("activemnu");
+	}
+
+	function SetValuesOnSelection()
+    {
+		CreateTableForRestriction();
+	    InsertDataInParCtrlDB();
+        FunGetFlag();
+        ApplyCurrentValues();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function ReleaseInstance(vInstance)
+	{
+		if(vInstance instanceof Recordset)
+		{
+			vInstance.close();
+		}
+	}
+	</script> 
+	
+	<script type="text/tiscript">
+    function FunGetFlag()
+    {
+        DataBase = DB.open(varDBPath);
+        var varGetFlagVal = DataBase.exec("SELECT CHECK_LIST_CAL FROM WWIZ_PC_TRACK_COMP_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varGetFlagVal["CHECK_LIST_CAL"] == 1)
+        {
+			$(.disArea_Parental).attributes.addClass("activeTabView");		
+			$(#ListView).attributes.removeClass("bgcolor");	
+			$(#CalendarView).attributes.addClass("bgcolor");
+		}
+        else if(varGetFlagVal["CHECK_LIST_CAL"] == 0)
+        {
+			$(.disArea_Parental).attributes.removeClass("activeTabView");
+			$(#CalendarView).attributes.removeClass("bgcolor");		
+			$(#ListView).attributes.addClass("bgcolor");			
+		}	
+        FunFillSandBox();
+        varGetFlagVal.close();
+        DataBase.close();
+	}
+	
+    function FunGetFlagForInternet()
+    {
+        DataBase = DB.open(varDBPath);
+        var varGetFlagVal = DataBase.exec("SELECT CHECK_LIST_CAL FROM WWIZ_INTERNET_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varGetFlagVal["CHECK_LIST_CAL"] == 1)
+        {
+			$(.disArea_Inet).attributes.addClass("activeTabViewInet");	
+			$(#ListViewInet).attributes.removeClass("bgcolor");	
+			$(#CalendarViewInet).attributes.addClass("bgcolor");
+			
+		}
+        else if(varGetFlagVal["CHECK_LIST_CAL"] == 0)
+        {
+			$(.disArea_Inet).attributes.removeClass("activeTabViewInet");
+			$(#CalendarViewInet).attributes.removeClass("bgcolor");		
+			$(#ListViewInet).attributes.addClass("bgcolor");	
+		}
+        if(varIsCreatedforApp == false)
+        {
+            for(var n = 0; n < 168; n++)
+                createSomeStuffApp(n);
+		}
+        SetRectTrackerApp();
+        SetValToSandBoxApp();
+        varGetFlagVal.close();
+        DataBase.close();
+    } 
+    </script>
+	<script type="text/tiscript">
+	self.on("closerequest", function(event)
+	{
+		self.SetOtherPage();
+	});
+	</script>
+	<script type="text/tiscript">
+	function InsertDataInParCtrlDB()
+    {
+        DataBase = DB.open(varDBPath);
+
+        var varTempTrackVal = DataBase.exec("SELECT TRACK_VALUE FROM WWIZ_PC_TRACK_COMP_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varTempTrackVal == 101)
+        {
+            DataBase.exec("INSERT INTO WWIZ_PC_TRACK_COMP_USAGE (TRACK_VALUE,CHECK_LIST_CAL,FK_USERNAME) values ('0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,',0,?)",g_CurrentUserSelect);
+	}
+        ReleaseInstance(varTempTrackVal);
+
+        var varIDValue = DataBase.exec("SELECT ID FROM PARCTRL_GENERAL where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varIDValue == 101)
+        {
+             DataBase.exec("insert into PARCTRL_GENERAL(FK_USERNAME, BLOCK_WKDAY, BLOCK_TIME_PM, BLOCK_TIME_AM, ALLOW_ACCESS_WKDAY, ALLOW_ACCESS_WKDAY_TIME, BLOCK_WKEND, BLOCK_TIME_WKND_PM, BLOCK_TIME_WKND_AM, ALLOW_ACCESS_WKEND, ALLOW_ACCESS_WKEND_TIME) values(?, 0,21,8,0,2,0,21,8,0,2)", g_CurrentUserSelect);
+	}
+        ReleaseInstance(varIDValue);
+
+        var varTrackValInternet = DataBase.exec("SELECT TRACK_VALUE FROM WWIZ_INTERNET_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varTrackValInternet == 101)
+        {
+            DataBase.exec("INSERT INTO WWIZ_INTERNET_USAGE (TRACK_VALUE,CHECK_LIST_CAL,FK_USERNAME) values ('0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,',0,?)", g_CurrentUserSelect);
+	}
+        ReleaseInstance(varTrackValInternet);
+
+        var varIDValuetemp = DataBase.exec("SELECT ID FROM PARCTRL_INTRNET where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varIDValuetemp == 101)
+        {
+            DataBase.exec("insert into PARCTRL_INTRNET(BLOCK_WKDAY, BLOCK_TIME_PM, BLOCK_TIME_AM, RSTRCT_INET_WDAY, RSTRCT_INET_TIME_WDAY, BLOCK_WKEND, BLOCK_TIME_WKND_PM, BLOCK_TIME_WKND_AM, RSTRCT_INET_WEND, RSTRCT_INET_TIME_WEND, FK_USERNAME) values(0,21,8,0,2,0,21,8,0,2,?)", g_CurrentUserSelect);
+	}
+        ReleaseInstance(varIDValuetemp);
+
+        varIDValuetemp = DataBase.exec("SELECT ID FROM WWIZ_RESTRICT_AGE_GROUP where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varIDValuetemp == 101)
+        {
+            DataBase.exec("insert into WWIZ_RESTRICT_AGE_GROUP(AGE_CRITERIA, FK_USERNAME) values(1,?)", g_CurrentUserSelect);
+	}
+        ReleaseInstance(varIDValuetemp);
+		
+		var varParCtrlTimer =  DataBase.exec("SELECT ID FROM WWIZ_TIMER_TABLE where FK_USERNAME = ?",g_CurrentUserSelect);
+        if(varParCtrlTimer == 101)
+        {
+			var varCurrentDate = new Date();
+			varCurrentDate = varCurrentDate.year+"-"+varCurrentDate.month+"-"+varCurrentDate.day;
+			var varCurrentTime = new Date();
+			varCurrentTime = varCurrentTime.hour * 3600 + varCurrentTime.minute * 60 + varCurrentTime.second;
+			DataBase.exec("insert into WWIZ_TIMER_TABLE (PC_TIMER_DATE, PC_TIMER_TIME, FK_USERNAME) values(?, ?, ?)",varCurrentDate, varCurrentTime, g_CurrentUserSelect);
+			DataBase.exec("insert into WWIZ_INET_TIMER_TABLE (INET_TIMER_DATE, INET_TIMER_TIME, FK_USERNAME) values(?, ?, ?)",varCurrentDate, varCurrentTime, g_CurrentUserSelect);
+	}
+        ReleaseInstance(varParCtrlTimer);
+
+		varIDValuetemp = DataBase.exec("SELECT ID FROM WWIZ_MANAGE_RESTRICT_APP WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+        if(varIDValuetemp == 101)
+        {
+            for(var vindex = 0; vindex< ArrApplications.length; vindex++)
+            {
+                DataBase.exec("INSERT INTO WWIZ_MANAGE_RESTRICT_APP(ID, SELECTED, APPLICATION, FK_USERNAME) VALUES(?,?,?,?)",vindex+1,0,ArrApplications[vindex].Application, g_CurrentUserSelect);
+			}
+		}
+		else
+		{
+			ReleaseInstance(varIDValuetemp);
+			/*var varCnt1 = DataBase.exec("SELECT COUNT(ID) FROM WWIZ_MANAGE_RESTRICT_APP WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+			if(varCnt1 != ArrApplications.length)
+			{	
+				DataBase.exec("DELETE FROM WWIZ_MANAGE_RESTRICT_APP WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+				for(var vindex = 0; vindex< ArrApplications.length; vindex++)
+				{
+					DataBase.exec("INSERT INTO WWIZ_MANAGE_RESTRICT_APP(ID, SELECTED, APPLICATION, FK_USERNAME) VALUES(?,?,?,?)",vindex+1,0,ArrApplications[vindex].Application, g_CurrentUserSelect);
+				}
+			}*/	
+		}
+        ReleaseInstance(varIDValuetemp);
+		ArrApplications.splice(0,ArrApplications.length);
+
+        var ArrCategories = new Array();
+        ArrCategories[0] = {index:ArrCategories.length,selected:false,Categories:"Adult"};
+        ArrCategories[1] = {index:ArrCategories.length,selected:false,Categories:"Adverisement and pop-ups"};
+        ArrCategories[2] = {index:ArrCategories.length,selected:false,Categories:"Anonymizers"};
+        ArrCategories[3] = {index:ArrCategories.length,selected:true,Categories:"Arts and E-Arts"};
+        ArrCategories[4] = {index:ArrCategories.length,selected:true,Categories:"Business"};
+        ArrCategories[5] = {index:ArrCategories.length,selected:false,Categories:"Chat"};
+        ArrCategories[6] = {index:ArrCategories.length,selected:false,Categories:"Child Abuse"};
+        ArrCategories[7] = {index:ArrCategories.length,selected:true,Categories:"Computers and Technology"};
+        ArrCategories[8] = {index:ArrCategories.length,selected:false,Categories:"Crime and violence"};
+        ArrCategories[9] = {index:ArrCategories.length,selected:false,Categories:"Download and Sharing"};
+        ArrCategories[10] = {index:ArrCategories.length,selected:true,Categories:"Educational"};
+        ArrCategories[11] = {index:ArrCategories.length,selected:false,Categories:"Fashion and Beauty"};
+        ArrCategories[12] = {index:ArrCategories.length,selected:false,Categories:"Forums and Newsgroups"};
+        ArrCategories[13] = {index:ArrCategories.length,selected:false,Categories:"Gambling"};
+        ArrCategories[14] = {index:ArrCategories.length,selected:false,Categories:"Games"};
+        ArrCategories[15] = {index:ArrCategories.length,selected:false,Categories:"Government"};
+        ArrCategories[16] = {index:ArrCategories.length,selected:false,Categories:"Hacking and Illegal Software"};
+        ArrCategories[17] = {index:ArrCategories.length,selected:false,Categories:"Health and Medicine"};
+        ArrCategories[18] = {index:ArrCategories.length,selected:false,Categories:"Adult"};
+        ArrCategories[19] = {index:ArrCategories.length,selected:false,Categories:"Illegal Drugs and Alcohol"};
+        ArrCategories[20] = {index:ArrCategories.length,selected:false,Categories:"Job Search"};
+        ArrCategories[21] = {index:ArrCategories.length,selected:false,Categories:"Leisure and Entertainment"};
+        ArrCategories[22] = {index:ArrCategories.length,selected:false,Categories:"News"};
+        ArrCategories[23] = {index:ArrCategories.length,selected:false,Categories:"Offensive"};
+        ArrCategories[24] = {index:ArrCategories.length,selected:false,Categories:"Politics"};
+        ArrCategories[25] = {index:ArrCategories.length,selected:false,Categories:"Pornographic"};
+        ArrCategories[26] = {index:ArrCategories.length,selected:false,Categories:"Profanity"};
+        ArrCategories[27] = {index:ArrCategories.length,selected:false,Categories:"Real Estate"};
+        ArrCategories[28] = {index:ArrCategories.length,selected:false,Categories:"Religion"};
+        ArrCategories[29] = {index:ArrCategories.length,selected:false,Categories:"Restaurants and Dining"};
+        ArrCategories[30] = {index:ArrCategories.length,selected:false,Categories:"School Cheating"};
+        ArrCategories[31] = {index:ArrCategories.length,selected:true,Categories:"Search Engine and Portals"};
+        ArrCategories[32] = {index:ArrCategories.length,selected:false,Categories:"Sex Education"};
+        ArrCategories[33] = {index:ArrCategories.length,selected:false,Categories:"Shopping"};
+        ArrCategories[34] = {index:ArrCategories.length,selected:false,Categories:"Social Networking"};
+        ArrCategories[35] = {index:ArrCategories.length,selected:true,Categories:"Sports"};
+        ArrCategories[36] = {index:ArrCategories.length,selected:false,Categories:"Translators"};
+        ArrCategories[37] = {index:ArrCategories.length,selected:false,Categories:"Travel"};
+        ArrCategories[38] = {index:ArrCategories.length,selected:false,Categories:"Video Streaming"};
+        ArrCategories[39] = {index:ArrCategories.length,selected:false,Categories:"Weapons"};
+        ArrCategories[40] = {index:ArrCategories.length,selected:false,Categories:"Web Based Free Email"};
+        ArrCategories[41] = {index:ArrCategories.length,selected:true,Categories:"All Others"};
+        varIDValuetemp = DataBase.exec("SELECT ID FROM WWIZ_RESTRICT_WEBSITE_CATEGORIES WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+        if(varIDValuetemp == 101)
+        {
+            for(var vindex = 0; vindex< ArrCategories.length; vindex++)
+            {
+                DataBase.exec("INSERT INTO WWIZ_RESTRICT_WEBSITE_CATEGORIES(SELECTED, CATEGORIES, FK_USERNAME) VALUES(?,?,?)", ArrCategories[vindex].selected, ArrCategories[vindex].Categories, g_CurrentUserSelect);
+			}	
+		}
+        ReleaseInstance(varIDValuetemp);
+
+        DataBase.close();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function FunSetValuesfromDB()
+	{
+		var iIndex = 0;
+		var varBlockAccessWkDay = SetGeneralArray[iIndex].BlockAccessWkDay;
+		if(varBlockAccessWkDay == 0)
+	{
+			$(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = false;
+			$(#ID_OPTN_WDAY_STRT).state.disabled = true;
+			$(#ID_OPTN_WDAY_END).state.disabled = true;
+	}
+		else if(varBlockAccessWkDay == 1)
+	{
+			$(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = true;
+			$(#ID_OPTN_WDAY_STRT).state.disabled = false;
+			$(#ID_OPTN_WDAY_END).state.disabled = false;
+	}
+		var varBlockAccessWkdayStartTime = SetGeneralArray[iIndex].BlockAccessWkdayStartTime;
+		$(#ID_OPTN_WDAY_STRT).state.value = varBlockAccessWkdayStartTime;
+		var varBlockAccessWkdayEndTime = SetGeneralArray[iIndex].BlockAccessWkdayEndTime;
+		$(#ID_OPTN_WDAY_END).state.value = varBlockAccessWkdayEndTime;	
+		var varBlockAccessWkdayTime = SetGeneralArray[iIndex].BlockAccessWkdayTime;
+		if(varBlockAccessWkdayTime == 0)
+		{
+			$(#IDR_CHK_DONT_ALLOW).checked = false;
+			$(#RESTRCT_ACCESS_WDAY).state.disabled = true;
+	}
+		else if(varBlockAccessWkdayTime == 1)
+		{
+			$(#IDR_CHK_DONT_ALLOW).checked = true;
+			$(#RESTRCT_ACCESS_WDAY).state.disabled = false;			
+	}	
+		var varBlockAccessWkdayTimeHours = SetGeneralArray[iIndex].BlockAccessWkdayTimeHours;
+		$(#RESTRCT_ACCESS_WDAY).state.value = varBlockAccessWkdayTimeHours;
+		var varBlockAccessWkend = SetGeneralArray[iIndex].BlockAccessWkend;
+		if(varBlockAccessWkend == 0)
+		{
+			$(#IDR_CHKBOX_WEEKEND_ACCESS).checked = false;
+			$(#ID_OPTN_WKEND_STRT).state.disabled = true;
+			$(#ID_OPTN_WKEND_END).state.disabled = true;
+	}
+		else if(varBlockAccessWkend == 1)
+		{
+			$(#IDR_CHKBOX_WEEKEND_ACCESS).checked = true;
+			$(#ID_OPTN_WKEND_STRT).state.disabled = false;
+			$(#ID_OPTN_WKEND_END).state.disabled = false;
+	}
+		var varBlockAccessWkendStartTime = SetGeneralArray[iIndex].BlockAccessWkendStartTime;
+		$(#ID_OPTN_WKEND_STRT).state.value = varBlockAccessWkendStartTime;
+		var varBlockAccessWkendEndTime = SetGeneralArray[iIndex].BlockAccessWkendEndTime;
+		$(#ID_OPTN_WKEND_END).state.value = varBlockAccessWkendEndTime;
+		var varBlockAccessWkendTime = SetGeneralArray[iIndex].BlockAccessWkendTime;
+		if(varBlockAccessWkendTime == 0)
+		{
+			$(#ID_CHK_WKEND_RESTRICT).checked = false;
+			$(#RESTRCT_ACCESS_WEND).state.disabled = true;
+	}
+		else if(varBlockAccessWkendTime == 1)
+		{
+			$(#ID_CHK_WKEND_RESTRICT).checked = true;
+			$(#RESTRCT_ACCESS_WEND).state.disabled = false;
+	}
+		var varBlockAccessWkendTimeHours = SetGeneralArray[iIndex].BlockAccessWkendTimeHours;
+		$(#RESTRCT_ACCESS_WEND).state.value = varBlockAccessWkendTimeHours;
+	}
+	
+	function SetParCtrlValueGen(varGetRecordSet)
+	{
+		var iIndex = 0;
+        var varCounter = 0;
+        SetGeneralArray[0] = {BlockAccessWkDay :"", BlockAccessWkdayStartTime:"", BlockAccessWkdayEndTime:"", BlockAccessWkdayTime:"", BlockAccessWkdayTimeHours:"", BlockAccessWkend :"", BlockAccessWkendStartTime:"", BlockAccessWkendEndTime:"", BlockAccessWkendTime:"", BlockAccessWkendTimeHours:""};
+		for (var varVirtualDBData in varGetRecordSet)
+        {
+			switch(varCounter)
+            {
+                case 0:
+                        SetGeneralArray[iIndex].BlockAccessWkDay = varVirtualDBData;
+                        break;
+                case 1:
+                        SetGeneralArray[iIndex].BlockAccessWkdayStartTime = varVirtualDBData;
+                        break;
+                case 2:
+                        SetGeneralArray[iIndex].BlockAccessWkdayEndTime = varVirtualDBData;
+                        break;
+                case 3:
+                        SetGeneralArray[iIndex].BlockAccessWkdayTime = varVirtualDBData;
+                        break;
+                case 4:
+                        SetGeneralArray[iIndex].BlockAccessWkdayTimeHours = varVirtualDBData;
+                        break;
+                case 5:
+                        SetGeneralArray[iIndex].BlockAccessWkend = varVirtualDBData;
+                        break;
+                case 6:
+						SetGeneralArray[iIndex].BlockAccessWkendStartTime = varVirtualDBData;
+                        break;
+                case 7:
+						SetGeneralArray[iIndex].BlockAccessWkendEndTime = varVirtualDBData;
+                        break;
+                case 8:
+                        SetGeneralArray[iIndex].BlockAccessWkendTime = varVirtualDBData;
+                        break;
+                case 9:
+                        SetGeneralArray[iIndex].BlockAccessWkendTimeHours = varVirtualDBData;
+                        break;
+	}
+            varCounter++;
+	}
+		FunSetValuesfromDB();
+	}
+	
+	function ApplyCurrentValues()
+	{
+		DataBase = DB.open(varDBPath);
+		var varGetRecordSet = DataBase.exec("select BLOCK_WKDAY, BLOCK_TIME_PM, BLOCK_TIME_AM, ALLOW_ACCESS_WKDAY, ALLOW_ACCESS_WKDAY_TIME, BLOCK_WKEND, BLOCK_TIME_WKND_PM, BLOCK_TIME_WKND_AM, ALLOW_ACCESS_WKEND, ALLOW_ACCESS_WKEND_TIME from PARCTRL_GENERAL where FK_USERNAME = ?",g_CurrentUserSelect);
+		if (varGetRecordSet instanceof Recordset)
+			SetParCtrlValueGen(varGetRecordSet);
+		varGetRecordSet.close();
+		
+		var varGetRecrdSet = DataBase.exec("select BLOCK_WKDAY, BLOCK_TIME_PM, BLOCK_TIME_AM, RSTRCT_INET_WDAY, RSTRCT_INET_TIME_WDAY, BLOCK_WKEND, BLOCK_TIME_WKND_PM, BLOCK_TIME_WKND_AM, RSTRCT_INET_WEND, RSTRCT_INET_TIME_WEND from PARCTRL_INTRNET where FK_USERNAME = ?",g_CurrentUserSelect);
+		var varCheckAcessInternetWkDay =  varGetRecrdSet["RSTRCT_INET_WDAY"];
+		if(varCheckAcessInternetWkDay == 0)
+		{
+			$(#ID_CHK_WKDAY_INTRNT).checked = false;
+			$(#ID_OPTN_RESTRICT_HOURS_WKDAY).state.disabled = true;
+	}
+		else if(varCheckAcessInternetWkDay == 1)
+		{
+			$(#ID_CHK_WKDAY_INTRNT).checked = true;
+			$(#ID_OPTN_RESTRICT_HOURS_WKDAY).state.disabled = false;
+	}
+		
+		var varCheckAcessTimeWkDay = varGetRecrdSet["RSTRCT_INET_TIME_WDAY"];
+		$(#ID_OPTN_RESTRICT_HOURS_WKDAY).state.value = varCheckAcessTimeWkDay;
+		
+		var bCheckInetBlockWkday =  varGetRecrdSet["BLOCK_WKDAY"];
+		if(bCheckInetBlockWkday == 0)
+		{
+			$(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = false;
+			$(#ID_OPTN_INET_WDAY_STRT).state.disabled = true;
+			$(#ID_OPTN_INET_WDAY_END).state.disabled = true;			
+	}
+		else if(bCheckInetBlockWkday == 1)
+		{
+			$(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = true;
+			$(#ID_OPTN_INET_WDAY_STRT).state.disabled = false;
+			$(#ID_OPTN_INET_WDAY_END).state.disabled = false;
+	}
+		
+		var vBlockWdayFrom = varGetRecrdSet["BLOCK_TIME_PM"];
+		$(#ID_OPTN_INET_WDAY_STRT).value = vBlockWdayFrom;
+
+		var vBlockWdayTo = varGetRecrdSet["BLOCK_TIME_AM"];
+		$(#ID_OPTN_INET_WDAY_END).value = vBlockWdayTo;
+
+		var bCheckInetBlockWkend =  varGetRecrdSet["BLOCK_WKEND"];
+		if(bCheckInetBlockWkend == 0)
+		{
+			$(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = false;
+			$(#ID_OPTN_INET_WEND_STRT).state.disabled = true;
+			$(#ID_OPTN_INET_WEND_END).state.disabled = true;
+    }
+		else if(bCheckInetBlockWkend == 1)
+		{
+			$(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = true;
+			$(#ID_OPTN_INET_WEND_STRT).state.disabled = false;
+			$(#ID_OPTN_INET_WEND_END).state.disabled = false;
+    }
+		
+		var vBlockWendFrom = varGetRecrdSet["BLOCK_TIME_WKND_PM"];
+		$(#ID_OPTN_INET_WEND_STRT).value = vBlockWendFrom;
+		
+		var vBlockWendTo = varGetRecrdSet["BLOCK_TIME_WKND_AM"];
+		$(#ID_OPTN_INET_WEND_END).value = vBlockWendTo;
+		
+		var varCheckAcessInternetWkEnd =  varGetRecrdSet["RSTRCT_INET_WEND"];
+		if(varCheckAcessInternetWkEnd == 0)
+	{
+			$(#ID_CHK_WKEND_INTRNT).checked = false;
+			$(#ID_OPTN_RESTRICT_HOURS_WKEND).state.disabled = true;
+	} 
+		else if(varCheckAcessInternetWkEnd == 1)
+	{
+			$(#ID_CHK_WKEND_INTRNT).checked = true;
+			$(#ID_OPTN_RESTRICT_HOURS_WKEND).state.disabled = false;
+		}	
+		
+		var varCheckAcessTimeWkEnd = varGetRecrdSet["RSTRCT_INET_TIME_WEND"];
+		$(#ID_OPTN_RESTRICT_HOURS_WKEND).state.value = varCheckAcessTimeWkEnd;
+		varGetRecrdSet.close();
+		DataBase.close();
+	} 
+    </script>
+	
+	<script type="text/tiscript">	
+	function FunFillSandBox()
+	{
+		if(varIsCreated ==  false)
+		{
+			for(var n = 0; n < 168; n++)
+			{
+				createSomeStuff(n);
+			}
+    }
+		SetRectTracker();
+		SetValToSandBox();
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function SetRectTracker()
+	{
+			var arrTemp = new Array(168);
+			DataBase = DB.open(varDBPath);
+			var varRecordSet = DataBase.exec("select TRACK_VALUE from WWIZ_PC_TRACK_COMP_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+			if ( varRecordSet instanceof Recordset )
+    {
+				for (var varVirtualDBCount in varRecordSet)
+        {
+					arrTemp = varVirtualDBCount;
+        }
+				varRecordSet.close();
+        }
+        DataBase.close();
+
+			var varFirstRow = arrTemp;
+			var temp1 = 0;
+			var temp2 = 1;
+			for(var i = 0; i < 168; i++)
+			{
+				var varTemp = varFirstRow.slice(temp1, temp2);
+				temp1 += 2;
+				temp2 += 2;
+				if(i < 24)
+        {
+					arrFirstRow[i] = varTemp;
+        }
+				if(i >= 24 && i < 48)
+        {
+					arrSecondRow[i-24] = varTemp;
+        }
+				if(i >= 48 && i < 72)
+				{
+					arrThirdRow[i-48] = varTemp;
+    }
+				if(i >= 72 && i < 96)
+      {
+					arrFourthRow[i-72] = varTemp;
+        }
+				if(i >= 96 && i < 120)
+      {
+					arrFifthRow[i-96] = varTemp;
+      }
+				if(i >= 120 && i < 144)
+	  {
+					arrSixthRow[i-120] = varTemp;
+	  }
+				if(i >= 144 && i < 168)
+	  {
+					arrSeventhRow[i-144] = varTemp;
+				}
+			}
+	  }
+	function SetValToSandBox()
+      {
+		for(var n = 0; n < 168; n++)//here select the entries from Database
+		{
+			if(n < 24)
+			{
+				var varTempValue = arrFirstRow[n];
+				if(varTempValue == 1)
+				{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+				}
+				else
+				{
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+				}
+			}
+			else if(n >= 24 && n < 48)
+			{
+				var varTempValue = arrSecondRow[n-24];
+				if(varTempValue == 1)
+			{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+		}
+		else
+		{			
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+				}
+		}
+			else if(n >= 48 && n < 72)
+			{
+				var varTempValue = arrThirdRow[n-48];
+				if(varTempValue == 1)
+				{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+				}
+				else
+				{
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+				}
+			}
+			else if(n >= 72 && n < 96)
+			{
+				var varTempValue = arrFourthRow[n-72];
+				if(varTempValue == 1)
+			{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+		}
+		else
+		{			
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+				}
+		}		
+			else if(n >= 96 && n < 120)
+			{
+				var varTempValue = arrFifthRow[n-96];
+				if(varTempValue == 1)
+				{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+				}
+							else 
+				{
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+			}
+		}
+			else if(n >= 120 && n < 144)
+			{
+				var varTempValue = arrSixthRow[n-120];
+				if(varTempValue == 1)
+		{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+		}
+				else
+		{
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+		}
+      }
+			else if(n >= 144 && n < 168)
+	{
+				var varTempValue = arrSeventhRow[n-144];
+				if(varTempValue == 1)
+		{
+					self.$(div#sandbox)[n].attributes["selected"] = true;
+		}
+				else
+		{
+					self.$(div#sandbox)[n].attributes["selected"] = undefined;
+		}
+	}
+		}
+	}
+	$(#ID_CHK_SPEC_WEB).onClick = function()
+	{
+		var vCheckBoxVal = 0;
+		if($(#ID_CHK_SPEC_WEB).value == true)
+		{
+			vCheckBoxVal = 1;
+		}
+		DataBase = DB.open(self.GetPCBrowseSecDBPath());
+		DataBase.exec("UPDATE WWIZ_BROWSE_PROTECTION SET db_Blk_Website = ? WHERE db_BrowseID = ?", vCheckBoxVal, BrowseProtectionID);
+		DataBase.close();
+		ReloadDB4WWizBrowseProt();
+	}    
+	</script>
+    <script type="text/tiscript">
+		function ReloadDB4WWizBrowseProt()
+		{
+			self.ReloadBrowseProtDB();
+		}
+	</script>
+    <script type="text/tiscript">
+	function SetRectTrackerApp()
+	{
+		var arrTemp = new Array(168);
+		DataBase = DB.open(varDBPath);
+		var varRecordSet = DataBase.exec("select TRACK_VALUE from WWIZ_INTERNET_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+		if ( varRecordSet instanceof Recordset )
+		{
+			for (var varVirtualDBCount in varRecordSet)
+			{
+				arrTemp = varVirtualDBCount;
+			}
+			varRecordSet.close();
+		}
+		DataBase.close();
+	
+		var varFirstRow = arrTemp;
+		var temp1 = 0;
+		var temp2 = 1;
+		for(var i = 0; i < 168; i++)
+		{
+			var varTemp = varFirstRow.slice(temp1, temp2);
+			temp1 += 2;
+			temp2 += 2;
+			if(i < 24)
+			{
+				arrFirstRow[i] = varTemp;
+			}
+			if(i >= 24 && i < 48)
+			{
+				arrSecondRow[i-24] = varTemp;
+			}
+			if(i >= 48 && i < 72)
+			{
+				arrThirdRow[i-48] = varTemp;
+			}
+			if(i >= 72 && i < 96)
+			{
+				arrFourthRow[i-72] = varTemp;
+			}
+			if(i >= 96 && i < 120)
+			{
+				arrFifthRow[i-96] = varTemp;
+			}
+			if(i >= 120 && i < 144)
+			{
+				arrSixthRow[i-120] = varTemp;
+			}
+			if(i >= 144 && i < 168)
+			{
+				arrSeventhRow[i-144] = varTemp;
+			}
+		}
+	}
+	function SetValToSandBoxApp()
+	{
+		for(var n = 0; n < 168; n++)//here select the entries from Database
+		{
+			if(n < 24)
+			{
+				var varTempValue = arrFirstRow[n];
+				if(varTempValue == 1)
+				{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+				}
+				else
+				{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+				}
+			}
+			else if(n >= 24 && n < 48)
+			{
+				var varTempValue = arrSecondRow[n-24];
+				if(varTempValue == 1)
+    {
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+    }
+				else
+	{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+				}
+	}
+			else if(n >= 48 && n < 72)
+			{
+				var varTempValue = arrThirdRow[n-48];
+				if(varTempValue == 1)
+	{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+	}
+				else
+    {
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+				}
+    }
+			else if(n >= 72 && n < 96)
+	{
+				var varTempValue = arrFourthRow[n-72];
+				if(varTempValue == 1)
+		{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+		}
+				else
+		{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+		}
+	}
+			else if(n >= 96 && n < 120)
+			{
+				var varTempValue = arrFifthRow[n-96];
+				if(varTempValue == 1)
+	{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+				}
+				else
+		{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+				}
+		}
+			else if(n >= 120 && n < 144)
+		{
+				var varTempValue = arrSixthRow[n-120];
+				if(varTempValue == 1)
+			{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+			}
+				else
+				{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+		}
+	}
+			else if(n >= 144 && n < 168)
+	{
+				var varTempValue = arrSeventhRow[n-144];
+				if(varTempValue == 1)
+		{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = true;
+				}
+				else
+			{
+					self.$(div#sandboxforapp)[n].attributes["selected"] = undefined;
+				}
+			}
+		}
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	function FunSetRectTrackValWeekly()
+	{
+		var varWDayStart = $(#ID_OPTN_WDAY_STRT).value;
+		var varWDayEnd = $(#ID_OPTN_WDAY_END).value;
+		var varWEndStart = $(#ID_OPTN_WKEND_STRT).value;
+		var varWEndEnd = $(#ID_OPTN_WKEND_END).value;
+		
+        var varWDayArr = new Array(168);
+		var varWeekdayAccess = $(#IDR_CHKBOX_WEEKDAY_ACCESS).value;
+		var varWeekendAccess = $(#IDR_CHKBOX_WEEKEND_ACCESS).value;
+        if(varWeekdayAccess == true)
+        {
+			if(varWDayStart < varWDayEnd)
+			{
+				if(varIsWDayChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWDayStart && i < varWDayEnd)
+						{
+							arrFirstRow[i] = 1;
+							arrSecondRow[i] = 1;
+							arrThirdRow[i] = 1;
+							arrFourthRow[i] = 1;
+							arrFifthRow[i] = 1;
+						}
+						else
+						{
+							arrFirstRow[i] = 0;
+							arrSecondRow[i] = 0;
+							arrThirdRow[i] = 0;
+							arrFourthRow[i] = 0;
+							arrFifthRow[i] = 0;
+						}
+					}
+				}
+			}
+			else if(varWDayStart > varWDayEnd)
+			{
+				if(varIsWDayChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWDayStart )
+						{
+							arrFirstRow[i] 	= 1;
+							arrSecondRow[i] = 1;
+							arrThirdRow[i] 	= 1;
+							arrFourthRow[i] = 1;
+							arrFifthRow[i] 	= 1;
+						}
+						else if(i < varWDayEnd)
+						{
+							arrFirstRow[i] 	= 1;
+							arrSecondRow[i] = 1;
+							arrThirdRow[i] 	= 1;
+							arrFourthRow[i] = 1;
+							arrFifthRow[i] 	= 1;
+						}
+						else 
+						{
+							arrFirstRow[i] 	= 0;
+							arrSecondRow[i] = 0;
+							arrThirdRow[i] 	= 0;
+							arrFourthRow[i] = 0;
+							arrFifthRow[i] 	= 0;
+						}
+					}
+				}
+			}
+			else if(varWDayStart == varWDayEnd)
+			{
+				for(var i = 0; i < 24; i++)
+				{
+					arrFirstRow[i] 	= 1;
+					arrSecondRow[i] = 1;
+					arrThirdRow[i] 	= 1;
+					arrFourthRow[i] = 1;
+					arrFifthRow[i] 	= 1;
+				}
+			}
+		}
+		else
+		{
+			for(var i = 0; i < 24; i++)
+			{
+				arrFirstRow[i] 	= 0;
+				arrSecondRow[i] = 0;
+				arrThirdRow[i] 	= 0;
+				arrFourthRow[i] = 0;
+				arrFifthRow[i] 	= 0;
+			}
+		}
+		if(varWeekendAccess == true)
+		{
+			if(varWEndStart < varWEndEnd)
+			{
+				if(varIsWEndChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWEndStart && i < varWEndEnd)
+						{
+							arrSixthRow[i] = 1;
+							arrSeventhRow[i] = 1;
+						}
+						else
+						{
+							arrSixthRow[i] = 0;
+							arrSeventhRow[i] = 0;
+						}
+					}
+				}
+			}
+			else if(varWEndStart > varWEndEnd)
+			{
+				if(varIsWEndChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWEndStart)
+						{
+							arrSixthRow[i]   = 1;
+							arrSeventhRow[i] = 1;
+						}
+						else if(i < varWEndEnd)
+						{
+							arrSixthRow[i]   = 1;
+							arrSeventhRow[i] = 1;
+						}
+						else
+						{
+							arrSixthRow[i]   = 0;
+							arrSeventhRow[i] = 0;
+						}
+					}
+				}
+			}
+			else if(varWEndStart == varWEndEnd)
+			{
+				for(var i = 0; i < 24; i++)
+				{
+					arrSixthRow[i]   = 1;
+					arrSeventhRow[i] = 1;
+				}
+			}
+		}
+		else
+		{
+			for(var i = 0; i < 24; i++)
+			{
+				arrSixthRow[i]   = 0;
+				arrSeventhRow[i] = 0;
+			}
+		}
+		for(var i = 0; i < 168; i++)
+		{
+			if(i < 24)
+			{
+				varWDayArr[i] = arrFirstRow[i];
+			}
+			if(i >= 24 && i < 48)
+			{
+				varWDayArr[i] = arrSecondRow[i-24];
+			}
+			if(i >= 48 && i < 72)
+			{
+				varWDayArr[i] = arrThirdRow[i-48];
+			}
+			if(i >= 72 && i < 96)
+			{
+				varWDayArr[i] = arrFourthRow[i-72];
+			}
+			if(i >= 96 && i < 120)
+			{
+				varWDayArr[i] = arrFifthRow[i-96];
+			}
+			if(i >= 120 && i < 144)
+			{
+				varWDayArr[i] = arrSixthRow[i-120];
+			}
+			if(i >= 144 && i < 168)
+			{
+				varWDayArr[i] = arrSeventhRow[i-144];
+			}
+		}
+		var varTemp = 1;
+		var varInsertTemp = 0;
+		for(var temp in varWDayArr)
+		{
+			if(varTemp == 1)
+			{
+				varInsertTemp = temp;
+			}
+			else if(varTemp > 1 && varTemp <= 168)
+			{
+				varInsertTemp = varInsertTemp + ","+ temp;
+			}
+			varTemp++;
+		}
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("delete from WWIZ_PC_TRACK_COMP_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+		DataBase.exec("insert into WWIZ_PC_TRACK_COMP_USAGE (TRACK_VALUE,CHECK_LIST_CAL,FK_USERNAME) values (?,0,?)",varInsertTemp, g_CurrentUserSelect);
+		DataBase.close();
+		SetValToSandBox();
+	}	
+	
+    function FunSetRectTrackValWeeklyINet()
+	{
+		var varWDayStart = $(#ID_OPTN_INET_WDAY_STRT).value;
+		var varWDayEnd = $(#ID_OPTN_INET_WDAY_END).value;
+		var varWEndStart = $(#ID_OPTN_INET_WEND_STRT).value;
+		var varWEndEnd = $(#ID_OPTN_INET_WEND_END).value;
+		
+        var varWDayArr = new Array(168);
+		var varWeekdayAccess = $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).value;
+		var varWeekendAccess = $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).value;
+        if(varWeekdayAccess == true)
+        {
+			if(varWDayStart < varWDayEnd)
+			{
+				if(varIsWDayChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWDayStart && i < varWDayEnd)
+						{
+							arrFirstRow[i] = 1;
+							arrSecondRow[i] = 1;
+							arrThirdRow[i] = 1;
+							arrFourthRow[i] = 1;
+							arrFifthRow[i] = 1;
+						}
+						else
+						{
+							arrFirstRow[i] = 0;
+							arrSecondRow[i] = 0;
+							arrThirdRow[i] = 0;
+							arrFourthRow[i] = 0;
+							arrFifthRow[i] = 0;
+						}
+					}
+				}
+			}
+			else if(varWDayStart > varWDayEnd)
+			{
+				if(varIsWDayChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWDayStart )
+						{
+							arrFirstRow[i] 	= 1;
+							arrSecondRow[i] = 1;
+							arrThirdRow[i] 	= 1;
+							arrFourthRow[i] = 1;
+							arrFifthRow[i] 	= 1;
+						}
+						else if(i < varWDayEnd)
+						{
+							arrFirstRow[i] 	= 1;
+							arrSecondRow[i] = 1;
+							arrThirdRow[i] 	= 1;
+							arrFourthRow[i] = 1;
+							arrFifthRow[i] 	= 1;
+						}
+						else 
+						{
+							arrFirstRow[i] 	= 0;
+							arrSecondRow[i] = 0;
+							arrThirdRow[i] 	= 0;
+							arrFourthRow[i] = 0;
+							arrFifthRow[i] 	= 0;
+						}
+					}
+				}
+			}
+			else if(varWDayStart == varWDayEnd)
+			{
+				for(var i = 0; i < 24; i++)
+				{
+					arrFirstRow[i] 	= 1;
+					arrSecondRow[i] = 1;
+					arrThirdRow[i] 	= 1;
+					arrFourthRow[i] = 1;
+					arrFifthRow[i] 	= 1;
+				}
+			}
+		}
+		else
+		{
+			for(var i = 0; i < 24; i++)
+			{
+				arrFirstRow[i] 	= 0;
+				arrSecondRow[i] = 0;
+				arrThirdRow[i] 	= 0;
+				arrFourthRow[i] = 0;
+				arrFifthRow[i] 	= 0;
+			}
+		}
+		if(varWeekendAccess == true)
+		{
+			if(varWEndStart < varWEndEnd)
+			{
+				if(varIsWEndChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWEndStart && i < varWEndEnd)
+						{
+							arrSixthRow[i] = 1;
+							arrSeventhRow[i] = 1;
+						}
+						else
+						{
+							arrSixthRow[i] = 0;
+							arrSeventhRow[i] = 0;
+						}
+					}
+				}
+			}
+			else if(varWEndStart > varWEndEnd)
+			{
+				if(varIsWEndChanged == true)
+				{
+					for(var i = 0; i < 24; i++)
+					{
+						if(i >= varWEndStart)
+						{
+							arrSixthRow[i]   = 1;
+							arrSeventhRow[i] = 1;
+						}
+						else if(i < varWEndEnd)
+						{
+							arrSixthRow[i]   = 1;
+							arrSeventhRow[i] = 1;
+						}
+						else
+						{
+							arrSixthRow[i]   = 0;
+							arrSeventhRow[i] = 0;
+						}
+					}
+				}
+			}
+			else if(varWEndStart == varWEndEnd)
+			{
+				for(var i = 0; i < 24; i++)
+				{
+					arrSixthRow[i]   = 1;
+					arrSeventhRow[i] = 1;
+				}
+			}
+		}
+		else
+		{
+			for(var i = 0; i < 24; i++)
+			{
+				arrSixthRow[i]   = 0;
+				arrSeventhRow[i] = 0;
+			}
+		}
+		for(var i = 0; i < 168; i++)
+		{
+			if(i < 24)
+			{
+				varWDayArr[i] = arrFirstRow[i];
+			}
+			if(i >= 24 && i < 48)
+			{
+				varWDayArr[i] = arrSecondRow[i-24];
+			}
+			if(i >= 48 && i < 72)
+			{
+				varWDayArr[i] = arrThirdRow[i-48];
+			}
+			if(i >= 72 && i < 96)
+			{
+				varWDayArr[i] = arrFourthRow[i-72];
+			}
+			if(i >= 96 && i < 120)
+			{
+				varWDayArr[i] = arrFifthRow[i-96];
+			}
+			if(i >= 120 && i < 144)
+			{
+				varWDayArr[i] = arrSixthRow[i-120];
+			}
+			if(i >= 144 && i < 168)
+			{
+				varWDayArr[i] = arrSeventhRow[i-144];
+			}
+		}
+		var varTemp = 1;
+		var varInsertTemp = 0;
+		for(var temp in varWDayArr)
+		{
+			if(varTemp == 1)
+			{
+				varInsertTemp = temp;
+			}
+			else if(varTemp > 1 && varTemp <= 168)
+			{
+				varInsertTemp = varInsertTemp + ","+ temp;
+			}
+			varTemp++;
+		}
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("delete from WWIZ_INTERNET_USAGE where FK_USERNAME = ?",g_CurrentUserSelect);
+		DataBase.exec("insert into WWIZ_INTERNET_USAGE (TRACK_VALUE,CHECK_LIST_CAL,FK_USERNAME) values (?,0,?)",varInsertTemp, g_CurrentUserSelect);
+		DataBase.close();
+		SetValToSandBoxApp();
+		self.SetRectTrackChangeListINet();
+	}	
+	</script>
+	
+	<script type="text/tiscript">
+	function CheckForgetPwd()
+	{
+		var vFlag = 0;
+		DataBase = DB.open(view.GetDBPath());			
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");		
+		if(varPassword != 101)
+		{
+			varPassword.close();
+			varPassword = DataBase.exec("SELECT ID FROM WWIZ_PWDFORPWDSCOPE");	
+			if(varPassword instanceof Recordset)				
+			{
+				$(#ID_BTN_SKIP_PARCNTRL).state.expanded = false;
+			}
+			else
+			{
+				$(#ID_BTN_FORGET_PWD).style["display"] = "none";
+			}			
+		}
+		else if(varPassword == 101)
+		{
+			$(#ID_BTN_FORGET_PWD).style["display"] = "none";
+		}
+		DataBase.close();		
+	}
+	
+	function CheckPasswordScope()
+	{
+		var vFlag = false;
+		var varDB = view.GetDBPath();
+		DataBase = DB.open(varDB);
+		var varCheck = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDSCOPELIST'"); 
+		if(varCheck != 101)
+		{				
+			varCheck.close();
+			varCheck = DataBase.exec("SELECT SELECTED FROM WWIZ_PWDSCOPELIST WHERE FEATURENAME = 2");//"PARENTAL_CONTROL":2
+			if(varCheck instanceof Recordset)
+			{
+				if(varCheck["SELECTED"] == 0)
+				{
+					$(.passwordLockParental).state.collapsed = true;
+					vFlag = true;
+				}
+				varCheck.close();					
+			}
+		}	
+		DataBase.close();
+		return vFlag;		
+	}
+	</script>
+	<script type="text/tiscript">
+	function ParentalFormBlur()
+	{
+		$(#ID_FORM_BLUR).attributes.addClass("translateWindow");
+	}
+	</script>
+	<script type="text/tiscript">
+	function RemoveParentalFormBlur()
+	{
+		$(#ID_FORM_BLUR).attributes.removeClass("translateWindow");
+	}
+	</script>
+	<script type="text/tiscript">
+	$(#ID_BTN_GO).onClick = function()
+	{	
+		FunCheckPwdValid();
+	}
+	
+	$(#ID_BTN_FORGET_PWD).onClick = function()
+	{
+		var vArr = new Array();
+		vArr[0] = {isMailSent:0};
+		DataBase = DB.open(view.GetDBPath());			
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");		
+		if(varPassword != 101)
+		{
+			varPassword.close();
+			var params = { ProductVersion:productVersion,
+						   varLanguageValue:g_LanguageName,
+						   vardb:view.GetDBPath(),
+						   vArr:vArr,
+						   varThemeType:g_themeType}; // parameters to pass	
+			view.dialog{
+						url: self.url("IDR_HTM_FORGOT_PASSWORD.htm"),
+						client:true,
+						alignment:-5,
+						parameters:params};			
+			if(vArr[0].isMailSent == 1)
+			{
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_MAIL_HAS_BEEN_SENT");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			}				
+		}
+		DataBase.close();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function FunCheckPwdValid()
+	{
+		if(!ValidatePassword())
+		{
+			return;
+		}
+		if(g_password.length < 1)
+			if(!ComparePasswords())
+				return;
+
+		var varDB = view.GetDBPath();
+		DataBase = DB.open(varDB);
+		var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+		if(varPassword != 101)//db not exist
+		{
+			if( varPassword instanceof Recordset)
+			{
+				var varPasswordFromDB;
+					varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+					if(varPasswordFromDB instanceof Recordset)
+					{
+						for(var l_varpass in varPasswordFromDB)
+							g_password = l_varpass;
+						varPasswordFromDB.close();
+					}
+				}
+			varPassword.close();		
+		}
+		else
+		{
+			g_password = "";
+		}
+		DataBase.close();
+		$(.passwordLockParental).state.collapsed = true;		
+		self.GetWindowsUserList(GetUserList);
+		SetUserList();
+		$(.user_list).state.expanded = true;
+		$(#ID_BTN_TRAY_NOTIFICATION).state.expanded = true; 				
+		var varRegVal = self.GetSetRegistryVal();
+		if(varRegVal == 0)
+		{
+			$(#ID_BTN_TRAY_NOTIFICATION).state.value = false;
+		}
+		else
+		{
+			$(#ID_BTN_TRAY_NOTIFICATION).state.value = true;
+		}	
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function ValidatePassword()
+    {	
+		var isValidPassword  = true;
+        var varPassword = $(#EnterPassword).value;
+        var varConfirmPassword = $(#ConfirmPassword).value;
+        var regexp = /[0-9]/gi;
+        var matchesArray = varPassword.search(regexp);
+        var spregexp = /[~,`,!,@,#,$,%,^,&,*,(,),_,-,+,=,{,},[,\],|,\,?,\/,.,,,',:,;,<,>]/gi;
+        var matchesArraySp = varPassword.search(spregexp);
+		if(g_password == "")
+		{
+			if(varPassword.length < 1 )
+			{
+				isValidPassword = false;
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_ENTER_VALID_PWD");
+				ParentalFormBlur();
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+                RemoveParentalFormBlur();
+				return false;
+			}
+			if(matchesArray < 0 )
+			{
+				isValidPassword = false;
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PASSWORD_SHOULD_CONTAIN_ONE_DIGIT");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+				$(#ConfirmPassword).value ="";
+				$(#EnterPassword).value = "";
+				return false;
+			}
+			if(matchesArraySp < 0 )
+			{
+				isValidPassword = false;
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("IDS_STATIC_FLDRLCKPSSWRD_VALIDSPL");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+				$(#ConfirmPassword).value ="";
+				$(#EnterPassword).value = "";
+				return false;
+			}
+			if(varPassword.length >= 1 && varPassword.length < 5)
+			{
+				isValidPassword = false;
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("IDS_STATIC_FLDRLCKPSSWRD_VALID5");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+				$(#ConfirmPassword).value ="";
+				$(#EnterPassword).value = "";
+				return false;
+			}
+		}
+		else
+		{	
+			if(g_password == $(#EnterPassword).value)
+			{
+				g_IsPasswordEntered = true;
+				$(#ID_BTN_TRAY_NOTIFICATION).state.expanded = true; 
+			}
+			else
+			{	
+				$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLZ_ENTER_VALID_PWD");
+				var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+				$(#EnterPassword).value = "";			
+				return false;
+			}
+		}
+		return true;
+    }
+	
+	function ComparePasswords()
+	{
+		var varPassword = $(#EnterPassword).value;
+        var varConfirmPassword = $(#ConfirmPassword).value;			
+		if(varPassword != varConfirmPassword)
+        {
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_ENTER_SAME_PASSWORD");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+					};
+            $(#ConfirmPassword).value ="";
+            return false;
+        }
+        else
+        {
+			var varDB = view.GetDBPath();
+			DataBase = DB.open(varDB);
+			var varCheckTable = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+			if(varCheckTable == 101)
+			{
+				DataBase.exec("create table IF NOT EXISTS WWIZ_PWDFORPWDSCOPE(ID INTEGER PRIMARY KEY,PASSWORD VARCHAR (20) NOT NULL)");
+			}
+			else
+			{
+				varCheckTable.close();
+			}
+			var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+			if(varPasswordFromDB == 101)//not sure about this 101 value every time on each pc.
+			{
+				var params = { vardb: varDB, 
+							   ProductVersion:productVersion,
+							   varLanguageValue:g_LanguageName,
+							   varPassword:varPassword,
+							   ID:2,
+							   varThemeType:g_themeType}; //"PARENTAL_CONTROL":2		
+				view.dialog{
+					url: self.url("IDR_HTM_FORGET_PASSWORD.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};							
+			}
+			else{
+				varPasswordFromDB.close();
+			}		
+			//Check wheather password set/inserted in db or not
+			DataBase.close();			
+			DataBase = DB.open(varDB);
+			var varCheckPassword = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+			if(varCheckPassword == 101)
+			{
+				return false;
+			}
+			else
+	{
+				g_IsPasswordEntered = true;
+				varCheckPassword.close();
+			}
+		DataBase.close();
+	}
+		if(g_password == $(#EnterPassword).value)
+		{
+			$(.passwordLockParental).state.collapsed = true;
+			$(.inner_body_parcntrl).state.expanded = true;
+		}
+		return true;
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#EnterPassword).on("keyup",function(event) {  
+		if( event.keyCode == Event.VK_RETURN)
+		{
+			FunCheckPwdValid();
+		}	
+		else if( event.keyCode == Event.VK_TAB)
+		{		
+			$(#EnterPassword).state.focus = false;
+			$(#ConfirmPassword).state.focus = true;
+		}
+	});
+	
+	$(#ConfirmPassword).on("keyup",function(event) {  
+		if( event.keyCode == Event.VK_RETURN)
+		{
+			FunCheckPwdValid();
+		}
+		else if( event.keyCode == Event.VK_TAB)
+		{
+			$(#EnterPassword).state.focus = true;
+			$(#ConfirmPassword).state.focus = false;
+		}
+	});	
+	</script>
+	
+	<script type="text/tiscript">
+	function PasswordEnter(pwd) {
+		var t = pwd.value;
+		if(	pwd.attributes["type"] == "password")
+		{
+			pwd.attributes["type"] = "text";
+		}	
+		else
+		{
+			pwd.attributes["type"] = "password";
+		}			
+	    pwd.value = t;			
+	}
+	  
+	function ChangePwdAttr(pwd) {
+		var t = pwd.value;
+		pwd.attributes["type"] = "password";
+		pwd.value = t;			
+	}
+	  
+	$(#BTN_TOGGLE_ENTER).on("mousedown", function(evt){
+		PasswordEnter($(input#EnterPassword));
+	});
+	
+	$(#BTN_TOGGLE_ENTER).on("mouseup", function(evt){
+		ChangePwdAttr($(input#EnterPassword));
+	});
+	
+	$(#BTN_TOGGLE_CONFIRM).on("mousedown", function(evt){
+		PasswordEnter($(input#ConfirmPassword));
+	});
+	
+	$(#BTN_TOGGLE_CONFIRM).on("mouseup", function(evt){
+		ChangePwdAttr($(input#ConfirmPassword));
+	});
+	</script>
+	
+	<script type="text/tiscript">
+	function createSomeStuff(iCount)
+	{
+		varIsCreated = true;
+		self.$(div#sandbox).insert
+		{ div, class:"stuff",value:iCount, id:iCount
+		};
+	}
+	
+	function createSomeStuffApp(iCount)
+	{
+		varIsCreatedforApp = true;
+		self.$(div#sandboxforapp).insert
+		{ div, class:"stuff",value:iCount, id:iCount
+		};
+	}
+	</script>
+	
+
+	
+	<script type="text/tiscript">
+    var varCheckVal = 0;
+    var varCheckValWEnd = 0;
+    var varStartVal = 0;
+    var varEndVal = 0;
+    var varStartValWEnd = 0;
+    var varEndValWEnd = 0;
+    function FunCompareRectTrackStatus()
+    {
+        SetRectTracker();
+		SetValToSandBox();
+        var varIsAllNotChecked = false;
+        var varIsAllNotCheckedWEnd = false;
+        var varIsAnyOne = false;
+        var varIsAnyOneWEnd = false;
+        var varFirstValOne = false;
+        var varFirstValZero = false;
+        var varLastValOne = false;
+        var varLastValZero = false;
+        var varFirstWEndValOne = false;
+        var varFirstWEndValZero = false;
+        var varLastWEndValOne = false;
+        var varLastWEndValZero = false;
+        var varDefaultStartVal = 21;
+        var varDefaultEndVal = 8;
+        varCheckVal = 0;
+        varCheckValWEnd = 0;
+        for(var i =0; i < 24; i++)
+        {
+            if(arrFirstRow[0] == 1)
+            {
+                varFirstValOne = true;
+            }
+            if(arrFirstRow[0] == 0)
+            {
+                varFirstValZero = true;
+            }
+            if(arrFirstRow[23] == 1)
+            {
+                varLastValOne = true;
+            }
+            if(arrFirstRow[23] == 0)
+            {
+                varLastValZero = true;
+            }
+            if(arrFirstRow[i] == 1)
+            {
+                varIsAnyOne = true;
+                break;
+            }
+        }
+        for(var i =0; i < 24; i++)
+        {
+            if(arrSixthRow[0] == 1)
+            {
+                varFirstWEndValOne = true;
+            }
+            if(arrSixthRow[0] == 0)
+            {
+                varFirstWEndValZero = true;
+            }
+            if(arrSixthRow[23] == 1)
+            {
+                varLastWEndValOne = true;
+            }
+            if(arrSixthRow[23] == 0)
+            {
+                varLastWEndValZero = true;
+            }
+            if(arrSixthRow[i] == 1)
+            {
+                varIsAnyOneWEnd = true;
+                break;
+            }
+        }
+        if(((arrFirstRow == arrSecondRow) && (arrFirstRow == arrThirdRow) && (arrFirstRow == arrFourthRow) && (arrFirstRow == arrFifthRow)) && varIsAnyOne == true)
+        {
+            for(var i =0; i < 24; i++)
+            {
+                if(arrFirstRow[i] == 0)
+                {
+                    varIsAllNotChecked = true;
+                    break;
+                }
+            }
+            if(varIsAllNotChecked == true)
+            {
+                if(varFirstValOne == false)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            if(arrFirstRow[i-1] == 0)
+                            {
+                                varCheckVal++;
+                            }
+                        }
+                    }
+                    if(varLastValOne == false && varCheckVal > 0)
+                    {
+                        varCheckVal += 1;
+                    }
+                }
+                else
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 0)
+                        {
+                            if(arrFirstRow[i-1] == 1)
+                            {
+                                varEndVal = i;
+                                varCheckVal++;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                varStartVal = 0;
+                varEndVal = 0;
+                $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = true;
+                $(#ID_OPTN_WDAY_STRT).state.value = varStartVal;
+                $(#ID_OPTN_WDAY_END).state.value = varEndVal;
+                $(#ID_OPTN_WDAY_STRT).state.disabled = false;
+                $(#ID_OPTN_WDAY_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKDAY = 1 WHERE FK_USERNAME = ?",g_CurrentUserSelect);
+                DataBase.close();
+            }
+            if(varCheckVal == 1)
+            {
+                if(varFirstValOne == true && varLastValOne == true)
+                {
+                    for(var i = varEndVal+1; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            varStartVal = i;
+                            break;
+                        }
+                    }
+                }
+                if(varFirstValZero == true && varLastValOne == true)
+                {
+                    for(var i = 0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            varStartVal = i;
+                            break;
+                        }
+                    }
+                }
+                if(varFirstValOne == true && varLastValOne == false)
+                {
+                    varStartVal = 0;
+                }
+                if(varLastValOne == true && varFirstValOne == false)
+                {
+                    varEndVal = 0;
+                }
+                $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = true;
+                $(#ID_OPTN_WDAY_STRT).state.value = varStartVal;
+                $(#ID_OPTN_WDAY_END).state.value = varEndVal;
+                $(#ID_OPTN_WDAY_STRT).state.disabled = false;
+                $(#ID_OPTN_WDAY_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKDAY = 1 WHERE FK_USERNAME = ?",g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckVal == 2)
+            {
+                var varStartValFound = false;
+                var varSetVal = 0;
+                if(varFirstValZero == true && varLastValZero == true)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            if(arrFirstRow[i-1] == 0)
+                            {
+                                varStartVal = i;
+                                varStartValFound = true;
+                            }
+                        }
+                        if(varStartValFound == true)
+                        {
+                            if(arrFirstRow[i] == 0)
+                            {
+                                if(arrFirstRow[i-1] == 1)
+                                {
+                                    varEndVal = i;
+                                }
+                            }
+                        }
+                    }
+                    $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = true;
+                    $(#ID_OPTN_WDAY_STRT).state.disabled = false;
+                    $(#ID_OPTN_WDAY_END).state.disabled = false;
+                    varSetVal = 1;
+                }
+                else
+                {
+                    varStartVal = varDefaultStartVal;
+                    varEndVal = varDefaultEndVal;
+                    $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = false;
+                    $(#ID_OPTN_WDAY_STRT).state.disabled = true;
+                    $(#ID_OPTN_WDAY_END).state.disabled = true;
+                }
+                $(#ID_OPTN_WDAY_STRT).state.value = varStartVal;
+                $(#ID_OPTN_WDAY_END).state.value = varEndVal;
+
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKDAY = ? WHERE FK_USERNAME = ?", varSetVal, g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckVal > 2)
+            {
+                $(#ID_OPTN_WDAY_STRT).state.value = varDefaultStartVal;
+                $(#ID_OPTN_WDAY_END).state.value = varDefaultEndVal;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?", varDefaultStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKDAY = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+                $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = false;
+                $(#ID_OPTN_WDAY_STRT).state.disabled = true;
+                $(#ID_OPTN_WDAY_END).state.disabled = true;
+            }
+        }
+        else if((arrFirstRow != arrSecondRow) || (arrFirstRow != arrThirdRow) || (arrFirstRow != arrFourthRow) || (arrFirstRow != arrFifthRow))
+        {
+            $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = false;
+            $(#ID_OPTN_WDAY_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_WDAY_END).state.value = varDefaultEndVal;
+            $(#ID_OPTN_WDAY_STRT).state.disabled = true;
+            $(#ID_OPTN_WDAY_END).state.disabled = true;
+        }
+        else if(varIsAnyOne == false)
+        {
+            $(#IDR_CHKBOX_WEEKDAY_ACCESS).checked = false;
+            $(#ID_OPTN_WDAY_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_WDAY_END).state.value = varDefaultEndVal;
+            $(#ID_OPTN_WDAY_STRT).state.disabled = true;
+            $(#ID_OPTN_WDAY_END).state.disabled = true;
+            DataBase = DB.open(varDBPath);
+            DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varDefaultStartVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKDAY = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+            DataBase.close();
+        }
+        if((arrSixthRow == arrSeventhRow) && varIsAnyOneWEnd == true)
+        {
+            for(var i =0; i < 24; i++)
+            {
+                if(arrSixthRow[i] == 0)
+                {
+                    varIsAllNotCheckedWEnd = true;
+                    break;
+                }
+            }
+            if(varIsAllNotCheckedWEnd == true)
+            {
+                if(varFirstWEndValOne == false)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            if(arrSixthRow[i-1] == 0)
+                            {
+                                varCheckValWEnd++;
+                            }
+                        }
+                    }
+                    if(varLastWEndValOne == false && varCheckValWEnd > 0)
+                    {
+                        varCheckValWEnd += 1;
+                    }
+                }
+                else
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 0)
+                        {
+                            if(arrSixthRow[i-1] == 1)
+                            {
+                                varEndValWEnd = i;
+                                varCheckValWEnd++;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                varStartValWEnd = 0;
+                varEndValWEnd = 0;
+                $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = true;
+                $(#ID_OPTN_WKEND_STRT).state.value = varStartValWEnd;
+                $(#ID_OPTN_WKEND_END).state.value = varEndValWEnd;
+                $(#ID_OPTN_WKEND_STRT).state.disabled = false;
+                $(#ID_OPTN_WKEND_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varStartValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varEndValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKEND = 1 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+            }
+            if(varCheckValWEnd == 1)
+            {
+                if(varFirstWEndValOne == true && varLastWEndValOne == true)
+                {
+                    for(var i = varEndValWEnd+1; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            varStartValWEnd = i;
+                            break;
+                        }
+                    }
+                }
+                if(varFirstWEndValOne == true && varLastWEndValOne == false)
+                {
+                    varStartValWEnd = 0;
+                }
+                if(varLastWEndValOne == true && varFirstWEndValOne == false)
+                {
+                    varEndValWEnd = 0;
+                }
+                if(varFirstWEndValZero == true && varLastWEndValOne == true)
+                {
+                    for(var i = 0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            varStartValWEnd = i;
+                            break;
+                        }
+                    }
+                }
+                $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = true;
+                $(#ID_OPTN_WKEND_STRT).state.value = varStartValWEnd;
+                $(#ID_OPTN_WKEND_END).state.value = varEndValWEnd;
+                $(#ID_OPTN_WKEND_STRT).state.disabled = false;
+                $(#ID_OPTN_WKEND_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varStartValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varEndValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKEND = 1 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckValWEnd == 2)
+            {
+                var varStartValFound = false;
+                var varSetVal = 0;
+                if(varFirstWEndValZero == true && varLastWEndValZero == true)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            if(arrSixthRow[i-1] == 0)
+                            {
+                                varStartValWEnd = i;
+                                varStartValFound = true;
+                            }
+                        }
+                        if(varStartValFound == true)
+                        {
+                            if(arrSixthRow[i] == 0)
+                            {
+                                if(arrSixthRow[i-1] == 1)
+                                {
+                                    varEndValWEnd = i;
+                                }
+                            }
+                        }
+                    }
+                    varSetVal = 1;
+                    $(#ID_OPTN_WKEND_STRT).state.disabled = false;
+                    $(#ID_OPTN_WKEND_END).state.disabled = false;
+                    $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = true;
+                }
+                else
+                {
+                    varStartValWEnd = varDefaultStartVal;
+                    varEndValWEnd = varDefaultEndVal;
+                    $(#ID_OPTN_WKEND_STRT).state.disabled = true;
+                    $(#ID_OPTN_WKEND_END).state.disabled = true;
+                    $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = false;
+                }
+                $(#ID_OPTN_WKEND_STRT).state.value = varStartValWEnd;
+                $(#ID_OPTN_WKEND_END).state.value = varEndValWEnd;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varStartValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varEndValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKEND = ? WHERE FK_USERNAME = ?",varSetVal, g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckValWEnd > 2)
+            {
+                $(#ID_OPTN_WKEND_STRT).state.value = varDefaultStartVal;
+                $(#ID_OPTN_WKEND_END).state.value = varDefaultEndVal;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varDefaultStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKEND = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+                $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = false;
+                $(#ID_OPTN_WKEND_STRT).state.disabled = true;
+                $(#ID_OPTN_WKEND_END).state.disabled = true;
+            }
+        }
+        else if(arrSixthRow != arrSeventhRow)
+        {
+            $(#ID_OPTN_WKEND_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_WKEND_END).state.value = varDefaultEndVal;
+            $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = false;
+            $(#ID_OPTN_WKEND_STRT).state.disabled = true;
+            $(#ID_OPTN_WKEND_END).state.disabled = true;
+        }
+        else if(varIsAnyOneWEnd == false)
+        {
+            $(#IDR_CHKBOX_WEEKEND_ACCESS).checked = false;
+            $(#ID_OPTN_WKEND_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_WKEND_END).state.value = varDefaultEndVal;
+            $(#ID_OPTN_WKEND_STRT).state.disabled = true;
+            $(#ID_OPTN_WKEND_END).state.disabled = true;
+            DataBase = DB.open(varDBPath);
+            DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varDefaultStartVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKEND = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+            DataBase.close();
+        }
+    }
+	function FunCompareRectTrackINetStatus()
+    {
+        SetRectTrackerApp();
+		SetValToSandBoxApp();
+        var varIsAllNotChecked = false;
+        var varIsAllNotCheckedWEnd = false;
+        var varIsAnyOne = false;
+        var varIsAnyOneWEnd = false;
+        var varFirstValOne = false;
+        var varFirstValZero = false;
+        var varLastValOne = false;
+        var varLastValZero = false;
+        var varFirstWEndValOne = false;
+        var varFirstWEndValZero = false;
+        var varLastWEndValOne = false;
+        var varLastWEndValZero = false;
+        var varDefaultStartVal = 21;
+        var varDefaultEndVal = 8;
+        varCheckVal = 0;
+        varCheckValWEnd = 0;
+        for(var i =0; i < 24; i++)
+        {
+            if(arrFirstRow[0] == 1)
+            {
+                varFirstValOne = true;
+            }
+            if(arrFirstRow[0] == 0)
+            {
+                varFirstValZero = true;
+            }
+            if(arrFirstRow[23] == 1)
+            {
+                varLastValOne = true;
+            }
+            if(arrFirstRow[23] == 0)
+            {
+                varLastValZero = true;
+            }
+            if(arrFirstRow[i] == 1)
+            {
+                varIsAnyOne = true;
+                break;
+            }
+        }
+        for(var i =0; i < 24; i++)
+        {
+            if(arrSixthRow[0] == 1)
+            {
+                varFirstWEndValOne = true;
+            }
+            if(arrSixthRow[0] == 0)
+            {
+                varFirstWEndValZero = true;
+            }
+            if(arrSixthRow[23] == 1)
+            {
+                varLastWEndValOne = true;
+            }
+            if(arrSixthRow[23] == 0)
+            {
+                varLastWEndValZero = true;
+            }
+            if(arrSixthRow[i] == 1)
+            {
+                varIsAnyOneWEnd = true;
+                break;
+            }
+        }
+        if(((arrFirstRow == arrSecondRow) && (arrFirstRow == arrThirdRow) && (arrFirstRow == arrFourthRow) && (arrFirstRow == arrFifthRow)) && varIsAnyOne == true)
+        {
+            for(var i =0; i < 24; i++)
+            {
+                if(arrFirstRow[i] == 0)
+                {
+                    varIsAllNotChecked = true;
+                    break;
+                }
+            }
+            if(varIsAllNotChecked == true)
+            {
+                if(varFirstValOne == false)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            if(arrFirstRow[i-1] == 0)
+                            {
+                                varCheckVal++;
+                            }
+                        }
+                    }
+                    if(varLastValOne == false && varCheckVal > 0)
+                    {
+                        varCheckVal += 1;
+                    }
+                }
+                else
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 0)
+                        {
+                            if(arrFirstRow[i-1] == 1)
+                            {
+                                varEndVal = i;
+                                varCheckVal++;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                varStartVal = 0;
+                varEndVal = 0;
+                $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = true;
+                $(#ID_OPTN_INET_WDAY_STRT).state.value = varStartVal;
+                $(#ID_OPTN_INET_WDAY_END).state.value = varEndVal;
+                $(#ID_OPTN_INET_WDAY_STRT).state.disabled = false;
+                $(#ID_OPTN_INET_WDAY_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKDAY = 1 WHERE FK_USERNAME = ?",g_CurrentUserSelect);
+                DataBase.close();
+            }
+            if(varCheckVal == 1)
+            {
+                if(varFirstValOne == true && varLastValOne == true)
+                {
+                    for(var i = varEndVal+1; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            varStartVal = i;
+                            break;
+                        }
+                    }
+                }
+                if(varFirstValZero == true && varLastValOne == true)
+                {
+                    for(var i = 0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            varStartVal = i;
+                            break;
+                        }
+                    }
+                }
+                if(varFirstValOne == true && varLastValOne == false)
+                {
+                    varStartVal = 0;
+                }
+                if(varLastValOne == true && varFirstValOne == false)
+                {
+                    varEndVal = 0;
+                }
+                $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = true;
+                $(#ID_OPTN_INET_WDAY_STRT).state.value = varStartVal;
+                $(#ID_OPTN_INET_WDAY_END).state.value = varEndVal;
+                $(#ID_OPTN_INET_WDAY_STRT).state.disabled = false;
+                $(#ID_OPTN_INET_WDAY_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKDAY = 1 WHERE FK_USERNAME = ?",g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckVal == 2)
+            {
+                var varStartValFound = false;
+                var varSetVal = 0;
+                if(varFirstValZero == true && varLastValZero == true)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrFirstRow[i] == 1)
+                        {
+                            if(arrFirstRow[i-1] == 0)
+                            {
+                                varStartVal = i;
+                                varStartValFound = true;
+                            }
+                        }
+                        if(varStartValFound == true)
+                        {
+                            if(arrFirstRow[i] == 0)
+                            {
+                                if(arrFirstRow[i-1] == 1)
+                                {
+                                    varEndVal = i;
+                                }
+                            }
+                        }
+                    }
+                    $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = true;
+                    $(#ID_OPTN_INET_WDAY_STRT).state.disabled = false;
+                    $(#ID_OPTN_INET_WDAY_END).state.disabled = false;
+                    varSetVal = 1;
+                }
+                else
+                {
+                    varStartVal = varDefaultStartVal;
+                    varEndVal = varDefaultEndVal;
+                    $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = false;
+                    $(#ID_OPTN_INET_WDAY_STRT).state.disabled = true;
+                    $(#ID_OPTN_INET_WDAY_END).state.disabled = true;
+                }
+                $(#ID_OPTN_INET_WDAY_STRT).state.value = varStartVal;
+                $(#ID_OPTN_INET_WDAY_END).state.value = varEndVal;
+
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKDAY = ? WHERE FK_USERNAME = ?", varSetVal, g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckVal > 2)
+            {
+                $(#ID_OPTN_INET_WDAY_STRT).state.value = varDefaultStartVal;
+                $(#ID_OPTN_INET_WDAY_END).state.value = varDefaultEndVal;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?", varDefaultStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKDAY = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+                $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = false;
+                $(#ID_OPTN_INET_WDAY_STRT).state.disabled = true;
+                $(#ID_OPTN_INET_WDAY_END).state.disabled = true;
+            }
+        }
+        else if((arrFirstRow != arrSecondRow) || (arrFirstRow != arrThirdRow) || (arrFirstRow != arrFourthRow) || (arrFirstRow != arrFifthRow))
+        {
+            $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = false;
+            $(#ID_OPTN_INET_WDAY_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_INET_WDAY_END).state.value = varDefaultEndVal;
+            $(#ID_OPTN_INET_WDAY_STRT).state.disabled = true;
+            $(#ID_OPTN_INET_WDAY_END).state.disabled = true;
+        }
+        else if(varIsAnyOne == false)
+        {
+            $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).checked = false;
+            $(#ID_OPTN_INET_WDAY_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_INET_WDAY_END).state.value = varDefaultEndVal;
+            $(#ID_OPTN_INET_WDAY_STRT).state.disabled = true;
+            $(#ID_OPTN_INET_WDAY_END).state.disabled = true;
+            DataBase = DB.open(varDBPath);
+            DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varDefaultStartVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKDAY = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+            DataBase.close();
+        }
+        if((arrSixthRow == arrSeventhRow) && varIsAnyOneWEnd == true)
+        {
+            for(var i =0; i < 24; i++)
+            {
+                if(arrSixthRow[i] == 0)
+                {
+                    varIsAllNotCheckedWEnd = true;
+                    break;
+                }
+            }
+            if(varIsAllNotCheckedWEnd == true)
+            {
+                if(varFirstWEndValOne == false)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            if(arrSixthRow[i-1] == 0)
+                            {
+                                varCheckValWEnd++;
+                            }
+                        }
+                    }
+                    if(varLastWEndValOne == false && varCheckValWEnd > 0)
+                    {
+                        varCheckValWEnd += 1;
+                    }
+                }
+                else
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 0)
+                        {
+                            if(arrSixthRow[i-1] == 1)
+                            {
+                                varEndValWEnd = i;
+                                varCheckValWEnd++;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                varStartValWEnd = 0;
+                varEndValWEnd = 0;
+                $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = true;
+                $(#ID_OPTN_INET_WEND_STRT).state.value = varStartValWEnd;
+                $(#ID_OPTN_INET_WEND_END).state.value = varEndValWEnd;
+                $(#ID_OPTN_INET_WEND_STRT).state.disabled = false;
+                $(#ID_OPTN_INET_WEND_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varStartValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varEndValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKEND = 1 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+            }
+            if(varCheckValWEnd == 1)
+            {
+                if(varFirstWEndValOne == true && varLastWEndValOne == true)
+                {
+                    for(var i = varEndValWEnd+1; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            varStartValWEnd = i;
+                            break;
+                        }
+                    }
+                }
+                if(varFirstWEndValOne == true && varLastWEndValOne == false)
+                {
+                    varStartValWEnd = 0;
+                }
+                if(varLastWEndValOne == true && varFirstWEndValOne == false)
+                {
+                    varEndValWEnd = 0;
+                }
+                if(varFirstWEndValZero == true && varLastWEndValOne == true)
+                {
+                    for(var i = 0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            varStartValWEnd = i;
+                            break;
+                        }
+                    }
+                }
+                $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = true;
+                $(#ID_OPTN_INET_WEND_STRT).state.value = varStartValWEnd;
+                $(#ID_OPTN_INET_WEND_END).state.value = varEndValWEnd;
+                $(#ID_OPTN_INET_WEND_STRT).state.disabled = false;
+                $(#ID_OPTN_INET_WEND_END).state.disabled = false;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varStartValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varEndValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKEND = 1 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckValWEnd == 2)
+            {
+                var varStartValFound = false;
+                var varSetVal = 0;
+                if(varFirstWEndValZero == true && varLastWEndValZero == true)
+                {
+                    for(var i =0; i < 24; i++)
+                    {
+                        if(arrSixthRow[i] == 1)
+                        {
+                            if(arrSixthRow[i-1] == 0)
+                            {
+                                varStartValWEnd = i;
+                                varStartValFound = true;
+                            }
+                        }
+                        if(varStartValFound == true)
+                        {
+                            if(arrSixthRow[i] == 0)
+                            {
+                                if(arrSixthRow[i-1] == 1)
+                                {
+                                    varEndValWEnd = i;
+                                }
+                            }
+                        }
+                    }
+                    varSetVal = 1;
+                    $(#ID_OPTN_INET_WEND_STRT).state.disabled = false;
+                    $(#ID_OPTN_INET_WEND_END).state.disabled = false;
+                    $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = true;
+                }
+                else
+                {
+                    varStartValWEnd = varDefaultStartVal;
+                    varEndValWEnd = varDefaultEndVal;
+                    $(#ID_OPTN_INET_WEND_STRT).state.disabled = true;
+                    $(#ID_OPTN_INET_WEND_END).state.disabled = true;
+                    $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = false;
+                }
+                $(#ID_OPTN_INET_WEND_STRT).state.value = varStartValWEnd;
+                $(#ID_OPTN_INET_WEND_END).state.value = varEndValWEnd;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varStartValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varEndValWEnd, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKEND = ? WHERE FK_USERNAME = ?",varSetVal, g_CurrentUserSelect);
+                DataBase.close();
+            }
+            else if(varCheckValWEnd > 2)
+            {
+                $(#ID_OPTN_INET_WEND_STRT).state.value = varDefaultStartVal;
+                $(#ID_OPTN_INET_WEND_END).state.value = varDefaultEndVal;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varDefaultStartVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+                DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKEND = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+                DataBase.close();
+                $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = false;
+                $(#ID_OPTN_INET_WEND_STRT).state.disabled = true;
+                $(#ID_OPTN_INET_WEND_END).state.disabled = true;
+            }
+        }
+        else if(arrSixthRow != arrSeventhRow)
+        {
+            $(#ID_OPTN_INET_WEND_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_INET_WEND_END).state.value = varDefaultEndVal;
+            $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = false;
+            $(#ID_OPTN_INET_WEND_STRT).state.disabled = true;
+            $(#ID_OPTN_INET_WEND_END).state.disabled = true;
+        }
+        else if(varIsAnyOneWEnd == false)
+        {
+            $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).checked = false;
+            $(#ID_OPTN_INET_WEND_STRT).state.value = varDefaultStartVal;
+            $(#ID_OPTN_INET_WEND_END).state.value = varDefaultEndVal;
+            $(#ID_OPTN_INET_WEND_STRT).state.disabled = true;
+            $(#ID_OPTN_INET_WEND_END).state.disabled = true;
+            DataBase = DB.open(varDBPath);
+            DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varDefaultStartVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varDefaultEndVal, g_CurrentUserSelect);
+            DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKEND = 0 WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+            DataBase.close();
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#IDR_CHKBOX_WEEKDAY_ACCESS).onClick = function()
+    {
+        varIsWDayChanged = true;
+        var varWeekdayAccess = $(#IDR_CHKBOX_WEEKDAY_ACCESS).value;
+        if(varWeekdayAccess == true)
+        {
+            $(#ID_OPTN_WDAY_STRT).state.disabled = false;
+            $(#ID_OPTN_WDAY_END).state.disabled = false;
+        }
+        else
+        {
+            $(#ID_OPTN_WDAY_STRT).state.disabled = true;
+            $(#ID_OPTN_WDAY_END).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKDAY = ? WHERE FK_USERNAME = ?",varWeekdayAccess, g_CurrentUserSelect);
+        DataBase.close();
+		FunSetRectTrackValWeekly();
+        self.OnSetRestriction();
+    }
+	
+    $(#IDR_CHKBOX_WEEKEND_ACCESS).onClick = function()
+    {
+        varIsWEndChanged = true;
+        FunSetRectTrackValWeekly();
+        var varWeekendAccess = $(#IDR_CHKBOX_WEEKEND_ACCESS).value;
+        if(varWeekendAccess == true)
+        {
+            $(#ID_OPTN_WKEND_STRT).state.disabled = false;
+            $(#ID_OPTN_WKEND_END).state.disabled = false;
+        }
+        else
+        {
+            $(#ID_OPTN_WKEND_STRT).state.disabled = true;
+            $(#ID_OPTN_WKEND_END).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_WKEND = ? WHERE FK_USERNAME = ?",varWeekendAccess, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    }
+	
+    $(#IDR_CHK_DONT_ALLOW).onClick = function()
+    {
+        var varCheckDontAllow = $(#IDR_CHK_DONT_ALLOW).value;
+        if(varCheckDontAllow == true)
+        {
+            $(#RESTRCT_ACCESS_WDAY).state.disabled = false;
+        }
+        else
+        {
+            $(#RESTRCT_ACCESS_WDAY).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET ALLOW_ACCESS_WKDAY = ? WHERE FK_USERNAME = ?",varCheckDontAllow, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    }
+	
+    $(#ID_CHK_WKEND_RESTRICT).onClick = function()
+    {
+        var varCheckWeekendAllow = $(#ID_CHK_WKEND_RESTRICT).value;
+        if(varCheckWeekendAllow == true)
+        {
+            $(#RESTRCT_ACCESS_WEND).state.disabled = false;
+        }
+        else
+        {
+            $(#RESTRCT_ACCESS_WEND).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET ALLOW_ACCESS_WKEND = ? WHERE FK_USERNAME = ?",varCheckWeekendAllow, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    }
+	
+    $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).onClick = function()
+    {
+        varIsWDayChanged = true;
+        var bCheckInetAccess = $(#IDR_CHKBOX_INET_WEEKDAY_ACCESS).value;
+        if(bCheckInetAccess == true)
+        {
+            $(#ID_OPTN_INET_WDAY_STRT).state.disabled = false;
+            $(#ID_OPTN_INET_WDAY_END).state.disabled = false;
+        }
+        else
+        {
+            $(#ID_OPTN_INET_WDAY_STRT).state.disabled = true;
+            $(#ID_OPTN_INET_WDAY_END).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKDAY = ? WHERE FK_USERNAME = ?",bCheckInetAccess, g_CurrentUserSelect);
+        DataBase.close();
+		FunSetRectTrackValWeeklyINet();
+        self.OnSetInternetRestriction();
+    }
+	
+    $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).onClick = function()
+    {
+        varIsWEndChanged = true;
+        FunSetRectTrackValWeeklyINet();
+        var bCheckInetAccess = $(#IDR_CHKBOX_INET_WEEKEND_ACCESS).value;
+        if(bCheckInetAccess == true)
+        {
+            $(#ID_OPTN_INET_WEND_STRT).state.disabled = false;
+            $(#ID_OPTN_INET_WEND_END).state.disabled = false;
+        }
+        else
+        {
+            $(#ID_OPTN_INET_WEND_STRT).state.disabled = true;
+            $(#ID_OPTN_INET_WEND_END).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_WKEND = ? WHERE FK_USERNAME = ?",bCheckInetAccess, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetInternetRestriction();
+    }
+
+    $(#ID_CHK_WKDAY_INTRNT).onClick = function()
+    {
+        var varCheckWeekdayInternet = $(#ID_CHK_WKDAY_INTRNT).value;
+        if(varCheckWeekdayInternet == true)
+        {
+            $(#ID_OPTN_RESTRICT_HOURS_WKDAY).state.disabled = false;
+        }
+        else
+        {
+            $(#ID_OPTN_RESTRICT_HOURS_WKDAY).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET RSTRCT_INET_WDAY = ? WHERE FK_USERNAME = ?",varCheckWeekdayInternet, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetINetRestriction();
+    }
+
+    $(#ID_CHK_WKEND_INTRNT).onClick = function()
+    {
+        var varCheckWeekendInternet = $(#ID_CHK_WKEND_INTRNT).value;
+        if(varCheckWeekendInternet == true)
+        {
+            $(#ID_OPTN_RESTRICT_HOURS_WKEND).state.disabled = false;
+        }
+        else
+        {
+            $(#ID_OPTN_RESTRICT_HOURS_WKEND).state.disabled = true;
+        }
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET RSTRCT_INET_WEND = ? WHERE FK_USERNAME = ?",varCheckWeekendInternet, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetINetRestriction();
+    }
+
+    $(#ID_OPTN_WDAY_STRT).on("change", function() {
+        varIsWDayChanged = true;
+        FunSetRectTrackValWeekly();
+        var varWeekdayStartTime = $(#ID_OPTN_WDAY_STRT).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varWeekdayStartTime, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    });
+	
+    $(#ID_OPTN_WDAY_END).on("change", function() {
+        varIsWDayChanged = true;
+        FunSetRectTrackValWeekly();
+        var varWeekdayEndTime = $(#ID_OPTN_WDAY_END).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varWeekdayEndTime, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    });
+	
+    $(#ID_OPTN_WKEND_STRT).on("change", function() {
+        varIsWEndChanged = true;
+        FunSetRectTrackValWeekly();
+        var varWeekEndTime = $(#ID_OPTN_WKEND_STRT).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varWeekEndTime, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    });
+	
+    $(#ID_OPTN_WKEND_END).on("change", function() {
+        varIsWEndChanged = true;
+        FunSetRectTrackValWeekly();
+        var varWeekendEndTime = $(#ID_OPTN_WKEND_END).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varWeekendEndTime, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    });
+	
+    $(#RESTRCT_ACCESS_WDAY).on("change", function() {
+        var varRestrictAccess = $(#RESTRCT_ACCESS_WDAY).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET ALLOW_ACCESS_WKDAY_TIME = ? WHERE FK_USERNAME = ?",varRestrictAccess, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    });
+	
+    $(#RESTRCT_ACCESS_WEND).on("change", function() {
+        var varRestrictAccessWkend = $(#RESTRCT_ACCESS_WEND).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_GENERAL SET ALLOW_ACCESS_WKEND_TIME = ? WHERE FK_USERNAME = ?",varRestrictAccessWkend, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetRestriction();
+    });
+	
+    $(#ID_OPTN_RESTRICT_HOURS_WKDAY).on("change", function() {
+        var varRestrictHours = $(#ID_OPTN_RESTRICT_HOURS_WKDAY).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET RSTRCT_INET_TIME_WDAY = ? WHERE FK_USERNAME = ?",varRestrictHours, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetINetRestriction();
+    });
+
+    $(#ID_OPTN_RESTRICT_HOURS_WKEND).on("change", function() {
+        var varRestrictHours = $(#ID_OPTN_RESTRICT_HOURS_WKEND).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET RSTRCT_INET_TIME_WEND = ? WHERE FK_USERNAME = ?",varRestrictHours, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetINetRestriction();
+    });
+
+    $(#ID_OPTN_INET_WDAY_STRT).on("change", function() {
+        varIsWDayChanged = true;
+        FunSetRectTrackValWeeklyINet();
+        var varRestrictFrom = $(#ID_OPTN_INET_WDAY_STRT).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_PM = ? WHERE FK_USERNAME = ?",varRestrictFrom, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetInternetRestriction();
+    });
+
+    $(#ID_OPTN_INET_WDAY_END).on("change", function() {
+        varIsWDayChanged = true;
+        FunSetRectTrackValWeeklyINet();
+        var varRestrictTo = $(#ID_OPTN_INET_WDAY_END).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_AM = ? WHERE FK_USERNAME = ?",varRestrictTo, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetInternetRestriction();
+    });
+
+    $(#ID_OPTN_INET_WEND_STRT).on("change", function() {
+        varIsWEndChanged = true;
+        FunSetRectTrackValWeeklyINet();
+        var varRestrictFrom = $(#ID_OPTN_INET_WEND_STRT).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_PM = ? WHERE FK_USERNAME = ?",varRestrictFrom, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetInternetRestriction();
+    });
+
+    $(#ID_OPTN_INET_WEND_END).on("change", function() {
+        varIsWEndChanged = true;
+        FunSetRectTrackValWeeklyINet();
+        var varRestrictTo = $(#ID_OPTN_INET_WEND_END).value;
+        DataBase = DB.open(varDBPath);
+        DataBase.exec("UPDATE PARCTRL_INTRNET SET BLOCK_TIME_WKND_AM = ? WHERE FK_USERNAME = ?",varRestrictTo, g_CurrentUserSelect);
+        DataBase.close();
+        self.OnSetInternetRestriction();
+    });
+    </script>
+	
+	<script type="text/tiscript">
+	var varFieldVal = 0;
+	var varGetRecordSetVal;
+	var varFeatureID;
+	
+	function GetRecSetVal(varRecordSet)
+	{
+		for (var varVirtualDBCount in varRecordSet)
+		{
+			varFieldVal = varVirtualDBCount;
+		}
+	}
+	
+	$(#ID_BTN_Enter).onClick = function()
+	{
+		var varPasswordField = $(#ID_PASSWORD).state.value;
+		
+		var varDecyptPaswd = view.GetDecryptPasssword(varPasswordField);
+		varDBPath = view.GetDBPath();
+		DataBase = DB.open(varDBPath);
+		var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+		if( varPassword instanceof Recordset)
+		{
+			for (var dbPwd in varPassword)
+            {
+				if(dbPwd == varPasswordField)
+				{
+					g_IsPasswordSecure = true;
+					$(.side_menu_pwd).state.collapsed = true;
+					$(.disable_div).state.disabled = false;	
+				}
+				else
+				{
+					$(#ID_INVALID_MSG).state.expanded = true;
+					$(#ID_PASSWORD).state.value = "";
+				}
+            }
+		}
+		DataBase.close();
+	}
+	function FunCheckforFeatures()
+	{	
+		$(#ID_INVALID_MSG).state.collapsed = true;
+		varDBPath = self.GetDBPathforEPS();
+		DataBase = DB.open(varDBPath);
+		varGetRecordSetVal = DataBase.exec("select BACCESSVAL from WWIZFEATURESACCESS where MODULE_ID = ?",varFeatureID);
+		if (varGetRecordSetVal instanceof Recordset)
+		{
+			GetRecSetVal(varGetRecordSetVal);
+		}
+		//varGetRecordSetVal.close();
+		var varPassword = DataBase.exec("SELECT VARFEATUREPWD FROM WWIZFEATURESACCESSPWD");
+		if(varPassword == 101)
+		{
+			g_IsPasswordProtect = false;
+		}
+		else
+		{
+			g_IsPasswordProtect = true;
+		}
+		DataBase.close();
+		varFieldVal = 1;
+		if(varFieldVal == 1)
+		{
+			if(g_IsPasswordProtect == true)
+			{
+				$(.side_menu_pwd).state.expanded = true;
+				$(.disable_div).state.disabled = true;
+				$(.message_block).state.collapsed = false;
+			}
+		}
+		else
+		{	
+			$(.disable_div).state.disabled = true;
+			$(.message_block).state.collapsed = true;
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_U_DONT_VE_ACC_FEATURE");
+		}
+	}	
+	</script>
+	<script type="text/tiscript">
+	$(#EnterPassword).on("keyup",function(event) {  
+		if( event.keyCode == Event.VK_RETURN)
+		{
+			FunCheckPwdValid();
+		}
+	  else if( event.keyCode == Event.VK_TAB)
+	  {		
+		$(#EnterPassword).state.focus = false;
+		$(#ConfirmPassword).state.focus = true;
+	  }
+	});
+	
+	$(#ConfirmPassword).on("keyup",function(event) {  
+		if( event.keyCode == Event.VK_RETURN)
+		{
+			FunCheckPwdValid();
+		}
+	  else if( event.keyCode == Event.VK_TAB)
+			{
+		$(#EnterPassword).state.focus = true;
+		$(#ConfirmPassword).state.focus = false;
+		}
+	});
+	</script>
+	<script type="text/tiscript">
+	$(#ID_SETTINGS_MANAGE_RESTRICTION).onClick = function()
+	{
+		var params = { vardb: varDBPath, ProductVersion:productVersion, varLanguageValue:g_LanguageName, g_CurrentUser:g_CurrentUserSelect, varThemeType:g_themeType}; // parameters to pass	
+		view.dialog{ 
+			url: self.url("IDR_HTM_MANAGE_RESTRICTION.htm"),
+			client:true,
+			alignment:-5,
+			parameters:params};
+	}
+	
+	$(#ID_SETTINGS_RESTRICT_USE_APP).onClick = function()
+	{
+		var params = { vardb: varDBPath, ProductVersion:productVersion,varLanguageValue:g_LanguageName, g_CurrentUser:g_CurrentUserSelect, varThemeType:g_themeType}; // parameters to pass	
+		view.dialog{
+			url:self.url("IDR_HTM_RESTRICT_USE_APP.htm"),
+			client:true,
+			alignment:-5,
+			parameters:params};
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ListView).onClick = function()
+		{
+		$(.disArea_Parental).attributes.removeClass("activeTabView");		
+		$(#CalendarView).attributes.removeClass("bgcolor");		
+		$(#ListView).attributes.addClass("bgcolor");		
+					}
+	$(#CalendarView).onClick = function()
+	{
+		$(.disArea_Parental).attributes.addClass("activeTabView");
+		$(#ListView).attributes.removeClass("bgcolor");	
+		$(#CalendarView).attributes.addClass("bgcolor");	
+		FunFillSandBox();		
+				}
+
+	$(#ListViewInet).onClick = function()
+			{
+		$(.disArea_Inet).attributes.removeClass("activeTabViewInet");
+		$(#CalendarViewInet).attributes.removeClass("bgcolor");		
+		$(#ListViewInet).attributes.addClass("bgcolor");			
+				}
+	$(#CalendarViewInet).onClick = function()
+				{
+		$(.disArea_Inet).attributes.addClass("activeTabViewInet");
+		$(#ListViewInet).attributes.removeClass("bgcolor");	
+		$(#CalendarViewInet).attributes.addClass("bgcolor");
+		if(varIsCreatedforApp ==  false)
+				{
+			for(var n = 0; n < 168; n++)
+				createSomeStuffApp(n);
+				SetRectTrackerApp();
+				SetValToSandBoxApp();
+				}
+				}
+	</script>
+	
+	<script type="text/tiscript">
+    $(#comp_usage).onClick = function()
+				{
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id1).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#comp_usage).attributes.addClass("activemnu");
+		FunGetFlag();
+				}
+	$(#app_menu).onClick = function()
+				{
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id2).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#app_menu).attributes.addClass("activemnu");
+				}
+	$(#inet_usage).onClick = function()
+				{
+		$(.activeTab).attributes.removeClass("activeTab");
+		$(#panel-id3).attributes.addClass("activeTab");
+		$(.activemnu).attributes.removeClass("activemnu");
+		$(#inet_usage).attributes.addClass("activemnu");
+		FunGetFlagForInternet();
+		//merge content
+		
+		var varIDCount;		
+		var varPCBrowseSecDBPath = self.GetPCBrowseSecDBPath();				
+		DataBase = DB.open(varPCBrowseSecDBPath);
+		var varPCDB	 = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_AGE_WEB_CATEGORIES'");
+		if( varPCDB instanceof Recordset)
+	{
+			var RowCount=DataBase.exec("SELECT COUNT(db_AgeGroupId) FROM WWIZ_AGE_WEB_CATEGORIES WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+			if(RowCount instanceof Recordset)
+		{
+				for (var varRowCount in RowCount)
+			{
+					varIDCount = varRowCount;
+				}
+				if(varIDCount < 5)
+				{
+					DataBase.exec("DELETE FROM WWIZ_AGE_WEB_CATEGORIES WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+					InsertWebCategory(DataBase);
+				}
+				RowCount.close();
+			}
+				else
+				{
+				InsertWebCategory(DataBase);
+				}
+			varPCDB.close();
+	}
+				else
+				{
+			DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_AGE_WEB_CATEGORIES(ID INTEGER PRIMARY KEY NOT NULL, db_AgeGroupId INTEGER NOT NULL, FK_USERNAME NVARCHAR(250) NOT NULL, db_LastStatus INTEGER,db_Adult INTEGER,db_Advertisement INTEGER,db_Aggressive INTEGER,db_Bank INTEGER,db_Bitcoin INTEGER,db_Chat INTEGER,db_Child INTEGER,db_Dating INTEGER,db_Download INTEGER,db_Drug INTEGER,db_Financial INTEGER,db_FreeWebEmails INTEGER,db_Grambling INTEGER,db_Games INTEGER,db_JobSearch INTEGER,db_SexEducation INTEGER,db_Shopping INTEGER,db_SocNetworking INTEGER,db_Sports INTEGER,db_VideoStreaming INTEGER,db_AllOther INTEGER,db_Res1 NVCHAR(212),db_Res2 NVCHAR(212),db_Res3 NVCHAR(212),db_Res4 INTEGER,db_Res5 INTEGER,db_Res6 INTEGER,db_Res7 INTEGER,db_Res8 INTEGER,db_Res9 INTEGER,db_Res10 INTEGER);");
+			InsertWebCategory(DataBase);
+				}
+		
+		varPCDB	 = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_BROWSE_PROTECTION'");
+		if( varPCDB instanceof Recordset)
+			{
+			var RowCount=DataBase.exec("SELECT COUNT(db_BrowseID) FROM WWIZ_BROWSE_PROTECTION WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+			if(RowCount instanceof Recordset)
+				{
+				for (var varRowCount in RowCount)
+				{
+					varIDCount = varRowCount;
+				}
+				if(varIDCount != 1)
+			{
+					DataBase.exec("DELETE FROM WWIZ_BROWSE_PROTECTION WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+					InsertBrowseProtetionData(DataBase);
+				}
+				RowCount.close();
+				}
+				else
+				{
+				InsertBrowseProtetionData(DataBase);
+				}
+			varPCDB.close();
+			}
+				else
+				{
+			Database.exec("CREATE TABLE IF NOT EXISTS WWIZ_BROWSE_PROTECTION(db_BrowseID INTEGER PRIMARY KEY NOT NULL, FK_USERNAME NVARCHAR(250) NOT NULL, db_Browse BOOL, db_Blk_Category BOOL, db_Blk_Website BOOL,db_Res1 NVCHAR(212),db_Res2 NVCHAR(212),db_Res3 NVCHAR(212),db_Res4 INTEGER,db_Res5 INTEGER,db_Res6 INTEGER,db_Res7 INTEGER,db_Res8 INTEGER,db_Res9 INTEGER,db_Res10 INTEGER);");
+			InsertBrowseProtetionData(DataBase);
+				}
+	
+		varPCDB	= DataBase.exec("SELECT db_BrowseID, db_Browse, db_Blk_Category, db_Blk_Website FROM WWIZ_BROWSE_PROTECTION WHERE FK_USERNAME = ?", g_CurrentUserSelect);
+		if( varPCDB instanceof Recordset)
+			{
+			var vCnt = 0;
+			for(var vResult in varPCDB)
+				{
+				switch(vCnt)
+				{
+					case 0: BrowseProtectionID = vResult;
+							break;
+					case 1: if(vResult == 1)
+								$(#ID_CHK_BROWSE_PROT).value = true;
+				else
+								$(#ID_CHK_BROWSE_PROT).value = false;							
+							break;
+					case 2: if(vResult == 1)
+								$(#ID_CHK_SPEC_CAT_EXC).value = true;
+				else
+								$(#ID_CHK_SPEC_CAT_EXC).value = false;
+							break;
+					case 3: if(vResult == 1)
+								$(#ID_CHK_SPEC_WEB).value = true;
+				else
+								$(#ID_CHK_SPEC_WEB).value = false;
+							break;
+				}
+				vCnt++;
+			}
+			varPCDB.close();
+				}
+		DataBase.close();
+		
+		if($(#ID_CHK_BROWSE_PROT).value == true)
+				{
+			$(.enb_dis1).state.disabled = false;
+			$(.enb_dis2).state.disabled = false;
+				}
+		else if($(#ID_CHK_BROWSE_PROT).value == false)
+			{
+			$(.enb_dis1).state.disabled = true;
+			$(.enb_dis2).state.disabled = true;
+				}
+		
+		FunGetFlagForInternet();
+				}
+	
+	$(#ID_CHK_BROWSE_PROT).onClick = function()
+			{
+		var vCheckBoxVal = 0;
+		if($(#ID_CHK_BROWSE_PROT).value == true)
+				{
+			$(.enb_dis1).state.disabled = false;
+			$(.enb_dis2).state.disabled = false;
+			vCheckBoxVal = 1;
+				}
+		else if($(#ID_CHK_BROWSE_PROT).value ==  false)
+				{
+			$(.enb_dis1).state.disabled = true;
+			$(.enb_dis2).state.disabled = true;
+				}
+		
+		DataBase = DB.open(self.GetPCBrowseSecDBPath());
+		DataBase.exec("UPDATE WWIZ_BROWSE_PROTECTION SET db_Browse = ? WHERE db_BrowseID = ?", vCheckBoxVal, BrowseProtectionID);
+		DataBase.close();
+		ReloadDB4WWizBrowseProt();
+			}
+	
+	$(#ID_CHK_SPEC_CAT_EXC).onClick = function()
+			{
+		var vCheckBoxVal = 0;
+		if($(#ID_CHK_SPEC_CAT_EXC).value == true)
+				{
+			vCheckBoxVal = 1;
+				}
+		DataBase = DB.open(self.GetPCBrowseSecDBPath());
+		DataBase.exec("UPDATE WWIZ_BROWSE_PROTECTION SET db_Blk_Category = ? WHERE db_BrowseID = ?", vCheckBoxVal, BrowseProtectionID);
+		DataBase.close();	
+		ReloadDB4WWizBrowseProt();
+				}
+	
+	$(#ID_CHK_SPEC_WEB).onClick = function()
+		{
+		var vCheckBoxVal = 0;
+		if($(#ID_CHK_SPEC_WEB).value == true)
+		{
+			vCheckBoxVal = 1;
+		}			
+		DataBase = DB.open(self.GetPCBrowseSecDBPath());
+		DataBase.exec("UPDATE WWIZ_BROWSE_PROTECTION SET db_Blk_Website = ? WHERE db_BrowseID = ?", vCheckBoxVal, BrowseProtectionID);
+		DataBase.close();
+		ReloadDB4WWizBrowseProt();
+	  }
+	//merge contnet end
+	  </script>
+	<script type="text/tiscript">
+	function InsertWebCategory(DataBase)
+		{
+		DataBase.exec("insert into WWIZ_AGE_WEB_CATEGORIES (db_AgeGroupId, FK_USERNAME,db_LastStatus,db_Adult,db_Advertisement,db_Aggressive,db_Bank,db_Bitcoin,db_Chat,db_Child,db_Dating,db_Download,db_Drug,db_Financial,db_FreeWebEmails,db_Grambling,db_Games,db_JobSearch,db_SexEducation,db_Shopping,db_SocNetworking,db_Sports,db_VideoStreaming,db_AllOther) values (1,?,0,0,0,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,1,0,1)",g_CurrentUserSelect);
+		DataBase.exec("insert into WWIZ_AGE_WEB_CATEGORIES (db_AgeGroupId, FK_USERNAME,db_LastStatus,db_Adult,db_Advertisement,db_Aggressive,db_Bank,db_Bitcoin,db_Chat,db_Child,db_Dating,db_Download,db_Drug,db_Financial,db_FreeWebEmails,db_Grambling,db_Games,db_JobSearch,db_SexEducation,db_Shopping,db_SocNetworking,db_Sports,db_VideoStreaming,db_AllOther) values (2,?,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,1)",g_CurrentUserSelect);
+		DataBase.exec("insert into WWIZ_AGE_WEB_CATEGORIES (db_AgeGroupId, FK_USERNAME,db_LastStatus,db_Adult,db_Advertisement,db_Aggressive,db_Bank,db_Bitcoin,db_Chat,db_Child,db_Dating,db_Download,db_Drug,db_Financial,db_FreeWebEmails,db_Grambling,db_Games,db_JobSearch,db_SexEducation,db_Shopping,db_SocNetworking,db_Sports,db_VideoStreaming,db_AllOther) values (3,?,0,0,0,0,1,0,1,1,0,0,0,1,0,0,0,0,0,1,0,1,1,1)",g_CurrentUserSelect);
+		DataBase.exec("insert into WWIZ_AGE_WEB_CATEGORIES (db_AgeGroupId, FK_USERNAME,db_LastStatus,db_Adult,db_Advertisement,db_Aggressive,db_Bank,db_Bitcoin,db_Chat,db_Child,db_Dating,db_Download,db_Drug,db_Financial,db_FreeWebEmails,db_Grambling,db_Games,db_JobSearch,db_SexEducation,db_Shopping,db_SocNetworking,db_Sports,db_VideoStreaming,db_AllOther) values (4,?,0,0,0,0,1,0,1,1,0,1,0,1,1,0,1,1,1,1,1,1,1,1)",g_CurrentUserSelect);
+		DataBase.exec("insert into WWIZ_AGE_WEB_CATEGORIES (db_AgeGroupId, FK_USERNAME,db_LastStatus,db_Adult,db_Advertisement,db_Aggressive,db_Bank,db_Bitcoin,db_Chat,db_Child,db_Dating,db_Download,db_Drug,db_Financial,db_FreeWebEmails,db_Grambling,db_Games,db_JobSearch,db_SexEducation,db_Shopping,db_SocNetworking,db_Sports,db_VideoStreaming,db_AllOther) values (5,?,1,0,0,0,1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1)",g_CurrentUserSelect);
+				}
+				
+	function InsertBrowseProtetionData(DataBase)
+				{
+		DataBase.exec("insert into WWIZ_BROWSE_PROTECTION (FK_USERNAME, db_Browse, db_Blk_Category, db_Blk_Website) values (?,0,0,0)",g_CurrentUserSelect);
+				}
+	</script>
+	
+	<script type="text/tiscript">
+		$(#ID_REGISTER_NOW).onClick = function()
+		{
+			ShowRegistrationDialog(); 
+		}
+	</script>
+	
+	<script type="text/tiscript">	
+		if(productVersion == #BASIC){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;
+			$(#ID_REGISTER_NOW).state.collapsed = true;			
+		}
+		else if(productVersion == #ESSENTIAL){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_BUY_HIGHER_VERSION");
+			$(.messageContAlert).state.expanded = true;
+			$(#ID_VERSION_MESSAGE2).state.collapsed = true;
+			$(.body_firewall_inner).attributes.addClass("translateWindow");
+			$(.body_firewall_inner).state.disabled = true;
+			$(#ID_BUY_HIGH_VER).state.expanded = true;	
+			$(#ID_REGISTER_NOW).state.collapsed = true;	
+		}
+		else if(productVersion == #ESSENTIALPLUS)
+		{
+			if(g_ProductLicenseType == #UNREGISTERED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_IS_UNREGISTERED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_A_LICENSE_OR_TO_REGISTER_FOR_30_DAYS_FREE_TRIAL");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_firewall_inner).attributes.addClass("translateWindow");
+				$(.body_firewall_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.expanded = true;
+				$(.messageContAlert).style["height"] = 190dip;
+				
+			}
+			else if(g_ProductLicenseType == #EXPIRED)
+			{
+				$(#ID_VERSION_MESSAGE).text = Lang.translate("ID_YOUR_PRODUCT_HAS_EXPIRED");
+				$(#ID_VERSION_MESSAGE2).state.expanded = true;
+				$(#ID_VERSION_MESSAGE2).text = Lang.translate("ID_WE_RECOMMEND_YOU_TO_PURCHASE_THE_COMMERCIAL_LICENSE");
+				$(.messageContAlert).state.expanded = true;
+				$(.body_firewall_inner).attributes.addClass("translateWindow");
+				$(.body_firewall_inner).state.disabled = true;
+				$(#ID_BUY_HIGH_VER).state.expanded = true;	
+				$(#ID_REGISTER_NOW).state.collapsed = true;
+				$(.messageContAlert).style["height"] = 180dip;
+			}
+		}
+	</script>
+
+	<script type="text/tiscript">
+	function CreateParCtrlTables()
+	{
+		DataBase = DB.open(varDBPath);
+        DataBase.exec("create table IF NOT EXISTS PARCTRL_GENERAL(ID INTEGER PRIMARY KEY, FK_USERNAME NVARCHAR(250), BLOCK_WKDAY BOOL, BLOCK_TIME_PM BOOL, BLOCK_TIME_AM BOOL, ALLOW_ACCESS_WKDAY BOOL, ALLOW_ACCESS_WKDAY_TIME INT, BLOCK_WKEND BOOL, BLOCK_TIME_WKND_PM INT, BLOCK_TIME_WKND_AM INT, ALLOW_ACCESS_WKEND BOOL, ALLOW_ACCESS_WKEND_TIME INT, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("create table IF NOT EXISTS WWiz_PC_UserList(USERID INTEGER PRIMARY KEY, USERNAME VARCHAR(50) NOT NULL, ISCONTROL BOOL, RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");	
+		DataBase.exec("create table IF NOT EXISTS WWIZ_PC_TRACK_COMP_USAGE(TRACK_VALUE NVARCHAR(250), CHECK_LIST_CAL BOOL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("create table IF NOT EXISTS WWIZ_INTERNET_USAGE(TRACK_VALUE NVARCHAR(250), CHECK_LIST_CAL BOOL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("create table IF NOT EXISTS PARCTRL_INTRNET(ID INTEGER PRIMARY KEY, BLOCK_WKDAY BOOL, BLOCK_TIME_PM INT, BLOCK_TIME_AM INT, RSTRCT_INET_WDAY BOOL, RSTRCT_INET_TIME_WDAY INT, BLOCK_WKEND BOOL, BLOCK_TIME_WKND_PM INT, BLOCK_TIME_WKND_AM INT, RSTRCT_INET_WEND BOOL, RSTRCT_INET_TIME_WEND INT, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_RESTRICT_AGE_GROUP(ID INTEGER PRIMARY KEY, AGE_CRITERIA VARCHAR(100) NOT NULL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_RESTRICT_WEBSITE(ID INTEGER PRIMARY KEY, SELECTED BOOL NOT NULL, URL_STRING VARCHAR(1000) NOT NULL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");						
+    	DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_EXCLUDE_DOMAIN(ID INTEGER PRIMARY KEY, EXCLUDED_DOMAIN BOOL NOT NULL, DOMAIN VARCHAR(200) NOT NULL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_RESTRICT_WEBSITE_CATEGORIES(ID INTEGER PRIMARY KEY, SELECTED BOOL NOT NULL, CATEGORIES VARCHAR(200) NOT NULL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_MANAGE_RESTRICT_APP(ID INTEGER, SELECTED BOOL NOT NULL, APPLICATION VARCHAR(200) NOT NULL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_RESTRICT_USE_OF_APP(ID INTEGER PRIMARY KEY, APP_PATH VARCHAR(1000) NOT NULL, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_TIMER_TABLE(ID INTEGER PRIMARY KEY, PC_TIMER_DATE REAL, PC_TIMER_TIME NUMERIC, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS WWIZ_INET_TIMER_TABLE(ID INTEGER PRIMARY KEY, INET_TIMER_DATE REAL, INET_TIMER_TIME NUMERIC, FK_USERNAME NVARCHAR(250), RESERVED1 NVARCHAR(250), RESERVED2 NVARCHAR(250), RESERVED3 NVARCHAR(250), RESERVED4 NVARCHAR(250))");
+		DataBase.close();			
+		CreateTableForRestriction();		
+		self.CreatePCBrowseSecDB();
+	}		
+	</script> 
+	<script type="text/tiscript">
+	$(#OpenLink1).onClick = function()
+	{
+		arrbModifyVal[0] = { 0 };
+		varDBPath = self.GetPCBrowseSecDBPath();
+		var params = { vardb: varDBPath, ProductVersion:productVersion,varLanguageValue:g_LanguageName, g_CurrentUser:g_CurrentUserSelect, IsDBModified: arrbModifyVal, varThemeType: g_themeType}; // parameters to pass	
+			view.dialog{
+					url: self.url("IDR_HTM_PC_SPEC_CAT.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+					
+		if(arrbModifyVal[0] == 1)
+		{
+			self.ReloadDB4WebAgeSec();
+		}
+	}
+	</script>
+	<script type="text/tiscript">
+	$(#OpenLink2).onClick = function()
+	{
+		arrbModifyVal4BlkSpecWeb[0] = { 0 };
+		
+		var params = { vardb: self.GetPCBrowseSecDBPath(), ProductVersion:productVersion,varLanguageValue:g_LanguageName, g_CurrentUser:g_CurrentUserSelect, IsDBModified4BlkSpecWeb: arrbModifyVal4BlkSpecWeb, varThemeType: g_themeType}; // parameters to pass	
+			
+			view.dialog{
+					url: self.url("IDR_HTM_BLOCK_SPECIFIC_WEBSITE.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+					
+		if(arrbModifyVal4BlkSpecWeb[0] == 1)
+		{
+			self.ReloadDB4BlkSpecWeb();
+		}
+	}
+	</script>
+	
+	<script type= "text/tiscript">
+	$(#ID_BUY_HIGH_VER).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/products/");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/products/"); 
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_LNK_MANAGE_EXCL).onClick = function()
+	{
+		arrbModifyVal4MngExc[0] = { 0 };
+		
+		var params = { vardb: self.GetPCBrowseSecDBPath(), ProductVersion:productVersion,varLanguageValue:g_LanguageName, g_CurrentUser:g_CurrentUserSelect, IsDBModified4MngExc: arrbModifyVal4MngExc, varThemeType: g_themeType}; // parameters to pass	
+			
+			view.dialog{
+					url: self.url("IDR_HTM_MANAGE_EXCLUSION.htm"),
+					client:true,
+					alignment:-5,
+					parameters:params};
+					
+		if(arrbModifyVal4MngExc[0] == 1)
+		{
+			self.ReloadDB4MngExc();
+		}
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+        self.language = g_LanguageName;
+        g_CurrentPage = #PARENTAL_CONTROL;
+		self.SetPage();
+		if(g_LanguageName == "GERMAN")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		$(#DISABLE_BTN).state.disabled = true;
+        $(#ID_BTN_TRAY_NOTIFICATION).state.collapsed = true;
+        $(.arrow_parental_cntrl).state.collapsed = true;
+        $(.inner_body_parcntrl).state.collapsed = true;
+        $(.user_list).state.collapsed = true;
+        varDBPath = self.GetDBPath();
+        $(#ID_BTN_SKIP_PARCNTRL).state.expanded = true;
+		
+        //hide forget password button if necessary
+        CheckForgetPwd();
+        vUserList.value = arrUserList;
+        var varDB = view.GetDBPath();
+        if((!g_IsPasswordEntered) && (!CheckPasswordScope()))
+        {
+            DataBase = DB.open(varDB);
+            var varPassword = DataBase.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='WWIZ_PWDFORPWDSCOPE'");
+            if(varPassword != 101)//if db not exist
+            {
+                if( varPassword instanceof Recordset)
+                {
+                    var varPasswordFromDB = DataBase.exec("SELECT PASSWORD FROM WWIZ_PWDFORPWDSCOPE");
+                    if(varPasswordFromDB instanceof Recordset)
+                    {
+                        for(var l_varpass in varPasswordFromDB)
+                            g_password = l_varpass;
+                        varPasswordFromDB.close();
+                    }
+                }
+                varPassword.close();
+            }
+            if(g_password.length > 0)
+            {
+                $(.conf_pwd).state.collapsed = true;
+            }
+            DataBase.close();
+        }
+        else
+        {
+            $(.passwordLockParental).state.collapsed = true;
+            self.GetWindowsUserList(GetUserList);
+            SetUserList();
+            $(.user_list).state.expanded = true;
+            $(#ID_BTN_TRAY_NOTIFICATION).state.expanded = true;
+        }
+		
+        CreateParCtrlTables();
+        var varRegVal = self.GetSetRegistryVal();
+        if(varRegVal == 0)
+        {
+            $(#ID_BTN_TRAY_NOTIFICATION).state.value = false;
+        }
+        else
+        {
+            $(#ID_BTN_TRAY_NOTIFICATION).state.value = true;
+        }
+        self.GetSetRectTracker(FunCompareRectTrackStatus, FunCompareRectTrackINetStatus);
+		if(g_themeType == "defaultTheme")
+    {
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+    }
+		else if(g_themeType == "darkTheme")
+    {
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+    }
+		else if(g_themeType == "crystalTheme")
+     {
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+         }
+          }
+</script>
+
+<script type="text/tiscript">
+		$(#ID_CS_PROT).on("click",function()
+     {
+			SetOnProtectionEvent();
+		});
+</script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+</form>
+</head>
+<body .body_parental>
+	<div .body_firewall_inner>
+	<div .consPadd>
+			<div class="breadcrumbNav">
+				<ul class="listDisplayRow">
+					<li #ID_CS_PROT><label>ID_PROTECTION</label><span .icons1>	&fa-angle-double-right;</span></li>
+					<li #DISABLE_BTN style="padding-left:5dip;"><label>ID_PARENTAL_CONTROL</label></li>
+				</ul>
+			</div>
+		<div .horizontalFlow>
+			<div style="width:0dip;">
+				<span .arrow_parental_cntrl #ID_BTN_BACK></span>
+</div>
+			<div .title_par_cntrl>
+			<div .togller_button_parental_cntrl>
+		<button|toggler name="toggler" #ID_BTN_TRAY_NOTIFICATION>
+					<caption .true><label>ID_ON</label></caption>
+					<caption .false><label>ID_OFF</label></caption>
+		</button>
+</div>
+				<h1 .headingTitle1 #ID_USER_SELECT style="text-transform:capitalize;"><label>ID_PARENTAL_CONTROL</label></h1>
+				<p><label>ID_CTRL_CHILD_NET_PC_BLCOK_WEB</label></p>
+			</div>	
+    </div>
+		<div class="passwordLockParental" #ID_FORM_BLUR>
+			<div .paswdprmpt_parental .headingClrwht>
+				<div>
+					<p><label>ID_PASSWORD</label>:</p>
+				<widget>
+				<input type="password" .input_password #EnterPassword maxlength="24">
+						<div class="eye"><button .null_button #BTN_TOGGLE_ENTER>
+							<svg version="1.1" id="Layer_14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="eyeIcon">
+							<path fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M31,243c0,0,91-129,225-123s214,123,214,123
+								s-97,91.2-231,91c-80.3-0.1-166-50.5-208-97"/>
+							<circle fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" cx="245.5" cy="222.5" r="69.5"/>
+							<path stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M302,250c0,24-35.2,41.7-59.2,41.7S189,272.3,189,248.2
+								s29.8-43.5,53.8-43.5S302,226,302,250z"/>
+							</svg>
+						</button></div>
+				</widget>		
+			</div>
+				<div .conf_pwd>
+					<p><label>ID_CONFIRM_PASSWORD</label>:</p>
+					<widget>
+					<input type="password" .input_password #ConfirmPassword maxlength="24">
+						<div class="eye"><button .null_button #BTN_TOGGLE_CONFIRM>
+							<svg version="1.1" id="Layer_14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve" class="eyeIcon">
+							<path fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M31,243c0,0,91-129,225-123s214,123,214,123
+								s-97,91.2-231,91c-80.3-0.1-166-50.5-208-97"/>
+							<circle fill="none" stroke="#000000" stroke-width="15" stroke-miterlimit="10" cx="245.5" cy="222.5" r="69.5"/>
+							<path stroke="#000000" stroke-width="15" stroke-miterlimit="10" d="M302,250c0,24-35.2,41.7-59.2,41.7S189,272.3,189,248.2
+								s29.8-43.5,53.8-43.5S302,226,302,250z"/>
+							</svg>
+						</button></div>
+					</widget>		
+				</div>
+				<div .horizontalFlow style="padding-top:10dip">
+					<div .btnCstmSmall .mrgtop0 #ID_BTN_GO><label>ID_GO</label></div>
+					<div .btnCstmSmall .lgBtn style="margin-left:5dip" #ID_BTN_FORGET_PWD><label>ID_FORGOT_PASSWORD</label></div>
+					<u><p #ID_BTN_SKIP_PARCNTRL .skipbtnparental><label>ID_SKIP</label></p></u>
+			</div>
+		</div>
+	</div>	
+	<div .user_list #ID_PARENTAL_BLUR>
+			<div .listControl .headingClrwht>
+			<table resizeable #ID_TABLE_USER_LIST>
+				<thead>
+				  <tr><th></th><th (configuration)><label>ID_INDEX</label></th><th (status)><label>ID_STATUS</label></th></tr>
+				</thead>
+				<tbody>
+					<tr>
+							<td><img src="IDR_PNG_USER_IMG.png" .usrlst_img /></td>
+							<td .usrname_usrlist> 
+							<label (username)> </label><br/>
+								<button .conf_restrict><label>ID_CONFIG_RESTRI</label></button>
+						</td>
+							<td .usrlist_td>
+								<div .usrlist_curstatus><label (currentstatus)></label></div>
+								<div .usrlst_togglr>
+									<button|toggler name="toggler" (status)>
+										<caption .true><label>ID_ON</label></caption>
+										<caption .false><label>ID_OFF</label></caption>
+								</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>		
+	</div>	
+		<div class="tabsCstm inner_body_parcntrl" style="width:635dip;">
+			<div class="strip" style="width:131dip;">
+				<div .mnuItem #comp_usage .activemnu><span .icons>&fa-angle-double-right;</span> <label>ID_COMP_USAGE</label></div>
+				<div .mnuItem #app_menu><span .icons>&fa-angle-double-right;</span> <label>ID_APPLICATIONS</label></div>
+				<div .mnuItem #inet_usage><span .icons>&fa-angle-double-right;</span> <label>ID_INTERNET</label></div>           
+		</div>
+			<div id="panel-id1" .ContentDisplay_parental .activeTab>
+				<div .typeButtons_Parental>
+					<div #ListView><label>ID_LIST</label></div>
+					<div #CalendarView><label>ID_CALENDAR</label></div>
+				</div>
+				 <div .disArea_Parental> 
+					<div #ListDisplay>
+						<div .contentContSetting>
+							<div .contentTray .cntent_parcntrl>
+								<h4><label>ID_ACCESS_RESTRI_WEEKDAYS</label></h4>
+								<p><input type="checkbox" #IDR_CHKBOX_WEEKDAY_ACCESS><label for="IDR_CHKBOX_WEEKDAY_ACCESS">ID_BLOCK_ACCESS_FROM</label>
+						<select #ID_OPTN_WDAY_STRT>
+							<option value=0>00</option>
+							<option value=1>01</option>
+							<option value=2>02</option>
+							<option value=3>03</option>
+							<option value=4>04</option>
+							<option value=5>05</option>
+							<option value=6>06</option>
+							<option value=7>07</option>
+							<option value=8>08</option>
+							<option value=9>09</option>
+							<option value=10>10</option>
+							<option value=11>11</option>
+							<option value=12>12</option>
+							<option value=13>13</option>
+							<option value=14>14</option>
+							<option value=15>15</option>
+							<option value=16>16</option>
+							<option value=17>17</option>
+							<option value=18>18</option>
+							<option value=19>19</option>
+							<option value=20>20</option>
+							<option value=21>21</option>
+							<option value=22>22</option>
+							<option value=23>23</option>
+						</select><label>ID_TO</label>
+						<select #ID_OPTN_WDAY_END>
+							<option value=0>00</option>
+							<option value=1>01</option>
+							<option value=2>02</option>
+							<option value=3>03</option>
+							<option value=4>04</option>
+							<option value=5>05</option>
+							<option value=6>06</option>
+							<option value=7>07</option>
+							<option value=8>08</option>
+							<option value=9>09</option>
+							<option value=10>10</option>
+							<option value=11>11</option>
+							<option value=12>12</option>
+							<option value=13>13</option>
+							<option value=14>14</option>
+							<option value=15>15</option>
+							<option value=16>16</option>
+							<option value=17>17</option>
+							<option value=18>18</option>
+							<option value=19>19</option>
+							<option value=20>20</option>
+							<option value=21>21</option>
+							<option value=22>22</option>
+							<option value=23>23</option>
+									</select> <label>ID_ON_WEEKDAYS</label>
+								<br/></p>
+								<p><input type="checkbox" #IDR_CHK_DONT_ALLOW><label for="IDR_CHK_DONT_ALLOW">ID_DONT_ALLOW_ACC_MOR_TAN</label>
+							<select #RESTRCT_ACCESS_WDAY>
+								<option value=0><label>ID_00_HOURS</label></option>
+								<option value=1><label>ID_01_HOURS</label></option>
+								<option value=2><label>ID_02_HOURS</label></option>
+								<option value=3><label>ID_03_HOURS</label></option>
+								<option value=4><label>ID_04_HOURS</label></option>
+								<option value=5><label>ID_05_HOURS</label></option>
+								<option value=6><label>ID_06_HOURS</label></option>
+								<option value=7><label>ID_07_HOURS</label></option>
+								<option value=8><label>ID_08_HOURS</label></option>
+								<option value=9><label>ID_09_HOURS</label></option>
+								<option value=10><label>ID_10_HOURS</label></option>
+								<option value=11><label>ID_11_HOURS</label></option>
+								<option value=12><label>ID_12_HOURS</label></option>
+								<option value=13><label>ID_13_HOURS</label></option>
+								<option value=14><label>ID_14_HOURS</label></option>
+								<option value=15><label>ID_15_HOURS</label></option>
+								<option value=16><label>ID_16_HOURS</label></option>
+								<option value=17><label>ID_17_HOURS</label></option>
+								<option value=18><label>ID_18_HOURS</label></option>
+								<option value=19><label>ID_19_HOURS</label></option>
+								<option value=20><label>ID_20_HOURS</label></option>
+								<option value=21><label>ID_21_HOURS</label></option>
+								<option value=22><label>ID_22_HOURS</label></option>
+								<option value=23><label>ID_23_HOURS</label></option>
+							</select> 
+							<label>ID_PER_DAY</label><br/>
+						</p><br/>
+					</div>
+				</div>
+						<div .contentContSetting>
+							<div .contentTray .cntent_parcntrl>
+								<h4><label>ID_ACCESS_RESTRI_WEEKENDS</label></h4>
+								<p><input type="checkbox" #IDR_CHKBOX_WEEKEND_ACCESS><label for="IDR_CHKBOX_WEEKEND_ACCESS">ID_BLOCK_ACCESS_FROM</label>
+						<select #ID_OPTN_WKEND_STRT>
+							<option value=0>00</option>
+							<option value=1>01</option>
+							<option value=2>02</option>
+							<option value=3>03</option>
+							<option value=4>04</option>
+							<option value=5>05</option>
+							<option value=6>06</option>
+							<option value=7>07</option>
+							<option value=8>08</option>
+							<option value=9>09</option>
+							<option value=10>10</option>
+							<option value=11>11</option>
+							<option value=12>12</option>
+							<option value=13>13</option>
+							<option value=14>14</option>
+							<option value=15>15</option>
+							<option value=16>16</option>
+							<option value=17>17</option>
+							<option value=18>18</option>
+							<option value=19>19</option>
+							<option value=20>20</option>
+							<option value=21>21</option>
+							<option value=22>22</option>
+							<option value=23>23</option>
+						</select><label>ID_TO</label>
+						<select #ID_OPTN_WKEND_END>
+							<option value=0>00</option>
+							<option value=1>01</option>
+							<option value=2>02</option>
+							<option value=3>03</option>
+							<option value=4>04</option>
+							<option value=5>05</option>
+							<option value=6>06</option>
+							<option value=7>07</option>
+							<option value=8>08</option>
+							<option value=9>09</option>
+							<option value=10>10</option>
+							<option value=11>11</option>
+							<option value=12>12</option>
+							<option value=13>13</option>
+							<option value=14>14</option>
+							<option value=15>15</option>
+							<option value=16>16</option>
+							<option value=17>17</option>
+							<option value=18>18</option>
+							<option value=19>19</option>
+							<option value=20>20</option>
+							<option value=21>21</option>
+							<option value=22>22</option>
+							<option value=23>23</option>
+						</select> <label>ID_ON_WEEKENDS</label><br/></p>
+						
+								<p><input type="checkbox" #ID_CHK_WKEND_RESTRICT><label for="ID_CHK_WKEND_RESTRICT">ID_DONT_ALLOW_ACC_MOR_TAN</label>
+							<select #RESTRCT_ACCESS_WEND>								
+								<option value=0><label>ID_00_HOURS</label></option>
+								<option value=1><label>ID_01_HOURS</label></option>
+								<option value=2><label>ID_02_HOURS</label></option>
+								<option value=3><label>ID_03_HOURS</label></option>
+								<option value=4><label>ID_04_HOURS</label></option>
+								<option value=5><label>ID_05_HOURS</label></option>
+								<option value=6><label>ID_06_HOURS</label></option>
+								<option value=7><label>ID_07_HOURS</label></option>
+								<option value=8><label>ID_08_HOURS</label></option>
+								<option value=9><label>ID_09_HOURS</label></option>
+								<option value=10><label>ID_10_HOURS</label></option>
+								<option value=11><label>ID_11_HOURS</label></option>
+								<option value=12><label>ID_12_HOURS</label></option>
+								<option value=13><label>ID_13_HOURS</label></option>
+								<option value=14><label>ID_14_HOURS</label></option>
+								<option value=15><label>ID_15_HOURS</label></option>
+								<option value=16><label>ID_16_HOURS</label></option>
+								<option value=17><label>ID_17_HOURS</label></option>
+								<option value=18><label>ID_18_HOURS</label></option>
+								<option value=19><label>ID_19_HOURS</label></option>
+								<option value=20><label>ID_20_HOURS</label></option>
+								<option value=21><label>ID_21_HOURS</label></option>
+								<option value=22><label>ID_22_HOURS</label></option>
+								<option value=23><label>ID_23_HOURS</label></option>
+							</select> 
+									<label>ID_PER_DAY</label>
+								<br/></p>
+                </div>
+              </div>
+			  </div>
+					<div #CalendarDisplay style="margin-left:7dip;">
+						<div .parcntrl_calendr_dspl>
+							<div .alow_parcntrl></div><div .mgTop10><label>ID_PAR_CTR_ALLOW</label></div>
+							<div .blk_parcntrl></div><div .mgTop10><label>ID_PAR_CTR_BLOCK</label></div>
+				</div>
+						<div .settime_parcntrl><label>ID_SEL_TIMING_CTRL_ACC_COMP</label></div>
+					<div .sandboxhours>
+						<div .stuffs>00</div>
+						<div .stuffs>01</div>
+						<div .stuffs>02</div>
+						<div .stuffs>03</div>
+						<div .stuffs>04</div>
+						<div .stuffs>05</div>
+						<div .stuffs>06</div>
+						<div .stuffs>07</div>
+						<div .stuffs>08</div>
+						<div .stuffs>09</div>
+						<div .stuffs>10</div>
+						<div .stuffs>11</div>
+						<div .stuffs>12</div>
+						<div .stuffs>13</div>
+						<div .stuffs>14</div>
+						<div .stuffs>15</div>
+						<div .stuffs>16</div>
+						<div .stuffs>17</div>
+						<div .stuffs>18</div>
+						<div .stuffs>19</div>
+						<div .stuffs>20</div>
+						<div .stuffs>21</div>
+						<div .stuffs>22</div>
+						<div .stuffs>23</div>
+					</div>
+						<div .dys_rect>
+							<div .rect_div>
+								<p style="margin-top:8dip;"><label>ID_MON</label></p>
+								<p><label>ID_TUE</label></p>
+								<p><label>ID_WED</label></p>
+								<p><label>ID_THU</label></p>
+								<p><label>ID_FRI</label></p>
+								<p><label>ID_SAT</label></p>
+								<p><label>ID_SUN</label></p>
+							</div>
+							<div #sandbox />
+						</div>
+					</div>
+				</div>
+						</div>
+			<div id="panel-id2" .ContentDisplay_parental>
+				<div .contentDiv>
+					<h2><label>ID_RESTR_APP_CAT</label></h2><br/>
+					<div .contentContSetting>
+						<div .contentTray_Parental >
+							<h4><label>ID_MANAGE_RESTR_APP_USAGE</label></h4>
+							<p><label #ID_SETTINGS_MANAGE_RESTRICTION>ID_STR_SETTINGS</label></p>
+					</div>
+			</div>
+					<div .contentContSetting>
+						<div .contentTray_Parental>
+							<h4><label>ID_RESTR_USE_PARTI_APP</label></h4>
+							<p><label #ID_SETTINGS_RESTRICT_USE_APP>ID_STR_SETTINGS</label></p>
+			</div>
+					</div>
+				</div>				
+			</div>
+			<div id="panel-id3" .ContentDisplay_parental>
+				<div .typeButtons_Parental>
+					<div #ListViewInet><label>ID_LIST</label></div>
+					<div #CalendarViewInet><label>ID_CALENDAR</label></div>
+				</div>
+				<div .disArea_Inet> 
+					<div #ListDisplayInet>
+						<div .contentContSetting>
+							<div .contentTray .cntent_parcntrl>
+								<h4 style="margin-top:0dip"><button type="checkbox" #ID_CHK_BROWSE_PROT > <label>ID_BROWS_PROTECTION</label></button></h4>
+								<div .enb_dis1 style="margin-left:10dip;position:relative;"> 
+									<div style="flow:horizontal;padding-top:0;margin-bottom:2dip;">
+										<div>
+											<input type="checkbox" #ID_CHK_SPEC_CAT_EXC/>
+										</div>
+										<div style="padding-top:0;position:relative;">
+											<label>ID_BLOCK_ACCESS_TO</label>
+											<label>ID_BLOCK_ACC</label>
+											<label #OpenLink1 .clickable_cl .fontStyleLink_Blk>ID_SPECIFIC_CATEGORIES</label>
+											<label>ID_WEBSITE_EXCEPT_EXCLUDED</label>
+											<label .clickable_cl .fontStyleLink_Blk #ID_LNK_MANAGE_EXCL style="margin-left:25dip!important;">ID_MANAGE_EXCLUSION</label>
+										</div>
+									</div>
+								</div>								
+								<div .enb_dis2 style="margin-left:10dip;"> 
+									<div style="flow:horizontal;padding-top:0;margin-bottom:0dip;">
+										<div>
+											<input type="checkbox" #ID_CHK_SPEC_WEB/> 
+										</div>
+										<div >
+											<label>ID_BLOCK_ACCESS_TO</label> 
+											<label>ID_SPECIFIC_WEBSITE</label>
+											<label #OpenLink2 .clickable_cl .fontStyleLink_Blk>ID_CONFIG_SPECIFIC_WEBSITE</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div .contentContSetting>
+							<div .contentTray .cntent_parcntrl>
+								<h4><label>ID_RESTR_INT_ACC_WEEKDAYS</label></h4>
+								<p><input style="margin-left:10dip;" type="checkbox" #IDR_CHKBOX_INET_WEEKDAY_ACCESS><label for="IDR_CHKBOX_INET_WEEKDAY_ACCESS">ID_BLOCK_ACCESS_FROM</label>
+						<select #ID_OPTN_INET_WDAY_STRT>
+							<option value=0>00</option>
+							<option value=1>01</option>
+							<option value=2>02</option>
+							<option value=3>03</option>
+							<option value=4>04</option>
+							<option value=5>05</option>
+							<option value=6>06</option>
+							<option value=7>07</option>
+							<option value=8>08</option>
+							<option value=9>09</option>
+							<option value=10>10</option>
+							<option value=11>11</option>
+							<option value=12>12</option>
+							<option value=13>13</option>
+							<option value=14>14</option>
+							<option value=15>15</option>
+							<option value=16>16</option>
+							<option value=17>17</option>
+							<option value=18>18</option>
+							<option value=19>19</option>
+							<option value=20>20</option>
+							<option value=21>21</option>
+							<option value=22>22</option>
+							<option value=23>23</option>
+						</select><label>ID_TO</label>
+						<select #ID_OPTN_INET_WDAY_END>
+							<option value=0>00</option>
+							<option value=1>01</option>
+							<option value=2>02</option>
+							<option value=3>03</option>
+							<option value=4>04</option>
+							<option value=5>05</option>
+							<option value=6>06</option>
+							<option value=7>07</option>
+							<option value=8>08</option>
+							<option value=9>09</option>
+							<option value=10>10</option>
+							<option value=11>11</option>
+							<option value=12>12</option>
+							<option value=13>13</option>
+							<option value=14>14</option>
+							<option value=15>15</option>
+							<option value=16>16</option>
+							<option value=17>17</option>
+							<option value=18>18</option>
+							<option value=19>19</option>
+							<option value=20>20</option>
+							<option value=21>21</option>
+							<option value=22>22</option>
+							<option value=23>23</option>
+						</select> <label>ID_ON_WEEKDAYS</label><br/></p>
+						
+						<div style="flow:horizontal;width:480dip;"><div><input style="margin-left:10dip;" type="checkbox" #ID_CHK_WKDAY_INTRNT></div>
+						<div><label for="ID_CHK_WKDAY_INTRNT">ID_RESTR_USE_INT_WEEKDAYS_TO</label>
+							<select #ID_OPTN_RESTRICT_HOURS_WKDAY>								
+								<option value=0><label>ID_00_HOURS</label></option>
+								<option value=1><label>ID_01_HOURS</label></option>
+								<option value=2><label>ID_02_HOURS</label></option>
+								<option value=3><label>ID_03_HOURS</label></option>
+								<option value=4><label>ID_04_HOURS</label></option>
+								<option value=5><label>ID_05_HOURS</label></option>
+								<option value=6><label>ID_06_HOURS</label></option>
+								<option value=7><label>ID_07_HOURS</label></option>
+								<option value=8><label>ID_08_HOURS</label></option>
+								<option value=9><label>ID_09_HOURS</label></option>
+								<option value=10><label>ID_10_HOURS</label></option>
+								<option value=11><label>ID_11_HOURS</label></option>
+								<option value=12><label>ID_12_HOURS</label></option>
+								<option value=13><label>ID_13_HOURS</label></option>
+								<option value=14><label>ID_14_HOURS</label></option>
+								<option value=15><label>ID_15_HOURS</label></option>
+								<option value=16><label>ID_16_HOURS</label></option>
+								<option value=17><label>ID_17_HOURS</label></option>
+								<option value=18><label>ID_18_HOURS</label></option>
+								<option value=19><label>ID_19_HOURS</label></option>
+								<option value=20><label>ID_20_HOURS</label></option>
+								<option value=21><label>ID_21_HOURS</label></option>
+								<option value=22><label>ID_22_HOURS</label></option>
+								<option value=23><label>ID_23_HOURS</label></option>
+							</select> 
+							<label>ID_PER_DAY_INET</label><br/>
+						</div></div>					
+					</div>
+				</div>
+						<div .contentContSetting style="padding-bottom:5dip;">
+							<div .contentTray .cntent_parcntrl>
+								<h4><label>ID_REST_INT_ACC_WEEKENDS</label></h4>
+								<p><input style="margin-left:10dip;" type="checkbox" #IDR_CHKBOX_INET_WEEKEND_ACCESS><label for="IDR_CHKBOX_INET_WEEKEND_ACCESS">ID_BLOCK_ACCESS_FROM</label>
+							<select #ID_OPTN_INET_WEND_STRT>
+								<option value=0>00</option>
+								<option value=1>01</option>
+								<option value=2>02</option>
+								<option value=3>03</option>
+								<option value=4>04</option>
+								<option value=5>05</option>
+								<option value=6>06</option>
+								<option value=7>07</option>
+								<option value=8>08</option>
+								<option value=9>09</option>
+								<option value=10>10</option>
+								<option value=11>11</option>
+								<option value=12>12</option>
+								<option value=13>13</option>
+								<option value=14>14</option>
+								<option value=15>15</option>
+								<option value=16>16</option>
+								<option value=17>17</option>
+								<option value=18>18</option>
+								<option value=19>19</option>
+								<option value=20>20</option>
+								<option value=21>21</option>
+								<option value=22>22</option>
+								<option value=23>23</option>
+							</select>
+							<label>ID_TO</label>
+							<select #ID_OPTN_INET_WEND_END>
+								<option value=0>00</option>
+								<option value=1>01</option>
+								<option value=2>02</option>
+								<option value=3>03</option>
+								<option value=4>04</option>
+								<option value=5>05</option>
+								<option value=6>06</option>
+								<option value=7>07</option>
+								<option value=8>08</option>
+								<option value=9>09</option>
+								<option value=10>10</option>
+								<option value=11>11</option>
+								<option value=12>12</option>
+								<option value=13>13</option>
+								<option value=14>14</option>
+								<option value=15>15</option>
+								<option value=16>16</option>
+								<option value=17>17</option>
+								<option value=18>18</option>
+								<option value=19>19</option>
+								<option value=20>20</option>
+								<option value=21>21</option>
+								<option value=22>22</option>
+								<option value=23>23</option>
+							</select> 
+							<label>ID_ON_WEEKENDS</label><br/>
+						</p>
+						
+						<div style="flow:horizontal;width:480dip;"><div><input style="margin-left:10dip;" type="checkbox" #ID_CHK_WKEND_INTRNT></div>
+						<div><label for="ID_CHK_WKEND_INTRNT">ID_RESTR_USE_INT_WEEKENDS_TO</label>
+							<select #ID_OPTN_RESTRICT_HOURS_WKEND>								
+								<option value=0><label>ID_00_HOURS</label></option>
+								<option value=1><label>ID_01_HOURS</label></option>
+								<option value=2><label>ID_02_HOURS</label></option>
+								<option value=3><label>ID_03_HOURS</label></option>
+								<option value=4><label>ID_04_HOURS</label></option>
+								<option value=5><label>ID_05_HOURS</label></option>
+								<option value=6><label>ID_06_HOURS</label></option>
+								<option value=7><label>ID_07_HOURS</label></option>
+								<option value=8><label>ID_08_HOURS</label></option>
+								<option value=9><label>ID_09_HOURS</label></option>
+								<option value=10><label>ID_10_HOURS</label></option>
+								<option value=11><label>ID_11_HOURS</label></option>
+								<option value=12><label>ID_12_HOURS</label></option>
+								<option value=13><label>ID_13_HOURS</label></option>
+								<option value=14><label>ID_14_HOURS</label></option>
+								<option value=15><label>ID_15_HOURS</label></option>
+								<option value=16><label>ID_16_HOURS</label></option>
+								<option value=17><label>ID_17_HOURS</label></option>
+								<option value=18><label>ID_18_HOURS</label></option>
+								<option value=19><label>ID_19_HOURS</label></option>
+								<option value=20><label>ID_20_HOURS</label></option>
+								<option value=21><label>ID_21_HOURS</label></option>
+								<option value=22><label>ID_22_HOURS</label></option>
+								<option value=23><label>ID_23_HOURS</label></option>
+							</select> 
+							<label>ID_PER_DAY_INET</label><br/>
+						</div></div>						
+					</div>
+					</div>
+			</div>
+					<div #CalendarDisplayInet style="margin-left:8dip;">
+						<div .parcntrl_calendr_dspl>
+							<div .alow_parcntrl></div><div .mgTop10><label>ID_PAR_CTR_ALLOW</label></div>
+							<div .blk_parcntrl></div><div .mgTop10><label>ID_PAR_CTR_BLOCK</label></div>
+				</div>
+						<div .settime_parcntrl><label>ID_SEL_TIMING_CTRL_ACC_INET</label></div>
+					<div .sandboxhours>
+						<div .stuffs>00</div>
+						<div .stuffs>01</div>
+						<div .stuffs>02</div>
+						<div .stuffs>03</div>
+						<div .stuffs>04</div>
+						<div .stuffs>05</div>
+						<div .stuffs>06</div>
+						<div .stuffs>07</div>
+						<div .stuffs>08</div>
+						<div .stuffs>09</div>
+						<div .stuffs>10</div>
+						<div .stuffs>11</div>
+						<div .stuffs>12</div>
+						<div .stuffs>13</div>
+						<div .stuffs>14</div>
+						<div .stuffs>15</div>
+						<div .stuffs>16</div>
+						<div .stuffs>17</div>
+						<div .stuffs>18</div>
+						<div .stuffs>19</div>
+						<div .stuffs>20</div>
+						<div .stuffs>21</div>
+						<div .stuffs>22</div>
+						<div .stuffs>23</div>
+					</div>
+						<div .dys_rect>
+							<div .rect_div>
+								<p style="margin-top:8dip;"><label>ID_MON</label></p>
+								<p><label>ID_TUE</label></p>
+								<p><label>ID_WED</label></p>
+								<p><label>ID_THU</label></p>
+								<p><label>ID_FRI</label></p>
+								<p><label>ID_SAT</label></p>
+								<p><label>ID_SUN</label></p>
+						</div>
+			<div #sandboxforapp />
+			</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="messageContAlert">
+		<div .clickable_cl .BuyHighVersionClose #ID_CLOSE_POPUP>
+				<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIconVersionUpgrade">
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+				</svg>
+		</div>
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 511 511" enable-background="new 0 0 511 511" xml:space="preserve" style="size:45dip;background:transparent;">
+		<path fill="#E58E13" d="M311.5,434.9c0,35-23.6,64.4-55.7,73.3c-6.5,1.8-13.3,2.8-20.3,2.8c-42,0-76.1-34.1-76.1-76.1l76.2-39.2
+			L311.5,434.9z"/>
+		<path fill="#F7D360" d="M307.8,458.4c-7.8,24.2-27.4,43-52.1,49.9c-15.5-4.3-29-13.3-38.8-25.5c-7.9-9.8-0.8-24.4,11.8-24.4H307.8z"
+			/>
+		<path fill="#F7D360" d="M431.8,358.9l-163.4,35.3L39,358.9c18,0,28.2-9.4,34-25c27.9-75.4-46.5-295.1,162.5-295.1
+			s134.5,219.7,162.5,295.1C403.7,349.4,413.8,358.9,431.8,358.9z"/>
+		<path fill="#E58E13" d="M469.9,396.9c0,21-17,38-38,38H39c-10.5,0-20-4.3-26.9-11.1C5.2,416.9,1,407.4,1,396.9c0-21,17-38,38-38
+			h392.8c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M397.9,333.8H193.7c-22,0-39.6-18.2-38.9-40.2c2.9-93.1-12-253.1,79.1-254.8
+			c-250,1.3-90.2,320.1-194.9,320.1h392.8C413.8,358.9,403.7,349.4,397.9,333.8z"/>
+		<path fill="#F7D360" d="M469.9,396.9c0,21-17,38-38,38H148.9c-10.5,0-20-4.3-26.9-11.1c-6.9-6.9-11.1-16.4-11.1-26.9
+			c0-21,17-38,38-38h282.9c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M274.1,41.7c0.1-1,0.1-1.9,0.1-2.9c0-21.4-17.4-38.8-38.8-38.8c-21.4,0-38.8,17.4-38.8,38.8c0,1,0,2,0.1,2.9
+			"/>
+		<g>
+			<path fill="#E6E6E6" d="M424.2,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-36.2-9.3-67.1-27.7-91.8c-13.7-18.5-27.6-26.4-27.8-26.5
+				c-3.8-2.1-5.1-6.9-3-10.6c2.1-3.8,6.8-5.1,10.6-3c0.7,0.4,16.5,9.3,32.2,30.1c14.3,19,31.3,52,31.3,101.9
+				C432.1,163.9,428.6,167.4,424.2,167.4z"/>
+			<path fill="#E6E6E6" d="M458.7,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-49.9-29.6-69.8-30.8-70.6c-3.6-2.4-4.7-7.2-2.3-10.8
+				c2.3-3.6,7.1-4.7,10.8-2.4c1.6,1,38,24.9,38,83.8C466.5,119.1,463,122.6,458.7,122.6z"/>
+			<path fill="#E6E6E6" d="M46.6,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-49.8,17-82.9,31.3-101.9c15.7-20.8,31.5-29.7,32.2-30.1
+				c3.8-2.1,8.5-0.7,10.6,3.1c2.1,3.8,0.7,8.5-3,10.6c-0.3,0.2-14.1,8.1-27.8,26.5c-18.4,24.7-27.7,55.6-27.7,91.8
+				C54.4,163.9,50.9,167.4,46.6,167.4z"/>
+			<path fill="#E6E6E6" d="M12.2,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-58.9,36.5-82.8,38-83.8c3.6-2.3,8.5-1.2,10.8,2.4
+				c2.3,3.6,1.3,8.5-2.4,10.8C49.5,45,20,64.8,20,114.7C20,119.1,16.5,122.6,12.2,122.6z"/>
+		</g>
+		</svg><br/>
+		<p style="color:#000;" #ID_VERSION_MESSAGE><label>ID_BUY_HIGHER_VERSION</label></p>
+		<p style="color:#000;" #ID_VERSION_MESSAGE2><label>ID_BUY_HIGHER_VERSION</label></p>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_BUY_HIGH_VER><label>ID_BUY_NOW</label></div>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_REGISTER_NOW><label>ID_REGISTER_NOW</label></div>
+	</div>
+</body>
+</html>

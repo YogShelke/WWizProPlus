@@ -1,0 +1,1058 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+            overflow:hidden;
+		width:720dip;
+		height:500dip;
+		}
+
+        body{
+			width:720dip;
+			height:500dip;
+		margin:0;
+		padding:0;
+		background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+		position:relative;	
+			overflow:hidden;
+		//border:0.5dip solid #3d748e;
+		}
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+	.header{
+		width:720dip!important;
+		}
+	widget[type=file-name] {
+	    prototype: FileName;
+	    flow:horizontal;
+	    width:400dip;
+	    margin-left:33dip;
+	    height:35dip;
+	    display:inline-block;
+	}
+	widget[type=file-name]:disabled{
+		opacity:.5;
+	}
+	widget[type=file-name] > input { width:*;margin-top:10dip; }
+	.selector label{
+		width:100dip;
+		text-align:center!important;
+	}
+	.selector:disabled{
+		opacity:.5;
+	}
+	.scan_path{
+		margin-left:11dip;
+	}
+	input  { context-menu:none; }	
+	.select_options{
+		width:690dip;
+		margin-left:10dip;
+	}
+	table#ID_AUTORUN_SCAN 
+	{ 
+		style-set: vgrid;
+		flow:table-fixed;
+		width:697dip;
+		height:140dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: scroll;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin:10dip!important;
+	}
+	table#ID_AUTORUN_SCAN > thead {
+		behavior:column-resizer;  
+	}
+	table#ID_AUTORUN_SCAN > tbody {
+		overflow-y: auto;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#ID_AUTORUN_SCAN th 
+	{ 
+		font-size:12.5dip; 
+		padding:4dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	table#ID_AUTORUN_SCAN th:nth-child(1)  {  width:0.08*; }
+	table#ID_AUTORUN_SCAN th:nth-child(2)  {  width:0.3*; }		
+	table#ID_AUTORUN_SCAN th:nth-child(3)  {  width:0.3*; }	
+	table#ID_AUTORUN_SCAN th:nth-child(4)  {  width:0.3*; }	
+	table#ID_AUTORUN_SCAN th:hover 
+	{ 
+		transition:blend;
+	}
+	table#ID_AUTORUN_SCAN td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	}
+	table#ID_AUTORUN_SCAN td:nth-child(1) {  text-align:left; width:0.08*;padding-top:2dip; } /* first column */
+	table#ID_AUTORUN_SCAN td:nth-child(2) {  text-align:left; width:0.2*;padding-top:2dip; } /* first column */
+	table#ID_AUTORUN_SCAN td:nth-child(3) {  
+		text-align:left; 
+		width:0.5*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	table#ID_AUTORUN_SCAN td:nth-child(4) {   /* last column */
+		text-align:left; 
+		overflow:hidden;        /* three line below - ellipsis */
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		width:.2*;
+	} /* third column */
+	.mgLft8{
+		margin-left:8dip;
+	}
+	#scan_heading{
+		visibility:visible;
+	}
+	#scan_heading:collapsed{
+		visibility:none;
+	}
+	.pdLeft10{
+			padding-left:10dip;
+	}
+	.scan_container_autorun{
+		height:30dip;
+	}
+	#progress_bar_autorun{
+		width:392dip;
+		height:17dip;
+		padding:0;
+		margin-left:11dip;
+		margin-top:4dip;
+	}
+	progress#progress_bar_autorun{
+		foreground-position:20dip 20dip 20dip 20dip;
+	}
+	.percentage_container_autorun{
+		text-align:center;
+		margin-top:-19dip;
+		width:392dip;
+	}
+	.footer_btnsAutorun{
+		width:300dip;
+		text-align:right;
+		height:35dip;
+		/* margin-left:260dip; */
+    }
+	.footer_btnsAutorun .btnCstm{
+		margin-top:0;
+	 }
+	.footer_btnsAutorun #ID_BTN_PAUSE{
+		visibility:none;
+	}
+	.footer_btnsAutorun #ID_BTN_PAUSE:collapsed{
+		visibility:none;
+	 }
+	.footer_btnsAutorun #ID_BTN_PAUSE:expanded{
+		visibility:visible;
+	 }
+	.footer_btnsAutorun #ID_BTN_STOP{
+		visibility:none;
+	 }
+	.footer_btnsAutorun #ID_BTN_STOP:collapsed{
+		visibility:none;
+	}
+	.footer_btnsAutorun #ID_BTN_STOP:expanded{
+		visibility:visible;
+	}
+	#ID_BTN_SCAN{
+		visibility:visible;
+	}
+	#ID_BTN_SCAN:collapsed{
+		visibility:none;
+	}
+	#ID_BTN_REPAIR{
+		visibility:none;
+	}
+	#ID_BTN_REPAIR:collapsed{
+		visibility:none;
+	}
+	#ID_BTN_REPAIR:expanded{
+		visibility:visible;
+	}
+	#scaning_result{
+		flow:horizontal;
+		visibility:none;
+		margin-left:10dip;
+		margin-top:5dip;
+	}
+	#scaning_result:collapsed{
+		visibility:none;
+	}
+	#scaning_result:expanded{
+		visibility:visible;
+	}
+	#scan_heading{
+		visibility:visible;
+	}
+	#scan_heading:collapsed{
+		visibility:none;
+	}
+	.mainContent{
+		flow:vertical;
+	}
+	#scanning_path{
+		visibility:none;
+	}
+	#scanning_path:collapsed{
+		visibility:none;	
+	}
+	#scanning_path:expanded{
+		visibility:visible;
+	}
+	.col_3{
+		width:235dip;
+	}
+	</style>
+
+	<script type="text/tiscript">
+      include "IDR_TIS_MAIN.tis";
+      include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    </script>
+	<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>	
+    <script type="text/tiscript">
+	if(productVersion == #BASIC){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+    }
+	else if(productVersion == #ESSENTIAL){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+    }
+	else if(productVersion == #PROVANTAGE){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+	}
+	else if(productVersion == #ELITE){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+	}
+	else if(productVersion == #ESSENTIALPLUS){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS 2020";
+	}
+    </script>
+
+	<script type="text/tiscript">
+	var varThreatFoundCount = 0;
+	var varProgressBar = $(#progress_bar_autorun);
+	var bIsScanCompleted = false;
+	var m_bIsScanning = false;
+    var NewPath = "" ;
+    var records = new Array(0);
+    var vlistObj;
+    var vCheckBox = $(body);
+    var IsScanning = 1;
+	var bIsThreatRemoveStatus = false;
+	var bLoadingRepairedStatusCompleted = false;
+    var varFilePath = "";
+    </script>
+
+	<script type="text/tiscript">
+    function FuncIsScanFinished()
+    {
+        var varScanPercentage = 100;
+        varProgressBar.value = varScanPercentage;
+        $(#AutoRunScanPercent).value = ""+varScanPercentage+"%";
+        if(varProgressBar.value == 100)
+        {
+            if(varThreatFoundCount > 0)
+                $(#ID_LIGHTBOX_TXT).text = varThreatFoundCount + Lang.translate("ID_AUTORUN_THREAT_DETECTED");
+			else
+                $(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_AUTORUN_SCAN_COMPLETED");
+            $(#ID_BTN_SCAN).state.collapsed = true;
+            $(#ID_BTN_CLOSE).state.collapsed = false;
+            $(#scanning_path).state.collapsed = true;
+            $(#ID_BTN_REPAIR).state.expanded = true;
+            $(#ID_BTN_PAUSE).state.collapsed = true;
+            $(#ID_BTN_STOP).state.collapsed = true;
+            bIsScanCompleted = true;
+            m_bIsScanning = false;
+            if(varThreatFoundCount < 1)
+            {
+                $(#ID_BTN_REPAIR).state.collapsed = true;
+                $(#ID_BTN_SCAN).state.collapsed = false;
+                $(.select_options).state.disabled = false;
+            }
+            else
+            {
+                $(.select_options).state.disabled = true;
+            }
+			var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							}; 
+        }
+    }
+
+    function AddAutoRunScanFoundEntries( strThreatName, strNewPath, strActionTaken)
+    {
+        records[varThreatFoundCount] = {selected: true, ThreatName: strThreatName, FilePath:strNewPath, ActionTaken:strActionTaken};
+        varThreatFoundCount++;
+        $(#id_total_threats_detected).value = " "+varThreatFoundCount;
+        if(varThreatFoundCount == 0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+    }
+
+	function EmptyFolderNotification(varMsgType, strEmptyFolderMessage)//for empty folder scanning
+    {
+        $(#ID_LIGHTBOX_TXT).value = strEmptyFolderMessage;
+        if(varMsgType == 1)
+        {
+            $(#ID_BTN_SCAN).state.collapsed = false;
+            $(#ID_BTN_CLOSE).state.collapsed = false;
+            $(#ID_BTN_STOP).state.collapsed = true;
+            $(#ID_BTN_PAUSE).state.collapsed = true;
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+							    caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: "OK", role:#ok, value:true }]
+            };
+            $(.select_options).state.disabled = false; //widget becomes visible
+            return res;
+        }
+        if(varMsgType == 2)
+        {
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                return 1;
+            }
+            else
+            {
+                $(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+                IsScanning = 1;
+                view.ResumeAutorunScanOperation();
+                return 0;
+            }
+        }
+        if(varMsgType == 3)
+        {
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                return 1;
+            }
+            else
+            {
+                view.ResumeAutorunScanOperation();
+                return 0;
+            }
+        }
+        if(varMsgType == 4)
+        {
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                return 1;
+            }
+            else
+            {
+                $(#ID_BTN_SCAN).state.collapsed = true;
+                $(#ID_BTN_CLOSE).state.collapsed = false;
+                $(#ID_BTN_REPAIR).state.expanded = true;
+                $(#ID_BTN_PAUSE).state.collapsed = true;
+                $(#ID_BTN_STOP).state.collapsed = true;
+                $(.select_options).state.disabled = true;
+                return 0;
+            }
+        }
+    }
+
+	function UpdateVirusFoundentries( varFilePosition , strActiontaken)
+    {
+		var varFilepos = varFilePosition.toInteger();
+        records[varFilepos].ActionTaken = strActiontaken;
+        $(#ID_BTN_REPAIR).state.expanded = true;
+        $(#ID_BTN_SCAN).state.collapsed = true;
+        $(.condition_popup_body).state.collapsed = false;
+        $(#ID_BTN_CLOSE).state.collapsed = false;
+        $(#ID_BTN_STOP).state.collapsed = true;
+        $(#ID_BTN_PAUSE).state.collapsed = true;
+    }
+
+    function UpdateRepairedFilesStatus(strRepaired)
+    {
+        DisplayRepairedStatusMessage(strRepaired);
+    }
+
+    function DisplayRepairedStatusMessage(strRepaired)
+    {
+        var bIsDetectedEntry = false;
+        for(var varCount = 0; varCount < records.length; varCount++)
+        {
+            if(records[varCount].ActionTaken==Lang.translate("ID_DETECTED"))
+            {
+                bIsDetectedEntry = true;
+                break;
+            }
+        }
+        if(bIsDetectedEntry)
+        {
+            $(.select_options).state.disabled = true;
+        }
+        else
+        {
+            $(#ID_BTN_SCAN).state.collapsed = false;
+            $(#ID_BTN_REPAIR).state.collapsed = true;
+        }
+        $(#ID_LIGHTBOX_TXT).text = strRepaired;
+        bIsThreatRemoveStatus = false;
+        $(#ID_BTN_REPAIR).state.disabled = false;
+		var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								};            
+        self.timer(300ms,LoadingRepairedStatus);
+    }
+	
+    function LoadingRepairedStatus()
+    {
+        var bChecked = false;
+        for(var iCount = 0; iCount < records.length; iCount++)
+        {
+            if(records[iCount].selected && records[iCount].ActionTaken != Lang.translate("ID_RESTART_REQUIRED") && records[iCount].ActionTaken != Lang.translate("ID_NO_FILE_FOUND"))
+            {
+                records[iCount].ActionTaken=Lang.translate("ID_REPAIRED");
+            }
+            else
+            {
+                bChecked = true;
+            }
+        }
+        if(bChecked != true)
+        {
+            $(#ID_BTN_SCAN).state.collapsed = false;
+            $(#ID_BTN_REPAIR).state.collapsed = true;
+            bLoadingRepairedStatusCompleted = true;
+        }
+    }
+	
+	function SetFileScanStatusEvent(evt)
+    {
+        var varCurrentScannedFile = evt.data.one.toInteger();
+        var varTotalFileCount = evt.data.two.toInteger();
+        var varScanningPath = evt.data.three.toString();
+        $(#scanning_path).state.expanded = true;
+        $(#scanning_path).value = varScanningPath;
+        var varScanPercentage = 1;
+        m_bIsScanning = true;
+        if(varTotalFileCount > 0)
+        {
+            varScanPercentage = varCurrentScannedFile*100;
+            varScanPercentage = varScanPercentage/varTotalFileCount;
+        }
+        if(varScanPercentage < 95 )
+        {
+            $(#AutoRunScanPercent).value = ""+varScanPercentage+"%";
+        }
+        else
+        {
+            varScanPercentage = 97;
+            $(#AutoRunScanPercent).value = ""+varScanPercentage+"%";
+        }
+        varProgressBar.value = varScanPercentage;
+        self.refresh();
+    }
+    const SETSCAN_EVENT = 0x100 + 9;
+    self.subscribe(SetFileScanStatusEvent, Event.BEHAVIOR_EVENT, SETSCAN_EVENT);
+    </script>
+	<script type="text/tiscript">
+    $(#help_click).onClick = function()
+    {
+		OpenHelpFile();
+	}
+	function OpenHelpFile()
+	{
+		var varCommandlinestr = "-mapid";
+		var varHelpFilePath;
+		var varHelpFileIndex;
+		var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+		var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+		var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+		var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+		var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+		var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+		switch(g_LanguageID)
+		{
+			case LANGUAGE_TYPE.ENGLISH	:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varEngEssential;
+					varHelpFileIndex = "73";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varEngBasic;
+					varHelpFileIndex = "73";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varEngEssPlus;
+					varHelpFileIndex = "73";
+				}
+			break;
+		
+			case LANGUAGE_TYPE.GERMAN:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varGerEssential;
+					varHelpFileIndex = "73";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varGerBasic;
+					varHelpFileIndex = "73";				
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varGerEssPlus;
+					varHelpFileIndex = "73";				
+				}
+			break;
+		}
+		System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+    }
+    </script>
+
+    <script type="text/tiscript">
+	$(.OnClickMinimize).onClick = function()
+    {
+        view.OnMinimize();
+    }
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+       if(bLoadingRepairedStatusCompleted == true)
+            view.CloseWhileNoDetectedEntry();
+
+        var bIsDetectedEntery = false;
+        if(bIsScanCompleted == true && bIsThreatRemoveStatus == false)
+        {
+            for(var varThreatCount = 0; varThreatCount < records.length; varThreatCount++)//records.length
+            {
+                if(records[varThreatCount].ActionTaken==Lang.translate("ID_DETECTED"))
+                {
+                    bIsDetectedEntery = true;
+                    break;
+                }
+            }
+        }
+        if(bIsDetectedEntery == true )
+        {
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_THREAT_DETECTED");
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                view.On_Close();
+                return 0;
+            }
+            else
+            {
+                $(#ID_BTN_SCAN).state.collapsed = true;
+                $(#ID_BTN_CLOSE).state.collapsed = false;
+                $(#ID_BTN_REPAIR).state.expanded = true;
+                $(#ID_BTN_PAUSE).state.collapsed = true;
+                $(#ID_BTN_STOP).state.collapsed = true;
+                $(.select_options).state.disabled = true;
+                return;
+            }
+        }
+        if(m_bIsScanning == true)
+        {
+            view.PauseAutorunScanOperation();//to pause thread
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SCAN_PROGRESS_STOP");
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                var varReply = view.On_Yes();
+				$(#scanning_path).state.expanded = true;
+                $(#scanning_path).text = varReply;
+                $(.select_options).state.disabled = false;
+                $(#ID_BTN_SCAN).state.collapsed = false;
+                $(#ID_BTN_CLOSE).state.collapsed = false;
+                $(#ID_BTN_REPAIR).state.collapsed = true;
+                $(#ID_BTN_PAUSE).state.collapsed = true;
+                $(#ID_BTN_STOP).state.collapsed = true;
+            }
+            else
+            {
+                $(#ID_BTN_REPAIR).state.collapsed = true;
+                $(#ID_BTN_CLOSE).state.collapsed = true;
+                $(#ID_BTN_PAUSE).state.expanded = true;
+                $(#ID_BTN_STOP).state.expanded = true;
+                $(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+                view.ResumeAutorunScanOperation();
+                IsScanning = 1;
+                return;
+            }
+        }
+        bIsDetectedEntery = false;
+        if(bIsThreatRemoveStatus == true)
+        {
+            $(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+            view.PauseAutorunScanOperation();
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_REPAIR_CLOSE");
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                view.On_Close();
+                return 0;
+            }
+            else
+            {
+                view.ResumeAutorunScanOperation();
+                return;
+            }
+         }
+         else
+         {
+           view.On_Close();
+         }
+    }
+	$(#ID_BTN_CLOSE).onClick = function()
+    {
+        if(bLoadingRepairedStatusCompleted == true)
+            view.CloseWhileNoDetectedEntry();
+        var bIsDetectedEntery = false;
+        for(var varThreatCount = 0; varThreatCount < records.length; varThreatCount++)//records.length
+        {
+            if(records[varThreatCount].ActionTaken==Lang.translate("ID_DETECTED"))
+            {
+                bIsDetectedEntery = true;
+                break;
+            }
+        }
+        if(bIsDetectedEntery == true && bIsThreatRemoveStatus == false )
+        {
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_THREAT_DETECTED");
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                view.On_Close();
+                return 0;
+            }
+            else
+            {
+                return;
+            }
+        }
+        if(bIsThreatRemoveStatus == true)
+        {
+            $(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+            view.PauseAutorunScanOperation();
+            $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_REPAIR_CLOSE");
+            var res = dialog { body:$(form#simple-dialog),
+                                returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+                                buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                view.On_Close();
+                return 0;
+            }
+            else
+            {
+                view.ResumeAutorunScanOperation();
+                return;
+            }
+        }
+        else
+        {
+            view.On_Close();
+        }
+    }
+	
+	$(#all_drive).on("change", function()
+    {
+        $(#input_file).state.disabled = this.value;
+        $(widget).value = "";
+        NewPath = "";
+        $(widget).state.disabled = this.value;
+    });
+
+    $(#select_path).on("change", function()
+    {
+        $(#input_file).state.disabled =! this.value;
+        $(widget).state.disabled =! this.value;
+    });
+    </script>
+	<script type="text/tiscript">
+    const selectAll = vCheckBox.$(input#select-all);
+
+    vCheckBox.on("change","#select-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var record in records )
+        record.selected = selected;
+    });
+    </script>   
+
+	
+	<script type="text/tiscript">
+    $(#ID_BTN_SCAN).onClick = function()
+    {
+        $(#AutoRunScanPercent).value = "0%";
+		varProgressBar.value = 0;
+        IsScanning = 1;
+		$(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+        $(.select_options).state.disabled = true;
+        $(#id_total_threats_detected).value = " "+00;
+        $(#scanning_path).text = "";
+        records.length = 0;
+        varThreatFoundCount = 0;
+        var bAutoRunScan =$(#all_drive).value;
+        if (bAutoRunScan == false && NewPath.length < 1)
+        {
+            $(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_AUTORUN_VALID_FILE_FOLDER");
+            $(.select_options).state.disabled = false;
+            varProgressBar.value = 0;
+            m_bIsScanning = false;			
+			var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							};
+            return;
+        }
+        view.On_BnClickedAutoRunScan(bAutoRunScan, NewPath, AddAutoRunScanFoundEntries, EmptyFolderNotification);
+        vlistObj = $(table);
+        vlistObj.value = records;
+        vlistObj.on("change","tbody > tr", function()
+        {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+                this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+                if( !this.data.selected )
+                    selectAll.value = false;
+        });
+        $(#ID_BTN_SCAN).state.collapsed = true;
+        $(#ID_BTN_CLOSE).state.collapsed = true;
+        $(#scanning_path).state.collapsed = true;
+        $(#scan_heading).state.collapsed = true;
+        $(#scaning_result).state.expanded = true;
+        $(#ID_BTN_PAUSE).state.expanded = true;
+        $(#ID_BTN_STOP).state.expanded = true;
+        $(#ID_BTN_REPAIR).state.collapsed = true;
+    }
+
+	$(#ID_BTN_STOP).onClick = function()
+    {
+        var bIsDetectedEntery = false;
+        view.PauseAutorunScanOperation();
+        $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SCAN_PROGRESS_STOP");
+        var res = dialog { body:$(form#simple-dialog),
+                            returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+                            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+        };
+        if(res == true)
+        {
+			
+            for(var varThreatCount = 0; varThreatCount < records.length; varThreatCount++)//records.length
+            {
+                if(records[varThreatCount].ActionTaken==Lang.translate("ID_DETECTED"))
+                {
+                    bIsDetectedEntery = true;
+                    break;
+                }
+            }
+            if(bIsDetectedEntery == true)
+            {
+                $(#ID_LIGHTBOX_TXT).text = varThreatFoundCount + Lang.translate("ID_REPAIR_CLICK_BUTTON");
+                $(#ID_BTN_SCAN).state.collapsed = true;
+                $(#ID_BTN_CLOSE).state.collapsed = false;
+                $(#ID_BTN_REPAIR).state.expanded = true;
+                $(#ID_BTN_PAUSE).state.collapsed = true;
+                $(#ID_BTN_STOP).state.collapsed = true;
+                $(.select_options).state.disabled = true;
+				var res1 = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							}; 		
+            }
+            else
+            {
+                $(.select_options).state.disabled = false;
+                $(#ID_BTN_SCAN).state.collapsed = false;
+                $(#ID_BTN_CLOSE).state.collapsed = false;
+                $(#ID_BTN_REPAIR).state.collapsed = true;
+                $(#ID_BTN_PAUSE).state.collapsed = true;
+                $(#ID_BTN_STOP).state.collapsed = true;
+            }
+            m_bIsScanning = false;
+            bIsScanCompleted = true;
+            var varReply = view.On_Yes();
+            $(#scanning_path).state.expanded = true;
+            $(#scanning_path).text = varReply;
+			varProgressBar.state.busy = false;
+        }
+        else
+        {
+            if(m_bIsScanning == true)
+            {
+                view.ResumeAutorunScanOperation();
+			    $(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+			    IsScanning = 1;
+			}
+        }
+     }
+	 
+	 $(#ID_BTN_PAUSE).onClick = function()
+     {
+         if(IsScanning == 1)
+         {
+	 	        $(#ID_BTN_PAUSE).text = Lang.translate("ID_RESUME");
+                IsScanning = 2;
+                view.On_BnClickedAutoRunPause_Resume();
+         }
+         else if(IsScanning == 2)
+         {
+	 		    $(#ID_BTN_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+                IsScanning = 1;
+                view.On_BnClickedAutoRunPause_Resume();
+         }
+     }
+	 
+	 $(#ID_BTN_REPAIR).onClick = function()
+     {
+         $(#scanning_path).text = "";
+         $(#ID_BTN_REPAIR).state.disabled = true;
+         $(.select_options).state.disabled = false;
+         bIsThreatRemoveStatus = true;
+         view.On_BnClickedAutoRunRepair(records, UpdateVirusFoundentries, UpdateRepairedFilesStatus);
+         $(#ID_BTN_CLOSE).state.collapsed = false;
+         $(#ID_BTN_PAUSE).state.collapsed = true;
+     }
+	</script>   
+
+
+<script type="text/tiscript">
+     var FilePath = " ";
+     class FileName : Behavior
+     {
+        function attached()
+        {
+            this.$append( <input|text.path #ID_EDIT_FILE_PATH readonly><span .btnCstmSmall .widgetMrgnRight .mrgntop6 #input_file><label>ID_UPDATE_BTN_BROWSE</label></span>);
+            var path = this.path = this.$(.path);
+            this.$(#input_file).onClick = function ()
+            {
+                varFilePath = "";
+                varFilePath = view.SelectFileFolder();
+                if(varFilePath != "INVALID" && varFilePath != "CANCEL")
+                {
+                    path.value = varFilePath;
+                    NewPath = varFilePath;
+                }
+                else if(varFilePath == "INVALID")
+                {
+                    $(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SELECT_VALID_FILE_FOLDER");
+                    var res = dialog { body:$(form#simple-dialog),
+										returns: #values,
+										caption : Lang.translate("ID_WARNING"),
+										buttons: [ { caption: "OK", role:#ok, value:true }]};
+                    $(widget).value = "";
+                    return 0;
+                }
+                 (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+            };
+        }
+        property value(v)
+        {
+            get { return this.path.value; }
+            set { this.path.value = v; }
+        }
+    }
+
+    $(widget).onValueChanged = function()
+    {
+        stdout.println(this.value);
+    };
+</script>
+<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+		{
+			if(!view.FunCheckInternetAccessBlock())
+			{
+				Sciter.launch("http://www.vibranium.co.in");  
+                //Sciter.launch("http://www.wardwiz.in");  
+			}
+		}
+		else if(g_LanguageName == "GERMAN")
+		{
+			if(!view.FunCheckInternetAccessBlock())
+			{	
+				Sciter.launch("http://www.vibranium.co.in"); 
+                //Sciter.launch("http://www.wardwiz.de");  
+			}
+		}
+	}
+    </script>
+    <script type="text/tiscript">
+	function self.ready()
+    {
+		self.language = g_LanguageName;
+		$(#input_file).state.disabled = this.value;
+        $(widget).state.disabled = this.value;
+        view.funcScanFinished(FuncIsScanFinished);
+
+        if(varThreatFoundCount == 0)
+        {
+			$(#select-all).state.disabled = true;
+        }		
+        if(g_themeType == "defaultTheme"){
+			$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+			self.update();
+        }
+        else if(g_themeType == "darkTheme"){
+            $(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+            self.update();
+        }
+		else if(g_themeType == "crystalTheme")
+		{
+            $(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+			self.update();
+		}
+    }
+    </script>
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+    </form>
+</head>
+<body>
+	<div .mainContent>
+		<div .header style="margin-top:2dip;">
+			<div .tempLogo>
+				<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+			</div>
+			<div .menu_utility>
+				<div .drag_zone_utility role="window-caption">
+					<h4 style="margin-top:10dip">VIBRANIUM</h4>
+				</div>
+				<div .topMenuUtility style="margin-left:30dip;">
+					<ul>
+						<li .clickable_cl #help_click .MenuSpacing style="font-size:13.5dip;visibility:none"><label>ID_STR_HELP</label></li>
+						<li .clickable_cl .OnClickMinimize .MenuSpacing>
+								<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+								</svg>
+						</li>
+						<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE .MenuSpacing>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+							</svg>
+						</li>
+					</ul>
+                </div>
+			</div>
+		</div>
+		<div .titleCont_utilities>
+			<h1 .headingTitle1 style="margin-top:0dip;text-align:center;"><label>ID_AUTORUN_FILE_SCAN_DETECTS</label></h1>
+			<p style="text-align:center;"><label>ID_AUTORUN_FILE_SCAN_DETECTS_AND_REPAIRS_SHORTCUTS_LNK_FILES</label></p>
+        </div>
+		<div class="select_options headingClrwht">
+			<button type="radio" #all_drive checked><label for="all_drive">ID_ALL_DRIVES</label></button><br/>
+			<button type="radio" #select_path><label for="select_path">ID_SELECT_PATH</label></button>			
+			<div style="margin-left:-13dip"><widget|file-name name=test/></div>
+        </div>
+	    <table  #ID_AUTORUN_SCAN style="margin:20dip;">
+           <thead>
+               <tr>
+                   <th style="width:40dip;"></th>
+                   <th style="width:145dip;"><label>ID_THREAT_NAME</label></th>
+                   <th style="width:350dip;"><label>ID_FILE_PATH</label></th>
+                   <th><label>ID_ACTION</label></th>
+               </tr>
+          </thead>
+          <tbody>
+              <tr><td><input(selected)|checkbox style="margin-top:5dip;"/></td><td(ThreatName)></td><td(FilePath)></td><td(ActionTaken)></td></tr>
+          </tbody>
+       </table>
+	   <div .mgLft8 .headingClrwht>
+           <input type="checkbox" #select-all checked>
+           <label for="select_all">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label>
+       </div>
+	   <h4 #scan_heading .pdLeft10 .headingClrwht><label>ID_PLEASE_SELECT_SPECIFIC_SCANNING_OPTION_AND_CLICK_ON_SCAN</label></h4>
+       <div #scaning_result>
+			<div class="col_3 headingClrwht">
+                <p><label>ID_REPORTS_THREATS_FOUND</label>: <span #id_total_threats_detected>00</span></p>
+            </div>
+       </div>
+		<div .scan_container_autorun .horizontalFlow>
+			<div class="progress_bar_container_autorun">
+				<div><progress #progress_bar_autorun max="100" value="0"/></div>
+				<p .percentage_container_autorun><span #AutoRunScanPercent>0%</span></p>
+           </div>
+			<div .footer_btnsAutorun>
+				<div class="btnCstm" #ID_BTN_SCAN><label>ID_STR_SCAN_MENU</label></button></div>
+				<div class="btnCstm" #ID_BTN_PAUSE><label>ID_BTN_PAUSE</label></button></div>
+				<div class="btnCstm" #ID_BTN_REPAIR><label>ID_REPAIR</label></button></div>
+				<div class="btnCstm" #ID_BTN_CLOSE><label>ID_CLOSE</label></button></div>
+				<div class="btnCstm" #ID_BTN_STOP><label>ID_BTN_STOP</label></button></div>
+           </div>
+        </div>
+		<p .scan_path #scanning_path> </p>
+    </div>
+</body>
+</html>

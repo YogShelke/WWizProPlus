@@ -1,0 +1,2176 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">		
+    <link href="IDR_TIS_BANGLA.tis" hreflang="BANGLA" rel="translation">	
+    <link href="IDR_TIS_HINDI.tis" hreflang="HINDI" rel="translation">	
+    <link href="IDR_TIS_URDU.tis" hreflang="URDU" rel="translation">	
+	<style>
+		@import url(IDR_CSS_VGRID.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		@font-face {
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:722dip;
+			height:500dip;
+            overflow:hidden;
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+		}
+		body{
+		   padding:0dip;
+		   margin:0dip;
+		   color:#000;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:720dip;
+			height:500dip;
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		#data_vault_header_frame{
+			height:45dip;
+			width:375dip;
+		}
+		#header_close_bt{
+			height:45dip;
+			width:125dip;
+		}
+        #header_close_bt li{
+			list-style:none;
+            display:inline-block;
+            padding-left:4dip;
+		}
+		.header_close{
+			margin-right:25dip;
+			height:45dip;
+		}
+		/*frame[ready] {
+		  transition: slide-over-left(quad-in-out,800ms);
+		}*/
+				
+		/******** Menu Bar CSS *********/
+		.logo-n{
+			width:250dip;
+		}
+		.logo-n img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.inner_body{
+			width:720dip;
+			height:450dip;
+			overflow:hidden;
+		}
+		.configure_backup{
+			visibility:none;
+		}
+		.configure_backup:expanded{
+			visibility:visible;
+		}
+		.scan_button:hover{
+			background: #0096d6;
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:70dip;
+			height:20dip;
+			background: #0096d6;
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:20dip;
+			font-size:11dip;
+			text-align:center;  
+			line-height:18dip;
+			padding-left: 20dip;
+		}		
+		.button_small{
+			width:70dip!important;
+			height:18dip!important;
+			text-align:center;  
+		}	
+		.button_large{
+			width:107dip!important;
+			height:18dip!important;
+			text-align:center;  
+		}
+		.cstmBackupWdth{
+			width:183dip!important;
+			height:20dip!important;
+			font-size:15dip;
+			font-weight:400;
+			padding:5dip;
+			/* margin-left:190dip; */
+		}
+		#header_content{
+			flow:horizontal;
+			background:rgba(255, 255, 255, .5);
+		}
+	    .configure_backup > p{
+			font-size:13dip;
+		}
+		.configure_backup{
+			/* background:rgba(0,0,0,.2); */
+			width:650dip;
+			margin-left:15dip;
+			height:185dip;
+			margin-top:35dip;
+			/* border-radius:4dip; */
+			padding:30dip;
+			margin-bottom:20dip;
+			/* box-shadow:0 0 6dip #888888; */
+			padding-left:10dip;
+		}
+	   .message_display_block p{
+			margin-top:0dip;
+			margin-bottom:0dip;
+			text-align:center;
+			color: #fff;
+			padding-top: 10dip;
+		}
+		
+	   .message_display_block {
+			background:rgba(0, 150, 214, 1);
+			position:absolute;
+			top:0dip;
+			width:720dip;
+			height:34dip;
+			left:-110%;
+	    }
+	    .message_display_block:collapsed {
+			left:-110%;
+			transition:left(linear, 600ms);
+		}
+	    .message_display_block:expanded {
+			left:0;
+			transition:left(linear, 600ms);
+		}
+		.divider{
+			border-bottom:1dip solid #415480;
+			width:665dip;
+			margin-left:10dip;
+			margin-top:10dip;
+		}
+		.condition_popup_body{
+			width:720dip;
+			height:530dip;
+			position:absolute;
+			top:-620dip;
+			text-align:center;
+			background:rgba(0,0,0,.1);
+			opacity:0;
+			transition: opacity(sine-in-out, 600ms)
+						top(sine-in-out, 600ms);
+		}
+		.condition_popup_body:collapsed{
+			top:60dip;
+			opacity:1;
+		}
+		.basic_background{
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.essential_background{
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.provantage_background{
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.essential_plus_background{
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.elite_background{
+			background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg) no-repeat;
+			background-size:cover;
+		}
+		.Report_heading{
+			flow:horizontal;
+			margin-left:240dip;
+			width: 220dip;
+			/* padding-top: 5dip;
+			padding-bottom: 5dip; */
+			padding-left: 30dip;
+			/* background-image: url('IDR_PNG_BUTTON_BG_rev.png');
+			background-repeat:expand stretch-left stretch-right stretch-middle; */
+		}
+		.info_button{
+			float:right;
+		}
+		.img_sched_info{
+			height:0dip;
+			width:0dip;
+		}
+		.tooltip .tooltiptext {
+			visibility: visible;
+			width: 100dip;
+			height: 17dip;
+			color: #dcdcdc;
+			text-align: center;
+			padding: 3dip 0;
+			display:inline-block;
+			text-decoration:underline;
+			/* Position the tooltip */
+			z-index: 1;
+			position:absolute;
+			left:50dip;
+			margin-left:550dip;
+			cursor:pointer;
+		}
+		.tooltip:hover .tooltiptext {
+			visibility: visible;
+		}
+		.set_bgcolor{
+			filter: blur(5dip);
+		}
+		.col_1{
+			width:70dip;
+			text-align:center;
+			background:#dcdcdc;
+			border-radius:0 0 0 0;
+			margin-right:1dip;
+			background: linear-gradient(bottom, #9fd4fa, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-bottom: none;
+		}
+        .col_2{
+			width:70dip;
+			text-align:center;
+			background:#dcdcdc;
+			border-radius:0 0 0 0;
+			margin-right:1dip;
+			background: linear-gradient(bottom, #9fd4fa, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-bottom: none;
+		}
+		.col_1:hover{
+			width:70dip;
+			text-align:center;
+			background:#dcdcdc;
+			border-radius:0 0 0 0;
+			margin-right:1dip;
+			background: linear-gradient(bottom, #0780d8, #0780d8);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			border-bottom: none;
+		}
+        .col_2:hover{
+			width:70dip;
+			text-align:center;
+			background:#dcdcdc;
+			border-radius:0 0 0 0;
+			margin-right:1dip;
+			background: linear-gradient(bottom, #0780d8, #0780d8);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			border-bottom: none;
+		}
+		.col_1 h3{
+			font-size:13dip; 
+			font-weight:100;
+			margin:3dip;
+			behavior:clickable;
+			cursor:pointer;
+		}
+        .col_2 h3{
+			font-size:13dip; 
+			font-weight:100;
+			margin:3dip;
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.reports{
+			visibility:none;
+		}
+		.reports:collapsed{
+			visibility:visible;
+		}
+		.Backup_details{
+			width:680dip;
+			height:240dip;
+			margin-left:20dip;
+			border:1dip solid #0097d6;
+			background:rgba(0,0,0,0.1);
+			padding-top: 0;
+		}
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #fff; 
+			flow:table-fixed;
+			width:640dip;
+			height:160dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			margin-top:10dip!important;
+		}
+		.restore_details_table{
+			width:657dip;
+			height:121dip;
+			margin-top:7dip!important;
+			margin-bottom: 0!important;
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+			
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: auto;  
+			vertical-scrollbar: my-v-scrollbar;		
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:11.5dip; 
+			border:none;
+			padding:4dip; 
+			background-color:#0097d6!important; 
+			background-image: none!important;
+			/* background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle; */
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		table td span
+		{ 
+			font-size:10dip!important; 
+		}
+		
+		table th:nth-child(1)  {  width:0.05*; }
+		table th:nth-child(2)  {  width:0.2*; }		
+		table th:nth-child(3)  {  width:0.4*; }		
+		table th:nth-child(4)  {  width:0.1*; }	
+		
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		//table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		//table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center;padding-top:2dip; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		
+		table td:nth-child(3) {  
+			text-align:center; 
+			width:0.4*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* third column */
+		
+		table td:nth-child(4) /* last column */
+		{ 
+			 text-align:center;
+			 overflow:hidden;        /* three line below - ellipsis */
+			 text-overflow:ellipsis;
+			 white-space:nowrap;
+			 width:.1*;
+			 border-left:1dip solid #bdbccc;
+		} 
+	  
+	  	.backup_details_table{
+width:657dip;
+margin-left: 10dip;
+margin-top: -10dip;
+border:1dip solid #0096d6!important
+	  }
+		table .backup_details_table th:nth-child(1)  {  width:0.2*; }
+		table .backup_details_table th:nth-child(2)  {  width:0.2*; }		
+		table .backup_details_table th:nth-child(3)  {  width:0.4*; }		
+		table .backup_details_table th:nth-child(4)  {  width:0.1*; }	
+		
+		
+		table .restore_details_table th:nth-child(1)  {  width:0.4*; }
+		table .restore_details_table th:nth-child(2)  {  width:0.4*; }		
+		table .restore_details_table th:nth-child(3)  {  width:0.4*; }	
+		
+	//*******************************************************************//	
+	
+		.backup_details_div{
+			visibility:visible;
+		}
+		.backup_details_div:collapsed{
+			visibility:none;
+		}
+		.backup_details_div:expanded{
+			visibility:visible;
+		}
+		.restore_details{
+			visibility:none;
+		}
+		.restore_details:collapsed{
+			visibility:none;
+		}
+		.restore_details:expanded{
+			visibility:visible;
+		}
+		.Files_n_folders_details{
+			visibility:none;
+		}
+		.Files_n_folders_details:collapsed{
+			visibility:visible;
+		}
+		.col_2_right{
+			width:660dip;
+			margin-left:10dip;
+			padding-top:5dip;
+			padding-bottom:5dip;
+			text-align:center;
+			/* border:1dip solid red; */
+			margin-top: 0;
+		}
+		.col_1_right{
+			width:660dip;
+			margin-left:10dip;
+			padding-top:5dip;
+			padding-bottom:5dip;
+			text-align:center;
+			/* border:1dip solid red; */
+			/* background-image: url('IDR_PNG_BUTTON_BG.png');
+			background-repeat:expand stretch-left stretch-right stretch-middle; */
+	/* background-position:3dip 3dip 3dip 3dip; */
+		}
+		.backup_restore p{
+			font-size:13dip;
+		}
+		.backup_restore{
+			position:absolute;
+			margin-top:0;
+			visibility:none;
+		}
+		.backup_restore:expanded{
+			visibility:visible;
+		}
+		/* lightbox shim */
+		div#lightbox-shim 
+		{
+		  top: 60dip!important;
+		}
+		#ID_BTN_BACK{
+			visibility:none;
+		}
+		#ID_BTN_BACK:collapsed{
+			visibility:none;
+		}
+		#ID_BTN_BACK:expanded{
+			visibility:visible;
+		}
+		#ID_BACKUP_RUN:disabled{
+			opacity:0.5;
+		}
+		#ID_BACKUP_EDIT:disabled{
+			opacity:0.5;
+		}
+		#ID_BACKUP_DELETE:disabled{
+			opacity:0.5;
+		}
+		#ID_RADIO_RESTORE_SYS:disabled{
+			opacity:0.7;
+		}
+		#ID_RADIO_RESTORE_PATH:disabled{
+			opacity:0.7;
+		}
+		#ID_BTN_VIEW1:disabled{
+			opacity:0.7;
+		}
+		#ID_BTN_VIEW2:disabled{
+			opacity:0.7;
+		}
+		#ID_BTN_BROWSE:disabled{
+			opacity:0.5;
+		}
+		#ID_RESTORE_NEXT:disabled{
+			opacity:0.5;
+		}
+		#ID_RESTORE_DELETE:disabled{
+			opacity:0.5;
+		}
+		.restore_path{
+			width:377dip;
+			height:17dip;
+			border:1dip solid #c0c0c0;
+			padding:0;
+			margin-left:10dip;
+			border-radius: 30dip;
+		}
+		#scanning_path{
+			margin-top:5dip;
+			padding-left:20dip;
+			width:700dip;
+			height:15dip;
+			text-overflow:ellipsis;
+			overflow:hidden;
+			visibility:none;
+		}
+	    #scanning_path:expanded{
+		    visibility:visible;
+	    }
+		.btn_container:expanded{
+			visibility:visible;
+		}
+		.btn_container:collapsed{
+			visibility:none;
+		}
+		.btn_container_restore:expanded{
+			visibility:visible;
+		}
+		.btn_container_restore:collapsed{
+			visibility:none;
+		}
+		.btn_container_stop{
+			visibility:none;
+		}
+		.btn_container_stop:expanded{
+			margin-right:16dip;
+			margin-top:-30dip;
+			float:right;
+			text-align:center;
+			visibility:visible;
+		}
+		.btn_container_stop:collapsed{
+			visibility:none;
+		}
+		.btn_container_stop_restore{
+			visibility:none;
+		}
+		.btn_container_stop_restore:expanded{
+			margin-right:16dip;
+			margin-top:0dip;
+			float:right;
+			text-align:center;
+			visibility:visible;
+		}
+		.btn_container_stop_restore:collapsed{
+			visibility:none;
+		}
+		.progress_bar_container{
+			padding-left:20dip;
+			min-height:30dip;
+			width:500dip;
+			visibility:none;
+		}
+		.progress_bar_container:expanded{
+			visibility:visible;
+		}
+		.progress_bar_container:collapsed{
+			visibility:none;
+		}
+		#progress_bar{
+			width:500dip;
+			height:15dip;
+			border:2dip solid #3b7ae2;
+			background:#afccfb;
+			padding:0;
+		}
+		.percentage_container{
+			text-align:center;
+			margin-top:-17dip;
+			color:#000;
+		}
+		.percentage_container_color_grey
+		{
+			color:#818181;
+		}
+		progress#progress_bar
+		{
+			foreground:#2e71e0;  
+			foreground-position:20dip 20dip 20dip 20dip; 
+		}
+		#ID_BTN_VIEW1:expanded{
+			background: linear-gradient(bottom, #0780d8, #0094ff);
+			border:1dip solid #0094ff;
+			border-bottom: none;
+		}
+		#ID_BTN_VIEW2:expanded{
+			background: linear-gradient(bottom, #0780d8, #0094ff);
+			border:1dip solid #0094ff;
+			border-bottom: none;
+		}
+		#ID_BTN_VIEW1:collapsed{
+			background:rgba(0,0,0,.3);
+			border:1dip solid #0094ff;
+			border-bottom: none;
+		}
+		#ID_BTN_VIEW2:collapsed{
+			background:rgba(0,0,0,.3);
+			border:1dip solid #0094ff;
+			border-bottom: none;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		.CloseIcon{
+		size:10dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+	}
+	.helpIcon{
+		size:12dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+	}
+	.MiniIcon{
+		size:10dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+	}
+	.MiniIcon1{
+		size:20dip;
+		background:none;
+		fill: #000;
+		cursor:pointer;
+		stroke:#000;
+		margin-top:5dip;
+	}
+	.vibroImg{
+			position: absolute;
+			width: 350dip;
+			left:0dip;
+			bottom:0;
+		}
+		.headingTitle1{
+	/* font-weight:300; */
+	font-size:16dip;
+	color:#000;
+	font-weight:bold;
+}
+.btnNew1{
+	cursor:pointer;
+	background: #0097D6;
+	width:230dip;
+	height:23dip;
+	padding-top:5dip;
+	padding-left:15dip;
+	padding-right: 15px;
+	color:#fff;
+	border-radius: 30dip;
+	position: relative;
+}
+
+.btnNew2{
+	cursor:pointer;
+	background: #0097D6;
+	width:140dip;
+	height:28dip;
+	padding-top:0dip;
+	padding-left:10dip;
+	padding-right: 10px;
+	color:#fff;
+	border-radius: 30dip;
+	position: relative;
+	margin-top:0;
+}
+.btnNew2 label{
+	width:100dip;
+	text-align: left;
+	margin-top: 5dip;
+}
+
+.btnNew2Sm{
+	cursor:pointer;
+	/* background: linear-gradient(top, #0097D6 0%, rgb(175, 211, 253) 100%);; */
+	background: #0097D6;
+	width:70dip;
+	height:28dip;
+	padding-top:0dip;
+	padding-left:10dip;
+	padding-right: 10px;
+	color:#fff;
+	border-radius: 30dip;
+	position: relative;
+	margin-top:0;
+}
+.btnNew2Sm label{
+	width:50dip;
+	text-align: left;
+	margin-top: 5dip;
+}
+table th 
+		{ 
+			color: white;
+			font-size:11.5dip; 
+			border:none;
+			padding:4dip; 
+			background-color:#0097d6!important; 
+			/* background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle; */
+			/* background-position:3dip 3dip 3dip 3dip; */
+				}
+</style>
+
+<script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_MAIN.tis";
+    include "IDR_TIS_DECORATORS.tis";
+</script>
+<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script>	
+
+<script type="text/tiscript">
+if(productVersion == #BASIC){
+        //$(head).$append(<style>@import url(IDR_CSS_USB_VACCINE_BASIC.css);</style>);
+        $(.main).attributes.addClass("basic_background");
+        $(.dialog-frame).attributes.addClass("basic_popup_background");
+    }
+	else if(productVersion == #ESSENTIAL){
+        $(.main).attributes.addClass("essential_background");
+    }
+	else if(productVersion == #PROVANTAGE)
+    {
+        $(.main).attributes.addClass("provantage_background");
+		$(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+    }
+	else if(productVersion == #ELITE)
+    {
+        $(.main).attributes.addClass("elite_background");
+		$(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+    }
+	else if(productVersion == #ESSENTIALPLUS)
+    {
+        $(.main).attributes.addClass("essential_plus_background");
+		$(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+    }
+	if(g_LanguageName == "GERMAN")
+    {
+		$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+    }
+	if(g_LanguageName == "BANGLA")
+	{
+		$(head).$append(<style>@import url(IDR_CSS_BANGLA_LANGUAGE.css);</style>);
+	}
+</script>
+
+<script type="text/tiscript">
+	var DataBase;
+	var varDBPath;
+	var varFileExtDB;
+	var vlistObj;
+	var vlistResObj;
+	var vCheckBox = $(body);
+	var vResCheckBox = $(body);
+	var BackupJobRecords = new Array(0);
+	var RestoreJobRecords = new Array(0);
+	var RestoreDetailRecords = new Array(0);
+	var varArrVal = new Array(0);
+	var varRestoreDelVal = new Array(0);
+	var varRecordSet;
+	var varSetSchedCount;
+	var IsAnyEntrySelected;
+	var IsAnyRestoreSelected;
+	var bIsEditDisable;
+	var varProgressBar = $(#progress_bar);
+	var varProgressBarRestore = $(#progress_bar_restore);
+	var varRestoreCount = 0;
+	var varRestoreDetailCount = 0;
+	var varBackupNameVal;
+	var varBackupTimeVal;
+	var varNewLocationPath;
+	var bIsManualStop;
+	var IsBackupProcessRunning = false;
+</script>
+<script type="text/tiscript">
+    include "IDR_TIS_SQLITE.tis";
+</script>
+<script type="text/tiscript">
+	const selectAllVal = vCheckBox.$(input#Backupselect-all);
+		vCheckBox.on("change","#Backupselect-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var record in BackupJobRecords )
+			record.selected = selected;
+    });
+</script>
+<script type="text/tiscript">
+	const selectAllResVal = vResCheckBox.$(input#Restoreselect-all);
+    vResCheckBox.on("change","#Restoreselect-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var records in RestoreJobRecords )
+			records.selected = selected;
+    });
+</script>
+
+<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://www.wardwiz.in");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://www.wardwiz.de"); 
+	}
+</script> 
+
+<script type="text/tiscript">
+	function SetBackupStatusEvent(evt)
+    {
+        var varBackupPercentVal = evt.data.one.toInteger();
+        $(#DataVaultPercent).value = varBackupPercentVal+"%";
+        varProgressBar.value = varBackupPercentVal;
+        self.refresh();
+    }
+    const SETSTATUS_EVENT = 0x100 + 16;
+    self.subscribe(SetBackupStatusEvent, Event.BEHAVIOR_EVENT, SETSTATUS_EVENT);
+</script> 
+
+<script type="text/tiscript">
+	function SetRestoreStatusEvent(evt)
+    {
+        var varRestorePercentVal = evt.data.one.toInteger();
+        $(#DataVaultRestorePercent).value = varRestorePercentVal+"%";
+        varProgressBarRestore.value = varRestorePercentVal;
+        self.refresh();
+    }
+    const SETRESTORESTATUS_EVENT = 0x100 + 17;
+    self.subscribe(SetRestoreStatusEvent, Event.BEHAVIOR_EVENT, SETRESTORESTATUS_EVENT);
+</script> 
+
+<script type="text/tiscript">
+    function FunCallSelectedEntry()
+    {
+        IsAnyEntrySelected = 0;
+        for( var record in BackupJobRecords )
+        {
+            if(record.selected)
+            {
+                IsAnyEntrySelected++;
+            }
+        }
+    }    
+	function FunCallSelectedRestoreEntry()
+    {
+        IsAnyRestoreSelected = 0;
+        for( var record in RestoreJobRecords )
+        {
+            if(record.selected)
+            {
+                IsAnyRestoreSelected++;
+            }
+        }
+    }
+</script> 
+
+<script type="text/tiscript">
+	function FunSetNextStart(iIndex, varSchedDate, varSchedTime, varSchedType)
+	{
+		var ScanDateVal = varSchedDate;
+		var SchedYear = ScanDateVal.splice(4, 10);
+        var SchedMonth = ScanDateVal.splice(0, 5);
+		var varTemp = SchedMonth.splice(2,3);
+		var varTempVal = varTemp.splice(0, 1);
+		if(varTempVal == "-")
+		{
+			varTemp = varTemp.splice(1, 2);
+			SchedMonth = "0" + varTemp;
+		}
+		else
+		{
+			SchedMonth = SchedMonth.splice(2, 6);
+		}
+		var SchedDay;
+		var varStringLen = ScanDateVal.length;
+		varStringLen = varStringLen - 2;
+		var varTempDay = ScanDateVal.splice(0, 6);
+		var varTempDayVal = varTempDay.splice(1, 2);
+		if(varTempDayVal == "-")
+		{
+			varTempDay = varTempDay.splice(0, 1);
+			SchedDay = "0" + varTempDay;
+		}
+		else 
+		{
+			SchedDay = ScanDateVal.splice(0, 8);
+		}
+	
+		var varDiffDay = view.OnGetDayDiff(SchedYear, SchedMonth, SchedDay);
+		var varStartTime = new Date();
+		var varStartTimeYear = varStartTime.year;
+		var varStartTimeMonth = varStartTime.month;
+		var varStartTimeDay = varStartTime.day;
+		
+		varStartTime = varStartTime.hour * 3600+ varStartTime.minute * 60 + varStartTime.second;
+		var varDiff = varSchedTime - varStartTime; 
+		
+		var varTempVal1 = varDiff/3600;
+		var varTempVal2 = varDiff - (varTempVal1 * 3600);
+		var varTempValTime = varTempVal2/60;
+		var varTempVal3 = varTempVal2 - (varTempValTime * 60);
+		var varTempValue = 0;
+		if(varDiffDay == "")
+		{
+			varTempValue = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS") + varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES") + varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+		}
+		else 
+		{
+			varTempValue = varDiffDay + varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS") + varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES") + varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+		}
+		if(varSchedType == 1)
+		{
+			varTempValue = Lang.translate("ID_MANUAL");
+		}
+		if(varSchedType == 4) 
+		{
+			if(varDiffDay < 0)
+			{
+				varTempValue = Lang.translate("ID_VAULT_COMPLETED");
+			}
+			else if(varDiffDay == 0)
+			{
+				if(varDiff < 0)
+				{
+					varTempValue = Lang.translate("ID_VAULT_COMPLETED");
+				}
+				else
+				{
+					if((SchedYear == varStartTimeYear) && (SchedMonth == varStartTimeMonth) && (SchedDay == varStartTimeDay))
+					{
+						varDiffDay = 0;
+					}
+					else
+					{						
+						varTempVal1 = 23 - varTempVal1;
+						varTempValTime = 60 - varTempValTime;
+						varTempVal3 = 60 - varTempVal3;
+					}
+					if(varDiffDay == 0)
+						varDiffDay = "";
+					if(varTempVal1 == 0)
+						varTempVal1 = "";
+					else
+						varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+					if(varTempValTime == 0)
+						varTempValTime = "";
+					else
+						varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+					if(varTempVal3 == 0)
+						varTempVal3 = "";
+					else
+						varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+				
+					varTempValue = varDiffDay + varTempVal1 + varTempValTime + varTempVal3;
+				}
+			}
+			else
+			{
+				if(varDiffDay == 0)
+					varDiffDay = "";
+				else
+					varDiffDay = varDiffDay + " "+ Lang.translate("ID_VAULT_DAYS");
+				if(varTempVal1 == 0)
+					varTempVal1 = "";
+				else
+					varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+				if(varTempValTime == 0)
+					varTempValTime = "";
+				else
+					varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+				if(varTempVal3 == 0)
+					varTempVal3 = "";
+				else
+					varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+			
+				varTempValue = varDiffDay + varTempVal1 + varTempValTime + varTempVal3;
+			}
+		}
+		if(varSchedType == 6)
+		{
+			varTempValue = Lang.translate("ID_SYS_STARTUP");
+		}
+		if(varSchedType == 2)
+		{
+			if(varDiff < 0)
+			{
+				varTempValTime = 60 + varTempValTime;
+				varTempVal3 = 60 + varTempVal3;
+			}
+			if(varTempValTime == 0)
+				varTempValTime = "";
+			else
+				varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+			if(varTempVal3 == 0)
+				varTempVal3 = "";
+			else
+				varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+			varTempValue = varTempValTime + varTempVal3;
+		}
+		if(varSchedType == 3)
+		{
+			if(varDiffDay == 0)
+			{
+				if((SchedYear == varStartTimeYear) && (SchedMonth == varStartTimeMonth) && (SchedDay == varStartTimeDay))
+				{
+					if(varDiff > 0)
+					{
+						if(varDiffDay == 0)
+							varDiffDay = "";
+						else
+							varDiffDay = varDiffDay + " "+ Lang.translate("ID_VAULT_DAYS");
+						if(varTempVal1 == 0)
+							varTempVal1 = "";
+						else
+							varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+						if(varTempValTime == 0)
+							varTempValTime = "";
+						else
+							varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+						if(varTempVal3 == 0)
+							varTempVal3 = "";
+						else
+							varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+					
+						varTempValue = varDiffDay + varTempVal1 + varTempValTime + varTempVal3;
+					}
+					else
+					{
+						varTempVal1 = 23 + varTempVal1;
+						varTempValTime = 60 + varTempValTime;
+						varTempVal3 = 60 + varTempVal3;
+						var varDayDiff = view.OnGetMonthlyDiff(SchedYear, SchedMonth, SchedDay);
+						if(varDayDiff == 0)
+							varDayDiff = "";
+						else
+							varDayDiff = varDayDiff + " "+ Lang.translate("ID_VAULT_DAYS");
+						if(varTempVal1 == 0)
+							varTempVal1 = "";
+						else
+							varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+						if(varTempValTime == 0)
+							varTempValTime = "";
+						else
+							varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+						if(varTempVal3 == 0)
+							varTempVal3 = "";
+						else
+							varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+					
+						varTempValue = varDayDiff + varTempVal1 + varTempValTime + varTempVal3;
+						//varTempValue = varDayDiff + " "+ Lang.translate("ID_VAULT_DAYS") + varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS") + varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES") + varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+					}
+					
+				}
+				else
+				{
+					if(varDiff > 0)
+					{
+						var varDayDiff = view.OnGetMonthlyDiff(SchedYear, SchedMonth, SchedDay);
+						if(varDayDiff == 0)
+							varDayDiff = "";
+						else
+							varDayDiff = varDayDiff + " "+ Lang.translate("ID_VAULT_DAYS");
+						if(varTempVal1 == 0)
+							varTempVal1 = "";
+						else
+							varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+						if(varTempValTime == 0)
+							varTempValTime = "";
+						else
+							varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+						if(varTempVal3 == 0)
+							varTempVal3 = "";
+						else
+							varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+						varTempValue = varDayDiff + varTempVal1 + varTempValTime + varTempVal3;
+					}
+					else
+					{
+						varTempVal1 = 23 + varTempVal1;
+						varTempValTime = 60 + varTempValTime;
+						varTempVal3 = 60 + varTempVal3;
+						if(varTempVal1 == 0)
+							varTempVal1 = "";
+						else
+							varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+						if(varTempValTime == 0)
+							varTempValTime = "";
+						else
+							varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+						if(varTempVal3 == 0)
+							varTempVal3 = "";
+						else
+							varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+						varTempValue = varTempVal1+ varTempValTime + varTempVal3;
+					}
+				}
+			}
+			else
+			{
+				var varDayDiff = view.OnGetMonthlyDiff(SchedYear, SchedMonth, SchedDay);
+				if(varDiff > 0)
+				{
+					if(varDayDiff == 0)
+						varDayDiff = "";
+					else
+						varDayDiff = varDayDiff + " "+ Lang.translate("ID_VAULT_DAYS");
+					if(varTempVal1 == 0)
+						varTempVal1 = "";
+					else
+						varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+					if(varTempValTime == 0)
+						varTempValTime = "";
+					else
+						varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+					if(varTempVal3 == 0)
+						varTempVal3 = "";
+					else
+						varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+					varTempValue = varDayDiff + varTempVal1 + varTempValTime + varTempVal3;
+				}
+				else
+				{
+					varTempVal1 = 23 + varTempVal1;
+					varTempValTime = 60 + varTempValTime;
+					varTempVal3 = 60 + varTempVal3;
+					if(varDayDiff == 0)
+						varDayDiff = "";
+					else
+						varDayDiff = varDayDiff + " "+ Lang.translate("ID_VAULT_DAYS");
+					if(varTempVal1 == 0)
+						varTempVal1 = "";
+					else
+						varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+					if(varTempValTime == 0)
+						varTempValTime = "";
+					else
+						varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+					if(varTempVal3 == 0)
+						varTempVal3 = "";
+					else
+						varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+					varTempValue = varDayDiff + varTempVal1 + varTempValTime + varTempVal3;
+				}
+			}
+		}
+		if(varSchedType == 5)
+		{
+			if(varDiffDay < 0)
+			{
+				if(varTempVal1 == 0)
+					varTempVal1 = "";
+				else
+					varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+				if(varTempValTime == 0)
+					varTempValTime = "";
+				else
+					varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+				if(varTempVal3 == 0)
+					varTempVal3 = "";
+				else
+					varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+				varTempValue = varTempVal1 + varTempValTime + varTempVal3;
+			}
+			else if(varDiffDay == 0)
+			{
+				if(varDiff < 0)
+				{
+					varTempVal1 = 23 + varTempVal1;
+					varTempValTime = 60 + varTempValTime;
+					varTempVal3 = 60 + varTempVal3;
+				}
+				if(varTempVal1 == 0)
+					varTempVal1 = "";
+				else
+					varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+				if(varTempValTime == 0)
+					varTempValTime = "";
+				else
+					varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+				if(varTempVal3 == 0)
+					varTempVal3 = "";
+				else
+					varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+				varTempValue = varTempVal1 + varTempValTime + varTempVal3;
+			}
+			else if(varDiffDay > 0)
+			{
+				if(varDiffDay == 0)
+					varDiffDay = "";
+				else
+					varDiffDay = varDiffDay + " "+ Lang.translate("ID_VAULT_DAYS");
+				if(varTempVal1 == 0)
+					varTempVal1 = "";
+				else
+					varTempVal1 = varTempVal1 + " "+ Lang.translate("ID_VAULT_HOURS");
+				if(varTempValTime == 0)
+					varTempValTime = "";
+				else
+					varTempValTime = varTempValTime + " "+ Lang.translate("ID_VAULT_MINUTES");
+				if(varTempVal3 == 0)
+					varTempVal3 = "";
+				else
+					varTempVal3 = varTempVal3 + " "+ Lang.translate("ID_VAULT_SECONDS");
+				//varTempValue = varDiffDay + varTempVal1 + varTempValTime + varTempVal3;
+				varTempValue = varTempVal1 + varTempValTime + varTempVal3;
+			}
+		}
+		BackupJobRecords[iIndex].ScheduleDate = varTempValue;
+	}
+</script> 
+
+<script type="text/tiscript">
+	function showRecordset(varRecordSet)
+	{
+		var iIndex = 0;
+        do
+        {
+            var varCounter = 0;
+			var varSchedType = 0;
+			var varSchedDate = 0;
+			var varSchedTime = 0;
+            BackupJobRecords[iIndex] = {selected : true, varEntriesID : "", JobName : "", ScheduleDate : "", ScheduleTime:"", ScheduleType : "", JobStatus:""};
+            for (var varVirtualDBData in varRecordSet)
+            {
+                 switch(varCounter)
+                        {
+                            case 0:
+                                    BackupJobRecords[iIndex].varEntriesID = varVirtualDBData;
+                                    break;
+                            case 1:
+                                    BackupJobRecords[iIndex].JobName = varVirtualDBData;
+                                    break;
+                            case 2:
+									//BackupJobRecords[iIndex].ScheduleDate = varVirtualDBData;
+									varSchedDate = varVirtualDBData;
+                                    break;
+                            case 3:
+									BackupJobRecords[iIndex].ScheduleTime = varVirtualDBData;
+									varSchedTime = varVirtualDBData;
+                                    break;
+                            case 4:
+									BackupJobRecords[iIndex].ScheduleType = varVirtualDBData;
+									varSchedType = varVirtualDBData;
+                                    break;
+                            case 5:
+									if(varVirtualDBData == 0)
+									{
+										varVirtualDBData = Lang.translate("ID_VAULT_SUCCESS");
+									}
+									else if(varVirtualDBData == 1)
+									{
+										varVirtualDBData = Lang.translate("ID_VAULT_NEVER_RUN");
+									}
+									else if(varVirtualDBData == 2)
+									{
+										varVirtualDBData = Lang.translate("ID_VAULT_LOW_DISK");
+									}
+									else if(varVirtualDBData == 3)
+									{
+										varVirtualDBData = Lang.translate("ID_VAULT_FAILED");
+									}
+									else if(varVirtualDBData == 4)
+									{
+										varVirtualDBData = Lang.translate("ID_VAULT_ABORTED");
+									}
+									BackupJobRecords[iIndex].JobStatus = varVirtualDBData;
+									break;
+                        }
+                varCounter++;
+            }
+			FunSetNextStart(iIndex, varSchedDate, varSchedTime, varSchedType);
+            iIndex++;
+        }
+        while( varRecordSet.next());
+	}
+</script> 
+
+<script type="text/tiscript">
+	function CreateBackupUtilityTables()
+	{
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("CREATE TABLE IF NOT EXISTS BACKUP_JOB_DETAILS (ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, CREATED_DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP, JOB_NAME VARCHAR(200), SCHEDULE_TYPE INTEGER, SCHEDULE_DATE REAL, SCHEDULE_TIME NUMERIC, DESTINATION_PATH NVARCHAR(512), SEL_EXT_CATIDS NVARCHAR(512), SPECIFIC_EXT_LIST NVARCHAR(512), EXCLUDED_EXT_LIST NVARCHAR(512), LAST_BACKUP_DATE REAL, LAST_BACKUP_TIME NUMERIC, LAST_BACK_STATUS INTEGER, RESERVED1 INTEGER, RESERVED2 NVARCHAR(512), RESERVED3 NVARCHAR(512))");
+		DataBase.exec("CREATE TABLE IF NOT EXISTS SPECIFIC_FILE_FOLDERS(ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, FILE_FOLDER_PATH NVARCHAR(512) NOT NULL, ISEXCLUDED INTEGER, ISFILE INTEGER, JOBID INTEGER, RESERVED1 INTEGER, RESERVED2	NVARCHAR(512), RESERVED3 NVARCHAR(512));");
+		
+		varRecordSet = DataBase.exec("select count(ID) from BACKUP_JOB_DETAILS");
+		if ( varRecordSet instanceof Recordset )
+			GetRecSetTimeCount(varRecordSet);
+		varRecordSet.close();
+		if(varSetSchedCount == 0)
+		{
+			$(#ID_BACKUP_RUN).state.disabled = true;
+			$(#ID_BACKUP_EDIT).state.disabled = true;
+			$(#ID_BACKUP_DELETE).state.disabled = true;
+			OnDisplayLicenseAgreement();
+		}
+		else
+		{
+			$(.configure_backup).state.collapsed = true;
+			$(.backup_restore).state.expanded = true;
+			$(#ID_BTN_BACK).state.collapsed = true;
+			varRecordSet = DataBase.exec("select ID, JOB_NAME, LAST_BACKUP_DATE, LAST_BACKUP_TIME, SCHEDULE_TYPE, LAST_BACK_STATUS from BACKUP_JOB_DETAILS");
+			if ( varRecordSet instanceof Recordset )
+				showRecordset(varRecordSet);
+			varRecordSet.close();
+			$(#ID_BACKUP_RUN).state.disabled = false;
+			$(#ID_BACKUP_EDIT).state.disabled = false;
+			$(#ID_BACKUP_DELETE).state.disabled = false;
+		}
+		DataBase.close();
+	}
+</script> 
+
+<script type="text/tiscript">
+	function CallNotificationMessage(varMsgType, strMessageText)
+	{
+		$(#StatusMessage).text = strMessageText; 
+		var res = dialog { body:$(form#simple-dialog),
+		returns: #values, 
+		buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+        };
+        if(res == true)
+        {
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	function FunSetBackupStatus(varStatusPath)
+    {
+		$(#scanning_path).state.expanded = true;
+		$(#scanning_path).text = varStatusPath;
+	}
+</script> 
+
+<script type="text/tiscript">
+	function StopOperation(bIsManualStop)
+	{
+		view.OnPauseBackupSchedule();
+        $(#StatusMessage).text = Lang.translate("ID_STOP_BACKUP_UI");
+        var res = dialog { body:$(form#simple-dialog),
+		returns: #values, 
+		buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+        };
+        if(res == true)
+        {
+			$(.btn_container).state.expanded = true;
+            $(.btn_container_stop).state.collapsed = true;
+            $(.progress_bar_container).state.collapsed = true;
+			$(#scanning_path).state.collapsed = true;
+			$(#scanning_path).text = "";
+			$(#ID_BTN_VIEW2).state.disabled = false;
+			IsBackupProcessRunning = false;
+			view.OnStopBackupSchedule(bIsManualStop);
+        }
+        else
+        {
+            view.OnResumeBackupSchedule(bIsManualStop);
+        }
+    }
+	function StopRestoreOperation(bIsManualStop)
+	{
+		view.OnPauseBackupSchedule();
+        $(#StatusMessage).text = Lang.translate("ID_STOP_BACKUP_UI");
+        var res = dialog { body:$(form#simple-dialog),
+		returns: #values, 
+		buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+        };
+        if(res == true)
+        {
+			$(.btn_container_restore).state.expanded = true;
+            $(.btn_container_stop_restore).state.collapsed = true;
+			$(#scanning_path).state.collapsed = true;
+			$(#scanning_path).text = "";
+			$(#ID_BTN_VIEW1).state.disabled = false;
+			IsBackupProcessRunning = false;
+			view.OnStopBackupSchedule(bIsManualStop);
+        }
+        else
+        {
+            view.OnResumeBackupSchedule(bIsManualStop);
+        }
+    }
+	function GetRestoreDetails(varBackupDateTime)
+	{
+		RestoreDetailRecords[varRestoreDetailCount] = {selected : true, RestoreDateTime : varBackupDateTime};
+		varRestoreDetailCount++;
+	}
+	function AddRestoreBackupEntry(varBackupName, varLastBackup, varBackupFolderName)
+	{
+		RestoreJobRecords[varRestoreCount] = {selected : true, RestoreJobName : varBackupName, RestoreTime : varLastBackup, BKfolderName : varBackupFolderName};
+		varRestoreCount++;
+	}
+	function OnDisableControls()
+	{
+		$(#ID_RADIO_RESTORE_SYS).state.disabled = false;
+		$(#ID_RADIO_RESTORE_PATH).state.disabled = false;
+		$(#ID_BTN_BROWSE).state.disabled = true;
+		$(#ID_RESTORE_NEXT).state.disabled = false;
+		$(#ID_RESTORE_DELETE).state.disabled = false;
+		$(#scanning_path).state.collapsed = true;
+	}
+	$(#ID_VIEW_LOGS).onClick = function()
+	{
+		view.OnShowDataVaultLogs();
+	}
+	$(#ID_BACKUP_RUN).onClick = function()
+	{
+		FunCallSelectedEntry();
+		if(IsAnyEntrySelected == 0)
+		{
+			$(.message_display_block).state.expanded = true;
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_SELECT_ONE_ENTRY");
+            return;
+		}
+		IsBackupProcessRunning = true;
+		if(view.OnRunBackupSchedule(BackupJobRecords, SendBackupNotificationOnUI))
+        {
+			$(.btn_container).state.collapsed = true;
+			$(.btn_container_stop).state.expanded = true;
+			$(.progress_bar_container).state.expanded = true;
+			$(#ID_BTN_VIEW2).state.disabled = true;
+        }		
+	}
+	$(#ID_BACKUP_EDIT).onClick = function()
+    {
+		FunCallSelectedEntry();
+		if(IsAnyEntrySelected == 0)
+		{
+			$(.message_display_block).state.expanded = true;
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_SELECT_ONE_ENTRY");
+            return;
+		}
+		if(IsAnyEntrySelected == 1)
+        {
+            bIsEditDisable = false;
+        }
+        else
+        {
+            bIsEditDisable = true;
+        }
+        if(bIsEditDisable)
+        {
+            $(.message_display_block).state.expanded = true;
+			$(#ID_STATUS_MSG).text = Lang.translate("ID_SELECT_SINGLE_ENTRY");
+            return;
+        }
+        else
+        {
+			var varSelectedIndexVal;
+			for(var FileCount = BackupJobRecords.length; FileCount>0; )
+            {
+                if(BackupJobRecords[--FileCount].selected == true)
+                {
+                    varSelectedIndexVal = BackupJobRecords[FileCount].varEntriesID;
+                    break;
+                }
+            }
+            BackupJobRecords.length = 0;
+            var dlgParameters = {ProVersion:productVersion,varLanguageValue:g_LanguageName, varBrowseType:"ScheduleEdit", varDBPath:varDBPath, varFileExtDB:varFileExtDB, varEditId:varSelectedIndexVal};
+            var dlgRetVal = view.dialog { url: self.url("IDR_POPUP_BACKUP_UTIL.htm"), parameters: dlgParameters};
+            DataBase = DB.open(varDBPath);
+			varRecordSet = DataBase.exec("select count(ID) from BACKUP_JOB_DETAILS");
+			if ( varRecordSet instanceof Recordset )
+				GetRecSetTimeCount(varRecordSet);
+			varRecordSet.close();
+			if(varSetSchedCount == 0)
+			{
+				$(#ID_BACKUP_RUN).state.disabled = true;
+				$(#ID_BACKUP_EDIT).state.disabled = true;
+				$(#ID_BACKUP_DELETE).state.disabled = true;
+			}
+			else
+			{
+				varRecordSet = DataBase.exec("select ID, JOB_NAME, LAST_BACKUP_DATE, LAST_BACKUP_TIME, SCHEDULE_TYPE, LAST_BACK_STATUS from BACKUP_JOB_DETAILS");
+				if ( varRecordSet instanceof Recordset )
+					showRecordset(varRecordSet);
+				varRecordSet.close();
+				$(#ID_BACKUP_RUN).state.disabled = false;
+				$(#ID_BACKUP_EDIT).state.disabled = false;
+				$(#ID_BACKUP_DELETE).state.disabled = false;
+			}
+			DataBase.close();
+		}
+        view.ReloadJobDetails();
+    }
+	$(#ID_BACKUP_STOP).onClick = function()
+    {
+        bIsManualStop = true;
+        StopOperation(bIsManualStop);
+    }
+	$(#ID_RESTORE_STOP).onClick = function()
+    {
+        bIsManualStop = true;
+        StopRestoreOperation(bIsManualStop);
+    }
+	$(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        bIsManualStop = false;
+		if(!IsBackupProcessRunning)
+			view.OnStopBackupSchedule(bIsManualStop);
+        else
+			StopOperation(bIsManualStop);
+    }
+    $(#ID_BUTTON_MINIMIZE).onClick = function()
+    {
+       //$(.message_display_block).state.collapsed = false;
+       view.OnMinimize();
+    }
+	$(#ID_RADIO_RESTORE_PATH).on("change", function()
+    {
+        $(#ID_BTN_BROWSE).state.disabled = false;
+		view.OnGetSysRestorePath(false,"");
+    });
+	$(#ID_RADIO_RESTORE_SYS).on("change", function()
+    {
+        $(#ID_BTN_BROWSE).state.disabled = true;
+		$(#ID_INPUT_BROWSE_PATH).state.value = "";
+		view.OnGetSysRestorePath(true,"");
+    });
+</script>
+
+<script type="text/tiscript">
+	function OnDisplayLicenseAgreement()
+	{
+		g_IsAnyPopUpDisplayed = true;
+		var dlgParameters = {ProVersion:productVersion,varLanguageValue:g_LanguageName};
+		var dlgRetVal = view.dialog { url: self.url("IDR_HTM_DATA_VAULT_AGREEMENT.htm"), parameters: dlgParameters};
+		g_IsAnyPopUpDisplayed = false;
+		
+		if(!dlgRetVal)
+			view.OnStopBackupSchedule(false);
+	}
+</script>
+
+<script type="text/tiscript">
+    function self.ready()
+    {	$(.configure_backup).state.expanded = true;	
+		self.language = g_LanguageName;	
+		$(#ID_BTN_VIEW1).state.expanded = true;	
+        $(#ID_BTN_VIEW2).state.collapsed = true;	
+		varDBPath = view.GetDBPathforBackUp();
+		varFileExtDB = view.OnGetDBPathforFileExt();
+		CreateBackupUtilityTables();
+		
+		vlistObj = $(#BackupDetailsTable);
+        vlistObj.value = BackupJobRecords;
+		
+		vlistResObj = $(#RestoreDetailsTable);
+        vlistResObj.value = RestoreJobRecords;
+		
+		vlistObj.on("change","tbody > tr", function()
+        {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAllVal.value = false;
+        });
+		vlistResObj.on("change","tbody > tr", function()
+        {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAllResVal.value = false;
+        });
+		
+		if(BackupJobRecords.length == 0)
+		{
+			$(#Backupselect-all).state.disabled = true;
+		}
+		else
+		{
+			$(#Backupselect-all).state.disabled = false;
+		}
+		if(RestoreJobRecords.length == 0)
+		{
+			$(#Restoreselect-all).state.disabled = true;
+		}
+		else
+		{
+			$(#Restoreselect-all).state.disabled = false;
+		}
+		view.OnBackupUtilityStatus(FunSetBackupStatus, CallNotificationMessage);
+    }
+</script>
+
+<script type="text/tiscript">  
+	function GetRecSetTimeCount(varRecordSet)
+	{
+		for (var varVirtualDBCount in varRecordSet)
+        {
+			varSetSchedCount = varVirtualDBCount;
+		}
+	}
+</script>
+
+<script type="text/tiscript"> 
+	function SendBackupNotificationOnUI()
+	{
+		IsBackupProcessRunning = false;
+		$(#scanning_path).state.collapsed = true;
+		$(#scanning_path).text = "";
+		$(.btn_container).state.expanded = true;
+		$(.btn_container_stop).state.collapsed = true;
+		$(.progress_bar_container).state.collapsed = true;
+		$(#ID_BTN_VIEW2).state.disabled = false;
+		showBackupTable();
+	}
+	function SendNotificationOnUI()
+	{
+		IsBackupProcessRunning = false;
+		$(.btn_container_restore).state.expanded = true;
+		$(.btn_container_stop_restore).state.collapsed = true;
+		$(#ID_BTN_VIEW1).state.disabled = false;
+	}
+	$(#ID_BTN_BROWSE).onClick = function()
+    {
+        var varResPath = view.selectFolder();
+        varResPath = varResPath.replace("\/","\\");
+		$(#ID_INPUT_BROWSE_PATH).value = varResPath;
+        RestoreJobRecords.length = 0;
+		varRestoreCount = 0;
+		view.OnGetSysRestorePath(true, varResPath);
+    }
+</script>
+
+<script type="text/tiscript">  
+		function showBackupTable(){
+			$(.backup_details_div).state.expanded = true;
+			$(.restore_details).state.collapsed = true;
+			
+			DataBase = DB.open(varDBPath);
+			BackupJobRecords.length = 0;
+			varRecordSet = DataBase.exec("select ID, JOB_NAME, LAST_BACKUP_DATE, LAST_BACKUP_TIME, SCHEDULE_TYPE, LAST_BACK_STATUS from BACKUP_JOB_DETAILS");
+			if ( varRecordSet instanceof Recordset )
+				showRecordset(varRecordSet);
+			varRecordSet.close();
+			DataBase.close();
+			
+			vlistObj.on("change","tbody > tr", function() 
+			{
+				// some change inside tr 	// note: each row (this) is a form here so its value is structure: 
+				this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+				if( !this.data.selected )
+					selectAllVal.value = false;
+			});	
+		}
+		$(#ID_BTN_VIEW1).onClick = function() 
+		{
+			$(#ID_BTN_VIEW1).state.expanded = true;	
+			$(#ID_BTN_VIEW2).state.collapsed = true;	
+			showBackupTable();
+		}
+		function showRestoreTable()
+		{
+			$(#scanning_path).state.expanded = true;
+			$(#scanning_path).text = Lang.translate("ID_LOADING_LIST");
+			$(#ID_RADIO_RESTORE_SYS).state.disabled = true;
+			$(#ID_RADIO_RESTORE_PATH).state.disabled = true;
+			$(#ID_BTN_BROWSE).state.disabled = true;
+			$(#ID_RESTORE_NEXT).state.disabled = true;
+			$(#ID_RESTORE_DELETE).state.disabled = true;
+			RestoreJobRecords.length = 0;
+			varRestoreCount = 0;
+			view.OnGetRestoreSchedule(AddRestoreBackupEntry, OnDisableControls);
+			
+			vlistResObj = $(#RestoreDetailsTable);
+			vlistResObj.value = RestoreJobRecords;
+		
+			vlistResObj.on("change","tbody > tr", function() 
+			{
+				// some change inside tr 	// note: each row (this) is a form here so its value is structure: 
+				this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+				if( !this.data.selected )
+					selectAllResVal.value = false;
+			});	
+			if(RestoreJobRecords.length == 0)
+			{
+				$(#Restoreselect-all).state.disabled = true;
+			}
+			else
+			{
+				$(#Restoreselect-all).state.disabled = false;
+			}			
+		}
+		
+		$(#ID_BTN_RESTORE_FILES).onClick = function() 
+		{
+			$(.configure_backup).state.collapsed = true;
+			$(.backup_restore).state.expanded = true;
+			$(.backup_details_div).state.collapsed = true;
+			$(.restore_details).state.expanded = true;
+			$(#ID_BTN_BACK).state.expanded = true;
+			$(#ID_BTN_VIEW1).state.collapsed = true;	
+			$(#ID_BTN_VIEW2).state.expanded = true;
+			showRestoreTable();
+		}
+		$(#ID_BTN_VIEW2).onClick = function() 
+		{
+			$(#ID_BTN_VIEW1).state.collapsed = true;	
+			$(#ID_BTN_VIEW2).state.expanded = true;
+			$(.backup_details_div).state.collapsed = true;
+			$(.restore_details).state.expanded = true;
+
+			showRestoreTable();
+		}
+		//$(#ID_BTN_VIEW_DEFAULT).onClick = function() 
+		//{
+		//	$(.configure_backup).state.collapsed = true;
+		//	$(.backup_restore).state.expanded = true;
+		//	$(#ID_BTN_BACK).state.expanded = true;
+		//}
+		$(#ID_BTN_CONFIGURE).onClick = function() 
+		{
+			$(.configure_backup).state.collapsed = true;
+			$(.backup_restore).state.expanded = true;
+			$(#ID_BTN_BACK).state.expanded = true;
+			$(#ID_BTN_VIEW1).state.expanded = true;	
+			$(#ID_BTN_VIEW2).state.collapsed = true;
+		}
+		$(#ID_BTN_BACK).onClick = function() 
+		{
+			$(.configure_backup).state.expanded = true;
+			$(.backup_restore).state.collapsed = true;
+			$(#ID_BTN_BACK).state.collapsed = true;
+		}
+		$(#ID_BACKUP_ADD).onClick = function() 
+		{
+			BackupJobRecords.length = 0;
+			g_IsAnyPopUpDisplayed = true;
+			//var dlgParameters = {ProVersion:productVersion,varLanguageValue:g_LanguageName, varBrowseType:"ScheduleAdd", varDBPath:varDBPath, varFileExtDB:varFileExtDB, varEditId:""};
+			//var dlgRetVal = view.dialog { url: self.url("IDR_POPUP_BACKUP_UTIL.htm"), parameters: dlgParameters};
+			var dlgRetVal = view.dialog { url: self.url("IDR_POPUP_BACKUP_UTIL.htm")};
+			g_IsAnyPopUpDisplayed = false;
+			DataBase = DB.open(varDBPath);
+			varRecordSet = DataBase.exec("select count(ID) from BACKUP_JOB_DETAILS");
+			if ( varRecordSet instanceof Recordset )
+				GetRecSetTimeCount(varRecordSet);
+			varRecordSet.close();
+			if(varSetSchedCount == 0)
+			{
+				$(#ID_BACKUP_RUN).state.disabled = true;
+				$(#ID_BACKUP_EDIT).state.disabled = true;
+				$(#ID_BACKUP_DELETE).state.disabled = true;
+				$(#Backupselect-all).state.disabled = true;
+			}
+			else
+			{
+				varRecordSet = DataBase.exec("select ID, JOB_NAME, LAST_BACKUP_DATE, LAST_BACKUP_TIME, SCHEDULE_TYPE, LAST_BACK_STATUS from BACKUP_JOB_DETAILS");
+				if ( varRecordSet instanceof Recordset )
+					showRecordset(varRecordSet);
+				varRecordSet.close();
+				$(#ID_BTN_BACK).state.collapsed = true;
+				$(#ID_BACKUP_RUN).state.disabled = false;
+				$(#ID_BACKUP_EDIT).state.disabled = false;
+				$(#ID_BACKUP_DELETE).state.disabled = false;
+				$(#Backupselect-all).state.disabled = false;
+			}
+			DataBase.close();
+            view.ReloadJobDetails();
+		}
+		$(#ID_BACKUP_DELETE).onClick = function()
+		{
+			FunCallSelectedEntry();
+			if(IsAnyEntrySelected == 0)
+			{
+				$(.message_display_block).state.expanded = true;
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_SELECT_ONE_ENTRY");
+				return;
+			}
+			$(#StatusMessage).text = Lang.translate("ID_CONF_RU_DELETE");
+			var res = dialog { body:$(form#simple-dialog),
+			returns: #values, 
+			buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+			};
+			if(res == true)
+			{
+				for(var FileCount = BackupJobRecords.length; FileCount>0; )
+				{
+					var bselected = BackupJobRecords[--FileCount].selected;
+					if(bselected == true)
+					{
+						var varSelectedIndexVal = BackupJobRecords[FileCount].varEntriesID;
+						DataBase = DB.open(varDBPath);
+						DataBase.exec("delete from BACKUP_JOB_DETAILS where ID = ?", varSelectedIndexVal);
+						DataBase.exec("delete from SPECIFIC_FILE_FOLDERS where JOBID = ?", varSelectedIndexVal);
+						DataBase.close();
+						BackupJobRecords.remove(FileCount);
+					}
+					else
+					{
+						continue;
+					}
+				}
+			}
+			else
+			{
+				return;
+			}
+			if(BackupJobRecords.length == 0)
+			{
+				$(#Backupselect-all).state.disabled = true;
+				$(#ID_BACKUP_RUN).state.disabled = true;
+				$(#ID_BACKUP_EDIT).state.disabled = true;
+				$(#ID_BACKUP_DELETE).state.disabled = true;
+				$(#ID_BTN_BACK).state.expanded = true;
+			}
+			else
+			{
+				$(#ID_BTN_BACK).state.collapsed = true;
+				$(#Backupselect-all).state.disabled = false;
+				$(#ID_BACKUP_RUN).state.disabled = false;
+				$(#ID_BACKUP_EDIT).state.disabled = false;
+				$(#ID_BACKUP_DELETE).state.disabled = false;
+			}
+		}
+		$(#ID_RESTORE_NEXT).onClick = function() 
+		{
+			FunCallSelectedRestoreEntry();
+			if(IsAnyRestoreSelected > 1)
+			{
+				$(.message_display_block).state.expanded = true;
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_PLEASE_SELECT_ONE_ENTRY_RECOVER");
+				return;
+			}
+			if(IsAnyRestoreSelected < 1)
+			{
+				$(.message_display_block).state.expanded = true;
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_PLEASE_SELECT_ATLEAST_ONE_ENTRY");
+				return;
+			}
+			for( var record in RestoreJobRecords )
+			{
+				var varIndex = RestoreJobRecords.indexOf(record);
+				if(record.selected)
+				{
+					varBackupNameVal = RestoreJobRecords[varIndex].BKfolderName;
+					varBackupTimeVal = RestoreJobRecords[varIndex].RestoreTime;
+				}
+			}
+			RestoreDetailRecords.length = 0;
+			varRestoreDetailCount = 0;
+			view.OnGetRestoreDetails(varBackupNameVal, varBackupTimeVal, GetRestoreDetails);
+			function CheckIsNetworkPathFun(varFunVal, varFunCalBack)
+			{
+				varNewLocationPath = varFunVal;
+				view.CheckIsNetworkPath(varFunVal,varFunCalBack);
+			}
+			//var dlgParameters = {ProVersion:productVersion,varLanguageValue:g_LanguageName,varRestoreDetailRecords:RestoreDetailRecords, CheckIsNetworkPathPara:CheckIsNetworkPathFun};
+			
+			//var varRestoreVal = view.dialog { url: self.url("IDR_POPUP_BACKUP_RESTORE.htm"), parameters: dlgParameters};
+			var varRestoreVal = view.dialog { url: self.url("IDR_POPUP_BACKUP_RESTORE.htm")};
+			if(varRestoreVal == null)
+			{
+				return;
+			}
+			varArrVal[0] = {selected : true, RestoreDateTime: varRestoreVal};
+			$(.btn_container_restore).state.collapsed = true;
+			$(.btn_container_stop_restore).state.expanded = true;
+			$(#ID_BTN_VIEW1).state.disabled = true;
+			IsBackupProcessRunning = true;
+			view.OnRestoreSendDetail(varArrVal, varNewLocationPath, SendNotificationOnUI);
+		}
+		$(#ID_RESTORE_DELETE).onClick = function() 
+		{
+			FunCallSelectedRestoreEntry();
+			if(IsAnyRestoreSelected < 1)
+			{
+				$(.message_display_block).state.expanded = true;
+				$(#ID_STATUS_MSG).text = Lang.translate("ID_PLEASE_SELECT_ATLEAST_ONE_ENTRY");
+				return;
+			}
+			$(#StatusMessage).text = Lang.translate("ID_CONF_RU_DELETE");
+			var res = dialog { body:$(form#simple-dialog),
+			returns: #values, 
+			buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+			};
+			if(res == true)
+			{
+				var varDelSelected = 0;
+				for(var FileCount = RestoreJobRecords.length; FileCount>0; )
+				{
+					var bselected = RestoreJobRecords[--FileCount].selected;
+					if(bselected == true)
+					{
+						var varRestoreTime = RestoreJobRecords[FileCount].RestoreTime;
+						var varRestoreJobName = RestoreJobRecords[FileCount].RestoreJobName;
+						varRestoreDelVal[varDelSelected] = {selected: true, RestoreJobName:varRestoreJobName, RestoreTime: varRestoreTime};
+						varDelSelected++;
+						RestoreJobRecords.remove(FileCount);
+					}
+					else
+					{
+						continue;
+					}
+				}
+				function FunCallResetVal()
+				{	
+					self.timer(50ms,function()
+					{
+						showRestoreTable();
+					});	
+				}
+				view.OnSendDeleteRestore(varRestoreDelVal, FunCallResetVal);
+			}
+			else
+			{
+				return;
+			}
+			if(RestoreJobRecords.length == 0)
+			{
+				$(#Restoreselect-all).state.disabled = true;
+			}
+			else
+			{
+				$(#Restoreselect-all).state.disabled = false;
+			}
+		}
+</script>
+
+<script type="text/tiscript">
+    $(#ID_INFO).onClick = function ()
+    {
+        Sciter.launch("https://vibranium.co.in/");
+    }
+    $(#help_click).onClick = function ()
+    {
+        Sciter.launch("https://vibranium.co.in/");
+    }
+    $(body).onClick = function ()
+    {
+        $(.message_display_block).state.collapsed = true;
+    }
+</script>
+        
+	<form #simple-dialog caption="Warning!">
+        <p #StatusMessage>Do you want to stop process?</p>
+    </form>
+</head>
+
+<body>
+<div .main>
+	<div #header_content .header>
+		<div .logo-n  .frame_display_src src="IDR_HTM_HOME.htm">
+			<img src="IDR_PNG_VIBRANIUM.png" #ID_LOGO  style="cursor:pointer;width:170dip;margin-right:4dip;margin-top: 5dip;"><span style="color:#000;font-weight: 500;">Beta</span>
+		</div>
+		<div #data_vault_header_frame role="window-caption">
+		</div>
+		<div #header_close_bt .header_close>
+            <ul>
+				<!-- <li .clickable_cl #help_click><label>ID_STR_HELP</label></li> -->
+				<li .clickable_cl #help_click style="visibility: none;"><label>Help</label></li>
+				<li .clickable_cl .frame_display_src #ID_INFO>
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="94 -4 800 800" style="enable-background:new 94 -4 800 800;" xml:space="preserve" class="helpIcon">
+<path d="M494,784c-214.3,0-388-173.7-388-388S279.7,8,494,8s388,173.7,388,388S708.3,784,494,784z M335.7,288.7v4
+	c0,10.7,8.7,19.4,19.4,19.4h38.7c10.7,0,19.4-8.7,19.4-19.4c0-50.1,38.7-76.8,90.8-76.8c50.8,0,84.1,26.7,84.1,64.8
+	c0,36-18.7,52.7-65.4,74.1l-13.3,6c-39.4,17.4-54.1,43.4-54.1,88.8v4.6c0,10.7,8.7,19.4,19.4,19.4h38.7c10.7,0,19.4-8.7,19.4-19.4
+	c0-20,5.4-28.1,21.3-35.4l13.4-6c56.1-25.4,98.1-58.7,98.1-131.5v-4c0-76.7-66.7-133.5-161.6-133.5
+	C407.8,143.8,335.7,199.2,335.7,288.7L335.7,288.7z M435.8,589.7c0,33.6,25.6,58.5,57.9,58.5c33,0,58.5-24.9,58.5-58.5
+	c0-33.6-25.6-57.9-58.5-57.9C461.4,531.8,435.8,556,435.8,589.7z"/>
+</svg>
+				</li>
+                <li .clickable_cl .frame_display_src #ID_BUTTON_MINIMIZE>
+					<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+						<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+						</svg>
+				</li>
+                <li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE>
+					<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+						<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+						<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+						</svg>
+				</li>
+            </ul>
+		</div>
+	</div>
+	<span #ID_BTN_BACK style="padding-left: 20dip;display: block;position: absolute;padding-top: 5dip;cursor:pointer;z-index: 9;">&larr; back</span>
+	<div .inner_body>
+		<div style="margin:0!important;">
+	    <h1 class="headingTitle1"style="text-align:center;"><label>ID_BACKUP_UTILITY</label></h1>
+		<p style="text-align:center;"><label>ID_BACKUP_UTILITY_DESC</label></p><br/>
+		</div>
+        <div class="configure_backup">
+            <p class="btnNew1" #ID_BTN_CONFIGURE><label>ID_BACKUP_SCHED</label><span style="position:absolute;bottom:6dip;right:15dip;margin-right:15dip;font-size: 18dip;">&rarr;</span></p>
+			<!-- <p>Establish a regular timetable for automated<br/>data backup procedures.</p> -->
+            <!-- <p style="text-align:center;text-decoration:underline;cursor:pointer;" #ID_BTN_VIEW_DEFAULT .dfn src=""><label>ID_VIEW_DEFAULT</label></p> -->
+            <p class="btnNew1" #ID_BTN_RESTORE_FILES><label>ID_RESTORE_FILES</label><span style="position:absolute;bottom:6dip;right:15dip;margin-right:15dip;font-size: 18dip;">&rarr;</span></p>
+			<!-- <p>Recover and retrieve previously saved<br/>data or documents.</p> -->
+			<div style="width:350dip;height:320dip;position:absolute;bottom:0dip;right:0;"><img src="IDR_PNG_VIBRO_LG.png" class="vibroImg" /></div>
+		</div>		
+		<div .backup_restore>
+			<!-- <div .info_button style="visibility: none;">
+				<div #ID_SHOW_INFO .img_sched_icon .tooltip>
+					<div class="img_sched_info">
+					</div>
+					<span #ID_INFO class="tooltiptext"><label>ID_DESC_BACKUP_UI</label></span>
+				</div>
+			</div> -->
+			<div .Report_heading>
+				<button class="col_1" #ID_BTN_VIEW1>
+					<label>ID_BACKUP</label>
+				</button>
+				<button class="col_2" #ID_BTN_VIEW2> 
+					<label>ID_RESTORE</label>
+				</button>
+			</div>
+			<div .Backup_details>
+				<div .backup_details_div>
+					<table .backup_details_table #BackupDetailsTable>
+						<thead>
+							<tr>
+								<th style="width:30dip;background-color:#0097d6!important;background-image: none!important;"><input#Backupselect-all|checkbox checked/></th>
+								<th style="width:175dip;background-color:#0097d6!important;background-image: none!important;"><label>ID_JOB_NAME</label></th>
+								<th style="background-color:#0097d6!important;background-image: none!important;"><label>ID_NEXT_START</label></th>
+								<th style="width:175dip;background-color:#0097d6!important;background-image: none!important;"><label>ID_STATUS</label></th>
+							</tr>
+						</thead>  
+						<tbody>
+							<tr>
+								<td><input(selected)|checkbox style="margin-top:5dip;"/><span></span></td>
+								<td(JobName)></td>
+								<td(ScheduleDate)></td>
+								<td(JobStatus)></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="progress_bar_container">
+                        <div><progress #progress_bar max="100" value="0"/></div>
+                        <p .percentage_container><span #DataVaultPercent>0%</span></p>
+                    </div>
+					<div .btn_container .col_1_right>
+						<button .btnNew2 #ID_BACKUP_RUN><label>ID_RUN_JOB</label><span style="position:absolute;bottom:4dip;right:10px;font-size: 18dip;">&rarr;</span></button>
+						<button .btnNew2 .sched_backp_bangla #ID_BACKUP_ADD><label>ID_ADD_JOB</label><span style="position:absolute;bottom:4dip;right:10px;font-size: 18dip;">&rarr;</span></button>
+						<button .btnNew2Sm #ID_BACKUP_EDIT><label>ID_EDIT</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+						<button .btnNew2Sm #ID_BACKUP_DELETE><label>ID_FW_DELETE</label><span style="position:absolute;bottom:4dip;right:15px;font-size: 18dip;">&rarr;</span></button>
+						<button .btnNew2Sm #ID_VIEW_LOGS style="width:80dip"><label>ID_VIEW_LOG</label><span style="position:absolute;bottom:4dip;right:10px;font-size: 18dip;">&rarr;</span></button>
+					</div>
+					<div .btn_container_stop>
+						<button .scan_button .button_small .button_large #ID_BACKUP_STOP src=""><label>ID_BTN_STOP</label></button>
+					</div>
+				</div>
+				<div .restore_details>
+				<div style="padding-top:10dip;padding-left:0">
+					<input type="radio" style="margin-left:7dip;font-size:11dip!important; " #ID_RADIO_RESTORE_SYS checked><label for="ID_RADIO_RESTORE_SYS">ID_RESTORE_BACKUP</label><br/>
+					<input type="radio" style="margin-left:7dip;font-size:5dip!important;" #ID_RADIO_RESTORE_PATH><label for="ID_RADIO_RESTORE_PATH">ID_RESTORE_PATH</label>
+					<input type="text" #ID_INPUT_BROWSE_PATH .restore_path/>
+					<button .scan_button #ID_BTN_BROWSE style="height:17dip;padding:0;margin-right:20dip;float:right;padding-left:15dip;"><label>ID_UPDATE_BTN_BROWSE</label></button>
+				</div>
+					<table .restore_details_table #RestoreDetailsTable  style="margin:10dip">
+						<thead>
+							<tr>
+								<th style="width:30dip;"><input#Restoreselect-all|checkbox checked/></th>
+								<th style="width:430dip"><label>ID_JOB_NAME</label></th>
+								<th><label>ID_LAST_BACKUP</label></th>
+							</tr>
+						</thead>  
+						<tbody>
+							<tr>
+								<td><input(selected)|checkbox style="margin-top:5dip;"/><span></span></td>
+								<td(RestoreJobName)></td>
+								<td(RestoreTime)></td>
+							</tr>
+						</tbody>
+					</table>
+					<div .col_2_right .btn_container_restore>
+						<button .btnNew2Sm #ID_RESTORE_NEXT><label>ID_NEXT_ONLINE</label><span style="position:absolute;bottom:4dip;right:10px;font-size: 18dip;">&rarr;</span></button>
+						<button .btnNew2Sm #ID_RESTORE_DELETE><label>ID_FW_DELETE</label><span style="position:absolute;bottom:4dip;right:10px;font-size: 18dip;">&rarr;</span></button>
+					</div>
+					<div .btn_container_stop_restore>
+						<button .btnNew2Sm .button_large #ID_RESTORE_STOP><label>ID_BTN_STOP</label></button>
+					</div>
+				</div>
+			</div>
+			<p #scanning_path> </p>
+		</div>
+		<div .message_display_block>
+			<p #ID_STATUS_MSG>Scanning has been completed successfully!!</p>
+		</div>
+	</div>		
+</div>
+</body>
+</html>

@@ -1,0 +1,729 @@
+<html lang="ENGLISH">
+<head>
+    <title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">			
+    <style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html {
+		padding:0;
+		margin: 40dip;
+		overflow: hidden;
+		width:auto;
+		height:auto;
+		font-family: QuickSandRegular;
+	}		
+	popup#notification { style-set: notification-message; }
+
+@set notification-message {
+
+  :root {
+    prototype: Notification;
+    background: transparent;
+    margin:0dip;
+    size: max-content;
+    display:block;
+    visibility:none;
+    transform: translate(0,0); opacity:1.0;
+    font:system;
+	position:relative;
+  }
+  
+  :root[state] {visibility:visible;}
+  :root[state=initial] { transform: translate(0,100%); opacity:0.0; } /* offstage */
+  :root[state=shown]   { transform: translate(0,0);    opacity:1.0;   transition: transform(ease-in-out,500ms) opacity(linear,500ms);   }
+  :root[state=shownSlow]   { transform: translate(0,0);    opacity:1.0;visibility:visible; transition: visibility(ease-in-out,1000ms) opacity(linear,1000ms);  }
+  :root[state=closed]  { transform: translate(0,0); opacity:0.0;   transition: transform(linear,1ms) opacity(linear,1ms);  }
+  :root[state=closedSlow]  { transform: translate(0,0); opacity:0.0; transition: transform(linear,500ms) opacity(linear,500ms);  }
+
+  :root > div.cont {
+    // background: rgba(255,255,255,1);
+    background-image: url(IDR_JPG_DARK_THEME.jpg);
+	background-size:cover;
+	background-repeat:expand stretch-left stretch-right stretch-middle;
+    border: 1dip solid #3d748e;
+    /* border-radius: 10dip; */
+    margin:6dip; // gap for shadow 
+    width: 300dip;
+    /* box-shadow: 2dip 2dip 2dip rgba(0,0,0,0.5);   */
+	
+	 /* filter:blur(5dip);  */
+  }
+	  content { display:block; /* padding: 8dip; padding-bottom: 8dip; */}
+
+	}		
+	.minimize_btt{
+		float:right;
+		cursor:pointer;
+		behaviour:clickable;
+		size:20;
+		margin-top:4dip;
+		margin-right:10dip;
+	}
+	.headerTop{
+		size:*;
+		background:transparent;
+		padding:8dip;
+		padding-top:2dip;
+		padding-bottom:0;
+		width:284dip;
+	}
+	.smallContentSmVirus{
+		padding:8dip;
+		background:#2b5a7e;
+		color:#fff;
+	}
+	.smallContentSmVirus h4{
+		margin:0;
+		margin-top:2dip;
+		text-align:left;
+	}
+	.clickbtn1{
+		padding:0;
+		padding-top:0dip;
+		margin:0;
+	}
+	.clickbtn2{
+		cursor:pointer;
+		color:#fe980f!important;
+	}
+	.arrow{
+		size:16dip;
+		background:transparent;
+		float:right;
+		margin-top:7dip;
+		cursor:pointer;
+	}
+    .reverse{
+		transform:rotate(180deg);
+	}
+	.shield{
+		width:30dip;
+	}
+	.closeBt2{
+		margin-top:7dip;
+		margin-left:5dip;
+	}
+	.product_description{
+		width:290dip;
+		text-overflow:ellipsis;
+		word-wrap: break-word;
+		padding-left:5dip;
+	}
+	.path_string{
+		text-overflow:ellipsis;
+		text-align:justify;	
+		font-size:12dip;
+	}
+	#ID_COUNT_SHOW{
+		visibility:visible;
+	}
+	#ID_COUNT_SHOW:collapsed{
+		visibility:hidden;
+	}
+	#ID_REGISTER_STATUS{
+		visibility:visible;
+	}
+	#ID_REGISTER_STATUS:collapsed{
+		visibility:none;
+	}
+	#PRODUCT_VERSION{
+		visibility:visible;
+	}
+	#PRODUCT_VERSION:collapsed{
+		visibility:none;
+	}
+	.gray_color{
+		background:#d9d9d9!important;
+		color:red;
+		padding:8dip;
+		padding-top:2dip;
+		padding-bottom:2dip;
+	}
+	.green_color{
+		background:green;
+		color:white;
+		padding:8dip;
+		padding-top:2dip;
+		padding-bottom:2dip;
+	}
+	.red_color{
+		background:red;
+		color:white;
+		padding:8dip;
+		padding-top:2dip;
+		padding-bottom:2dip;
+	}
+	.gray_action_color{
+		color:grey;
+		width:150dip;
+		text-align:center;
+		margin-left:3dip;
+		font-weight:bold;
+	}
+	.green_action_color{
+		color:green;
+		width:150dip;
+		text-align:center;
+		margin-left:3dip;
+		font-weight:bold;
+	}
+	.red_action_color{
+		color:red;
+		width:150dip;
+		text-align:center;
+		margin-left:3dip;
+		font-weight:bold;
+	}
+	.product_heading{
+		text-align:center;
+		font-weight:500;
+		font-size:14dip;
+		padding-top:2dip;
+		margin-bottom:0dip;
+		margin-top:0dip;
+		margin-left:10dip;
+		width:270dip;
+		font-weight:normal;
+		text-transform:uppercase;
+	}
+	popup#notification { style-set: notification-message; }
+	
+	.versionReg{
+		position:absolute;
+		margin-left:35dip;
+		color:#ff9999;
+		margin-top:5dip;
+		font-size:14dip;
+	}
+	.virusName{
+		margin-top:0dip;
+		width:280dip;
+		margin-bottom:0dip;
+		text-align:left;
+		height:20dip;
+		margin-left:0dip;
+	}
+	.virusPath{
+		height:20dip;
+		margin-bottom:0dip;
+		width:279dip;
+		margin-top:3dip;
+		text-align:left;
+		margin-left:0dip;
+	}
+	.actionTakenVirus{
+		height:4dip;
+		text-align:center;
+		margin-top:5dip;
+		margin-left:5dip;
+		font-size:15dip;
+		font-weight:bold;
+	}
+	.virus_img
+	{
+		width:20dip;
+		height:20dip;
+		margin-top:3dip;
+	}
+	.bugImage{
+		width:18dip;
+		height:18dip;
+		position:absolute;
+		margin-left:62dip;
+	}
+	.closeBtnSmallHdr{
+		width:23dip;
+		height:23dip;
+		margin-top:3dip;
+		margin-right:15dip;
+		position:absolute;
+		float:right;
+	}
+	.textDiv{
+		width:285dip;
+		margin:auto;
+		margin-left:5dip;
+		margin-bottom:0;
+		padding-bottom:10dip;
+		padding-top:0dip;
+		height:115dip;
+		margin-top:10dip;
+	}
+	.logoMainPg{
+		width:20dip;
+	}
+	.virusPath .tooltiptext {
+		visibility: hidden;
+		min-width: 255dip;
+		min-height: 20dip;
+		text-align: center;
+		padding:0dip;
+		display:inline-block;
+		z-index: 1;
+		position:absolute;
+		left:35dip;
+		margin-bottom:100dip;
+		margin-right:2dip;
+		top:95dip!important;
+		background-color:lightgrey;
+		border:1dip solid black;
+		border-radius:5dip;
+	}
+	.virusPath:hover .tooltiptext {
+		visibility: visible;
+	}
+	.RegProductVersion{
+		position:absolute;
+		color:white;
+		margin-left:33dip;
+		margin-top:6dip;
+		font-weight:600;
+	}
+	.ActionTakenDiv1{
+		 width: 284dip;
+		 height:20dip;
+		 margin-top:10dip;
+	}
+	#ID_ACTION1{
+		border:1dip solid #fff;
+		background-color:#fff;
+		border-radius:20dip;
+		width:150dip;
+		text-align:center;
+		margin:auto;
+		font-weight:bold;
+		font-size:14dip;
+	}
+	.menuIconStyle1{
+		size:25dip;background:none;
+		fill: #fff;
+		stroke:#fff;
+		margin-bottom:0dip;
+	}
+    </style>
+	
+	<script type="text/tiscript">
+		include "IDR_TIS_MAIN.tis";
+		include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+
+	<script type="text/tiscript">
+	var iFileCount;
+    var iCurrentIndexCount = 0;
+	var varArrThreatsRecord = new Array(0);
+	var varTotalThreatCount = 0;
+	</script>
+
+	<script type="text/tiscript">
+		function RemoveAllAttributes()
+		{
+			self.select("#ID_ACTION1").attributes.removeClass("gray_action_color");
+			self.select("#ID_ACTION1").attributes.removeClass("green_action_color");
+			self.select("#ID_ACTION1").attributes.removeClass("red_action_color");
+		}
+		function AddGreenAttributes()
+		{
+			RemoveAllAttributes();
+			self.select("#ID_ACTION1").attributes.addClass("green_action_color");
+		}
+		function AddGrayAttributes()
+		{
+			RemoveAllAttributes();
+			self.select("#ID_ACTION1").attributes.addClass("gray_action_color");
+		}
+		function AddRedAttributes()
+		{
+			RemoveAllAttributes();
+			self.select("#ID_ACTION1").attributes.addClass("red_action_color");
+		}
+	</script>
+
+	<script type="text/tiscript">
+    function ShowQuarantineInfo(Evnt)
+    {
+        var FileName = Evnt.data.one.toString();
+        var FilePath = Evnt.data.two.toString();
+		var CompletePath = Evnt.data.two.toString();
+		if(FilePath.length > 30)
+		{
+			FilePath = view.OnGetShortPath(FilePath);
+		}
+        var ActionTaken = Evnt.data.three.toInteger();
+        var iTotalCount = Evnt.data.four.toInteger();
+        varArrThreatsRecord[varTotalThreatCount] = {varFileName: FileName, varFilePath: FilePath, varActionTaken: ActionTaken , varToolTipPath : CompletePath};
+		
+		var varTempCount = varTotalThreatCount;
+        iCurrentIndexCount = varTotalThreatCount;
+        $(#ID_FILE_NAME).value = varArrThreatsRecord[varTempCount].varFileName;
+        $(#ID_FILE_PATH).value = varArrThreatsRecord[varTempCount].varFilePath;
+
+           if(varArrThreatsRecord[varTempCount].varActionTaken == 0)
+           {
+               AddRedAttributes();
+               $(#ID_ACTION1).value = Lang.translate("ID_FILE_SKIPPED");
+           }
+           else if(varArrThreatsRecord[varTempCount].varActionTaken == 1)
+           {
+               AddGreenAttributes();
+               $(#ID_ACTION1).value = Lang.translate("ID_FILE_REPAIRED");
+           }
+           else if(varArrThreatsRecord[varTempCount].varActionTaken == 2)
+           {
+               AddGrayAttributes();
+               $(#ID_ACTION1).value = Lang.translate("ID_FILE_QUARANTINED");
+           }
+        varTotalThreatCount++;
+        self.update();
+        Notification.ResetTimer();
+    }
+    self.subscribe(ShowQuarantineInfo, Event.BEHAVIOR_EVENT, 0x100 + 4);
+
+</script>
+
+	<script type="text/tiscript">
+	class Notification : Behavior 
+	{  
+		 const WAIT_TIMER = 10s; // duration to show it
+		 var msg; // singleton, one message at the same time
+		 
+		 
+		 function cancel() { // call if you want to cancel it
+			 if( msg.attributes["state"] !== undefined  ) {
+				 msg.off(".notification");
+				 msg.attributes["state"] = undefined;
+				 msg.move();
+			 }
+		 }
+		 
+		function closeIt() 
+		{
+			if(!msg.isVisible) return;
+			if(gFlagOnce == 0)
+			{
+				msg.attributes["state"] = "closed";
+			}
+			if(gFlagOnce == 1)
+			{
+				msg.attributes["state"] = "closedSlow";
+			}
+			//msg.attributes["state"] = "closed";
+			msg.on("animationend.notification", function(evt) 
+			{ 
+				msg.off(this function); // do it once
+				msg.attributes["state"] = undefined;
+				msg.postEvent("notification-closed"); 
+				msg.move();
+				msg.post(function(){		
+					//view.close(null);
+					view.OnBtnClose();
+				});
+				return true;
+			});
+		}
+		
+		function show(flag, message, title = "Some message:") 
+		{ 
+			gFlagOnce = flag;
+			cancel();
+			msg.$( content ).html = message;
+			//msg.$( header ).text = title;
+
+			// NOTE: state animations are defined in CSS
+			function revealIt() {
+				if(!msg.isVisible) 
+				{
+					return;
+				}
+				if(flag == 0){
+					on_mouse = 1;
+					msg.attributes["state"] = "shownSlow";
+				}
+				else if(flag == 1){
+					msg.attributes["state"] = "shown";
+				}
+				//msg.attributes["state"] = "shown";
+				msg.on("animationend.notification", function(evt) { 
+					if(!msg.isVisible) return;
+					msg.off(this function); // do it once
+					
+					if(on_mouse == 0)
+					{
+						msg.timer( WAIT_TIMER, closeIt );
+						return true;
+					}
+				});
+			}
+
+			// getting this monitor's workarea box
+			var (screenX1,screenY1,screenX2,screenY2) = view.screenBox(#workarea, #rect );
+	
+			// set initial "off stage" state 
+			msg.attributes["state"] = "initial";
+			
+			// measure its real sizes
+			var (w,h) = msg.box(#dimension,#border);
+			self.update();
+			
+			if(flag == 0){
+				(w,h) = msg.box(#dimension,#border);
+			}
+			else if(flag == 1){
+				(w,h) = msg.box(#dimension,#border);
+			}
+			// getting **declared** margins widths, note: they can be different from computed ones due to margin collapsing
+			w += msg.toPixels(msg.style#margin-right,#width);
+			h += msg.toPixels(msg.style#margin-bottom,#height);
+			
+			// position its border box at bottom / right corner of the screen
+			msg.move( screenX2 - w, 
+				screenY2 - h, 
+				#screen, 
+				#detached-topmost-window );
+			// request to start animation
+			msg.post( revealIt );	
+		}
+		 
+		function attached() {
+			msg = this;
+		}
+		
+		function onMouse(evt)
+		{
+			switch(evt.type) 
+			{
+			case Event.MOUSE_ENTER:
+				on_mouse = 1;
+				msg.timer( 0, closeIt );
+				return true;
+			case Event.MOUSE_LEAVE:
+				on_mouse = 0;
+				msg.timer( WAIT_TIMER, closeIt );
+				return true;
+			}
+		}
+		
+		function ResetTimer()
+		{
+			msg.timer( WAIT_TIMER, closeIt );
+		} 
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	var gFlagOnce = 0;
+	var on_mouse = 0;
+	</script> 
+	
+	<script type="text/tiscript">
+	event click $(#IDR_ID_CLOSE){
+		view.OnBtnClose();
+	}
+	</script> 
+	
+	<script type="text/tiscript">
+	if(g_LanguageName == "GERMAN")
+	{
+		$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	event click $(.ID_BTN_MIN) {
+			if(cursorStatus == 1){
+				Notification.show("1","
+				<div .closeBtnSmallHdr style='z-index:1;' #IDR_ID_CLOSE>
+					<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+							viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' class='arrow closeBt2'>
+							<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='39' y1='37' x2='463' y2='465'/>
+							<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='466.2' y1='37.9' x2='38.1' y2='461.8'/>
+					</svg>
+				</div>
+				<div class='smallContentSmVirus ID_BTN_DETAILS' . style='flow:horizontal;text-align:left;'>
+					<div>
+						<img .shield src='IDR_IMG_SHIELD_ICO.png'>
+					</div>
+					<div style='text-align:left!important;padding-left:15dip;'>
+						<h4><label>ID_THREATS_DETECTED</label></h4>
+						<p .clickbtn1><span .clickbtn2><label>ID_VIEW_DETAILS</label></span></p>
+					</div>
+				</div>
+				");     
+			}
+			cursorStatus = 0;
+		}
+	</script> 
+
+	<script type="text/tiscript">
+	function OnShowPopupDlg()
+	{
+			Notification.show("1","
+			<p .RegProductVersion>
+				 <span #ID_REGISTER_STATUS></span>
+			</p>
+			<div class='headerTop'>
+				<img .logoMainPg src='IDR_IMG_SHIELD_ICO.png' >
+				<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+								viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' #IDR_ID_CLOSE class='arrow closeBt2'>
+								<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='39' y1='37' x2='463' y2='465'/>
+								<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='466.2' y1='37.9' x2='38.1' y2='461.8'/>
+				</svg>
+				<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+						viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' class='arrow ID_BTN_MIN reverse' id=''>
+						<line fill='none' stroke='#ffffff' stroke-width='18' stroke-miterlimit='10' x1='242.3' y1='19' x2='242.3' y2='485'/>
+						<path fill='none' stroke='#ffffff' stroke-width='18' stroke-miterlimit='10' d='M98,155L237.6,16.8c0,0,5-3.4,10.7,0L383,155'/>
+					</svg> 
+				</div>
+
+					 <div .textDiv style='color:white;text-align:center;width;'>
+					 <div style='margin-bottom:5dip;'>
+							<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+								viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' class='menuIconStyle1'>
+								<path fill='none' stroke='#d3171b' stroke-width='50' stroke-miterlimit='10' d='M390.2,145.3c37,35.1,60.1,84.7,60.1,139.7
+									c0,106.3-86.2,192.5-192.5,192.5S65.3,391.3,65.3,285c0-56.2,24.1-106.8,62.5-142'/>
+								<path fill='#d3171b' d='M210.5,71.4c0-58.6,90.9-71.4,95.1,0l-39.2,250.5c0,0-14,30.6-29.4,0C236.9,321.9,210.5,130,210.5,71.4z'/>
+								<circle fill='#d3171b' cx='256.8' cy='403.5' r='33.9'/>
+							</svg>
+					</div>
+					<div style='font-size:16dip;font-weight:700;color:Red;'>
+						<span><label>ID_THREATS_DETECTED</label></span>
+					</div>
+						<div>
+							<span style='text-transform:capitalize;font-weight:600;'><label>ID_VIRUS_NAME</label></span> : <span .path_string #ID_FILE_NAME></span>
+						</div>
+						<div>
+							<span style='text-transform:capitalize;font-weight:600;'><label>ID_FILE_PATH</label></span> :  <span .path_string #ID_FILE_PATH></span>
+						</div>
+						<div .ActionTakenDiv1>
+								<div #ID_ACTION1></div>
+						</div>
+					</div>
+					");		
+			$(#ID_FILE_NAME).value = varArrThreatsRecord[iCurrentIndexCount].varFileName;
+            $(#ID_FILE_PATH).value = varArrThreatsRecord[iCurrentIndexCount].varFilePath;																																														
+			
+			if(iFileCount == 0)
+			{	
+				$(#ID_REGISTER_STATUS).value = Lang.translate("ID_UNREGISTERED_VERSION");
+			}
+			else
+			{
+				if(productVersion == #ESSENTIAL)
+				{
+					$(#ID_REGISTER_STATUS).value = "ESSENTIAL";
+				}
+				else if(productVersion == #BASIC)
+				{
+					$(#ID_REGISTER_STATUS).value = "BASIC";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					$(#ID_REGISTER_STATUS).value = "ESSENTIAL PLUS";	 
+				}
+			}
+			
+			if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 0)
+            {
+                AddRedAttributes();
+                $(#ID_ACTION1).value = Lang.translate("ID_FILE_SKIPPED");
+            }
+            else if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 1)
+            {
+                AddGreenAttributes();
+                $(#ID_ACTION1).value = Lang.translate("ID_FILE_REPAIRED");
+            }
+            else if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 2)
+            {
+                AddGrayAttributes();
+                $(#ID_ACTION1).value = Lang.translate("ID_FILE_QUARANTINED");
+            }
+	}
+	</script>
+
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(div.cont).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		self.timer(1ms,OnResetIndexPage);
+	}
+	function OnSetDarkTheme()
+	{
+		$(div.cont).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		self.timer(1ms,OnResetIndexPage);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(div.cont).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		self.timer(1ms,OnResetIndexPage);
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	var cursorStatus = 0;
+	event click $(.ID_BTN_DETAILS) {
+		OnShowPopupDlg();
+		cursorStatus = 1;
+	}
+	event click $(.ID_BTN_MIN) {
+		OnCallGetMsgType();
+		cursorStatus = 0;
+	}
+	</script>
+
+	<script type="text/tiscript">
+	function OnCallGetMsgType()
+	{
+		Notification.show(1,"
+			<div .closeBtnSmallHdr style='z-index:1;' #IDR_ID_CLOSE>
+					<svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px'
+							viewBox='0 0 500 500' enable-background='new 0 0 500 500' xml:space='preserve' class='arrow closeBt2'>
+							<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='39' y1='37' x2='463' y2='465'/>
+							<line fill='none' stroke='#ffffff' stroke-width='15' stroke-miterlimit='10' x1='466.2' y1='37.9' x2='38.1' y2='461.8'/>
+					</svg>
+			</div>
+			<div class='smallContentSmVirus' .ID_BTN_DETAILS style='flow:horizontal;text-align:left;'>
+				<div>
+					<img .shield src='IDR_IMG_SHIELD_ICO.png'>
+				</div>
+				<div style='text-align:left!important;padding-left:15dip;'>
+					<h4><label>ID_THREATS_DETECTED</label></h4>
+					<p .clickbtn1><span .clickbtn2><label>ID_VIEW_DETAILS</label></span></p>
+				</div>
+			</div>
+		");
+	}
+	</script>
+	
+
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+		iFileCount = view.GetQuarantineInfo();
+		OnCallGetMsgType();
+		if(g_themeType == "defaultTheme")
+		{
+			OnSetDefaultTheme();
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			OnSetDarkTheme();
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			OnSetCrystalTheme();
+		}
+        varArrThreatsRecord.length = 0;
+	}
+    </script>
+ </head>
+		<popup #notification>
+			<div.cont>
+				<content></content>
+			</div>
+		</popup>
+ </html>

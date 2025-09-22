@@ -1,0 +1,414 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">			
+	<style>
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		
+		#IDR_BTN_PREV:disabled{
+			opacity:.3;
+		}
+		#IDR_BTN_NEXT:disabled{
+			opacity:.3;
+		}
+		.buttonDiv{
+			visibility:visible;
+		}
+		.buttonDiv:collapsed{
+			visibility:hidden;
+		}
+		.buttonDiv
+		{
+			text-align:right;
+			width:30dip;
+		}
+		.product_description{
+			width:260dip;
+			text-overflow:ellipsis;
+			word-wrap: break-word;
+			padding-left:5dip;
+		}
+		.product_description_sender_address{
+			width:260dip;
+			height:35dip;
+			text-overflow:ellipsis;
+			word-wrap: break-word;
+			padding-left:5dip;
+		}
+		.path_string{
+			text-overflow:ellipsis;
+		}
+
+		#ID_COUNT_SHOW{
+			visibility:visible;
+		}
+		#ID_COUNT_SHOW:collapsed{
+			visibility:hidden;
+		}
+		#ID_REGISTER_STATUS{
+			visibility:visible;
+		}
+		#ID_REGISTER_STATUS:collapsed{
+			visibility:hidden;
+		}
+		.gray_color{
+			background:gray;
+			padding:8dip;
+			padding-top:2dip;
+			padding-bottom:2dip;
+			border-bottom:3dip solid #bab7b7;
+		}
+		.green_color{
+			background:green;
+			padding:8dip;
+			padding-top:2dip;
+			padding-bottom:2dip;
+			border-bottom:3dip solid green;
+		}
+		.red_color{
+			background:red;
+			padding:8dip;
+			padding-top:2dip;
+			padding-bottom:2dip;
+			border-bottom:3dip solid red;
+		}
+		.gray_action_color{
+			color:#555555;
+		}
+		.green_action_color{
+			color:green;
+		}
+		.red_action_color{
+			color:red;
+		}
+		.close_btt{
+			float:right;
+			cursor:pointer;
+			behavior:clickable;
+			margin-top:10dip;
+			margin-right:10dip;
+		}
+		.product_heading{
+			text-align:center;font-weight:500;font-size:16dip;color:#e90000;margin:0dip;
+			padding-top:4dip;
+			margin-left:5dip;
+		}
+		popup#notification { style-set: notification-message; }
+
+		.outer_div
+		{
+			flow:horizontal;
+			margin-left:65dip;	
+		}
+		.virus_img
+		{
+			width:25dip;
+		}
+		.prod_disc_div
+		{
+			background:#fff;
+			margin:5dip;
+			margin-bottom:0;
+			padding-bottom:10dip;
+		}
+		.outer_div_nextImg
+		{
+			text-align:center;
+			color:#197e01;
+			margin-bottom:0dip;
+			font-weight:bold;
+			font-size:16dip;
+		}
+		.p_nextImg
+		{
+			width:235dip;
+			height:20dip;
+			text-align:center;
+			padding-left:15dip;
+		}
+		.count_show
+		{
+			text-align:right;
+			color:#197e01;
+			font-weight:bold;
+			font-size:12dip;
+			width:270dip;
+			padding-top:0;
+			color:#888888;
+			margin:0;
+			margin-top:-15dip;
+		}
+		.register_status
+		{
+			text-align:left;
+			margin:0;
+			color:#e90000;
+			margin-left:68dip;
+			font-weight:100;
+			margin-top:-10dip;
+		}
+		@font-face {
+			font-family: MyAwesome;
+			src: url(IDR_TTF_FONTAWESOME-WEBFONT.ttf);
+		}
+		@set notification-message {
+		
+		:root {
+			prototype: Notification url(IDR_TIS_NOTIFICATION.tis);
+			background: #dcdcdc;
+			border: 0 solid rgba(0,0,0,0);
+			/* border-radius: 10dip; */
+			margin:2dip;
+			width: 300dip;
+			display:none;
+			transform: translate(0,0); opacity:1.0;
+			font:system;
+		}
+		
+		:root[state] {display:block;}
+		:root[state=initial] { transform: translate(0,100%); opacity:0.0; } /* offstage */
+		:root[state=shown]   { transform: translate(0,0);    opacity:1.0; transition: transform(quad-out,500ms) opacity(linear,500ms);  }
+		:root[state=closed]  { transform: translate(100%,0); opacity:0.0; transition: transform(linear,500ms) opacity(linear,500ms);  }
+		
+		header { display:block; border-bottom: 1dip dashed gray; padding: 4dip; visibility:none;/* To hide title bar */
+		
+		}
+		content { display:block; /* padding: 8dip; */padding-bottom: 8dip; }
+		
+		}
+		#logo_size{
+			width:90dip!important;
+			height:35dip!important;
+		}
+	</style>
+	<script type="text/tiscript">
+	include "IDR_TIS_MAIN.tis";
+	include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script>
+	<script type="text/tiscript">
+	var iFileCount = 0;
+	var iThreatCount;
+	var iCurrentIndexCount;
+	var iCurrentIndex;
+	var bIsNextPrevClicked = false;
+	var varArrThreatsRecord = new Array(0);
+	var varTotalThreatCount = 0;
+	</script>
+	
+	<script type="text/tiscript">
+	function RemoveAllAttributes()
+	{
+		self.select("#HEADER_COLOR").attributes.removeClass("gray_color");
+		self.select("#HEADER_COLOR").attributes.removeClass("green_color");
+		self.select("#HEADER_COLOR").attributes.removeClass("red_color");
+		self.select("#ID_ACTION").attributes.removeClass("gray_action_color");
+		self.select("#ID_ACTION").attributes.removeClass("green_action_color");
+		self.select("#ID_ACTION").attributes.removeClass("red_action_color");		
+	}
+	function AddGreenAttributes()
+	{
+		RemoveAllAttributes();
+		self.select("#HEADER_COLOR").attributes.addClass("green_color");
+		self.select("#ID_ACTION").attributes.addClass("green_action_color");
+	}
+	function AddGrayAttributes()
+	{
+		RemoveAllAttributes();
+		self.select("#HEADER_COLOR").attributes.addClass("gray_color");
+		self.select("#ID_ACTION").attributes.addClass("gray_action_color");
+	}
+	function AddRedAttributes()
+	{
+		RemoveAllAttributes();
+		self.select("#HEADER_COLOR").attributes.addClass("red_color");
+		self.select("#ID_ACTION").attributes.addClass("red_action_color");
+	}
+	</script>
+
+	<script type="text/tiscript">
+    function ShowQuarantineInfo(Evnt)
+    {
+        var FileName = Evnt.data.one.toString();
+        var FilePath = Evnt.data.two.toString();
+		var SenderName = Evnt.data.three.toString();
+        var ActionTaken = Evnt.data.four.toInteger();
+        var iTotalCount = Evnt.data.five.toInteger();
+
+        varArrThreatsRecord[varTotalThreatCount] = {varFileName: FileName, varFilePath: FilePath, varSenderName: SenderName, varActionTaken: ActionTaken};
+        varTotalThreatCount++;
+        $(#ID_TOTAL).value = varTotalThreatCount;
+        if(bIsNextPrevClicked == true)
+        {
+            $(#ID_INDEX).value = iCurrentIndexCount;
+            $(#IDR_BTN_NEXT).state.disabled = false;
+            $(#IDR_BTN_PREV).state.disabled = false;
+        }
+        else
+        {
+            var varTempCount = varTotalThreatCount;
+            iCurrentIndexCount = varTempCount;
+            --varTempCount;
+            $(#ID_INDEX).value = iCurrentIndexCount;
+            $(#ID_FILE_NAME).value = varArrThreatsRecord[varTempCount].varFileName;
+            $(#ID_FILE_PATH).value = varArrThreatsRecord[varTempCount].varFilePath;
+            $(#ID_SENDER).value = varArrThreatsRecord[varTempCount].varSenderName;
+
+            if(varArrThreatsRecord[varTempCount].varActionTaken == 0)
+            {
+                AddRedAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_SKIPPED");
+            }
+            else if(varArrThreatsRecord[varTempCount].varActionTaken == 1)
+            {
+                AddGreenAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_REPAIRED");
+            }
+            else if(varArrThreatsRecord[varTempCount].varActionTaken == 2)
+            {
+                AddGrayAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_QUARANTINED");
+            }
+        }
+
+        var iFileCount = view.GetQuarantineInfo();
+        if(iFileCount == 0)
+        {
+            $(#ID_REGISTER_STATUS).state.collapsed = false;
+        }
+        else
+        {
+            $(#ID_REGISTER_STATUS).state.collapsed = true;
+        }
+
+        if(varTotalThreatCount == 1)
+        {
+            $(.buttonDiv).state.collapsed = true;
+            $(#ID_COUNT_SHOW).state.collapsed = true;
+        }
+        else
+        {
+            $(.buttonDiv).state.collapsed = false;
+            $(#ID_COUNT_SHOW).state.collapsed = false;
+
+        }
+        self.update();
+        Notification.ResetTimer();
+    }
+    self.subscribe(ShowQuarantineInfo, Event.BEHAVIOR_EVENT, 0x100 + 5);
+
+	</script>
+
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		//self.language = g_LanguageName;
+		iFileCount = view.GetQuarantineInfo();
+		varArrThreatsRecord.length = 0;
+		varTotalThreatCount = 0;
+		ShowPopup();
+		$(.buttonDiv).state.collapsed = false;
+		$(#IDR_BTN_PREV).state.disabled = false;
+		$(#ID_REGISTER_STATUS).state.collapsed = true;
+		if(iFileCount == 0)
+		{
+			$(#ID_REGISTER_STATUS).state.collapsed = false;
+        }
+    }
+
+    function ShowPopup()
+    {
+		Notification.show("<div #HEADER_COLOR class='popup_header'><img #logo_size src='IDR_PNG_TRAY_LOGO.png'><span .close_btt #IDR_ID_CLOSE><b>X</b></span></div><div .outer_div><div><img .virus_img src='IDR_PNG_VIRUS.png'></div><div><p class='product_heading'> <label>ID_THREATS_DETECTED</label></p></div></div><div .prod_disc_div><p class='product_description'><b><label>ID_THREAT_NAME</label> : </b><span #ID_FILE_NAME></span></p><p class='product_description'><b><label>ID_ATTACHMENT_NAME</label> : </b><span .path_string #ID_FILE_PATH></span></p><p class='product_description_sender_address'><b><label>ID_SENDER_ADDRESS</label> : </b><span #ID_SENDER></span></p><p class='product_description'><b><label>ID_ACTION_TAKEN</label> : </b><span .path_string #ID_ACTION></span></p><div .outer_div_nextImg><div style='flow:horizontal;'><p .p_nextImg><!--<span #ID_ACTION><label>ID_FILE_IS_REPAIRED</label></span>--></p><p .buttonDiv><img .Next_Prev_Button #IDR_BTN_PREV src='IDR_PNG_PREVIOUS.png' style='cursor:pointer;' disabled> <img .Next_Prev_Button #IDR_BTN_NEXT style='cursor:pointer;' src='IDR_PNG_NEXT.png' disabled></p></div><div style='padding-right:15dip;'><div style='width:240dip;'></div><p #ID_COUNT_SHOW .count_show><span #ID_INDEX></span>/<span #ID_TOTAL></span></p></div><p #ID_REGISTER_STATUS .register_status><label>ID_UNREGISTERED_VERSION</label></p></div></div>");
+        $(#IDR_BTN_PREV).state.disabled = false;
+        self.on("notification-closed", function() { view.OnBtnClose();});
+
+        $(#IDR_ID_CLOSE).onClick = function()
+        {
+            bIsNextPrevClicked = false;
+            view.OnBtnClose();
+        }
+        $(#IDR_BTN_NEXT).onClick = function()
+        {
+            Notification.ResetTimer();
+            bIsNextPrevClicked = true;
+            $(#ID_FILE_NAME).value = varArrThreatsRecord[iCurrentIndexCount].varFileName;
+            $(#ID_FILE_PATH).value = varArrThreatsRecord[iCurrentIndexCount].varFilePath;
+            if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 0)
+            {
+                AddRedAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_SKIPPED");
+            }
+            else if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 1)
+            {
+                AddGreenAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_REPAIRED");
+            }
+            else if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 2)
+            {
+                AddGrayAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_QUARANTINED");
+            }
+            iCurrentIndexCount++;
+            $(#ID_INDEX).value = iCurrentIndexCount;
+            if(iCurrentIndexCount >= varTotalThreatCount)
+            {
+                $(#IDR_BTN_NEXT).state.disabled = true;
+                $(#IDR_BTN_PREV).state.disabled = false;
+                return;
+            }
+            else
+            {
+                $(#IDR_BTN_NEXT).state.disabled = false;
+                $(#IDR_BTN_PREV).state.disabled = false;
+            }
+            self.update();
+        }
+        $(#IDR_BTN_PREV).onClick = function()
+        {
+            Notification.ResetTimer();
+            bIsNextPrevClicked = true;
+            iCurrentIndexCount--;
+            $(#ID_INDEX).value = iCurrentIndexCount;
+            $(#ID_FILE_NAME).value = varArrThreatsRecord[iCurrentIndexCount].varFileName;
+            $(#ID_FILE_PATH).value = varArrThreatsRecord[iCurrentIndexCount].varFilePath;
+            if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 0)
+            {
+                AddRedAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_SKIPPED");
+            }
+            else if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 1)
+            {
+                AddGreenAttributes();
+                $(#ID_ACTION).value = Lang.translate("ID_FILE_REPAIRED");
+            }
+            else if(varArrThreatsRecord[iCurrentIndexCount].varActionTaken == 2)
+            {
+               AddGrayAttributes();
+               $(#ID_ACTION).value = Lang.translate("ID_FILE_QUARANTINED");
+            }
+
+            if(iCurrentIndexCount <= 1)
+            {
+                $(#IDR_BTN_NEXT).state.disabled = false;
+                $(#IDR_BTN_PREV).state.disabled = true;
+                return;
+            }
+            else
+            {
+                $(#IDR_BTN_NEXT).state.disabled = false;
+                $(#IDR_BTN_PREV).state.disabled = false;
+            }
+            self.update();
+        }
+    }
+	</script>
+</head>
+
+<body>
+    <popup #notification>
+        <header>Question:</header>
+        <content> </content>
+    </popup>
+</body>
+</html>

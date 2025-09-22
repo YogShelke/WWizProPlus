@@ -1,0 +1,927 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+ <style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	html {
+		behavior:	WrdWizRescueDiskDlg;
+        padding: 	0dip;
+        margin: 	0dip;
+        overflow: 	hidden;
+        width: 		720dip;
+        height: 	500dip;
+    }
+    body {
+        width: 720dip;
+        height: 420dip;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        //background: url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .header {
+        width: 720dip !important;
+    }
+    .select_file_path_resdisk {
+        width: 690dip;
+        margin-left: 10dip;
+        border-radius: 4dip;
+        padding-top: 5dip;
+        padding-bottom: 10dip;
+        margin-bottom: 10dip;
+        padding-left: 10dip;
+		flow:vertical;
+    }
+	.tab_select{
+		width: 716dip;
+		height: 365dip;
+	}
+	.tab_select:expanded{
+		visibility:visible;
+	}
+	.tab_select:collapsed{
+		visibility:none;
+	}
+	.rescudisk_header{
+		text-align:center;
+		min-height:10dip;
+		width:720dip;
+		padding-top:1dip;
+		margin-top:-10dip;
+	}
+	.rescudisk_header p{
+		font-size:14dip;
+	}
+	.download_link{
+		font-weight:bold;
+		text-decoration:underline;
+		cursor: pointer;
+	}
+	.cl_note_lable p{
+		font-size:14dip;
+		font-weight: 100;
+		color: #000!important;
+	}
+	.cl_note_lable{
+		margin-left:15dip;
+		min-height:10dip;
+		width:700dip;
+		padding-top:1dip;
+		color: #000!important;
+	}
+	.cl_step_lable p{
+		font-size:13dip;
+		font-weight:400;
+		color: #000!important;
+	}
+	.cl_step_lable{
+		margin-left:15dip;
+		min-height:10dip;
+		width:700dip;
+		padding-top:0;
+		color: #000;
+	}
+	.cl_step_lable:expanded{
+		visibility:visible;
+	}
+	.cl_step_lable:collapsed{
+		visibility:none;
+	}
+	.cl_note_lable:expanded{
+		visibility:visible;
+	}
+	.cl_note_lable:collapsed{
+		visibility:none;
+	}
+	.select_drive{
+		width:355dip;
+		margin-left:12dip;
+		margin-bottom:5dip;
+	}
+	.select_dr_list{
+		flow:horizontal;
+	}
+	.select_dr_list p{
+		width:150dip;
+		height:35dip;
+		text-align:left;
+	}
+	.iso_label{
+		margin-top:5dip;
+		text-align:left;
+		width:150dip;
+	}
+	.disk_brows_btn{
+		width:670dip;
+		position:relative;
+		text-align:right;
+		flow:horizontal;
+	}
+	.rescue_btn_container {
+		margin-top: 5dip;
+		margin-bottom: 5dip;
+	}
+	.rescue_footer_buttons{
+		width:300dip;
+		text-align:right;
+		height:35dip;
+		float:right;
+		margin-right:10dip;
+	}
+	.rescue_footer_buttons .btnCstm{
+		margin-top:0;
+	}
+	#ID_ISOFILE_PATH{
+		width:350dip;
+		height:19dip;
+		margin-left:13dip!important;
+		margin-top:0.5dip;
+	}
+	#ID_BTN_BROWSE{
+		width:92dip;
+		margin-bottom:1.5dip;
+		margin-left:10dip;
+		margin-right:10dip;
+	}
+	.rescuedisk_progress_anim{
+		margin-left:280dip;
+	}
+	#progress_bar_rescuedisk{
+		width:697dip;
+		height:17dip;
+		padding:0;
+		margin-left:11dip;
+		margin-top:4dip;
+	}
+	.percentage_container_rescuedisk{
+		text-align:center;
+		margin-top:-19dip;
+	}
+	progress#progress_bar_rescuedisk{
+		foreground-position:20dip 20dip 20dip 20dip;
+	}
+	.progress_status{
+		height:20dip;
+		margin:0;
+		font-size:13dip;
+		padding-left:10dip;
+	}
+	.progress_div{
+		height:50dip;
+	}
+	.progress_bar_container_rescudisk:expanded{
+		visibility:visible;
+	}
+	.progress_bar_container_rescudisk:collapsed{
+		visibility:none;
+	}
+	.mainContent{
+		flow:vertical;
+	}
+	.select_cd{
+		flow:horizontal;
+		margin-top:10dip;
+		text-align:center;
+		position:absolute;
+		margin-left:150dip;
+		color:#000!important;
+	}
+	.select_cd:expanded{
+		visibility:visible;
+	}
+	.select_cd:collapsed{
+		visibility:none;
+	}
+	.select_cd .btn_box{
+		min-width:150dip;
+		max-height:186dip;
+		margin-left:50dip;
+		border-radius:10dip;
+		border-bottom-style:outset;
+			color: #fff;
+		cursor: pointer;
+		text-align:center;
+		padding:0;
+		vertical-align:middle;
+		line-height:30dip;
+		font-weight:bold;
+		margin-top:5dip;
+		display:inline-block;
+		font-size:14dip;
+	}
+	.cd_lb{
+		margin-top:10dip;
+	}
+	.floatleft_btn{
+		float:left;
+		margin-left:10dip;
+	}
+	.floatleft_btn .btnCstm{
+		margin-top:0dip;
+	}
+	.IconStyle1{
+		size:130;
+		background:none;
+		fill:#fff;
+		margin-top:20dip;
+	}
+		.MenuSpacing{
+			margin:1dip;
+			margin-top:0dip;
+		}
+ </style>
+
+<script type="text/tiscript">
+     include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+     include "IDR_TIS_GERMAN_LANG.tis";
+     include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script>
+
+<script type="text/tiscript">
+    include "IDR_TIS_MAIN.tis";
+</script>
+
+<script type="text/tiscript">
+function CloseUI()
+{
+	if(varProgressFlag == 1)
+	{
+		if(varDriveType == 2)
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DO_YOU_WANT_TO_STOP_USB");
+		else if(varDriveType == 5)
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_WARNING_TO_CLOSE_CD_BURN");
+		
+		var result = dialog { body:$(form#simple-dialog),
+		returns: #values,
+		caption : Lang.translate("ID_WARNING"),
+		buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false}]};
+		if(result == true)
+		{
+			view.OnClose();
+		}
+	}
+	else{
+		view.OnClose();
+	}
+}
+</script>
+
+<script type="text/tiscript">
+$(#help_click).onClick = function()
+{
+    OpenHelpFile();
+}
+function OpenHelpFile()
+{
+    var varCommandlinestr = "-mapid";
+    var varHelpFilePath;
+    var varHelpFileIndex;
+    var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+    var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+    var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+    var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+    var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+    var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+    switch(g_LanguageID)
+    {
+        case LANGUAGE_TYPE.ENGLISH	:
+            if(productVersion == #ESSENTIAL)
+            {
+                varHelpFilePath = varEngEssential;
+                varHelpFileIndex = "77";
+            }
+            else if(productVersion == #BASIC)
+            {
+                varHelpFilePath = varEngBasic;
+                varHelpFileIndex = "77";
+            }
+            else if(productVersion == #ESSENTIALPLUS)
+            {
+                varHelpFilePath = varEngEssPlus;
+                varHelpFileIndex = "77";
+            }
+        break;
+
+        case LANGUAGE_TYPE.GERMAN:
+            if(productVersion == #ESSENTIAL)
+            {
+                varHelpFilePath = varGerEssential;
+                varHelpFileIndex = "77";
+            }
+            else if(productVersion == #BASIC)
+            {
+                varHelpFilePath = varGerBasic;
+                varHelpFileIndex = "77";
+            }
+            else if(productVersion == #ESSENTIALPLUS)
+            {
+                varHelpFilePath = varGerEssPlus;
+                varHelpFileIndex = "77";
+            }
+        break;
+    }
+    System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+}
+</script>
+
+<script type="text/tiscript">
+$(.OnClickMinimize).onClick = function()
+{
+    view.OnMinimize();
+}
+$(#ID_BUTTON_CLOSE).onClick = function()
+{
+    CloseUI();
+}
+$(#ID_BTN_CLOSE).onClick = function()
+{
+    CloseUI();
+}
+</script>
+
+<script type="text/tiscript">
+var arrDriveList = new Array(0);
+var varDriveIndex = 0;
+var varIsoFileName = "";
+var varProgressFlag = 0;
+var varProgressBar = $(#progress_bar_rescuedisk);
+var varPercentage = 0;
+var varDriveType = 0;
+</script>
+
+<script type="text/tiscript">
+function SetCurrentProgress(evt)
+{
+	varPercentage = evt.data.one.toInteger();
+    var varProgressPercentage = 1;
+    if(varPercentage > 0)
+    {
+        varProgressPercentage = varPercentage;
+    }
+    if(varProgressPercentage < 98 )
+    {
+        $(#RescuDiskScanPercent).value = ""+varProgressPercentage+"%";
+    }
+    else
+    {
+        varProgressPercentage = 100;
+        $(#RescuDiskScanPercent).value = ""+varProgressPercentage+"%";
+    }
+    varProgressBar.value = varProgressPercentage;
+    self.refresh();
+}
+self.subscribe(SetCurrentProgress, Event.BEHAVIOR_EVENT, 0x100 + 9);
+</script>
+
+<script type="text/tiscript">
+    function IsWindowClose() //m_root_el function for taskbar close
+    {
+        CloseUI();
+    }
+</script>
+<script type="text/tiscript">
+    $(#ID_LOGO).onClick = function()
+    {
+        if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/");
+    }
+</script>
+
+<script type="text/tiscript">
+var select;
+function FunDriveEntryAdd(DriveLetter)
+{
+	select = $(select[name=drive_letter]);
+	arrDriveList[varDriveIndex] = DriveLetter;
+	select.options.clear();
+	select.value = undefined;
+	if(DriveLetter != "")
+	{
+		varDriveIndex++;
+		select.options.$append(<option value={DriveLetter}>{DriveLetter}</option>);
+		$(#ID_CURRENT_SELECT).value = arrDriveList[0];
+	}
+	else
+	{
+		select.options.clear();
+		select.value = undefined;
+		if(varDriveIndex > 0)
+			varDriveIndex--;
+	}
+}
+</script>
+<script type="text/tiscript">	
+if(productVersion == #BASIC){
+    $(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC";
+}
+else if(productVersion == #ESSENTIAL){
+    $(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL";
+}
+else if(productVersion == #PROVANTAGE){
+    $(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE";
+}
+else if(productVersion == #ELITE){
+	$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE";
+}
+else if(productVersion == #ESSENTIALPLUS){
+	$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS";
+}
+</script>
+<script type="text/tiscript">
+function FunStatus(StatusFlag)
+{
+	if(StatusFlag == 1)
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_FORMATTING_USB");
+	if(StatusFlag == 2)
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_EXTRACTING_ISO");
+	if(StatusFlag == 3)
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_TAKE_FEW_MIN");
+	if(StatusFlag == 4)
+	{
+		varProgressFlag = 0;
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_USB_READY_TO_BOOT");
+		$(#ID_BTN_CLOSE).value = Lang.translate("ID_CLOSE");
+		
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_USB_READY_TO_BOOT");
+        var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_FINISH"),
+            buttons: [ { caption: "OK", role:#ok, value:true }]
+        };
+		FunEnableContent();
+		ResetVal();
+		varIsoFileName = "";
+	}
+	if(StatusFlag == 5)
+	{
+		varPercentage = 0;
+		var varProgressPercentage = 100;
+        $(#RescuDiskScanPercent).value = ""+varProgressPercentage+"%";
+		varProgressBar.value = varProgressPercentage;
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_DRIVE_EJECTED");
+		
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DRIVE_EJECTED");
+        var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+            buttons: [ { caption: "OK", role:#ok, value:true }]
+        };
+		if(res == true)
+		{
+			FunEnableContent();
+			ResetVal();
+		}
+	}
+	if(StatusFlag == 6)
+	{
+		varPercentage = 0;
+		var varProgressPercentage = 100;
+        $(#RescuDiskScanPercent).value = ""+varProgressPercentage+"%";
+		varProgressBar.value = varProgressPercentage;
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_DRIVE_PROTECTED");
+		
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DRIVE_PROTECTED");
+        var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+            buttons: [ { caption: "OK", role:#ok, value:true }]
+        };
+		if(res == true)
+		{
+			FunEnableContent();
+			ResetVal();
+		}
+	}
+}
+</script>
+
+<script type="text/tiscript">
+function FunCDWriteStatus(CDStatusFlag)
+{
+	if(CDStatusFlag == 1)
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_DATA_INITIALIZE");
+	if(CDStatusFlag == 2)
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_BURNING_CD");
+	if(CDStatusFlag == 3)
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_WAIT_FINISH_BURN");
+	if(CDStatusFlag == 4)
+	{
+		varProgressFlag = 0;
+		$(#ID_PROGRESS_STATUS).value = Lang.translate("ID_CD_READY_TO_USE");
+		$(#ID_BTN_CLOSE).value = Lang.translate("ID_CLOSE");
+		
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_CD_READY_TO_USE");
+        var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_FINISH"),
+            buttons: [ { caption: "OK", role:#ok, value:true }]
+        };
+		FunEnableContent();
+		ResetVal();
+		varIsoFileName = "";
+	}
+}
+</script>
+
+<script type="text/tiscript">
+function FunEnableContent()
+{
+	$(#ID_BTN_OK).state.disabled = false;
+	$(#ID_BTN_BROWSE).state.disabled = false;
+	$(#ID_CURRENT_SELECT).state.disabled = false;
+	$(#ID_BTN_BACK).state.disabled = false;
+}
+</script>
+
+<script type="text/tiscript">
+function ResetVal()
+{
+	$(#ID_CURRENT_SELECT).value = null;
+	varProgressBar.value = 0;
+	$(#RescuDiskScanPercent).value = ""+0+"%";
+	$(#ID_ISOFILE_PATH).value = "";
+	$(.progress_bar_container_rescudisk).state.collapsed = true;
+}
+</script>
+
+<script type="text/tiscript">
+$(#ID_BTN_OK).onClick = function()
+{	
+	var DrivePath = $(#ID_CURRENT_SELECT).value;
+	if(varDriveType == 2)
+	{
+		if(varIsoFileName != "" && DrivePath != null)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_START_TO_FORMAT_USB_WARN");
+			var result = dialog { body:$(form#simple-dialog),
+			returns: #values,
+			caption : Lang.translate("ID_WARNING"),
+			buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false}]};
+			if(result == true)
+			{
+				ValueInitialize();
+				self.OnGetResourceData(varIsoFileName,DrivePath,FunStatus);
+			}
+		}
+		else
+		{
+			SelectValidFile()
+		}
+	}
+	else if(varDriveType == 5)
+	{
+		if(varIsoFileName != "" && DrivePath != null)
+		{
+			ValueInitialize();
+			self.OnStartCDThread(varIsoFileName,DrivePath,FunCDWriteStatus);
+		}
+		else
+		{
+			SelectValidFile()
+		}
+	}
+}
+</script>
+
+<script type="text/tiscript">
+function SelectValidFile()
+{
+	$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_VALID_FILE");
+	var res = dialog { body:$(form#simple-dialog),
+		returns: #values,
+		caption : Lang.translate("ID_WARNING"),
+		buttons: [ { caption: "OK", role:#ok, value:true } ]
+	};
+}
+</script>
+
+<script type="text/tiscript">
+function ValueInitialize()
+{
+	$(#RescuDiskScanPercent).value = ""+0+"%";
+	varProgressBar.value = 0;
+	var currentOption = $(#ID_CURRENT_SELECT).value;
+	$(#ID_BTN_OK).state.disabled = true;
+	$(#ID_BTN_BROWSE).state.disabled = true;
+	$(#ID_CURRENT_SELECT).state.disabled = true;
+	$(#ID_BTN_BACK).state.disabled = true;
+	$(.progress_bar_container_rescudisk).state.expanded = true;
+	varProgressFlag = 1;
+	$(#ID_BTN_CLOSE).value = Lang.translate("ID_CANCEL");
+}
+</script>
+
+<script type="text/tiscript">
+$(#ID_BTN_BROWSE).onClick = function()
+{
+	varIsoFileName = view.OnGetIsoFile();
+	if(varIsoFileName == "")
+	{
+		return;
+	}
+	$(#ID_ISOFILE_PATH).value = varIsoFileName;
+}
+</script>
+
+<script type="text/tiscript">
+function ViewNote()
+{
+	$(.cl_note_lable).state.expanded = true;
+	$(.cl_step_lable).state.collapsed = true;
+}
+function HideNote()
+{
+	$(.cl_note_lable).state.collapsed = true;
+	$(.cl_step_lable).state.expanded = true;
+}
+</script>
+
+<script type="text/tiscript">
+$(#ID_DOWNLOAD_ISO).onClick = function()
+{
+	Sciter.launch("https://vibranium.co.in/");
+   // Sciter.launch("http://updates.wardwiz.in/rescuedisk/WrdWizRescueDisk.iso");
+}
+$(#ID_RESCUECD).onClick = function()
+{
+	varDriveType = 5;
+	self.OnGetDriveList(FunDriveEntryAdd, varDriveType);
+	$(.tab_select).state.expanded = true;
+	$(.select_cd).state.collapsed = true;
+	HideNote()
+}
+$(#ID_RESCUEUSB).onClick = function()
+{
+	varDriveType = 2;
+	self.OnGetDriveList(FunDriveEntryAdd, varDriveType);
+	$(.tab_select).state.expanded = true;
+	$(.select_cd).state.collapsed = true;
+	HideNote()
+}
+</script>
+
+<script type="text/tiscript">
+$(#ID_BTN_BACK).onClick = function()
+{
+	$(.select_cd).state.expanded = true;
+	$(.tab_select).state.collapsed = true;
+	FunEnableContent();
+	ResetVal();
+	select.options.clear();
+	select.value = undefined;
+	ViewNote()
+}
+</script>
+
+<script type="text/tiscript">
+function OnSetDefaultTheme()
+{
+	$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+	$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+}
+function OnSetDarkTheme()
+{
+	$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+	$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+}
+function OnSetCrystalTheme()
+{
+	$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+	$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+}
+</script>
+<script type="text/tiscript">
+function self.ready()
+{
+	self.language = g_LanguageName;
+    $(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+	if(g_themeType == "defaultTheme"){
+		OnSetDefaultTheme();
+    }
+    else if(g_themeType == "darkTheme"){
+		OnSetDarkTheme();
+    }
+	else if(g_themeType == "crystalTheme")
+	{
+        OnSetCrystalTheme();
+	}
+	ViewNote();
+	$(.progress_bar_container_rescudisk).state.collapsed = true;
+	$(.tab_select).state.collapsed = true;
+	$(.select_cd).state.expanded = true;
+}
+</script>
+<form #simple-dialog>
+    <label #ID_LBOX_HEADING></label>
+    <p #ID_LIGHTBOX_TXT></p>
+</form>
+</head>
+<body>
+    <div .maincontent>
+        <div .header>
+			<div .tempLogo>
+				<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+			</div>
+			<div .menu_utility>
+				<div .drag_zone_utility role="window-caption"><h4 style="margin-top:7dip">VIBRANIUM</h4></div>
+				<div .topMenuUtility style="margin-left:30dip;">
+					<ul>
+						<li .clickable_cl #help_click .MenuSpacing style="visibility:none;"><label>ID_STR_HELP</label></li>
+						<li .clickable_cl .OnClickMinimize .MenuSpacing>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+							</svg>
+						</li>
+						<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE .MenuSpacing>
+							<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+							<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+							</svg>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div .rescudisk_header>
+			<h1 .headingTitle1><label>ID_WWIZ_WELCOME_RESCUE_DISK</label></h1>
+			<p><label>ID_PUT_RESCUEDISK_ON_USB</label></p>
+		</div>
+		<div .cl_note_lable><p><label >ID_RESCUE_DISK_STARTUP_NOTE</label></p></div>
+		<div .cl_step_lable>
+			<p><label>ID_RESCUE_DISK_CREATE_STEP</label></p>
+			<span><label>ID_RESCUE_DISK_CREATE_STEP1</label>[<span .download_link #ID_DOWNLOAD_ISO><label>ID_RESCUE_DISK_CREATE_STEP_WEB</label></span>]</span>
+			<p><label>ID_RESCUE_DISK_CREATE_STEP2</label></p>
+		</div>
+		<div .select_cd >
+			<div class="btn_box" #ID_RESCUECD>
+				
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve"class="IconStyle1">
+					<style type="text/css">
+					.CD_st0{fill:#C14242;}
+					.CD_st1{fill:#E74C3C;}
+					.CD_st2{fill:#D4D6D6;}
+					.CD_st3{fill:#ECF0F1;}
+					.CD_st4{fill:#E0E2E2;}
+					.CD_st5{fill:#FFFFFF;}
+					.CD_st6{fill:#4C7891;}
+					.CD_st7{fill:#BAC1CE;}
+				</style>
+<g>
+	<g>
+		<path class="CD_st0" d="M492.1,333.6v27.1c0,8.8-5.5,17.7-16.4,24.8c-55.1,35.6-115.5,70.5-181.1,104.8c-24,12.6-60.6,13-85.2,0.4
+			c-36.8-18.5-71.5-37.2-104.3-56c-39.4-22.8-58.6-35.1-79.1-49c-10.5-7.1-15.6-15.6-15.6-24.4v-26.9c0,8.6,5.3,17.3,15.6,24.2
+			c24.8,16.6,51.3,33,79.3,49.2c32.6,18.9,67.5,37.6,104.3,56c24.6,12.4,61.2,12.2,85.2-0.6c65.4-34.3,125.8-69,181.1-104.8
+			C486.8,351.4,492.1,342.6,492.1,333.6z"/>
+	</g>
+	<g>
+		<path class="CD_st1" d="M391.3,256.9c29.4,17,57.7,34.3,84.8,52.1c21.6,14.3,21.3,35.4-0.3,49.5c-55.1,35.7-115.6,70.6-181,104.8
+			c-24.1,12.7-60.7,13-85.3,0.5c-36.7-18.5-71.6-37.1-104.3-56c-28-16.2-54.5-32.5-79.1-49c-20.9-14.1-20.9-34.9,0.5-48.6
+			c59.1-38.2,119.6-73.6,181.5-105.9c24.3-12.7,60.9-12.9,85.6-0.3C327.4,221.1,360,238.8,391.3,256.9z"/>
+	</g>
+	<g>
+		<path class="CD_st2" d="M386.2,21c-28.5-16.5-68-14.1-111.5,11C188,82.1,118.2,203,118.4,302.5c0.2,49.4,17.6,84.2,45.8,100.6
+			l-18-10.5c-28.2-16.4-45.6-51.2-45.8-100.6C100.2,192.5,170,71.6,256.6,21.5c43.7-25.1,83-27.5,111.5-11L386.2,21z"/>
+	</g>
+	<g>
+		<path class="CD_st3" d="M340.3,10.6c-19.8,0.8-42.3,7.9-65.6,21.4c-21.1,12.2-41.2,28.5-59.7,47.9c-56.9,59.6-97,147.4-96.6,222.5
+			c0.1,74.5,39.7,115.8,95.7,110.7c18.9-1.6,39.8-8.5,61.5-21.1c23.5-13.5,45.9-32.3,65.7-54.5c53.5-59.5,90.6-143.4,90.5-216.1
+			C431.6,49.1,394.3,8,340.3,10.6z M257.8,246.1c-5.9,3.4-11.5,5-16.5,5.1c-2.7-4.3-4.2-10.2-4.2-17.2c0-24,16.8-53.3,37.9-65.6
+			c5.9-3.4,11.5-5,16.4-5.1c2.7,4.3,4.3,10.2,4.3,17.2C295.7,204.7,278.8,233.9,257.8,246.1z"/>
+	</g>
+	<g>
+		<g>
+			<path class="CD_st4" d="M341.3,337.6c-19.8,22.1-42.1,40.9-65.6,54.5c-21.8,12.5-42.6,19.5-61.6,21.1l27.1-134.5l72.6-41.9
+				L341.3,337.6z"/>
+		</g>
+		<g>
+			<path class="CD_st4" d="M340.3,10.6l-25.8,127l-72.5,42l-27-99.7c18.4-19.3,38.6-35.7,59.7-47.9C298,18.5,320.4,11.5,340.3,10.6z"/>
+		</g>
+	</g>
+	<g>
+		<path class="CD_st5" d="M302,125.8c-10,0-20.6,3.1-31.4,9.4c-36.2,20.9-64.6,70-64.6,111.7c0.1,31.3,16.7,51.4,42.1,51.4
+			c10.1,0,20.6-3.1,31.5-9.4c36.3-21,64.6-70,64.4-111.7C344.1,145.9,327.5,125.8,302,125.8z M257.8,246.1c-5.9,3.4-11.5,5-16.5,5.1
+			c-2.7-4.3-4.2-10.2-4.2-17.2c0-24,16.8-53.3,37.9-65.6c5.9-3.4,11.5-5,16.4-5.1c2.7,4.3,4.3,10.2,4.3,17.2
+			C295.7,204.7,278.8,233.9,257.8,246.1z"/>
+		<path class="CD_st6" d="M275,142.8c-33.4,19.2-60.2,65.9-60.2,104.1c0.1,38.3,27.2,53.7,60.6,34.4c33.3-19.2,60.1-65.7,60-104.1
+			C335.4,138.9,308.2,123.5,275,142.8z M257.8,246.1c-5.9,3.4-11.5,5-16.5,5.1c-2.7-4.3-4.2-10.2-4.2-17.2c0-24,16.8-53.3,37.9-65.6
+			c5.9-3.4,11.5-5,16.4-5.1c2.7,4.3,4.3,10.2,4.3,17.2C295.7,204.7,278.8,233.9,257.8,246.1z"/>
+	</g>
+	<path class="CD_st7" d="M291.5,163.2c2.7,4.3,4.2,10.2,4.2,17.2c0,24.2-16.8,53.4-37.9,65.6c-5.8,3.4-11.5,5-16.4,5.2
+		c6.1,10.7,19,13,33.8,4.5c21-12.2,37.9-41.4,37.9-65.6C313,172.8,304.2,163,291.5,163.2z"/>
+</g>
+</svg>
+
+			<div .cd_lb style="color:#000"><label>CD/DVD</label></div>
+			</div>
+			<div class="btn_box" #ID_RESCUEUSB>
+				<!-- <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 32.727 32.727" style="enable-background:new 0 0 32.727 32.727;" xml:space="preserve">
+					<g>
+						<path d="M17.776,4.998L0.79,21.986l0,0c-0.924,0.924-0.924,2.424,0,3.351l6.699,6.697
+							c0.926,0.925,2.426,0.922,3.346,0l16.986-16.985L17.776,4.998z"/>
+						<path d="M32.63,6.461L26.169,0l-5.233,5.236l6.459,6.461L32.63,6.461z M29.833,6.088l-1.078,1.074
+							l-1.314-1.314l1.076-1.078L29.833,6.088z M25.438,3.842l1.076-1.074l1.314,1.314L26.75,5.157L25.438,3.842z"/>
+					</g>
+				</svg> -->
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="IconStyle1">
+<style type="text/css">
+	.USB_st0{enable-background:new    ;}
+	.USB_st1{fill:#DB7121;}
+	.USB_st2{fill:#C16527;}
+	.USB_st3{fill:#E67E22;}
+	.USB_st4{fill:#ECF0F1;}
+	.USB_st5{fill:#D6D6D6;}
+	.USB_st6{fill:#474B59;}
+	.USB_st7{fill:#B8B8B8;}
+</style>
+<g>
+	<g>
+		<g>
+			<g class="USB_st0">
+				<g>
+					<path class="USB_st1" d="M0,92.4l0.2,80.9c0,16.9,11.2,34,33.5,47.2l212.7,123.3l-0.2-80.9L33.5,139.6C11.2,126.4,0,109.3,0,92.4z"
+						/>
+				</g>
+				<g>
+					<path class="USB_st2" d="M246.1,263l0.2,80.9L410,249.4l-0.2-80.9L246.1,263z"/>
+				</g>
+				<g>
+					<path class="USB_st3" d="M34.1,45.1C11.5,58.2,0,75.2,0.1,92.3c-0.1,17,11,34.1,33.5,47.2L246.1,263l163.7-94.5L197.3,45
+						C152.4,18.9,79.4,18.9,34.1,45.1L34.1,45.1z"/>
+				</g>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="USB_st4" d="M492.4,313.9L383,377.5v9.3l116.9-67.9L492.4,313.9z"/>
+				<path class="USB_st5" d="M500,275.7l-7.5,4.3l-0.1,33.8l7.4,4.9L500,275.7z"/>
+			</g>
+			<path class="USB_st6" d="M492.5,280.1l-109.4,63.6l-0.1,33.8l109.5-63.6V280.1z"/>
+		</g>
+		<path class="USB_st5" d="M383.1,343.7l-0.2,43.1L259,315.3l0.2-43.1L383.1,343.7z"/>
+		<path class="USB_st4" d="M500,275.7l-116.9,67.9l-123.9-71.5l116.9-67.9L500,275.7z"/>
+		<g>
+			<g>
+				<path class="USB_st7" d="M425.7,270.3l24.2,14.1l24.4-14.1l-24.2-14.1L425.7,270.3z"/>
+			</g>
+			<g>
+				<path class="USB_st7" d="M361,307.7l24.2,14.1l24.4-14.1l-24.2-14.1L361,307.7z"/>
+			</g>
+		</g>
+		<g>
+			<path class="USB_st2" d="M79.9,69.7c-23.6,13.6-24.7,36.2-0.6,50.2s63.3,13.6,87,0c24.2-14,24.7-36.6,0.6-50.6S104.2,55.7,79.9,69.7z
+				"/>
+		</g>
+	</g>
+	<g class="USB_st0">
+		<g>
+			<path class="USB_st1" d="M226.6,369.4l-0.2,60.4c0,12-7.9,23.9-23.7,33.1c-31.7,18.4-83.2,18.4-115.1,0l-56.5-32.6l0.2-60.4
+				l56.5,32.6c31.9,18.4,83.4,18.4,115.1,0C218.6,393.4,226.5,381.4,226.6,369.4z"/>
+		</g>
+		<g>
+			<path class="USB_st3" d="M202.5,335.8c31.9,18.4,32.1,48.2,0.4,66.6s-83.2,18.4-115.1,0l-56.5-32.6L146,303.2L202.5,335.8z"/>
+		</g>
+	</g>
+</g>
+</svg>
+
+				<div .cd_lb style="color:#000"><label>USB</label></div>
+			</div>
+		</div>
+		<div .tab_select>
+			<div class="select_file_path_resdisk">
+				<div .select_dr_list>
+					<p><label>ID_SELECT_DRIVE</label></p>
+					<select .select_drive #ID_CURRENT_SELECT name=drive_letter>
+						<!-- <option></option> -->
+					</select>
+				</div>
+				<div .disk_brows_btn><span .iso_label><label>ID_SELECT_ISO</label></span><input|text.path #ID_ISOFILE_PATH readonly><div class="btnCstmSmall mg0" #ID_BTN_BROWSE><label>ID_UPDATE_BTN_BROWSE</label></div></div>
+			</div>
+			<div .progress_div>
+				<div class="progress_bar_container_rescudisk">
+					<p .progress_status #ID_PROGRESS_STATUS></p>
+					<div><progress #progress_bar_rescuedisk max="100" value="0" /></div>
+					<p .percentage_container_rescuedisk><span #RescuDiskScanPercent>0%</span></p>
+				</div>
+			</div>
+			<div .rescue_btn_container>
+                <div .floatleft_btn>
+                    <div class="btnCstm" #ID_BTN_BACK><label>ID_BTN_BACK</label></button> <span .buttonIcons></span></div>
+                </div>
+				<div .rescue_footer_buttons>
+					<div class="btnCstm" #ID_BTN_OK><label>ID_START</label></button></div>
+					<div class="btnCstm" #ID_BTN_CLOSE><label>ID_CLOSE</label></button></div>
+				</div>
+			</div>
+		</div>
+    </div>
+</body>
+</html>

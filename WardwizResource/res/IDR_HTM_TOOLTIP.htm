@@ -1,0 +1,350 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+<title></title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+<include src="IDR_HTM_FONT_AWESOME.htm" />
+<style>
+	@import url(IDR_CSS_MAIN.css);
+    @import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_CAROUSEL.css);
+	
+	html{
+	   padding:0dip;
+	   margin:0dip;
+	   width:720dip;
+	   height:400dip;
+	   overflow:hidden; 
+	}
+	body{
+	   padding:0dip;
+	   margin:0dip;
+	   background:url(IDR_JPG_DEFAULT_BACKGRUND.png) no-repeat;
+	   background-size:cover;
+	}
+	h1,h4{
+		font-family: 'Source Sans Pro', sans-serif!important;
+	}
+	.main_ToolTip{
+		width:720dip;
+		height:400dip;		
+	}
+	.clickable_cl{
+		behavior:clickable;
+		cursor:pointer;
+	}	
+	
+	div#carousel { width: calc( ( 10dip + 105dip ) * 4 + 10dip + 130dip); height: 120dip; background:transparent; padding:0dip ;}
+    div#carousel > .list 
+    {
+            /*background-color: rgba(0,0,0,.4);
+      foreground-image: url(images/cover.png);
+      foreground-repeat: expand;
+      foreground-position: 16dip 32dip 16dip 32dip; */
+     }
+	div#carousel div { width:550dip; min-height: 87dip; margin: 10dip;margin-left: 0;margin-right: 0;padding-left:10dip;padding-right:10dip;}
+
+	div#carousel div .bottom_div_body{ width:168dip; height: 60dip;;margin-left:0dip;padding-top:0;}
+
+	div#carousel div:hover > .settings_rotate  {
+		transform:rotate(360deg);
+		transition:transform(sine-in-out, 1000ms);
+	}
+	div#carousel div:hover > .caraosel_img_ico  {
+		transform:scale(1.1);
+		transition:transform(sine-in-out, 600ms);
+	}
+	div#carousel > widget.button.prev 
+	{
+	  background:url(IDR_PNG_PREVIOUS_BUTTON.png) no-repeat 50% 50%;
+	  background-size:cover;
+	  width:25dip;
+	  height:25dip;
+	  margin:* 0dip;
+	  margin-right:-10dip;
+	  margin-top:30dip;
+	}
+	div#carousel > widget.button.next 
+	{
+	  background:url(IDR_PNG_NEXT_BUTTON.png) no-repeat;
+	  background-size:cover;
+	  width:25dip;
+	  height:25dip;
+	  margin:* 0dip;
+	  margin-left:-10dip;
+	  margin-top:30dip;
+	}
+	div#carousel > widget.button:hover { background-image-transformation: contrast-brightness-gamma(0.5,0.58, 1.1); }
+	div#carousel > widget.button:active { background-image-transformation: contrast-brightness-gamma(0.5,0.58, 1.4); }
+	div.carousel > .button.prev:disabled,
+	div.carousel > .button.next:disabled { opacity:0; }	
+	#carousel #div1 p
+	{
+		margin-top:1dip;
+	}
+	.header_tooltip{
+		flow:horizontal;
+		width:720dip;        
+		height:45dip;
+	}
+	.header_tooltip .logo{
+		width:695dip;
+		padding-left:5dip;
+		padding-top:3dip;
+	}
+	.header_tooltip .logo img{		
+		padding-left:5dip;
+		padding-top:1dip;
+		width:29dip;
+	}
+	.header_tooltip #ID_BUTTON_CLOSE {
+		padding-top:10dip;
+	}	
+	.inner_tooltipBody{
+		width:720dip;
+		height:420dip;
+	}
+	.info_tooltip{
+		margin-top:20dip;
+	}
+	.displayContent_container{
+		width:600dip;
+		margin-left:50dip;
+		margin-bottom:10dip;
+		height:220dip;
+		background:rgba(0,0,0,.2);
+		padding-left:10dip;
+		padding-right:10dip;
+		border-radius:10dip;
+		box-shadow:0 0 10dip #000;
+	}
+	.title_heading{
+		margin-top:5dip;
+	}
+	.title_heading img{
+		float:right;
+		width:80dip;
+		margin-right:-20dip;
+		margin-top:-40dip;
+	}
+	.title_heading h4{
+		height:8dip;
+	}	
+	.title_heading h1{
+		height:27dip;
+	}
+	.tooltip_footer_buttons{
+		width:620dip;
+		margin-left:50dip;
+		text-align:right;
+		height:30dip;
+	}
+	.id_show_tips_startup{
+		float:left;
+	}
+	.marginTopZero{
+		margin-top:0dip; 
+	}
+	#footer_additional_page{
+		position:absolute;
+		bottom:0;
+		height:40dip;
+		width:720dip;
+	}
+	#footer_additional_page .right_section1{
+		float:right;
+		padding-right:15dip;
+		padding-top:3dip;
+	}
+	#footer_additional_page .left_section1 {
+		float: left;
+		padding-left: 15dip;
+		padding-top: 10dip;
+	}  
+	.right_section1 li:hover> div.fb_icon_menu{
+		background:url(IDR_PNG_FB_HOVER.png) no-repeat;
+		background-size:cover;
+	}	
+	.right_section1 li:hover> div.tw_icon_menu{
+		background:url(IDR_PNG_INSTA_HOVER.png) no-repeat;
+		background-size:cover;
+	}
+	.right_section1 li:hover> div.ln_icon_menu{
+		background:url(IDR_PNG_LINKEDIN_HOVER.png) no-repeat;
+		background-size:cover;
+	}
+	.social li{
+		display:inline-block;
+		list-style:none;
+	}
+	.fb_icon_menu{
+		width:14dip;
+		height:14dip;
+		margin-bottom:0dip;
+		background:url(IDR_PNG_FB.png) no-repeat;
+		background-size:cover;
+	}
+	.tw_icon_menu{
+		width:14dip;
+		height:14dip;
+		margin-bottom:0dip;
+		background:url(IDR_PNG_INSTA.png) no-repeat;
+		background-size:cover;
+	}	
+	.ln_icon_menu{
+		width:14dip;
+		height:14dip;
+		margin-bottom:0dip;
+		background:url(IDR_PNG_LINKEDIN.png) no-repeat;
+		background-size:cover;
+	}
+</style>
+	
+<script type="text/tiscript">		
+	include "IDR_TIS_CAROUSEL.tis";
+</script>
+	
+<script type="text/tiscript">
+    var varCheckBoxValue = false;
+</script>
+	
+<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			if(!view.parameters.FunCheckInternetAccessBlock())
+			Sciter.launch("https://vibranium.co.in/");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			if(!view.parameters.FunCheckInternetAccessBlock())
+			Sciter.launch("https://vibranium.co.in/"); //german for basic
+	}
+</script> 
+    
+<script type="text/tiscript">
+    $(#ID_CHECKBOX_STARTUPTIP).onClick = function()
+    {
+            varCheckBoxValue = $(#ID_CHECKBOX_STARTUPTIP).value;
+            view.parameters.ButtonClick(varCheckBoxValue);
+    }
+</script>
+    
+<script type="text/tiscript">
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        view.close(null);
+    }
+	$(#close_dialog).onClick = function()
+    {
+        view.close(null);
+    }
+</script>
+
+<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+    function self.ready()
+    {
+		self.language =  view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme")
+		{
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}		
+        $(#ID_CHECKBOX_STARTUPTIP).value = true;		
+    }
+</script>
+
+<script type="text/tiscript">  
+    $(#fb).onClick = function() {
+    
+      if(!view.parameters.FunCheckInternetAccessBlock())
+			Sciter.launch("https://www.facebook.com/Vibraniumav");
+            //Sciter.launch("http://www.vibranium.co.in/social/re.php?social=facebook");
+    
+    }
+	$(#tw).onClick = function() {
+    
+      if(!view.parameters.FunCheckInternetAccessBlock())
+			Sciter.launch("https://www.instagram.com/vibranium.india/?hl=en");
+            //Sciter.launch("http://www.wardwiz.de/social/re.php?social=Insta");
+    
+    }
+	$(#ln).onClick = function() {
+    
+      if(!view.parameters.FunCheckInternetAccessBlock())
+			Sciter.launch("https://www.linkedin.com/company/vibranium-india/");
+           // Sciter.launch("http://www.wardwiz.de/social/re.php?social=LinkedIn");
+    
+    }
+</script>
+
+</head>
+<body>
+<div .main_ToolTip>
+	<div .header_tooltip role="window-caption">
+		<div .logo>
+			<img #ID_LOGO .clickable_cl src="IDR_IMG_SHIELD_ICO.png">
+		</div>
+		<div .clickable_cl .frame_display_src #ID_BUTTON_CLOSE>X</div>
+	</div>	
+	<br/>
+	<div .inner_tooltipBody>
+		<div class="info_tooltip">
+			<div class="displayContent_container">
+				<div class="title_heading">
+					<img src="IDR_PNG_BULB.png">
+					<h4><label>ID_TIP_OF_THE_DAY</label></h4>
+					<h1><label>ID_DID_YOU_KNOW</label></h1>
+					<hr/>
+					<div #carousel .carousel>
+						<div #div1>
+							<p><label>ID_KEEP_VIRUS_DEFINITIONS_UP_TO_DATE</label></p>
+						</div>
+						<div #div1>
+							<p><label>ID_DO_NOT_OPEN_ANY_FILES_ATTACHED_TO_AN_EMAIL</label></p>
+						</div>
+						<div #div1>
+							<p><label>ID_DO_NOT_CONDUCT_ON_LINE_FINANCIAL_TRANSACTIONS</label></p>
+						</div>
+						<div #div1>
+							<p><label>ID_ALWAYS_CREATE_STRONG_PASSWORDS</label></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div .tooltip_footer_buttons>
+				<span .id_show_tips_startup><input type="checkbox" #ID_CHECKBOX_STARTUPTIP ><label for="ID_CHECKBOX_STARTUPTIP">ID_SHOW_TIPS_STARTUP</label></span>
+				<div class="btnCstmSmall" .marginTopZero #close_dialog><label>ID_OK</label></div>  
+			</div>
+		</div>		
+		<div #footer_additional_page>
+			<div .left_section1><label>ID_STR_ALL_RIGHTS_RESERVED</label> &reg; <label>ID_STR_WARDWIZ_2017</label>  </div>
+			<div .right_section1>
+				<ul .social>
+					<li .clickable_cl #fb><div class="fb_icon_menu"></div></li> 
+					<li .clickable_cl #tw><div class="tw_icon_menu"></div></li>
+					<li .clickable_cl #ln><div class="ln_icon_menu"></div></li>
+				</ul>
+			</div>
+		</div> 
+	</div>	
+</div>
+</body>
+</html>

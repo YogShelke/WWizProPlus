@@ -1,0 +1,199 @@
+<html lang="ENGLISH">
+<head>
+	<title></title>
+ 	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation"> 	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+			background:transparent;
+		}
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+			background:transparent;
+		}
+		
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:100dip;
+			height:25dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.right{
+			text-align:right;
+		}
+		
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:697dip;
+			height:180dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			margin:10dip!important;
+		}
+
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: scroll-indicator;  
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		  
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:2dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center; width:0.05*; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		
+		table td:nth-child(3) {  
+			text-align:left; 
+			width:0.4*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* third column */
+		
+		table td:nth-child(4) /* last column */
+		{ 
+			 text-align:left;
+			 overflow:hidden;        /* three line below - ellipsis */
+			 text-overflow:ellipsis;
+			 white-space:nowrap;
+			 width:.1*;
+			 border-left:1dip solid #bdbccc;
+		} 
+	  
+	  
+	</style>
+</head>
+<body>
+	<h1 style="color:#fff;text-align:center;font-weight:400;"><label>ID_VIRUS_SCAN</label></h1>
+	<h3 style="color:#fff;text-align:center; margin:5dip 0;font-weight:300;"><label>ID_SCANS_EMAIL_ATTACHMENTS</label></h3>
+	
+		<table id="thetable"  style="margin:20dip">
+			<thead>
+				<tr>
+					<th></th>
+					<th><label>ID_SENDER_ADDRESS_S</label></th>
+					<th><label>ID_SUBJECT</label></th>
+					<th><label>ID_SCAN_STATUS</label></th>
+				</tr>
+			</thead>  
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<div .right>
+			<button .scan_button style="margin-right:15dip;" .dfn><label>ID_APPLY</label></button>
+		</div>
+	<frame #footer_frame src="IDR_HTM_FOOTER.htm" />
+</body>
+</html>

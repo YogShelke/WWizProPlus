@@ -1,0 +1,61 @@
+
+@set std-toggler {
+  :root { 
+    flow: stack;
+    behavior:check; 
+    background:threedshadow;
+    overflow:hidden;
+    width:max-content;
+    height:min-content;
+    padding:0dip;
+    /* border:1dip solid threedshadow; */
+    border-radius:20dip;
+    transition: none;
+	/* box-shadow: inset 0px -1px 10px 5px #7fb7ce; */
+	max-height:22dip;
+    display:inline-block;
+    /*foreground-image:url(toggler-knob.svg);
+    foreground-size: calc(1.6em + 2dip);
+    foreground-repeat:no-repeat;
+    foreground-position:100% 50%;
+    foreground-clip:border-box; */
+	font-size:11dip;
+    cursor:pointer;
+  }
+
+  :root:checked { foreground-position:0% 50%;  }
+  
+  :root > caption { line-height:1.6em; padding:0 0.6em; height:1.6em;}
+  
+  :root > caption.true { padding-left:2em; background-color:#5a9dbc; color: highlighttext;}
+  :root > caption.false { padding-right:2em; }
+  
+  :root:checked > caption.false { transform: translate(-100%,0);  }
+  :root:not(:checked) > caption.true  { transform: translate(100%,0); }
+  
+  /*do transitions only after behavior assignment - when it is UI operational */
+  :root:ready { transition: foreground-position(linear,200ms);  }
+  :root:ready > caption { transition: transform(linear,200ms); }
+  
+  :root::after /* the knob */
+  { 
+    display:block; 
+    size:1.2em; 
+    margin: 1* 0* 1* 1*; 
+    background-image:url(stock:disk);
+    background-size:1.1em;
+    background-position:50% 50%;
+    background-repeat:no-repeat;
+	margin-right:2dip;
+     /* stroke:transparent; stroke-width: 2dip; */
+    fill:#fff;
+  } 
+  :root:checked::after { margin: 1* 1* 1* 0*; transition: margin(linear,200ms);
+	margin-left:2dip;  } 
+  
+}
+
+button[type=toggler] { 
+  style-set: "std-toggler";
+}
+

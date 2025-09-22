@@ -1,0 +1,976 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style> 
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html{
+        behavior:WardWizAntirootkit;  
+	}
+	.scan_area_antirootkit:collapsed{
+		visibility:none;
+	}
+	.container_rootkit{
+		margin-left:210dip;
+	}
+	.container_rootkit input[type="checkbox"]{
+		margin-top:10dip;
+		margin-bottom:10dip;	
+	}
+	.container_rootkit input[type="checkbox"]+span{
+		margin-top:10dip;
+		margin-bottom:10dip;
+	}
+	.antirootkit_cntnt input[type="checkbox"]{
+		margin-top:10dip;
+		margin-bottom:10dip;	
+	}
+	.antirootkit_cntnt input[type="checkbox"]+span{
+		margin-top:10dip;
+		margin-bottom:10dip;
+	}
+	.mrglft_anti{
+		margin-left:250dip;
+	}
+	.process_details{
+		visibility:visible;
+	}
+	.process_details:collapsed{
+		visibility:none;
+	}
+	.registry_details{
+		visibility:none;
+	}
+	.registry_details:collapsed{
+		visibility:visible;
+	}
+	.Files_n_folders_details{
+		visibility:none;
+	}
+	.Files_n_folders_details:collapsed{
+		visibility:visible;
+	}
+	.antirootkit_cntnt p{
+		padding-top:5dip;
+		font-size:11dip;
+	}
+	.btn_rtkt{
+		width:310dip;
+		margin-left:350dip;
+		padding-top:10dip;
+	}
+	#ID_DIV_SHUTDOWN_RTKIT:collapsed{
+		visibility:none;
+	}
+	#ID_DIV_SHUTDOWN_RTKIT:expanded{
+		visibility:visible;
+	}
+	.Report_heading_antrtkt{
+		flow:horizontal;
+		margin-top:20dip;
+	}
+	.Report_heading_antrtkt .col_1_anti h3{
+		font-weight:100;
+		margin:3dip;
+		behavior:clickable;
+		cursor:pointer;
+	}
+	.Report_heading_antrtkt .col_2_anti h3{
+		font-weight:100;
+		margin:3dip;
+		behavior:clickable;
+		cursor:pointer;
+	}
+	.Report_heading_antrtkt .col_3_anti h3{
+		font-weight:100;
+		margin:3dip;
+		behavior:clickable;
+		cursor:pointer;
+	}
+	.reports_rootkit{
+		visibility:none;
+	}
+	.reports_rootkit:collapsed{
+		visibility:visible;
+	}
+	.translateWindow{
+		filter: blur(5dip);
+		position:relative;
+		opacity:.4;
+	}
+	.messageContAlert{
+		width:300dip;
+		height:155dip;
+		margin:*;
+		position:absolute;
+		top:110dip;
+		left:-20dip;
+		text-align:center;
+		padding:15dip;
+		//border-radius:30dip 0 30dip 0;
+		visibility:hidden;
+	}
+	.messageContAlert:expanded{
+		visibility:visible;
+	}
+	#ID_BUTTON_PAUSE_RESUME:disabled{
+		opacity:0.5;
+	}
+	#ID_BUTTON_STOP:disabled{
+		opacity:0.5;
+	}
+	</style>
+	<style #ID_CSS_GERMAN_LANG />
+	<script type="text/tiscript">
+		const styleBag = $(style#ID_CSS_GERMAN_LANG);
+		styleBag.attributes["src"] = "IDR_CSS_GERMAN_LANGUAGE.css";
+	</script>
+	<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	var m_bIsManualStop = false;
+    </script>
+	
+	<script type="text/tiscript">
+    self.on("closerequest", function(event)
+    {
+        self.OnCallContinueARootScan(); 
+    });
+    </script>
+	
+    <script type="text/tiscript"> 
+	var vProcessCheckBox = $(body);
+	var vRegistryCheckBox = $(body);
+	var vFilesFoldersCheckBox = $(body);
+	
+	var vlistObjProcess;
+	var vlistObjRegistry;
+	var vlistObjFilesFolders;
+	
+	var varProcessFoundCount = 0;
+	var varRegistryFoundCount = 0;
+	var varFilesFoldersFoundCount = 0;
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_CLOSE_POPUP).onClick = function()
+	{
+		selectView("IDR_HTM_HOME");
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function NotificationMsgCallBack(varMsgType, strMsgText)
+	{
+		if(varMsgType == 1)
+		{
+			$(#ID_LIGHTBOX_TXT).value = strMsgText;
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return res;
+		}
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	const ProcessselectAll = vProcessCheckBox.$(input#Processselect-all);	
+	vProcessCheckBox.on("change","#Processselect-all", function() 
+	{ // select/deselect all
+		var selected = this.value;
+		for( var record in arrProcessEntries )
+		record.selected = selected; 
+	});
+	</script>
+	
+	<script type="text/tiscript">
+	const RegistryselectAll = vRegistryCheckBox.$(input#Registryselect-all);		
+	vRegistryCheckBox.on("change","#Registryselect-all", function() 
+	{ // select/deselect all
+		var selected = this.value;
+		for( var record in arrRegistryEntries )
+		record.selected = selected; 
+	});
+	</script>
+	
+	<script type="text/tiscript">
+	const FilesFoldersselectAll = vFilesFoldersCheckBox.$(input#FilesFoldersselect-all);		
+	vFilesFoldersCheckBox.on("change","#FilesFoldersselect-all", function() 
+	{ // select/deselect all
+		var selected = this.value;
+		for( var record in arrFilesFoldersEntries )
+		record.selected = selected; 
+	});
+	</script>
+	
+	<script type= "text/tiscript"> 
+	function UpdateProcessVirusFoundEntry( varFilePosition , strActiontaken)
+	{	
+		var varFilepos = varFilePosition.toInteger();
+		arrProcessEntries[varFilepos].ProcessActionTaken = strActiontaken;
+	}
+	</script>
+
+	<script type= "text/tiscript"> 
+	function UpdateRegistryVirusFoundEntry( varFilePosition , strActiontaken)
+	{	
+		var varFilepos = varFilePosition.toInteger();
+		arrRegistryEntries[varFilepos].RegistryActionTaken = strActiontaken;
+	}
+	</script>
+
+	<script type= "text/tiscript"> 
+	function UpdateFilesFoldersVirusFoundEntry( varFilePosition , strActiontaken)
+	{	
+		var varFilepos = varFilePosition.toInteger();
+		arrFilesFoldersEntries[varFilepos].FilesFoldersActionTaken = strActiontaken;
+	}
+	</script>	
+	
+	<script type= "text/tiscript">
+	function showProcessReports(){
+			$(.process_details).state.collapsed = false;
+			$(.registry_details).state.collapsed = false;
+			$(.Files_n_folders_details).state.collapsed = false;
+
+		vlistObjProcess.on("change","tbody > tr", function() 
+		{
+			// some change inside tr 	// note: each row (this) is a form here so its value is structure: 
+			this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+			if( !this.data.selected )
+				ProcessselectAll.value = false;
+		});	
+	}
+		
+	$(#processBottton).onClick = function() 
+	{
+		showProcessReports();
+	}
+	
+	$(#ID_Process_BUTTON_CLEAN).onClick = function() 
+	{	 
+		var RootkitScanOption="Process";
+		self.OnClickAntirootCleanBtn(RootkitScanOption,arrProcessEntries, UpdateProcessVirusFoundEntry, NotificationMsgCallBack);
+	}
+	
+	$(#ID_Process_BUTTON_BACK).onClick = function()
+	{
+	    $(#ID_HIDDEN_FILES_FOLDERS).checked = true;
+        $(#ID_HIDDEN_WINDOWS_REGISTRY).checked = true;
+        $(#ID_HIDDEN_RUNNING_PROCESS).checked = true;
+		$(.reports_rootkit).state.collapsed = false;	
+		$(.scan_popup).state.collapsed = false;	
+		$(.scan_area_antirootkit).state.collapsed = false;
+		$(.chkshutdown).state.value = false;
+	}
+	</script>
+	
+	<script type= "text/tiscript">	
+	function showRegistryReports(){
+			$(.process_details).state.collapsed = true;
+			$(.registry_details).state.collapsed = true;
+			$(.Files_n_folders_details).state.collapsed = false;
+			
+		vlistObjRegistry.on("change","tbody > tr", function() 
+		{	// some change inside tr 	// note: each row (this) is a form here so its value is structure: 
+			this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+			if( !this.data.selected )
+				RegistryselectAll.value = false;
+		});				
+	}
+		
+	$(#registryButton).onClick = function() 
+	{
+		showRegistryReports();
+	}
+	
+	$(#ID_Registry_BUTTON_CLEAN).onClick = function() 
+	{	 
+		var RootkitScanOption="Registry";
+		self.OnClickAntirootCleanBtn(RootkitScanOption,arrRegistryEntries, UpdateRegistryVirusFoundEntry, NotificationMsgCallBack);
+	}
+	
+	$(#ID_Registry_BUTTON_BACK).onClick = function()
+	{
+		$(#ID_HIDDEN_FILES_FOLDERS).checked = true;
+        $(#ID_HIDDEN_WINDOWS_REGISTRY).checked = true;
+        $(#ID_HIDDEN_RUNNING_PROCESS).checked = true;
+		$(.reports_rootkit).state.collapsed = false;	
+		$(.scan_popup).state.collapsed = false;	
+		$(.scan_area_antirootkit).state.collapsed = false;				
+	}
+	</script>
+	
+	<script type= "text/tiscript">	
+	function showFilesFoldersReports()
+		{
+			$(.process_details).state.collapsed = true;
+			$(.registry_details).state.collapsed = false;
+			$(.Files_n_folders_details).state.collapsed = true;
+
+			vlistObjFilesFolders.on("change","tbody > tr", function() 
+		{	// some change inside tr 	// note: each row (this) is a form here so its value is structure: 
+			this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+			if( !this.data.selected )
+				FilesFoldersselectAll.value = false;
+		});	
+		
+	}
+		
+	$(#filesButton).onClick = function() 
+	{
+		showFilesFoldersReports();
+	}		
+	
+	$(#ID_FilesFolders_BUTTON_CLEAN).onClick = function() 
+	{	 
+		var RootkitScanOption="FilesFolders";
+		self.OnClickAntirootCleanBtn(RootkitScanOption,arrFilesFoldersEntries, UpdateFilesFoldersVirusFoundEntry, NotificationMsgCallBack);
+	}
+	
+	$(#ID_FilesFolders_BUTTON_BACK).onClick = function()
+	{
+		$(#ID_HIDDEN_FILES_FOLDERS).checked = true;
+        $(#ID_HIDDEN_WINDOWS_REGISTRY).checked = true;
+        $(#ID_HIDDEN_RUNNING_PROCESS).checked = true;
+		$(.reports_rootkit).state.collapsed = false;	
+		$(.scan_popup).state.collapsed = false;	
+		$(.scan_area_antirootkit).state.collapsed = false;	
+	}		
+	</script>
+		
+	<script type= "text/tiscript">
+    var chart = $(pie-chart);	
+	</script> 
+	
+	<script type="text/tiscript">
+    function Pie(params = {}) 
+    {
+        const strokeWidth = params.band || 10dip; 
+        const strokeColor = params.sector || color(100,0,0); 
+        const circleColor = params.circle || color(230,230,230); 
+      
+        var start = 1; 
+        var value = 0;  
+
+        function render(gfx) 
+        {
+
+          const sw = this.toPixels(strokeWidth, #width); 
+
+          var (w,h) = this.box(#dimension); 
+          var (x,y) = (w/2, h/2);  
+          var r = Integer.min(w,h) / 2 - sw / 2;  
+          
+          gfx.strokeWidth(sw + 0.5)
+             .strokeColor(circleColor)
+             .arc(x,y,r,r, 0deg, 360deg)
+             .strokeColor(strokeColor)
+             //.arc(x,y,r,r, 360deg * start, 360deg * value); Commented Due to Shift Start Point
+			 .arc(x,y,r,r, 90deg * start, 360deg * value);
+        }  
+        
+        this.paintContent = render;
+        
+        // redefining property 'value' on that element
+        this["value"] = property(v) {
+          get return value;
+          set {
+            value = v;
+            this.text = String.$({(value * 100).toInteger() }%) ;
+            this.refresh();
+          }
+        };
+        this.value = this.attributes["value"].toFloat(0.0);
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function SetScanAntirootkitPercentage(evt) {
+		$(#ID_BUTTON_PAUSE_RESUME).state.disabled = false;
+		$(#ID_BUTTON_STOP).state.disabled = false;
+		var progressRange =  evt.data.one.toInteger();
+		var varPercentage = progressRange.toFloat()/100;
+		if(varPercentage < 1.00)
+		{
+			chart.value = varPercentage;
+		}
+		$(input).on("change", function() {
+			chart.value = this.value;
+		});
+	}
+	self.subscribe(SetScanAntirootkitPercentage, Event.BEHAVIOR_EVENT, 0x100 + 20);
+	</script> 
+	
+	<script type="text/tiscript">
+	function SetScanFinishedStatus(evt) 
+	{
+		g_ARootScanFinish = true;
+		g_IsAntirootkitRunning = false;
+		g_IsARootScnPause = false;
+		g_bAntiRootScanShutdown = false;
+		chart.value = 1;
+		$(#ID_Scanned_Process_Count).text = evt.data.three.toInteger();
+        $(#ID_Detected_Process_Count).text= evt.data.six.toInteger();
+        $(#ID_Scanned_Registry_Count).text= evt.data.two.toInteger();
+        $(#ID_Detected_Registry_Count).text= evt.data.five.toInteger();
+        $(#ID_Scanned_Files_Count).text= evt.data.one.toInteger();
+        $(#ID_Detected_Files_Count).text= evt.data.four.toInteger();
+		showReports();	
+	}
+	self.subscribe(SetScanFinishedStatus, Event.BEHAVIOR_EVENT, 0x100 + 22);
+	</script> 
+
+	<script type="text/tiscript">
+	function GetScanFinishedFlag()
+	{		
+		g_ARootScanFinish = true;
+		g_IsARootScnPause = false;
+		if(g_CurrentPage != #ANTIROOTKITSCAN && g_CurrentPage == #ID_SCAN_HTML)
+		{
+			var doc = selectView("IDR_HTM_SCAN");
+			doc.ns.CloseARootScn();
+		}
+	}
+	</script> 
+
+	<script type="text/tiscript">
+    $(#scan_now_click).onClick = function()
+    {
+		var arrAntirootkit=[0];
+        var bHiddenFilesFolders = $(#ID_HIDDEN_FILES_FOLDERS).checked;
+        var bHiddenWindowsRegistry = $(#ID_HIDDEN_WINDOWS_REGISTRY).checked;
+        var bHiddenRunningProcess = $(#ID_HIDDEN_RUNNING_PROCESS).checked;
+
+
+        arrAntirootkit[0]={Val: bHiddenFilesFolders };
+        arrAntirootkit[1]={Val: bHiddenWindowsRegistry };
+        arrAntirootkit[2]={Val: bHiddenRunningProcess};
+
+		var varbIsAnyEntrySelected = false;
+		for( var varArrayEle in arrAntirootkit )
+		{
+			if(varArrayEle.Val == true)
+			{
+				varbIsAnyEntrySelected = varArrayEle.Val;
+				break;
+			}
+		}	
+		if(!varbIsAnyEntrySelected)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_PLEASE_SELECT_ROOTKIT_SCAN_OPTION");
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			return;
+		}
+		
+		chart.value = 0.01;
+		$(.scan_popup).state.collapsed = true;
+        $(.scan_area_antirootkit).state.collapsed = true; 
+        $(#ID_LBL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+        $(.scan_popup).state.collapsed = true;
+        $(.scan_area_antirootkit).state.collapsed = true;
+		$(#ID_DIV_SHUTDOWN_RTKIT).state.expanded = true;
+    
+            		
+        vlistObjProcess = $(#ProcessDetailsTable);
+        vlistObjProcess.value = arrProcessEntries;
+
+        vlistObjRegistry = $(#RegistryDetailsTable);
+        vlistObjRegistry.value = arrRegistryEntries;
+
+        vlistObjFilesFolders = $(#FilesFoldersDetailsTable);
+        vlistObjFilesFolders.value = arrFilesFoldersEntries;
+		g_varCurrentTask = #ANTIROOTKITSCAN;
+		g_IsAntirootkitRunning = true;
+		g_ARootScanFinish = false;
+		varProcessFoundCount = 0;
+		varRegistryFoundCount = 0;
+		varFilesFoldersFoundCount = 0;
+		arrProcessEntries.length = 0;
+		arrRegistryEntries.length = 0;
+		arrFilesFoldersEntries.length = 0;	
+		self.ScanFinishedCall(GetScanFinishedFlag);
+        self.OnStartAntirootkitScan(arrAntirootkit, ShowScanFinshedPage, AddVirusFoundEntry);
+    }
+    </script> 
+
+	<script type="text/tiscript">
+    $(#ID_BUTTON_PAUSE_RESUME).onClick = function()
+    {
+        if(g_IsARootScnPause == false)
+		{   
+            $(#ID_LBL_PAUSE).text = Lang.translate("ID_RESUME");
+			g_IsARootScnPause = true;
+			self.OnPauseAntirootScan();
+        }
+		else 
+		{
+			$(#ID_LBL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+			g_IsARootScnPause = false;
+			self.OnResumeAntirootScan();
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function showReports(){
+		g_IsAntirootkitRunning = false;
+		g_bAntiRootScanShutdown = false;
+		g_varCurrentTask = #NONE;
+		$(.reports_rootkit).state.collapsed = true;	
+		$(.scan_popup).state.collapsed = false;	
+		$(.scan_area_antirootkit).state.collapsed = true;	
+		showProcessReports();
+	}
+	</script>
+	
+
+	<script type="text/tiscript">
+    function ShowScanFinshedPage()
+    {
+        function SetScanFinishedStatusDelayed()
+		{
+			showReports();				
+		}
+		chart.value = 1;
+		g_IsAntirootkitRunning = false;
+		g_ARootScanFinish = true;
+		g_IsARootScnPause = false;
+		g_bAntiRootScanShutdown = false;
+		self.timer(500ms, SetScanFinishedStatusDelayed);
+    }
+	 </script>
+	 <script type="text/tiscript">
+		$(#ID_ARS_PROT).onClick = function()
+		{
+			SetOnProtectionEvent();
+		}
+		$(#ID_ARS_SCAN).onClick = function()
+		{
+			selectView("IDR_HTM_SCAN");
+		}
+	</script>
+	<script type="text/tiscript">
+    function UpdateFileCount(evt)
+	{
+       $(#ID_Scanned_Process_Count).text = evt.data.three.toInteger();
+       $(#ID_Detected_Process_Count).text= evt.data.six.toInteger();
+       $(#ID_Scanned_Registry_Count).text= evt.data.two.toInteger();
+       $(#ID_Detected_Registry_Count).text= evt.data.five.toInteger();
+       $(#ID_Scanned_Files_Count).text= evt.data.one.toInteger();
+       $(#ID_Detected_Files_Count).text= evt.data.four.toInteger();
+       //self.update();
+    }
+	self.subscribe(UpdateFileCount, Event.BEHAVIOR_EVENT, 0x100 + 21);
+    </script>
+	
+	<script type="text/tiscript">
+	function AddVirusFoundEntry(arrReports)
+	{
+		if (arrReports[0]==1)
+		{
+			AddProcessVirusFoundEntry(arrReports[1],arrReports[2],arrReports[3],arrReports[4]);
+		}
+		else if (arrReports[0]==2)
+		{
+			AddRegistryVirusFoundEntry(arrReports[1],arrReports[2],arrReports[3]);
+		}
+		else if (arrReports[0]==3)
+		{
+			AddFilesFoldersVirusFoundEntry(arrReports[1],arrReports[2]);
+		}
+	}
+	</script>
+	 
+	<script type= "text/tiscript"> 
+	function AddProcessVirusFoundEntry(strPID, strProcessName, strProcessPath, strProcessActionTaken)
+	{			
+		arrProcessEntries[varProcessFoundCount] = {selected : true ,PID:strPID, ProcessName: strProcessName, ProcessPath:strProcessPath, ProcessActionTaken:strProcessActionTaken};
+		varProcessFoundCount++;	
+	}
+	</script>
+
+	<script type= "text/tiscript"> 
+	function AddRegistryVirusFoundEntry(strRegistryName, strRegistryPath, strRegistryActionTaken)
+	{			
+		arrRegistryEntries[varRegistryFoundCount] = {selected : true ,RegistryName:strRegistryName, RegistryPath: strRegistryPath, RegistryActionTaken:strRegistryActionTaken};
+		varRegistryFoundCount++;	
+	}
+	</script>
+	
+	<script type= "text/tiscript"> 
+	function AddFilesFoldersVirusFoundEntry(strFilesFoldersPath, strFilesFoldersActionTaken)
+	{			
+		arrFilesFoldersEntries[varFilesFoldersFoundCount] = {selected : true ,FilesFoldersPath:strFilesFoldersPath, FilesFoldersActionTaken: strFilesFoldersActionTaken};
+		varFilesFoldersFoundCount++;	
+	}
+	</script>	
+	
+	<script type= "text/tiscript">
+    $(#ID_BUTTON_STOP).onClick = function()
+    {
+        self.OnPauseAntirootScan();
+		$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_ROOTKIT_SCANNING_IS_IN_PROGRESS_DO_YOU_WANT_TO_STOP");
+		var res = dialog { body:$(form#simple-dialog),
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true },{ caption: Lang.translate("ID_SCN_CANCEL"), role:#cancel, value:false }]
+						};
+        if(res == true)
+        {
+            m_bIsManualStop = false;
+			$(#ID_DIV_SHUTDOWN_RTKIT).state.collapsed = true;
+			g_IsAntirootkitRunning = false;
+			g_bAntiRootScanShutdown = false;
+			g_ARootScanFinish = true;
+            self.OnStopAntirootScan(m_bIsManualStop);
+			showReports();
+        }
+        else
+        {
+            $(#ID_LBL_PAUSE).text = Lang.translate("ID_BTN_PAUSE");
+            self.OnResumeAntirootScan();
+        }
+		g_IsARootScnPause = false;
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(.chkshutdown).on("change", function(){
+        if($(.chkshutdown).value == true)
+        {
+			g_bAntiRootScanShutdown = true;
+            self.OnClickShutDownScan(true);    
+        }
+        else if($(.chkshutdown).value == false)
+        {
+			g_bAntiRootScanShutdown = false;
+            self.OnClickShutDownScan(false);
+        }
+    });
+    </script>
+	
+	<script type= "text/tiscript">
+	$(#ID_BUY_HIGH_VER).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			Sciter.launch("https://vibranium.co.in/");  
+		else if(g_LanguageName == "GERMAN")
+			Sciter.launch("https://vibranium.co.in/"); 
+	}
+	</script>
+	
+	<script type="text/tiscript">	
+    if(productVersion == #BASIC){
+		$(#.messageContAlert).state.expanded = true;
+        $(.body_firewall_inner).attributes.addClass("translateWindow");
+		$(.body_firewall_inner).state.disabled = true;
+    }	
+    </script>
+	
+	<script type="text/tiscript">
+	function funGetScanStatus()
+	{
+		if(g_bQuickScanShutdown == true || g_bCustomScanShutdown == true || g_bFullScanShutdown == true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	</script>
+
+	<script type= "text/tiscript">
+	function self.ready()
+	{
+		g_CurrentPage = #ANTIROOTKITSCAN;
+		self.language = g_LanguageName;
+		$(#ID_ARS_ARSCAN).state.disabled = true;
+		if(g_themeType == "defaultTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+		
+		/*if(g_LanguageName == "ENGLISH")
+		{
+			styleBag.deactivate();
+		}
+		else if(g_LanguageName == "GERMAN")
+		{
+			styleBag.deactivate();
+			styleBag.activate();
+		}*/
+		
+		if(g_bAntiRootScanShutdown == true)
+		{
+			$(.chkshutdown).value = true
+            self.OnClickShutDownScan(true); 
+        }
+        else
+        {
+            self.OnClickShutDownScan(false); 
+        }
+		
+		//to add german lang css changes
+		if(g_LanguageName == "GERMAN")
+		{
+			$(.container_rootkit).style["margin-left"] = 170dip;
+			$(head).$append(<style>@import url(IDR_CSS_GERMAN_LANGUAGE.css);</style>);
+		}
+		if(g_IsAntirootkitRunning)
+		{
+			$(#ID_BUTTON_PAUSE_RESUME).state.disabled = true;
+			$(#ID_BUTTON_STOP).state.disabled = true;
+			if(chart.value == 0)
+			{
+				chart.value = 0.01;
+			}
+			if(g_IsARootScnPause == true)
+			{	
+				$(#ID_LBL_PAUSE).text = Lang.translate("ID_RESUME");				
+			}
+			vlistObjProcess = $(#ProcessDetailsTable);
+			vlistObjProcess.value = arrProcessEntries;
+	
+			vlistObjRegistry = $(#RegistryDetailsTable);
+			vlistObjRegistry.value = arrRegistryEntries;
+	
+			vlistObjFilesFolders = $(#FilesFoldersDetailsTable);
+			vlistObjFilesFolders.value = arrFilesFoldersEntries;
+			self.OnSetTimer();
+			$(.scan_popup).state.collapsed = true;
+			$(.scan_area_antirootkit).state.collapsed = true; 
+		}
+		self.GetAntirootScanStatus(funGetScanStatus);
+	}
+	</script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+	<div .body_firewall_inner>
+	<div .titleCont style="width:665dip;">
+		<div class="breadcrumbNav">
+			<ul class="listDisplayRow">
+				<li #ID_ARS_PROT><label>ID_PROTECTION</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #ID_ARS_SCAN><label>ID_SCANS</label><span .icons1>	&fa-angle-double-right;</span></li>
+				<li #ID_ARS_ARSCAN><label>ID_ANTIROOTKIT_SCAN</label></li>
+			</ul>
+		</div>
+		<br/>
+		<br/>
+		<h1 .headingTitle1><label>ID_ANTIROOTKIT_SCAN</label></h1>
+		<p><label>ID_SCAN_AND_REMOVE_ROOTKITS</label></p>
+	</div>
+	<div .scan_area_antirootkit>
+		<h4 style="text-align:center;"><label>ID_HTM_ANTIROOTKIT_SCAN_PLEASE_SELECT_ROOTKIT_SCAN_OPTION</label></h4>
+		<div .container_rootkit .rootkit_mrgn>
+			<input type="checkbox" checked #ID_HIDDEN_FILES_FOLDERS><label for="ID_HIDDEN_FILES_FOLDERS">ID_HTM_ANTIROOTKIT_SCAN_HIDDEN_ITEMS_IN_FILES_AND_FOLDERS</label><br/>
+			<input type="checkbox" checked #ID_HIDDEN_WINDOWS_REGISTRY><label for="ID_HIDDEN_WINDOWS_REGISTRY">ID_HTM_ANTIROOTKIT_SCAN_HIDDEN_ITEMS_IN_WINDOWS_REGISTRY</label><br/>
+			<input type="checkbox" checked #ID_HIDDEN_RUNNING_PROCESS><label for="ID_HIDDEN_RUNNING_PROCESS">ID_HTM_ANTIROOTKIT_SCAN_HIDDEN_ITEMS_IN_RUNNING_PROCESS</label><br/>
+		</div>
+		<br/>
+		<div class="btnCstmMd" .mrglft_anti #scan_now_click><label>ID_HTM_CUSTOM_SCAN_SCAN_NOW</label></div>		
+	</div>
+	
+	
+	<div .scan_popup>
+		<div .mgLeftSc>
+			<div .scanAnimation>
+				<div .shieldGif>
+					<!-- <img src="IDR_GIF_LOGO_ANIMATION.gif"> -->
+				</div>
+				<pie-chart value=0.0 />
+			</div>
+		</div>
+		<div .quickResultCont>
+			<div .quickScanResult style="height:50dip;">	
+				<div .btnCstm #ID_BUTTON_PAUSE_RESUME><label #ID_LBL_PAUSE>ID_BTN_PAUSE</label></div>
+			</div>
+			<div .quickScanResult style="height:50dip;">
+				<div .btnCstm #ID_BUTTON_STOP><label>ID_BTN_STOP</label></div>
+			</div>
+		</div> 
+		<div .pathDisplay #ID_DIV_SHUTDOWN_RTKIT>
+			<p><input type="checkbox" .chkshutdown #ID_SHUT_DWN><label for="ID_SHUT_DWN">ID_SHUTDOWN_COMP</label></p>
+		</div>
+	</div>
+	<div class="reports_rootkit">
+		<div .Report_heading_antrtkt>
+			<div .col_1_anti>
+				<h3 #processBottton><label>ID_PROCESSES</label></h3>
+			</div>
+			<div .col_2_anti>
+				<h3 #registryButton><label>ID_WINDOWS_REGISTRY</label></h3>
+			</div>
+			<div .col_3_anti>
+				<h3 #filesButton><label>ID_FILES_AND_FOLDERS</label></h3>
+			</div>
+		</div>
+		<div .Report_details>
+			<div .process_details>
+				<table #ProcessDetailsTable>
+					<thead>
+						<tr>
+							<th style="width:50dip;"><label>ID_PID</label></th>
+							<th style="width:170dip;"><label>ID_PROCESS_NAME</label></th>
+							<th style="width:350dip;"><label>ID_PROCESS_PATH</label></th>
+							<th><label>ID_ACTION</label></th>
+						</tr>
+					</thead>  
+					<tbody>
+						<tr>
+							<td><input(selected)|checkbox style="margin-top:5dip;"/><span (PID)></span></td>
+							<td(ProcessName)></td>
+							<td(ProcessPath)></td>
+							<td(ProcessActionTaken)></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="horizontalFlow">
+					<div class="antirootkit_cntnt">
+						<input#Processselect-all|checkbox checked/> <span><label>ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></span>
+					</div>
+					<div class="antirootkit_cntnt" style="text-align:right;">
+						<p><label>ID_SCANNED_PROCESSES</label> <span #ID_Scanned_Process_Count>0</span></p>
+					</div>
+					<div class="antirootkit_cntnt" style="text-align:center;">
+						<p><label>ID_DETECTED_PROCESSES</label> <span #ID_Detected_Process_Count>0</span></p>
+					</div>
+				</div>
+				<div .btn_rtkt style="text-align:right;">
+					<div class="btnCstm" #ID_Process_BUTTON_BACK><label>ID_BTN_BACK</label></button></div>
+					<div class="btnCstm" #ID_Process_BUTTON_CLEAN><label>ID_BTN_CLEAN</label></button></div>
+				</div>
+			</div>
+			<div .registry_details>
+				<table #RegistryDetailsTable>
+					<thead>
+						<tr>
+							<th style="width:90dip;"><label>ID_SERVICE_NAME</label></th>
+							<th style="width:200dip;"><label>ID_SERVICE_PATH</label></th>
+							<th><label>ID_ACTION</label></th>
+						</tr>
+					</thead>  
+					<tbody>
+						<tr>
+							<td><input(selected)|checkbox style="margin-top:5dip;"/><span (RegistryName)></span></td>
+							<td(RegistryPath)></td>
+							<td(RegistryActionTaken)></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="horizontalFlow">
+					<div class="antirootkit_cntnt">
+						<input#Registryselect-all|checkbox checked/> <span><label>ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></span>
+					</div>
+					<div class="antirootkit_cntnt" style="text-align:right;">
+						<p><label>ID_SCANNED_REGISTRY_ENTRIES</label> <span #ID_Scanned_Registry_Count>0</span></p>
+					</div>
+					<div class="antirootkit_cntnt" style="text-align:center;">
+						<p><label>ID_DETECTED_REGISTRY_ENTRIES</label> <span #ID_Detected_Registry_Count>0</span></p>
+					</div>
+				</div>
+				<div .btn_rtkt style="text-align:right;">
+					<div class="btnCstm" #ID_Registry_BUTTON_BACK><label>ID_BTN_BACK</label></button></div>
+					<div class="btnCstm" #ID_Registry_BUTTON_CLEAN><label>ID_BTN_CLEAN</label></button></div>
+				</div>
+			</div>
+			<div .Files_n_folders_details>
+				<table #FilesFoldersDetailsTable>
+					<thead>
+						<tr>
+							<th style="width:150dip;"><label>ID_FILE_PATH</label></th>
+							<th><label>ID_ACTION</label></th>
+						</tr>
+					</thead>  
+					<tbody>
+						<tr>
+							<td><input(selected)|checkbox style="margin-top:5dip;"/><span (FilesFoldersPath)></span></td>
+							<td(FilesFoldersActionTaken)></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="horizontalFlow">
+					<div class="antirootkit_cntnt">
+						<input#FilesFoldersselect-all|checkbox checked/> <span><label>ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></span>
+					</div>
+					<div class="antirootkit_cntnt" style="text-align:right;">
+						<p><label>ID_SCANNED_FILES_FOLDERS</label> : <span #ID_Scanned_Files_Count>0</span></p>
+					</div>
+					<div class="antirootkit_cntnt" style="text-align:center;">
+						<p><label>ID_DETECTED_FILES_FOLDERS</label> : <span #ID_Detected_Files_Count>0</span></p>
+					</div>
+				</div>
+				<div .btn_rtkt style="text-align:right;">
+					<div class="btnCstm" #ID_FilesFolders_BUTTON_BACK><label>ID_BTN_BACK</label></button></div>
+					<div class="btnCstm" #ID_FilesFolders_BUTTON_CLEAN><label>ID_BTN_CLEAN</label></button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div class="messageContAlert">
+		<div .clickable_cl .BuyHighVersionClose #ID_CLOSE_POPUP>
+				<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIconVersionUpgrade">
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+				<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+				</svg>
+		</div>
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			 viewBox="0 0 511 511" enable-background="new 0 0 511 511" xml:space="preserve" style="size:45dip;background:transparent;">
+		<path fill="#E58E13" d="M311.5,434.9c0,35-23.6,64.4-55.7,73.3c-6.5,1.8-13.3,2.8-20.3,2.8c-42,0-76.1-34.1-76.1-76.1l76.2-39.2
+			L311.5,434.9z"/>
+		<path fill="#F7D360" d="M307.8,458.4c-7.8,24.2-27.4,43-52.1,49.9c-15.5-4.3-29-13.3-38.8-25.5c-7.9-9.8-0.8-24.4,11.8-24.4H307.8z"
+			/>
+		<path fill="#F7D360" d="M431.8,358.9l-163.4,35.3L39,358.9c18,0,28.2-9.4,34-25c27.9-75.4-46.5-295.1,162.5-295.1
+			s134.5,219.7,162.5,295.1C403.7,349.4,413.8,358.9,431.8,358.9z"/>
+		<path fill="#E58E13" d="M469.9,396.9c0,21-17,38-38,38H39c-10.5,0-20-4.3-26.9-11.1C5.2,416.9,1,407.4,1,396.9c0-21,17-38,38-38
+			h392.8c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M397.9,333.8H193.7c-22,0-39.6-18.2-38.9-40.2c2.9-93.1-12-253.1,79.1-254.8
+			c-250,1.3-90.2,320.1-194.9,320.1h392.8C413.8,358.9,403.7,349.4,397.9,333.8z"/>
+		<path fill="#F7D360" d="M469.9,396.9c0,21-17,38-38,38H148.9c-10.5,0-20-4.3-26.9-11.1c-6.9-6.9-11.1-16.4-11.1-26.9
+			c0-21,17-38,38-38h282.9c10.5,0,20,4.3,26.9,11.1C465.6,376.9,469.9,386.4,469.9,396.9z"/>
+		<path fill="#E58E13" d="M274.1,41.7c0.1-1,0.1-1.9,0.1-2.9c0-21.4-17.4-38.8-38.8-38.8c-21.4,0-38.8,17.4-38.8,38.8c0,1,0,2,0.1,2.9
+			"/>
+		<g>
+			<path fill="#E6E6E6" d="M424.2,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-36.2-9.3-67.1-27.7-91.8c-13.7-18.5-27.6-26.4-27.8-26.5
+				c-3.8-2.1-5.1-6.9-3-10.6c2.1-3.8,6.8-5.1,10.6-3c0.7,0.4,16.5,9.3,32.2,30.1c14.3,19,31.3,52,31.3,101.9
+				C432.1,163.9,428.6,167.4,424.2,167.4z"/>
+			<path fill="#E6E6E6" d="M458.7,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-49.9-29.6-69.8-30.8-70.6c-3.6-2.4-4.7-7.2-2.3-10.8
+				c2.3-3.6,7.1-4.7,10.8-2.4c1.6,1,38,24.9,38,83.8C466.5,119.1,463,122.6,458.7,122.6z"/>
+			<path fill="#E6E6E6" d="M46.6,167.4c-4.3,0-7.8-3.5-7.8-7.8c0-49.8,17-82.9,31.3-101.9c15.7-20.8,31.5-29.7,32.2-30.1
+				c3.8-2.1,8.5-0.7,10.6,3.1c2.1,3.8,0.7,8.5-3,10.6c-0.3,0.2-14.1,8.1-27.8,26.5c-18.4,24.7-27.7,55.6-27.7,91.8
+				C54.4,163.9,50.9,167.4,46.6,167.4z"/>
+			<path fill="#E6E6E6" d="M12.2,122.6c-4.3,0-7.8-3.5-7.8-7.8c0-58.9,36.5-82.8,38-83.8c3.6-2.3,8.5-1.2,10.8,2.4
+				c2.3,3.6,1.3,8.5-2.4,10.8C49.5,45,20,64.8,20,114.7C20,119.1,16.5,122.6,12.2,122.6z"/>
+		</g>
+		</svg><br/>
+		<p style="color:#fff;"><label>ID_BUY_HIGHER_VERSION</label></p>
+		<div class="btnCstm" style="min-width:140dip;margin-top:0;" #ID_BUY_HIGH_VER><label>ID_CLICK_HERE_BUY</label></div>
+	</div>
+</body>
+</html>

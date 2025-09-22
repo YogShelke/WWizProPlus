@@ -1,0 +1,123 @@
+<html custom-frame="solid">
+<head>
+	<title></title>
+	<style>
+		html{
+			width:720dip;
+			height:60dip;
+			background:rgba(0,0,0,.3);
+		}
+		body{
+			margin:0dip;
+			padding:0dip;
+			font-family: 'Source Sans Pro', sans-serif!important;
+			size:*;
+		}
+		.header{
+			flow:horizontal;
+		}
+		.logo{
+			width:200dip;
+			height:60dip;
+		}
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		.side_menu{
+			width:520dip;
+			height:60dip;
+			flow:vertical;
+		}
+		.button_command{
+			height:15dip;
+			padding-top:5dip;
+			text-align:right;
+			padding-right:15dip;
+			margin-right:7dip;
+		}
+		.button_command li{
+			display:inline-block;
+			list-style:none;
+			color:#fff;
+			padding-left:5dip;
+		}
+		.header_menu{
+			height:30dip;
+			text-align:right;
+			padding-right:7dip;
+		}
+		.header_menu li{
+			display:inline-block;
+			list-style:none;
+			color:#fff;
+			min-height:30dip;
+			padding-left:10dip;
+			vertical-align:middle;
+		}
+		.trans_button{
+			border:none;
+			background:none;
+			color:#fff;
+			font-family: 'Abel', sans-serif;
+		}
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+	</style>
+
+	<script type="text/tiscript">
+		$(#help_click).onClick = function() 
+		  {
+			System.exec("explorer.exe", "/open," + "WRDWIZAVESSENTIAL.CHM");
+		  }
+	</script>
+	
+	<script type="text/tiscript">
+		include "IDR_TIS_DECORATORS.tis";
+		
+		 @click @on "#settings": 
+			{
+			  var v = view.dialog( self.url("IDR_HTM_SETTINGS.htm"));
+			  stdout.printf("sample-dialog-with-custom-frame result:%v\n",v);
+			}
+	</script>
+	<script type= "text/tiscript">
+		$(.OnClickMinimize).onClick = function() 
+		{
+			view.OnMinimize();
+		}
+		
+		$(.OnClickClose).onClick = function() 
+		{
+			view.OnClose();
+		}
+	</script>
+</head>
+<body>
+	<div .header role="window-caption">
+		<div .logo  .frame_display_src src="IDR_HTM_HOME.htm">
+			<img src="IDR_PNG_LOGO.png">
+		</div>
+		<div .side_menu>
+			<div .button_command>
+				<ul>
+					<li .clickable_cl #help_click>Help</li>
+					<li .clickable_cl .frame_display_src .OnClickMinimize><img src="IDR_PNG_MINIMIZE.png"></li>
+					<li .clickable_cl .frame_display_src .OnClickClose><img src="IDR_PNG_CLOSE.png"></li>
+				</ul>
+			</div>
+			<div .header_menu>
+				<ul>
+					<li .clickable_cl .frame_display_src src="IDR_HTM_HOME.htm"><img src="IDR_PNG_HOME.png"></li>
+					<li .clickable_cl .frame_display_src src="IDR_HTM_ACCOUNT.htm">Account</li>
+					<li .clickable_cl #settings>Settings</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

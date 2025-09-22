@@ -1,0 +1,604 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+	<head>
+	<title>Manage Restriction</title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_MAIN.css);
+
+	html 
+	{ 
+		width:390dip;           /* preferred/initial width */
+		height:280dip;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+		behavior:WardWizParControl;
+	}
+	.message_display_block_Restrict_App:collapsed {
+		visibility:visible;
+		top:40dip;
+		transition:top(sine-in-out, 600ms);
+	}
+	body.Restrict_Use_App{ 
+		max-width:389dip!important;
+		height:278.5dip;
+		background-size:cover;
+		padding:0; margin:0; 
+	}
+	.header_Restrict_Use_App{
+		background:rgba(0,0,0,.1);
+		flow:horizontal;
+		width:388.5dip;        
+		height:40dip;
+	}
+	.Restrict_Use_App h4{
+		margin-left:5dip;
+	}
+	.drpzone_restrict_app{
+		prototype: FileDropZone;
+		margin:5dip;
+	}
+	.drpzone_restrict_app.active-target {
+		background:rgba(0,0,0,.5);
+	}
+	/*Tables for Rectrict App Page*/
+	form#data-dialog > table#ID_TABLE_RESTRICT_APP > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#ID_TABLE_RESTRICT_APP { 
+		style-set: vgrid;
+		border:1dip solid #888888; 
+		flow:table-fixed;
+		width:374dip;
+		height:130dip;
+		padding:4dip;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#ID_TABLE_RESTRICT_APP > thead {
+		behavior:column-resizer;
+	}
+	table#ID_TABLE_RESTRICT_APP > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#ID_TABLE_RESTRICT_APP th 
+	{
+		color: white;
+		font-size:13dip; 
+		border:none;
+		padding:0dip; 
+		background-color:#DDD; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		background-image:url(IDR_PNG_HEADER_BASIC.png)!important;
+	}
+	table#ID_TABLE_RESTRICT_APP th:nth-child(1)  {  width:0.05*; }
+	table#ID_TABLE_RESTRICT_APP th:nth-child(2)  {  width:0.4*; }				
+	table#ID_TABLE_RESTRICT_APP th:hover 
+	{ 
+		color: #ffe598;
+		transition:blend;
+	}
+	table#ID_TABLE_RESTRICT_APP tr:current /* current row */ 
+	{ 
+		background-color:#bdbccc; 
+		color:white;
+	}			
+	table#ID_TABLE_RESTRICT_APP td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+		color:#000;
+	}	  
+	table#ID_TABLE_RESTRICT_APP td:nth-child(1) {  text-align:center; width:0.05*;padding-top:4dip; } /* first column */
+	table#ID_TABLE_RESTRICT_APP td:nth-child(2) {  
+		text-align:left; 
+		width:0.4*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	.set_btn_restrict_app{
+		margin-left:20dip;
+	}
+	.message_display_block_Restrict_App {
+		background:rgba(238,246,248,.95);
+		position:absolute;
+		width:385dip;
+		height:37dip;
+		visibility:none;
+		margin-left:0dip;
+		top:0dip;
+	}
+	.message_display_block_Restrict_App p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:0dip;
+		color:#000;
+	}
+	</style>
+	
+	<script type="text/tiscript">  
+	include "IDR_TIS_SQLITE.tis";
+	</script>
+
+	<script type="text/tiscript">  
+	var vlist = $(#ID_TABLE_RESTRICT_APP);
+	var ArrApplications = new Array();
+	var ArrPrevApp = new Array();
+	var varDBPath;
+	var DataBase;
+	var g_CurrentUser;
+	var IsMaxLimitReached = false;
+	</script>
+	
+	<script type="text/tiscript">
+    $(body).onClick = function()
+    {
+         $(.message_display_block_Restrict_App).state.collapsed = false;
+    }
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_BTN_ADD_RESTRICT).onClick = function()
+    {
+		$(.message_display_block_Restrict_App).state.collapsed = false;
+        vlist.tbody.currentIndex = -1;
+        $(.message_display_block_Restrict_App).state.collapsed = false;
+        var fn = view.selectFile(#open ,  "Executable Files (*.exe)|*.exe" , "exe");
+        if(fn)
+        {
+            var FileFoldName = fn;
+			var strFilePath = URL.toPath(FileFoldName);
+			strFilePath = strFilePath.replace("\/","\\");
+            for(var index=0; index < ArrApplications.length; index++)
+            {
+                if(strFilePath == ArrApplications[index].Application)
+                {
+					self.timer(50ms,function (){
+						$(.message_display_block_Restrict_App).state.collapsed = true;
+						$(#ID_Def_exception_MSG).value = Lang.translate("ID_APP_ALREADY_ADDED");
+					});
+                    return;
+                }
+            }
+
+            /*var file = Stream.openFile(strFilePath);
+			if(!file){
+				self.timer(50ms,function (){
+					$(.message_display_block_Restrict_App).state.collapsed = true;
+					$(#ID_Def_exception_MSG).value = Lang.translate("ID_PATH_DOESNT_EXIST");
+				});
+                return;
+            }
+            file.close();*/
+            if(self.CheckIsNetworkPath(strFilePath))
+            {
+				self.timer(50ms,function (){
+					$(#ID_Def_exception_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+					$(.message_display_block_Restrict_App).state.collapsed = true;
+				});
+                return;
+            }
+            AddDroppedFileEntry(strFilePath);
+        }
+        if(IsMaxLimitReached)
+        {
+			self.timer(50ms,function (){
+				$(#ID_Def_exception_MSG).text = Lang.translate("ID_MAX_LIMIT_REACHED");
+				$(.message_display_block_Restrict_App).state.collapsed = true;
+			});
+            IsMaxLimitReached = false;
+        }		
+    }
+
+    $(#ID_BTN_OK).onClick = function()
+    {
+       $(.message_display_block_Restrict_App).state.collapsed = false;
+        DataBase = DB.open(varDBPath);
+        if(ArrApplications.length == 0)
+        {
+            DataBase.exec("DELETE FROM WWIZ_RESTRICT_USE_OF_APP WHERE FK_USERNAME = ?", g_CurrentUser);
+            if(ArrPrevApp.length != 0)
+            {
+                ArrPrevApp.splice(0,ArrPrevApp.length);
+            }
+        }
+        else if(ArrPrevApp.length == 0 && ArrApplications.length != 0)
+        {
+            for(var vindex=0; vindex < ArrApplications.length; vindex++)
+            {
+                DataBase.exec("INSERT INTO WWIZ_RESTRICT_USE_OF_APP (APP_PATH, FK_USERNAME) VALUES(?,?)", ArrApplications[vindex].Application, g_CurrentUser);
+            }
+            for(var vindex=0; vindex < ArrApplications.length; vindex++)
+            {
+                ArrPrevApp[vindex] = {index:ArrPrevApp.length, selected: true, Application: ArrApplications[vindex].Application};
+            }
+        }
+        else if(ArrPrevApp.length >= ArrApplications.length)
+        {
+            var vindex = ArrApplications.length;
+            if(vindex < ArrPrevApp.length)
+            {
+                DataBase.exec("DELETE FROM WWIZ_RESTRICT_USE_OF_APP WHERE FK_USERNAME = ? AND ID >= (SELECT ID FROM WWIZ_RESTRICT_USE_OF_APP WHERE APP_PATH = ?)", g_CurrentUser, ArrPrevApp[vindex].Application);
+                ArrPrevApp.splice(vindex,ArrPrevApp.length);
+            }
+            for(vindex=0; vindex< ArrApplications.length; vindex++)
+            {
+                if(ArrPrevApp[vindex].Application != ArrApplications[vindex].Application)
+                {
+                    DataBase.exec("UPDATE WWIZ_RESTRICT_USE_OF_APP SET APP_PATH = ? WHERE FK_USERNAME = ? AND APP_PATH = "+
+                    "(SELECT APP_PATH FROM WWIZ_RESTRICT_USE_OF_APP WHERE APP_PATH=? ORDER BY ID DESC LIMIT 1)" +
+                    " AND ID = (SELECT ID FROM WWIZ_RESTRICT_USE_OF_APP WHERE APP_PATH=? ORDER BY ID DESC LIMIT 1)"
+                    , ArrApplications[vindex].Application, g_CurrentUser, ArrPrevApp[vindex].Application, ArrPrevApp[vindex].Application);
+                    ArrPrevApp[vindex].Application = ArrApplications[vindex].Application;
+                }
+            }
+        }
+        else if(ArrPrevApp.length < ArrApplications.length)
+        {
+            var vindex;
+            for(vindex=0; vindex< ArrPrevApp.length; vindex++)
+            {
+                if(ArrPrevApp[vindex].Application != ArrApplications[vindex].Application)
+                {
+                    DataBase.exec("UPDATE WWIZ_RESTRICT_USE_OF_APP SET APP_PATH = ? WHERE FK_USERNAME = ? AND APP_PATH = "+
+                    "(SELECT APP_PATH FROM WWIZ_RESTRICT_USE_OF_APP WHERE APP_PATH=? ORDER BY ID DESC LIMIT 1)" +
+                    " AND ID = (SELECT ID FROM WWIZ_RESTRICT_USE_OF_APP WHERE APP_PATH=? ORDER BY ID DESC LIMIT 1)"
+                    , ArrApplications[vindex].Application, g_CurrentUser, ArrPrevApp[vindex].Application, ArrPrevApp[vindex].Application);
+                    ArrPrevApp[vindex].Application = ArrApplications[vindex].Application;
+                }
+            }
+            if(vindex < ArrApplications.length)
+            {
+                for(var iCount=vindex; iCount < ArrApplications.length; iCount++)
+                {
+                    DataBase.exec("INSERT INTO WWIZ_RESTRICT_USE_OF_APP (APP_PATH,FK_USERNAME) VALUES(?,?)", ArrApplications[iCount].Application, g_CurrentUser);
+                    ArrPrevApp[iCount] = {index:ArrPrevApp.length, selected: true, Application: ArrApplications[iCount].Application};
+                }
+            }
+        }
+        self.OnChangeAppRestriction();
+        DataBase.close();
+        view.close(null);
+    }
+
+    $(#ID_BTN_CANCEL).onClick = function()
+    {
+        $(.message_display_block_Restrict_App).state.collapsed = false;
+        view.close(null);
+    }
+
+    $(#ID_BTN_REMOVE).onClick = function()
+    {
+		var varRemoveFlag = 0;
+        for(var vindex=0; vindex < ArrApplications.length; vindex++)
+        {
+			if(ArrApplications[vindex].selected == true)
+            {
+                ArrApplications.splice(vindex,1);
+                vindex--;
+				varRemoveFlag = 1;
+            }
+        }
+		if(varRemoveFlag == 0)
+		{
+			self.timer(50ms,function (){
+				$(.message_display_block_Restrict_App).state.collapsed = true;
+				$(#ID_Def_exception_MSG).value = Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION");
+			});
+			return;
+		}
+		if(ArrApplications.length == 0)
+		{
+			$(#ID_CHK_SELECT_ALL).state.disabled = true;		
+		}
+    }
+
+    $(#ID_CHK_SELECT_ALL).onClick = function()
+    {
+        $(.message_display_block_Restrict_App).state.collapsed = false;
+        var vFlag = false;
+        if($(#ID_CHK_SELECT_ALL).state.checked == true)
+            vFlag = true;
+        for(var record in ArrApplications)
+        {
+            record.selected = vFlag;
+        }
+    }
+	</script> 
+	<script type="text/tiscript">
+	vlist.on("change","tbody > tr", function() { // some change inside tr
+		$(.message_display_block_Restrict_App).state.collapsed = false;
+		this.data.selected = this.value.selected;
+		$(#ID_CHK_SELECT_ALL).state.checked = false;
+		vlist.tbody.currentIndex = -1;
+	});
+	
+	vlist.on("change","tbody", function() { 
+		$(.message_display_block_Restrict_App).state.collapsed = false;
+	});
+	</script> 
+
+	<script type="text/tiscript">
+	function GetData()
+	{
+		$(.message_display_block_Restrict_App).state.collapsed = false;
+		vlist.value = ArrApplications; 
+		DataBase = DB.open(varDBPath);
+		var varIdVal = DataBase.exec("SELECT APP_PATH FROM WWIZ_RESTRICT_USE_OF_APP WHERE FK_USERNAME = ?", g_CurrentUser);
+		if(varIdVal instanceof Recordset)
+		{
+			var choice;
+			var vindex = 0;
+			do
+			{
+				choice = 0;
+				ArrApplications[vindex] = {index:ArrApplications.length, selected:true, Application:""};
+				for(var record in varIdVal)
+				{
+					switch(choice)
+					{
+						case 0: ArrApplications[vindex].Application = record;
+								break;
+					}
+					choice++;
+				}
+				vindex++;
+			}while(varIdVal.next());
+			varIdVal.close();
+		}	
+		DataBase.close();
+		
+		if(ArrApplications.length != 0)
+		{
+			$(#ID_CHK_SELECT_ALL).state.disabled = false;
+			$(#ID_CHK_SELECT_ALL).state.checked = true;
+			for(var vindex = 0; vindex <ArrApplications.length; vindex++)
+			{
+				ArrPrevApp[vindex] = {index:ArrPrevApp.length, selected:ArrApplications[vindex].selected, Application:ArrApplications[vindex].Application};
+			}
+		}
+		else
+		{
+			$(#ID_CHK_SELECT_ALL).state.disabled = true;
+		}		
+	}
+	</script>
+
+	<script type="text/tiscript">
+    class FileDropZone :Behavior
+    {
+		function onExchange(evt)
+		{
+			$(.message_display_block_Restrict_App).state.collapsed = false;
+			if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+			{
+				this.attributes.addClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG_LEAVE )
+			{
+				this.attributes.removeClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+			{
+				return true;
+			}
+			else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+			{
+				this.attributes.removeClass("active-target");
+				var fn = evt.dragging;
+				var strFileName = fn.toString();
+				var arrstrFileName =  strFileName.split(",");
+				for (var i = 0; i<arrstrFileName.length; i++)
+				{                   
+					var varFile = URL.toPath(arrstrFileName[i]);
+					varFile = varFile.replace("\/","\\");	
+                    if(self.CheckIsNetworkPath(varFile))
+					{
+						self.timer(50ms,function (){
+							$(#ID_Def_exception_MSG).text = Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED");
+							$(.message_display_block_Restrict_App).state.collapsed = true;
+						});
+						return;
+					}		
+					AddDroppedFileEntry(varFile);
+				}	
+				if(IsMaxLimitReached)
+				{
+					self.timer(50ms,function (){
+						$(#ID_Def_exception_MSG).text = Lang.translate("ID_MAX_LIMIT_REACHED");
+						$(.message_display_block_Restrict_App).state.collapsed = true;
+					});
+					IsMaxLimitReached = false;
+				}
+				return true;
+			}
+		}
+    }
+	
+	function AddDroppedFileEntry(strFileName)
+	{		
+		if(self.CheckIsWrdWizFile(strFileName))
+		{
+			self.timer(50ms,function (){
+				$(#ID_Def_exception_MSG).text = Lang.translate("ID_WARDWIZ_OWN_FILE");
+				$(.message_display_block_Restrict_App).state.collapsed = true;
+			});
+			return false;
+		}
+		var varListEntriesLength = 0;
+		var ArrCheckExeFile = strFileName.split("."); 
+		if(ArrCheckExeFile[ArrCheckExeFile.length - 1].toLowerCase() != "exe")
+		{
+			if(ArrCheckExeFile[ArrCheckExeFile.length - 1].toLowerCase() == "lnk")
+			{
+				strFileName = self.GetTargetFilePath(strFileName);
+				if(self.CheckIsWrdWizFile(strFileName))
+				{
+					self.timer(50ms,function (){
+						$(#ID_Def_exception_MSG).text = Lang.translate("ID_WARDWIZ_OWN_FILE");
+						$(.message_display_block_Restrict_App).state.collapsed = true;
+					});
+					return false;
+				}
+				ArrCheckExeFile = strFileName.split("."); 
+				if(strFileName.length == 0)
+				{
+					self.timer(50ms,function (){
+						$(.message_display_block_Restrict_App).state.collapsed = true;
+						$(#ID_Def_exception_MSG).value = Lang.translate("ID_TARGET_LNK_FILE_NOT_FOUND");
+					});
+					return;
+				}
+				else if(ArrCheckExeFile[ArrCheckExeFile.length - 1].toLowerCase() != "exe")
+				{
+					self.timer(50ms,function (){
+						$(.message_display_block_Restrict_App).state.collapsed = true;
+						$(#ID_Def_exception_MSG).value = Lang.translate("ID_INSERT_EXE_FILES");
+					});
+					return;
+				}
+			}
+			else
+			{
+				self.timer(50ms,function (){
+					$(.message_display_block_Restrict_App).state.collapsed = true;
+					$(#ID_Def_exception_MSG).value = Lang.translate("ID_INSERT_EXE_FILES");
+				});
+				return;
+			}
+		}		
+		var arrFileCount = ArrApplications.length;
+		var IsNewFile = false;    
+		if(ArrApplications.length > 0)
+		{
+			for(var FileCount = 0; FileCount<arrFileCount; FileCount++)
+			{
+				var varCurrentFilePath = ArrApplications[FileCount].Application;
+				if(varCurrentFilePath == strFileName)
+				{
+					IsNewFile = false;
+					self.timer(50ms,function (){
+						$(.message_display_block_Restrict_App).state.collapsed = true;
+						$(#ID_Def_exception_MSG).value = Lang.translate("ID_APP_ALREADY_ADDED");
+					});
+					return;
+				}
+				else
+				{
+					varListEntriesLength += varCurrentFilePath.length;
+					varListEntriesLength++;
+					IsNewFile = true;
+				}
+			}
+		}
+		else
+		{
+			IsNewFile = true;
+		}	
+		if(IsNewFile == true)
+		{
+			if((varListEntriesLength +strFileName.length) < 1000)
+			{
+				ArrApplications.push{index:ArrApplications.length,selected:true,Application:strFileName};
+				vlist.tbody.scrollTo(0, 9999999, true, true);
+				varListEntriesLength += strFileName.length;
+				varListEntriesLength++;			
+			}
+			else
+			{
+				IsMaxLimitReached = true;
+			}
+		}
+		$(#ID_CHK_SELECT_ALL).state.disabled = false;
+	}
+	</script>
+
+	<script type="text/tiscript">
+	$(#window-close) << event click()
+		{				
+			view.close(null);
+		}
+	</script> 
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script>	
+
+	<script type="text/tiscript">
+    function self.ready() {
+        self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+        }
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+        }
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+        $(.message_display_block_Restrict_App).state.collapsed = false;
+        varDBPath = view.parameters.vardb;
+        g_CurrentUser = view.parameters.g_CurrentUser;
+        GetData();
+    }
+	</script>
+</head>
+<body .Restrict_Use_App>
+	<div .header_Restrict_Use_App>
+		<window-caption role="window-caption">
+			<label>ID_BLOCK_SPECIFIED_APP</label>
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>
+	<h4><label>ID_LIST_APP_BLOCKED</label></h4>
+	<div .drpzone_restrict_app>
+		<table #ID_TABLE_RESTRICT_APP resizeable>
+		<thead>
+		<tr><th><input #ID_CHK_SELECT_ALL|checkbox /></th><th(Application)><label>ID_APP_PATH</label></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td><input (selected)|checkbox /></td>
+		<td style="text-align:left" (Application)></td>
+		</tbody>
+		</table>
+	</div>
+	<div .set_btn_restrict_app>
+		<div class="btnCstmSmall" #ID_BTN_ADD_RESTRICT><label>ID_HTM_CUSTOM_SCAN_ADD</label></div>  
+		<div class="btnCstmSmall" #ID_BTN_REMOVE><label>ID_RESTRICT_APP_REMOVE</label></div>  
+		<div class="btnCstmSmall" #ID_BTN_OK><label>ID_OK</label></div>  
+		<div class="btnCstmSmall" #ID_BTN_CANCEL><label>ID_CANCEL</label></div>
+	</div>
+	<div .message_display_block_Restrict_App>
+		<p #ID_Def_exception_MSG></p>
+	</div>
+</body>
+</html>

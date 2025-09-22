@@ -1,0 +1,908 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />		
+	<style>
+		@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+           overflow:hidden;
+           width:550dip;
+		   height:330dip;
+		}
+	    body{
+			padding:0dip;
+			margin:0dip;
+			//border:1dip solid #3d748e;
+		}
+		#hide_details{
+			visibility:none;
+			cursor:pointer;
+		}
+		#show_details{
+			cursor:pointer;
+		}
+		#hide_details:collapsed{
+			visibility:visible;
+		}
+		#show_details:collapsed{
+			visibility:none;
+		}
+		#ID_BUTTON_STOP:disabled{
+			opacity:.5;
+		}
+		#ID_BUTTON_PAUSE_RESUME:disabled{
+			opacity:.5;
+		}
+		.header_Usb_Scan{
+			width:547dip;
+			height:40dip;
+			color:#555;
+			flow:horizontal;
+		}  
+		.USB_logo{
+			padding:5dip;
+			height:40dip;
+		}
+		.USB_logo img{
+			width:25dip;
+			height:auto;
+			cursor:pointer;
+		}	
+		.logo_text_USB{
+			width:440dip;
+			height:40dip;
+		}
+		.logo_text_USB p{
+			font-size:20dip;
+			margin-top:7dip;
+			text-align:center
+		}
+		.hidden_notification_USB_Scan{
+			background:#fff;
+			width:548dip;
+			height:240dip;
+			opacity:0;
+			transform:scale(-1,1);
+			transition:transform(sine-in-out, 600ms) 
+			opacity(sine-in-out, 600ms);
+			position:absolute;
+			z-index:-99;
+			color:white;
+		}
+		.hidden_notification_USB_Scan:collapsed{
+			opacity:1;
+			margin-top:5;
+			transform:scale(1,1);
+			transition:transform(sine-in-out, 600ms);
+			z-index:9999;
+		}
+		form#data-dialog > table#UsbScan > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			vertical-align:top;
+		}
+		table#UsbScan { 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:545dip;
+			height:237dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:0dip!important;
+		}
+		table#UsbScan > thead {
+			behavior:column-resizer;  
+		}
+		table#UsbScan > tbody {
+			overflow-y: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		table#UsbScan th 
+		{ 
+			color: white;
+			font-size:13dip; 
+			border:none;
+			padding:4dip; 
+			font-size:11dip;
+			background-color:#DDD; 
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		table#UsbScan th:nth-child(1)  {  width:0.15*; }
+		table#UsbScan th:nth-child(2)  {  width:0.70*; }		
+		table#UsbScan th:nth-child(3)  {  width:0.15*; }
+		table#UsbScan th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+		}  
+		table#UsbScan tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+		}   
+		table#UsbScan td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+			color:#000!important
+		} 
+		table#UsbScan td:nth-child(1) {  text-align:center; width:0.15*;padding-top:2dip; } /* first column */
+		table#UsbScan td:nth-child(2) {  
+			text-align:left; 
+			width:0.70*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		table#UsbScan td:nth-child(3) {  
+			text-align:left; 
+			width:0.15*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* third column */
+		.progress_bar_block_USB_Scan{
+			flow:horizontal;
+			padding-top:10dip;
+			z-index:1;
+		}
+		.progress_bar_USB_Scan{
+			position:relative;
+			margin-left:30dip;
+			min-height:110dip;
+			width:120dip;
+		}
+		.scanAnimation_UsbScan{
+			width:110dip;
+			height:110dip;
+			border-radius:200dip;
+			overflow:hidden;
+			box-shadow:0 0 20dip #7cbbd2;
+			/* position:relative; */
+		}
+		pie-chart_UsbScan{
+			display:block;
+			aspect: Pie(band:8dip, sector:rgb(89,156,181), circle:rgb(230,230,230));
+			size:110dip;
+			font-size:20dip;
+			vertical-align:middle;
+			text-align:center;
+		}	
+		.progress_status_USB_Scan{
+			position:relative;
+			margin-top:15dip;
+			margin-left:10dip;
+			width:370dip;
+			height:120dip;
+			overflow:hidden;
+			word-wrap:break-word;
+		}
+		.progress_status_notification{
+			clear:after;
+		}
+		.progress_status_left{
+			flow:horizontal;
+			width:540dip;
+			z-index:1;
+			text-align:center;
+			margin-left:5dip;
+		}
+		.progress_status_right{
+			width:400dip;
+			margin-left:75dip;
+			z-index:1;
+			text-align:center;
+		}
+		.Usb_shwdetail{
+			text-align:center;
+		}
+	</style>
+		
+	<script type="text/tiscript">
+	include "IDR_TIS_MAIN.tis";
+	</script>
+	
+	<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	</script>
+	
+	<script type="text/tiscript">
+    include "IDR_TIS_GERMAN_LANG.tis";
+    include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script>
+    <script type="text/tiscript">
+		if(productVersion == #BASIC){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+		}
+		else if(productVersion == #ESSENTIAL){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+		}
+		else if(productVersion == #ESSENTIALPLUS){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS 2020";
+		}
+    </script>
+	    
+    <script type="text/tiscript">
+    var records = new Array(0);
+    var vlistObj;
+    var varVirusCount = 0;
+    var varTotalThreatFoundCount = 0;
+    var varObjectScanned = 0;
+    var varPercentage = 0;
+    var varbIsScanRunning = false;
+    var varbIsScanPaused = false;
+    var varbIsCleanRunning = false;
+    var varScanType = 0;
+    var bDeviceDetached = false;
+    var bIsManualStop = false;
+	var varThreatsFoundCount = 0;
+	var varTotalFileScanned = 0;
+	var bIsStop = false;
+	var bAborted = false;
+	var chart = $(pie-chart_UsbScan);
+	var vScanFinished = false;
+	</script>
+		
+    <script type="text/tiscript">
+    function CloseButton()
+    {
+        view.OnCloseButton(bIsManualStop);
+    }
+    </script>  
+	
+    <script type="text/tiscript">
+	/*function CallOnScanEPS()
+	{
+		$(head).$append(<style>@import url(epsCSS.css);</style>)
+	}*/
+	</script>    
+	
+    <script type="text/tiscript">
+    function SetStatus(evt)
+    {
+		//$(#StatusFilePath).text = evt.data;
+        var varCurrentFilePath = evt.data.one.toString();
+        varThreatsFoundCount = evt.data.two.toInteger();
+        varTotalFileScanned = evt.data.three.toInteger();
+
+        varTotalThreatFoundCount = varThreatsFoundCount;
+        $(#StatusFilePath).text = varCurrentFilePath;
+        $(#ObjectScannedID).value = varTotalFileScanned;
+        $(#ThreatFound).value = varThreatsFoundCount;
+		bAborted = true;
+    }
+
+    const SETSCAN_EVENT = 0x100 + 3;
+    self.subscribe(SetStatus, Event.BEHAVIOR_EVENT, SETSCAN_EVENT);
+	 </script>
+
+    <script type = "text/tiscript">
+    $(#close-dialog).onClick = function()
+    {
+        bIsManualStop = false;
+        CloseButton();
+    }
+	
+	$(#minimize-dialog).onClick = function()
+    {
+        view.OnBnClickedButtonMinimize();
+    }
+    </script>	
+    
+    <script type="text/tiscript"> 
+	function ShowVirusTable()
+	{
+		$(.hidden_notification_USB_Scan).state.collapsed = true;
+        $(#show_details).state.collapsed = true;
+        $(#hide_details).state.collapsed = true;
+	}     
+	</script>	
+    
+    <script type="text/tiscript">
+    $(#show_details).onClick = function()
+    {
+       ShowVirusTable();
+    }
+
+    $(#hide_details).onClick = function()
+    {
+        $(.hidden_notification_USB_Scan).state.collapsed = false;
+        $(#show_details).state.collapsed = false;
+        $(#hide_details).state.collapsed = false;
+    }
+
+    function UpdateThreatFoundEntery(varThreatPosition,strActionTaken)
+    {
+        records[varThreatPosition].ActionTaken = strActionTaken;
+    }
+    </script> 
+    	
+    <script type= "text/tiscript">
+    //for pause resume
+    $(#ID_BUTTON_PAUSE_RESUME).onClick = function()
+    {
+       if(varbIsScanPaused == false)
+        {
+            $(#StatusFilePath).text = Lang.translate("ID_SCANNING_PAUSED");
+            $(#ID_BUTTON_PAUSE_RESUME).text = Lang.translate("ID_RESUME");
+            varbIsScanPaused = true;
+            view.OnPauseScan();
+        }
+        else if(varbIsScanPaused == true)
+        {
+            $(#StatusFilePath).text = Lang.translate("ID_SCANNING_RESUMED");
+            $(#ID_BUTTON_PAUSE_RESUME).text = Lang.translate("ID_BTN_PAUSE");
+            view.OnResumeScan();
+            varbIsScanPaused = false;
+        }
+    }
+    </script>
+
+	<script type="text/tiscript">
+    $(#ID_BUTTON_STOP).onClick = function()
+    {
+        if(varbIsScanRunning)
+        {
+            bIsManualStop = true;
+            CloseButton();
+            bIsManualStop = false;
+        }
+    }
+    </script>
+    <script type="text/tiscript">
+    /*function CleanFinished ()
+    {
+        varbIsCleanRunning = false;
+    }*/
+    </script>
+    	
+	<script type="text/tiscript">
+    function AddVirusFoundEntery(strThreatName, strThreatFilePath, strActionTaken,SpyID)
+    {
+			var varThreatName;
+			if(strThreatName == "USER_DEFINED")
+				varThreatName = Lang.translate("ID_USER_DEFINED");
+			else
+				varThreatName = strThreatName;
+        records[varVirusCount] = {selected: true,varSpyID, ThreatName: varThreatName, FilePath: strThreatFilePath, ActionTaken: strActionTaken, WardWizID: SpyID};
+        varVirusCount++;
+        $(#StatusFilePath).text = strThreatFilePath;
+    }
+    /*function AddVirusFoundEnteryEvt(evt)
+    {
+
+        //$(#StatusFilePath).text = evt.data;
+        var varCurrentFilePath = evt.data.one.toString();
+        var varThreatsFoundCount = evt.data.two.toInteger();
+        var varTotalFileScanned = evt.data.three.toInteger();
+        //view.msgbox(#information, "Even called: "+varTotalFileScanned);
+        varTotalThreatFoundCount = varThreatsFoundCount;
+        $(#StatusFilePath).text = varCurrentFilePath;
+        $(#ObjectScannedID).value = varTotalFileScanned;
+        $(#ThreatFound).value = varThreatsFoundCount;
+    }
+
+    const ADDVIRENTRY_EVENT = 0x100 + 5;
+    self.subscribe(AddVirusFoundEnteryEvt, Event.BEHAVIOR_EVENT, ADDVIRENTRY_EVENT);
+    */
+    function FilePathStatus(strFilePath,varThreatFoundCount,varObjectScanned)
+    {
+		varTotalThreatFoundCount = varThreatFoundCount;
+        $(#StatusFilePath).text = strFilePath;
+        $(#ObjectScannedID).value = varObjectScanned;
+        $(#ThreatFound).value = varThreatFoundCount;
+		self.update();
+    }
+	
+	function self.closing()
+	{
+		if(vScanFinished == true)
+			return false;
+		else	
+			return true;
+	}
+	
+	function ScanFinishedStatus()
+    {
+		vScanFinished = true;
+		$(#close-dialog).state.disabled = true;
+		function SetScanFinishedStatusDelayed()
+        {					
+			varbIsScanRunning = false;
+            varbIsScanPaused = true;
+            $(#ObjectScannedID).value = varTotalFileScanned;
+            $(#ThreatFound).value = varThreatsFoundCount;
+            $(#ID_BUTTON_PAUSE_RESUME).state.disabled = true;
+            $(#ID_BUTTON_STOP).state.disabled = true;
+            ShowVirusTable();
+			if(bAborted == true)
+			{	
+				$(#close-dialog).state.disabled = false;
+				if(varScanType == 1)
+				{
+					$(#StatusFilePath).text = Lang.translate("ID_USB_SCANNING_ABORTED");
+				}
+				else if(varScanType == 2)
+				{
+					$(#StatusFilePath).text = Lang.translate("ID_CUST_SCANNING_ABORTED");
+				}
+			}
+            else if(varScanType == 1)
+		        $(#StatusFilePath).text = Lang.translate("ID_USB_SCANNING_COMPLETED");
+            else
+                $(#StatusFilePath).text = Lang.translate("ID_CUSTOM_SCANNING_COMPLETED");
+				
+            //this logic is for to check in native whether threat entery selected or not. i.e. for this line - bool bValue = svEachEntery[L"selected"].get(false);
+            vlistObj.on("change","tbody > tr", function()
+            {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+                this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+                if( !this.data.selected )
+                    selectAll.value = false;
+            });
+            self.update();
+		}
+		self.timer(500ms, SetScanFinishedStatusDelayed);
+            if(bIsStop == false)//to void issue : 5550
+                chart.value=1; //to avoid issue : 5528
+    }
+
+    function USBdetectedDrive(strDriveName)
+    {
+		$(#StatusDrivePath).text = strDriveName;
+    }
+
+    function Percentage(varPercentage)
+    {
+		if(chart.value < .98)
+        {
+            if(varPercentage.toFloat()/100 >= chart.value) //to avoid issue: 3150
+                chart.value = varPercentage.toFloat()/100;
+        }
+        else
+        {
+            chart.value = .99;
+        }		
+    }
+    </script>
+	
+    <script type="text/tiscript">
+    function ShowNotificationMessage(varMsgType, strMessageText)
+    {
+		if(varMsgType == 1 )
+        {
+            $(#ID_LIGHTBOX_TXT).text = strMessageText;
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_DETAILS"),
+            buttons: [ { caption: "OK", role:#ok, value:true }]
+            };
+        }
+        if(varMsgType == 2 )
+        {
+            $(#ID_LIGHTBOX_TXT).text = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+								};
+            if(res == true)
+            {
+				bIsStop = true;
+                return 1;
+            }
+            else
+            {
+				//Commented to solve issue occurring with new Sciter.DLL
+				//if(varbIsScanPaused == true)
+				//{
+					$(#StatusFilePath).text = Lang.translate("ID_SCANNING_RESUMED");
+					$(#ID_BUTTON_PAUSE_RESUME).text = Lang.translate("ID_BTN_PAUSE");
+					view.OnResumeScan();
+					//varbIsScanPaused = false;
+                //}
+                return false;
+            }
+        }
+        if(varMsgType == 3 )
+        {
+            $(#ID_LIGHTBOX_TXT).text = strMessageText;
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                return 1;
+            }
+            else
+            {
+                ShowVirusTable();
+                return 0;
+            }
+        }
+        if(varMsgType == 4 )
+        {
+            $(#ID_LIGHTBOX_TXT).text = strMessageText;
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_WARNING"),
+            buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+            };
+            if(res == true)
+            {
+                ShowVirusTable();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        if(varMsgType == 5 )
+        {
+            if(bDeviceDetached == true)
+            {
+				$(#ID_LIGHTBOX_TXT).text = Lang.translate("ID_PATH_DOES_NOT_EXISTS_TO_SCAN");
+            }
+			else
+            {
+				$(#close-dialog).state.disabled = false;
+				$(#ID_LIGHTBOX_TXT).text = strMessageText;
+                ShowVirusTable();
+            }
+            var res = dialog { body:$(form#simple-dialog),
+            returns: #values,
+			caption : Lang.translate("ID_DETAILS"),
+            buttons: [ { caption: "OK", role:#ok, value:true }]
+            };
+
+        }
+    }
+    </script>
+	
+    <script type="text/tiscript">
+    function getScanType(varScanValue)
+    {
+        varScanType = varScanValue;
+        if(varScanValue == 1)
+            $(#header_scan_text).text = Lang.translate("ID_USB_SCAN");
+        else
+            $(#header_scan_text).text = Lang.translate("ID_CUSTOM_SCAN");
+    }
+    </script>
+    
+    <script type="text/tiscript">
+    function GetArrayOfDetectedEntries()
+    {
+        return records;
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#help_click).onClick = function()
+     {
+		OpenHelpFile();
+	 }
+
+     function OpenHelpFile()
+     {
+        var varCommandlinestr = "-mapid";
+		var varHelpFilePath;
+        var varHelpFileIndex;
+        var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+        var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+        var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+        var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+        var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+        var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+        if(varScanType == 1)
+        {
+            switch(g_LanguageID)
+            {
+                case LANGUAGE_TYPE.ENGLISH	:
+                    if(productVersion == #ESSENTIAL)
+                    {
+                        varHelpFilePath = varEngEssential;
+						varHelpFileIndex = "105";
+                    }
+                    else if(productVersion == #BASIC)
+                    {
+                        varHelpFilePath = varEngBasic;
+						varHelpFileIndex = "105";
+                    }
+                    else if(productVersion == #ESSENTIALPLUS)
+                    {						
+                        varHelpFilePath = varEngEssPlus;
+						varHelpFileIndex = "105";
+                    }
+                break;
+
+                case LANGUAGE_TYPE.GERMAN:
+                    if(productVersion == #ESSENTIAL)
+                    {
+                        varHelpFilePath = varGerEssential;
+						varHelpFileIndex = "105";
+                    }
+                    else if(productVersion == #BASIC)
+                    {
+                        varHelpFilePath = varGerBasic;
+						varHelpFileIndex = "105";
+                    }
+                    else if(productVersion == #ESSENTIALPLUS)
+                    {
+                        varHelpFilePath = varGerEssPlus;
+						varHelpFileIndex = "105";
+                    }
+                break;
+            }
+            System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+          }
+        else
+        {
+            switch(g_LanguageID)
+            {
+                case LANGUAGE_TYPE.ENGLISH	:
+                    if(productVersion == #ESSENTIAL)
+                    {
+                        varHelpFilePath = varEngEssential;
+						varHelpFileIndex = "51";
+                    }
+                    else if(productVersion == #BASIC)
+                    {
+                        varHelpFilePath = varEngBasic;
+						varHelpFileIndex = "51";
+                    }
+                    else if(productVersion == #ESSENTIALPLUS)
+                    {
+                        varHelpFilePath = varEngEssPlus;
+						varHelpFileIndex = "51";
+                    }
+                break;
+
+                case LANGUAGE_TYPE.GERMAN:
+                    if(productVersion == #ESSENTIAL)
+                    {
+                        varHelpFilePath = varGerEssential;
+						varHelpFileIndex = "51";
+                    }
+                    else if(productVersion == #BASIC)
+                    {
+                        varHelpFilePath = varGerBasic;
+						varHelpFileIndex = "51";
+                    }
+                    else if(productVersion == #ESSENTIALPLUS)
+                    {
+                        varHelpFilePath = varGerEssPlus;
+						varHelpFileIndex = "51";
+                    }
+                break;
+            }
+			System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);           
+        }
+    }
+    </script>
+
+    <script type="text/tiscript">
+    function PercentageOnTimer()
+    {
+		var varPercentage = view.PercentageTimer();
+        if(chart.value < .98)
+        {
+            if(varPercentage.toFloat()/100 >= chart.value) //to avoid issue: 3150
+                chart.value = varPercentage.toFloat()/100;
+        }
+        if(varbIsScanRunning)
+        {
+            self.timer(500ms, PercentageOnTimer);
+        }	
+    }
+    </script>
+	
+    <script type="text/tiscript">
+    function svFileStatusDetails(varCurrentFilePath, ThreatsFoundCount, TotalFileScanned)
+    {
+        varThreatsFoundCount = ThreatsFoundCount;
+        varTotalFileScanned = TotalFileScanned;
+        varTotalThreatFoundCount = ThreatsFoundCount;
+		
+		$(#ThreatFound).text = ThreatsFoundCount;
+        $(#StatusFilePath).text = varCurrentFilePath;
+        $(#ObjectScannedID).value = TotalFileScanned;
+        if(varbIsScanRunning)
+        {
+            self.timer(100ms, SetFileStatusTimer);
+        }
+    }
+    </script>
+	
+    <script type="text/tiscript">
+    function SetFileStatusTimer()
+    {
+		view.FileStatusTimer(svFileStatusDetails);
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/"); //german for basic
+	}
+	</script>
+	
+	<script type= "text/tiscript">
+	function Pie(params = {}) 
+    {
+        const strokeWidth = params.band || 10dip; 
+        const strokeColor = params.sector || color(100,0,0); 
+        const circleColor = params.circle || color(230,230,230); 
+      
+        var start = 0; 
+        var value = 0;  
+
+        function render(gfx) 
+        {
+
+          const sw = this.toPixels(strokeWidth, #width); 
+
+          var (w,h) = this.box(#dimension); 
+          var (x,y) = (w/2, h/2);  
+          var r = Integer.min(w,h) / 2 - sw / 2;  
+          
+          gfx.strokeWidth(sw + 0.5)
+             .strokeColor(circleColor)
+             .arc(x,y,r,r, 0deg, 360deg)
+             .strokeColor(strokeColor)
+             .arc(x,y,r,r, 360deg * start, 360deg * value);
+        }  
+        
+        this.paintContent = render;
+        
+        // redefining property 'value' on that element
+        this["value"] = property(v) {
+          get return value;
+          set {
+            value = v;
+            this.text = String.$({(value * 100).toInteger() }%) ;
+            this.refresh();
+          }
+        };
+        this.value = this.attributes["value"].toFloat(0.0);
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+	</script>	
+	
+    <script type="text/tiscript">
+	function self.ready()
+    {
+		if(g_themeType == "defaultTheme"){
+            OnSetDefaultTheme();
+        }
+        else if(g_themeType == "darkTheme"){
+            OnSetDarkTheme();
+        }
+		else if(g_themeType == "crystalTheme"){
+            OnSetCrystalTheme();
+        }
+		self.language = g_LanguageName;				
+		view.SendNotificationMessageCB(ShowNotificationMessage);
+		varVirusCount = 0;
+		varbIsScanPaused = false;
+		varbIsScanRunning = true;
+		bDeviceDetached = view.USBThreatFind(AddVirusFoundEntery,ScanFinishedStatus,FilePathStatus,USBdetectedDrive,Percentage);
+		vlistObj = $(table);
+		vlistObj.value = records;
+		self.timer(500ms, PercentageOnTimer);
+		self.timer(500ms, SetFileStatusTimer);				
+    }
+	</script>
+	
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+	
+</head>
+<body>
+	<div .header_Usb_Scan>
+		<div .USB_logo>
+            <img #ID_LOGO src="IDR_IMG_SHIELD_ICO.png">
+		</div>
+		<div .logo_text_USB role="window-caption">
+			<h4 style="margin-top:10dip">VIBRANIUM</h4>
+            <p .headingClrwht #header_scan_text></p>
+		</div>
+		<div .topMenuUtility>
+			<ul style="margin-left:40dip;">
+				<li .clickable_cl #help_click style="visibility:none"><label>ID_STR_HELP</label></li>
+				<li .clickable_cl #minimize-dialog>-</li>
+                <li .clickable_cl .frame_display_src #close-dialog>X</li>
+			</ul>
+		</div>
+	</div>
+	<div .hidden_notification_USB_Scan>
+	    <table id="UsbScan">
+			<thead>
+				<tr>
+					<th style="width:100dip;"><label>ID_THREAT_NAME</label></th>
+					<th style="width:290dip;"><label>ID_FILE_PATH</label></th>
+					<th><label>ID_ACTION</label></th>
+				</tr>
+			</thead>  
+			<tbody>
+                <tr>
+					<td(ThreatName)> </td>
+					<td(FilePath)> </td>
+					<td(ActionTaken)> </td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+	<div .progress_bar_block_USB_Scan>
+        <div .progress_bar_USB_Scan>
+			<div .scanAnimation_UsbScan>
+				<pie-chart_UsbScan value=0.0 />
+			</div>
+        </div>
+		<div .progress_status_USB_Scan>
+			<p><b><label>ID_SCANNING</label>&nbsp;</b><span #StatusDrivePath style="text-transform:capitalize"><b></b>:</p>
+			<p style="word-wrap:break-word;"><b><label>ID_USB_STATUS</label>:</b> <span #StatusFilePath> </span></p>
+		</div>
+	</div>
+	<div .progress_status_notification>
+		<div .progress_status_left>
+			<div style="width:265dip;"><p><b><label>ID_OBJECTS_SCANNED</label> </b><span #ObjectScannedID>0</span></p></div>
+			<div style="width:268dip;"><p><b><label>ID_THREATS_FOUND</label> </b><span #ThreatFound>0</span></p></div>
+		</div>
+		<div .progress_status_right>
+			<div class="btnCstm" #ID_BUTTON_PAUSE_RESUME><span .bgClr></span><label>ID_BTN_PAUSE</label></div>
+			<div class="btnCstm" #ID_BUTTON_STOP><span .bgClr></span><label>ID_BTN_STOP</label></div>
+		</div>
+	</div>
+	<div .Usb_shwdetail>
+		<p #show_details><label>ID_SHOW_DETAILS</label></p><p #hide_details><label>ID_HIDE_DETAILS</label></p>
+	</div>
+</body>
+</html>

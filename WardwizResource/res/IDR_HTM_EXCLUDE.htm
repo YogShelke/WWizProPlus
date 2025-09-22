@@ -1,0 +1,859 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+<title>Exclude_File</title>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+<include src="IDR_HTM_FONT_AWESOME.htm" />	
+<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+	html{
+	   padding:0dip;
+	   margin:0dip;
+	   width:721dip;
+	   height:502dip;
+	   behavior:WardWizSettings;
+	}
+	body{
+		padding:0dip;
+		margin:0dip;
+		overflow:hidden;
+		background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+	}
+	h2,h3{
+		font-family: 'Source Sans Pro', sans-serif!important;
+	}
+	.main{
+		width:720dip;
+		height:500dip;
+	}
+	.clickable_cl{
+		behavior:clickable;
+		cursor:pointer;
+	}
+	.exclude_body .file-drop-zone{
+		prototype: FileDropZone;
+		width:690dip;
+		height:110dip;
+		vertical-align:middle;
+		text-align:center;
+		margin-left:10dip;
+		margin-top:20dip;
+	}
+	.exclude_body .file-drop-zone img{
+		width:90dip;
+		margin-top:-50dip;
+	}	
+	.exclude_body .file-drop-zone1 {
+		prototype: FileDropZone;
+		width:700dip;
+		height:180dip;
+		vertical-align:middle;
+		text-align:center;
+		margin-left:10dip;
+	}
+	.header_exclude{
+		width:720dip;
+		height:45dip;
+		flow:horizontal;
+	}
+	.header_exclude .logo{
+		padding:4dip;
+	}
+	.header_exclude #close-dialog{
+		padding-top:8dip;
+	}
+	.drag_zone_exclude{
+		width:660dip;
+		height:45dip;
+	}
+	.inner_body_exclude{
+		width:718dip;
+		height:410dip;
+	}		
+	.inner_body_exclude h3{
+		padding-left:10dip;
+		font-weight:400;
+	}	
+	.inner_body_exclude h2{
+		padding-left:10dip;
+		font-weight:400;
+		margin-top:150dip;
+	}
+	.file_folder_input{
+		margin-left:10dip;
+		width:700dip;
+	}
+	form#data-dialog > table#theExcludeFileTable > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#theExcludeFileTable { 
+		style-set: vgrid; 
+		flow:table-fixed;
+		width:695dip;
+		height:180dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: scroll;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#theExcludeFileTable > thead {
+		behavior:column-resizer;
+	}
+	table#theExcludeFileTable > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#theExcludeFileTable th 
+	{
+		font-size:13dip;
+		padding:4dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		font-weight:normal!important;
+	}
+	table#theExcludeFileTable th:nth-child(1)  {  width:0.08*; }
+	table#theExcludeFileTable th:nth-child(2)  {  width:0.8*; }		
+	table#theExcludeFileTable th:nth-child(3)  {  width:0.15*; }
+	table#theExcludeFileTable th:hover 
+	{ 
+		transition:blend;
+	}		
+	table#theExcludeFileTable td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+		color:#000;
+	}	  
+	table#theExcludeFileTable td:nth-child(1) {  text-align:center; width:0.08*;padding-top:2dip; } /* first column */
+	table#theExcludeFileTable td:nth-child(2) {  
+		text-align:left; 
+		width:0.8*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	table#theExcludeFileTable td:nth-child(3) {  
+		text-align:left; 
+		width:0.15*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* third column */
+	.button_div{
+		flow:horizontal;
+		padding-top:2dip;
+		margin-left:10dip;
+		margin-top:5dip;
+	}
+	.button_div .left{
+		width:150dip;
+	}
+	.button_div .right{
+		min-width:547dip;
+		margin-left:30dip;
+		flow:horizontal;
+	}	
+	.btnMargin{
+		margin:8dip;
+	}
+	.btnCstmSmall1{
+		cursor: pointer;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+		height:21dip;
+		width:170dip;
+		overflow:hidden;
+		text-align:center;
+		transition: background-image(cubic-in-out, duration:0.3s);
+		padding:0;
+		vertical-align:middle;
+		line-height:21dip;
+		font-weight:normal;
+		display:inline-block;
+		font-size:12dip;
+	}
+	.btnCstmSmall1 .bgClrSmall{
+		min-height:33dip;
+		width:171dip;
+		position:absolute;
+		z-index:-1;
+		left:-310dip;
+	}
+	.btnCstmSmall1:hover{
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	.btnCstmSmall1:hover > .bgClrSmall{
+		left:-1dip;
+	}
+	.btnCstmSmall1:hover > .buttonIcons{
+		visibility:visible;
+	}	
+	.btn_margin_top{
+		margin-top:0dip;
+	}
+	#ID_BTN_EXCLUDE_FILE_EXT{
+		width:195dip;
+		margin-top:0dip;
+	} 
+	#ID_BUTTON_DELETE:disabled{
+		opacity:0.5;
+	}
+	.header_exclude_file #ID_BUTTON_CLOSE {
+		padding-top:8dip;
+	}
+	#ID_BUTTON_BROWSE{
+		margin-top:0dip;
+	}
+	#ID_BUTTON_DELETE{
+		margin-top:0dip;
+	}
+	#ID_BUTTON_CLOSE{
+		margin-top:0dip;
+	}
+	#select-all-Exclude-File{
+		margin-left:15dip;
+	}
+	.file-drop-zone {
+		prototype: FileDropZone;
+		vertical-align:middle;
+		text-align:center;
+		position:absolute;
+	}
+	.right .selector{
+		position:relative;
+		cursor: pointer;
+		background-repeat:expand stretch-left stretch-right stretch-middle!important;
+		background-position:3dip 3dip 3dip 3dip!important;
+		height:21dip;
+		width:121dip;
+		text-align:center;
+		padding:0;
+		vertical-align:middle;
+		line-height:21dip;
+		font-weight:normal;
+		font-size:12dip;
+	}
+	.right .selector label{
+		width:117dip;
+		text-align:center!important;
+	}
+	.right .selector:hover >.file_folder_div{
+		visibility:visible;
+	}	
+	.right .file_folder{
+		margin:0;
+		padding:0;
+	}
+	.right .file_folder_div{
+		visibility:none;
+		top:-28dip;
+		position:absolute;
+		right:-1.5dip;
+		border-radius:10dip 10dip 0 0;
+	}
+	.right .file_folder_div ul{
+		margin:0;
+	}
+	.right .file_folder li{
+		list-style:none;
+		display:inline-block;
+		padding:2dip;
+		width:54dip;
+		behavior:clickable;
+		color:#fff
+	}
+</style>
+<script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+</script>
+<script type="text/tiscript">
+    include "IDR_TIS_SQLITE.tis";
+</script>
+    <script type="text/tiscript">
+		if(view.parameters.ProductVersion == #BASIC){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+		}
+		else if(view.parameters.ProductVersion == #ESSENTIAL){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+		}
+		else if(view.parameters.ProductVersion == #PROVANTAGE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+		}
+		else if(view.parameters.ProductVersion == #ELITE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+		}
+		else if(view.parameters.ProductVersion == #ESSENTIALPLUS){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS 2020";
+		}
+    </script>	
+
+<script type="text/tiscript">
+	var vlistObj;
+	var varRecordSet;
+	var DataBase;
+	var varDBPath;
+	var varDroppedFileCount = 0;
+	var FileFolderCount = 0;
+	var FileFolderRecords = new Array(0);
+	var vCheckBoxDragDrop = $(body);
+	var varCheckedUnchecked = 0;
+	var IsButtonClicked = false;
+	var IsMaxLimitReached = false;
+	var IsAllSelected = false;
+	var varDropMaxCount = 0;
+	var vDropFlag = false;
+</script>
+
+<script type="text/tiscript">
+	function ShowLightbox(varType, varMsgText)
+	{
+		if(varType == 1)
+		{
+			$(#ID_LIGHTBOX_TXT).value = varMsgText;
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};						
+		}
+	}
+</script>
+
+<script type="text/tiscript">
+    var IsBrowseButtonClicked = false;
+    var arrstrFileName;
+</script> 
+
+<script type= "text/tiscript">
+	$(#ID_BTN_EXCLUDE_FILE_EXT).onClick = function(){
+		var DlgParameter = {varParamLangName:view.parameters.varLanguageValue, varParamDBPath:varDBPath, ProductVersion:view.parameters.ProductVersion, varThemeType:view.parameters.varThemeType};//, ProductVersion:productVersion, varLanguageValue1:g_LanguageName};
+		view.dialog{url:self.url("IDR_HTM_EXCLUDE_FILE_EXT.htm"), client:true, alignment:-5, parameters:DlgParameter};
+	}
+</script> 
+
+<script type= "text/tiscript">
+	$(#ID_BROWSE_FILE).onClick = function()
+	{
+		  IsButtonClicked = true;
+          IsBrowseButtonClicked = true;
+          var FileFolderPath = view.selectFile(#open,  "Files (*.*)|*.*" , "files");
+          FileFolderPath = URL.toPath(FileFolderPath);
+          FileFolderPath = FileFolderPath.replace("\/","\\");
+          IsBrowseButtonClicked = false;
+          if(FileFolderPath == 0)
+          {
+              return;
+          }
+          else
+          {
+              AddEntriesToDBfile(FileFolderPath);
+          }
+	}
+    $(#ID_BROWSE_FOLDER).onClick = function()
+    {
+          IsButtonClicked = true;
+          IsBrowseButtonClicked = true;
+          var FileFolderPath = view.selectFolder();
+		  FileFolderPath = URL.toPath(FileFolderPath);
+          FileFolderPath = FileFolderPath.replace("\/","\\");
+          IsBrowseButtonClicked = false;
+          if(FileFolderPath == 0)
+          {
+              return;
+          }
+          else
+          {
+              AddEntriesToDBfile(FileFolderPath);
+          }
+    }
+    
+    $(#ID_BUTTON_DELETE).onClick = function()
+    {
+        var bselected = false;
+    
+        for( var record in FileFolderRecords )
+        {
+            bselected = record.selected;
+            if(record.selected)
+            {
+                bselected = true;
+                break;
+            }
+            else
+            {
+                bselected = false;
+            }
+        }
+    
+        if(!bselected)
+        {
+    
+            ShowLightbox(1, Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION"));
+            return;
+        }
+    
+        for(var FileCount = FileFolderRecords.length; FileCount>0; )
+        {
+    
+            bselected = FileFolderRecords[--FileCount].selected;
+            if(bselected == true)
+            {
+                var varSelectedIndexVal = FileFolderRecords[FileCount].varEntriesID;
+                DataBase = DB.open(varDBPath);
+                DataBase.exec("delete from WWIZEXCLUDELST where ID = ?", varSelectedIndexVal);
+                DataBase.close();
+                FileFolderRecords.remove(FileCount);
+                varDroppedFileCount --;
+            }
+            else
+            {
+                continue;
+            }
+        }
+    
+        if(FileFolderRecords.length == 0)
+        {
+            $(#ID_BUTTON_DELETE).state.disabled = true;
+            $(.left).state.disabled = true;
+        }
+        self.OnAddExcludeFileFolder();
+		self.funFromExclude();
+	}
+
+    function AddDroppedFileEntry( strFileFolderName)
+    {
+        var varListEntriesLength = 0;
+        if(IsButtonClicked == false)
+        {
+            var varLastIndex = strFileFolderName.lastIndexOf("\\");
+            var varFileLength = strFileFolderName.length;
+            if(varLastIndex == --varFileLength)
+            {
+                strFileFolderName = strFileFolderName.splice(varLastIndex, varFileLength);
+            }
+        }
+    
+        var arrFileCount = FileFolderRecords.length;
+        var IsNewFile = false;
+        if(varDroppedFileCount > 0)
+        {
+            for(var FileCount = 0; FileCount<arrFileCount; FileCount++)
+            {
+                var varCurrentFilePath = FileFolderRecords[FileCount].FilePath;
+                if(varCurrentFilePath == strFileFolderName)
+                {					
+					vDropFlag = true;
+                    IsNewFile = false;
+					break;
+                }
+                else
+                {
+                    varListEntriesLength += varCurrentFilePath.length;
+                    varListEntriesLength++;
+                    IsNewFile = true;
+                }
+            }
+        }
+        else
+        {
+            IsNewFile = true;
+        }
+    
+        if(IsNewFile == true)
+        {
+            if((FileFolderRecords.length) < 1000)
+            {
+                if(self.CheckFileOrFolderPath(strFileFolderName))
+                {
+                    varCheckedUnchecked = 1;
+                    FileFolderRecords[varDroppedFileCount] = {selected : true,IsSubFolder : true , FilePath:strFileFolderName, varEntriesID : ++varDroppedFileCount};
+                    varListEntriesLength += strFileFolderName.length;
+                    varListEntriesLength++;
+                    DataBase = DB.open(varDBPath);
+                    DataBase.exec("create table IF NOT EXISTS WWIZEXCLUDELST(ID INTEGER PRIMARY KEY, NAME VARCHAR (1000) NOT NULL, ISUBFOL INT NOT NULL)");
+                    DataBase.exec("insert into WWIZEXCLUDELST (Name, ISUBFOL) values (?, ?)", strFileFolderName, varCheckedUnchecked);
+                    DataBase.close();
+                }
+                else
+                {
+                    varCheckedUnchecked = 0;
+                    FileFolderRecords[varDroppedFileCount] = {selected : true, IsSubFolder : false, FilePath:strFileFolderName, varEntriesID : ++varDroppedFileCount};
+                    varListEntriesLength += strFileFolderName.length;
+                    varListEntriesLength++;
+                    DataBase = DB.open(varDBPath);
+                    DataBase.exec("create table IF NOT EXISTS WWIZEXCLUDELST(ID INTEGER PRIMARY KEY, NAME VARCHAR (1000) NOT NULL, ISUBFOL INT NOT NULL)");
+                    DataBase.exec("insert into WWIZEXCLUDELST (Name, ISUBFOL) values (?, ?)", strFileFolderName, varCheckedUnchecked);
+                    DataBase.close();
+                }
+            }
+            else
+            {
+                ShowLightbox(1, Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_EXCLUDE_FILES_OR_FOLDERS_FROM_SCANNING"));
+                return;
+            }
+        }
+    
+        var Fun = self.OnAddExcludeFileFolder();
+		self.funFromExclude();
+
+        vlistObj.on("change","tbody > tr", function() { // some change inside tr
+          // note: each row (this) is a form here so its value is structure:
+          this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+          if( !this.data.selected )
+            selectAll.value = false;
+        });
+        
+         vlistObj.on("change","#select-all-Exclude-File", function() { // select/deselect all
+          var selected = this.value;
+          for( var record in FileFolderRecords )
+            record.selected = selected;
+        });
+	}
+</script>
+
+<script type="text/tiscript">
+	class FileDropZone :Behavior
+	{
+	  function onExchange(evt)
+	  {
+		if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+		{
+		  this.attributes.addClass("active-target");
+		  return true;
+		}
+		else if( evt.type == Event.X_DRAG_LEAVE )
+		{
+		  this.attributes.removeClass("active-target");
+		  return true;
+		}
+		else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+		{
+		  stdout.println(evt.x,evt.y);
+		  return true;
+		}
+		else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+		{
+		  this.attributes.removeClass("active-target");
+		  var fn = evt.dragging;
+		  var strFileName = fn.toString();
+		  IsButtonClicked = false;
+		  varDropMaxCount = 0;	
+		  AddEntriesToDBfile(strFileName);
+		  if(varDropMaxCount>50)
+		  {
+			   ShowLightbox(1, Lang.translate("ID_MAXIMUM_LIMIT_REACHED_FOR_EXCLUDE_FILES_OR_FOLDERS_FROM_SCANNING"));
+		  }
+		  varDropMaxCount = 0;
+		}
+	  }
+	}	
+</script>
+
+<script type="text/tiscript">
+	function showRecordset(varRecordSet)
+	{
+		var iIndex = 0;
+		do
+		{
+			var varCounter = 0;
+			FileFolderRecords[iIndex] = {selected : true,IsSubFolder : false, FilePath : "", varEntriesID : "",varIsSubFol: ""};
+			for (var varVirtualDBData in varRecordSet)
+			{
+				 switch(varCounter)
+						{
+							case 0:
+									FileFolderRecords[iIndex].varEntriesID = varVirtualDBData;
+									break;
+							case 1:
+									FileFolderRecords[iIndex].FilePath = varVirtualDBData;
+									break;
+							case 2:
+									FileFolderRecords[iIndex].varIsSubFol = varVirtualDBData;
+									if(varVirtualDBData == 1)
+									{
+										FileFolderRecords[iIndex].IsSubFolder = true;
+									}
+									break;
+						}
+				varCounter++;
+			}
+			iIndex++;
+			varDroppedFileCount = iIndex;
+		}
+		while( varRecordSet.next());
+
+		if(FileFolderRecords.length == 0)
+		{
+			$(#ID_BUTTON_DELETE).state.disabled = true;
+			$(.left).state.disabled = true;
+		}
+		else
+		{
+			$(#ID_BUTTON_DELETE).state.disabled = false;
+			$(.left).state.disabled = false;
+		}
+	}
+
+	function AddEntriesToDBfile(strFileName)
+	{
+		$(#ID_BUTTON_DELETE).state.disabled = false;
+		$(.left).state.disabled = false;
+
+		if(IsButtonClicked == false)
+		{
+			arrstrFileName =  strFileName.split(",");
+			for (var i = 0; i<arrstrFileName.length; i++)
+			{
+				if(i == 0)
+				{
+					var varFirstFile = URL.toPath(arrstrFileName[i]);
+					varFirstFile = varFirstFile.replace("\/","\\");		  
+					if(self.CheckIsNetworkPath(varFirstFile))
+					{
+						ShowLightbox(1, Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED"));
+						return;
+					}
+					AddDroppedFileEntry(varFirstFile);
+					varDropMaxCount++;
+				}
+				else
+				{
+					if(varDropMaxCount<50)
+					{
+						var NextFile = URL.toPath(arrstrFileName[i]);
+						NextFile = NextFile.replace("\/","\\");				
+						if(self.CheckIsNetworkPath(NextFile))
+						{
+							ShowLightbox(1, Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED"));
+							return;
+						}
+						AddDroppedFileEntry(NextFile);
+						varDropMaxCount++;
+					}
+					else
+					{
+						varDropMaxCount++;
+						continue;
+					}
+				}
+			}
+			arrstrFileName = 0;
+		}
+		else
+		{
+			if(self.CheckIsNetworkPath(strFileName))
+			{
+				ShowLightbox(1, Lang.translate("ID_NETWORK_PATH_NOT_ALLOWED"));
+				return;
+			}
+			AddDroppedFileEntry(strFileName);
+		}
+		if(vDropFlag)
+		{
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_SOME_FILE_REPEAT");
+			var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: "OK", role:#ok, value:true }]
+								}; 
+			vDropFlag = false;
+		}
+		self.funFromExclude();
+	}
+</script>
+	<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(view.parameters.varLanguageValue == "ENGLISH")
+			if(!view.parameters.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/");  //english for basic
+		else if(view.parameters.varLanguageValue == "GERMAN")
+			if(!view.parameters.FunCheckInternetAccessBlock())
+				Sciter.launch("https://vibranium.co.in/"); //german for basic
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+	</script>	
+
+<script type="text/tiscript">
+	function self.ready()
+	{
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		
+		$(#ID_BUTTON_DELETE).state.disabled = true;
+		$(.left).state.disabled = true;
+
+		varDBPath = self.GetDBPath();
+		DataBase = DB.open(varDBPath);
+		DataBase.exec("create table IF NOT EXISTS WWIZEXCLUDELST(ID INTEGER PRIMARY KEY, NAME VARCHAR (1000) NOT NULL, ISUBFOL INT NOT NULL)");
+		varRecordSet = DataBase.exec("select ID, Name,Isubfol from WWIZEXCLUDELST");
+		if ( varRecordSet instanceof Recordset )
+			showRecordset(varRecordSet);
+		else
+			DataBase.close();
+
+		DataBase.close();
+		vlistObj = $(#theExcludeFileTable);
+		vlistObj.value = FileFolderRecords;
+
+		const selectAll = vCheckBoxDragDrop.$(input#select-all-Exclude-File);
+		vlistObj.on("change","tbody > tr", function() { // some change inside tr
+		// note: each row (this) is a form here so its value is structure:
+		this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+		if( !this.data.selected )
+		selectAll.value = false;
+		});
+
+		vCheckBoxDragDrop.on("change","#select-all-Exclude-File", function() { // select/deselect all
+		var selected = this.value;
+		for( var record in FileFolderRecords )
+		record.selected = selected;
+		});
+
+		vlistObj.on("click", ".ExcludeID", function(evt)
+		{
+			$(.condition_popup_for_reports).state.collapsed = false;
+		});
+		
+		vlistObj.on("click", ".ExcludeSubFolder", function(evt)
+		{
+			var record = this.$p(tr).data;
+			var index = FileFolderRecords.indexOf(record);
+
+			var bselected = this.value;
+			var varSelectedIndexVal = FileFolderRecords[index].varEntriesID;
+			var varFileFolderPath = FileFolderRecords[index].FilePath;
+
+			if(self.CheckFileFolderPathExist(varFileFolderPath))
+			{
+				return;
+			}
+			else
+			{
+				if(!(self.CheckFileOrFolderPath(varFileFolderPath)))
+				{
+					this.value = false;
+					ShowLightbox(1, Lang.translate("ID_THIS_OPTION_IS_NOT_APPLICABLE_FOR_THE_SELECTED_FILEPATH"));
+					return;
+				}
+			}
+
+			if(bselected == false)
+			{
+				varCheckedUnchecked = 0;
+				DataBase = DB.open(varDBPath);
+				DataBase.exec("UPDATE WWIZEXCLUDELST SET ISUBFOL = ? WHERE ID = ?",varCheckedUnchecked, varSelectedIndexVal);
+				DataBase.close();
+			}
+			else
+			{
+				varCheckedUnchecked = 1;
+				DataBase = DB.open(varDBPath);
+				DataBase.exec("UPDATE WWIZEXCLUDELST SET ISUBFOL = ? WHERE ID = ?",varCheckedUnchecked, varSelectedIndexVal);
+				DataBase.close();
+			}
+			var Fun = self.OnAddExcludeFileFolder();
+			self.funFromExclude();
+		});
+	}
+
+	$(#close-dialog).onClick = function(){
+		view.close(null);
+	}
+	$(#ID_BUTTON_CLOSE).onClick = function()
+	{
+		view.close(null);
+	}
+</script>	
+<form #simple-dialog>
+    <label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+</head>
+<body .exclude_body>
+<div .main>
+    <div .header_exclude>
+        <div .logo>
+            <img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO class="shieldIco">
+        </div>
+		<div .drag_zone_exclude  role="window-caption">
+			<h4 style="margin-top:14dip;">Vibranium</h4>
+		</div>
+        <div .clickable_cl .frame_display_src #close-dialog>X</div>
+    </div>
+	<div .inner_body_exclude>
+		<h3 ></h3>
+        <div .file-drop-zone>
+            <img src="IDR_PNG_DROP_FILES.png"><br/>
+            <label>ID_DROP_YOUR_FILES_FOLDERS_HERE</label>
+        </div>
+		<h2><label>ID_EXCLUDED_LIST_OF_FILES_AND_FOLDERS_FROM_SCANNING</label></h2>
+		<div class="file_folder_input file-drop-zone1">
+            <table  #theExcludeFileTable  style="margin:0;">
+                <thead>
+                    <tr>
+                        <th style="width:44dip;"></th><th style="width:550dip;"><label>ID_HTM_CUSTOM_SCAN_DROPPED_FILES_AND_FOLDERS</label></th>
+						<th><label>ID_SUBFOLDER</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><input (selected)|checkbox /><label style="color:rgba(0,0,0,0);">.</label></td><td(FilePath)></td><td style="text-align:center;"><input .ExcludeSubFolder(IsSubFolder)|checkbox /><label style="color:rgba(0,0,0,0);">.</label></td></tr>
+                </tbody>
+            </table>
+		</div>
+		<div .button_div>
+			<div .left>
+				<input #select-all-Exclude-File|checkbox checked /> <label for="select-all-File">ID_HTM_CUSTOM_SCAN_SELECT_ALL</label>
+			</div>
+			<div .right>
+				<span class="btnCstmSmall1" .btnMargin #ID_BTN_EXCLUDE_FILE_EXT><label>ID_EXCLUDE_FILE_EXT</label></span> 
+					<li class="selector"  #ID_BUTTON_BROWSE .btnMargin><label>ID_UPDATE_BTN_BROWSE</label>
+						<div class="file_folder_div">
+							<ul class="file_folder">
+								<li #ID_BROWSE_FILE .border_right_exclude><label>ID_FILE</label></li>
+								<li #ID_BROWSE_FOLDER><label>ID_FOLDER</label></li>
+							</ul>
+						</div>
+					</li>
+				<span class="btnCstmSmall" .btnMargin #ID_BUTTON_DELETE><label>ID_HTM_CUSTOM_SCAN_DELETE</label></span>  
+				<span class="btnCstmSmall" .btnMargin #ID_BUTTON_CLOSE><label>ID_CLOSE</label></span>  
+			 </div> 
+		</div>
+	</div>	
+</div>
+</body>
+</html>

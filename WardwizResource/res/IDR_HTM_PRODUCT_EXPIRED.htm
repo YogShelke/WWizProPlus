@@ -1,0 +1,323 @@
+<html custom-frame="none" lang="ENGLISH">
+<head>
+	<title></title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">    
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:610dip;
+		   height:350dip;
+		   overflow:hidden; 
+		}
+		  body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:1dip solid #000;
+		   color:#fff;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:610dip;
+			height:350dip;
+			
+		}
+		
+		#header_frame{
+			height:60dip;
+			width:585dip;
+		}
+		#header_close_bt{
+			height:60dip;
+			width:25dip;
+		}		
+		
+		//******** Menu Bar CSS *********//	
+	
+		.header{
+			flow:horizontal;
+			
+		}
+		.logo{
+			width:200dip;
+		}
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.inner_body{
+			width:720dip;
+			height:420dip;
+		}
+		.inner_body_div{
+			flow:horizontal;
+		}
+		.info_2{
+			width:475dip;
+			height:250dip;	
+			margin-top:5dip;
+			margin-left:75dip;
+			text-align:cnter;
+		}
+		.warning_expired{
+			margin-left:90dip;
+		}
+		.footer_buttons{
+			width:100dip;
+			margin-left:180dip;
+			margin-top:40dip;
+			height:30dip;
+		}
+	
+		#header_content{
+			flow:horizontal;
+			background:rgba(0,0,0,.05);
+		}
+		#footer_additional_page{
+			position:absolute;
+			bottom:0;
+			width:85%;
+		}
+		.footer .right_section1{
+			float:right;
+			padding-right:15dip;
+			padding-top:7dip;
+		}
+        .footer .left_section1 {
+            float: left;
+            padding-left: 15dip;
+            padding-top: 18dip;
+		}
+		.footer{
+			background:rgba(0,0,0,.3);
+			height:55dip;
+			color:#fff;
+		}
+		.social li{
+			display:inline-block;
+			list-style:none;
+		}
+		
+		.fb_icon_menu{
+			width:16dip;
+			height:16dip;
+			margin-bottom:0dip;
+			background:url(IDR_PNG_FB.png) no-repeat;
+			background-size:cover;
+		}
+		 li:hover> div.fb_icon_menu{
+			background:url(IDR_PNG_FB_HOVER.png) no-repeat;
+			background-size:cover;
+		}
+		.tw_icon_menu{
+			width:16dip;
+			height:16dip;
+			margin-bottom:0dip;
+			background:url(IDR_PNG_TWITTER.png) no-repeat;
+			background-size:cover;
+		}
+		 li:hover> div.tw_icon_menu{
+			background:url(IDR_PNG_TWITTER_HOVER.png) no-repeat;
+			background-size:cover;
+		}
+		.ln_icon_menu{
+			width:16dip;
+			height:16dip;
+			margin-bottom:0dip;
+			background:url(IDR_PNG_LINKEDIN.png) no-repeat;
+			background-size:cover;
+		}
+		 li:hover> div.ln_icon_menu{
+			background:url(IDR_PNG_LINKEDIN_HOVER.png) no-repeat;
+			background-size:cover;
+		}
+       
+		.basic_background{
+			background:url(IDR_PNG_BACKGROUND_BASIC.png) no-repeat;background-size:cover;
+		}
+		.essential_background{
+			background:url(IDR_PNG_BACKGROUND.png) no-repeat;background-size:cover;
+		}
+		.provantage_background{
+			background:url(IDR_PNG_BG_PROVANTAGE.png) no-repeat;background-size:cover;
+		}
+		.essential_plus_background{
+			background:url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+			background-size:cover;
+		}
+		.elite_background{
+			background:url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+			background-size:cover;
+		}
+		.displayContent_container{
+			width:600dip;
+			margin-left:50dip;
+			margin-bottom:10dip;
+			margin-top:35dip;
+			height:220dip;
+			background:rgba(0,0,0,.2);
+			padding-left:10dip;
+			padding-right:10dip;
+			border-radius:10dip;
+			box-shadow:0 0 10dip #000;
+		}
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:80dip!important;
+			height:21dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+	</style>
+	<script type="text/tiscript">
+		include "IDR_TIS_MAIN.tis";
+		include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+	</script> 
+    <script type="text/tiscript">
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        view.close(null);
+    }
+	$(#ID_BTN_RENEW_REG).onClick = function()
+    {
+		view.onRenewProduct();
+		view.close(null);
+    }
+    </script>
+  <script type="text/tiscript">
+
+    if(productVersion == #BASIC){
+        $(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+        $(.main).attributes.addClass("basic_background");
+    }
+	  else if(productVersion == #ESSENTIAL){
+		$(.main).attributes.addClass("essential_background");
+      }
+	  else if(productVersion == #PROVANTAGE){
+        $(.main).attributes.addClass("provantage_background");
+      }
+	  else if(productVersion == #ELITE){
+        $(.main).attributes.addClass("elite_background");
+      }
+	  else if(productVersion == #ESSENTIALPLUS){
+        $(.main).attributes.addClass("essential_plus_background");
+      }
+    </script>
+
+    <script type="text/tiscript">
+	function FunSetText(varButton)
+	{
+		if(varButton == 3) //Registered but Expired
+		{
+			$(#ID_WARDWIZ_DESC).text = Lang.translate("ID_REG_VER_EXP_PLS_REGISTER");
+			$(#ID_WARDWIZ_NOTE).text = Lang.translate("ID_REGISTERED_USER_EXP");
+			$(#ID_BTN_RENEW_REG).text = Lang.translate("ID_RENEW_NOW");
+		}
+		else if(varButton == 4) //Trial Expired
+		{
+			$(#ID_WARDWIZ_DESC).text = Lang.translate("ID_TRIAL_VER_EXP");
+			$(#ID_WARDWIZ_NOTE).text = Lang.translate("ID_TRIAL_VERSION_EXP");
+			$(#ID_BTN_RENEW_REG).text = Lang.translate("ID_RENEW_NOW");
+		}
+		else if(varButton == 5) //Unregistered
+		{
+			$(#ID_WARDWIZ_DESC).text = Lang.translate("ID_UNREG_REGISTER_NOW");
+			$(#ID_WARDWIZ_NOTE).text = Lang.translate("ID_UNREGISTERED_USER");
+			$(#ID_BTN_RENEW_REG).text = Lang.translate("ID_STR_REGISTER_NOW");
+		}
+	}
+	</script>
+
+    <script type="text/tiscript">
+    function self.ready()
+    {
+	    self.language =  g_LanguageName;
+        view.onLoadProductDetails(FunSetText);
+    }
+    </script>
+    <script type="text/tiscript">
+  
+      $(#fb).onClick = function() {
+      
+        Sciter.launch("https://www.facebook.com/brandwardwiz");
+      
+      }
+	  $(#tw).onClick = function() {
+      
+        Sciter.launch("https://twitter.com/brandwardwiz");
+      
+      }
+	  $(#ln).onClick = function() {
+      
+        Sciter.launch("https://www.linkedin.com/in/wardwiz");
+      
+      }
+</script>
+</head>
+<body>
+<div .main>
+	<div #header_content>
+		<div #header_frame role="window-caption">
+			<div .header>
+				<div .logo  .frame_display_src src="IDR_HTM_HOME.htm">
+					<img src="IDR_PNG_LOGO.png">
+				</div>
+			</div>
+		</div>
+		<div #header_close_bt>
+            <img #ID_BUTTON_CLOSE .clickable_cl src="IDR_PNG_CLOSE.png" style="padding-top:10dip;">
+		</div>
+	</div>
+	<div .inner_body>
+	<div .inner_body_div>
+		<div class="info_1">
+		</div>
+		<div class="info_2">
+			<div style="margin-top:5dip;margin-left:0;">
+				<div .warning_expired>
+					<img src="IDR_PNG_NOTICE.png" style="float:left;width:50dip;padding-left:0;margin-top:10dip;" #ID_PNG_NOT_PROTECTED>
+					<h2 style="color:red;margin-top:25dip;margin-right:40dip;" #ID_WARDWIZ_NOTE>WardWiz has expired</h2>
+				</div>
+				<div style="margin-top:35dip;margin-left:0;">
+					<h3 style="font-weight:200dip;" #ID_WARDWIZ_DESC>We recommend you to renew the product to keep your system protected. Click to renew the product.</h3>
+				</div>
+			</div>
+			<div .footer_buttons>
+					<button .scan_button #ID_BTN_RENEW_REG>Renew</button>
+			</div>
+		</div>
+	</div>
+		<div .footer #footer_additional_page>
+			<div .left_section1><label>ID_STR_ALL_RIGHTS_RESERVED</label> &reg; <label>ID_STR_WARDWIZ_2017</label>  </div>
+			<div .right_section1>
+				<ul .social>
+					<li .clickable_cl #fb><div class="fb_icon_menu"></div></li> 
+					<li .clickable_cl #tw><div class="tw_icon_menu"></div></li>
+					<li .clickable_cl #ln><div class="ln_icon_menu"></div></li>
+				</ul>
+			</div>
+		</div> 
+	</div>
+	
+</div>
+</body>
+</html>

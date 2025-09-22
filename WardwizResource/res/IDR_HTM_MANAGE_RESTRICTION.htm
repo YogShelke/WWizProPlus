@@ -1,0 +1,326 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+	<head>
+	<title>Manage Restriction</title>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	@import url(IDR_CSS_MAIN.css);
+
+	html 
+	{ 
+		width:323dip;           /* preferred/initial width */
+		height:255dip;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+		behavior:WardWizParControl;
+	}	
+	body.Manage_Restriction{ 
+		max-width:322dip!important;
+		height:254dip;
+		background-size:cover;
+		padding:0; margin:0; 
+	}
+	.header_Manage_Restriction{
+		background:rgba(0,0,0,.1);
+		flow:horizontal;
+		width:322dip;        
+		height:40dip;
+	}
+	.Manage_Restriction_Mrgn{
+		margin-top:-7dip;
+	}
+	/*Tables for Manage Rectriction Page*/
+	form#data-dialog > table#ID_TAB_MANAGE_APP > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#ID_TAB_MANAGE_APP { 
+		style-set: vgrid;
+		border:1dip solid #888888; 
+		flow:table-fixed;
+		width:297dip;
+		height:145dip;
+		padding:4dip;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin:10dip;
+	}
+	table#ID_TAB_MANAGE_APP > thead {
+		behavior:column-resizer;
+	}
+	table#ID_TAB_MANAGE_APP > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#ID_TAB_MANAGE_APP th 
+	{
+		color: white;
+		font-size:13dip; 
+		border:none;
+		padding:0dip; 
+		background-color:#DDD; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+
+	table#ID_TAB_MANAGE_APP th:nth-child(1)  {  width:0.05*; }
+	table#ID_TAB_MANAGE_APP th:nth-child(2)  {  width:0.4*; }				
+
+	table#ID_TAB_MANAGE_APP th:hover 
+	{ 
+		color: #ffe598;
+		transition:blend;
+	}
+
+	table#ID_TAB_MANAGE_APP tr:current /* current row */ 
+	{ 
+		background-color:#bdbccc; 
+	} 
+			
+	table#ID_TAB_MANAGE_APP td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+		color:#000;
+	}
+	  
+	table#ID_TAB_MANAGE_APP td:nth-child(1) {  text-align:center; width:0.05*;padding-top:4dip; } /* first column */
+	table#ID_TAB_MANAGE_APP td:nth-child(2) {  
+		text-align:left; 
+		width:0.4*;
+		border-left:1dip solid #bdbccc;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+
+	.set_btn_ManageRestrict{
+		margin-left:75dip;
+	}
+	</style>
+	
+	<script type="text/tiscript">  
+	include "IDR_TIS_SQLITE.tis";
+	</script>
+	
+	<script type="text/tiscript">  
+	var vlist = $(#ID_TAB_MANAGE_APP);
+	var ArrPrevApplications = new Array();
+	var ArrApplications = new Array();
+	var varDBPath;
+	var DataBase;
+	var g_CurrentUser;
+	</script>
+
+	<script type="text/tiscript">
+	$(#ID_BTN_OK).onClick = function()
+	{
+		DataBase = DB.open(varDBPath);
+		for(var vindex=0; vindex < ArrApplications.length; vindex++)
+		{
+			if(ArrPrevApplications[vindex].selected != ArrApplications[vindex].selected)
+			{
+			    DataBase.exec("UPDATE WWIZ_MANAGE_RESTRICT_APP SET SELECTED = ? WHERE FK_USERNAME = ? AND APPLICATION = ?",ArrApplications[vindex].selected, g_CurrentUser, ArrApplications[vindex].AppName);
+				ArrPrevApplications[vindex].selected = ArrApplications[vindex].selected;
+			}
+		}
+		self.OnChangeAppRestriction();
+		DataBase.close();
+		view.close(null);
+	}
+	
+	$(#ID_BTN_CANCEL).onClick = function()
+	{
+		view.close(null);
+	}
+	
+	$(#ID_CHK_SELECT_ALL).onClick = function()
+	{
+		var vFlag = false;
+		if($(#ID_CHK_SELECT_ALL).state.checked == true)
+		vFlag = true;
+		for(var record in ArrApplications)
+		{
+			record.selected = vFlag;
+		}
+	}
+	</script> 
+
+	<script type="text/tiscript">
+	vlist.on("change","tbody > tr", function() { // some change inside tr
+		this.data.selected = this.value.selected;
+		$(#ID_CHK_SELECT_ALL).state.checked = false;
+		vlist.tbody.currentIndex = -1;
+	});
+	</script> 
+
+	<script type="text/tiscript">
+	function GetLangRelatedStrirg(vIDStr)
+	{
+		switch(vIDStr)
+		{
+			case "ID_CD/DVD_APP"     :
+				return Lang.translate("ID_CD/DVD_APP");
+			case "ID_CHAT_APP"       :
+				return Lang.translate("ID_CHAT_APP");
+			case "ID_DOWNLOAD_MGR"   :
+				return Lang.translate("ID_DOWNLOAD_MGR");
+			case "ID_EMAIL_CLIENTS"  :
+				return Lang.translate("ID_EMAIL_CLIENTS");
+			case "ID_FILE_SHARE_APP" :
+				return Lang.translate("ID_FILE_SHARE_APP");
+			case "ID_GAMES"          :
+				return Lang.translate("ID_GAMES");
+			case "ID_MEDIA_PLAYERS"  :
+				return Lang.translate("ID_MEDIA_PLAYERS");
+			case "ID_WEB_PROXY"      :
+				return Lang.translate("ID_WEB_PROXY");
+			case "ID_USB_MODEMS"     :
+				return Lang.translate("ID_USB_MODEMS");
+			case "ID_WEB_BROWSERS"   :
+				return Lang.translate("ID_WEB_BROWSERS");
+			case "ID_MISCELLANEOUS"  : 	 
+				return Lang.translate("ID_MISCELLANEOUS");
+		}
+	}
+	function GetData()
+	{
+		vlist.value = ArrApplications; 
+		
+		var varDBPathDB = self.GetDBPathBlockList();
+		var varDataBase = DB.open(varDBPathDB);
+		var varCountVal;
+		var varRecValue = varDataBase.exec("SELECT COUNT(APP_CATEGORY) FROM PARCTRL_BLOCK_APP_CATEGORY");
+		if( varRecValue instanceof Recordset)
+		{
+			for(var varcount in varRecValue)
+				varCountVal = varcount;
+		}
+		varRecValue.close();	
+		
+		var varRecVal = varDataBase.exec("SELECT APP_CATEGORY FROM PARCTRL_BLOCK_APP_CATEGORY");
+		if( varRecVal instanceof Recordset)
+		{
+			var i = 0;
+			do
+			{
+				for(var varValue in varRecVal)
+				{
+					ArrApplications[i] = {index:ArrApplications.length,selected:true, AppName:varValue, Application:GetLangRelatedStrirg(varValue)};
+					i++;
+				}
+			}
+			while(varRecVal.next());
+		}
+		varRecVal.close();
+		varDataBase.close();
+			
+		DataBase = DB.open(varDBPath);
+		
+		var varIdVal = DataBase.exec("SELECT SELECTED FROM WWIZ_MANAGE_RESTRICT_APP WHERE FK_USERNAME = ?",g_CurrentUser);
+		if(varIdVal instanceof Recordset)
+		{
+			var vindex = 0;
+			do
+			{			
+				ArrApplications[vindex].selected = varIdVal["SELECTED"];
+				vindex++;
+			}while(varIdVal.next());
+			varIdVal.close();
+		}
+		DataBase.close();
+		
+		for(var vindex=0; vindex<ArrApplications.length; vindex++)
+		{
+			ArrPrevApplications[vindex] = {index:ArrPrevApplications.length, selected:ArrApplications[vindex].selected, AppName:ArrApplications[vindex].AppName, Application:ArrApplications[vindex].Application};
+		}
+		
+		var vFlag = true;	
+		for(var vindex=0; vindex<ArrApplications.length; vindex++)
+		{
+			if(ArrApplications[vindex].selected == false)
+			{
+				vFlag = false;
+				break;
+			}
+		}	
+		$(#ID_CHK_SELECT_ALL).state.checked = vFlag;
+	}
+	</script>
+
+	<script type="text/tiscript">
+	$(#window-close) << event click()
+		{				
+			view.close(null);
+		}
+	</script> 
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script>	
+
+	<script type="text/tiscript">
+	function self.ready() {
+		self.language = view.parameters.varLanguageValue;
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+        }
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+        }
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		varDBPath = view.parameters.vardb;
+		g_CurrentUser = view.parameters.g_CurrentUser;
+		GetData();
+	}
+	</script> 
+	
+</head>
+<body .Manage_Restriction>
+	<div .header_Manage_Restriction>
+		<window-caption role="window-caption" .Manage_Restriction_Mrgn>
+			<label>ID_BLOCK_SPECIFIED_APP_CATEGORIES</label>
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>
+	<div>
+		<table #ID_TAB_MANAGE_APP resizeable>
+			<thead>
+				<tr><th style="width:31dip;"><input #ID_CHK_SELECT_ALL|checkbox /></th><th(Application)style="width:265.9dip;"><label>ID_SPACE_APP</label></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input (selected)|checkbox /></td>
+					<td(Application)></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div .set_btn_ManageRestrict>
+		<div class="btnCstmSmall" #ID_BTN_OK><label>ID_OK</label></div>  
+		<div class="btnCstmSmall" #ID_BTN_CANCEL><label>ID_CANCEL</label></div>
+	</div> 
+</body>
+</html>

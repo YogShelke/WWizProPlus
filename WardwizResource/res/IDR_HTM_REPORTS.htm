@@ -1,0 +1,2396 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style>
+		@import url(IDR_CSS_MAIN.css);		
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		@import url(IDR_CSS_CHARTS.css);	
+	</style>
+	
+	<style>		
+		html{
+			behavior:WardWizReports;
+		}         
+		form { font:system; }
+		chart 
+		{
+			width: *;
+			height: 300dip;
+			border:1px dashed;
+		}
+		.body_report .strip /* tab strip */
+		{
+		  flow: vertical;
+		  width:210dip;
+		  background:#fff;
+		}
+		.typeButtons{
+			flow:horizontal;
+			float:right;
+			width:*;
+			height:30dip;
+			margin-top:-4dip;
+		}
+		.typeButtons div{
+			width:130dip;
+			height:22dip;
+			padding-top:1dip;
+			cursor:pointer;
+		}
+		.disArea{
+			flow:horizontal;width:635dip;overflow-x:hidden;
+		}
+		#graphicalDisplay{
+			width:635dip;
+			height:300dip;
+		}
+		#graphicalDisplay{
+			margin-right:20dip;
+		}
+		.activeTabView #graphicalDisplay{
+			margin-left:-665dip;
+			transition: margin-left(linear,400ms);
+			
+		}
+		#detailedDisplay{
+			width:645dip;
+			height:294dip;
+		}
+		#detailedDisplay #ID_BTN_FIREWALL_ITEM:collapsed{
+			visibility:none;
+		}
+		#detailedDisplay #ID_BTN_FIREWALL_ITEM:expanded{
+			visibility:visible;
+		}
+		#detailedDisplay #ID_BTN_PARENTAL_CONTROL_ITEM:collapsed{
+			visibility:none;
+		}
+		#detailedDisplay #ID_BTN_PARENTAL_CONTROL_ITEM:expanded{
+			visibility:visible;
+		}
+		#detailedDisplay #ID_BTN_EML_SCN_MENU_ITEM:collapsed{
+			visibility:none;
+		}
+		#detailedDisplay #ID_BTN_EML_SCN_MENU_ITEM:expanded{
+			visibility:visible;
+		}
+		#detailedDisplay #antirootkit_scan:collapsed{
+			visibility:none;
+		}
+		#detailedDisplay #antirootkit_scan:expanded{
+			visibility:visible;
+		}
+		#detailedDisplay #reg_optimizer:collapsed{
+			visibility:none;
+		}
+		#detailedDisplay #reg_optimizer:expanded{
+			visibility:visible;
+		}
+		.scrolTopBt{
+			position:fixed;
+			margin-top:-28dip;
+			width:162dip;
+			height:22dip;
+			cursor:pointer;
+			text-align:center;
+			color:#356b7d;
+		}
+		.scrolTopBt img{
+			width:70dip;
+			transform:rotate(-180deg);
+		}
+		.stripOverflow{
+			height:300dip;
+			overflow:auto;
+			vertical-scrollbar: my-v-scrollbar; 
+		}
+		.ContentDisplayReports{
+			width:460dip;
+			height:288dip;
+			visibility:none;
+		}
+		.ContentDisplayReports.activeTab{
+			visibility:visible;
+			min-height:288dip;
+			max-height:288dip;
+		}
+		form#data-dialog > table#ID_TABLE_REPORT > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			vertical-align:top;
+		}
+		table#ID_TABLE_REPORT { 
+			style-set: vgrid;
+			border:1dip solid #273746!important; 
+			flow:table-fixed;
+			width:425dip;
+			height:290.5dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin-left:5dip!important;
+			margin-top:5dip!important;
+		}
+		table#ID_TABLE_REPORT > thead {
+			behavior:column-resizer;  
+		}
+		table#ID_TABLE_REPORT > tbody {
+			overflow-y: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		table#ID_TABLE_REPORT th 
+		{ 
+			color: white;
+			font-size:10dip; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		table#ID_TABLE_REPORT th:nth-child(1)  {  width:0.5*; }
+		table#ID_TABLE_REPORT th:nth-child(2)  {  width:0.70*; }		
+		table#ID_TABLE_REPORT th:nth-child(3)  {  width:0.15*; }		
+		table#ID_TABLE_REPORT th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+		}  
+		table#ID_TABLE_REPORT tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+		}   
+		table#ID_TABLE_REPORT td 
+		{ 
+			padding:1dip; 
+			min-height:24dip;
+			//border:1dip solid #0f0;
+		}   
+		table#ID_TABLE_REPORT td:nth-child(1) {  text-align:center; width:0.5*;padding-top:2dip; } /* first column */
+		table#ID_TABLE_REPORT td:nth-child(2) {  
+			text-align:center; 
+			width:0.5*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		}
+		.tabsCstm 
+		{
+			behavior:tabs;
+			/* height:100%;
+			width:100%; */
+			overflow:hidden;
+			flow:horizontal;
+			/* padding-left:13dip; */
+		}
+		.strip /* tab strip */
+		{
+			flow: vertical;
+			width:170dip;
+		}
+		.strip > .mnuItem /* all tabs, passive by default */
+		{
+			padding: 7dip 8dip!important;
+		}
+		.stripOverflow .mnuItem{
+			padding-left:16dip!important;
+		}
+		#detailedDisplay #ID_BTN_BROWSER_SECURITY:collapsed
+		{
+			visibility:none;
+		}
+		#detailedDisplay #ID_BTN_BROWSER_SECURITY:expanded
+		{
+			visibility:visible;
+		}
+	</style>
+
+    <script type="text/tiscript">
+		include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+		var varReportDBPath;
+		var DataBase;
+		var vlist;    
+		var arrRecordsScanType = new Array(0);  
+		var arrRecords = new Array(10);
+		var ScanType = 0;
+		var ScanRecords = 0 ;   
+		var varRowsCount;		
+		var g_ScanType;
+		var arrRecordsPCDetails = new Array(0);
+   	</script>
+	
+    <script type="text/tiscript">
+		var varThreatJanReport;
+		var varThreatFebReport;
+		var varThreatMarchReport;
+		var varThreatAprilReport;
+		var varThreatMayReport;
+		var varThreatJuneReport;
+		var varThreatJulyReport;
+		var varThreatAugReport;
+		var varThreatSeptReport;
+		var varThreatOctReport;
+		var varThreatNovReport;
+		var varThreatDecReport;
+		var varAScanJanReport;
+		var varAScanFebReport;
+		var varAScanMarchReport;
+		var varAScanAprilReport;
+		var varAScanMayReport;
+		var varAScanJuneReport;
+		var varAScanJulyReport;
+		var varAScanAugReport;
+		var varAScanSeptReport;
+		var varAScanOctReport;
+		var varAScanNovReport;
+		var varAScanDecReport;	
+		var varTempJanReport;
+		var varTempFebReport;
+		var varTempMarchReport;
+		var varTempAprilReport;
+		var varTempMayReport;
+		var varTempJuneReport;
+		var varTempJulyReport;
+		var varTempAugReport;
+		var varTempSeptReport;
+		var varTempOctReport;
+		var varTempNovReport;
+		var varTempDecReport;
+		var varWebJanReport;
+		var varWebFebReport;
+		var varWebMarchReport;
+		var varWebAprilReport;
+		var varWebMayReport;
+		var varWebJuneReport;
+		var varWebJulyReport;
+		var varWebAugReport;
+		var varWebSeptReport;
+		var varWebOctReport;
+		var varWebNovReport;
+		var varWebDecReport;
+	</script>
+	
+    <script type="text/tiscript">	
+		var varJanStartDate;
+		var varJanEndDate;
+		var varFebStartDate;
+		var varFebEndDate;
+		var varMarchStartDate;
+		var varMarchEndDate;
+		var varAprilStartDate;
+		var varAprilEndDate;
+		var varMayStartDate;
+		var varMayEndDate;
+		var varJuneStartDate;
+		var varJuneEndDate;
+		var varJulyStartDate;
+		var varJulyEndDate;
+		var varAugStartDate;
+		var varAugEndDate;
+		var varSeptStartDate;
+		var varSeptEndDate;
+		var varOctStartDate;
+		var varOctEndDate;
+		var varNovStartDate;
+		var varNovEndDate;
+		var varDecStartDate;
+		var varDecEndDate;
+		var vCntForPCRec = 0;
+		var vWebSecurityFlag = false;
+	</script>
+	
+    <script type="text/tiscript">
+		/*$(#toLast).onClick = function() {
+			//view.msgbox(#information,"hello2");
+			//$(.strip).scrollTo(0,100000); 
+			$(.strip).last.scrollToView(); 
+			$(#toLast).attributes.addClass("hideBtn");
+			$(#toFirst).attributes.removeClass("hideBtn");
+		}
+		$(#toFirst).onClick = function() {
+			//view.msgbox(#information,"hello2");
+			//$(.strip).scrollTo(0,100000); 
+			$(.strip).first.scrollToView(); 
+			$(#toFirst).attributes.addClass("hideBtn");
+			$(#toLast).attributes.removeClass("hideBtn");
+		}*/
+	</script>
+	
+	<script type="text/tiscript">
+		function RemoveAddedClass()
+		{
+			$(.activemnu).attributes.removeClass("activemnu");		
+		}	
+    </script>
+	
+	<script type="text/tiscript">
+		function GetRowCount(varRecordSetCount)
+		{
+			for (var varVirtualDBRowCount in varRecordSetCount)
+				{
+					varRowsCount = varVirtualDBRowCount;
+				}
+		}	
+	</script>
+	
+	<script type="text/tiscript">
+		$(#full_scan).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#full_scan).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 0");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 1)
+			{
+				return;
+			}
+
+			g_ScanType = 1;
+			arrRecordsScanType.length = 0;
+			var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+			FROM  Wardwiz_ScanSessionDetails SSD
+			LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+			ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+			WHERE   SSD.db_ScanTypeId =0
+			GROUP BY SSD.[db_ScanSessionID]
+			ORDER BY SSD.db_ScanSessionStartTime DESC");
+			if ( varRecordSet instanceof Recordset )
+			{
+				ShowScanTypeDetails(varRecordSet);				
+				varRecordSet.close();
+			}	
+            else
+            {
+				arrRecordsScanType.length = 0;
+			}
+			DataBase.close();
+		}
+		
+		$(#quick_scan).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#quick_scan).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 2");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 2)
+			{
+				return;
+			}
+			g_ScanType = 2;
+			arrRecordsScanType.length = 0;
+			var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+			FROM  Wardwiz_ScanSessionDetails SSD
+			LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+			ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+			WHERE   SSD.db_ScanTypeId =2
+			GROUP BY SSD.[db_ScanSessionID]
+			ORDER BY SSD.db_ScanSessionStartTime DESC");
+			if ( varRecordSet instanceof Recordset )
+			{
+				ShowScanTypeDetails(varRecordSet);
+				varRecordSet.close();
+			}	
+            else
+            {
+				arrRecordsScanType.length = 0;
+			}
+			DataBase.close();
+		}
+		
+		$(#custom_scan).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#custom_scan).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+				
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 1");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 3)
+			{
+				return;
+			}
+			g_ScanType = 3;
+			self.timer(200ms,LoadingCustomScanReports);
+			arrRecordsScanType.length = 0;    
+		}
+		
+		$(#active_scan).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#active_scan).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+			DataBase = DB.open(varReportDBPath);
+			
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 6");
+			
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 4)
+			{			
+				return;
+			}
+			g_ScanType = 4;
+			self.timer(200ms,LoadingActiveScanReports);			
+			arrRecordsScanType.length = 0;
+		}
+		
+		$(#boot_time_scan).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#boot_time_scan).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 11");
+		    if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 11)
+			{
+				return;
+			}
+			g_ScanType = 11;
+			self.timer(200ms,LoadingBootTimeScanReports);
+			arrRecordsScanType.length = 0;
+		}
+		
+		$(#antirootkit_scan).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#antirootkit_scan).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 5");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 5)
+			{
+				return;
+			}
+			g_ScanType = 5;
+			arrRecordsScanType.length = 0;
+			var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+			FROM  Wardwiz_ScanSessionDetails SSD
+			LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+			ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+			WHERE   SSD.db_ScanTypeId =5
+			GROUP BY SSD.[db_ScanSessionID]
+			ORDER BY SSD.db_ScanSessionStartTime DESC");
+			if ( varRecordSet instanceof Recordset )
+			{
+				ShowScanTypeDetails(varRecordSet);
+				varRecordSet.close();        
+			}	
+            else
+            {
+				arrRecordsScanType.length = 0;
+			}
+			DataBase.close();
+		}
+		
+		$(#reg_optimizer).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#reg_optimizer).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_FILES_REPAIRED");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_RegistryScanId) FROM Wardwiz_RegistryOptimizerDetails");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}				
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 6)
+			{
+				return;
+			}
+			g_ScanType = 6;
+			arrRecordsScanType.length = 0;
+			var varRecordSet = DataBase.exec("SELECT db_ScanStartDate, db_ScanStartTime, db_ScanEndDate, db_ScanEndTime, db_ThreatFoundCount, db_FileScanCount, db_ComActivexEnabled, ROUND(CAST ((julianday(db_ScanEndTime) - julianday(db_ScanStartTime)) * 24 *60 AS REAL),1) AS db_TotalScanTime,
+			db_UninstallEntriesEnabled, db_FontEntriesEnabled, db_SharedDllsEnabled, db_ApplicationPathsEnabled, db_HelpFileInfoEnabled, db_WindowsStartupItemsEnabled,
+			db_WindowsServicesEnabled, db_InvalidExtensionsEnabled, db_RootkitsEnabled, db_RogueAppsEnabled, db_WormsEnabled,db_SpywareThreatsEnabled, db_AdwareThreatsEnabled, db_KeyLoggersEnabled,db_BHOEnabled, db_ExplorerEntriesEnabled, db_InternetExpEntriesEnabled
+			FROM Wardwiz_RegistryOptimizerDetails
+			ORDER BY db_ScanStartTime DESC");
+			if ( varRecordSet instanceof Recordset )
+			{
+				ShowScanTypeDetails(varRecordSet);
+				varRecordSet.close();
+			}	
+            else
+            {
+				arrRecordsScanType.length = 0;
+			}
+			DataBase.close();
+		}
+		
+		$(#updates).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#updates).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_FILE_DOWN");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_UpdateId) FROM Wardwiz_UpdatesMaster");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 7)
+			{
+				return;
+			}
+			g_ScanType = 7;
+			arrRecordsScanType.length = 0;
+			var varRecordSet = DataBase.exec("SELECT db_UpdateStartDate, db_UpdateStartTime, db_UpdateEndDate, db_UpdateEndTime, db_UpdateId, db_FilesDownloadCount, db_DownloadFileSize, ROUND(CAST ((julianday(db_UpdateEndTime) - julianday(db_UpdateStartTime)) * 24 *60 AS REAL),1) AS db_TotalUpdateTime
+			FROM Wardwiz_UpdatesMaster
+			ORDER BY db_UpdateStartTime DESC");
+			if ( varRecordSet instanceof Recordset )
+			{
+				ShowScanTypeDetails(varRecordSet);
+				varRecordSet.close();			
+			}				
+            else
+            {
+				arrRecordsScanType.length = 0;
+			}
+			DataBase.close();
+		}
+		
+		$(#temp_cleaner).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#temp_cleaner).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_FILES_CLEANED");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(TCS.db_TempCleanerSessionId) FROM Wardwiz_TempFilesCleanerSessionDetails TCS");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}	
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 8)
+			{
+				return;
+			}
+			g_ScanType = 8;
+			self.timer(200ms,LoadingTempFileCleanerReports);
+			arrRecordsScanType.length = 0;
+		}
+		
+		$(#usb_vaccinator).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#usb_vaccinator).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_DRIVES_PATHS");
+
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(USD.db_USBVaccinatorSessionId) FROM Wardwiz_USBVaccinatorSessionDetails USD");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}	
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 9)
+			{
+				return;
+			}
+			g_ScanType = 9;
+			self.timer(200ms,LoadingUSBVaccineReports);
+			arrRecordsScanType.length = 0;
+		}
+		
+		$(#autorun_scanner).onClick = function()
+		{
+			RemoveAddedClass();
+			$(#autorun_scanner).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_REPORTS_THREATS_FOUND");	
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(ASD.db_ScanSessionID) FROM Wardwiz_AutorunScanSessionDetails ASD");
+			if ( varRecordSetCount instanceof Recordset )
+			{	
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 10)
+			{
+				return;
+			}
+			g_ScanType = 10;
+			self.timer(200ms,LoadingAutoRunScanReports);
+			arrRecordsScanType.length = 0;
+		}
+		$(#ID_BTN_PARENTAL_CONTROL_ITEM).onClick = function() 
+		{
+			arrRecordsScanType.length = 0;
+			vCntForPCRec = 0;
+			RemoveAddedClass();
+			$(#ID_BTN_PARENTAL_CONTROL_ITEM).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_SUBJECT");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT  PCD.[db_PCTime],PCD.[db_Username] FROM  Wardwiz_ParentalCtrl_Details PCD GROUP BY PCD.[db_Username] HAVING MAX(PCD.[db_PCID])");
+			if ( varRecordSetCount instanceof Recordset )
+			{   
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			DataBase.close();
+			g_ScanType = 14;
+			if(!(varRowsCount == arrRecordsScanType.length && g_ScanType == 14))
+			{
+				vWebSecurityFlag = false;
+				LoadingParentalControlReports();
+			}
+			
+			DataBase = DB.open(varReportDBPath);
+			varRecordSetCount = DataBase.exec("select PCTime, Username, BrowseSession_ID from Wardwiz_Browse_Security group by Username, BrowseSession_ID order by PCTime desc");
+			if (varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}	
+			DataBase.close();	
+			vWebSecurityFlag = true;	
+			self.timer(200ms,LoadingBrowseSecurityReports);	
+		}
+	
+		$(#ID_BTN_FIREWALL_ITEM).onClick = function() 
+		{			
+			arrRecordsScanType.length = 0;
+			RemoveAddedClass();
+			$(#ID_BTN_FIREWALL_ITEM).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_SUBJECT");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT db_FirewallDate, db_FirewallTime, db_FirewallEnabled, db_Username, db_FW_LocalIP FROM Wardwiz_FirewallDetails");
+			if ( varRecordSetCount instanceof Recordset )
+			{   
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}			
+			DataBase.close();  			
+            g_ScanType = 13;							
+			self.timer(200ms,LoadingFirewallReports);		
+		}
+
+		$(#ID_BTN_EML_SCN_MENU_ITEM).onClick = function() //in case of email scan db_VirusName means Subject
+		{
+			RemoveAddedClass();
+			$(#ID_BTN_EML_SCN_MENU_ITEM).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_SUBJECT");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT COUNT(db_ScanSessionID) FROM wardwiz_ScanSessionDetails Where db_ScanTypeId = 12");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 12)
+			{
+				return;
+			}
+			g_ScanType = 12;
+			self.timer(200ms,LoadingEmailScanReports);
+			arrRecordsScanType.length = 0;
+		}
+		
+		$(#ID_BTN_BROWSER_SECURITY).onClick = function() 
+		{
+			RemoveAddedClass();
+			$(#ID_BTN_BROWSER_SECURITY).attributes.addClass("activemnu");
+			$(#ID_REPORT_TYPE).text = Lang.translate("ID_SUBJECT");
+			
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSetCount = DataBase.exec("SELECT BrowseSession_ID,db_BSTime,COUNT(ID) FROM Wardwiz_Browser_Sec WHERE WebCategory = 125 OR WebCategory = 122 GROUP BY BrowseSession_ID order by BrowseSession_ID desc");
+			if ( varRecordSetCount instanceof Recordset )
+			{
+				GetRowCount(varRecordSetCount);
+				varRecordSetCount.close();
+			}
+			if(varRowsCount == arrRecordsScanType.length && g_ScanType == 15)
+			{
+				return;
+			}
+			g_ScanType =15;
+			self.timer(200ms,LoadBrowserSecData);
+			arrRecordsScanType.length = 0;
+		}
+    </script>
+	
+	<script type="text/tiscript">
+    function LoadingCustomScanReports()
+    {
+        var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+        FROM  Wardwiz_ScanSessionDetails SSD
+        LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+        ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+        WHERE   SSD.db_ScanTypeId =1 OR SSD.db_ScanTypeId =3
+        GROUP BY SSD.[db_ScanSessionID]
+        ORDER BY SSD.db_ScanSessionStartTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+            ShowScanTypeDetails(varRecordSet);
+            varRecordSet.close();
+        }
+        else
+        {
+            arrRecordsScanType.length = 0;
+        }
+       DataBase.close();
+    }
+
+    function LoadingActiveScanReports()
+    {
+        var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+        FROM  Wardwiz_ScanSessionDetails SSD
+        LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+        ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+        WHERE   SSD.db_ScanTypeId =6
+        GROUP BY SSD.[db_ScanSessionID]
+        ORDER BY SSD.db_ScanSessionStartTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+            ShowScanTypeDetails(varRecordSet);
+            varRecordSet.close();
+        }
+        else
+        {
+            arrRecordsScanType.length = 0;
+        }
+       DataBase.close();
+    }
+
+    function LoadingBootTimeScanReports()
+    {
+        var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+        FROM  Wardwiz_ScanSessionDetails SSD
+        LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+        ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+        WHERE   SSD.db_ScanTypeId =11
+        GROUP BY SSD.[db_ScanSessionID]
+        ORDER BY SSD.db_ScanSessionStartTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+            ShowScanTypeDetails(varRecordSet);
+            varRecordSet.close();
+        }
+        else
+        {
+            arrRecordsScanType.length = 0;
+        }
+        DataBase.close();
+    }
+
+    function LoadingTempFileCleanerReports()
+    {
+        var varRecordSet = DataBase.exec("SELECT TCS.db_TempCleanerSessionId, TCS.[db_CleanerSessionStartTime],TCS.[db_FilesCleanCount] FROM Wardwiz_TempFilesCleanerSessionDetails TCS
+        ORDER BY TCS.db_CleanerSessionStartTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+            ShowScanTypeDetails(varRecordSet);
+            varRecordSet.close();
+        }
+        else
+        {
+            arrRecordsScanType.length = 0;
+        }
+        DataBase.close();
+    }
+
+    function LoadingUSBVaccineReports()
+    {
+        var varRecordSet = DataBase.exec("SELECT USD.[db_USBVaccinatorSessionId],USD.[db_USBSessionStartTime], USD.[db_USBSessionPathSelected]
+        FROM Wardwiz_USBVaccinatorSessionDetails USD
+        ORDER BY USD.db_USBSessionStartTime DESC ");
+        if ( varRecordSet instanceof Recordset )
+        {
+            ShowScanTypeDetails(varRecordSet);
+            varRecordSet.close();
+        }
+        else
+        {
+            arrRecordsScanType.length = 0;
+        }
+        DataBase.close();
+    }
+
+    function LoadingAutoRunScanReports()
+    {
+        var varRecordSet = DataBase.exec("SELECT ASD.[db_ScanSessionID], ASD.[db_ScanSessionStartTime], db_ThreatsFoundCount
+        FROM Wardwiz_AutorunScanSessionDetails ASD
+        ORDER BY ASD.db_ScanSessionStartTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+            ShowScanTypeDetails(varRecordSet);
+            varRecordSet.close();
+        }
+        else
+        {
+            arrRecordsScanType.length = 0;
+        }
+        DataBase.close();
+    }
+	function LoadingParentalControlReports()	
+    {
+		DataBase = DB.open(varReportDBPath);
+		var varRecordSet = DataBase.exec("SELECT  PCD.[db_PCTime],PCD.[db_Username] FROM  Wardwiz_ParentalCtrl_Details PCD GROUP BY PCD.[db_Username] HAVING MAX(PCD.[db_PCID]) ORDER BY PCD.[db_PCTime] DESC");
+		if ( varRecordSet instanceof Recordset )
+        {
+			ShowScanTypeDetails(varRecordSet);
+			varRecordSet.close();
+		}
+		else
+		{
+            arrRecordsScanType.length = 0;
+		}
+        DataBase.close();
+    }
+	function LoadingFirewallReports()	
+    {
+		DataBase = DB.open(varReportDBPath);
+		var varRecordSet = DataBase.exec("SELECT  FD.[db_FirewallDate], FD.[db_FirewallTime], FD.[db_FirewallEnabled], FD.[db_Username], FD.[db_FW_LocalIP] FROM  Wardwiz_FirewallDetails FD ORDER BY FD.db_FirewallTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+			ShowScanTypeDetails(varRecordSet);
+			varRecordSet.close();
+		}
+		else
+            arrRecordsScanType.length = 0;
+        DataBase.close();
+    }
+	function LoadingEmailScanReports()	//here db_VirusName means Subject
+    {
+		var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned],SD.[db_VirusName],SD.[db_EmailSubject]
+        FROM  Wardwiz_ScanSessionDetails SSD
+        LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+        ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+        WHERE   SSD.db_ScanTypeId = 12
+        GROUP BY SSD.[db_ScanSessionID]
+        ORDER BY SSD.db_ScanSessionStartTime DESC");
+        if ( varRecordSet instanceof Recordset )
+        {
+			ShowScanTypeDetails(varRecordSet);
+			varRecordSet.close();
+		}	
+        else
+            arrRecordsScanType.length = 0;        
+        DataBase.close();
+    }
+	function LoadingBrowseSecurityReports()
+	{
+		DataBase = DB.open(varReportDBPath);
+		var varRecordSet = DataBase.exec("select PCTime, Username, BrowseSession_ID from Wardwiz_Browse_Security group by Username,BrowseSession_ID order by PCTime desc");
+        if ( varRecordSet instanceof Recordset )
+        {
+			ShowScanTypeDetails(varRecordSet);
+			varRecordSet.close();
+		}					
+		
+		vWebSecurityFlag = false;	
+		DataBase.close();			
+	}
+	
+	function LoadBrowserSecData()
+	{
+		DataBase = DB.open(varReportDBPath);
+		var varRecordSet = DataBase.exec("SELECT Username,db_BSTime,BrowseSession_ID FROM Wardwiz_Browser_Sec WHERE WebCategory = 125 OR WebCategory = 122 GROUP BY BrowseSession_ID order by BrowseSession_ID desc");
+           if ( varRecordSet instanceof Recordset )
+           {
+				ShowScanTypeDetails(varRecordSet);
+				varRecordSet.close();
+		   }						
+		DataBase.close();			
+	}
+    </script>
+	
+<script type="text/tiscript">
+	function showRecordset(varRecordSet)
+	{
+		var nIndex;
+		do
+		{
+			var var1stEntry = false;
+			for (var varVirtualDBData in varRecordSet)
+			{
+				if(!var1stEntry)
+				{
+					arrRecords[ScanType]  = {varScanType: varVirtualDBData, varIncludeForDisp : false};
+					var1stEntry = true;
+				}
+				else
+				{
+					arrRecords[ScanType].varIncludeForDisp = varVirtualDBData;
+					ScanType++;
+				}
+			}
+		}
+		while( varRecordSet.next());			
+		DataBase.close();
+		if(productVersion == #ELITE || productVersion == #ESSENTIALPLUS || productVersion == #PROVANTAGE)
+		{
+			$(#ID_BTN_EML_SCN_MENU_ITEM).state.expanded = true;
+			$(#ID_BTN_FIREWALL_ITEM).state.expanded = true;
+			$(#ID_BTN_PARENTAL_CONTROL_ITEM).state.expanded = true;
+			$(#ID_BTN_BROWSER_SECURITY).state.expanded = true;
+			$(#antirootkit_scan).state.expanded = true;
+			$(#reg_optimizer).state.expanded = true;
+		}
+		else if(productVersion == #BASIC)
+		{
+			$(#ID_BTN_EML_SCN_MENU_ITEM).state.collapsed = true;
+			$(#ID_BTN_FIREWALL_ITEM).state.collapsed = true;
+			$(#ID_BTN_BROWSER_SECURITY).state.collapsed = true;
+			$(#ID_BTN_PARENTAL_CONTROL_ITEM).state.collapsed = true;
+			$(#antirootkit_scan).state.collapsed = true;
+			$(#reg_optimizer).state.collapsed = true;
+		}
+		else
+		{
+			$(#ID_BTN_EML_SCN_MENU_ITEM).state.collapsed = true;
+			$(#ID_BTN_FIREWALL_ITEM).state.collapsed = true;
+			$(#ID_BTN_BROWSER_SECURITY).state.collapsed = true;
+			$(#ID_BTN_PARENTAL_CONTROL_ITEM).state.collapsed = true;
+			$(#antirootkit_scan).state.expanded = true;
+			$(#reg_optimizer).state.expanded = true;
+		}
+	}
+	
+	function ShowFirstReport()
+	{
+		if(arrRecords[0].varIncludeForDisp == true)
+		{
+			g_ScanType = 1;
+			DataBase = DB.open(varReportDBPath);
+			var varRecordSet = DataBase.exec("SELECT  SSD.[db_ScanSessionID],SSD.[db_ScanSessionStartTime],SSD.[db_TotalThreatsFound],SSD.[db_TotalThreatsCleaned]
+			FROM  Wardwiz_ScanSessionDetails SSD
+			LEFT OUTER JOIN  Wardwiz_ScanDetails SD
+			ON SD.[db_ScanSessionID] = SSD.[db_ScanSessionID]
+			WHERE   SSD.db_ScanTypeId =0
+			GROUP BY SSD.[db_ScanSessionID]
+			ORDER BY SSD.db_ScanSessionStartTime DESC");
+			if ( varRecordSet instanceof Recordset )
+			{
+				ShowScanTypeDetails(varRecordSet);
+				varRecordSet.close();
+			}	
+			DataBase.close();
+		}
+	}
+
+	function ShowScanTypeDetails(varRecordSet)
+	{
+		if(g_ScanType == 14)
+			ScanRecords = vCntForPCRec;
+		else	
+			ScanRecords = 0;
+		do
+		{
+			arrRecordsScanType[ScanRecords] = { DateTimeActiveScan: "", varStartTime: "", varEndDate: "", varEndTime: "",varVirusName: "", ThreatsFound: "",varActionTaken: "",varScanTime: "",
+											varUninstallEntriesEnabled: "",vardFontEntriesEnabled : "",varSharedDllsEnabled: "",varApplicationPathsEnabled: "",varHelpFileInfoEnabled: "",
+											varWindowsStartupItemEnabled: "",varWindowsServicesEnabled: "",varInvalidExtensionEnabled: "",varRootkitEnabled: "",varRogueAppsEnabled: "",
+											varWormsEnabled: "",varSpywareThreatsEnabled: "",varAdwareThreatsEnabled: "",varKeyLoggersEnabled: "",varBHOEnabled: "",varExplorerEntriesEnabled: "",
+											varInternetExpEntriesEnabled: "",varEnabled:"",varDate:"",varTime:"", varUsername:"", vLocalIP:"",
+											WebSecurity:vWebSecurityFlag,Browse_Session_ID:0};
+			var varCounter = 0;
+			for (var varVirtualDBData in varRecordSet)
+			{
+				if(g_ScanType < 11 && g_ScanType > 5  )
+				{
+				   if( g_ScanType == 6 || g_ScanType == 7 )
+					{
+						switch(varCounter)
+						{
+							case 0:
+									arrRecordsScanType[ScanRecords].varStartTime = varVirtualDBData;
+									break;
+							case 1:
+									arrRecordsScanType[ScanRecords].DateTimeActiveScan = varVirtualDBData;
+									break;
+							case 2:
+									arrRecordsScanType[ScanRecords].varEndDate = varVirtualDBData;
+									break;
+							case 3:
+									arrRecordsScanType[ScanRecords].varEndTime = varVirtualDBData;
+									break;
+							case 4:
+									arrRecordsScanType[ScanRecords].varVirusName = varVirtualDBData;
+									break;
+							case 5:
+									arrRecordsScanType[ScanRecords].ThreatsFound = varVirtualDBData;
+									break;
+							case 6:
+									arrRecordsScanType[ScanRecords].varActionTaken = varVirtualDBData;
+									break;
+							case 7:
+									arrRecordsScanType[ScanRecords].varScanTime = varVirtualDBData;
+									break;
+							case 8:
+									arrRecordsScanType[ScanRecords].varUninstallEntriesEnabled = varVirtualDBData;
+									break;
+							case 9:
+									arrRecordsScanType[ScanRecords].vardFontEntriesEnabled = varVirtualDBData;
+									break;
+							case 10:
+									arrRecordsScanType[ScanRecords].varSharedDllsEnabled = varVirtualDBData;
+									break;
+							case 11:
+									arrRecordsScanType[ScanRecords].varApplicationPathsEnabled = varVirtualDBData;
+									break;
+							case 12:
+									arrRecordsScanType[ScanRecords].varHelpFileInfoEnabled = varVirtualDBData;
+									break;
+							case 13:
+									arrRecordsScanType[ScanRecords].varWindowsStartupItemEnabled = varVirtualDBData;
+									break;
+							case 14:
+									arrRecordsScanType[ScanRecords].varWindowsServicesEnabled = varVirtualDBData;
+									break;
+							case 15:
+									arrRecordsScanType[ScanRecords].varInvalidExtensionEnabled = varVirtualDBData;
+									break;
+							case 16:
+									arrRecordsScanType[ScanRecords].varRootkitEnabled = varVirtualDBData;
+									break;
+							case 17:
+									arrRecordsScanType[ScanRecords].varRogueAppsEnabled = varVirtualDBData;
+									break;
+							case 18:
+									arrRecordsScanType[ScanRecords].varWormsEnabled = varVirtualDBData;
+									break;
+							case 19:
+									arrRecordsScanType[ScanRecords].varSpywareThreatsEnabled = varVirtualDBData;
+									break;
+							case 20:
+									arrRecordsScanType[ScanRecords].varAdwareThreatsEnabled = varVirtualDBData;
+									break;
+							case 21:
+									arrRecordsScanType[ScanRecords].varKeyLoggersEnabled = varVirtualDBData;
+									break;
+							case 22:
+									arrRecordsScanType[ScanRecords].varBHOEnabled = varVirtualDBData;
+									break;
+							case 23:
+									arrRecordsScanType[ScanRecords].varExplorerEntriesEnabled = varVirtualDBData;
+									break;
+							case 24:
+									arrRecordsScanType[ScanRecords].varInternetExpEntriesEnabled = varVirtualDBData;
+									break;
+						}
+						varCounter++;
+					}
+					else
+					{
+						switch(varCounter)
+						{
+							case 0:
+									arrRecordsScanType[ScanRecords].varStartTime = varVirtualDBData;
+									break;
+							case 1:
+									arrRecordsScanType[ScanRecords].DateTimeActiveScan = varVirtualDBData;
+									break;
+							case 2:
+									if(varVirtualDBData == "IDS_USB_VACCINE_NO_FILE_FOLDER")
+									{
+										varVirtualDBData = Lang.translate("ID_NO_FILE_FOLD_UNHIDE");
+										arrRecordsScanType[ScanRecords].ThreatsFound = varVirtualDBData;
+									}
+									else
+									{
+										arrRecordsScanType[ScanRecords].ThreatsFound = varVirtualDBData;
+									}
+
+									break;
+						}
+						varCounter++;
+					}
+				}
+				else if(g_ScanType == 13)
+				{
+					switch(varCounter)
+					{
+						case 0:
+							arrRecordsScanType[ScanRecords].varDate = varVirtualDBData;
+							break;
+						case 1:
+							arrRecordsScanType[ScanRecords].varTime = varVirtualDBData;
+							arrRecordsScanType[ScanRecords].DateTimeActiveScan = varVirtualDBData;
+							break;
+						case 2:
+							arrRecordsScanType[ScanRecords].varEnabled = varVirtualDBData;
+							break;
+						case 3:
+							arrRecordsScanType[ScanRecords].varUsername = varVirtualDBData;
+							if(arrRecordsScanType[ScanRecords].varUsername)
+							{
+								arrRecordsScanType[ScanRecords].ThreatsFound = Lang.translate("ID_ACTIVITY_BY")+arrRecordsScanType[ScanRecords].varUsername;
+							}
+							else
+							{
+								arrRecordsScanType[ScanRecords].ThreatsFound = Lang.translate("ID_PORT_SCN_BLOCKED");
+							}
+							break;	
+						case 4:
+							arrRecordsScanType[ScanRecords].vLocalIP = varVirtualDBData;
+							break;		
+					}					
+					varCounter++;	
+				}
+				else if(g_ScanType == 14)
+				{
+					switch(varCounter)
+					{
+						case 0:
+							arrRecordsScanType[ScanRecords].DateTimeActiveScan = varVirtualDBData;
+							break;
+						case 1:
+							arrRecordsScanType[ScanRecords].varUsername = varVirtualDBData;
+							arrRecordsScanType[ScanRecords].ThreatsFound = Lang.translate("ID_ACTIVITY_BY")+varVirtualDBData.toUpperCase();
+							break;					
+						case 2:	
+							arrRecordsScanType[ScanRecords].Browse_Session_ID = varVirtualDBData;
+					}					
+					varCounter++;	
+				}
+				else if(g_ScanType == 15)
+				{
+					switch(varCounter)
+					{
+						case 0:
+							arrRecordsScanType[ScanRecords].varUsername = varVirtualDBData;
+							arrRecordsScanType[ScanRecords].ThreatsFound = Lang.translate("ID_REPORT_BROWSER_SECURITY");
+							break;
+						case 1:
+							arrRecordsScanType[ScanRecords].DateTimeActiveScan = varVirtualDBData;
+							break;
+						case 2:
+							arrRecordsScanType[ScanRecords].BrowseSession_ID = varVirtualDBData;
+							break;								
+					}					
+					varCounter++;	
+				}
+				else
+				{
+					switch(varCounter)
+					{
+						case 0:
+								arrRecordsScanType[ScanRecords].varStartTime = varVirtualDBData;
+								break;
+						case 1:
+								arrRecordsScanType[ScanRecords].DateTimeActiveScan = varVirtualDBData;
+								break;
+						case 2:	
+								if(g_ScanType != 12)
+									arrRecordsScanType[ScanRecords].ThreatsFound = varVirtualDBData;
+								break;
+						case 3:
+								arrRecordsScanType[ScanRecords].varActionTaken = varVirtualDBData;
+								break;
+						case 5: //for email subject case
+								arrRecordsScanType[ScanRecords].ThreatsFound = varVirtualDBData;
+								break;
+					}
+					varCounter++;
+				}
+			}
+			ScanRecords++;
+		}
+		while( varRecordSet.next());
+		if(g_ScanType == 14)
+			vCntForPCRec = ScanRecords;
+	}
+</script>
+<script type="text/tiscript">
+	function GetThreatCount(varRecordSetCount)
+	{
+		for (var varVirtualDBRowCount in varRecordSetCount)
+		{
+			varRowsCount = varVirtualDBRowCount;
+		}
+	}	
+</script>
+<script type="text/tiscript">
+	function ShowTempFileData()
+	{
+		DataBase = DB.open(varReportDBPath);
+		
+		var varThreatJanVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varJanStartDate, varJanEndDate);
+		if ( varThreatJanVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJanVal);
+			varThreatJanVal.close();
+		}
+		varTempJanReport = varRowsCount;
+		if(varTempJanReport == null)
+		{
+			varTempJanReport = 0;
+		}
+		else
+		{
+			varTempJanReport = varRowsCount;
+		}
+		
+		var varThreatFebVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varFebStartDate, varFebEndDate);
+		if ( varThreatFebVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatFebVal);
+			varThreatFebVal.close();
+		}
+		varTempFebReport = varRowsCount;
+		if(varTempFebReport == null)
+		{
+			varTempFebReport = 0;
+		}
+		else
+		{
+			varTempFebReport = varRowsCount;
+		}
+		
+		var varThreatMarchVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varMarchStartDate, varMarchEndDate);
+		if ( varThreatMarchVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMarchVal);
+			varThreatMarchVal.close();
+		}
+		varTempMarchReport = varRowsCount;
+		if(varTempMarchReport == null)
+		{
+			varTempMarchReport = 0;
+		}
+		else
+		{
+			varTempMarchReport = varRowsCount;
+		}
+		
+		var varThreatAprilVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varAprilStartDate, varAprilEndDate);
+		if ( varThreatAprilVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAprilVal);
+			varThreatAprilVal.close();
+		}
+		varTempAprilReport = varRowsCount;
+		if(varTempAprilReport == null)
+		{
+			varTempAprilReport = 0;
+		}
+		else
+		{
+			varTempAprilReport = varRowsCount;
+		}
+		
+		var varThreatMayVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varMayStartDate, varMayEndDate);
+		if ( varThreatMayVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMayVal);
+			varThreatMayVal.close();
+		}
+		varTempMayReport = varRowsCount;
+		if(varTempMayReport == null)
+		{
+			varTempMayReport = 0;
+		}
+		else
+		{
+			varTempMayReport = varRowsCount;
+		}
+		
+		var varThreatJuneVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varJuneStartDate, varJuneEndDate);
+		if ( varThreatJuneVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJuneVal);
+			varThreatJuneVal.close();
+		}
+		varTempJuneReport = varRowsCount;
+		if(varTempJuneReport == null)
+		{
+			varTempJuneReport = 0;
+		}
+		else
+		{
+			varTempJuneReport = varRowsCount;
+		}
+		
+		var varThreatJulyVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varJulyStartDate, varJulyEndDate);
+		if ( varThreatJulyVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJulyVal);
+			varThreatJulyVal.close();
+		}
+		varTempJulyReport = varRowsCount;
+		if(varTempJulyReport == null)
+		{
+			varTempJulyReport = 0;
+		}
+		else
+		{
+			varTempJulyReport = varRowsCount;
+		}
+		
+		var varThreatAugVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varAugStartDate, varAugEndDate);
+		if ( varThreatAugVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAugVal);
+			varThreatAugVal.close();
+		}
+		varTempAugReport = varRowsCount;
+		if(varTempAugReport == null)
+		{
+			varTempAugReport = 0;
+		}
+		else
+		{
+			varTempAugReport = varRowsCount;
+		}
+		
+		var varThreatSeptVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varSeptStartDate, varSeptEndDate);
+		if ( varThreatSeptVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatSeptVal);
+			varThreatSeptVal.close();
+		}
+		varTempSeptReport = varRowsCount;
+		if(varTempSeptReport == null)
+		{
+			varTempSeptReport = 0;
+		}
+		else
+		{
+			varTempSeptReport = varRowsCount;
+		}
+		
+		var varThreatOctVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varOctStartDate, varOctEndDate);
+		if ( varThreatOctVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatOctVal);
+			varThreatOctVal.close();
+		}
+		varTempOctReport = varRowsCount;
+		if(varTempOctReport == null)
+		{
+			varTempOctReport = 0;
+		}
+		else
+		{
+			varTempOctReport = varRowsCount;
+		}
+		
+		var varThreatNovVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varNovStartDate, varNovEndDate);
+		if ( varThreatNovVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatNovVal);
+			varThreatNovVal.close();
+		}
+		varTempNovReport = varRowsCount;
+		if(varTempNovReport == null)
+		{
+			varTempNovReport = 0;
+		}
+		else
+		{
+			varTempNovReport = varRowsCount;
+		}
+		
+		var varThreatDecVal = DataBase.exec("SELECT sum(db_FilesCleanCount) from Wardwiz_TempFilesCleanerSessionDetails where (db_CleanerSessionStartDate between ? AND ?)",varDecStartDate, varDecEndDate);
+		if ( varThreatDecVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatDecVal);
+			varThreatDecVal.close();
+		}
+		varTempDecReport = varRowsCount;
+		if(varTempDecReport == null)
+		{
+			varTempDecReport = 0;
+		}
+		else
+		{
+			varTempDecReport = varRowsCount;
+		}
+		DataBase.close();
+	}	
+	
+	/*function ShowActiveScanData()
+	{
+		DataBase = DB.open(varReportDBPath);
+		
+		var varThreatJanVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varJanStartDate, varJanEndDate);
+		if ( varThreatJanVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJanVal);
+			varThreatJanVal.close();
+		}
+		varAScanJanReport = varRowsCount;
+		if(varAScanJanReport == null)
+		{
+			varAScanJanReport = 0;
+		}
+		else
+		{
+			varAScanJanReport = varRowsCount;
+		}
+		
+		var varThreatFebVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varFebStartDate, varFebEndDate);
+		if ( varThreatFebVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatFebVal);
+			varThreatFebVal.close();
+		}
+		varAScanFebReport = varRowsCount;
+		if(varAScanFebReport == null)
+		{
+			varAScanFebReport = 0;
+		}
+		else
+		{
+			varAScanFebReport = varRowsCount;
+		}
+		
+		var varThreatMarchVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varMarchStartDate, varMarchEndDate);
+		if ( varThreatMarchVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMarchVal);
+			varThreatMarchVal.close();
+		}
+		varAScanMarchReport = varRowsCount;
+		if(varAScanMarchReport == null)
+		{
+			varAScanMarchReport = 0;
+		}
+		else
+		{
+			varAScanMarchReport = varRowsCount;
+		}
+		
+		var varThreatAprilVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varAprilStartDate, varAprilEndDate);
+		if ( varThreatAprilVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAprilVal);
+			varThreatAprilVal.close();
+		}
+		varAScanAprilReport = varRowsCount;
+		if(varAScanAprilReport == null)
+		{
+			varAScanAprilReport = 0;
+		}
+		else
+		{
+			varAScanAprilReport = varRowsCount;
+		}
+		
+		var varThreatMayVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varMayStartDate, varMayEndDate);
+		if ( varThreatMayVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMayVal);
+			varThreatMayVal.close();
+		}
+		varAScanMayReport = varRowsCount;
+		if(varAScanMayReport == null)
+		{
+			varAScanMayReport = 0;
+		}
+		else
+		{
+			varAScanMayReport = varRowsCount;
+		}
+		
+		var varThreatJuneVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varJuneStartDate, varJuneEndDate);
+		if ( varThreatJuneVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJuneVal);
+			varThreatJuneVal.close();
+		}
+		varAScanJuneReport = varRowsCount;
+		if(varAScanJuneReport == null)
+		{
+			varAScanJuneReport = 0;
+		}
+		else
+		{
+			varAScanJuneReport = varRowsCount;
+		}
+		
+		var varThreatJulyVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varJulyStartDate, varJulyEndDate);
+		if ( varThreatJulyVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJulyVal);
+			varThreatJulyVal.close();
+		}
+		varAScanJulyReport = varRowsCount;
+		if(varAScanJulyReport == null)
+		{
+			varAScanJulyReport = 0;
+		}
+		else
+		{
+			varAScanJulyReport = varRowsCount;
+		}
+		
+		var varThreatAugVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varAugStartDate, varAugEndDate);
+		if ( varThreatAugVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAugVal);
+			varThreatAugVal.close();
+		}
+		varAScanAugReport = varRowsCount;
+		if(varAScanAugReport == null)
+		{
+			varAScanAugReport = 0;
+		}
+		else
+		{
+			varAScanAugReport = varRowsCount;
+		}
+		
+		var varThreatSeptVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varSeptStartDate, varSeptEndDate);
+		if ( varThreatSeptVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatSeptVal);
+			varThreatSeptVal.close();
+		}
+		varAScanSeptReport = varRowsCount;
+		if(varAScanSeptReport == null)
+		{
+			varAScanSeptReport = 0;
+		}
+		else
+		{
+			varAScanSeptReport = varRowsCount;
+		}
+		
+		var varThreatOctVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varOctStartDate, varOctEndDate);
+		if ( varThreatOctVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatOctVal);
+			varThreatOctVal.close();
+		}
+		varAScanOctReport = varRowsCount;
+		if(varAScanOctReport == null)
+		{
+			varAScanOctReport = 0;
+		}
+		else
+		{
+			varAScanOctReport = varRowsCount;
+		}
+		
+		var varThreatNovVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varNovStartDate, varNovEndDate);
+		if ( varThreatNovVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatNovVal);
+			varThreatNovVal.close();
+		}
+		varAScanNovReport = varRowsCount;
+		if(varAScanNovReport == null)
+		{
+			varAScanNovReport = 0;
+		}
+		else
+		{
+			varAScanNovReport = varRowsCount;
+		}
+		
+		var varThreatDecVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varDecStartDate, varDecEndDate);
+		if ( varThreatDecVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatDecVal);
+			varThreatDecVal.close();
+		}
+		varAScanDecReport = varRowsCount;
+		if(varAScanDecReport == null)
+		{
+			varAScanDecReport = 0;
+		}
+		else
+		{
+			varAScanDecReport = varRowsCount;
+		}
+		
+		DataBase.close();
+	}*/
+		
+	function ShowThreatData()
+	{
+		DataBase = DB.open(varReportDBPath);
+		
+		var varThreatJanVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varJanStartDate, varJanEndDate);
+		if ( varThreatJanVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJanVal);
+			varThreatJanVal.close();
+		}
+		varThreatJanReport = varRowsCount;
+		if(varThreatJanReport == null)
+		{
+			varThreatJanReport = 0;
+		}
+		else
+		{
+			varThreatJanReport = varRowsCount;
+		}
+		
+		var varThreatFebVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varFebStartDate, varFebEndDate);
+		if ( varThreatFebVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatFebVal);
+			varThreatFebVal.close();
+		}
+		varThreatFebReport = varRowsCount;
+		if(varThreatFebReport == null)
+		{
+			varThreatFebReport = 0;
+		}
+		else
+		{
+			varThreatFebReport = varRowsCount;
+		}
+		
+		var varThreatMarchVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varMarchStartDate, varMarchEndDate);
+		if ( varThreatMarchVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMarchVal);
+			varThreatMarchVal.close();
+		}
+		varThreatMarchReport = varRowsCount;
+		if(varThreatMarchReport == null)
+		{
+			varThreatMarchReport = 0;
+		}
+		else
+		{
+			varThreatMarchReport = varRowsCount;
+		}
+		
+		var varThreatAprilVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varAprilStartDate, varAprilEndDate);
+		if ( varThreatAprilVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAprilVal);
+			varThreatAprilVal.close();
+		}
+		varThreatAprilReport = varRowsCount;
+		if(varThreatAprilReport == null)
+		{
+			varThreatAprilReport = 0;
+		}
+		else
+		{
+			varThreatAprilReport = varRowsCount;
+		}
+		
+		var varThreatMayVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varMayStartDate, varMayEndDate);
+		if ( varThreatMayVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMayVal);
+			varThreatMayVal.close();
+		}
+		varThreatMayReport = varRowsCount;
+		if(varThreatMayReport == null)
+		{
+			varThreatMayReport = 0;
+		}
+		else
+		{
+			varThreatMayReport = varRowsCount;
+		}
+		
+		var varThreatJuneVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varJuneStartDate, varJuneEndDate);
+		if ( varThreatJuneVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJuneVal);
+			varThreatJuneVal.close();
+		}
+		varThreatJuneReport = varRowsCount;
+		if(varThreatJuneReport == null)
+		{
+			varThreatJuneReport = 0;
+		}
+		else
+		{
+			varThreatJuneReport = varRowsCount;
+		}
+		
+		var varThreatJulyVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varJulyStartDate, varJulyEndDate);
+		if ( varThreatJulyVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJulyVal);
+			varThreatJulyVal.close();
+		}
+		varThreatJulyReport = varRowsCount;
+		if(varThreatJulyReport == null)
+		{
+			varThreatJulyReport = 0;
+		}
+		else
+		{
+			varThreatJulyReport = varRowsCount;
+		}
+		
+		var varThreatAugVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varAugStartDate, varAugEndDate);
+		if ( varThreatAugVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAugVal);
+			varThreatAugVal.close();
+		}
+		varThreatAugReport = varRowsCount;
+		if(varThreatAugReport == null)
+		{
+			varThreatAugReport = 0;
+		}
+		else
+		{
+			varThreatAugReport = varRowsCount;
+		}
+		
+		var varThreatSeptVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varSeptStartDate, varSeptEndDate);
+		if ( varThreatSeptVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatSeptVal);
+			varThreatSeptVal.close();
+		}
+		varThreatSeptReport = varRowsCount;
+		if(varThreatSeptReport == null)
+		{
+			varThreatSeptReport = 0;
+		}
+		else
+		{
+			varThreatSeptReport = varRowsCount;
+		}
+		
+		var varThreatOctVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varOctStartDate, varOctEndDate);
+		if ( varThreatOctVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatOctVal);
+			varThreatOctVal.close();
+		}
+		varThreatOctReport = varRowsCount;
+		if(varThreatOctReport == null)
+		{
+			varThreatOctReport = 0;
+		}
+		else
+		{
+			varThreatOctReport = varRowsCount;
+		}
+		
+		var varThreatNovVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varNovStartDate, varNovEndDate);
+		if ( varThreatNovVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatNovVal);
+			varThreatNovVal.close();
+		}
+		varThreatNovReport = varRowsCount;
+		if(varThreatNovReport == null)
+		{
+			varThreatNovReport = 0;
+		}
+		else
+		{
+			varThreatNovReport = varRowsCount;
+		}
+		
+		var varThreatDecVal = DataBase.exec("SELECT SUM(db_TotalThreatsFound) FROM wardwiz_ScanSessionDetails Where (db_ScanTypeId = 0 OR db_ScanTypeId = 1 OR db_ScanTypeId = 2 OR db_ScanTypeId = 3 OR db_ScanTypeId = 4 OR db_ScanTypeId = 5 OR db_ScanTypeId = 6) AND (db_ScanSessionStartDate between ? AND ?)",varDecStartDate, varDecEndDate);
+		if ( varThreatDecVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatDecVal);
+			varThreatDecVal.close();
+		}
+		varThreatDecReport = varRowsCount;
+		if(varThreatDecReport == null)
+		{
+			varThreatDecReport = 0;
+		}
+		else
+		{
+			varThreatDecReport = varRowsCount;
+		}
+		DataBase.close();
+	}
+	
+	function ShowBrowserSecData()
+	{
+		DataBase = DB.open(varReportDBPath);
+		
+		var varThreatJanVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varJanStartDate, varJanEndDate);
+		if ( varThreatJanVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJanVal);
+			varThreatJanVal.close();
+		}
+		varWebJanReport = varRowsCount;
+		if(varWebJanReport == null)
+		{
+			varWebJanReport = 0;
+		}
+		else
+		{
+			varWebJanReport = varRowsCount;
+		}
+		
+        var varThreatFebVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varFebStartDate, varFebEndDate);
+		if ( varThreatFebVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatFebVal);
+			varThreatFebVal.close();
+		}
+		varWebFebReport = varRowsCount;
+		if(varWebFebReport == null)
+		{
+			varWebFebReport = 0;
+		}
+		else
+		{
+			varWebFebReport = varRowsCount;
+		}
+		
+        var varThreatMarchVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varMarchStartDate, varMarchEndDate);
+		if ( varThreatMarchVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMarchVal);
+			varThreatMarchVal.close();
+		}
+		varWebMarchReport = varRowsCount;
+		if(varWebMarchReport == null)
+		{
+			varWebMarchReport = 0;
+		}
+		else
+		{
+			varWebMarchReport = varRowsCount;
+		}
+		
+		var varThreatAprilVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varAprilStartDate, varAprilEndDate);
+		if ( varThreatAprilVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAprilVal);
+			varThreatAprilVal.close();
+		}
+		varWebAprilReport = varRowsCount;
+		if(varWebAprilReport == null)
+		{
+			varWebAprilReport = 0;
+		}
+		else
+		{
+			varWebAprilReport = varRowsCount;
+		}
+		
+		var varThreatMayVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varMayStartDate, varMayEndDate);
+		if ( varThreatMayVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatMayVal);
+			varThreatMayVal.close();
+		}
+		varWebMayReport = varRowsCount;
+		if(varWebMayReport == null)
+		{
+			varWebMayReport = 0;
+		}
+		else
+		{
+			varWebMayReport = varRowsCount;
+		}
+		
+		var varThreatJuneVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varJuneStartDate, varJuneEndDate);
+		if ( varThreatJuneVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJuneVal);
+			varThreatJuneVal.close();
+		}
+		varWebJuneReport = varRowsCount;
+		if(varWebJuneReport == null)
+		{
+			varWebJuneReport = 0;
+		}
+		else
+		{
+			varWebJuneReport = varRowsCount;
+		}
+		
+		var varThreatJulyVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varJulyStartDate, varJulyEndDate);
+		if ( varThreatJulyVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatJulyVal);
+			varThreatJulyVal.close();
+		}
+		varWebJulyReport = varRowsCount;
+		if(varWebJulyReport == null)
+		{
+			varWebJulyReport = 0;
+		}
+		else
+		{
+			varWebJulyReport = varRowsCount;
+		}
+		
+		var varThreatAugVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varAugStartDate, varAugEndDate);
+		if ( varThreatAugVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatAugVal);
+			varThreatAugVal.close();
+		}
+		varWebAugReport = varRowsCount;
+		if(varWebAugReport == null)
+		{
+			varWebAugReport = 0;
+		}
+		else
+		{
+			varWebAugReport = varRowsCount;
+		}
+		
+		var varThreatSeptVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varSeptStartDate, varSeptEndDate);
+		if ( varThreatSeptVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatSeptVal);
+			varThreatSeptVal.close();
+		}
+		varWebSeptReport = varRowsCount;
+		if(varWebSeptReport == null)
+		{
+			varWebSeptReport = 0;
+		}
+		else
+		{
+			varWebSeptReport = varRowsCount;
+		}
+		
+		var varThreatOctVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varOctStartDate, varOctEndDate);
+		if ( varThreatOctVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatOctVal);
+			varThreatOctVal.close();
+		}
+		varWebOctReport = varRowsCount;
+		if(varWebOctReport == null)
+		{
+			varWebOctReport = 0;
+		}
+		else
+		{
+			varWebOctReport = varRowsCount;
+		}
+		
+		var varThreatNovVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varNovStartDate, varNovEndDate);
+		if ( varThreatNovVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatNovVal);
+			varThreatNovVal.close();
+		}
+		varWebNovReport = varRowsCount;
+		if(varWebNovReport == null)
+		{
+			varWebNovReport = 0;
+		}
+		else
+		{
+			varWebNovReport = varRowsCount;
+		}
+		
+		var varThreatDecVal = DataBase.exec("SELECT count(*) FROM Wardwiz_Browser_Sec where (WebCategory = 122 OR WebCategory = 125) AND (db_BSDate between ? AND ?)",varDecStartDate, varDecEndDate);
+		if ( varThreatDecVal instanceof Recordset )
+		{
+			GetThreatCount(varThreatDecVal);
+			varThreatDecVal.close();
+		}
+		varWebDecReport = varRowsCount;
+		if(varWebDecReport == null)
+		{
+			varWebDecReport = 0;
+		}
+		else
+		{
+			varWebDecReport = varRowsCount;
+		}
+		DataBase.close();
+	}
+	
+	function SetGraphicalData()
+	{	
+		var varDate = new Date();
+		var varYear = varDate.year;
+		varJanStartDate = varYear +"-01-01";
+		varJanEndDate = varYear +"-01-31";
+		
+		varFebStartDate = varYear +"-02-01";
+		varFebEndDate = varYear +"-02-29";
+		
+		varMarchStartDate = varYear +"-03-01";
+		varMarchEndDate = varYear +"-03-31";
+		
+		varAprilStartDate = varYear +"-04-01";
+		varAprilEndDate = varYear +"-04-30";
+		
+		varMayStartDate = varYear +"-05-01";
+		varMayEndDate = varYear +"-05-31";
+		
+		varJuneStartDate = varYear +"-06-01";
+		varJuneEndDate = varYear +"-06-30";
+		
+		varJulyStartDate = varYear +"-07-01";
+		varJulyEndDate = varYear +"-07-31";
+		
+		varAugStartDate = varYear +"-08-01";
+		varAugEndDate = varYear +"-08-31";
+		
+		varSeptStartDate = varYear +"-09-01";
+		varSeptEndDate = varYear +"-09-30";
+		
+		varOctStartDate = varYear +"-10-01";
+		varOctEndDate = varYear +"-10-31";
+		
+		varNovStartDate = varYear +"-11-01";
+		varNovEndDate = varYear +"-11-30";
+		
+		varDecStartDate = varYear +"-12-01";
+		varDecEndDate = varYear +"-12-31";
+		
+		ShowThreatData();
+		//ShowActiveScanData();
+		ShowTempFileData();
+		ShowBrowserSecData();
+		
+		if(productVersion == #ESSENTIALPLUS)
+		{
+			$(chart).value = {
+		  
+			labels: ["", Lang.translate("ID_JAN"), Lang.translate("ID_FEB"), Lang.translate("ID_MAR"), Lang.translate("ID_APR"), Lang.translate("ID_MAY"), Lang.translate("ID_JUNE"), Lang.translate("ID_JULY"), Lang.translate("ID_AUG"), Lang.translate("ID_SEPT"), Lang.translate("ID_OCT"), Lang.translate("ID_NOV"), Lang.translate("ID_DEC"),""],
+			
+			datasets: [
+			  {
+				title: Lang.translate("ID_THREAT_COUNT"),
+				values: [0, varThreatJanReport, varThreatFebReport, varThreatMarchReport, varThreatAprilReport, varThreatMayReport, varThreatJuneReport, varThreatJulyReport, varThreatAugReport, varThreatSeptReport, varThreatOctReport, varThreatNovReport, varThreatDecReport, 0]
+			  }/*,
+			  {
+				title: "Active Scan",
+				values: [varAScanJanReport,varAScanFebReport,varAScanMarchReport,varAScanAprilReport,varAScanMayReport,varAScanJuneReport,varAScanJulyReport,varAScanAugReport,varAScanSeptReport,varAScanOctReport,varAScanNovReport,varAScanDecReport]
+			  }*/,
+			  {
+				title: Lang.translate("ID_TEMPFILE_COUNT"),
+				values: [0, varTempJanReport,varTempFebReport,varTempMarchReport,varTempAprilReport,varTempMayReport,varTempJuneReport,varTempJulyReport,varTempAugReport,varTempSeptReport,varTempOctReport,varTempNovReport,varTempDecReport, 0]
+			  },
+			  {
+				title: Lang.translate("ID_SITES_BLOCKED"),
+				values: [0, varWebJanReport,varWebFebReport,varWebMarchReport,varWebAprilReport,varWebMayReport,varWebJuneReport,varWebJulyReport,varWebAugReport,varWebSeptReport,varWebOctReport,varWebNovReport,varWebDecReport, 0]
+			  }
+			]
+			};
+		}
+		else
+		{
+			$(chart).value = {
+		  
+			labels: [Lang.translate("ID_JAN"), Lang.translate("ID_FEB"), Lang.translate("ID_MAR"), Lang.translate("ID_APR"), Lang.translate("ID_MAY"), Lang.translate("ID_JUNE"), Lang.translate("ID_JULY"), Lang.translate("ID_AUG"), Lang.translate("ID_SEPT"), Lang.translate("ID_OCT"), Lang.translate("ID_NOV"), Lang.translate("ID_DEC")],
+			
+			datasets: [
+			  {
+				title: Lang.translate("ID_THREAT_COUNT"),
+				values: [varThreatJanReport, varThreatFebReport, varThreatMarchReport, varThreatAprilReport, varThreatMayReport, varThreatJuneReport, varThreatJulyReport, varThreatAugReport, varThreatSeptReport, varThreatOctReport, varThreatNovReport, varThreatDecReport]
+			  }/*,
+			  {
+				title: "Active Scan",
+				values: [varAScanJanReport,varAScanFebReport,varAScanMarchReport,varAScanAprilReport,varAScanMayReport,varAScanJuneReport,varAScanJulyReport,varAScanAugReport,varAScanSeptReport,varAScanOctReport,varAScanNovReport,varAScanDecReport]
+			  }*/,
+			  {
+				title: Lang.translate("ID_TEMPFILE_COUNT"),
+				values: [varTempJanReport,varTempFebReport,varTempMarchReport,varTempAprilReport,varTempMayReport,varTempJuneReport,varTempJulyReport,varTempAugReport,varTempSeptReport,varTempOctReport,varTempNovReport,varTempDecReport]
+			  }
+			]
+			};	
+		}
+	}
+</script>
+<script type="text/tiscript">
+	event click $(chart) (evt) {
+		$(.disArea).attributes.addClass("activeTabView");				
+		$(#GraphicalView).attributes.removeClass("bgcolor");				
+		$(#DetailedView).attributes.addClass("bgcolor");	
+    }
+</script>
+<script type="text/tiscript">
+function set_theme()
+{
+	if(g_themeType == "defaultTheme")
+	{
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	else if(g_themeType == "darkTheme")
+	{
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(.stripOverflow).style.set{ margin-left:16dip; };
+		$(#ID_TABLE_REPORT).style.set{ width:410dip; };
+	}
+	else if(g_themeType == "crystalTheme")
+	{
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+}
+</script>
+<script type="text/tiscript">
+	function self.ready() {
+	
+		set_theme();
+		g_CurrentPage = #REPORTS;
+		self.language = g_LanguageName;
+		varReportDBPath = self.ReadReportsDBPath();
+		DataBase = DB.open(varReportDBPath);
+        vlist = $(#ID_TABLE_REPORT);
+		
+		var varRecordSet = DataBase.exec("SELECT db_ReportType,db_IncludeForDisplay FROM Wardwiz_ReportOptions");
+
+
+        if ( varRecordSet instanceof Recordset )
+        {
+            showRecordset(varRecordSet);
+        }
+
+        ShowFirstReport();
+
+        DataBase.close();
+		
+        vlist.value = arrRecordsScanType;		
+		
+		vlist.on("click", ".RecordIndexActiveMenu", function(evt)
+        {
+			var record = this.$p(tr).data;
+            var indexVal = arrRecordsScanType.indexOf(record);			
+			if(g_ScanType == 14)
+			{
+				if(arrRecordsScanType[indexVal].WebSecurity == false)
+				{
+					DataBase = DB.open(varReportDBPath);
+					arrRecordsPCDetails = new Array(0);
+					var varRecordSet = DataBase.exec("SELECT  PCD.[db_PCActivity],PCD.[db_PCTime] FROM  Wardwiz_ParentalCtrl_Details PCD WHERE PCD.[db_Username] = ? ORDER BY PCD.[db_PCTime] DESC",arrRecordsScanType[indexVal].varUsername);
+					if(varRecordSet instanceof Recordset)
+					{
+						var choice = 0;
+						var index = 0;
+						do
+						{
+							arrRecordsPCDetails[index] = {varTime:"",varActivity:""};
+							choice = 0;
+							for(var Record in varRecordSet)
+							{
+								switch(choice)
+								{
+									case 0:arrRecordsPCDetails[index].varActivity = Record;
+											break;
+									case 1:arrRecordsPCDetails[index].varTime = Record;
+											break;
+								}
+								choice++;
+							}						
+							index++;
+						}while(varRecordSet.next());
+						varRecordSet.close();
+					}
+					var varParams = { varArrayDetails:arrRecordsPCDetails,ProductVersion:productVersion,varLanguageValue:g_LanguageName,varUser:arrRecordsScanType[indexVal].varUsername, ThemeType:g_themeType};
+					g_IsAnyPopUpDisplayed = true;
+					var ReturnVal = view.dialog { url: self.url("IDR_HTM_VIEW_REPORTS.htm"), client:true, alignment:-5, parameters:varParams};
+					g_IsAnyPopUpDisplayed = false;
+					DataBase.close();
+				}
+				else if(arrRecordsScanType[indexVal].WebSecurity == true)
+				{
+					DataBase = DB.open(varReportDBPath);
+					arrRecordsPCDetails = new Array(0);
+					var varRecordSet = DataBase.exec("SELECT PCTime, WebsiteName, WebCategory FROM  Wardwiz_Browse_Security WHERE Username = ? AND BrowseSession_ID = ? ORDER BY PCTime DESC",arrRecordsScanType[indexVal].varUsername,arrRecordsScanType[indexVal].Browse_Session_ID);
+					if(varRecordSet instanceof Recordset)
+					{
+						var choice = 0;
+						var index = 0;
+						do
+						{
+							arrRecordsPCDetails[index] = {varTime:"",varWebsiteName:"",varWebCategory:0};
+							choice = 0;
+							for(var Record in varRecordSet)
+							{
+								switch(choice)
+								{
+									case 0:arrRecordsPCDetails[index].varTime = Record;
+											break;
+									case 1:arrRecordsPCDetails[index].varWebsiteName = Record;
+											break;
+									case 2:arrRecordsPCDetails[index].varWebCategory = Record;
+											break;
+								}
+								choice++;
+							}						
+							index++;
+						}while(varRecordSet.next());
+						varRecordSet.close();
+					}
+					var arrUserDetails=view.GetRegisteredUserInfo();
+					var varParams = { varArrayDetails:arrRecordsPCDetails,ProductVersion:productVersion, vAccProdVersion:arrUserDetails[4], vDBVersion:arrUserDetails[8], varLanguageValue:g_LanguageName,varUser:arrRecordsScanType[indexVal].varUsername, vWebSecFlag:arrRecordsScanType[indexVal].WebSecurity, ThemeType:g_themeType};
+					g_IsAnyPopUpDisplayed = true;
+					var ReturnVal = view.dialog { url: self.url("IDR_HTM_VIEW_REPORTS.htm"), client:true, alignment:-5, parameters:varParams};
+					g_IsAnyPopUpDisplayed = false;
+					DataBase.close();
+				}
+				return 0;
+			}
+			else if(g_ScanType == 15)
+			{
+				DataBase = DB.open(varReportDBPath);
+				arrRecordsPCDetails = new Array(0);
+				var varRecordSet = DataBase.exec("SELECT db_BSTime,WebsiteName,WebCategory FROM Wardwiz_Browser_Sec WHERE BrowseSession_ID=?",arrRecordsScanType[indexVal].BrowseSession_ID);
+				if(varRecordSet instanceof Recordset)
+				{
+					var choice = 0;
+					var index = 0;
+					do
+					{
+						arrRecordsPCDetails[index] = {varTime:"",varWebsiteName:"",varWebCategory:""};
+						choice = 0;
+						for(var Record in varRecordSet)
+						{
+							switch(choice)
+							{
+								case 0:arrRecordsPCDetails[index].varTime = Record;
+										break;
+								case 1:arrRecordsPCDetails[index].varWebsiteName = Record;
+										break;
+								case 2:arrRecordsPCDetails[index].varWebCategory = Record;
+										break;
+							}
+							choice++;
+						}			
+						index++;
+					}while(varRecordSet.next());
+					varRecordSet.close();
+				}
+				var arrUserDetails=view.GetRegisteredUserInfo();
+				var varParams = { varArrayDetails:arrRecordsPCDetails,ProductVersion:productVersion, vAccProdVersion:arrUserDetails[4], vDBVersion:arrUserDetails[8], varLanguageValue:g_LanguageName,varUser:arrRecordsScanType[indexVal].varUsername, vWebSecFlag:arrRecordsScanType[indexVal].WebSecurity, ThemeType:g_themeType};
+				g_IsAnyPopUpDisplayed = true;
+				var ReturnVal = view.dialog { url: self.url("IDR_HTM_VIEW_REPORTS.htm"), client:true, alignment:-5, parameters:varParams};
+				g_IsAnyPopUpDisplayed = false;
+				DataBase.close();
+				return 0;
+			}
+            var varParams = { varArrayDetails:arrRecordsScanType[indexVal],ProductVersion:productVersion,varLanguageValue:g_LanguageName, ThemeType:g_themeType};
+			g_IsAnyPopUpDisplayed = true;
+			var ReturnVal = view.dialog { url: self.url("IDR_HTM_VIEW_REPORTS.htm"), client:true, alignment:-5, parameters:varParams};
+			g_IsAnyPopUpDisplayed = false;	
+        });
+		vlist.value = arrRecordsScanType;
+		
+		SetGraphicalData();
+
+		$(#DetailedView).attributes.removeClass("bgcolor");		
+		$(#GraphicalView).attributes.addClass("bgcolor");
+        $(#GraphicalView).onClick = function()
+		{
+			$(.disArea).attributes.removeClass("activeTabView");		
+			$(#DetailedView).attributes.removeClass("bgcolor");		
+			$(#GraphicalView).attributes.addClass("bgcolor");		
+		}
+		$(#DetailedView).onClick = function()
+		{
+			$(.disArea).attributes.addClass("activeTabView");				
+			$(#GraphicalView).attributes.removeClass("bgcolor");				
+			$(#DetailedView).attributes.addClass("bgcolor");				
+		}
+	}
+</script>
+
+</head>
+<body .body_report>
+	<div .consPadd>
+		<div>
+			<div .titleCont style="width:635dip;min-height:100dip;">
+				<h1 .headingTitle1 style="font-family: Roboto-Medium;"><label>ID_REPORTS</label></h1>
+				<p><label>ID_REPORTS_DESC</label></p>
+				<div .typeButtons>
+					<div #GraphicalView><label>ID_GRAPHICAL_VIEW</label></div>
+					<div #DetailedView><label>ID_DETAILED_VIEW</label></div>
+				</div>
+			</div>
+			<div .disArea>
+				<div #graphicalDisplay>
+					<chart|lines />
+				</div>
+				<div #detailedDisplay>
+					<!--<div .scrolBottomBt #toLast><img src="downArrow.png"></div>
+					<div .scrolTopBt #toFirst><img src="downArrow.png"></div>-->
+					<div class="tabsCstm">
+						<div class="strip stripOverflow">
+							<div .mnuItem #full_scan .activemnu><span .icons>&fa-angle-double-right;</span> <label>ID_FULL_SCAN</label></div>
+							<div .mnuItem #quick_scan><span .icons>&fa-angle-double-right;</span> <label>ID_QUICK_SCAN</label></div>
+							<div .mnuItem #custom_scan><span .icons>&fa-angle-double-right;</span> <label>ID_CUSTOM_SCAN</label></div>         
+							<div .mnuItem #active_scan><span .icons>&fa-angle-double-right;</span> <label>ID_ACTIVE_SCAN</label></div>         
+							<div .mnuItem #boot_time_scan><span .icons>&fa-angle-double-right;</span> <label>ID_BOOT_TIME_SCAN</label></div>         
+							<div .mnuItem #ID_BTN_FIREWALL_ITEM><span .icons>&fa-angle-double-right;</span> <label>ID_FIREWALL</label></div>         
+							<div .mnuItem #ID_BTN_PARENTAL_CONTROL_ITEM><span .icons>&fa-angle-double-right;</span> <label>ID_PARENTAL_CONTROL</label></div>  
+							<div .mnuItem #ID_BTN_EML_SCN_MENU_ITEM><span .icons>&fa-angle-double-right;</span> <label>ID_EMAIL_SCAN</label></div>							
+							<div .mnuItem #ID_BTN_BROWSER_SECURITY><span .icons>&fa-angle-double-right;</span> <label>ID_BROWSER_SECURITY</label></div>         
+							<div .mnuItem #antirootkit_scan><span .icons>&fa-angle-double-right;</span> <label>ID_ANTIROOTKIT_SCAN</label></div>         
+							<div .mnuItem #reg_optimizer><span .icons>&fa-angle-double-right;</span> <label>ID_REGISTRY_OPTIMIZER</label></div>         
+							<div .mnuItem #updates><span .icons>&fa-angle-double-right;</span> <label>ID_UPDATES_SMALL</label></div>         
+							<div .mnuItem #temp_cleaner><span .icons>&fa-angle-double-right;</span> <label>ID_TEMP_FILE_CLEANER1</label></div>         
+							<div .mnuItem #usb_vaccinator><span .icons>&fa-angle-double-right;</span> <label>ID_USB_VACCINATOR</label></div>         
+							<div .mnuItem #autorun_scanner><span .icons>&fa-angle-double-right;</span> <label>ID_AUTORUN_SCANNER</label></div>         							
+						</div>
+						<div id="panel-id1" .ContentDisplayReports .activeTab>
+								<table #ID_TABLE_REPORT>
+									<thead>
+										<tr>
+											<th><label>ID_REPORTS_DATE_TIME</label></th>
+											<th #ID_REPORT_TYPE><label>ID_REPORTS_THREATS_FOUND</label></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr .RecordIndexActiveMenu>
+											<td(DateTimeActiveScan)></td>
+											<td(ThreatsFound)></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+</body>
+</html>

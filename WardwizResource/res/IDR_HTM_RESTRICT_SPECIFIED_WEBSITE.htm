@@ -1,0 +1,516 @@
+<html custom-frame="solid">
+<head>
+    <title>Restrict Specified Website</title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+    <style>
+        @import url(IDR_CSS_VGRID.css);
+        @import url(IDR_CSS_GERMAN_LANG.css);
+
+        html {
+            background: url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+            background-size: cover;
+            width: 478dip; /* preferred/initial width */
+            height: 248dip; /* content will not overflow, no vertical scrollbars on the window */
+            overflow: hidden;
+        }
+
+        window-button {
+            display: inline-block;
+            size: 19dip;
+            outline-color: red;
+            behavior: clickable;
+            clear: after;
+        }
+
+        window-caption {
+            display: block;
+            flow: text;
+            width: *;
+            font: system;
+            padding: 4dip 8dip;
+        }
+
+        window-button#window-close {
+            color: white;
+            margin-left: 4dip;
+            margin-top: 7dip;
+            background-image: url(path:M22.245,4.015c0.313,0.313,0.313,0.826,0,1.139l-6.276,6.27c-0.313,0.312-0.313,0.826,0,1.14l6.273,6.272 c0.313,0.313,0.313,0.826,0,1.14l-2.285,2.277c-0.314,0.312-0.828,0.312-1.142,0l-6.271-6.271c-0.313-0.313-0.828-0.313-1.141,0 l-6.276,6.267c-0.313,0.313-0.828,0.313-1.141,0l-2.282-2.28c-0.313-0.313-0.313-0.826,0-1.14l6.278-6.269 c0.313-0.312,0.313-0.826,0-1.14L1.709,5.147c-0.314-0.313-0.314-0.827,0-1.14l2.284-2.278C4.308,1.417,4.821,1.417,5.135,1.73 L11.405,8c0.314,0.314,0.828,0.314,1.141,0.001l6.276-6.267c0.312-0.312,0.826-0.312,1.141,0L22.245,4.015z);
+            background-size: 10dip;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            fill: #fff;
+        }
+
+            window-button#window-close:hover {
+                background-color: red;
+                outline: 5dip glow red -1dip;
+                transition: outline(linear,200ms) background-color(linear,200ms);
+            }
+
+        body {
+            padding: 0;
+            margin: 0;
+            border: 1dip solid #555555;
+        }
+
+
+        .header {
+            background: rgba(0,0,0,.4);
+            flow: horizontal;
+            width: 500dip;
+            height: 40dip;
+        }
+
+
+
+        html > body > .section {
+            padding: 10dip;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        #content {
+            flow: horizontal;
+            size: *;
+        }
+
+            #content > picture {
+                display: block;
+                size: auto;
+                margin: 6dip;
+            }
+
+            #content > textarea {
+                display: block;
+                size: *;
+                min-width: 16em;
+                min-height: 6em;
+            }
+
+        / /************************Resizable Table CSS ************************/ / table {
+            color: white;
+            font-size: 10pt;
+            border: none;
+            padding: 4dip;
+            background-color: #DDD;
+            background-image: url(IDR_PNG_HEADER.png);
+            background-repeat: expand stretch-left stretch-right stretch-middle;
+            background-position: 3dip 3dip 3dip 3dip;
+            margin-bottom:2dip;
+        }
+
+        /* style block defining vertical scrollbar */
+        @set my-v-scrollbar {
+            .prev {
+                display: none;
+            }
+
+            .next {
+                display: none;
+            }
+
+            .base,
+            .next-page,
+            .prev-page {
+                background: white;
+            }
+
+            .slider {
+                background: gray;
+            }
+
+            .base:disabled {
+                background: #aaa;
+            }
+
+            .slider:hover {
+                background: gold;
+                border-left: 1dip solid #AAA;
+            }
+
+            .slider:active {
+                background: khaki;
+            }
+
+            .base {
+                width: 5dip;
+                height: 5dip;
+            }
+            /* explicit declaration of its width */
+            .corner {
+                background: transparent;
+            }
+        }
+
+        table > thead {
+            behavior: column-resizer;
+        }
+
+        table > tbody {
+            vertical-scrollbar: my-v-scrollbar;
+        }
+
+        table th {
+            color: white;
+            font-size: 10pt;
+            border: none;
+            padding: 4dip;
+            background-color: #DDD;
+            background-image: url(IDR_PNG_HEADER.png);
+            background-repeat: expand stretch-left stretch-right stretch-middle;
+            background-position: 3dip 3dip 3dip 3dip;
+        }
+
+        #ID_TABLE_APP th:nth-child(1) {
+            width: 0.1*;
+        }
+
+        #ID_TABLE_APP th:nth-child(2) {
+            width: 0.4*;
+        }
+
+        #ID_TABLE_APP td:nth-child(1) {
+            text-align: center;
+            width: 0.1*;
+            padding-top: 4dip !important;
+        }
+
+        #ID_TABLE_APP td:nth-child(2) {
+            text-align: left;
+            color: #fff;
+            width: 0.4*;
+        }
+
+        table tr:current /* current row */ {
+            background-color: #bdbccc;
+            color: white;
+        }
+
+        table td {
+            padding: 1dip;
+            min-height: 14dip;
+        }
+
+
+
+        #ID_TABLE_APP {
+            style-set: vgrid;
+            // see vgrid.css width:450dip;
+            height: 142dip;
+        }
+
+        .message_display_block p {
+            margin-top: 10dip;
+            margin-bottom: 0dip;
+            text-align: center;
+            padding-top: 0dip;
+        }
+
+        .message_display_block {
+            background: rgba(0,8,44,.95);
+            position: absolute;
+            width: 370dip;
+            height: 40dip;
+            visibility: none;
+            margin-top: 40dip;
+            margin-left: -10dip;
+            color: #fff;
+        }
+
+            .message_display_block:collapsed {
+                visibility: visible;
+                top: 0;
+                transition: top(sine-in-out, 600ms);
+            }
+
+        .set_btn_width {
+            width: 70dip !important;
+        }
+
+        .basic_background {
+            background: url(IDR_JPG_BACKGROUND_BASIC.jpg) !important;
+        }
+
+        .essential_background {
+            background: url(IDR_JPG_POPUP_BACKGROUND.jpg) !important;
+        }
+
+        .provantage_background {
+            background: url(IDR_JPG_BG_PROVANTAGE.jpg) !important;
+        }
+
+        .essential_plus_background {
+            background: url(IDR_JPG_BG_ESSENTIAL_PLUS.jpg) no-repeat;
+            background-size: cover;
+        }
+
+        .elite_background {
+            background: url(IDR_JPG_BG_ELITE.jpg) no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <script type="text/tiscript">
+
+        include "IDR_TIS_DECORATORS.tis";
+        include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+        include "IDR_TIS_SQLITE.tis";
+    </script>
+
+    <script type="text/tiscript">
+
+        var vlist = $(#ID_TABLE_APP);
+        var ArrSitenames = new Array();
+        var ArrPrevSitenames = new Array();
+        var varDBPath;
+        var DataBase;
+        var g_CurrentUser;
+    </script>
+
+    <script type="text/tiscript">
+        $(#ID_BTN_ADD).onClick = function()
+        {
+            vlist.tbody.currentIndex = -1;
+            $(.message_display_block).state.collapsed = false;
+            var params = { ArrSitenames: ArrSitenames, vardb: view.parameters.vardb, ProductVersion:view.parameters.ProductVersion, varLanguageValue:view.parameters.varLanguageValue }; // parameters to pass
+            var v = view.dialog {
+                 url: self.url("IDR_HTM_ADD_WEBSITE.htm"),
+                 client:true,
+                 alignment:-5,
+                 parameters: params
+            };
+        }
+
+        $(#ID_BTN_OK).onClick = function()
+        {
+            DataBase = DB.open(varDBPath);
+            if(ArrSitenames.length == 0)
+            {
+                DataBase.exec("DELETE FROM WWIZ_RESTRICT_WEBSITE WHERE FK_USERNAME = ?", g_CurrentUser);
+                if(ArrPrevSitenames.length != 0)
+                {
+                    ArrPrevSitenames.splice(0,ArrPrevSitenames.length);
+                }
+            }
+            else if(ArrPrevSitenames.length == 0 && ArrSitenames.length != 0)
+            {
+                for(var vindex=0; vindex < ArrSitenames.length; vindex++)
+                {
+                    DataBase.exec("INSERT INTO WWIZ_RESTRICT_WEBSITE (SELECTED, URL_STRING, FK_USERNAME) VALUES(?,?,?)", ArrSitenames[vindex].selected, ArrSitenames[vindex].urlstring, g_CurrentUser);
+                }
+                for(var vindex=0; vindex < ArrSitenames.length; vindex++)
+                {
+                    ArrPrevSitenames[vindex] = {index:ArrPrevSitenames.length, selected: ArrSitenames[vindex].selected, urlstring: ArrSitenames[vindex].urlstring};
+                }
+            }
+            else if(ArrPrevSitenames.length >= ArrSitenames.length)
+            {
+                var vindex = ArrSitenames.length;
+                if(vindex < ArrPrevSitenames.length)
+                {
+                    DataBase.exec("DELETE FROM WWIZ_RESTRICT_WEBSITE WHERE FK_USERNAME = ? AND ID >= (SELECT ID FROM WWIZ_RESTRICT_WEBSITE WHERE URL_STRING = ?)", g_CurrentUser, ArrPrevSitenames[vindex].urlstring);
+                    ArrPrevSitenames.splice(vindex,ArrPrevSitenames.length);
+                }
+                for(vindex=0; vindex< ArrSitenames.length; vindex++)
+                {
+                    if(ArrPrevSitenames[vindex].urlstring != ArrSitenames[vindex].urlstring)
+                    {
+                        DataBase.exec("UPDATE WWIZ_RESTRICT_WEBSITE SET URL_STRING = ?, SELECTED = ? WHERE FK_USERNAME = ? AND URL_STRING = "+
+                        "(SELECT URL_STRING FROM WWIZ_RESTRICT_WEBSITE WHERE URL_STRING=? ORDER BY ID DESC LIMIT 1)" +
+                        " AND ID = (SELECT ID FROM WWIZ_RESTRICT_WEBSITE WHERE URL_STRING=? ORDER BY ID DESC LIMIT 1)"
+                        , ArrSitenames[vindex].urlstring, ArrSitenames[vindex].selected, g_CurrentUser, ArrPrevSitenames[vindex].urlstring, ArrPrevSitenames[vindex].urlstring);
+                        ArrPrevSitenames[vindex].urlstring = ArrSitenames[vindex].urlstring;
+                    }
+                }
+            }
+            else if(ArrPrevSitenames.length < ArrSitenames.length)
+            {
+                var vindex;
+                for(vindex=0; vindex< ArrPrevSitenames.length; vindex++)
+                {
+                    if(ArrPrevSitenames[vindex].urlstring != ArrSitenames[vindex].urlstring)
+                    {
+                        DataBase.exec("UPDATE WWIZ_RESTRICT_WEBSITE SET URL_STRING = ?, SELECTED = ? WHERE FK_USERNAME = ? AND URL_STRING = "+
+                        "(SELECT URL_STRING FROM WWIZ_RESTRICT_WEBSITE WHERE URL_STRING=? ORDER BY ID DESC LIMIT 1)" +
+                        " AND ID = (SELECT ID FROM WWIZ_RESTRICT_WEBSITE WHERE URL_STRING=? ORDER BY ID DESC LIMIT 1)"
+                        , ArrSitenames[vindex].urlstring, ArrSitenames[vindex].selected, g_CurrentUser, ArrPrevSitenames[vindex].urlstring, ArrPrevSitenames[vindex].urlstring);
+                        ArrPrevSitenames[vindex].urlstring = ArrSitenames[vindex].urlstring;
+                    }
+                }
+                if(vindex < ArrSitenames.length)
+                {
+                    for(var iCount=vindex; iCount < ArrSitenames.length; iCount++)
+                    {
+                        DataBase.exec("INSERT INTO WWIZ_RESTRICT_WEBSITE (SELECTED,URL_STRING,FK_USERNAME) VALUES(?,?,?)", ArrSitenames[iCount].selected, ArrSitenames[iCount].urlstring, g_CurrentUser);
+                        ArrPrevSitenames[iCount] = {index:ArrPrevSitenames.length, selected: ArrSitenames[iCount].selected, urlstring: ArrSitenames[iCount].urlstring};
+                    }
+                }
+            }
+            DataBase.close();
+            view.close(null);
+        }
+
+        $(#ID_BTN_CANCEL).onClick = function()
+        {
+            view.close(null);
+        }
+
+        $(#ID_BTN_REMOVE).onClick = function()
+        {
+            if( vlist.tbody.currentIndex != -1)
+            {
+                var vindex = vlist.tbody.currentIndex;
+                ArrSitenames.splice(vindex,1);
+            }
+        }
+
+        $(#ID_BTN_REMOVE_ALL).onClick = function()
+        {
+            if(ArrSitenames.length > 0)
+            {
+                ArrSitenames.splice(0,ArrSitenames.length);
+            }
+        }
+    </script>
+    <script type="text/tiscript">
+        vlist.on("change","tbody > tr", function() { // some change inside tr
+            $(.message_display_block).state.collapsed = false;
+            this.data.selected = this.value.selected;
+            $(#ID_CHK_SELECT_ALL).state.checked = false;
+            vlist.tbody.currentIndex = -1;
+        });
+
+        vlist.on("change","tbody", function() {
+            $(.message_display_block).state.collapsed = false;
+        });
+    </script>
+    <script type="text/tiscript">
+        function GetData()
+        {
+            $(.message_display_block).state.collapsed = false;
+            vlist.value = ArrSitenames;
+            DataBase = DB.open(varDBPath);
+            var varIdVal = DataBase.exec("SELECT SELECTED, URL_STRING FROM WWIZ_RESTRICT_WEBSITE WHERE FK_USERNAME = ?", g_CurrentUser);
+            if(varIdVal instanceof Recordset)
+            {
+                var choice;
+                var vindex = 0;
+                do
+                {
+                    choice = 0;
+                    ArrSitenames[vindex] = {index:ArrSitenames.length, selected:false, urlstring:""};
+                    for(var record in varIdVal)
+                    {
+                        switch(choice)
+                        {
+                            case 0: ArrSitenames[vindex].selected = record;
+                                    break;
+                            case 1: ArrSitenames[vindex].urlstring = record;
+                                    break;
+                        }
+                        choice++;
+                    }
+                    vindex++;
+                }while(varIdVal.next());
+                varIdVal.close();
+            }
+            DataBase.close();
+
+            if(ArrSitenames.length != 0)
+            {
+                for(var vindex = 0; vindex <ArrSitenames.length; vindex++)
+                {
+                    ArrPrevSitenames[vindex] = {index:ArrPrevSitenames.length, selected:ArrSitenames[vindex].selected, urlstring:ArrSitenames[vindex].urlstring};
+                }
+            }
+
+        }
+    </script>
+
+    <script type="text/tiscript">
+        $(#window-close) << event click()
+            {
+                view.close(null);
+            }
+    </script>
+
+    <script type="text/tiscript">
+        function ReleaseInstance(vInstance)
+        {
+            if(vInstance instanceof Recordset)
+            {
+                vInstance.close();
+            }
+        }
+    </script>
+
+    <script type="text/tiscript">
+        function self.ready() {
+            self.language = view.parameters.varLanguageValue;
+            if(view.parameters.ProductVersion == #BASIC)
+            {
+                $(head).$append(<style>@import url(IDR_CSS_BASIC.css);</style>);
+                $(body).attributes.addClass("basic_background");
+            }
+            else if(view.parameters.ProductVersion == #ESSENTIAL)
+            {
+                $(body).attributes.addClass("essential_background");
+            }
+            else if(view.parameters.ProductVersion == #PROVANTAGE)
+            {
+                $(body).attributes.addClass("provantage_background");
+                $(head).$append(<style>@import url(IDR_CSS_PROVANTAGE.css);</style>);
+            }
+            else if(view.parameters.ProductVersion == #ELITE)
+            {
+                $(body).attributes.addClass("elite_background");
+                $(head).$append(<style>@import url(IDR_CSS_ELITE.css);</style>);
+            }
+            else if(view.parameters.ProductVersion == #ESSENTIALPLUS)
+            {
+                $(body).attributes.addClass("essential_plus_background");
+                $(head).$append(<style>@import url(IDR_CSS_ESSPLUS.css);</style>);
+            }
+            varDBPath = view.parameters.vardb;
+            g_CurrentUser = view.parameters.g_CurrentUser;
+            GetData();
+        }
+
+    </script>
+</head>
+<body>
+
+    <div .header>
+        <window-caption role="window-caption" style="padding-top:14dip;width:432dip;color:#fff;font-size:13dip;">
+            <b><label>Block Specified Website</label></b>
+        </window-caption>
+        <window-button #window-close role="window-close"></window-button>
+    </div>
+    <div .section>
+        <table #ID_TABLE_APP resizeable>
+            <thead>
+                <tr>
+                    <th>Block Subdomain</th>
+                    <th(urlstring)> Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input (selected)|checkbox disabled /></td>
+                    <td style="text-align:left" (urlstring)></td>
+            </tbody>
+        </table>
+        <br />
+        <button .scan_button .set_btn_width #ID_BTN_ADD>Add</button>
+        <button .scan_button .set_btn_width style = "margin-left:5dip;" #ID_BTN_REMOVE>Remove</button>
+        <button .scan_button .set_btn_width #ID_BTN_REMOVE_ALL>Remove All</button>
+        <button .scan_button .set_btn_width #ID_BTN_OK>Ok</button>
+        <button .scan_button .set_btn_width #ID_BTN_CANCEL>Cancel</button>
+    </div>
+    <div .message_display_block>
+        <p #ID_Def_exception_MSG style="color:#fff;"></p>
+    </div>
+</body>
+</html>

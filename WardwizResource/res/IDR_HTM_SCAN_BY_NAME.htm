@@ -1,0 +1,554 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+	<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+	html 
+	{            
+		width:460dip;           /* preferred/initial width */
+		height:auto;          /* content will not overflow, no vertical scrollbars on the window */  
+		overflow:hidden;
+		behavior:WardWizSettings;
+	}	
+	
+	
+	//*******************************************************************//
+		
+	.btnicon{
+		height:40dip; 
+		max-width:448dip;
+		margin-left:127dip;
+		margin-bottom:10dip;		
+	}
+	.condition_popup_for_reports
+	{
+		width:460dip;
+		position:absolute;
+		text-align:center;
+		background:rgba(238,246,248,.95);
+		padding-top:5dip;
+		opacity:0;
+		transition: opacity(sine-in-out, 600ms)
+					top(sine-in-out, 600ms);
+	}
+	.condition_popup_for_reports:collapsed
+	{
+		top:43dip;
+		opacity:1;
+	}
+	.desc{
+	   padding:5dip;
+       padding-left:10dip;
+	}
+	body.scan_by_name{ 
+		background-size:cover;
+		padding:0; margin:0; 
+	}
+	.header_scan_by_name{
+		flow:horizontal;
+		width:458.5dip;        
+		height:40dip;
+	}
+	.condition_popup_for_reports p{
+		color:#000;
+	}
+	.file_drop_zone_scanbyname{
+		prototype: FileDropZone;
+		/* margin:5dip; */
+		margin-left:10dip;
+		width:433dip;
+	}
+	form#data-dialog > table#ID_TABLE_SCAN_BY_NAME > tr > td:nth-child(1)
+	{
+		white-space:nowrap;
+		vertical-align:top;
+	}
+	table#ID_TABLE_SCAN_BY_NAME { 
+		style-set: vgrid;
+		flow:table-fixed;
+		width:430dip;
+		height:180dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	table#ID_TABLE_SCAN_BY_NAME > thead {
+		behavior:column-resizer;  
+	}
+	table#ID_TABLE_SCAN_BY_NAME > tbody {
+		overflow-y: auto;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+	}
+	
+	table#ID_TABLE_SCAN_BY_NAME th 
+	{ 
+		font-size:12dip; 
+		padding:0dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	
+	table#ID_TABLE_SCAN_BY_NAME th:nth-child(1)  {  width:3em; }
+	table#ID_TABLE_SCAN_BY_NAME th:nth-child(2)  {  width:*; }		
+	
+	table#ID_TABLE_SCAN_BY_NAME th:hover 
+	{ 
+		transition:blend;
+	} 
+	
+	table#ID_TABLE_SCAN_BY_NAME td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	}
+	
+	table#ID_TABLE_SCAN_BY_NAME td:nth-child(1) { width:0.08*;padding-top:2dip; } /* first column */
+	table#ID_TABLE_SCAN_BY_NAME td:nth-child(2) {  
+		text-align:left; 
+		width:0.8*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		text-align:center;
+	} /* second column */
+	
+	.customDrop{
+		margin-top:10dip;
+		padding:0;
+		margin-left:30dip;
+	}
+	.customDrop li{
+		margin:0;
+		padding:0;
+		list-style:none;
+		min-width:110dip;
+		height:25dip;
+		display:inline-block;
+		position:relative;
+		text-align:center;
+		line-height:25dip;
+		cursor: pointer;
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	.customDrop li .drop2{
+		margin:0;
+		padding:0;
+		display:table;
+		position:absolute;
+		left:-1dip;
+		top:25dip;
+		visibility:none;
+	}
+	.customDrop li:hover >.drop2{
+		visibility:visible;
+	}
+	.customDrop li .drop2 li{
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	/***************************/
+	.customDrop li:hover{
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	.customDrop li:hover > .bgClrSmall{
+		left:-1dip;
+	}
+	.customDrop li:hover > .buttonIcons{
+		visibility:visible;
+	}
+	</style>
+
+    <script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    include "IDR_TIS_SQLITE.tis";
+    </script>
+	
+	<script type="text/tiscript">
+	var arrOfFileExt = new Array(0);
+	var g_iIndex = 0;
+	var varDataBase;
+	var varDBPath;
+	var varRecordSet;
+	var strSplitMultiFilePath;
+	</script>
+	  
+	<script type="text/tiscript">
+	function ShowLightbox(varType, varMsgText)
+	{
+		if(varType == 1)
+		{
+			self.timer(50ms,function(){                
+				$(#ID_STATUS_MESSAGE).value = varMsgText;
+				$(.condition_popup_for_reports).state.collapsed = true;
+			});
+		}
+	}
+	
+	$(body).onClick = function()
+	{
+		$(.condition_popup_for_reports).state.collapsed = false;
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function AddEntriesToDBfile(strFileName)
+    {
+		strSplitMultiFilePath = strFileName.split(",");
+		for(var i = 0; i < strSplitMultiFilePath.length; i++)
+		{
+			if(i == 0)
+			{
+				var varFirstFileName = URL.toPath(strSplitMultiFilePath[i]);
+				varFirstFileName = varFirstFileName.replace("\/","\\");		  
+				AddDroppedFileEntry(varFirstFileName);
+			}
+			else
+			{
+				var varNextFileName = URL.toPath(strSplitMultiFilePath[i]);
+				varNextFileName = varNextFileName.replace("\/","\\");				
+				AddDroppedFileEntry(varNextFileName);
+			}
+		}
+		strSplitMultiFilePath = 0;
+    }
+	
+	function AddDroppedFileEntry( strFileFolderName)
+	{
+		$(.condition_popup_for_reports).state.collapsed = false;
+		if( self.IsFilePath(strFileFolderName))
+		{
+			ShowLightbox(1, Lang.translate("ID_VALID_FILE"));
+			return;
+		}
+		var varRetVal = self.CheckForZeroKB(strFileFolderName);
+		if(!varRetVal)
+		{
+			ShowLightbox(1, Lang.translate("ID_FAILED_FILE_SIZE_INCLUDE"));
+			return;
+		}
+		if( self.CheckIsWrdWizFile(strFileFolderName))
+		{
+			ShowLightbox(1, Lang.translate("ID_WARDWIZ_OWN_FILE"));
+			return;
+		}
+		
+		var varLastIndex = strFileFolderName.lastIndexOf("\\");
+        var varFileLength = strFileFolderName.length;
+        if(varLastIndex == --varFileLength)
+        {
+            strFileFolderName = strFileFolderName.splice(varLastIndex, varFileLength);
+        }
+		const constFileName = strFileFolderName.substr(++varLastIndex);
+		var varUppFileName = constFileName.toUpperCase();
+		for(var i = 0; i < arrOfFileExt.length; i++)
+		{
+			if(arrOfFileExt[i]#FileExtension == varUppFileName)
+			{
+			    ShowLightbox(1, Lang.translate("ID_FILE_EXIST"));
+				return;
+			}
+		}
+		arrOfFileExt[g_iIndex] = {selected : true, FileExtension:varUppFileName, varEntriesID : ++g_iIndex};
+		varDataBase = DB.open(varDBPath);
+		varDataBase.exec("INSERT INTO WWIZSCANNAMEFILELIST (FILENAME) VALUEs (?)", varUppFileName);
+		varDataBase.close();
+		
+		var vlist = $(table);
+		vlist.value = arrOfFileExt;
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfFileExt )
+				record.selected = selected; 
+		};
+		self.OnLoadScanByNameDB();
+		self.funFromScanByName();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	class FileDropZone :Behavior
+	{
+		function onExchange(evt)
+		{
+			if( evt.type == Event.X_DRAG_ENTER && evt.draggingDataType == #file)
+			{
+				this.attributes.addClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG_LEAVE )
+			{
+				this.attributes.removeClass("active-target");
+				return true;
+			}
+			else if( evt.type == Event.X_DRAG && evt.draggingDataType == #file)
+			{
+				stdout.println(evt.x,evt.y);
+				return true;
+			}
+			else if( evt.type == Event.X_DROP && evt.draggingDataType == #file)
+			{
+				this.attributes.removeClass("active-target");
+				var fn = evt.dragging;
+				var strFileName = fn.toString();
+				AddEntriesToDBfile(strFileName);
+				return true;
+			}
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    $(#ID_BTN_REMOVE).onClick = function()
+	{   
+		$(.condition_popup_for_reports).state.collapsed = false;
+		var bselected = false;
+		for( var record in arrOfFileExt )
+        {
+            bselected = record.selected;
+            if(record.selected)
+            {
+                bselected = true;
+                break;
+            }
+            else
+                bselected = false;
+        }
+        if(!bselected)
+        {
+            ShowLightbox(1, Lang.translate("ID_PLEASE_SELECT_ENTRY_FOR_DELETION"));
+            return;
+        }
+        else
+            $(.condition_popup_for_reports).state.collapsed = false;
+			
+		for(var FileCount = arrOfFileExt.length; FileCount > 0; )
+        {
+			FileCount = FileCount - 1;
+			bselected = arrOfFileExt[FileCount].selected;
+			if(bselected == true)
+            {
+                var varSelectedIndexVal = arrOfFileExt[FileCount].varEntriesID;
+                /*varDataBase = DB.open(varDBPath);
+                varDataBase.exec("DELETE FROM WWIZEXCLUDEFILEEXT WHERE ID = ?", varSelectedIndexVal);
+                varDataBase.close();*/
+				varDataBase = DB.open(varDBPath);
+				varDataBase.exec("DELETE FROM WWIZSCANNAMEFILELIST WHERE ID = ?", varSelectedIndexVal);
+				varDataBase.close();
+                arrOfFileExt.remove(FileCount);
+				g_iIndex--;
+            }
+            else
+            {
+                continue;
+            }
+        }
+		self.OnLoadScanByNameDB();
+		self.funFromScanByName();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    function showRecordsetData(varRecordSet)
+    {
+		var m_iIndex = 0;
+        do
+        {
+            var varCounter = 0;
+            arrOfFileExt[m_iIndex] = {selected : true, FileExtension : "", varEntriesID : ""};
+            for (var varVirtualDBData in varRecordSet)
+            {
+				switch(varCounter)
+                {
+                    case 0:
+                            arrOfFileExt[m_iIndex].varEntriesID = varVirtualDBData;
+                            break;
+                    case 1:
+                            arrOfFileExt[m_iIndex].FileExtension = varVirtualDBData;
+                            break;
+                }
+                varCounter++;
+            }
+            m_iIndex++;
+        }
+        while( varRecordSet.next());
+		g_iIndex = m_iIndex;
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_BROWSE_FILE).onClick = function()
+    {
+		$(.condition_popup_for_reports).state.collapsed = false;
+		var FileFolderPath = view.selectFile(#open,  "Files (*.*)|*.*" , "files");
+		FileFolderPath = URL.toPath(FileFolderPath);
+		FileFolderPath = FileFolderPath.replace("\/","\\"); 
+	  	var varRetVal = self.CheckForZeroKB(FileFolderPath);
+		if(!varRetVal)
+		{
+			ShowLightbox(1, Lang.translate("ID_FAILED_FILE_SIZE_INCLUDE"));
+			return;
+		}
+		if( self.CheckIsWrdWizFile(FileFolderPath))
+		{
+			ShowLightbox(1, Lang.translate("ID_WARDWIZ_OWN_FILE"));
+			return;
+		}
+		var varLastIndex = FileFolderPath.lastIndexOf("\\");
+        const varFileName = FileFolderPath.substr(++varLastIndex);
+		var varUppFileName = varFileName.toUpperCase();
+		for(var i = 0; i < arrOfFileExt.length; i++)
+		{
+			if(arrOfFileExt[i]#FileExtension == varUppFileName)
+			{
+                ShowLightbox(1, Lang.translate("ID_FILE_EXIST"));
+				return;
+			}
+		}
+		
+		arrOfFileExt[g_iIndex] = {selected: true, FileExtension:varUppFileName, varEntriesID: ++g_iIndex };
+		varDataBase = DB.open(varDBPath);
+		varDataBase.exec("INSERT INTO WWIZSCANNAMEFILELIST (FILENAME) VALUEs (?)", varUppFileName);
+		varDataBase.close();
+				
+		var vlist = $(table);
+		vlist.value = arrOfFileExt;
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfFileExt )
+				record.selected = selected; 
+		};
+		self.OnLoadScanByNameDB();
+		self.funFromScanByName();
+    }
+	</script>
+	
+	<script type="text/tiscript">
+	$(#ID_CLOSE).onClick = function()
+    {
+		view.close();
+	}
+	$(#window_close).onClick = function()
+    {
+		view.close();
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script>
+	
+	<script type="text/tiscript">
+	function self.ready()
+	{
+		if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}	
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		self.language = view.parameters.varLanguageValue;
+		varDBPath = self.GetScanNameDBPath();
+		varDataBase = DB.open(varDBPath);
+		varDataBase.exec("CREATE TABLE IF NOT EXISTS WWIZSCANNAMEFILELIST(ID INTEGER PRIMARY KEY, FILENAME VARCHAR(40), RES1 VARCHAR(50), RES2 VARCHAR(50))");
+		varRecordSet = varDataBase.exec("SELECT ID, FILENAME FROM WWIZSCANNAMEFILELIST");
+		if(varRecordSet instanceof Recordset)
+			showRecordsetData(varRecordSet);
+		else
+			varDataBase.close();
+		varDataBase.close();
+
+		var vlist = $(table);
+		vlist.value = arrOfFileExt;
+		const selectAll = vlist.$(input#select-all);
+		vlist << event change $(tbody > tr)
+		{
+			this.data.selected = this.value.selected;
+			if( !this.data.selected )
+				selectAll.value = false;
+		};
+		vlist << event change $(#select-all)
+		{
+			// select/deselect all
+			var selected = this.value;
+			for( var record in arrOfFileExt )
+				record.selected = selected; 
+		};
+		self.OnLoadScanByNameDB();
+		self.funFromScanByName();
+	}
+	</script>
+</head>
+<body .scan_by_name>
+	<div .header_scan_by_name>
+			<window-caption role="window-caption">
+			<img src="IDR_IMG_SHIELD_ICO.png" style="width:23dip;"></window-caption>	
+		<window-button #window_close></window-button>
+	</div>
+	<div class="condition_popup_for_reports">
+		<p #ID_STATUS_MESSAGE></p>
+	</div>
+	<div .desc>
+		<p><label>ID_SCAN_BY_NAME_DESC</label></p>
+	</div>
+	<div .file_drop_zone_scanbyname>
+		<table #ID_TABLE_SCAN_BY_NAME resizeable>
+			<thead>
+				<tr><th><input#select-all|checkbox checked/></th><th(FileExtension)><label>ID_SCAN_BY_NAME</label></th></tr>
+			</thead>
+			<tbody>
+				<tr><td><input(selected)|checkbox /></td><td(FileExtension)></td></tr>
+			</tbody>
+		</table>
+	</div>
+	<div .btnicon style="margin-left:68dip;">
+		<ul .customDrop>
+			<li #ID_BROWSE_FILE><label>ID_UPDATE_BTN_BROWSE</label></li>
+			<li #ID_BTN_REMOVE><label>ID_REMOVE</label></li>
+			<li #ID_CLOSE><label>ID_CLOSE</label></li>
+		</ul>
+	</div>
+</body>
+</html>

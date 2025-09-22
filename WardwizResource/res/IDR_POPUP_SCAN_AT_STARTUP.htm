@@ -1,0 +1,114 @@
+<html custom-frame="solid-with-shadow" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<include src="IDR_HTM_FONT_AWESOME.htm" />	
+	<style>
+	@import url(IDR_CSS_MAIN.css);
+	@import url(IDR_CSS_GERMAN_LANG.css);
+    html 
+    { 
+	    height:200dip;
+	    width:300dip;
+	    overflow:hidden;
+        behavior:WardWizSettings;
+    }    
+    select{
+		width:170dip;
+	}
+	.custmdiv{
+		text-align:center;
+		padding:15dip;
+	}
+	.btnicon{
+		padding-top:10dip;
+	}
+	body.scan_at_startup{ 
+		max-width:299dip!important;
+		height:198.5dip;
+		background-size:cover;
+		padding:0; margin:0; 
+	}
+	.header_scan_at_startup{
+		flow:horizontal;
+		width:298.5dip;        
+		height:40dip;
+	}
+	</style>
+	
+    <script type="text/tiscript">
+    $(#ID_OK).onClick = function()
+    {
+         var scantype = $(#ID_SELECT_TYPE).value;
+         view.close(scantype);
+    }
+
+    $(#ID_CANCEL).onClick = function()
+    {
+        var scantype = self.GetStartupScan();
+        view.close(scantype);
+    }
+	
+	$(#window-close).onClick = function()
+    {
+        view.close(null);
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+	}
+	</script>	
+
+    <script type="text/tiscript">
+	function self.ready()
+    {
+        if(view.parameters.varThemeType == "defaultTheme"){
+			OnSetDefaultTheme();
+		}
+		else if(view.parameters.varThemeType == "darkTheme"){
+			OnSetDarkTheme();
+		}	
+		else if(view.parameters.varThemeType == "crystalTheme"){
+			OnSetCrystalTheme();
+		}
+		self.language =  view.parameters.varLanguageValue;
+		var scantype = self.GetStartupScan();
+		$(#ID_SELECT_TYPE).value = scantype;
+    }
+    </script>
+</head>
+<body .scan_at_startup>
+    <div .header_scan_at_startup>
+		<window-caption role="window-caption">
+			<label>ID_SELECT_TYPE_SCAN</label>
+		</window-caption>	
+		<window-button #window-close></window-button>
+	</div>	
+	<div .custmdiv>
+	    <p><label>ID_PLEASE_SELECT_TYPE_SCAN</label>:</p>
+		<select #ID_SELECT_TYPE>
+			<option value=1><label>ID_TYPE_SCAN_QUICK</label></option>
+			<option value=2><label>ID_TYPE_SCAN_FULL</label></option>
+		</select>
+		<br/>
+		<div .btnicon>
+			<div class="btnCstmSmall" #ID_OK><label>ID_OK</label></div>
+			<div class="btnCstmSmall" #ID_CANCEL><label>ID_CANCEL</label></div>
+		</div>
+	</div>
+</body>
+</html>

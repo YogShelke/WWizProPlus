@@ -1,0 +1,713 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+ <style> 
+	@import url(IDR_CSS_MAIN.css); 
+	@import url(IDR_CSS_LIGHTBOX_DIALOG.css);			
+	@import url(IDR_CSS_GERMAN_LANG.css);
+		
+	html{
+		padding:0dip;
+		margin:0dip;
+		overflow:hidden; 
+		width:720dip;
+		height:500dip;
+	}
+
+	body{
+		width:720dip;
+		height:500dip;
+		margin:0;
+		padding:0;
+		background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+		position:relative;	
+		overflow:hidden;
+		//border:0.5dip solid #3d748e;
+	}
+    .clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+	}
+	.header{
+		width:720dip!important;
+	}	
+	#temp_files{
+		visibility:visible;
+	}
+	#temp_files:collapsed{
+		visibility:none;
+	}
+	#ID_BUTTON_FIND:disabled{
+		opacity:.7;
+	}
+	#ID_BUTTON_REMOVE:disabled{
+		opacity:.7;
+	}
+	.left_colTemp{
+		width:350dip;
+	}
+	.right_colTemp{
+		width:350dip;
+	}
+	.right_colTemp p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		text-align:right;
+	}
+	.footer_buttonsTemp{
+		width:300dip;
+		text-align:right;
+		height:35dip;
+		margin-left:410dip; 
+	}
+	.footer_buttonsTemp .btnCstm{
+		margin-top:0;
+	}
+	.scaning_path_div_temp{
+		padding-left:10dip;
+	}
+	table#ID_TEMP_FILE_CLEANER 
+	{ 
+		style-set: vgrid;
+		flow:table-fixed;
+		font-size:12dip; 
+		width:697dip;
+		height:240dip;
+		padding:0;
+		border-spacing:0;
+		overflow-x: scroll;
+		horizontal-scrollbar: my-v-scrollbar;
+		vertical-scrollbar: my-v-scrollbar;
+		margin:10dip!important;
+	}
+	table#ID_TEMP_FILE_CLEANER > thead {
+		behavior:column-resizer;  
+	}
+	table#ID_TEMP_FILE_CLEANER > tbody {
+		overflow-y: auto;
+		vertical-scrollbar: my-v-scrollbar; 
+	}
+	table#ID_TEMP_FILE_CLEANER th 
+	{ 
+		font-size:12.5dip;
+		padding:4dip; 
+		background-repeat:expand stretch-left stretch-right stretch-middle;
+		background-position:3dip 3dip 3dip 3dip;
+	}
+	table#ID_TEMP_FILE_CLEANER th:nth-child(1)  {  width:0.08*; }
+	table#ID_TEMP_FILE_CLEANER th:nth-child(2)  {  width:0.3*; }		
+	table#ID_TEMP_FILE_CLEANER th:nth-child(3)  {  width:0.3*; }	
+	table#ID_TEMP_FILE_CLEANER th:nth-child(4)  {  width:0.3*; }	
+	table#ID_TEMP_FILE_CLEANER th:hover 
+	{ 
+		transition:blend;
+	}
+	table#ID_TEMP_FILE_CLEANER td 
+	{ 
+		padding:1dip; 
+		min-height:14dip;
+	}
+	table#ID_TEMP_FILE_CLEANER td:nth-child(1) {  text-align:left; width:0.08*;padding-top:2dip; } /* first column */
+	table#ID_TEMP_FILE_CLEANER td:nth-child(2) {  text-align:left; width:0.2*;padding-top:2dip; } /* first column */
+	table#ID_TEMP_FILE_CLEANER td:nth-child(3) {  
+		text-align:left; 
+		width:0.5*;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	} /* second column */
+	table#ID_TEMP_FILE_CLEANER td:nth-child(4) {   /* last column */
+		text-align:left;
+		overflow:hidden;        /* three line below - ellipsis */
+		text-overflow:ellipsis;
+		white-space:nowrap;
+		width:.2*;
+	} /* third column */
+	.midContent{
+		flow:horizontal;
+	}
+	.mainContent{
+		flow:vertical;
+	}
+	.titleCont_utilities{
+		text-align:center;
+		min-height:10dip;
+		width:720dip;
+		padding-top:1dip; 
+	}
+	#ID_BUTTON_FIND{
+		visibility:visible;
+	}
+	#ID_BUTTON_FIND:collapsed{
+		visibility:none;
+	}
+	#ID_BUTTON_REMOVE{
+		visibility:none;
+	}
+	#ID_BUTTON_REMOVE:collapsed{
+		visibility:none;
+	}
+	#ID_BUTTON_REMOVE:expanded{
+		visibility:visible;
+	}  
+	#scanning_path{
+		visibility:none;
+		color:#fff;
+	}
+	#scanning_path:collapsed{
+		visibility:none;
+	}
+	#scanning_path:expanded{
+		visibility:visible;
+	}
+	.MenuSpacing{
+		margin:2dip;
+		margin-top:0dip;
+	}
+</style>
+	
+	<script type="text/tiscript">
+    include "IDR_TIS_MAIN.tis";
+    </script>
+	<script type="text/tiscript">
+    include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+    </script>
+	<script type="text/tiscript">
+        include "IDR_TIS_GERMAN_LANG.tis";
+        include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+    </script>
+    <script type="text/tiscript">
+		if(productVersion == #BASIC){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+		}
+		else if(productVersion == #ESSENTIAL){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+		}
+		else if(productVersion == #PROVANTAGE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+		}
+		else if(productVersion == #ELITE){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+		}
+		else if(productVersion == #ESSENTIALPLUS){
+			$(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL PLUS 2020";
+		}
+    </script>
+	
+	<script type="text/tiscript">
+    var records = new Array(0);
+	var vlistObj;
+	var varTempFileCount = 0;
+	var bIsTempFileRunning = false;
+	var bWidgetCall = false;
+    var bIsTempFileDetected = false;
+	var bTempFileRemoveStatus = false;
+	var bTempFileScanFinished = false;
+    var vCheckBox = $(body);	
+    </script>
+	
+	<script type="text/tiscript">
+    function CloseUI()
+    {
+		var bIsTempFileStatusDetected = false;
+        if(bTempFileScanFinished == true && bTempFileRemoveStatus == false)
+        {
+            for(var varTempFileCount = 0; varTempFileCount < records.length; varTempFileCount++)
+            {
+                if(records[varTempFileCount].ActionTaken == Lang.translate("ID_DETECTED"))
+                {
+                    bIsTempFileStatusDetected = true;
+                    break;
+                }
+            }
+        }
+        if(bIsTempFileStatusDetected == true)//bIsTempFileDetected == true &&
+        {
+            $(#ID_LIGHTBOX_TXT).text = Lang.translate("TEMP_FILE_DETECTED");
+            var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+								};
+            if(res == true)
+            {
+                view.OnCloseButton();
+            }
+            else
+            {
+                view.ResumeTempFileOperation();
+                bTempFileRemoveStatus = false;
+                return;
+            }
+        }
+        if(bIsTempFileRunning == true)
+        {
+            view.PauseTempFileOperation();
+            $(#ID_LIGHTBOX_TXT).text = Lang.translate("TEMP_FILE_FIND_PROGRESS");
+            var res = dialog { body:$(form#simple-dialog),
+								returns: #values,
+								caption : Lang.translate("ID_WARNING"),
+								buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+								};
+            if(res == true)
+            {
+                view.OnCloseButton();
+            }
+            else
+            {
+                view.ResumeTempFileOperation();
+                return;
+            }
+        }
+        else
+        {
+            if(bTempFileRemoveStatus == true)
+            {
+                view.PauseTempFileOperation();
+                $(#ID_LIGHTBOX_TXT).text = Lang.translate("TEMP_FILE_REMOVAL_PROGRESS");
+                var res = dialog { body:$(form#simple-dialog),
+									returns: #values,
+									caption : Lang.translate("ID_WARNING"),
+									buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+									};
+                if(res == true)
+                {
+                    view.OnCloseButton();
+                }
+                else
+                {
+                    view.ResumeTempFileOperation();
+                    return;
+                }
+            }
+             view.OnCloseButton();
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+	var recordLen = records.length;
+	var recordIndex = 0;
+	function LoadingRepairedStatus()
+    {
+		for(; recordIndex < recordLen; recordIndex++)
+        {
+			if(records[recordIndex].selected && (records[recordIndex].ActionTaken != Lang.translate("ID_RESTART_REQUIRED")))
+            {
+                records[recordIndex].ActionTaken=Lang.translate("ID_NO_FILE_FOUND");
+            }
+        }
+    }
+	recordLen = 0;
+	recordIndex = 0;
+	
+	function DisplayRemoveStatusMessage(strRemovedFile)
+    {
+        var bIsDetectedEntry = false;
+        for(var varCount=0;varCount<records.length;varCount++)
+        {
+           if(records[varCount].ActionTaken == Lang.translate("ID_DETECTED"))
+           {
+                bIsDetectedEntry = true;
+                break;
+           }
+        }
+        if(bIsDetectedEntry)
+        {
+            $(#ID_BUTTON_FIND).state.collapsed = true;
+            $(#ID_BUTTON_REMOVE).state.disabled = false;
+         	$(#ID_BUTTON_REMOVE).state.expanded = true;
+        }
+        else
+        {
+			$(#ID_BUTTON_REMOVE).state.collapsed = true;
+            $(#ID_BUTTON_FIND).state.disabled = false;
+			$(#ID_BUTTON_FIND).state.expanded = true;
+        }
+     	$(#ID_LIGHTBOX_TXT).value = strRemovedFile;
+		var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							}; 
+			
+        bTempFileRemoveStatus = false;
+        self.timer(300ms,LoadingRepairedStatus);
+    }
+	
+	function RemovedStatus(strRemovedFile)
+    {
+        DisplayRemoveStatusMessage(strRemovedFile);
+    }	
+	
+    function CallTempFileCleaner()
+    {
+		bWidgetCall = true;
+		records.length = 0;
+		varTempFileCount = 0;
+		view.OnBnClickedTempCleanFind(ScanFinishedStatus, showNotification);
+		$(#ID_BUTTON_FIND).state.disabled = true;
+		bIsTempFileRunning = true;
+	}
+
+	function CallTempFileRemove()
+	{
+		$(#ID_BUTTON_FIND).state.collapsed = true;
+		$(#ID_BUTTON_REMOVE).state.disabled = true;
+     	$(#ID_BUTTON_REMOVE).state.expanded = true;
+		view.OnBnClickedTempFileClean(records, RemovedStatus);
+		varTempFileCount = 0;
+		bTempFileRemoveStatus = true;
+		bWidgetCall = false;
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	/*function DisplayStatusMessage(strStatusMessage)
+    {
+    	$(#ID_LIGHTBOX_TXT).value = strStatusMessage;
+		var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: "OK", role:#ok, value:true }]
+							}; 
+        bTempFileScanFinished = true;
+    }*/
+	
+	function ScanFinishedStatus()
+    {
+	    bIsTempFileRunning = false;
+        //DisplayStatusMessage(Lang.translate("ID_TEMPORARY_FILES_FINDER_COMPLETED_SUCCESSFULLY"));
+		if(bWidgetCall == true)
+		{
+			CallTempFileRemove();
+		}
+        if(varTempFileCount > 0)
+        {
+            $(#ID_BUTTON_FIND).state.collapsed = true;
+            $(#ID_BUTTON_REMOVE).state.expanded = true;
+            bIsTempFileDetected = true; //temp files are detected. do u want to close?
+        }
+	    vlistObj.on("change","tbody > tr", function()
+            {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+                this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+                if( !this.data.selected )
+                    selectAll.value = false;
+            });
+		if(bWidgetCall == true)
+			$(#ID_BUTTON_REMOVE).state.disabled = false;
+        $(#scanning_path).state.collapsed = true;
+	}
+    </script>
+
+	<script type="text/tiscript">
+    function showNotification(varMsgType, strMsgText)
+    {
+        if(varMsgType == 2)
+        {
+            $(#ID_LIGHTBOX_TXT).value = strMsgText;
+        }
+        else if(varMsgType == 3)
+        {
+            $(#ID_LIGHTBOX_TXT).value = strMsgText;
+		}
+		var res = dialog { body:$(form#simple-dialog),
+							returns: #values,
+							caption : Lang.translate("ID_WARNING"),
+							buttons: [ { caption: Lang.translate("ID_YES"), role:#ok, value:true },{ caption: Lang.translate("ID_NO"), role:#cancel, value:false }]
+							}; 					
+        if(res == true)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    function AddTempFileFoundEntryTemp(evt)
+    {
+        var strFileName = evt.data.one.toString();
+        var strFilePath = evt.data.two.toString();
+        var strActionTaken = evt.data.three.toString();
+
+        records[varTempFileCount] = {selected: true, FileName: strFileName, FilePath: strFilePath, ActionTaken: strActionTaken};
+        varTempFileCount++;
+        $(#scanning_path).text = strFilePath+"\\"+strFileName;
+        $(#temp_files).state.collapsed = false;
+        $(#scanning_path).state.expanded = true;
+        $(#temp_files_count).value=" "+varTempFileCount;  //temporary file count display
+        if(varTempFileCount == 0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+    }
+    const SETSCAN_EVENT = 0x100 + 6;
+    self.subscribe(AddTempFileFoundEntryTemp, Event.BEHAVIOR_EVENT, SETSCAN_EVENT);
+    </script>
+	
+	<script type="text/tiscript">
+    const selectAll = vCheckBox.$(input#select-all);
+
+    vCheckBox.on("change","#select-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var record in records )
+            record.selected = selected;
+    });
+    </script>
+	
+    <script type="text/tiscript">
+    function bISDetectedEntery() //m_root_el function for taskbar close
+    {
+		CloseUI();
+    }
+    </script>
+    
+	<script type="text/tiscript">
+    function UpdateTempFileFoundEntry(evt)
+    {
+        var varFilePosition = evt.data.one.toInteger();
+        var strActiontaken = evt.data.two.toString();
+        var varFileStatus = evt.data.three.toInteger();
+        if(varFileStatus != 1)
+        {
+            records[varFilePosition].ActionTaken = strActiontaken;
+        }
+        else
+        {
+           records.remove(varFilePosition);
+        }
+    }
+    const SETREMOVE_EVENT = 0x100 + 7;
+    self.subscribe(UpdateTempFileFoundEntry, Event.BEHAVIOR_EVENT, SETREMOVE_EVENT);
+    </script>
+
+    
+	<script type="text/tiscript">
+    $(#ID_BUTTON_FIND).onClick = function()
+    {
+        records.length = 0;
+        varTempFileCount = 0;
+        $(#temp_files_count).value=" "+0; //when all entries removed it should be 0.
+        view.OnBnClickedTempCleanFind(ScanFinishedStatus, showNotification);
+        $(#ID_BUTTON_FIND).state.disabled = true;
+        $(#ID_BUTTON_REMOVE).state.disabled = false;
+        bIsTempFileRunning = true;
+    }
+    </script>
+	
+	<script type="text/tiscript">
+    $(#ID_BUTTON_REMOVE).onClick = function()
+    {
+        $(#ID_BUTTON_REMOVE).state.disabled = true;
+        view.OnBnClickedTempFileClean(records, RemovedStatus);
+        varTempFileCount = 0;
+        bTempFileRemoveStatus = true;
+    }
+    </script>	
+	
+	<script type="text/tiscript">
+    $(#help_click).onClick = function()
+    {
+		OpenHelpFile();
+	}
+	function OpenHelpFile()
+	{
+		var varCommandlinestr = "-mapid";
+		var varHelpFilePath;
+		var varHelpFileIndex;
+		var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+		var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+		var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+		var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+		var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+		var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+		switch(g_LanguageID)
+		{
+			case LANGUAGE_TYPE.ENGLISH	:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varEngEssential;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varEngBasic;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varEngEssPlus;
+					varHelpFileIndex = "75";
+				}
+			break;
+	
+			case LANGUAGE_TYPE.GERMAN:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varGerEssential;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varGerBasic;
+					varHelpFileIndex = "75";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varGerEssPlus;
+					varHelpFileIndex = "75";
+				}
+			break;
+		}
+		System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+	}
+    </script>
+	
+	<script type="text/tiscript">
+	$(.OnClickMinimize).onClick = function()
+    {
+       view.OnMinimize();
+    }
+    $(#ID_BUTTON_CLOSE).onClick = function()
+    {
+        CloseUI();
+    }
+	$(#ID_BTN_CLOSE).onClick = function()
+    {
+		CloseUI();
+    }
+    </script>
+	<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(g_LanguageName == "ENGLISH")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("http://www.vibranium.co.in");  //english for basic
+		else if(g_LanguageName == "GERMAN")
+			if(!view.FunCheckInternetAccessBlock())
+				Sciter.launch("http://www.vibranium.co.in"); //german for basic
+	}
+    </script>
+	
+	<script type="text/tiscript">
+    function self.ready()
+    {
+		self.language = g_LanguageName;
+		$(#temp_files).state.collapsed = true;
+		$(#ID_BUTTON_FIND).state.disabled = false;
+        $(#ID_BUTTON_REMOVE).state.disabled = false;
+        if(varTempFileCount == 0)
+        {
+            $(#select-all).state.disabled = true;
+        }
+        else
+        {
+            $(#select-all).state.disabled = false;
+        }
+        vlistObj = $(table);
+        vlistObj.value = records;
+		if(g_themeType == "defaultTheme")
+		{
+            $(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+		}
+		else if(g_themeType == "darkTheme")
+		{
+            $(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+            $(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+			$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+			$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+		}
+	}
+    </script>
+	<form #simple-dialog>
+		<label #ID_LBOX_HEADING></label>
+		<p #ID_LIGHTBOX_TXT></p>
+	</form>
+</head>
+<body>
+	<div .mainContent>
+			
+			<div .header>
+				<div .tempLogo>
+					<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+				</div>
+				<div .menu_utility>
+					<div .drag_zone_utility role="window-caption">
+						<h4 style="margin-top:10dip">VIBRANIUM</h4>
+					</div>
+					<div .topMenuUtility style="margin-left:-1dip;">
+						<ul>
+							<li .clickable_cl #help_click .MenuSpacing style="font-size:13.5dip!important;"><label>ID_STR_HELP</label></li>
+							<li .clickable_cl .OnClickMinimize .MenuSpacing>
+								<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+								</svg>
+							</li>
+							<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE .MenuSpacing>
+								<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+								<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+								</svg>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div .titleCont_utilities>
+				<h1 .headingTitle1><label>TEMP_FILE_CLEANER_SAVE</label></h1>
+				<p><label>TEMP_FILE_CLEANER_SAVE_DIS_SPACE_REMIVENG_TEMP_FILES</label></p>
+			</div>
+			<table  #ID_TEMP_FILE_CLEANER style="margin:20dip;">
+				<thead>
+					<tr>
+						<th style="width:39dip"></th>
+						<th style="width:225dip"><label>ID_FILE_NAME_TEMP_CLEAN</label></th>
+						<th style="width:250dip"><label>ID_FILE_PATH</label></th>
+						<th><label>ID_ACTION</label></th>
+					</tr>
+				</thead>  
+				<tbody>
+					<tr><td><input(selected)|checkbox style="margin-top:5dip;"/></td><td(FileName)></td><td(FilePath)></td><td(ActionTaken)></td></tr>
+				</tbody>
+			</table>
+			<div .midContent>
+				<div .left_colTemp>
+					<input #select-all|checkbox style="margin-left:23dip;" checked/> <span><label>ID_HTM_CUSTOM_SCAN_SELECT_ALL</label></span>
+				</div>
+				<div .right_colTemp>
+					<p #temp_files><label>ID_TEMP_FILES</label><span #temp_files_count>00</span></p>
+				</div>
+			</div>
+				
+		<div .scan_container>
+			<div .footer_buttonsTemp>
+				<div style="position:relative;display:inline-block;"><div class="btnCstm" #ID_BUTTON_FIND><label>ID_FIND</label></button></div></div>
+				<div style="position:relative;display:inline-block;"><div class="btnCstm" #ID_BUTTON_REMOVE disabled><label>ID_REMOVE</label></button></div></div>
+				<div style="position:relative;display:inline-block;"><div class="btnCstm" #ID_BTN_CLOSE><label>ID_CLOSE</label></button></div></div>
+			</div>
+		</div>
+        <div .scaning_path_div_temp>
+            <p #scanning_path></p>
+        </div>
+		</div>
+</body>
+</html>
