@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DataManager">
+      <UniqueIdentifier>{804dcdbc-4024-4afb-a4e2-632ede0dcc4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CRC">
+      <UniqueIdentifier>{aae96b65-5c0a-4d47-b8a6-fbacdd86fb1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{2dd1d6fe-3ab8-4fab-8303-c05d5f0c2f30}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WardWizDBUpgrade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizDBUpgradeDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\ISpyEmail\ISpyDataManager.h">
+      <Filter>DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\ISpyEmail\ISpyDBManipulation.h">
+      <Filter>DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\ISpyEmail\ISpyList.h">
+      <Filter>DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CRC\WWizCRC64.h">
+      <Filter>CRC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\System\WrdwizEncDecManager.h">
+      <Filter>DataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WardWizDBUpgrade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizDBUpgradeDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\ISpyEmail\ISpyDataManager.cpp">
+      <Filter>DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\ISpyEmail\ISpyDBManipulation.cpp">
+      <Filter>DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\ISpyEmail\ISpyList.cpp">
+      <Filter>DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CRC\WWizCRC64.cpp">
+      <Filter>CRC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\System\WrdwizEncDecManager.cpp">
+      <Filter>DataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizDBUpgrade.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WardWizDBUpgrade.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WardWizDBUpgrade.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

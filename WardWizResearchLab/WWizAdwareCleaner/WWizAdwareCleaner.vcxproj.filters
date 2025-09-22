@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="CRC">
+      <UniqueIdentifier>{61962a12-33b5-4ad4-a9b0-f876bf449bd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{21668327-56e2-4035-8f83-6632853d8851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Service">
+      <UniqueIdentifier>{65f22ecb-4927-4d91-9586-d54f8069af9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQlite">
+      <UniqueIdentifier>{21b4591a-d7a5-4c2d-bb62-7d7ebc79d26e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WWizAdwareCleaner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WWizAdwareCleanerDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WWizAdwareScanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdwCleanerConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CRC\WWizCRC64.h">
+      <Filter>CRC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Service\iSpySrvMgmt.h">
+      <Filter>Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\DownloadManager\WinHttpManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\DownloadConts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WWizAdwareRecoverDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Scanner\WardWizDatabaseInterface.h">
+      <Filter>SQlite</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WWizAdwareCleaner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizAdwareCleanerDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizAdwareScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CRC\WWizCRC64.cpp">
+      <Filter>CRC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Service\iSpySrvMgmt.cpp">
+      <Filter>Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\DownloadManager\WinHttpManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WWizAdwareRecoverDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Scanner\WardWizDatabaseInterface.cpp">
+      <Filter>SQlite</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WWizAdwareCleaner.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WWizAdwareCleaner.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_HTM_ADWARE_CLEANER_SA.htm" />
+    <None Include="res\css1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\IDR_TIS_ROLODEX.tis" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG.css" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+    <None Include="res\IDR_HTM_ADWARE_RECOVER.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WWizAdwareCleaner.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\png1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_BACKGROUND.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_CLOSE.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_DOWN_ARROW.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LOGO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_MINIMIZE.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_UP_ARROW.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\COMPANYLOGO.ICO">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ID_PNG_SLIDER1.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\ID_PNG_SLIDER2.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

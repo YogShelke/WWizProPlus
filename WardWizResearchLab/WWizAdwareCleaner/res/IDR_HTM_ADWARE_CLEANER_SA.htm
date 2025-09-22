@@ -1,0 +1,1123 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<style>
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+    	@import url(IDR_CSS_VGRID.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		form#data-dialog > table > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			//text-align:right;
+			vertical-align:top;
+		}
+		@font-face {
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:722dip;
+			height:452dip;
+            overflow:hidden;
+			behavior:WardWizAdwareCleaner;
+		}
+        body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:1dip solid #000;
+		   color:#fff;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:720dip;
+			height:450dip;
+			overflow:hidden;
+		}
+		#header_close_bt{
+			height:60dip;
+			width:128dip;
+			margin-right:20dip;
+		}
+		/*frame[ready] {
+		  transition: slide-over-left(quad-in-out,800ms);
+		}*/
+		
+		
+		
+		//******** Menu Bar CSS *********//	
+	
+		.header{
+			flow:horizontal;
+			
+		}
+		.logo{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.inner_body{
+			width:718dip;
+			height:230dip;
+			overflow:hidden;
+			position:relative;
+			//border:1px solid white;
+			top:-2dip;
+		}
+		.footer_buttons{
+			width:200dip;
+			text-align:right;
+			height:40dip;
+			margin-left:7dip;
+		}
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:70dip;
+			height:18dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			font-size:11dip;
+			margin-right:5dip;
+			behavior:clickable;
+			cursor:pointer;
+		}
+		#header_content{
+			flow:horizontal;
+			background:rgba(0,0,0,.05);
+		}
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:697dip;
+			height:167dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: scroll;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:10dip!important;
+			margin-top:10dip!important;
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+			
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: auto;
+			vertical-scrollbar: my-v-scrollbar; 
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		
+		table th:nth-child(1)  {  width:0.08*; }
+		table th:nth-child(2)  {  width:0.2*; }		
+		table th:nth-child(3)  {  width:0.5*; }	
+		table th:nth-child(4)  {  width:0.2*; }	
+		
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center; width:0.08*;padding-top:2dip; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		
+		table td:nth-child(3) {  
+			text-align:left; 
+			width:0.5*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* third column */
+		
+		table td:nth-child(4) {   /* last column */
+			 text-align:left;
+			 overflow:hidden;        /* three line below - ellipsis */
+			 text-overflow:ellipsis;
+			 white-space:nowrap;
+			 width:.2*;
+			 border-left:1dip solid #bdbccc;
+		} /* last column */
+		
+	  
+	//*******************************************************************//
+		.scan_container{
+			flow:vertical;
+			margin-top:7dip;
+		}
+		.progress_bar_container{
+			padding-left:10dip;
+			min-height:30dip;
+			width:673dip;	
+		}
+		#progress_bar{
+			width:670dip;
+			height:15dip;
+			border:2dip solid #3b7ae2;
+			background:#afccfb;
+			padding:0;
+		}
+		.percentage_container{
+			text-align:center;
+			margin-top:-17dip;
+			color:#000;
+		}
+		progress#progress_bar
+		{
+			foreground:#2e71e0;  
+			foreground-position:20dip 20dip 20dip 20dip; 
+		}
+	  #scanning_path{
+		margin-top:0;
+		padding-left:10dip;
+		width:700dip;
+		height:18dip;
+		text-overflow:ellipsis;
+		overflow:hidden;
+		visibility:none;
+	  }
+	  #scanning_path:collapsed{
+		visibility:visible;
+	  }
+	  #scan_heading{
+		visibility:visible;
+	  }
+	  #scan_heading:collapsed{
+		visibility:none;
+	  }
+		#repair_button{
+		visibility:none;
+	  }
+	  #repair_button:collapsed{
+		visibility:visible;
+	  }
+      #ID_BUTTON_STOP{
+		visibility:none;
+	  }
+	  #ID_BUTTON_STOP:collapsed{
+		visibility:visible;
+	  }
+	  #close{
+		visibility:visible;
+	  }
+	  #close:collapsed{
+		visibility:none;
+	  }
+	  .condition_popup_body{
+		width:720dip;
+		height:530dip;
+		position:absolute;
+		top:-620dip;
+		text-align:center;
+		background:rgba(0,0,0,.1);
+		
+		opacity:0;
+		transition: opacity(sine-in-out, 600ms)
+					top(sine-in-out, 600ms);
+	  }
+	  .condition_popup_body:collapsed{
+		top:60dip;
+		opacity:1;
+	  }
+	  .condition_popup{
+		width:100%;
+		height:110dip;
+		padding-top:33dip;
+		background:rgba(0,8,44,.95);
+	  }
+	  .essential_background{
+		background:url(IDR_PNG_BACKGROUND.png) no-repeat;
+		background-size:cover;
+	  }
+	  #header_frame{
+			height:60dip;
+			width:589dip;
+	  }
+      #header_close_bt li{
+			list-style:none;
+            display:inline-block;
+            padding-right:4dip;
+            padding-top:10dip;
+	  }
+      .button_small{
+            width:70dip!important;
+            height:18dip!important;
+      }
+	  input  { 
+		context-menu:none; 
+	  } 
+	  .content_view_details:expanded{
+			opacity:1;
+			background:rgba(6,32,75,1);
+			transform:scale(1,1);
+			transition:transform(sine-in-out, 600ms);
+			z-index:9999;
+			position:absolute;
+			top:0;
+	  }
+	  .content_view_details:collapsed{
+			width:550dip;
+			height:235dip;
+			opacity:0;
+			transform:scale(-1,1);
+			transition:transform(sine-in-out, 600ms) 
+			opacity(sine-in-out, 600ms);
+			position:absolute;
+			z-index:-99;
+			top:0;
+	  }
+	  	
+	  #hide_details:collapsed{
+			visibility:none;
+	  }
+	  #hide_details:expanded{
+			visibility:visible;
+			cursor:pointer;
+	  }
+	  #show_details:expanded{
+			cursor:pointer;
+	  }
+	  #show_details:collapsed{
+			visibility:none;
+	  }
+	  #ID_BUTTON_SCAN:disabled{
+			opacity:0.5;
+	  }	
+	  #ID_BUTTON_CANCEL:disabled{
+			opacity:0.5;
+	  }	 
+	  rolodex {
+			prototype: Rolodex url(IDR_TIS_ROLODEX.tis);
+			display:block;
+			flow:stack;
+			size:max-content;
+			overflow:hidden;
+			width: 718dip;
+			behavior:clickable;
+			cursor:pointer;
+      }
+      rolodex > * { 
+			display:block;
+			visibility:hidden;
+      }
+      rolodex {
+			//border: 1dip solid #dcdcdc;
+      }
+      rolodex > img { 
+			width: 720dip;
+			height:147dip; 
+	  }	
+	  #ID_BUTTON_SCAN:collapsed{
+			visibility:none;
+	  }
+	  #ID_BUTTON_SCAN:expanded{
+			visibility:visible;
+	  }
+	  #ID_BTN_PAUSE_RESUME:collapsed{
+			visibility:none;
+	  }
+	  #ID_BTN_PAUSE_RESUME:expanded{
+			visibility:visible;
+	  }
+	  #ID_SELECT_ALL:collapsed{
+			visibility:none;
+	  }
+	  #ID_SELECT_ALL:expanded{
+			visibility:visible;
+	  }
+	  #ID_BUTTON_CLEAN:collapsed{
+			visibility:none;
+	  }
+	  #ID_BUTTON_CLEAN:expanded{
+			visibility:visible;
+	  }
+	  #ID_BUTTON_CLEAN:disabled{
+			opacity:0.5;
+	  } 
+	  #ID_SELECT_ALL:disabled{
+			opacity:0.5;
+	  } 
+	 div#lightbox-shim 
+	{
+	  position: fixed;
+	  width: 720dip;
+	  left: 0;
+	  top: 60dip;
+	  right: 0;
+	  bottom: 0;
+	  background-color:rgba(0,0,0,0.3);
+	  /* background: url(images/shim-bg.png) repeat; */
+	  /* background-image-transformation:color-schema("system"); */
+	  text-align:center;
+	}
+	.color_red{
+		color:red;
+	}
+	.color_white{
+		color:#dcdcdc;
+	}
+	#ID_ROLODEX_ONLINE:collapsed{
+		visibility:none;
+	}
+	#ID_ROLODEX_ONLINE:expanded{
+		visibility:visible;
+	}
+	#ID_ROLODEX_OFFLINE:collapsed{
+		visibility:none;
+	}
+	#ID_ROLODEX_OFFLINE:expanded{
+		visibility:visible;
+	}
+	.message_display_block p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:10dip;
+	  }
+	  .message_display_block {
+		background:rgba(0,8,44,.95);
+		position:absolute;
+		top:-70dip;
+		width:720dip;
+		height:60dip;
+		visibility:none;
+		margin-top:57dip;
+	  }
+	  .message_display_block:collapsed {
+		visibility:visible;
+		top:0;
+		transition:top(sine-in-out, 600ms);
+	  }
+	  ul#menu-bar /*top level menu*/
+		{
+		  behavior:menu-bar;
+		}
+		menu  
+		{
+			behavior:menu; /*is a menu*/
+			display:none; 
+			padding:0;
+			background:#022549;
+			border:1dip solid #164d86;
+			width:110dip;
+			margin-left:-52dip;
+			margin-top:7dip;
+		}
+		menu li{
+			width:110dip;
+			position:relative;
+			padding:5dip 10dip;
+			border-bottom:1dip solid #164d86;
+			color:#fff;
+			overflow-x:hidden;
+			text-align:left;
+			padding-left:10dip;
+		}
+		menu li:hover{
+			background:#fff;
+			color:#022549;
+		}
+		menu li:hover > .icon2{
+			margin-left:0;
+			transition:margin-left(sine-in-out, 400ms);
+		}
+		li[type="menu"]
+		{
+		  behavior:button popup-menu; 
+		}
+		#ID_OPTN_UNINSTALL:collapsed{
+			visibility: none;
+		}
+		#ID_OPTN_UNINSTALL:expanded{
+			visibility:visible;
+		}
+	</style>
+	<script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	</script>
+	<script type="text/tiscript">
+    var records = new Array(0);
+    var varThreatFoundCount = 0;
+    var vlistObj;
+    var vCheckBox = $(body);
+    var allDrive = 1;
+    var m_bIsScanning = false;
+    var bIsThreatFound = false;
+    var bIsRebootReqd = false;
+    var varTotalFile;
+    var bIsScanInProgress = false;
+    var IsScanning = 1;
+	var progress = $(#progress_bar);	
+	var bIsDuplicateFound = false;
+    </script>
+
+	<script type="text/tiscript">
+    var NewPath = "" ;
+    var varFilePath = "";
+    include "IDR_TIS_DECORATORS.tis";
+    var records = new Array(0);
+    </script>
+	<script type="text/tiscript">
+    const selectAll = vCheckBox.$(input#select-all);
+    vCheckBox.on("change","#select-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var record in records )
+        record.selected = selected;
+    });
+    </script>  
+	<script type="text/tiscript">
+		$(body).onClick = function ()
+		{
+			$(.message_display_block).state.collapsed = false;
+		}
+		$(#ID_BUTTON_SCAN).onClick = function()
+		{
+			varVirusCount = 0;
+			bIsScanInProgress = true;
+			IsScanning = 1;
+			bIsThreatFound = false;
+			$(#ID_BUTTON_SCAN).state.collapsed = true;
+			$(#ID_BTN_PAUSE_RESUME).state.expanded = true;
+			$(#ID_BTN_PAUSE_RESUME).text = "Pause";
+			$(#scan_heading).text = "Scanning in progress...";
+			$(#ID_BUTTON_CANCEL).text = "Stop";
+			$(#ID_BUTTON_CLEAN).state.disabled = true;
+			$(#ID_OPTN_UNINSTALL).state.disabled = true;
+			self.select("#ID_DETECT_CNT").attributes.addClass("color_white");
+			records.length = 0;
+			progress.value = 0;
+			$(#ID_SCANNED_CNT).text = "Scanned: 0";
+			$(#ID_DETECT_CNT).text = "Detected: 0";
+			$(#ID_CLEANED_CNT).text = "Cleaned: 0";
+			$(#percentage).text = progress.value.toInteger();
+			$(.message_display_block).state.collapsed = false;
+			$(#ID_OPTN_RECOVER).state.disabled = true;
+			view.StartAdwareScan(OnAddAdwareEntry,SetScanFinishedStatus,SetScanPercentage);
+		}
+		function ShowScanDetails()
+		{
+			$(#show_details).state.collapsed = true;
+			$(#hide_details).state.expanded = true;
+			$(.content_view_details).state.expanded = true;
+			$(.content_progress_bar).state.collapsed = true;
+			$(#ID_SELECT_ALL).state.expanded = true;
+			$(#ID_BUTTON_CLEAN).state.expanded = true;
+			if(varVirusCount > 0 && bIsScanInProgress == false)
+			{
+				$(#ID_BUTTON_CLEAN).state.disabled = false;
+			}
+			else
+			{
+				$(#ID_BUTTON_CLEAN).state.disabled = true;
+			}
+		}
+
+		function UpdateUIStatus(strTotalCleanedCount, bIsRebootReqdforFiles)
+		{
+			bIsRebootReqd = bIsRebootReqdforFiles;
+			for(var varCount=0; varCount < records.length; varCount++)
+			{
+				if(records[varCount].selected == true && records[varCount].ActionTaken == "Detected")
+				{
+					records[varCount].ActionTaken = "Cleaned";
+					$(#ID_CLEANED_CNT).text = strTotalCleanedCount;
+				}
+			}
+			if(bIsRebootReqd == true)
+			{
+				$(#StatusMessage).text = "In order to ensure the proper removal of adware, your System must be restarted. Do you want to restart now?";
+				var  res = dialog { body:$(form#simple-dialog),
+							 buttons: [ { caption: "Yes", value:true },
+										{ caption: "No", value:false }]
+							};
+				if(res =="true")
+				{
+					view.OnClickReboot();
+				}
+				else
+				{
+					$(.message_display_block).state.collapsed = true;
+					$(#ID_STATUS_MSG).text = "Threats cleaned successfully.";
+					return;
+				}
+			}
+			else
+			{
+				$(.message_display_block).state.collapsed = true;
+				$(#ID_STATUS_MSG).text = "Threats cleaned successfully.";
+			}
+		}		
+
+		function OnClose()
+		{
+			$(.message_display_block).state.collapsed = false;
+			var bselected = false;
+			for( var rec in records)
+			{
+				bIsThreatFound = false;
+				if(rec.ActionTaken == "Detected")
+				{
+					bIsThreatFound = true;
+					break;
+				}	
+			}
+			if(bIsScanInProgress == false && bIsThreatFound == false)
+			{
+				view.CloseUI();
+			}
+			else
+			{
+				if(IsScanning == 1)
+				{
+					view.OnClickPause();
+				}
+				if(bIsScanInProgress == true)
+				{
+					$(#StatusMessage).text = "Scanning is in progress. Do you want to stop?";
+					var  res = dialog { body:$(form#simple-dialog),
+                             buttons: [ { caption: "Yes", value:true },
+                                        { caption: "No", value:false }]
+                            };
+					if(res =="true")
+					{
+						bIsScanInProgress = false;
+						$(#scan_heading).text = "Scanning aborted";
+						$(#ID_BUTTON_CLEAN).state.disabled = false;
+						$(#ID_BTN_PAUSE_RESUME).state.collapsed = true;
+						$(#ID_BUTTON_CANCEL).text = "Close";
+						$(#ID_BUTTON_SCAN).state.expanded = true;
+						$(#ID_OPTN_RECOVER).state.disabled = false;
+						view.OnStopCleaning();
+						if(varVirusCount > 0)
+						{
+							bIsThreatFound = true;
+							ShowScanDetails();
+						}
+						else
+						{
+							return;
+						}
+					}
+					else
+					{
+						$(#ID_BTN_PAUSE_RESUME).text = "Pause";
+						$(#scan_heading).text = "Scanning in progress...";
+						IsScanning = 1;
+						view.OnClickResume();
+						return;
+					}
+				}
+				else if(bIsThreatFound)
+				{
+					$(#StatusMessage).text = "Threats are detected. Do you want to close?";
+					var  res = dialog { body:$(form#simple-dialog),
+                             buttons: [ { caption: "Yes", value:true },
+                                        { caption: "No", value:false }]
+                            };
+					if(res =="true")
+					{
+						view.CloseUI();
+					}
+					else
+					{
+						return;
+					}
+				}
+			}
+		}
+	</script>
+	<script type="text/tiscript">
+    $(#show_details).onClick = function()
+    {
+        ShowScanDetails();
+    }
+    $(#hide_details).onClick = function()
+    {
+        $(#hide_details).state.collapsed = true;
+        $(#show_details).state.expanded = true;
+        $(.content_progress_bar).state.expanded = true;
+        $(.content_view_details).state.collapsed = true;
+        $(#ID_SELECT_ALL).state.collapsed = true;
+        $(#ID_BUTTON_CLEAN).state.collapsed = true;
+    }
+    $(#ID_BTN_PAUSE_RESUME).onClick = function()
+    {
+        if(IsScanning == 1)
+        {
+			$(#scan_heading).text = "Scanning paused";
+            $(#ID_BTN_PAUSE_RESUME).text = "Resume";
+            IsScanning = 2;
+            view.OnClickPause();
+        }
+        else if(IsScanning == 2)
+        {
+			$(#scan_heading).text = "Scanning in progress...";
+            $(#ID_BTN_PAUSE_RESUME).text = "Pause";
+            IsScanning = 1;
+            view.OnClickResume();
+        }
+    }
+    $(#ID_BTN_CLOSE).onClick = function()
+    {
+        OnClose();
+    }
+    $(#ID_BUTTON_CANCEL).onClick = function()
+    {
+        OnClose();
+    }
+    $(#ID_PNG_LOGO_REVERT).onClick = function()
+    {
+        Sciter.launch("http://www.wardwiz.in");
+    }
+    $(#ID_ROLODEX_OFFLINE).onClick = function()
+    {
+        Sciter.launch("http://www.wardwiz.in");
+    }
+    $(#ID_ROLODEX_ONLINE).onClick = function()
+    {
+        Sciter.launch("http://www.wardwiz.in");
+    }
+    $(#ID_BUTTON_CLEAN).onClick = function()
+    {
+        $(.message_display_block).state.collapsed = false;
+        var bselected = false;
+        for( var rec in records)
+        {
+            bselected = rec.selected;
+			bIsThreatFound = false;
+            if(rec.selected == true && rec.ActionTaken == "Detected")
+            {
+                bselected = true;
+				bIsThreatFound = true;
+                break;
+            }
+        }
+        if(bselected == false || bIsThreatFound == false)
+        {
+            $(#StatusMessage).text = "Please select atleast one valid entry to clean.";
+            var res = dialog { body:$(form#simple-dialog), buttons: [ {caption: "OK", role:#ok, value:true}]};
+        }
+        else
+        {
+			bIsThreatFound = false;
+			for( var rec in records)
+			{
+				bselected = rec.selected;
+				if(rec.selected == true && rec.ActionTaken == "Detected")
+				{
+					bIsThreatFound = true;
+				}
+			}
+			view.OnCleanEntries(records,UpdateUIStatus);
+		}
+    }
+    $(#ID_BTN_MINIMIZE).onClick = function()
+    {
+        view.OnClickMinimize();
+    }
+	$(#ID_OPTN_RECOVER).onClick = function()
+	{
+		$(.message_display_block).state.collapsed = false;
+		$(#ID_BUTTON_SCAN).state.disabled = true;
+		$(#ID_BUTTON_CANCEL).state.disabled = true;
+		$(#show_details).state.disabled = true;
+		$(#hide_details).state.disabled = true;
+		$(#ID_PNG_LOGO_REVERT).state.disabled = true;
+		$(#ID_BTN_OPTIONS).state.disabled = true;
+		$(#ID_BTN_MINIMIZE).state.disabled = true;
+		$(#ID_BTN_CLOSE).state.disabled = true;
+		$(#ID_ROLODEX_OFFLINE).state.disabled = true;
+		$(#ID_ROLODEX_ONLINE).state.disabled = true;
+		$(#ID_BUTTON_CLEAN).state.disabled = true;
+		view.dialog { url: self.url("IDR_HTM_ADWARE_RECOVER.htm")};
+	}
+	$(#ID_OPTN_HELP).onClick = function()
+	{
+		Sciter.launch("http://wardwiz.com/WardWiz-help/Essential");
+	}
+	$(#ID_OPTN_FEEDBACK).onClick = function()
+	{
+		Sciter.launch("http://www.wardwiz.com/feedback");
+	}
+    $(#ID_OPTN_UNINSTALL).onClick = function()
+	{
+		view.OnClickUninstall();
+	}
+	function FunCallEnableButtons()
+	{
+		$(#ID_BUTTON_SCAN).state.disabled = false;
+		$(#ID_BUTTON_CANCEL).state.disabled = false;
+		$(#show_details).state.disabled = false;
+		$(#hide_details).state.disabled = false;
+		$(#ID_PNG_LOGO_REVERT).state.disabled = false;
+		$(#ID_BTN_OPTIONS).state.disabled = false;
+		$(#ID_BTN_MINIMIZE).state.disabled = false;
+		$(#ID_BTN_CLOSE).state.disabled = false;
+		$(#ID_ROLODEX_OFFLINE).state.disabled = false;
+		$(#ID_ROLODEX_ONLINE).state.disabled = false;
+		$(#ID_BUTTON_CLEAN).state.disabled = false;
+	}
+    </script>
+	<script type="text/tiscript">
+    var varVirusCount = 0;
+	function CheckForUninstall(strIsWardWizPresent)
+	{
+		var varIsWardWizPresent = strIsWardWizPresent;
+		if(varIsWardWizPresent == 1)
+		{
+			$(#ID_OPTN_UNINSTALL).state.collapsed = true;
+		}
+		else
+		{
+			$(#ID_OPTN_UNINSTALL).state.expanded = true;
+		}
+	}
+	function CheckInternetFn(strCheckInternet)
+	{
+		var varCheckInternet = strCheckInternet;
+		if(varCheckInternet == 1)
+		{
+			$(#ID_ROLODEX_OFFLINE).state.collapsed = true;
+			$(#ID_ROLODEX_ONLINE).state.expanded = true;
+		}
+		else
+		{
+			$(#ID_ROLODEX_OFFLINE).state.expanded = true;
+			$(#ID_ROLODEX_ONLINE).state.collapsed = true;
+		}
+	}
+    function FunLoadDBStatus(varLoadStatusAC)
+    {
+        var varLoadStatus = varLoadStatusAC;
+        bIsScanInProgress = false;
+        if(varLoadStatus == 0)
+        {
+            $(#ID_BUTTON_SCAN).state.disabled = true;
+            $(#ID_BUTTON_CANCEL).state.disabled = true;
+            $(#scan_heading).text = "Loading Database... Please Wait";
+        }
+        else
+        {
+            $(#ID_BUTTON_SCAN).state.disabled = false;
+            $(#ID_BUTTON_CANCEL).state.disabled = false;
+            $(#scan_heading).text = "Ready... Please click on scan button to continue";
+        }
+    }
+    function OnAddAdwareEntry(strThreatName, strPath, strStatus, strType)
+    {
+		var varThreatPath = strPath;
+		bIsDuplicateFound = false;	
+		$(#ID_SELECT_ALL).state.disabled = false;
+		self.select("#ID_DETECT_CNT").attributes.removeClass("color_white");
+        self.select("#ID_DETECT_CNT").attributes.addClass("color_red");
+		if(varVirusCount == 0)
+        {
+			records[varVirusCount] = {selected: true, ThreatName: strThreatName, FilePath: strPath, ActionTaken: strStatus, ThreatType: strType};
+			varVirusCount++;
+			$(#ID_DETECT_CNT).text = "Detected: "+varVirusCount;
+        }
+        else
+        {
+			for( var rec in records)
+			{
+				var temp = rec.FilePath;
+				if(varThreatPath == temp )
+				{
+					bIsDuplicateFound = true;
+                    break;
+				}
+			}
+			if(bIsDuplicateFound == false)
+			{
+				records[varVirusCount] = {selected: true, ThreatName: strThreatName, FilePath: strPath, ActionTaken: strStatus, ThreatType: strType};
+				varVirusCount++;
+				$(#ID_DETECT_CNT).text = "Detected: "+varVirusCount;
+			}
+        }
+    }
+    function SetScanFinishedStatus()
+    {
+        $(#ID_BUTTON_CANCEL).text = "Close";
+        $(#ID_BUTTON_SCAN).state.expanded = true;
+        $(#ID_BTN_PAUSE_RESUME).state.collapsed = true;
+        bIsScanInProgress = false;
+		$(#ID_BUTTON_SCAN).state.disabled = false;
+		$(#ID_STATUS_MSG).text = "Scanning has been completed successfully!!";
+		$(.message_display_block).state.collapsed = true;
+		$(#ID_OPTN_RECOVER).state.disabled = false;
+		$(#ID_OPTN_UNINSTALL).state.disabled = false;
+        if(varVirusCount > 0)
+        {
+			bIsThreatFound = true;
+			$(#ID_BUTTON_CLEAN).state.disabled = false;
+            $(#scan_heading).text = "Scanning completed, please verify entries and click on clean button.";
+			ShowScanDetails();
+        }
+        else
+        {
+			$(#ID_BUTTON_CLEAN).state.disabled = true;
+            $(#scan_heading).text = "Scanning finished";
+        }
+        progress.value = 100;
+        $(#percentage).text = progress.value.toInteger();
+    }
+    function SetScanStatus(evt)
+    {
+        var strScannedCount = evt.data.one.toString();
+        //var strDetectedCount = evt.data.two.toString();
+        var strRemovedCount = evt.data.three.toString();
+        $(#ID_SCANNED_CNT).text = strScannedCount;
+        //$(#ID_DETECT_CNT).text = strDetectedCount;
+        $(#ID_CLEANED_CNT).text = strRemovedCount;
+    }
+    const SETSCAN_EVENT = 0x100 + 1;
+    self.subscribe(SetScanStatus, Event.BEHAVIOR_EVENT, SETSCAN_EVENT);
+    function SetScanPercentage()
+    {
+        var Percentage = view.OnCallTimer();
+
+        if( progress.value >= 100 )
+        {
+            progress.value = 100;
+            return;
+        }
+        progress.value = Percentage;
+        $(#percentage).text = progress.value.toInteger();
+        self.timer(500ms,SetScanPercentage);
+    }
+    </script>
+	<script type="text/tiscript">
+    function self.ready()
+    {
+        //self.language = g_LanguageName;
+        $(.main).attributes.addClass("essential_background");
+        $(#show_details).state.expanded = true;
+        $(#hide_details).state.collapsed = true;
+        $(.content_progress_bar).state.expanded = true;
+        $(.content_view_details).state.collapsed = true;
+        $(#ID_SELECT_ALL).state.collapsed = true;
+        $(#ID_BUTTON_CLEAN).state.collapsed = true;
+        $(#ID_BTN_PAUSE_RESUME).state.collapsed = true;
+        view.LoadDB(FunLoadDBStatus,CheckInternetFn,CheckForUninstall);
+        vlistObj = $(#idtable);
+        vlistObj.value = records;
+        vlistObj.on("change","tbody > tr", function()
+        {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAll.value = false;
+        });
+        $(#ID_SELECT_ALL).state.disabled = true;
+    }
+    </script>
+
+    <form #simple-dialog caption="Simple!">
+        <p #StatusMessage></p>
+    </form>
+  </head>
+            <body>
+			
+			<div class="condition_popup_body">
+				<div class="condition_popup">
+					<p>Scanning is in progress. Do you want to stop?</p>
+					<button .scan_button #yes_option>Yes</button>
+					<button .scan_button #no_option>No</button>
+				</div>
+			</div>
+			
+            <div .main>
+                <div #header_content>
+                    <div #header_frame>
+                        <div .header>
+							<div .logo .frame_display_src #ID_PNG_LOGO_REVERT>
+                                <img src="IDR_PNG_LOGO.png">
+                            </div>
+							<div role="window-caption" style="width:439dip;">
+								<h2 style="color:#fff;text-align:center; font-weight:450;padding:0;margin:0;margin-top:10dip;padding-top:0;"><label>WardWiz Adware Cleaner</label></h2>
+								<h3 style="color:#fff;text-align:center; font-weight:100;padding:0;margin:0;margin-top:0;padding-left:5dip;padding-top:0;"><label>Get rid of any adware, unwanted toolbars from your computer.</label></h3>
+							</div>
+                        </div>
+                    </div>
+					<div #header_close_bt style="padding-left:0;">
+						<ul #menu-bar>
+							<li .clickable_cl #ID_BTN_OPTIONS type="menu">Options
+								<menu>
+									<li #ID_OPTN_RECOVER>Recover Files</li>
+									<li #ID_OPTN_HELP>Online Help</li>
+									<li #ID_OPTN_FEEDBACK>Feedback</li>
+									<li #ID_OPTN_UNINSTALL>Uninstall</li>
+								</menu>
+							</li>
+							<li .clickable_cl .frame_display_src #ID_BTN_MINIMIZE><img src="IDR_PNG_MINIMIZE.png"></li>
+                            <li .clickable_cl .frame_display_src #ID_BTN_CLOSE><img src="IDR_PNG_CLOSE.png"></li>
+						</ul>
+                    </div>
+                </div>
+				
+				<div style="height:150dip;background:rgba(0,0,0,.2);box-shadow:0 0 6dip #888888;">
+                    <!-- <p #ID_RESULT style="padding-top:20dip;">WardWiz Adware Cleaner</p> -->
+					<rolodex #ID_ROLODEX_OFFLINE>
+						<img src="ID_PNG_SLIDER1.png">
+						<img src="ID_PNG_SLIDER2.png">
+						<img src="ID_PNG_SLIDER1.png">
+						<img src="ID_PNG_SLIDER2.png">
+						<img src="ID_PNG_SLIDER1.png">
+						<img src="ID_PNG_SLIDER2.png">
+						<img src="ID_PNG_SLIDER1.png">
+						<img src="ID_PNG_SLIDER2.png">
+					</rolodex>
+					<rolodex #ID_ROLODEX_ONLINE>
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner1.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner2.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner1.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner2.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner1.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner2.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner1.png">
+						<img src="http://wardwiz.com/advertise/images/adcleanerbanner2.png">
+					</rolodex>
+				</div>
+            <div .inner_body>
+				<div .content_progress_bar style="background:rgba(0,0,0,.2);height:166dip;box-shadow:0 0 6dip #888888;width:697dip;margin:10dip;margin-top:11dip;">
+					<div .scan_container>
+						<h3 #scan_heading style="color:#fff;padding-left:10dip;font-weight:100;">Scan Status:</h3>
+                        <div class="progress_bar_container">
+                            <div><progress #progress_bar max="100" value="0"/></div>
+                            <p .percentage_container><span #percentage>0</span>%</p>
+                        </div>
+                        <div style="text-align:right;flow:horizontal;margin-top:7dip;">
+							<div style="width:160dip;">
+								<h3 #ID_SCANNED_CNT style="color:#fff;text-align:left; font-weight:100;margin-left:0;margin-top:0;padding-left:10dip;">Scanned: 0</h3>
+							</div>
+							<div style="width:160dip;">
+								<h3 #ID_DETECT_CNT style="text-align:left; font-weight:100;margin-top:0;padding-left:0;">Detected: 0</h3>
+							</div>
+							<div style="width:160dip;">
+								<h3 #ID_CLEANED_CNT style="color:#fff;text-align:left; font-weight:100;margin-top:0;padding-left:0;">Cleaned: 0</h3>
+							</div>
+							<div .footer_buttons>
+								<button .scan_button .button_small #ID_BUTTON_SCAN .dfn src="">Scan</button><button .scan_button .button_small #ID_BTN_PAUSE_RESUME  .dfn src="">Pause</button><button .scan_button .button_small #repair_button  .dfn src=""><label>ID_REPAIR</label></button><button .scan_button .button_small #ID_BUTTON_CANCEL .dfn src="">Cancel</button>
+							</div>
+						</div>
+                    </div>
+				</div>
+				<div .content_view_details style="height:180dip;">
+                    <table #idtable style="margin:0;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th><label>Type</label></th>
+                                <th><label>File Path</label></th>
+                                <th><label>Action</label></th>
+                            </tr>
+                        </thead>
+						<tbody>
+                            <tr><td><input(selected)|checkbox style="margin-top:5dip;"/></td><td(ThreatName)></td><td(FilePath)></td><td(ActionTaken)></td></tr>
+                        </tbody>    
+                    </table>
+                    
+				</div>
+				<div style="height:27dip;flow:horizontal;">
+					<div style="width:100dip;margin-left:13dip;">
+						<div #ID_SELECT_ALL style="padding-left:15dip;">
+							<input type="checkbox" #select-all checked><label for="select_all">Select All</label>
+						</div>
+					</div>
+					<div style="margin-left:170dip;text-align:center;margin-bottom:40dip;width:150dip;height:30dip;">	
+						<p #show_details style="display:inline-block;"><img src="IDR_PNG_DOWN_ARROW.png"> <label>Show Details</label></p>
+						<p #hide_details style="display:inline-block;"><img src="IDR_PNG_UP_ARROW.png"><label> Hide Details</label></p>
+					</div>	
+					<div style="margin-left:187dip;">				
+						<button .scan_button .button_small #ID_BUTTON_CLEAN .dfn src="">Clean</button>
+					</div>
+				</div>
+            </div>
+				<div .message_display_block>
+					<p #ID_STATUS_MSG>Scanning has been completed successfully!!</p>
+				</div>
+            </div>
+            </body>
+            </html>

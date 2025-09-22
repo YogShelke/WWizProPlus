@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DriverInstall">
+      <UniqueIdentifier>{f6c8035b-700e-4b20-b025-a491d7f25f5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{68a8706a-19e5-4e56-a22d-9d8f6cb797d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{076ddc49-24f6-46ab-ae15-79bded4697f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ISpyEmail">
+      <UniqueIdentifier>{c3d2f65e-d5eb-4eda-a4d6-8da7b44bcf65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ISpyScanner">
+      <UniqueIdentifier>{d1d43a64-2a53-4c2f-a5a9-5200e7ac1198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{c52e513b-c6cf-4d39-ba8a-a693c37fb6b8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WardWizPreInstallScan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizPreInstallScanDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CScannerLoad.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CSecure64.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\DriverConstants.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\iSpyMemMapServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\PipeConstants.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDataManager.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyList.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WrdwizEncDecManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\ISpyScanner.h">
+      <Filter>ISpyScanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\SAVAPIClient.h">
+      <Filter>ISpyScanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDBManipulation.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\BDClient.h">
+      <Filter>ISpyScanner</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WardWizPreInstallScan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizPreInstallScanDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CScannerLoad.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CSecure64.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDataManager.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyList.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\ExcludeFilesFolders.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\ScanByName.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WrdwizEncDecManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\ISpyScanner.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\SAVAPIClient.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDBManipulation.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\BDClient.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizPreInstallScan.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WardWizPreInstallScan.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WardWizPreInstallScan.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

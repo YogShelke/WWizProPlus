@@ -1,0 +1,337 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\WardWizRegistration.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Vibranium"
+            VALUE "FileDescription", "Vibranium Registration Module"
+            VALUE "FileVersion", "1.0.0.5"
+            VALUE "InternalName", "VBRegistration.DLL"
+            VALUE "LegalCopyright", "www.vibranium.co.in"
+            VALUE "OriginalFilename", "VBRegistration.DLL"
+            VALUE "ProductName", "Vibranium"
+            VALUE "ProductVersion", "1.0.0.4"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_REGISTRATION_THIRD DIALOGEX 0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_STATIC_PRELOAD,"Static",SS_BLACKRECT,123,41,20,20,WS_EX_TRANSPARENT
+    LTEXT           "Connecting to server",IDC_STATIC_CONNECTTOSERVER_TEXT,96,89,105,9
+	CONTROL         "", IDC_STATIC_CORRECT_PIC, "Static", SS_BITMAP, 19, 28, 15, 13
+	CONTROL         "", IDC_STATIC_FAILED_PIC, "Static", SS_BITMAP, 189, 17, 15, 13
+    LTEXT           "Registration successful",IDC_STATIC_CORRECT_MSG,35,126,74,8
+    LTEXT           "Registration failed",IDC_STATIC_FAILED_MSG,135,142,59,8
+    DEFPUSHBUTTON   "Finish",IDC_BUTTON_THIRD_FINISH,179,98,50,14
+    PUSHBUTTON      "Cancel",IDC_BUTTON_THIRD_CANCEL,221,122,50,14
+END
+
+IDD_DIALOG_REGISTRATION DIALOGEX 0, 0, 316, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMBO_TITLE,56,38,48,59,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_FIRSTNAME,69,57,37,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LASTNAME,198,60,57,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TELEPHONENO,235,84,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_EMAILID,69,78,37,19,ES_LOWERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_REENTER_EMAIL,131,82,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_REGISTATIONKEY,58,107,40,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    PUSHBUTTON      "",IDC_BUTTON_REGISTRATION_NEXT,159,132,50,14
+    PUSHBUTTON      "",IDC_BUTTON_REGISTRATION_CANCEL,231,130,45,18
+    PUSHBUTTON      "",IDC_BUTTON_MINIMIZE,227,11,18,14
+    PUSHBUTTON      "",IDC_BUTTON_CLOSE,253,9,26,14
+    LTEXT           "",IDC_STATIC_TITLE,21,38,8,8
+    LTEXT           "",IDC_STATIC_FIRSTNAME,19,58,8,8
+    LTEXT           "",IDC_STATIC_LASTNAME,147,62,32,10
+    LTEXT           "",IDC_STATIC_EMAIL_ID,24,82,15,10
+    LTEXT           "",IDC_STATIC_TELEPHONENO,151,83,44,20
+    LTEXT           "",IDC_STATIC_REQUIREDFIELD,263,56,40,9
+    LTEXT           "Registration Key*:",IDC_STATIC_REGISTRATIONKEY,22,110,38,16
+    CONTROL         "",IDC_CHECK_NEWSLETTER,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,24,148,8,10
+    LTEXT           "I want to participate in iTIN Newsletter",IDC_STATIC_NEWSLETTER,52,145,93,12,NOT WS_VISIBLE
+    LTEXT           "",IDC_STATIC_INFO,26,20,74,8,0,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_STATIC_PRELOADER,"Static",SS_BLACKRECT,129,12,20,20
+    LTEXT           "Connecting To Server",IDC_STATIC_CONNECTTOSERVER,125,114,50,8
+	CONTROL         "", IDC_STATIC_PICTURE, "Static", SS_BITMAP, 156, 15, 15, 13
+    LTEXT           "Registration Successful",IDC_STATIC_SUCCESS,202,107,65,8
+    LTEXT           "",IDC_STATIC_REQUEST,65,130,60,8
+    LTEXT           "Registration Failed",IDC_STATIC_REGFAILED,249,109,60,8
+	CONTROL         "", IDC_STATIC_FAILED_PIC, "Static", SS_BITMAP, 173, 9, 15, 13
+    LTEXT           "For eg. AF12YH78S",IDC_STATIC_KEYEXAMPLE,161,154,64,8
+    LTEXT           "Static",IDC_STATIC_USER_TEXT,228,157,66,8
+	CONTROL         "", IDB_STATIC_REG_HEADER, "Static", SS_BITMAP, 165, 35, 15, 13
+    LTEXT           "",IDC_STATIC_REG_HEADER,200,38,33,8,0,WS_EX_TRANSPARENT
+	CONTROL         "", IDC_STATIC_LOGO, "Static", SS_BITMAP, 7, 7, 15, 13
+    LTEXT           "All rights Reserved.",IDC_STATIC_REGISTRATION_RIGHTS,15,165,39,8
+    LTEXT           "",IDC_STATIC_EMAIL_ID_STAR,45,81,8,8
+    LTEXT           "*",IDC_STATIC_STAR_CONTACTNO,199,82,8,8
+    LTEXT           "Static",IDC_STATIC_CONFIRM_EMAIL,23,97,19,8
+    LTEXT           "*",IDC_STATIC_STAR_CONFIRM_EMAIL,15,84,8,8
+	CONTROL         "", IDC_STATIC_SPLITIMAGE, "Static", SS_BITMAP, 281, 12, 20, 20
+END
+
+IDD_DIALOG_REGISTARTION_SECONGDLG DIALOGEX 0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "",IDC_BUTTON_BACK,41,147,46,20
+    PUSHBUTTON      "Next >",IDC_BUTTON_NEXT,113,146,60,18
+    PUSHBUTTON      "Cancel",IDC_BUTTON_CANCEl,197,146,44,16
+    LTEXT           "Please note that internet connection is required.",IDC_STATIC_INTERNET_TEXT,59,33,72,8
+    LTEXT           "Active Product  (Registration key required)",IDC_STATIC_ACTIVEPRODUCT,47,68,186,10
+    CONTROL         "",IDC_RADIO_ACTIVEPRODUCT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,67,16,10
+    CONTROL         "",IDC_RADIO_TRY_PRODUCT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,22,116,16,10
+    LTEXT           "Try Product",IDC_STATIC_TRYPRODUCT_TEXT,55,118,38,8
+    LTEXT           " static (click for activate product)",IDC_STATIC_CLICKINFO_ACTIVEPRODUCT,29,17,106,8
+    EDITTEXT        IDC_EDIT_REGISTRATION_KEY,42,82,99,8,ES_UPPERCASE | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "(e.g 123456789012)",IDC_STATIC_EXAMPLE,61,98,77,8
+    LTEXT           "(Click here if you want to test the product for 30 days)",IDC_STATIC_CLICK_TRYPRODUCT,47,49,176,8
+    CONTROL         "",IDC_RADIO_ONLINE_ACTIVATION,"Button",BS_AUTORADIOBUTTON | WS_GROUP,163,98,16,10
+    CONTROL         "",IDC_RADIO_OFFLINE_ACTIVATION,"Button",BS_AUTORADIOBUTTON | WS_GROUP,145,116,12,9
+    LTEXT           "Static",IDC_STATIC_ONLINE_ACTIVATION,225,98,19,8
+    LTEXT           "Static",IDC_STATIC_OFFLINE_ACTIVATION,219,119,19,8
+END
+
+IDD_DIALOG_REGISTARTION_POPUP_MSG DIALOGEX 0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Register Now",IDC_BUTTON_REGISTERNOW_REGISTARTION,183,130,50,14
+    LTEXT           "Trial version of application has expired",IDC_STATIC_EXPIRED_TEXT,137,66,124,8
+    PUSHBUTTON      "",IDC_BUTTON_REGMSG_MINIMIZE,189,21,50,14,WS_GROUP
+    PUSHBUTTON      "",IDC_BUTTON_REGMSG_CLOSE,252,21,50,14,NOT WS_TABSTOP
+	CONTROL         "", IDC_STATIC_MSGICON_PIC, "Static", SS_BITMAP, 52, 55, 20, 20
+    LTEXT           "You should purchase a product to continue using our service",IDC_STATIC_DESCRIPTION,58,97,194,8
+    PUSHBUTTON      "Buy Now",IDC_BUTTON_REGMSG_BUYNOW,79,130,50,14
+    CONTROL         "",IDC_CHECK_DO_NOT_SHOW_AGAIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,27,155,16,10
+    LTEXT           "Don't show again",IDC_STATIC_DO_NOT_SHOW_AGAIN,50,156,119,11
+    PUSHBUTTON      "Continue",IDC_BUTTON_CONTINUE,243,151,50,14
+END
+
+IDD_DIALOG_PRODUCT_INFORMATION DIALOGEX 0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "",IDC_BUTTON_PROD_CLOSE,249,7,50,14,NOT WS_TABSTOP
+    LTEXT           "Product Information",IDC_STATIC_PRODUCT_INFO,21,8,65,8,WS_TABSTOP
+    LTEXT           "Registered to    :",IDC_STATIC_REGISTERTO,20,22,55,8
+    LTEXT           "Email ID             :",IDC_STATIC_EMAILID,17,35,58,11
+    LTEXT           "No.of days left  :",IDC_STATIC_NOOFDAYSLEFT_PROD,16,50,56,8
+    LTEXT           "Product Edition  :",IDC_STATIC_EDITION,17,64,56,8
+    LTEXT           "Static",IDC_STATIC_WHOLENAME,93,22,19,8
+    LTEXT           "Static",IDC_STATIC_REGISTEREDEMAILID,86,36,19,8
+    LTEXT           "Static",IDC_STATIC_NOOFDAYS,82,50,19,8
+    LTEXT           "Static",IDC_STATIC_EDITION_INSTALLED,79,64,19,8
+    LTEXT           "Product Version :",IDC_STATIC_VERSION,14,78,72,8
+    LTEXT           "1.0.0.3",IDC_STATIC_VERSIONNO,96,78,25,8
+    PUSHBUTTON      "OK",IDC_BUTTON_OK,164,151,50,14
+    LTEXT           "Product key :",IDC_STATIC_PRODUCT_KEY,17,97,44,8
+    LTEXT           "XXX-XXX-XXX",IDC_STATIC_PRODUCT_KEY_NO,83,97,42,8
+    LTEXT           "Data Encryption Version:",IDC_STATIC_DATA_ENC_TEXT,25,118,80,8
+    LTEXT           "Static",IDC_STATIC_DATAENC_VERSION,121,118,19,8
+END
+
+IDD_DIALOG_REGISTRATION_FORTH DIALOGEX 0, 0, 316, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ACTIVATION_CODE,55,85,25,12,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ACTIVATION_CODE_TWO,92,84,40,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ACTIVATION_CODE_THIRD,142,84,40,14,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ACTIVATION_CODE_FORTH,192,84,25,12,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ACTIVATION_CODE_FIFTH,226,86,24,12,ES_UPPERCASE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ACTIVATION_CODE_SIXTH,263,85,30,12,ES_UPPERCASE | ES_AUTOHSCROLL
+    PUSHBUTTON      "Button2",IDC_BUTTON_FORTH_NEXT,195,140,50,14
+    PUSHBUTTON      "Button3",IDC_BUTTON_FORTH_CANCEL,247,114,50,14
+    PUSHBUTTON      "Button1",IDC_BUTTON_FORTH_BACK,23,147,50,14
+    LTEXT           "Static",IDC_STATIC_REQUEST_FOR_ACTIVATION_CODE,29,86,19,8
+    LTEXT           "Static",IDC_STATIC_FORTH_DLG_HEADER_MSG,25,26,19,8
+    LTEXT           "Static",IDC_STATIC_INSTALL_CODE,33,46,19,8
+    LTEXT           "Static",IDC_STATIC_ACTIVATION_CODE,23,127,19,8
+    EDITTEXT        IDC_EDIT_INSTALLATION_CODE,85,47,40,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | WS_GROUP,WS_EX_TRANSPARENT
+    LTEXT           "__",IDC_STATIC_FIRST_HYPHEN,82,83,9,8
+    LTEXT           "__",IDC_STATIC_SEC_HYPHEN,133,83,9,8
+    LTEXT           "__",IDC_STATIC_THIRD_HYPHEN,183,86,9,8
+    LTEXT           "__",IDC_STATIC_FORTH_HYPHEN,217,86,14,8
+    LTEXT           "__",IDC_STATIC_FIFTH_HYPHEN,251,87,9,8
+    LTEXT           "Static",IDC_STATIC_STEP_1,29,65,19,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG_REGISTRATION_THIRD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_REGISTRATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 173
+    END
+
+    IDD_DIALOG_REGISTARTION_SECONGDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_REGISTARTION_POPUP_MSG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_PRODUCT_INFORMATION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+
+    IDD_DIALOG_REGISTRATION_FORTH, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\WardWizRegistration.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

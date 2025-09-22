@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{9ce1d7a6-c28b-46a4-a449-d1fd48f9ad62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scanner">
+      <UniqueIdentifier>{fd5f267d-72f3-4ae5-8e23-c1c3f1e7f4c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WardWizPolyScan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CPUInfo.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardWizIniWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\SAVAPI\include\CSavapi.cpp">
+      <Filter>Scanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\SAVAPIScanner.cpp">
+      <Filter>Scanner</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WardWizPolyScan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CPUInfo.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardWizIniWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\SAVAPI\include\CSavapi.h">
+      <Filter>Scanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\SAVAPIScanner.h">
+      <Filter>Scanner</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WardWizPolyScan.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\WardWizPolyScan.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizPolyScan.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

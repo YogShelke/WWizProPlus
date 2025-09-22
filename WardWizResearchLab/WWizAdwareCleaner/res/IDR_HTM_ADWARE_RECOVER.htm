@@ -1,0 +1,482 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<title></title>
+    <link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+    <link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">	
+	<style>
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+    	@import url(IDR_CSS_VGRID.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		form#data-dialog > table > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			//text-align:right;
+			vertical-align:top;
+		}
+		@font-face {
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:722dip;
+			height:452dip;
+            overflow:hidden;
+			behavior:WardWizAdwareCleaner;
+		}
+        body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:1dip solid #000;
+		   color:#fff;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:720dip;
+			height:450dip;
+			overflow:hidden;
+		}
+		#header_close_bt{
+			height:60dip;
+			width:65dip;
+			margin-left:40dip;
+		}
+		/*frame[ready] {
+		  transition: slide-over-left(quad-in-out,800ms);
+		}*/
+		
+		
+		
+		//******** Menu Bar CSS *********//	
+	
+		.header{
+			flow:horizontal;
+			
+		}
+		.logo{
+			width:185dip;
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+			//border:1px solid white;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.inner_body{
+			width:718dip;
+			height:400dip;
+			overflow:hidden;
+			position:relative;
+			//border:1px solid white;
+			top:-2dip;
+		}
+		.footer_buttons{
+			width:200dip;
+			text-align:right;
+			height:40dip;
+			margin-left:7dip;
+		}
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:70dip;
+			height:18dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			font-size:11dip;
+			margin-right:5dip;
+			behavior:clickable;
+			cursor:pointer;
+		}
+		#header_content{
+			flow:horizontal;
+			background:rgba(0,0,0,.05);
+		}
+		//************************Resizable Table CSS ************************//	
+		
+		table 
+		{ 
+			style-set: vgrid;
+			border:1dip solid #888888; 
+			flow:table-fixed;
+			width:697dip;
+			height:240dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: scroll;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:10dip!important;
+			margin-top:20dip!important;
+		}
+		/* style block defining vertical scrollbar */
+		@set my-v-scrollbar
+		{
+		  .prev { display:none; }
+		  .next { display:none; }
+		  
+		  .base,
+		  .next-page, 
+		  .prev-page { background:white;}
+		  
+		  .slider    { background: gray;}
+		 
+		  .base:disabled { background: #aaa;}
+			
+		  .slider:hover  { background: gold; border-left:1dip solid #AAA;}
+		  
+		  .slider:active { background: khaki; }
+		  
+		  .base { width: 5dip;height:5dip; } /* explicit declaration of its width */
+		  .corner { background: transparent; }
+		}
+		table > thead {
+			behavior:column-resizer;  
+		}
+			
+		table > tbody {
+			overflow-y: auto;
+			vertical-scrollbar: my-v-scrollbar; 
+		}
+		 
+		table th 
+		{ 
+			color: white;
+			font-size:10pt; 
+			border:none;
+			padding:4dip; 
+			background-color:#DDD; 
+			background-image:url(IDR_PNG_HEADER.png);
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		
+		table th:nth-child(1)  {  width:0.08*; }
+		table th:nth-child(2)  {  width:0.5*; }		
+		table th:nth-child(3)  {  width:0.7*; }	
+		//table th:nth-child(4)  {  width:0.2*; }	
+		
+		table th:hover 
+		{ 
+			color: #ffe598;
+			transition:blend;
+			background-image:url(IDR_PNG_HEADER_HOVER.png);
+		}
+		  
+		table tr:nth-child(odd) { background-color:rgba(275,275,275,.2); } /* each odd row */
+		table tr:nth-child(even) { background-color:rgba(232,231,234,.2); } /* each even row */
+		  
+		table tr:current /* current row */ 
+		{ 
+			background-color:#bdbccc; 
+			color:white;
+		} 
+		  
+		table td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		  
+		table td:nth-child(1) {  text-align:center; width:0.08*;padding-top:2dip; } /* first column */
+		table td:nth-child(2) {  
+			text-align:left; 
+			width:0.2*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		
+		table td:nth-child(3) {  
+			text-align:left; 
+			width:0.5*;
+			border-left:1dip solid #bdbccc;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* third column */
+		
+		table td:nth-child(4) {   /* last column */
+			 text-align:left;
+			 overflow:hidden;        /* three line below - ellipsis */
+			 text-overflow:ellipsis;
+			 white-space:nowrap;
+			 width:.2*;
+			 border-left:1dip solid #bdbccc;
+		} /* last column */
+		
+	  
+	//*******************************************************************//
+	  .condition_popup_body{
+		width:720dip;
+		height:530dip;
+		position:absolute;
+		top:-620dip;
+		text-align:center;
+		background:rgba(0,0,0,.1);
+		
+		opacity:0;
+		transition: opacity(sine-in-out, 600ms)
+					top(sine-in-out, 600ms);
+	  }
+	  .condition_popup_body:collapsed{
+		top:60dip;
+		opacity:1;
+	  }
+	  .condition_popup{
+		width:100%;
+		height:110dip;
+		padding-top:33dip;
+		background:rgba(0,8,44,.95);
+	  }
+	  .essential_background{
+		background:url(IDR_PNG_BACKGROUND.png) no-repeat;
+		background-size:cover;
+	  }
+	  #header_frame{
+			height:60dip;
+			width:602dip;
+	  }
+      #header_close_bt li{
+			list-style:none;
+            display:inline-block;
+            padding-left:20dip;
+            padding-top:13dip;
+	  }
+      .button_small{
+            width:70dip!important;
+            height:18dip!important;
+      }
+	  input  { 
+		context-menu:none; 
+	  } 
+	  #ID_SELECT_ALL:collapsed{
+			visibility:none;
+	  }
+	  #ID_SELECT_ALL:expanded{
+			visibility:visible;
+	  }
+	  #ID_BUTTON_CLEAN:collapsed{
+			visibility:none;
+	  }
+	  #ID_BUTTON_CLEAN:expanded{
+			visibility:visible;
+	  }
+	  #ID_BUTTON_CLEAN:disabled{
+			opacity:0.5;
+	  } 
+	  #ID_SELECT_ALL:disabled{
+			opacity:0.5;
+	  } 
+	 div#lightbox-shim 
+	{
+	  position: fixed;
+	  width: 720dip;
+	  left: 0;
+	  top: 60dip;
+	  right: 0;
+	  bottom: 0;
+	  background-color:rgba(0,0,0,0.3);
+	  /* background: url(images/shim-bg.png) repeat; */
+	  /* background-image-transformation:color-schema("system"); */
+	  text-align:center;
+	}
+	.message_display_block p{
+		margin-top:10dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:10dip;
+	  }
+	  .message_display_block {
+		background:rgba(0,8,44,.95);
+		position:absolute;
+		top:-70dip;
+		width:720dip;
+		height:60dip;
+		visibility:none;
+		margin-top:57dip;
+	  }
+	  .message_display_block:collapsed {
+		visibility:visible;
+		top:0;
+		transition:top(sine-in-out, 600ms);
+	  }
+	</style>
+	<script type="text/tiscript">
+		var recoverRecords = new Array(0);
+		var varVirusCount = 0;
+		var vlistObj;
+		var vCheckBox = $(body);
+	</script>
+	<script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+	</script>
+<script type="text/tiscript">
+    const selectAll = vCheckBox.$(input#select-all);
+    vCheckBox.on("change","#select-all", function()
+    { // select/deselect all
+        var selected = this.value;
+        for( var record in recoverRecords )
+        record.selected = selected;
+    });
+	$(body).onClick = function ()
+	{
+		$(.message_display_block).state.collapsed = false;
+	}
+</script> 
+<script type="text/tiscript">
+	$(#ID_BTN_CLOSE).onClick = function()
+    {
+		FunCallEnableButtons();
+		view.close(null);
+    }
+</script>
+<script type="text/tiscript">
+	$(#ID_BUTTON_RECOVER).onClick = function()
+	{
+		var bselected = false;
+        for( var record in recoverRecords )
+        {
+           bselected = record.selected;
+           if(record.selected)
+           {
+               bselected = true;
+               break;
+           }
+           else
+           {
+               bselected = false;
+           }
+        }
+        if(!bselected)
+        {
+			$(.message_display_block).state.collapsed = false;
+            $(#StatusText).text = "Please select atleast one valid entry to recover.";
+			var res = dialog { body:$(form#simple-dialog), buttons: [ {caption: "OK", role:#ok, value:true}]};
+            return;
+        }
+		else
+		{
+			self.OnClickRecover(recoverRecords);
+			for(var FileCount = recoverRecords.length; FileCount>0; )
+			{
+				if(recoverRecords[--FileCount].selected == true)
+				{
+					recoverRecords.remove(FileCount);
+				}
+			}
+			$(.message_display_block).state.collapsed = true;
+			$(#ID_STATUS_MSG).text = "Recover operation has been completed successfully";
+		}
+	}
+</script>
+<script type="text/tiscript">
+    function ShowRecoverRecordsFn(varRecoverArray)
+    {
+        var varThreatId = varRecoverArray[0];
+        var varThreatName = varRecoverArray[1];
+        var varFilePath = varRecoverArray[2];
+        var varQuarPath = varRecoverArray[3];
+        var varFileFold = varRecoverArray[4];
+        recoverRecords[varVirusCount] = {selected: true, ThreatId:varThreatId ,ThreatName: varThreatName, FilePath: varFilePath, QuarPath:varQuarPath, FileFolder:varFileFold};
+        varVirusCount++;
+    }
+    function self.ready()
+    {
+        $(.main).attributes.addClass("essential_background");
+        self.OnLoadRecover(ShowRecoverRecordsFn);
+        vlistObj = $(#idtable);
+        vlistObj.value = recoverRecords;
+        vlistObj.on("change","tbody > tr", function()
+        {	// some change inside tr 	// note: each row (this) is a form here so its value is structure:
+            this.data.selected = this.value.selected; // input(selected).value to record.selected in this case
+            if( !this.data.selected )
+                selectAll.value = false;
+        });
+    }
+</script>
+
+    <form #simple-dialog caption="Simple!">
+        <p #StatusText></p>
+    </form>
+  </head>
+            <body>
+			
+			<div class="condition_popup_body">
+				<div class="condition_popup">
+					<p>Scanning is in progress. Do you want to stop?</p>
+					<button .scan_button #yes_option>Yes</button>
+					<button .scan_button #no_option>No</button>
+				</div>
+			</div>
+			
+            <div .main>
+                <div #header_content>
+                    <div #header_frame role="window-caption">
+                        <div .header>
+							<div .logo .frame_display_src #ID_PNG_LOGO_REVERT>
+                                <img src="IDR_PNG_LOGO.png">
+                            </div>
+                        </div>
+                    </div>
+					<div #header_close_bt style="margin-right:25dip;">
+						<ul>
+                            <li .clickable_cl .frame_display_src #ID_BTN_CLOSE><img src="IDR_PNG_CLOSE.png"></li>
+						</ul>
+                    </div>
+                </div>
+				
+            <div .inner_body>
+				<h2 style="color:#fff;text-align:center; font-weight:450;padding:0;margin:0;margin-top:10dip;padding-top:0;"><label>WardWiz Adware Cleaner</label></h2>
+				<h3 style="color:#fff;text-align:center; font-weight:100;padding:0;margin:0;margin-top:0;padding-left:10dip;padding-top:0;"><label>Get rid of any adware, unwanted toolbars from your computer.</label></h3>
+
+				<div style="height:270dip;">
+                    <table #idtable style="margin:0;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th><label>Threat Name</label></th>
+                                <th><label>Original Path</label></th>
+                            </tr>
+                        </thead>
+						<tbody>
+                            <tr><td><input(selected)|checkbox style="margin-top:5dip;"/></td><td(ThreatName)></td><td(FilePath)></td></tr>
+                        </tbody>    
+                    </table>
+                    
+				</div>
+				<div style="height:27dip;flow:horizontal;">
+					<div style="width:100dip;margin-left:6dip;">
+						<div #ID_SELECT_ALL style="padding-left:15dip;">
+							<input type="checkbox" #select-all checked><label for="select_all">Select All</label>
+						</div>
+					</div>
+					<div style="margin-left:507dip;margin-top:7dip;">				
+						<button .scan_button .button_small #ID_BUTTON_RECOVER .dfn src="">Recover</button>
+					</div>
+				</div>
+            </div>
+				<div .message_display_block>
+					<p #ID_STATUS_MSG>Recover operation has been completed successfully!!</p>
+				</div>
+            </div>
+            </body>
+            </html>

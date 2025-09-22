@@ -1,0 +1,107 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WardWizDBUpgrade", "WardWizResearchLab\WardWizDBUpgrade\WardWizDBUpgrade.vcxproj", "{63571C25-F10C-45F2-8843-78D22E76ECFF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConCurrentQueue", "WardWizResearchLab\ConCurrentQueue\ConCurrentQueue.vcxproj", "{95593628-E423-4FA2-A827-C96F7DEB4FC8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WardWizUnRegister", "WardWizResearchLab\WardWizUnRegister\WardWizUnRegister.vcxproj", "{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WWizAdwareCleaner", "WardWizResearchLab\WWizAdwareCleaner\WWizAdwareCleaner.vcxproj", "{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WWizAdwDBUtility", "WardWizResearchLab\WWizAdwDBUtility\WWizAdwDBUtility.vcxproj", "{61A040BF-BF21-48A1-B9F4-89FAA441FD03}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WardWiz_Recover", "WardWizResearchLab\WardWiz_Recover\WardWiz_Recover.vcxproj", "{7A89D3EF-284E-4281-9B6E-D0C3C5809680}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TurnOffWindows", "WardWizResearchLab\TurnOffWindows\TurnOffWindows.vcxproj", "{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://wssr0031:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WardWizResearchLab\\WardWizDBUpgrade\\WardWizDBUpgrade.vcxproj
+		SccProjectName1 = WardWizResearchLab/WardWizDBUpgrade
+		SccLocalPath1 = WardWizResearchLab\\WardWizDBUpgrade
+		SccProjectUniqueName2 = WardWizResearchLab\\ConCurrentQueue\\ConCurrentQueue.vcxproj
+		SccProjectName2 = WardWizResearchLab/ConCurrentQueue
+		SccLocalPath2 = WardWizResearchLab\\ConCurrentQueue
+		SccProjectUniqueName3 = WardWizResearchLab\\WardWizUnRegister\\WardWizUnRegister.vcxproj
+		SccProjectName3 = WardWizResearchLab/WardWizUnRegister
+		SccLocalPath3 = WardWizResearchLab\\WardWizUnRegister
+		SccProjectUniqueName4 = WardWizResearchLab\\WWizAdwareCleaner\\WWizAdwareCleaner.vcxproj
+		SccProjectName4 = WardWizResearchLab/WWizAdwareCleaner
+		SccLocalPath4 = WardWizResearchLab\\WWizAdwareCleaner
+		SccProjectUniqueName5 = WardWizResearchLab\\WWizAdwDBUtility\\WWizAdwDBUtility.vcxproj
+		SccProjectName5 = WardWizResearchLab/WWizAdwDBUtility
+		SccLocalPath5 = WardWizResearchLab\\WWizAdwDBUtility
+		SccProjectUniqueName6 = WardWizResearchLab\\WardWiz_Recover\\WardWiz_Recover.vcxproj
+		SccProjectName6 = WardWizResearchLab/WardWiz_Recover
+		SccLocalPath6 = WardWizResearchLab\\WardWiz_Recover
+		SccProjectUniqueName7 = WardWizResearchLab\\TurnOffWindows\\TurnOffWindows.vcxproj
+		SccProjectName7 = WardWizResearchLab/TurnOffWindows
+		SccLocalPath7 = WardWizResearchLab\\TurnOffWindows
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Debug|Win32.Build.0 = Debug|Win32
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Debug|x64.ActiveCfg = Debug|x64
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Debug|x64.Build.0 = Debug|x64
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Release|Win32.ActiveCfg = Release|Win32
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Release|Win32.Build.0 = Release|Win32
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Release|x64.ActiveCfg = Release|x64
+		{63571C25-F10C-45F2-8843-78D22E76ECFF}.Release|x64.Build.0 = Release|x64
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Debug|Win32.Build.0 = Debug|Win32
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Debug|x64.ActiveCfg = Debug|x64
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Debug|x64.Build.0 = Debug|x64
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Release|Win32.ActiveCfg = Release|Win32
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Release|Win32.Build.0 = Release|Win32
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Release|x64.ActiveCfg = Release|x64
+		{95593628-E423-4FA2-A827-C96F7DEB4FC8}.Release|x64.Build.0 = Release|x64
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Debug|Win32.Build.0 = Debug|Win32
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Debug|x64.ActiveCfg = Debug|x64
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Debug|x64.Build.0 = Debug|x64
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Release|Win32.ActiveCfg = Release|Win32
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Release|Win32.Build.0 = Release|Win32
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Release|x64.ActiveCfg = Release|x64
+		{A0DB43EC-9FF6-442A-AC63-2C8C540B3C44}.Release|x64.Build.0 = Release|x64
+		{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}.Debug|Win32.Build.0 = Debug|Win32
+		{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}.Debug|x64.ActiveCfg = Debug|Win32
+		{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}.Release|Win32.ActiveCfg = Release|Win32
+		{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}.Release|Win32.Build.0 = Release|Win32
+		{B58F0AB2-C3DB-4380-B236-4A0DAB7202AC}.Release|x64.ActiveCfg = Release|x64
+		{61A040BF-BF21-48A1-B9F4-89FAA441FD03}.Debug|Win32.ActiveCfg = Debug|Win32
+		{61A040BF-BF21-48A1-B9F4-89FAA441FD03}.Debug|Win32.Build.0 = Debug|Win32
+		{61A040BF-BF21-48A1-B9F4-89FAA441FD03}.Debug|x64.ActiveCfg = Debug|Win32
+		{61A040BF-BF21-48A1-B9F4-89FAA441FD03}.Release|Win32.ActiveCfg = Release|Win32
+		{61A040BF-BF21-48A1-B9F4-89FAA441FD03}.Release|Win32.Build.0 = Release|Win32
+		{61A040BF-BF21-48A1-B9F4-89FAA441FD03}.Release|x64.ActiveCfg = Release|Win32
+		{7A89D3EF-284E-4281-9B6E-D0C3C5809680}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A89D3EF-284E-4281-9B6E-D0C3C5809680}.Debug|Win32.Build.0 = Debug|Win32
+		{7A89D3EF-284E-4281-9B6E-D0C3C5809680}.Debug|x64.ActiveCfg = Debug|Win32
+		{7A89D3EF-284E-4281-9B6E-D0C3C5809680}.Release|Win32.ActiveCfg = Release|Win32
+		{7A89D3EF-284E-4281-9B6E-D0C3C5809680}.Release|Win32.Build.0 = Release|Win32
+		{7A89D3EF-284E-4281-9B6E-D0C3C5809680}.Release|x64.ActiveCfg = Release|Win32
+		{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}.Debug|Win32.Build.0 = Debug|Win32
+		{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}.Debug|x64.ActiveCfg = Debug|Win32
+		{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}.Release|Win32.ActiveCfg = Release|Win32
+		{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}.Release|Win32.Build.0 = Release|Win32
+		{BC9C2BD9-CB15-4E99-9EE6-F5FB5714E076}.Release|x64.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
