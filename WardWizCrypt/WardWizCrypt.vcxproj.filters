@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{75b8ea11-bba9-484a-aa3d-bda4d2c5e169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{d140432d-8279-4d18-8abd-2502958b1fe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{6a647d1c-dabf-48dd-98e2-117c056b1298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_crypto">
+      <UniqueIdentifier>{a1635b73-7160-473b-84af-40762bbfd3d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DriverInstall">
+      <UniqueIdentifier>{88a2f920-7390-472d-9b3a-2e8b79b81320}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WardWizCrypt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizCryptDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizCrypter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\PipeConstants.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizCompressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_base64.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_Camellia.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fat_aes_cbc.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fat_camellia_cbc.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fat_secure_erase.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fatfilehash.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fatfilemd5.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_Keccak512.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_Rijndael.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_sha1.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_sha256.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_sha512.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CScannerLoad.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CSecure64.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\DriverConstants.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_base64.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_Camellia.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fat_aes_cbc.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fat_camellia_cbc.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fat_secure_erase.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fatfilehash.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fatfilemd5.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_Keccak512.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_Rijndael.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_sha1.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_sha256.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_sha512.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CScannerLoad.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CSecure64.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizCrypter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizCryptDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizCrypt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizCompressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizCrypt.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WardWizCrypt.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WardWizCrypt.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\COMPANYLOGO.ICO">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

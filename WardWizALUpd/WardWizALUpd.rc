@@ -1,0 +1,274 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\WardWizALUpd.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\WardWizALUpd.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_WARDWIZALUPD_DIALOG DIALOGEX 0, 0, 639, 430
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_VSCROLL | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "WardWizALUpd"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Product Type",IDC_STATIC_PRODTYPE_TEXT2,12,4,69,76
+    CONTROL         "Basic",IDC_CHECK_PRODTYPE_BASIC,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,17,32,10
+    CONTROL         "Threat Security",IDC_CHECK_PRODTYPE_ESSENTIAL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,28,60,13
+    CONTROL         "Pro",IDC_CHECK_PRODTYPE_PRO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,41,38,13
+    CONTROL         "Elite",IDC_CHECK_PRODTYPE_ELITE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,53,38,13
+    GROUPBOX        "",IDC_STATIC_PATCHTYPE_TEXT,87,4,74,46
+    CONTROL         "Patch Type",IDC_CHECK_CHECK_PATCH_TYPE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,97,4,52,10
+    CONTROL         "Product Patch",IDC_RADIO_PATCHTYPE_PRODUCT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,98,22,55,9
+    CONTROL         "Virus Patch",IDC_RADIO_PATCHTYPE_VIRUS,"Button",BS_AUTORADIOBUTTON,98,36,53,10
+    GROUPBOX        "",IDC_STATIC,89,49,74,32
+    GROUPBOX        "",IDC_STATIC_BUILD_TEXT,171,4,62,46
+    CONTROL         "Build Type",IDC_CHECK_BUILD_TYPE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,179,4,48,10,WS_EX_TRANSPARENT
+    CONTROL         "Build",IDC_RADIO_BUILD,"Button",BS_AUTORADIOBUTTON | WS_GROUP,179,21,31,10
+    CONTROL         "Rebuild",IDC_RADIO_REBUILD,"Button",BS_AUTORADIOBUTTON,179,35,39,10
+    GROUPBOX        "OS Version",IDC_STATIC_OSVERSION_TEXT,168,51,66,32
+    CONTROL         "Win32",IDC_CHECK_REBUILD_32,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,179,61,38,8
+    CONTROL         "Win64",IDC_CHECK_REBUILD_64,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,179,72,36,8
+    GROUPBOX        "Version :",IDC_STATIC,236,5,74,100
+    LTEXT           "Product Version",IDC_STATIC_PROD_VERSION,243,18,51,8
+    EDITTEXT        IDC_EDIT_PROD_VERSION,241,31,63,14,ES_AUTOHSCROLL
+    LTEXT           "Scan Engine Version",IDC_STATIC_SCAN_ENGINE_VERSION,243,49,65,8
+    EDITTEXT        IDC_EDIT_SCAN_ENGINE_VERSION,241,60,63,14,ES_AUTOHSCROLL
+    LTEXT           "Database Version",IDC_STATIC_DATABASE_VERSION,243,77,57,8
+    EDITTEXT        IDC_EDIT_DATABASE_VERSION,241,88,63,14,ES_AUTOHSCROLL
+    GROUPBOX        "Setup Type",IDC_STATIC,12,81,168,50
+    CONTROL         "With Clam",IDC_CHECK_WITH_CLAM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,94,50,9
+    CONTROL         "PDB",IDC_CHECK_PDB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,94,38,8
+    CONTROL         "Utility",IDC_CHECK_UTILITY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,125,94,38,10
+    CONTROL         "No Clam",IDC_CHECK_WITHOUT_CLAM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,25,110,49,10
+    CONTROL         "Offline Patches",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,81,112,65,8
+    GROUPBOX        "",IDC_STATIC_REG_OPT_TEXT,312,4,312,127
+    CONTROL         "Add",IDC_RADIO_ADD,"Button",BS_AUTORADIOBUTTON | WS_GROUP,323,20,26,10
+    CONTROL         "Modify",IDC_RADIO_MODIFY,"Button",BS_AUTORADIOBUTTON,355,20,34,10
+    CONTROL         "Delete",IDC_RADIO_DELETE,"Button",BS_AUTORADIOBUTTON,394,20,33,10
+    COMBOBOX        IDC_COMBO_RO_REGKEY,434,20,71,96,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Value : ",IDC_STATIC_RO_VALUE,510,20,23,12
+    EDITTEXT        IDC_EDIT_RO_VALUE,540,20,73,14,ES_AUTOHSCROLL
+    LTEXT           "Path :",IDC_STATIC_RO_PATH,323,47,22,8
+    EDITTEXT        IDC_EDIT_RO_PATH,348,43,157,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "ADD",IDC_BUTTON_RO_ADD,514,43,30,14
+    PUSHBUTTON      "REMOVE",IDC_BUTTON_REMOVE,581,43,33,14
+    CONTROL         "",IDC_LIST_RegOpt,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,323,62,291,61
+    CONTROL         "32 Bit",IDC_CHECK_OSVERSION_32,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,331,86,33,12
+    CONTROL         "",IDC_LIST_PATCH_FILES,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,11,135,614,79
+    PUSHBUTTON      "Cancel",IDCANCEL,11,193,6,6,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "OK",IDOK,11,200,6,6,NOT WS_VISIBLE
+    LTEXT           "",IDC_STATIC_STATUS,11,224,321,8
+    PUSHBUTTON      "Generate Update Files",IDC_BUTTON_GENERATE_UPDATE_FILES,546,230,79,17
+    LTEXT           "Please Browse files to Sign :",IDC_STATIC_SIGN,11,248,229,12
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,11,266,613,96
+    CONTROL         "Make Setup",IDC_CHECK_MAKE_SETUP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,100,58,53,13
+    CONTROL         "64 Bit",IDC_CHECK_OSVERSION_64,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_DISABLED | WS_TABSTOP,335,86,33,12
+    PUSHBUTTON      "Close",IDC_BUTTON_CLOSE,584,403,41,19
+    PUSHBUTTON      "Abort",IDC_BUTTON_ABORT,537,403,41,19,BS_NOTIFY
+    PUSHBUTTON      "Browse",IDC_BUTTON_BROWSE,559,365,32,15
+    PUSHBUTTON      "Sign",IDC_BUTTON_ADDSIGN,595,364,30,15
+    GROUPBOX        "Please Browse file to ZIP and MD5 generation",IDC_STATIC,11,367,323,58
+    PUSHBUTTON      "MD5-ZIP",IDC_BUTTON_GENERATEMD5,283,403,38,14
+    PUSHBUTTON      "Browse",IDC_BUTTON_BROWSEFILETOMD5,283,382,38,14
+    EDITTEXT        IDC_EDIT_MD5,15,403,258,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_BROWSEFILEFOR_MD5,15,382,258,14,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "Registry Option",IDC_CHECK_REGOPT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,321,4,66,10
+    GROUPBOX        "Compression Method",IDC_STATIC,183,112,30,16,NOT WS_VISIBLE
+    CONTROL         "ZIP",IDC_RADIO_ZIP,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,201,117,9,10
+    CONTROL         "RAR",IDC_RADIO_RAR,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,187,119,8,8
+    CONTROL         "Advanced Security",IDC_CHECK_PRODTYPE_ESS_PLUS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,66,70,13
+END
+
+IDD_DIALOG_PATCHMERGER DIALOGEX 0, 0, 849, 283
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_LEFT_FOLDER,27,7,645,14,ES_AUTOHSCROLL
+    LTEXT           "Left:",IDC_STATIC,7,9,16,8
+    EDITTEXT        IDC_EDIT_RIGHT_FOLDER,27,24,645,14,ES_AUTOHSCROLL
+    LTEXT           "Right:",IDC_STATIC,7,26,20,8
+    PUSHBUTTON      "...",IDC_BUTTON_LBROWSE,675,7,18,13
+    PUSHBUTTON      "...",IDC_BUTTON_RBROWSE,675,24,18,13
+    PUSHBUTTON      "Compare",IDC_BUTTON_COMPARE,695,7,73,30,WS_DISABLED
+    PUSHBUTTON      "Merge",IDC_BUTTON_MERGE,770,7,73,30,WS_DISABLED
+    EDITTEXT        IDC_EDIT_STATUS,7,262,845,12,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "",IDC_LIST_BASIC,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,47,134,203
+    CONTROL         "",IDC_LIST_ESSENTIAL,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,147,47,134,203
+    CONTROL         "",IDC_LIST_PRO,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,287,47,134,203
+    CONTROL         "Select All",IDC_CHECK_BSELECTALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,251,45,10
+    CONTROL         "Select All",IDC_CHECK_ESELECTALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,147,251,45,10
+    CONTROL         "Select All",IDC_CHECK_PSELECTALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,287,251,45,10
+    LTEXT           "File Count: 0",IDC_STATIC_ESSENTIALCOUNT,220,251,59,8,0,WS_EX_RIGHT
+    LTEXT           "File Count: 0",IDC_STATIC_BASICCOUNT,82,251,59,8,0,WS_EX_RIGHT
+    LTEXT           "File Count: 0",IDC_STATIC_PROCOUNT,361,251,59,8,0,WS_EX_RIGHT
+    CONTROL         "",IDC_LIST_PRO2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,427,47,134,203
+    CONTROL         "Select All",IDC_CHECK_ELITESELECTALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,427,251,45,10
+    LTEXT           "File Count: 0",IDC_STATIC_ELITECOUNT,501,251,59,8,0,WS_EX_RIGHT
+    CONTROL         "",IDC_LIST_PRO3,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,708,47,134,203
+    CONTROL         "Select All",IDC_CHECK_ESSPLUSSELECTALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,708,251,45,10
+    LTEXT           "File Count: 0",IDC_STATIC_ESSPLUSCOUNT,782,251,59,8,0,WS_EX_RIGHT
+    CONTROL         "",IDC_LIST_PRO4,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,566,47,134,203
+    CONTROL         "Select All",IDC_CHECK_ELITESERVERSELECTALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,566,251,45,10
+    LTEXT           "File Count: 0",IDC_STATIC_ELITECOUNT2,640,251,59,8,0,WS_EX_RIGHT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.5"
+            VALUE "InternalName", "VibraniumALUpd.exe"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "VibraniumALUpd.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_WARDWIZALUPD_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 625
+        BOTTOMMARGIN, 426
+    END
+
+    IDD_DIALOG_PATCHMERGER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 842
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 274
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\WardWizALUpd.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
