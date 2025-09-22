@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_crypto">
+      <UniqueIdentifier>{caaa1871-c840-470e-8c67-1f2514f3557a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{55f29439-2da3-4ca8-b9cd-001bd4c05c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{87006070-54aa-438c-937f-f902a387b9ca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WardWizCryptUtility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizCryptUtilityDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_base64.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_Camellia.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fat_aes_cbc.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fat_camellia_cbc.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fat_secure_erase.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fatfilehash.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_fatfilemd5.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_Keccak512.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_Rijndael.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_sha1.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_sha256.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\TPLIB\_crypto\_sha512.h">
+      <Filter>_crypto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="WrdwizDecDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\JpegDialog.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\ColorEdit.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\ColorStatic.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\xSkinButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WardWizCryptUtility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizCryptUtilityDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_base64.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_Camellia.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fat_aes_cbc.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fat_camellia_cbc.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fat_secure_erase.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fatfilehash.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_fatfilemd5.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_Keccak512.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_Rijndael.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_sha1.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_sha256.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\TPLIB\_crypto\_sha512.cpp">
+      <Filter>_crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="WrdwizDecDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\JpegDialog.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\ColorEdit.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\ColorStatic.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\xSkinButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizCryptUtility.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WardWizCryptUtility.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WardWizCryptUtility.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\USB_Vaccinator_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\COMPANYLOGO.ICO">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
