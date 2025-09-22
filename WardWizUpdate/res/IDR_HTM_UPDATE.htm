@@ -1,0 +1,1436 @@
+<html custom-frame="solid" lang="ENGLISH">
+<head>
+	<link href="IDR_TIS_ENGLISH.tis" hreflang="ENGLISH" rel="translation">
+	<link href="IDR_TIS_GERMAN.tis" hreflang="GERMAN" rel="translation">
+	<include src="IDR_HTM_FONT_AWESOME.htm" />
+	<style> 
+		@import url(IDR_CSS_MAIN.css);
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		@import url(IDR_CSS_GERMAN_LANG.css);
+		html{
+			width:720dip;
+			height:500dip!important;
+			padding:0dip;
+			margin:0dip;
+			overflow:hidden; 
+			//behavior:WardWizUpdates;  
+		}
+		body{
+			width:720dip;
+			height:500dip!important;
+			//background:url(IDR_JPG_DEFAULT_BACKGRUND.jpg);
+			background-size:cover;
+			background-repeat: no-repeat;
+			overflow:hidden;
+		}
+		.circleAnim1 {
+			stroke-dasharray: 600;
+			stroke-dashoffset: 600;
+		}
+		.header{
+			width:720dip!important;
+		}
+		tiles { 
+			display:block;
+			border-spacing:3dip;
+			flow: grid(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 );
+			width: max-content;
+		}
+		tiles > tile 
+		{
+			display:inline-block;
+			size:20dip;
+			background-color:white;
+			/*border-radius:100%;*/
+			opacity:0;
+			transform:scale(0);
+		}      
+		tiles > tile.ready
+		{
+			opacity:1.0;
+			transform:scale(0.27);
+			/*border-radius:100%;*/
+			transition: opacity(linear,20ms)
+						transform(cubic-out,1000ms);
+		}
+		tiles > tile.ready1
+		{
+			opacity:0;
+			transform:scale(0.1);
+			/*border-radius:100%;*/
+			transition: opacity(linear,220ms)
+						transform(cubic-out,2000ms);
+		}
+		.offline_update:collapsed
+		{
+			visibility:none;
+		}
+		.offline_update:expanded
+		{
+			visibility:visible;
+		}
+		.online_update:collapsed
+		{
+			visibility:none;
+		}
+		.online_update:expanded
+		{
+			visibility:visible;
+		}
+		.spinTemp { aspect: SpinFind; }
+		.spinTemp:collapsed { visibility:none; }
+		.spinTemp:expanded { visibility:visible; }
+		.header{
+			width:720dip;
+			height:40dip;
+			flow:horizontal;
+		}
+		.header h4{
+			width:530dip;
+			padding-left:10dip;
+			margin-top:10dip;	
+			display:block;
+			position:relative;
+			font-size:12dip;
+		}
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.tempLogo{
+			padding:4dip;
+		}
+		.tempLogo img{
+			width:25dip;
+			cursor:pointer;
+		}
+		.menu_utility{
+			width:684dip;
+			flow:horizontal;
+		}
+		.drag_zone_utility{
+			width:610dip;
+			height:40dip;
+		}
+		.topMenuUtility{
+			padding:0dip;
+			height:40dip;
+			width:70dip;
+		}
+		.topMenuUtility ul{
+			margin:0;
+			padding:0;
+			margin-top:10dip;	
+			display:block;
+			position:relative;
+			flow:horizontal;
+		}
+		.topMenuUtility li{
+			list-style:none;
+			display:inline-block;
+			padding:0dip 3dip;
+			cursor:pointer;
+		}
+		.titleCont_utilities{
+			text-align:center;
+			min-height:10dip;
+			width:720dip;
+			padding-top:1dip; 
+		}
+		.headingTitle1{
+			/* font-weight:300; */
+			font-size:14dip;
+			font-weight:bold;
+		}
+		.cstmMrgnRight{
+			margin-left:170dip;
+			font-size:12.5dip;
+			margin-top:19dip;
+		}
+		.inptCont{
+			flow:horizontal;
+		}
+		.alignCenter{
+			text-align:center;
+		}
+		.update_loading{
+			width:720dip;
+			height:350dip;
+			background-size:cover;
+			visibility:none;
+			position:absolute;
+			top:90dip;
+		}
+		.update_loading:expanded{
+			visibility:visible;
+			z-index:999;
+		}
+		.disAreaUpdate{
+			flow:horizontal;width:715dip;margin-top:20dip;
+			overflow-x:hidden;
+		}
+		#UpdateDisplayCont, #updateReportHdeShow{
+			width:715dip;
+			height:210dip;
+			flow:vertical;
+		}
+		.activeTabViewUpdate #UpdateDisplayCont{
+			margin-left:-715dip;
+			transition: margin-left(linear,400ms);
+		}
+		.mgLeftSc{
+			margin-left:285dip;
+		}
+		pie-chart {
+			display:block;
+			aspect: Pie(band:8dip, sector:rgb(89,156,181), circle:rgb(230,230,230));
+			size:135dip;
+			font-size:30dip;
+			vertical-align:middle;
+			text-align:center;
+			}
+		pie-chartTemp {
+			display:block;
+			aspect: PieChart(band:8dip, sector:rgb(89,156,181), circle:rgb(230,230,230));
+			size:135dip;
+			font-size:30dip;
+			vertical-align:middle;
+			text-align:center;
+		}
+		#OuterDivLiveUpdate:collapsed { visibility:none; }
+		#OuterDivLiveUpdate:expanded { visibility:visible; }
+	
+		#LEFT_TEXT:collapsed{
+			visibility:none;
+		}
+		#LEFT_TEXT:expanded{
+			visibility:visible;
+		}
+		#RIGHT_TEXT:collapsed{
+			visibility:none;
+		}
+		#RIGHT_TEXT:expanded{
+			visibility:visible;
+		}
+		#ID_BTN_PAUSE_LIVEUPDT {
+			opacity:1;
+		}
+		#ID_BTN_PAUSE_LIVEUPDT:disabled{
+			opacity:.5;
+		}
+		#ID_BTN_STOP_LIVEUPDT {
+			opacity:1;
+		}
+		#ID_BTN_STOP_LIVEUPDT:disabled {
+			opacity:.5;
+		}
+		.update_from_online{
+			visibility:visible;
+		}
+		.update_from_online:collapsed{
+			visibility:none;
+		}
+		.update_from_local{
+			visibility:none;
+		}
+		.update_from_local:expanded{
+			visibility:visible;
+		}
+		.quickResultCont{
+			flow:horizontal;
+			margin-left:105dip; 
+			margin-top:10dip; 
+		}
+		.quickScanResult{
+			width:250dip;
+			height:67dip;
+			text-align:center;
+		}
+		.quickScanResult h4{
+			margin-bottom:0;
+			margin-top:2dip;
+		}
+		/*Table for update Page*/
+		form#data-dialog > table#liveupdatetable > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			vertical-align:top;
+		}
+		table#liveupdatetable { 
+			style-set: vgrid;
+			flow:table-fixed;
+			width:695dip;
+			height:190dip;
+			padding:0;
+			border-spacing:0;
+			overflow-x: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+			margin:10dip!important;
+			}
+		table#liveupdatetable > thead {
+			behavior:column-resizer;  
+		}
+		table#liveupdatetable > tbody {
+			overflow-y: auto;
+			horizontal-scrollbar: my-v-scrollbar;
+			vertical-scrollbar: my-v-scrollbar;
+		}
+		
+		table#liveupdatetable th 
+		{ 
+			font-size:10dip; 
+			border:none;
+			padding:4dip; 
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		
+		table#liveupdatetable th:nth-child(1)  {  width:0.70*; }
+		table#liveupdatetable th:nth-child(2)  {  width:0.15*; }		
+		
+		table#liveupdatetable th:hover 
+		{ 
+			transition:blend;
+		} 
+		
+		table#liveupdatetable td 
+		{ 
+			padding:1dip; 
+			min-height:14dip;
+		}
+		
+		table#liveupdatetable td:nth-child(1) {  text-align:center; width:0.70*;padding-top:2dip; } /* first column */
+		table#liveupdatetable td:nth-child(2) {  
+			text-align:left; 
+			width:0.15*;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		} /* second column */
+		
+		.update_status{
+			margin-left:420dip;
+			min-height:30dip;
+		}
+		.showdetails{
+			cursor:pointer;
+			behavior:clickable;
+			font-weight:normal;
+		}
+		.updateIconStyle{
+			size:100dip;background:none;
+			margin-top:20dip;
+		}
+		/*widget for file select in update*/
+		widget[type=file-name] {
+			prototype: FileName;
+			flow:horizontal;
+			width:30em;
+			margin-left:22dip;
+			height:35dip;
+		}
+		widget[type=file-name]:disabled{
+			opacity:.5;
+		}
+		widget[type=file-name] > input { width:*;margin-top:12dip; }
+		
+		.btnCstmSmall{
+			cursor: pointer;
+				background-repeat:expand stretch-left stretch-right stretch-middle;
+				background-position:3dip 3dip 3dip 3dip;
+			height:20dip;
+			width:80dip;
+			overflow:hidden;
+			text-align:center;
+			transition: background-image(cubic-in-out, duration:0.3s);
+			/* transition: left(cubic-in-out, duration:0.3s)
+						color(cubic-in-out, duration:0.4s)
+						border(cubic-in-out, duration:0.4s); */
+			padding:0;
+			vertical-align:middle;
+			line-height:20dip;
+			font-weight:normal;
+			margin-top:12dip;
+			display:inline-block;
+			font-size:12dip;
+		}
+		.btnCstmSmall .bgClrSmall{
+			min-height:22dip;
+			width:122dip;
+			position:absolute;
+			z-index:-1;
+			left:-310dip;
+			/* transition: left(cubic-in-out, duration:0.3s); */
+		}
+		.btnCstmSmall:hover{
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		.btnCstmSmall:hover > .bgClrSmall{
+			left:-1dip;
+		}
+		.btnCstmSmall:hover > .buttonIcons{
+			visibility:visible;
+		}
+		.widgetbtn{
+			margin-top:10dip;
+			margin-left:10dip;
+		}
+		.btnCstm{
+			/* position: relative; */
+			cursor: pointer;
+				background-repeat:expand stretch-left stretch-right stretch-middle;
+				background-position:3dip 3dip 3dip 3dip;
+			height:30dip;
+			width:120dip;
+			overflow:hidden;
+			text-align:center;
+			transition: background-image(cubic-in-out, duration:0.3s);
+			padding:0;
+			vertical-align:middle;
+			line-height:30dip;
+			font-weight:bold;
+			margin-top:15dip;
+			display:inline-block;
+			font-size:14dip;
+		}
+		.btnCstm .bgClr{
+			min-height:33dip;
+			width:122dip;
+			position:absolute;
+			z-index:-1;
+			left:-310dip;
+			/* transition: left(cubic-in-out, duration:0.3s); */
+		}
+		.btnCstm:hover{
+			background-repeat:expand stretch-left stretch-right stretch-middle;
+			background-position:3dip 3dip 3dip 3dip;
+		}
+		.btnCstm:hover > .bgClr{
+		left:-1dip;
+		}
+		.buttonIcons{
+			font-family: MyAwesome;
+			visibility:none;
+		}
+		.btnCstm:hover > .buttonIcons{
+			visibility:visible;
+		}
+		.scanAnimation{
+			width:135dip;
+			height:135dip;
+			border-radius:200dip;
+			overflow:hidden;
+			/* position:relative; */
+		}
+		.stopPauseBtn{
+			margin-top:25dip;
+			margin-left:170dip;
+			position:absolute;
+		}
+		.fontNormal{
+			font-weight:normal;
+		}
+		.CloseIcon{
+			size:10dip;
+			background:none;
+			fill: #000;
+			cursor:pointer;
+			stroke:#000;
+			margin-top:5dip;
+		}
+		.MiniIcon{
+			size:10dip;
+			background:none;
+			fill: #000;
+			cursor:pointer;
+			stroke:#000;
+			margin-top:5dip;
+		}
+		.MenuSpacing{
+			margin:1dip;
+			margin-top:0dip;
+		}
+</style>
+	
+<script type="text/tiscript">
+	include "IDR_TIS_MAIN.tis";
+</script>	
+<script type="text/tiscript">
+	include "IDR_TIS_GERMAN_LANG.tis";
+	include "IDR_TIS_GERMAN_LANG_TOOL.tis";
+</script>
+<script type="text/tiscript">
+	include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+</script>
+    <script type="text/tiscript">
+    if(productVersion == #BASIC){
+        $(#ID_PRODUCT_TYPE).value = "WARDWIZ BASIC 2020";
+    }
+    else if(productVersion == #ESSENTIAL){
+        $(#ID_PRODUCT_TYPE).value = "WARDWIZ ESSENTIAL 2020";
+    }
+    else if(productVersion == #PROVANTAGE){
+        $(#ID_PRODUCT_TYPE).value = "WARDWIZ PROVANTAGE 2020";
+    }
+    else if(productVersion == #ELITE){
+		$(#ID_PRODUCT_TYPE).value = "WARDWIZ ELITE 2020";
+    }
+    else if(productVersion == #ESSENTIALPLUS){
+		$(#ID_PRODUCT_TYPE).value = "Vibranium 2023";
+    }
+    </script>
+<script type="text/tiscript">
+	namespace CurrentTask
+	{
+		const NONE = 0;
+		const OFFLINE_UPDATE = 1;
+		const ONLINE_UPDATE = 2;
+	}
+</script>
+<script type="text/tiscript">
+	var FilePath = "";
+	var newFilePath ="";
+	var strFilePath= "";
+	var bIsOprInProcess = false;
+	var m_bIsAnyTaskInProcess = false;
+	var m_varCurrentTask = 0;
+	var m_bIsAnyPopUpDisplayed = false;
+</script>
+<script type="text/tiscript">
+	var m_bIsUpdateRunning = false;
+	var m_bIsStopFrmTaskbar = false;
+	var m_bIsManualStop = false;
+	var countPauseResume = 1;
+	var isRestartNotReqd = false;
+	var count=1;
+</script>
+<script type="text/tiscript">	
+	self.on("closerequest", function(evt)
+	{	
+		if(!m_bIsAnyPopUpDisplayed)
+		{
+			if(m_bIsAnyTaskInProcess)
+			{	
+				if(m_varCurrentTask == #OFFLINE_UPDATE)
+				{
+					view.OnPauaseOfflineUpdate();
+					m_bIsAnyPopUpDisplayed = true;
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DO_YOU_WANT_TO_STOP_UPDATES");
+					var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+					m_bIsAnyPopUpDisplayed = false;
+					if(res == true)
+					{
+						evt.cancel = false;
+						m_bIsAnyTaskInProcess = false;
+						m_varCurrentTask = #NONE;
+						newFilePath = "";
+						view.OnCloseOfflineUpdate();
+					}
+					else
+					{
+						evt.cancel = true;
+						view.OnResumeOfflineUpdate();
+					}
+				}
+				else if(m_varCurrentTask == #ONLINE_UPDATE)
+				{
+					view.OnPauseUpdates();
+					m_bIsAnyPopUpDisplayed = true;
+					$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DO_YOU_WANT_TO_STOP_UPDATES");
+					var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+					m_bIsAnyPopUpDisplayed = false;
+					if(res == true)
+					{
+						m_bIsStopFrmTaskbar = true;
+						m_bIsManualStop = false;
+						m_bIsAnyTaskInProcess = false;
+						m_varCurrentTask = #NONE;
+						evt.cancel = false;
+						view.OnClickStopUpdates(m_bIsStopFrmTaskbar, m_bIsManualStop);
+					}
+					else
+					{
+						$(#ID_LBL_PAUSE).text=Lang.translate("ID_BTN_PAUSE");
+						countPauseResume = 1;
+						$(#ID_UPDATE_STATUS).text = Lang.translate("ID_IN_PROGRESS");
+						evt.cancel = true;
+						view.OnResumeUpdates();
+					}
+				}
+			}
+		}
+		else
+		{
+			evt.cancel = true;
+		}
+	});	
+</script>
+<script type="text/tiscript">	
+	function sequencer(duration,elements,trigger)
+    {
+		var stepDuration = duration/ elements.length;
+		var idx = 0;
+		self.timer(stepDuration, function() {
+		trigger(elements[idx]);
+		++idx;
+		return idx < elements.length; // keep going until the end
+		});
+    }
+	
+    function addClassTimerReady(){
+		if(bIsOprInProcess == true )
+		{
+			sequencer( 700ms, $$(tile), :el: el.attributes.addClass("ready") );
+			self.timer(3000ms,removeClassTimerReady);
+		}
+    }
+	
+    function removeClassTimerReady(){
+        sequencer( 700ms, $$(tile), :el: el.attributes.removeClass("ready") );
+        self.timer(3000ms,addClassTimerReady);
+	}
+</script>	
+<script type="text/tiscript">
+	$(.OnClickMinimize).onClick = function()
+    {
+       view.OnMinimize();
+    }
+	  
+	$(#ID_BUTTON_CLOSE).onClick = function()
+    {
+		view.close();
+    }
+	
+	$(#ID_RADIO_LOCAL).on("change", function(){
+		$(#ID_INPUT_FILE).state.disabled = !this.value;
+		$(widget).state.disabled = !this.value;
+		$(.update_from_local).state.expanded=true;
+        $(.update_from_online).state.collapsed=true;
+	});
+	
+	$(#ID_RADIO_INTERNET).on("change", function(){
+		$(#ID_INPUT_FILE).state.disabled = this.value;
+		$(widget).state.disabled = this.value;
+		$(.update_from_local).state.expanded=false;
+        $(.update_from_online).state.collapsed=false;
+		$(#ID_WIDGET_FILEPATH).value = "";
+		newFilePath ="";
+	});
+</script>
+<script type="text/tiscript">
+	class FileName : Behavior {
+		function attached() {
+			this.$append(<input|text.path readonly><span .btnCstmSmall .widgetbtn #ID_INPUT_FILE><span></span><label>ID_UPDATE_BTN_BROWSE</label></span>);
+			var path = this.path = this.$(.path);
+			this.$(#ID_INPUT_FILE).onClick = function ()
+			{
+				var fn = view.selectFile(#open ,  "Database Files (*.def)|*.def" , "def");
+				FilePath = fn;
+				strFilePath = URL.toPath(FilePath);
+				newFilePath = strFilePath.replace("\/","\\"); 
+				if(fn != "")
+				{
+					path.value = newFilePath;
+				}
+				(this super).postEvent(Event.EDIT_VALUE_CHANGED);
+			};
+		}
+	
+		property value(v) {
+			get { return this.path.value; }
+			set { this.path.value = v; }
+		}
+	}
+	
+	$(widget).onValueChanged = function() {
+	stdout.println(this.value);
+	};
+</script>
+<script type="text/tiscript">
+	function NotificationMessageFromLocal(varMsgType, strMessageText)
+    {
+        $(.update_loading).state.expanded = false;
+        if(varMsgType == 1 )
+        {	
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			m_bIsAnyPopUpDisplayed = false;
+			newFilePath = "";
+			m_bIsAnyTaskInProcess = false;
+            m_varCurrentTask = #NONE;
+            bIsOprInProcess = false;
+        }
+        if(varMsgType == 2 )
+        {
+			$(.update_loading).state.expanded = false;
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+			m_bIsAnyPopUpDisplayed = false;
+            if(res == true)
+            {
+                return 1;
+            }
+            else
+            {
+			   return 0;
+            }
+        }
+    }
+</script>
+<script type="text/tiscript">
+    $(#help_click).onClick = function()
+    {
+		OpenHelpFile();
+	}
+	function OpenHelpFile()
+	{
+		var varCommandlinestr = "-mapid";
+		var varHelpFilePath;
+		var varHelpFileIndex;
+		var varEngEssential = g_AppPath+"\\WRDWIZESSENTIAL.CHM";
+		var varEngBasic = g_AppPath+"\\WRDWIZBASIC.CHM";
+		var varEngEssPlus = g_AppPath+"\\WRDWIZESSPLUS.CHM";
+		var varGerEssential = g_AppPath+"\\WRDWIZESSENTIALGERMAN.CHM";
+		var varGerBasic = g_AppPath+"\\WRDWIZBASICGERMAN.CHM";
+		var varGerEssPlus = g_AppPath+"\\WRDWIZESSPLUSGERMAN.CHM";
+		switch(g_LanguageID)
+		{
+			case LANGUAGE_TYPE.ENGLISH	:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varEngEssential;
+					varHelpFileIndex = "79";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varEngBasic;
+					varHelpFileIndex = "79";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varEngEssPlus;
+					varHelpFileIndex = "79";
+				}
+			break;
+	
+			case LANGUAGE_TYPE.GERMAN:
+				if(productVersion == #ESSENTIAL)
+				{
+					varHelpFilePath = varGerEssential;
+					varHelpFileIndex = "79";
+				}
+				else if(productVersion == #BASIC)
+				{
+					varHelpFilePath = varGerBasic;
+					varHelpFileIndex = "79";
+				}
+				else if(productVersion == #ESSENTIALPLUS)
+				{
+					varHelpFilePath = varGerEssPlus;
+					varHelpFileIndex = "79";
+				}
+			break;
+		}
+		System.exec("hh.exe",varCommandlinestr,varHelpFileIndex,varHelpFilePath);
+	}
+</script>
+<script type="text/tiscript">
+	
+	$(.showdetails).onClick=function()
+    {
+		if(count==1)
+        {
+			$(.disAreaUpdate).attributes.addClass("activeTabViewUpdate");
+			$(.showdetails).text=Lang.translate("ID_HIDE_DETAILS");
+			count=2;
+		}
+		else if(count==2)
+        {
+			$(.disAreaUpdate).attributes.removeClass("activeTabViewUpdate");
+		    $(.showdetails).text=Lang.translate("ID_SHOW_DETAILS");
+    		count=1;
+		}
+	}
+</script>	
+<script type="text/tiscript">
+	function Pie(params = {}) 
+	{
+		const strokeWidth = params.band || 10dip; 
+		const strokeColor = params.sector || color(100,0,0); 
+		const circleColor = params.circle || color(230,230,230); 
+	
+		var start = 0; 
+		var value = 0;  
+	
+		function render(gfx) 
+		{
+			const sw = this.toPixels(strokeWidth, #width); 
+	
+			var (w,h) = this.box(#dimension); 
+			var (x,y) = (w/2, h/2);  
+			var r = Integer.min(w,h) / 2 - sw / 2;  
+			
+			gfx.strokeWidth(sw + 0.5)
+			.strokeColor(circleColor)
+			.arc(x,y,r,r, 0deg, 360deg)
+			.strokeColor(strokeColor)
+			.arc(x,y,r,r, 360deg * start, 360deg * value);
+		}  
+		
+		this.paintContent = render;
+		
+		// redefining property 'value' on that element
+		this["value"] = property(v) {
+			get return value;
+			set {
+				value = v;
+				//this.text = String.$({(value * 100).toInteger() }%) ;
+				this.refresh();
+			}
+		};
+		this.value = this.attributes["value"].toFloat(0.0);
+	}
+</script>
+<script type="text/tiscript">	
+	function pauseLoadingSpin() 
+	{
+		$(div.spinTemp).pause(true);
+    }
+	
+	function loadingFind()
+	{
+		pauseLoadingSpin();
+		$(.spinTemp).state.collapsed = true;
+	}
+	
+	function SpinFind() 
+	{
+		var angle = 0;
+		var paused = false;
+      
+		function runFind() 
+		{
+			this.animate( function() 
+			{
+			if( paused ) 
+				return false;
+			++angle;
+			this.style["transform"] = [rotate: angle * 1grad];
+			return true;
+			});
+		}
+      
+		this.pause = function(onOff) {
+			paused = onOff;
+			if(!paused)
+				runFind.call(this);
+		};
+	  
+		runFind.call(this);
+    } 
+</script>
+<script type="text/tiscript">
+	var chart = $(pie-chartTemp);
+</script>	
+<script type="text/tiscript">
+	function PieChart(params = {}) 
+	{
+		const strokeWidth = params.band || 10dip; 
+		const strokeColor = params.sector || color(100,0,0); 
+		const circleColor = params.circle || color(230,230,230); 
+	
+		var start = 1; 
+		var value = 0;  
+	
+		function render(gfx) 
+		{
+			const sw = this.toPixels(strokeWidth, #width); 
+	
+			var (w,h) = this.box(#dimension); 
+			var (x,y) = (w/2, h/2);  
+			var r = Integer.min(w,h) / 2 - sw / 2;  
+			
+			gfx.strokeWidth(sw + 0.5)
+			.strokeColor(circleColor)
+			.arc(x,y,r,r, 0deg, 360deg)
+			.strokeColor(strokeColor)
+			//.arc(x,y,r,r, 360deg * start, 360deg * value);
+			.arc(x,y,r,r, 90deg * start, 360deg * value);
+		}  
+		
+		this.paintContent = render;
+		
+		// redefining property 'value' on that element
+		this["value"] = property(v) {
+			get return value;
+			set {
+				value = v;
+				this.text = String.$({(value * 100).toInteger() }%) ;
+				this.refresh();
+			}
+		};
+		this.value = this.attributes["value"].toFloat(0.0);
+	}
+</script>
+<script type="text/tiscript">
+	function loadingProgress()
+	{
+		$(#OuterDivLiveUpdate).state.expanded = true;		
+		$(#RIGHT_TEXT).state.expanded = true;
+		$(#LEFT_TEXT).state.expanded = true;
+	}
+</script>
+<script type= "text/tiscript">
+	$(#ID_BTN_STOP_LIVEUPDT).onClick = function()
+	{	
+		$(#ID_UPDATE_STATUS).text = Lang.translate("ID_BTN_PAUSE");
+        if(m_bIsUpdateRunning)
+        {
+			$(div.spinTemp).pause(true);
+            view.OnPauseUpdates();
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = Lang.translate("ID_DO_YOU_WANT_TO_STOP_UPDATES");
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+			m_bIsAnyPopUpDisplayed = false;
+            if(res == true)
+            {
+				m_bIsUpdateRunning = false;
+                m_bIsStopFrmTaskbar = false;
+                m_bIsManualStop = true;
+				m_bIsAnyTaskInProcess = false;
+                m_varCurrentTask = #NONE;
+                view.OnClickStopUpdates(m_bIsStopFrmTaskbar, m_bIsManualStop);
+            }
+            else
+            {
+				$(div.spinTemp).pause(false);
+				$(#ID_LBL_PAUSE).text=Lang.translate("ID_BTN_PAUSE");
+                countPauseResume = 1;
+                $(#ID_UPDATE_STATUS).text = Lang.translate("ID_IN_PROGRESS");
+                view.OnResumeUpdates();
+            }
+        }
+	}
+</script>
+<script type="text/tiscript">
+    function ShowNotificationMessage(varMsgType, strMessageText)
+    {
+		if(varMsgType == 1 )   //aborted, upto date, success & Insufficient free disk space
+        {
+            if(strMessageText == Lang.translate("IDS_PRODUCT_UPTODATE"))
+            {
+				loadingFind();
+				$(#OuterDivLiveUpdate).state.expanded = true;
+ 			    chart.value = 1;
+                $(#ID_UPDATE_STATUS).text = Lang.translate("IDS_PRODUCT_UPTODATE"); //up-to-date case.
+            }
+            if(strMessageText == Lang.translate("IDS_PRODUCT_UPDATED_SUCCESS"))
+            {
+                $(#ID_UPDATE_STATUS).text = Lang.translate("IDS_PRODUCT_UPDATED_SUCCESS"); //success case.
+            }
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: "OK", role:#ok, value:true }]
+			};
+			m_bIsAnyPopUpDisplayed = false;
+            if(res == true) // in case of update aborted by user.
+            {
+				m_bIsAnyTaskInProcess = false;
+                m_varCurrentTask = #NONE;
+				view.onClose();
+            }
+        }
+        /*if(varMsgType == 2 ) //restart for update (comes from varMsgType == 5 condition)
+        {
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),caption : Lang.translate("ID_WARNING")};
+            m_bIsAnyPopUpDisplayed = false;
+			if(res == true)
+            {
+                return 1;
+            }
+            else
+            {
+                isRestartNotReqd = true;
+                //selectView("IDR_HTM_HOME");  //restart case & click on NO button redirected to HOME page.
+                return 0;
+            }
+        }*/
+        if(varMsgType == 3) //3 for faild(error while updating)
+        {
+            loadingFind();
+			$(#OuterDivLiveUpdate).state.expanded = true;
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),
+					returns: #values,
+					caption : Lang.translate("ID_WARNING"),
+					buttons: [ { caption: Lang.translate("ID_RETRY"), role:#ok, value:true },{ caption: Lang.translate("ID_CANCEL"), role:#cancel, value:false }]
+					};
+			m_bIsAnyPopUpDisplayed = false;
+            if(res == true)
+            {
+				m_bIsAnyTaskInProcess = false;
+                m_varCurrentTask = #NONE;
+				//$(.offline_update).state.collapsed = true;
+				//$(.online_update).state.expanded = true;
+				OnLoadLiveUpdate();
+            }
+            else
+            {
+				m_bIsAnyTaskInProcess = false;
+                m_varCurrentTask = #NONE;
+				$(.online_update).state.collapsed = true;
+				$(.offline_update).state.expanded = true;
+			}
+        }
+        if(varMsgType == 5 ) //successful update case for restart message
+        {
+            $(#ID_UPDATE_STATUS).text = Lang.translate("ID_UPDATED_SUCCESSFULLY"); //successfully update case.
+			m_bIsAnyPopUpDisplayed = true;
+			$(#ID_LIGHTBOX_TXT).value = strMessageText;
+			var res = dialog { body:$(form#simple-dialog),
+						returns: #values,
+						caption : Lang.translate("ID_WARNING"),
+						buttons: [ { caption: "OK", role:#ok, value:true }]
+						};
+			m_bIsAnyPopUpDisplayed = false;
+            if(res == true)
+            {
+				m_bIsAnyTaskInProcess = false;
+                m_varCurrentTask = #NONE;
+                return true;
+            }
+        }
+    }
+</script>
+<script type= "text/tiscript">
+	var varTempVal = 0;
+	var varstringUpdateType;
+	var arrUpdateTable = new Array(0);
+    var varUpdateRowEntries = 0;
+    var vListObj;
+    var iRowCount = 0;
+</script>
+<script type= "text/tiscript">
+	function ShowUpdateType(stringUpdateType)
+    {
+		varstringUpdateType = stringUpdateType;
+    }
+	
+	function setUpdateStatus(str_Percentage , str_Size , str_currentDownloadedbytes)
+    {	
+		if(varTempVal == 0)
+		{
+			varTempVal++;
+			loadingFind();
+			loadingProgress();
+			if(varstringUpdateType == 0)
+			{
+				$(#ID_DOWNLOAD_TYPE).text = Lang.translate("ID_DOWNLOAD_LATEST_THREAT_DEF");
+			}
+			else
+			{
+				$(#ID_DOWNLOAD_TYPE).text = Lang.translate("ID_DOWNLOAD_LATEST_THREAT_DEF_AND_PRODUCT_PATCH");
+			}
+		}
+		$(#ID_BTN_PAUSE_LIVEUPDT).state.disabled = false;
+        $(#ID_LIVE_DOWNLOAD).text = str_currentDownloadedbytes;
+		
+		var varSize = str_Size.charAt(0);
+		
+		if(varSize < 1)
+			$(#ID_LIVE_SIZE).text = Lang.translate("ID_CALCULATING");
+		else
+			$(#ID_LIVE_SIZE).text = "["+str_Size+"]";
+		
+        if(chart.value >= 0.98)
+            chart.value = 0.98;
+        else
+		{
+            chart.value = str_Percentage.toFloat()/100;;
+		}
+        if(chart.value <= 0.0)
+        {
+            chart.value = 0.00;
+        }
+        return 1;
+    }
+	
+	function AddUpdateTable(strCaption , strStatus)
+    {
+		arrUpdateTable[varUpdateRowEntries]={FileCaption : strCaption, FileStatus : strStatus };
+		varUpdateRowEntries++;
+	}
+	
+	function UpdateUpdateTable(strPrevRowStatus, strCaption, strStatus )//, intDiv){
+    {
+        var temp = varUpdateRowEntries;
+        arrUpdateTable[temp - 1].FileStatus = strPrevRowStatus;
+        arrUpdateTable[varUpdateRowEntries] = {FileCaption : strCaption, FileStatus : strStatus };
+        m_bIsUpdateRunning = true;
+    }
+
+    function RowAddEntryInTable()
+    {
+        if (iRowCount == 0)
+        {
+            varUpdateRowEntries++;
+            iRowCount++;
+        }
+    }
+
+    function UpdateComplete(strPrevRowStatus)
+    {
+        chart.value = 1.0;
+        var temp = varUpdateRowEntries;
+        arrUpdateTable[temp].FileStatus = strPrevRowStatus;
+        $(#ID_UPDATE_STATUS).text = Lang.translate("ID_UPDATE_COMPLETED");
+        $(#ID_BTN_PAUSE_LIVEUPDT).state.disabled = true;
+        $(#ID_BTN_STOP_LIVEUPDT).state.disabled = true;
+        m_bIsUpdateRunning = false;
+		m_bIsAnyTaskInProcess = false;
+    }
+</script>
+<script type= "text/tiscript">
+	$(#ID_BTN_PAUSE_LIVEUPDT).onClick = function()
+	{
+		if(countPauseResume == 1)
+        {
+            $(#ID_LBL_PAUSE).text=Lang.translate("ID_RESUME");
+            countPauseResume = 2;
+            $(#ID_UPDATE_STATUS).text = Lang.translate("ID_PAUSED");
+            var temp = varUpdateRowEntries;
+            arrUpdateTable[temp].FileStatus = Lang.translate("ID_PAUSED");
+            view.OnPauseUpdates();
+        }
+        else if(countPauseResume == 2)
+        {
+            $(#ID_LBL_PAUSE).text=Lang.translate("ID_BTN_PAUSE")
+            countPauseResume = 1;
+            $(#ID_UPDATE_STATUS).text = Lang.translate("ID_IN_PROGRESS");
+            var temp = varUpdateRowEntries;
+            arrUpdateTable[temp].FileStatus = Lang.translate("ID_IN_PROGRESS");
+            view.OnResumeUpdates();
+        }
+	}
+</script>
+<script type="text/tiscript">
+	$(#ID_LOGO).onClick = function()
+	{
+		if(!view.FunCheckInternetAccessBlock())
+			Sciter.launch("http://www.vibranium.co.in/");
+	}
+</script>
+<script type="text/tiscript">
+	function CallEPSLiveUpdateNOUI()
+    {
+		OnLoadLiveUpdate();
+    }
+</script>
+<script type="text/tiscript">
+	function CallLiveUpdate()
+    {
+		OnLoadLiveUpdate();
+    }
+</script>
+<script type="text/tiscript">
+	function OnLoadLiveUpdate()
+	{
+		varTempVal = 0;
+		iRowCount = 0;
+		varUpdateRowEntries = 0;
+		count = 1;
+		m_bIsUpdateRunning = true;
+		$(.disAreaUpdate).attributes.removeClass("activeTabViewUpdate");
+		$(.showdetails).text=Lang.translate("ID_SHOW_DETAILS");
+		$(.spinTemp).state.expanded = true;
+		$(div.spinTemp).pause(false);
+		arrUpdateTable.splice(0, arrUpdateTable.length); //making array size 0
+		$(.offline_update).state.collapsed = true;
+		$(.online_update).state.expanded = true;
+		view.SendNotificationMessage(ShowNotificationMessage);				
+		view.SendUpdateType(ShowUpdateType);
+		view.OnClickUpdateFromInternet(setUpdateStatus, AddUpdateTable, UpdateUpdateTable, RowAddEntryInTable, UpdateComplete);
+		vListObj = $(table);
+		vListObj.value = arrUpdateTable ;
+		m_bIsAnyTaskInProcess = true;
+		m_varCurrentTask = #ONLINE_UPDATE;
+		$(#RIGHT_TEXT).state.collapsed = true;
+		$(#LEFT_TEXT).state.collapsed = true;
+		$(#ID_DOWNLOAD_TYPE).text = Lang.translate("ID_CHECKING_UPDATES");
+		$(#ID_BTN_PAUSE_LIVEUPDT).state.disabled = true;
+		$(#ID_BTN_STOP_LIVEUPDT).state.disabled = false;
+		$(#ID_UPDATE_STATUS).text = Lang.translate("ID_IN_PROGRESS");
+	}
+</script>
+<script type="text/tiscript">
+	$(#ID_BTN_ONLINE_UPDT).onClick = function()
+	{
+		OnLoadLiveUpdate();
+		/*$(.offline_update).state.collapsed = true;
+		$(.online_update).state.expanded = true;
+		view.SendNotificationMessage(ShowNotificationMessage);				
+		view.SendUpdateType(ShowUpdateType);
+		view.OnClickUpdateFromInternet(setUpdateStatus ,AddUpdateTable ,UpdateUpdateTable , RowAddEntryInTable , UpdateComplete);
+		vListObj = $(table);
+		vListObj.value = arrUpdateTable ;
+		$(#RIGHT_TEXT).state.collapsed = true;
+		$(#LEFT_TEXT).state.collapsed = true;
+		$(#ID_DOWNLOAD_TYPE).text = Lang.translate("ID_CHECKING_UPDATES");
+		$(#ID_BTN_PAUSE_LIVEUPDT).state.disabled = true;
+		$(#ID_BTN_STOP_LIVEUPDT).state.disabled = false;
+		$(#ID_UPDATE_STATUS).text = Lang.translate("ID_IN_PROGRESS");*/
+	}
+</script>
+<script type="text/tiscript">
+	$(#ID_BUTTON_NEXT_OFFLINE).onClick = function() 
+	{	
+		bIsOprInProcess = true;
+		addClassTimerReady();
+		view.OnClickUpdatesFromLocalFolder(newFilePath,NotificationMessageFromLocal);
+		m_bIsAnyTaskInProcess = true;
+        m_varCurrentTask = #OFFLINE_UPDATE;
+		$(.update_loading).state.expanded = true;
+		$(#ID_WIDGET_FILEPATH).value = "";
+	}
+</script>
+<script type="text/tiscript">
+    function OnSetDefaultTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DEFAULT_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN.css);</style>);
+	}
+	function OnSetDarkTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_DARK_THEME.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_DARK_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_DARK.css);</style>);
+	}
+	function OnSetCrystalTheme()
+	{
+		$(body).style["background-image"] = "url(IDR_JPG_CRYSTAL_BACKGRUND.jpg)";
+		$(head).$append(<style>@import url(IDR_CSS_MAIN_CRYSTAL_THEME.css);</style>);
+		$(head).$append(<style>@import url(IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css);</style>);
+	}
+</script>
+<script type="text/tiscript">
+    function self.ready() {
+		self.language = g_LanguageName;
+		$(.online_update).state.collapsed = true;
+		if(g_themeType == "defaultTheme")
+		{
+			OnSetDefaultTheme();
+		}
+		else if(g_themeType == "darkTheme")
+		{
+			OnSetDarkTheme();
+		}
+		else if(g_themeType == "crystalTheme")
+		{
+			OnSetCrystalTheme();
+		}
+        
+       /*var circle = $(.circleAnim1);
+        var length = 600; var delta = -15;
+        circle.animate(function() {
+            if(length > 600) delta = -15;
+            else if(length < 0) delta = 15;
+            length += delta;
+            circle.style#stroke-dashoffset = length;
+            return true;
+        });*/
+    }
+</script>
+	
+<form #simple-dialog>
+	<label #ID_LBOX_HEADING></label>
+	<p #ID_LIGHTBOX_TXT></p>
+</form>
+
+</head>
+<body>		
+	<div .header>
+		<div .tempLogo>
+			<img src="IDR_IMG_SHIELD_ICO.png" #ID_LOGO>
+		</div>
+		<div .menu_utility>
+			<div .drag_zone_utility role="window-caption">
+				<h4 #ID_PRODUCT_TYPE>Vibranium 2023</h4>
+			</div>
+			
+			<div .topMenuUtility>
+				<ul>
+					<li .clickable_cl #help_click .MenuSpacings style="font-size:13dip; visibility:none;"><label>ID_STR_HELP</label></li>
+					<li .clickable_cl .OnClickMinimize .MenuSpacing>
+						<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="MiniIcon">
+						<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="11" y1="250" x2="488" y2="250"/>
+						</svg>
+					</li>
+					<li .clickable_cl .frame_display_src #ID_BUTTON_CLOSE .MenuSpacing>
+						<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve" class="CloseIcon">
+						<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="21" y1="13" x2="485" y2="483"/>
+						<line fill="none" stroke-width="40" stroke-miterlimit="10" x1="485" y1="13" x2="21" y2="483"/>
+						</svg>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div .offline_update>
+		<div .titleCont_utilities>
+			
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" class="updateIconStyle">
+<style type="text/css">
+	.update_icoSt0{fill:#404A4A;}
+	.update_icoSt1{fill:#617881;}
+	.update_icoSt2{fill:#37474F;}
+	.update_icoSt3{fill:#4DD0E1;}
+	.update_icoSt4{fill:#00BCD4;}
+	.update_icoSt5{fill:#B2EBF2;}
+	.update_icoSt6{fill:#FFFFFF;}
+</style>
+<g>
+	<path class="update_icoSt0" d="M172.4,374.1h156.8v103.2H172.4V374.1z"/>
+	<path class="update_icoSt1" d="M250.8,402.2c-56.2,0-113-1.6-169.6-4.9C40.5,395,8,362.7,5.4,322c-5.1-80-5.1-160.3,0-240.1
+		C8,41.2,40.5,8.8,81.2,6.5c56.6-3.2,113.4-4.9,169.6-4.9s113,1.6,169.6,4.9c40.7,2.3,73.2,34.7,75.8,75.4c5.1,79.9,5,160.1,0,240.1
+		c-2.6,40.7-35.1,73.1-75.8,75.4C363.8,400.6,307.1,402.2,250.8,402.2L250.8,402.2z"/>
+	<path class="update_icoSt0" d="M59.2,393c-29.9-10.5-51.7-38-53.8-71c-5.1-80-5.1-160.3,0-240.1c2.1-33,23.9-60.5,53.8-71
+		C40.4,25.4,27.9,48.3,26.3,74.5c-5.1,84.7-5,169.9,0,254.8C27.9,355.5,40.5,378.4,59.2,393z"/>
+	<path class="update_icoSt2" d="M250.8,372.1c-55.4,0-111.9-1.6-167.9-4.8c-25.5-1.5-45.9-21.8-47.5-47.2c-5-78.5-5-158,0-236.3
+		C37,58.3,57.5,38,82.9,36.5c55.9-3.2,112.4-4.8,167.9-4.8s112,1.6,167.9,4.8c25.5,1.5,45.9,21.8,47.5,47.2c5,78.3,5,157.8,0,236.3
+		c-1.6,25.5-22,45.8-47.5,47.2C362.7,370.5,306.3,372.1,250.8,372.1L250.8,372.1z"/>
+	<path class="update_icoSt1" d="M425.3,477.2c0,12.6-10.2,22.8-22.8,22.8H99.1c-6.3,0-12-2.5-16.1-6.7c-4.1-4.1-6.7-9.8-6.7-16.1
+		c0-12.6,10.2-22.8,22.8-22.8h303.3c6.3,0,12,2.5,16.1,6.7C422.7,465.2,425.3,470.9,425.3,477.2z"/>
+	<path class="update_icoSt0" d="M136.9,500H99.1c-6.3,0-12-2.5-16.1-6.7c-4.1-4.1-6.7-9.8-6.7-16.1c0-12.6,10.2-22.8,22.8-22.8h37.8
+		c-9.4,3.3-16.1,12.3-16.1,22.8c0,6.7,2.7,12.7,7.1,17.1C130.4,496.8,133.5,498.8,136.9,500z"/>
+</g>
+<path class="update_icoSt3" d="M150.9,189.5h36c0-35.3,28.7-64,64-64s64,28.7,64,64s-28.7,64-64,64l-32,47.5h42.5
+	c56.9-5.3,101.6-53.3,101.6-111.6c0-61.8-50.3-112.1-112.1-112.1c-58,0-105.8,44.3-111.5,100.8L150.9,189.5z"/>
+<path class="update_icoSt4" d="M150.9,189.5h-36c0-75,61.1-136.1,136.1-136.1s136.1,61.1,136.1,136.1S326,325.6,251,325.6l-16-18l16-18
+	c55.3,0,100.1-44.8,100.1-100.1S306.2,89.4,251,89.4S150.9,134.2,150.9,189.5z"/>
+<polygon class="update_icoSt3" points="251,349.6 251,289.6 211.3,279.3 171.6,289.6 "/>
+<polygon class="update_icoSt5" points="251,289.6 251,229.5 171.6,289.6 "/>
+<polygon class="update_icoSt6" points="299,197.5 243,197.5 243,141.5 259,141.5 259,181.5 299,181.5 "/>
+</svg>
+			<h1 .headingTitle1><label>ID_WELCOME_TO_WARDWIZ_UPDATE</label></h1>
+			<p style="font-size:13.5dip;"><label>ID_LIVE_UPDATE_FOR_PRODUCT_AND_UPDATE</label></p>
+		</div>
+		
+		<div .cstmMrgnRight>
+			<input #ID_RADIO_INTERNET type="radio" checked><label for="ID_RADIO_INTERNET">ID_UPDATE_FROM_INTERNET</label><br/>
+			<input #ID_RADIO_LOCAL type="radio"><label for="ID_RADIO_LOCAL">ID_UPDATE_VIRUS_DB_LOCAL_FOLDER</label><br/>
+			<div .inptCont>
+				<widget|file-name name=test disabled #ID_WIDGET_FILEPATH/>
+			</div>
+		</div><br/>
+		
+		<div .alignCenter>
+			<span .btnCstm .update_from_online .frame_display_src #ID_BTN_ONLINE_UPDT><label>ID_NEXT_ONLINE</label></span>
+			<span .btnCstm .update_from_local #ID_BUTTON_NEXT_OFFLINE><label>ID_NEXT_ONLINE</label></span>
+		</div>
+		
+		<div .update_loading>
+			<tiles>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+				<tile></tile>
+			</tiles>
+			<h4><label>ID_UPDATING_VIRUS_DB_OFFLINE</label></h4>
+		</div>
+	</div>
+	
+	<div .online_update>
+		<div .titleCont_utilities>
+			<h1 .headingTitle1><label>ID_LIVE_UPDATE</label></h1>
+			<p #ID_DOWNLOAD_TYPE><label>ID_DOWNLOAD_LATEST_THREAT_DEF_AND_PRODUCT_PATCH</label></p>
+		</div>
+		<div .disAreaUpdate>
+			<div #UpdateDisplayCont>
+				<div .mgLeftSc>
+					<div .scanAnimation>
+						<div.spinTemp>
+							<pie-chart value=0.15 />
+						</div>
+						<div #OuterDivLiveUpdate>
+							<pie-chartTemp value=0.0 />
+						</div>
+					</div>
+				</div>
+
+				<div .stopPauseBtn>
+					<div .btnCstm #ID_BTN_PAUSE_LIVEUPDT style="margin-right:115dip;"><label #ID_LBL_PAUSE>ID_BTN_PAUSE</label></div>
+					<div .btnCstm #ID_BTN_STOP_LIVEUPDT><label>ID_BTN_STOP</label></div>
+				</div>
+				<div .quickResultCont>
+					<div .quickScanResult>
+						<h4 #LEFT_TEXT .fontNormal><label>ID_DOWNLOAD</label><span #ID_LIVE_DOWNLOAD>[00KB]</span></h4>
+					</div>
+					<div .quickScanResult>
+						<h4 #RIGHT_TEXT .fontNormal><label>ID_TOTAL_SIZE</label><span #ID_LIVE_SIZE><label>ID_CALCULATING</label></span></h4>
+					</div>
+				</div>
+			</div>
+			<div #updateReportHdeShow>
+				<table resizeable id="liveupdatetable">
+					<thead>
+						<tr>
+							<th><label>ID_ITEMS</label></th>
+							<th><label>ID_STATUS</label></th>
+						</tr>
+					</thead>  
+					<tbody>
+						<tr><td(FileCaption)></td><td(FileStatus)></td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div .update_status>
+			<h4><label #ID_UPDATE_STATUS .fontNormal>ID_UPDATE_STATUS</label>... <span .showdetails><label>ID_SHOW_DETAILS</label></span></h4>
+		</div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="ALL_BUILD"
+	ProjectGUID="{1B96E2E1-4965-471A-93A2-9B94A4BC365B}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="ALL_BUILD.dir\Debug"
+			ConfigurationType="10"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories=""
+				AssemblerListingLocation="Debug/"
+				ExceptionHandling="0"
+				PreprocessorDefinitions="CMAKE_INTDIR=\&quot;Debug\&quot;"
+				ObjectFile="$(IntDir)\"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories=""
+				PreprocessorDefinitions="CMAKE_INTDIR=\&quot;Debug\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				AdditionalIncludeDirectories=""
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="ALL_BUILD.dir\Release"
+			ConfigurationType="10"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories=""
+				AssemblerListingLocation="Release/"
+				ExceptionHandling="0"
+				PreprocessorDefinitions="CMAKE_INTDIR=\&quot;Release\&quot;"
+				ObjectFile="$(IntDir)\"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories=""
+				PreprocessorDefinitions="CMAKE_INTDIR=\&quot;Release\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				AdditionalIncludeDirectories=""
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+			<File
+				RelativePath="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\ALL_BUILD">
+			</File>
+			<File
+				RelativePath="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeLists.txt">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule E:/WardWiz_Developement/WardWizCrashHandler/x86/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -HE:/WardWiz_Developement/WardWizCrashHandler/x86 -BE:/WardWiz_Developement/WardWizCrashHandler/x86 --check-stamp-file E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeLists.txt;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeSystem.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeSystem.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerId.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CompilerId\VS-7.vcproj.in&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeFindBinUtils.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeClDeps.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCXXCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-CXX.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerId.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CompilerId\VS-7.vcproj.in&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeFindBinUtils.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeClDeps.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCXXCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeGenericSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\WindowsPaths.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC-C.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineRCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeRCCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeRCCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeRCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestRCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCompilerCommon.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerABI.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeParseImplicitLinkInfo.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCCompilerABI.c&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC-CXX.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCXXCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCompilerCommon.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerABI.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeParseImplicitLinkInfo.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXCompilerABI.cpp&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCXXCompiler.cmake;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeLists.txt;"
+					Outputs="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule E:/WardWiz_Developement/WardWizCrashHandler/x86/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake\bin\cmake.exe&quot; -HE:/WardWiz_Developement/WardWizCrashHandler/x86 -BE:/WardWiz_Developement/WardWizCrashHandler/x86 --check-stamp-file E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto :VCReportError"
+					AdditionalDependencies="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeLists.txt;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeSystem.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeSystem.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerId.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CompilerId\VS-7.vcproj.in&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeFindBinUtils.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeClDeps.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCXXCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-CXX.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerId.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CompilerId\VS-7.vcproj.in&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeFindBinUtils.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeClDeps.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCXXCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeGenericSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\WindowsPaths.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC-C.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineRCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeRCCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeRCCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeRCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestRCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCompilerCommon.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerABI.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeParseImplicitLinkInfo.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCCompilerABI.c&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCCompiler.cmake;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC-CXX.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\Platform\Windows-MSVC.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCXXCompiler.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeTestCompilerCommon.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeDetermineCompilerABI.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeParseImplicitLinkInfo.cmake&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXCompilerABI.cpp&quot;;&quot;C:\Program Files (x86)\CMake\share\cmake-3.0\Modules\CMakeCXXCompiler.cmake.in&quot;;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\3.0.0\CMakeCXXCompiler.cmake;E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeLists.txt;"
+					Outputs="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+			</File>
+		<Filter
+			Name="CMake Rules"
+			Filter="">
+			<File
+				RelativePath="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\ALL_BUILD.rule">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Build all projects"
+					CommandLine=""
+					AdditionalDependencies="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\ALL_BUILD.rule"
+					Outputs="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\ALL_BUILD"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Build all projects"
+					CommandLine=""
+					AdditionalDependencies="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\ALL_BUILD.rule"
+					Outputs="E:\WardWiz_Developement\WardWizCrashHandler\x86\CMakeFiles\ALL_BUILD"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

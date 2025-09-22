@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{08707B6C-0816-49C9-8A8A-36393AEA225E}</ProjectGuid>
+    <RootNamespace>WardWizInstaller</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <ProjectName>AcuTokInstaller</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>VBINSTALLER</TargetName>
+    <TargetExt>.EXE</TargetExt>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath); </IncludePath>
+    <LibraryWPath>
+    </LibraryWPath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>VBINSTALLER</TargetName>
+    <TargetExt>.EXE</TargetExt>
+    <IncludePath>$(VC_IncludePath);$(WindowsSdk_71A_IncludePath); $(ProgramFiles)\Windows Kits\8.0\Include\um</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSdk_71A_LibraryPath_x86);C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86;C:\Program Files %28x86%29\Windows Kits\8.1\Lib\winv6.3\um\arm;C:\Program Files %28x86%29\Windows Kits\8.1\Lib\winv6.3\um\x86;$(LibraryPath)C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;WRDWIZBASIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common;..\Common\DownloadManager;..\Common\SciterInclude;..\Common\CrashDumpHandlerInc;..\Common\System;..\Common\GUI;..\Common\CRC;..\Common\Service;..\Common\TPLIB\sqlite;..\Common\IPC;..\Common\ISpyEmail;..\Common\Scanner;..\Common\SQLiteReports;C:\Program Files (x86)\Windows Kits\8.1\Include\um;C:\Program Files (x86)\Windows Kits\8.1\Include\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Psapi.lib;kernel32.lib;Winhttp.lib;$(SolutionDir)\$(Configuration)\$(Platform)\Intermediate\ZipArchive.lib;%(AdditionalDependencies)Wtsapi32.lib</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <MinimumRequiredVersion>5.01</MinimumRequiredVersion>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
+      <LinkTimeCodeGeneration />
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Manifest>
+      <OutputManifestFile />
+    </Manifest>
+    <ManifestResourceCompile>
+      <ResourceOutputFileName />
+    </ManifestResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;WRDWIZBASIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common;..\Common\DownloadManager;..\Common\SciterInclude;..\Common\CrashDumpHandlerInc;..\Common\System;..\Common\GUI;..\Common\CRC;..\Common\Service;..\Common\TPLIB\sqlite;..\Common\IPC;..\Common\ISpyEmail;..\Common\Scanner;..\Common\SQLiteReports;C:\Program Files (x86)\Windows Kits\8.1\Include\um;C:\Program Files (x86)\Windows Kits\8.1\Include\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OmitFramePointers>false</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Psapi.lib;kernel32.lib;Winhttp.lib;$(SolutionDir)\$(Configuration)\$(Platform)\Intermediate\ZipArchive.lib;%(AdditionalDependencies)Wtsapi32.lib</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h" />
+    <ClInclude Include="..\Common\CRC\WardWizCRC32.h" />
+    <ClInclude Include="..\Common\DownloadConts.h" />
+    <ClInclude Include="..\Common\DownloadManager\DownloadContext.h" />
+    <ClInclude Include="..\Common\DownloadManager\DownloadController.h" />
+    <ClInclude Include="..\Common\DownloadManager\IController.h" />
+    <ClInclude Include="..\Common\DownloadManager\IExecContext.h" />
+    <ClInclude Include="..\Common\DownloadManager\MessageQueue.h" />
+    <ClInclude Include="..\Common\DownloadManager\ThreadPool.h" />
+    <ClInclude Include="..\Common\DownloadManager\WinHttpManager.h" />
+    <ClInclude Include="..\Common\DownloadManager\WWizHttpManager.h" />
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h" />
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h" />
+    <ClInclude Include="..\Common\IPC\iSpyMemMapServer.h" />
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h" />
+    <ClInclude Include="..\Common\IPC\PipeConstants.h" />
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDataManager.h" />
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDBManipulation.h" />
+    <ClInclude Include="..\Common\ISpyEmail\ISpyList.h" />
+    <ClInclude Include="..\Common\Scanner\BDClient.h" />
+    <ClInclude Include="..\Common\Scanner\ISpyScanner.h" />
+    <ClInclude Include="..\Common\Scanner\SAVAPIClient.h" />
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h" />
+    <ClInclude Include="..\Common\Service\iSpySrvMgmt.h" />
+    <ClInclude Include="..\Common\System\CommonFunctions.h" />
+    <ClInclude Include="..\Common\System\CPUInfo.h" />
+    <ClInclude Include="..\Common\System\CScannerLoad.h" />
+    <ClInclude Include="..\Common\System\CSecure64.h" />
+    <ClInclude Include="..\Common\System\DriverConstants.h" />
+    <ClInclude Include="..\Common\System\Enumprocess.h" />
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h" />
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h" />
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h" />
+    <ClInclude Include="..\Common\System\WWizSettings.h" />
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h" />
+    <ClInclude Include="..\WrdWizDownloader\SimpleBrowser.h" />
+    <ClInclude Include="ITinRegDataOperations.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WardWizInstaller.h" />
+    <ClInclude Include="WardWizInstallerDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp" />
+    <ClCompile Include="..\Common\CRC\WardWizCRC32.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\DownloadContext.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\DownloadController.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\MessageQueue.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\ThreadPool.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\WinHttpManager.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\WWizHttpManager.cpp" />
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp" />
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp" />
+    <ClCompile Include="..\Common\IPC\iSpyMemMapServer.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp" />
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDataManager.cpp" />
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDBManipulation.cpp" />
+    <ClCompile Include="..\Common\ISpyEmail\ISpyList.cpp" />
+    <ClCompile Include="..\Common\Scanner\BDClient.cpp" />
+    <ClCompile Include="..\Common\Scanner\ExcludeFilesFolders.cpp" />
+    <ClCompile Include="..\Common\Scanner\ISpyScanner.cpp" />
+    <ClCompile Include="..\Common\Scanner\SAVAPIClient.cpp" />
+    <ClCompile Include="..\Common\Scanner\ScanByName.cpp" />
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp" />
+    <ClCompile Include="..\Common\Service\iSpySrvMgmt.cpp" />
+    <ClCompile Include="..\Common\System\CommonFunctions.cpp" />
+    <ClCompile Include="..\Common\System\CPUInfo.cpp" />
+    <ClCompile Include="..\Common\System\CScannerLoad.cpp" />
+    <ClCompile Include="..\Common\System\CSecure64.cpp" />
+    <ClCompile Include="..\Common\System\EnumProcess.cpp" />
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp" />
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp" />
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp" />
+    <ClCompile Include="..\Common\System\WWizSettings.cpp" />
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp" />
+    <ClCompile Include="..\WrdWizDownloader\SimpleBrowser.cpp" />
+    <ClCompile Include="ITinRegDataOperations.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WardWizInstaller.cpp" />
+    <ClCompile Include="WardWizInstallerDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizInstaller.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\css1.bin" />
+    <None Include="res\gif1.bin" />
+    <None Include="res\IDR_CSS_GERMAN_LANG.css" />
+    <None Include="res\IDR_CSS_LANG.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_DARK.css" />
+    <None Include="res\IDR_CSS_MAIN.css" />
+    <None Include="res\IDR_CSS_MAIN_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\IDR_HTM_FONT_AWESOME.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_PROXY_SETTING.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_WRDWIZ_INSTALLER.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_TIS_ENGLISH.tis" />
+    <None Include="res\IDR_TIS_GERMAN.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG_TOOL.tis" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+    <None Include="res\IDR_TIS_MAIN.tis" />
+    <None Include="res\IDR_TIS_PLUS.tis" />
+    <None Include="res\IDR_TIS_ROLODEX.tis" />
+    <None Include="res\IDR_TIS_SQLITE.tis" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\jpg1.bin" />
+    <None Include="res\jpg2.bin" />
+    <None Include="res\jpg3.bin" />
+    <None Include="res\tis1.bin" />
+    <None Include="res\WardWizInstaller.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\IDR_GIF_LOADING_GLOBE.gif" />
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION.gif" />
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION_BOTTOM.gif" />
+    <Image Include="res\IDR_PNG_DARK_THEME.png" />
+    <Image Include="res\IDR_PNG_DEFAULT_BACKGRUND.jpg" />
+    <Image Include="res\IDR_PNG_FAILED.png" />
+    <Image Include="res\IDR_PNG_FB.png" />
+    <Image Include="res\IDR_PNG_FB_HOVER.png" />
+    <Image Include="res\IDR_PNG_HEADER.png" />
+    <Image Include="res\IDR_PNG_HEADER_BASIC.png" />
+    <Image Include="res\IDR_PNG_HEADER_BASIC_REVERSE.png" />
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png" />
+    <Image Include="res\IDR_PNG_IMG_SHIELD_ICO.png" />
+    <Image Include="res\IDR_PNG_INSTA.png" />
+    <Image Include="res\IDR_PNG_INSTA_HOVER.png" />
+    <Image Include="res\IDR_PNG_LINKEDIN.png" />
+    <Image Include="res\IDR_PNG_LINKEDIN_HOVER.png" />
+    <Image Include="res\IDR_PNG_LOGO.png" />
+    <Image Include="res\IDR_PNG_OK.png" />
+    <Image Include="res\IDR_PNG_PROTECTED.png" />
+    <Image Include="res\IDR_PNG_TWITTER.png" />
+    <Image Include="res\IDR_PNG_TWITTER_HOVER.png" />
+    <Image Include="res\IDR_PNG_UNKNOWN-ICON.png" />
+    <Image Include="res\png1.png" />
+    <Image Include="res\WardWizInstaller.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="WardWizInstaller.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

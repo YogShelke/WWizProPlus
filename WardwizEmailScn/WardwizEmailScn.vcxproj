@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E590A85A-C4C3-42A5-AAB3-EB5B96C3CB9E}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <RootNamespace>WardwizEmailScn</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+    <ProjectName>AcuTokEmailScn</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>VBEMAILSCN</TargetName>
+    <TargetExt>.DLL</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <TargetName>VBEMAILSCN</TargetName>
+    <TargetExt>.DLL</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>VBEMAILSCN</TargetName>
+    <TargetExt>.DLL</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <TargetName>VBEMAILSCN</TargetName>
+    <TargetExt>.DLL</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;UPDATESERVICE;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common;..\Common\CrashDumpHandlerInc;..\Common\GUI;..\Common\IPC;..\Common\System;..\Common\TPLIB\sqlite;..\Common\Scanner;..\Common\TPLIB\ProtocolFilters\include;..\Common\TPLIB\SAVAPI\include;..\Common\TPLIB\ProtocolFiltersInclude;..\Common\Mime;%(AdditionalIncludeDirectories);..\Common\Boost;..\Common\DownloadManager;..\Common\WWizBalBst</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\WardwizEmailScn.def</ModuleDefinitionFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <AdditionalDependencies>..\Common\TPLIB\nfsdk\lib\Debug\Win32\nfapi.lib;..\Common\TPLIB\nfsdk\lib\Debug\Win32\ProtocolFilters.lib;%(AdditionalDependencies);Wtsapi32.lib;Userenv.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;UPDATESERVICE;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;.\;..\Common;..\Common\GUI;..\Common\IPC;..\Common\System;..\Common\TPLIB\sqlite;..\Common\Scanner;..\Common\TPLIB\BDF\include;..\Common\TPLIB\BDF\helper;..\Common\CrashDumpHandlerInc;..\Common\TPLIB\ProtocolFilters\include;..\Common\TPLIB\SAVAPI\include;..\Common\TPLIB\ProtocolFiltersInclude;..\Common\Mime;%(AdditionalIncludeDirectories);..\Common\Boost;..\Common\DownloadManager;..\Common\WWizBalBst</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\WardwizEmailScn.def</ModuleDefinitionFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>..\Common\TPLIB\nfsdk\lib\Debug\x64\nfapi.lib;..\Common\TPLIB\nfsdk\lib\Debug\x64\ProtocolFilters.lib;Wtsapi32.lib;Userenv.lib;%(AdditionalDependencies);Wtsapi32.lib;Userenv.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;UPDATESERVICE;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common;..\Common\CrashDumpHandlerInc;..\Common\GUI;..\Common\IPC;..\Common\System;..\Common\TPLIB\sqlite;..\Common\Scanner;..\Common\TPLIB\ProtocolFilters\include;..\Common\TPLIB\SAVAPI\include;..\Common\TPLIB\ProtocolFiltersInclude;..\Common\Mime;%(AdditionalIncludeDirectories);..\Common\Boost;..\Common\DownloadManager;..\Common\WWizBalBst</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\WardwizEmailScn.def</ModuleDefinitionFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <AdditionalDependencies>..\Common\TPLIB\nfsdk\lib\Release\win32\nfapi.lib;..\Common\TPLIB\nfsdk\lib\Release\win32\ProtocolFilters.lib;%(AdditionalDependencies);Wtsapi32.lib;Userenv.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;NDEBUG;_USRDLL;_NFAPI_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\;.\;..\Common;..\Common\GUI;..\Common\IPC;..\Common\System;..\Common\TPLIB\sqlite;..\Common\Scanner;..\Common\TPLIB\BDF\include;..\Common\TPLIB\BDF\helper;..\Common\CrashDumpHandlerInc;..\Common\TPLIB\ProtocolFilters\include;..\Common\TPLIB\SAVAPI\include;..\Common\TPLIB\ProtocolFiltersInclude;..\ProtocolFilters\include;..\ProtocolFiltersInclude;..\Common\Mime;%(AdditionalIncludeDirectories);..\Common\Boost;..\Common\DownloadManager;..\Common\WWizBalBst</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\WardwizEmailScn.def</ModuleDefinitionFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>..\Common\TPLIB\nfsdk\lib\Release\x64\nfapi.lib;..\Common\TPLIB\nfsdk\lib\Release\x64\ProtocolFilters.lib;%(AdditionalDependencies);Wtsapi32.lib;Userenv.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp" />
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp" />
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp" />
+    <ClCompile Include="..\Common\IPC\iSpyMemMapServer.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp" />
+    <ClCompile Include="..\Common\Mime\Mime.cpp" />
+    <ClCompile Include="..\Common\Mime\MimeChar.cpp" />
+    <ClCompile Include="..\Common\Mime\MimeCode.cpp" />
+    <ClCompile Include="..\Common\Mime\MimeType.cpp" />
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp" />
+    <ClCompile Include="..\Common\System\CPUInfo.cpp" />
+    <ClCompile Include="..\Common\System\EnumProcess.cpp" />
+    <ClCompile Include="..\Common\System\ExecuteProcess.cpp" />
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp" />
+    <ClCompile Include="..\Common\System\WardWizIniWrapper.cpp" />
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp" />
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp" />
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp" />
+    <ClCompile Include="..\Common\WWizBalBst\BalBST.cpp" />
+    <ClCompile Include="..\Common\WWizBalBst\BalBSTOpt.cpp" />
+    <ClCompile Include="..\Common\WWizBalBst\BBBSt.cpp" />
+    <ClCompile Include="..\Common\WWizBalBst\BBSt.cpp" />
+    <ClCompile Include="..\Common\WWizBalBst\BufferToStructure.cpp" />
+    <ClCompile Include="..\Common\WWizBalBst\PtrStack.cpp" />
+    <ClCompile Include="PFMailFilter.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WardwizEmailScn.cpp" />
+    <ClCompile Include="WWizEmailScanner.cpp" />
+    <ClCompile Include="WWizFirewallFilter.cpp" />
+    <ClCompile Include="WWizParentalCntrl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h" />
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h" />
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h" />
+    <ClInclude Include="..\Common\IPC\iSpyMemMapServer.h" />
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h" />
+    <ClInclude Include="..\Common\IPC\PipeConstants.h" />
+    <ClInclude Include="..\Common\Mime\Mime.h" />
+    <ClInclude Include="..\Common\Mime\MimeChar.h" />
+    <ClInclude Include="..\Common\Mime\MimeCode.h" />
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h" />
+    <ClInclude Include="..\Common\System\CPUInfo.h" />
+    <ClInclude Include="..\Common\System\Enumprocess.h" />
+    <ClInclude Include="..\Common\System\ExecuteProcess.h" />
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h" />
+    <ClInclude Include="..\Common\System\WardWizIniWrapper.h" />
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h" />
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h" />
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h" />
+    <ClInclude Include="..\Common\WWizBalBst\BalBST.h" />
+    <ClInclude Include="..\Common\WWizBalBst\BalBSTOpt.h" />
+    <ClInclude Include="..\Common\WWizBalBst\BBBSt.h" />
+    <ClInclude Include="..\Common\WWizBalBst\BBSt.h" />
+    <ClInclude Include="..\Common\WWizBalBst\BufferToStructure.h" />
+    <ClInclude Include="..\Common\WWizBalBst\PtrStack.h" />
+    <ClInclude Include="PFMailFilter.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WardwizEmailScn.h" />
+    <ClInclude Include="WWizEmailScanner.h" />
+    <ClInclude Include="WWizFirewallFilter.h" />
+    <ClInclude Include="WWizParentalCntrl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WardwizEmailScn.rc2" />
+    <None Include="WardwizEmailScn.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardwizEmailScn.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

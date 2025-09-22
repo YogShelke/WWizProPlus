@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{b93f3e6d-7604-400d-a5ab-cdd9f8acd71d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{389a8d7f-d87c-4edf-9e97-c6058e9c0dbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DownLoadManager">
+      <UniqueIdentifier>{7ee865d4-0199-479d-b541-4a8bc26e9a48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{522d34a9-991f-4931-97f2-e017d3ab432b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ISpyEmail">
+      <UniqueIdentifier>{263c9c4f-467f-41bc-bf2f-f46e928afa4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ISpyScanner">
+      <UniqueIdentifier>{c9e6725c-d8b0-468f-9cee-964a22d0143a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CRC">
+      <UniqueIdentifier>{8885bc17-fdfa-4f2c-b72a-c0fd140f46ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DriverInstall">
+      <UniqueIdentifier>{bdefc6fa-fdeb-44a0-9be1-06eeb356069d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SVCCommon">
+      <UniqueIdentifier>{548f6287-a4e5-47d4-9e8c-2757a7c02767}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WardWizInstaller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizInstallerDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\iSpyMemMapServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\PipeConstants.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadConts.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\WinHttpManager.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettings.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDataManager.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDBManipulation.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyList.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\ISpyScanner.h">
+      <Filter>ISpyScanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\SAVAPIClient.h">
+      <Filter>ISpyScanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WrdWizDownloader\SimpleBrowser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CRC\WardWizCRC32.h">
+      <Filter>CRC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CPUInfo.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="ITinRegDataOperations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\DownloadContext.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\DownloadController.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\IController.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\IExecContext.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\MessageQueue.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\ThreadPool.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\WWizHttpManager.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CScannerLoad.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CSecure64.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\DriverConstants.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\BDClient.h">
+      <Filter>ISpyScanner</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CommonFunctions.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Service\iSpySrvMgmt.h">
+      <Filter>SVCCommon</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WardWizInstaller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizInstallerDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\WinHttpManager.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettings.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDataManager.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDBManipulation.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyList.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\ExcludeFilesFolders.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\ISpyScanner.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\SAVAPIClient.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\ScanByName.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WrdWizDownloader\SimpleBrowser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CRC\WardWizCRC32.cpp">
+      <Filter>CRC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CPUInfo.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="ITinRegDataOperations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\DownloadContext.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\DownloadController.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\MessageQueue.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\ThreadPool.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\WWizHttpManager.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CScannerLoad.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CSecure64.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\BDClient.cpp">
+      <Filter>ISpyScanner</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CommonFunctions.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Service\iSpySrvMgmt.cpp">
+      <Filter>SVCCommon</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizInstaller.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WardWizInstaller.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_HTM_WRDWIZ_INSTALLER.htm" />
+    <None Include="res\css1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_CSS_GERMAN_LANG.css" />
+    <None Include="res\IDR_CSS_LANG.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_DARK.css" />
+    <None Include="res\IDR_CSS_MAIN.css" />
+    <None Include="res\IDR_CSS_MAIN_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\jpg1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\jpg2.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\jpg3.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\tis1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_TIS_MAIN.tis" />
+    <None Include="res\IDR_TIS_ENGLISH.tis" />
+    <None Include="res\IDR_TIS_GERMAN.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG_TOOL.tis" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+    <None Include="res\IDR_TIS_PLUS.tis" />
+    <None Include="res\IDR_TIS_ROLODEX.tis" />
+    <None Include="res\IDR_TIS_SQLITE.tis" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\IDR_HTM_FONT_AWESOME.htm" />
+    <None Include="res\gif1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_HTM_PROXY_SETTING.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WardWizInstaller.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\png1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FB.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FB_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_BASIC.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_BASIC_REVERSE.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LINKEDIN.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LINKEDIN_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TWITTER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TWITTER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_DARK_THEME.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_DEFAULT_BACKGRUND.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_IMG_SHIELD_ICO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_OK.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FAILED.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_LOADING_GLOBE.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_GIF_PROCESS_OFF_REGISTRATION_BOTTOM.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_PROTECTED.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LOGO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_UNKNOWN-ICON.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_INSTA.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_INSTA_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

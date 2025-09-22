@@ -1,0 +1,119 @@
+	
+	const content = $(frame#content);
+	// handler of navigational buttons on toolbar:
+	self.on("click", ".frame_display_src[src]", function(evt) {
+    const src = this.attributes["src"]; // get src
+    content.load( self.url(src) );      // resolve partial src url and load into the frame
+	}); 
+	//Theme tpye
+	//var g_themeType = "darkTheme";
+	var g_themeType = "defaultTheme";
+	
+	var records = new Array(0);
+    var arrVirusFoundEntries = new Array(0);
+	var arrFullScanEntries = new Array(0);		
+	var g_IsFullScanRunning = false;
+	var g_IsQuickScanRunning = false;
+	var g_IsCustomScanRunning = false;
+	var g_IsDataEncDecRunning = false;
+	var g_IsRegOptimizerRunning = false;
+	var g_IsAntirootkitRunning = false;
+	var g_IsRecoverFilesRunning = false;
+	var g_IsRecoverActionRunning = false;
+	var g_bIsAnyTaskInProcess = false;
+	var g_IsAnyPopUpDisplayed = false;
+	var g_RegOptOpenStatus	= false;
+	var g_CurrentPage 		  = #INDEX;
+	var g_LanguageName 		  = "";
+	var g_bScanShutdown 	  = false;
+	var g_varCurrentTask	  = 0;
+	var g_ProductLicenseType  = #NONE;
+	var g_IsPasswordEntered   = false;	
+	var g_AppPath = view.GetAppPath();
+	var g_CstmScnGif;
+	var g_FullScnGif;
+	var g_QuickScnGif;
+	
+ 	namespace LANGUAGE_TYPE
+	{
+		const ENGLISH = 0;
+		const HINDI = 1;
+		const GERMAN = 2;
+	}
+	
+	var LanguageID 			  = view.GetLanguageID();
+	var g_LanguageID 		  = LANGUAGE_TYPE.ENGLISH ;
+	var g_ThemeID			  = view.OnGetThemeID();
+	if(g_ThemeID == 1)
+	{
+		g_themeType = "defaultTheme";
+	}
+	else if(g_ThemeID == 2)
+	{
+		g_themeType = "darkTheme";
+	}
+	if(LanguageID == LANGUAGE_TYPE.ENGLISH)
+	{
+		g_LanguageName = "ENGLISH";
+		g_LanguageID = LANGUAGE_TYPE.ENGLISH;
+	}
+	else if(LanguageID == LANGUAGE_TYPE.GERMAN)
+	{
+		g_LanguageName = "GERMAN";
+		g_LanguageID = LANGUAGE_TYPE.GERMAN;
+	}
+	else if(LanguageID == LANGUAGE_TYPE.HINDI)
+	{
+		g_LanguageID = LANGUAGE_TYPE.HINDI;
+		g_LanguageName = "HINDI";
+	}
+	else
+	{
+		g_LanguageName = "ENGLISH";
+		g_LanguageID = LANGUAGE_TYPE.ENGLISH;
+	}
+	
+	var productVersion = #BASIC;
+	var ProductID = view.GetProductID();
+
+	if(ProductID == 1)
+		productVersion = #ESSENTIAL;
+	else if(ProductID == 2)
+		productVersion = #PROVANTAGE;
+	else if(ProductID == 3)
+		productVersion = #ELITE;
+	else if(ProductID == 4)
+		productVersion = #BASIC;
+	else if(ProductID == 5)
+		productVersion = #ESSENTIALPLUS;
+	else
+		productVersion = #ESSENTIAL;
+	
+	function CallMessageBoxOnUI(strMessage, StrMessageHeading , strMsgType)
+	{
+		view.msgbox(strMsgType, strMessage,StrMessageHeading); 
+	}
+
+
+	namespace CurrentTask
+	{
+		const NONE = 0;
+		const QUICKSCAN = 1;
+		const FULLSCAN = 2;
+		const CUSTOMSCAN = 3;
+		const ANTIROOTKITSCAN = 4;
+		const REGISTRYOPTIMIZER = 5;
+		const DATACRYPTOPR = 6;
+		const RECOVER = 7;
+		const UPDATES = 8;
+		const REPORTS = 9;
+		const REGISTRATION = 10;
+	}
+    
+	// mark that initialization complete:
+	//content.attributes["ready"] = true;
+	//CallMessageBoxOnUI( "abc", "WardWiz", "information");
+	//view.SendGlobalMessageboxCB(CallMessageBoxOnUI);
+
+
+

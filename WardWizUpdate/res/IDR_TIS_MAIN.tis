@@ -1,0 +1,83 @@
+	
+	const content = $(frame#content);
+	// handler of navigational buttons on toolbar:
+	self.on("click", ".frame_display_src[src]", function(evt) {
+    const src = this.attributes["src"]; // get src
+    content.load( self.url(src) );      // resolve partial src url and load into the frame
+	}); 
+	//Theme tpye
+	var g_themeType = "defaultTheme";
+	
+	var g_LanguageName 		  = "";
+	var g_AppPath = view.GetAppPath();
+	
+ 	namespace LANGUAGE_TYPE
+	{
+		const ENGLISH = 0;
+		const HINDI = 1;
+		const GERMAN = 2;
+	}
+	
+	var LanguageID 			  = view.GetLanguageID();
+	var g_LanguageID 		  = LANGUAGE_TYPE.ENGLISH ;
+	var g_ThemeID			  = view.OnGetThemeID();
+	if(g_ThemeID == 1)
+	{
+		g_themeType = "defaultTheme";
+	}
+	else if(g_ThemeID == 2)
+	{
+		g_themeType = "darkTheme";
+	}
+	else if(g_ThemeID == 3)
+	{
+		g_themeType = "crystalTheme";
+	}
+	if(LanguageID == LANGUAGE_TYPE.ENGLISH)
+	{
+		g_LanguageName = "ENGLISH";
+		g_LanguageID = LANGUAGE_TYPE.ENGLISH;
+	}
+	else if(LanguageID == LANGUAGE_TYPE.GERMAN)
+	{
+		g_LanguageName = "GERMAN";
+		g_LanguageID = LANGUAGE_TYPE.GERMAN;
+	}
+	else if(LanguageID == LANGUAGE_TYPE.HINDI)
+	{
+		g_LanguageID = LANGUAGE_TYPE.HINDI;
+		g_LanguageName = "HINDI";
+	}
+	else
+	{
+		g_LanguageName = "ENGLISH";
+		g_LanguageID = LANGUAGE_TYPE.ENGLISH;
+	}
+	
+	var productVersion = #BASIC;
+	var ProductID = view.GetProductID();
+
+	if(ProductID == 1)
+		productVersion = #ESSENTIAL;
+	else if(ProductID == 2)
+		productVersion = #PROVANTAGE;
+	else if(ProductID == 3)
+		productVersion = #ELITE;
+	else if(ProductID == 4)
+		productVersion = #BASIC;
+	else if(ProductID == 5)
+		productVersion = #ESSENTIALPLUS;
+	else
+		productVersion = #ESSENTIAL;
+	
+	function CallMessageBoxOnUI(strMessage, StrMessageHeading , strMsgType)
+	{
+		view.msgbox(strMsgType, strMessage,StrMessageHeading); 
+	}
+
+    
+	// mark that initialization complete:
+	//content.attributes["ready"] = true;
+	//CallMessageBoxOnUI( "abc", "WardWiz", "information");
+	//view.SendGlobalMessageboxCB(CallMessageBoxOnUI);
+

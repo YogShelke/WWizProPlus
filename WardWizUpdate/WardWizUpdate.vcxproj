@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{278BD84A-A4D8-40BC-937B-AEC508F4FAB6}</ProjectGuid>
+    <RootNamespace>WardWizUpdate</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <SccProjectName>SAK</SccProjectName>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccProvider>SAK</SccProvider>
+    <ProjectName>AcuTokUpdate</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120_xp</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>VBUPDATE</TargetName>
+    <TargetExt>.EXE</TargetExt>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <TargetName>VBUPDATE</TargetName>
+    <TargetExt>.EXE</TargetExt>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>VBUPDATE</TargetName>
+    <TargetExt>.EXE</TargetExt>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\$(Configuration)\$(Platform)\Binaries\</OutDir>
+    <TargetExt>.EXE</TargetExt>
+    <TargetName>VBUPDATE</TargetName>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;UPDATESERVICE;_DEBUG;WWIZSCITERSTANDALONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common\SQLiteReports;..\Common;..\Common\SciterInclude;..\Common\IPC;..\Common\DownloadManager;..\Common\GUI;..\Common\System;..\Common\ISpyEmail;..\Common\Scanner;..\Common\CrashDumpHandlerInc;..\ZipArchive;..\WardWizCrashHandler\x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Psapi.lib;kernel32.lib;Winhttp.lib;$(SolutionDir)\$(Configuration)\$(Platform)\Intermediate\ZipArchive.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;UPDATESERVICE;_DEBUG;WWIZSCITERSTANDALONE;WWIZSCITERSTANDALONE;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common\SQLiteReports;..\Common;..\Common\SciterInclude;..\Common\IPC;..\Common\DownloadManager;..\Common\GUI;..\Common\System;..\Common\ISpyEmail;..\Common\Scanner;..\Common\CrashDumpHandlerInc;..\ZipArchive;..\WardWizCrashHandler\x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Psapi.lib;kernel32.lib;Winhttp.lib;$(SolutionDir)\$(Configuration)\$(Platform)\Intermediate\ZipArchive.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;UPDATESERVICE;NDEBUG;WWIZSCITERSTANDALONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common\SQLiteReports;..\Common;..\Common\SciterInclude;..\Common\IPC;..\Common\DownloadManager;..\Common\GUI;..\Common\System;..\Common\ISpyEmail;..\Common\Scanner;..\Common\CrashDumpHandlerInc;..\ZipArchive;..\WardWizCrashHandler\x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Psapi.lib;kernel32.lib;Winhttp.lib;$(SolutionDir)\$(Configuration)\$(Platform)\Intermediate\ZipArchive.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;UPDATESERVICE;NDEBUG;WWIZSCITERSTANDALONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <AdditionalIncludeDirectories>.\;..\Common\SQLiteReports;..\Common;..\Common\SciterInclude;..\Common\IPC;..\Common\DownloadManager;..\Common\GUI;..\Common\System;..\Common\ISpyEmail;..\Common\Scanner;..\Common\CrashDumpHandlerInc;..\ZipArchive;..\WardWizCrashHandler\x86\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Psapi.lib;kernel32.lib;Winhttp.lib;$(SolutionDir)\$(Configuration)\$(Platform)\Intermediate\ZipArchive.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)..\PDB\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)..\Intermediate\$(TargetName).lib</ImportLibrary>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h" />
+    <ClInclude Include="..\Common\DownloadConts.h" />
+    <ClInclude Include="..\Common\DownloadManager\DownloadContext.h" />
+    <ClInclude Include="..\Common\DownloadManager\DownloadController.h" />
+    <ClInclude Include="..\Common\DownloadManager\IController.h" />
+    <ClInclude Include="..\Common\DownloadManager\IExecContext.h" />
+    <ClInclude Include="..\Common\DownloadManager\MessageQueue.h" />
+    <ClInclude Include="..\Common\DownloadManager\ThreadPool.h" />
+    <ClInclude Include="..\Common\DownloadManager\WinHttpManager.h" />
+    <ClInclude Include="..\Common\DownloadManager\WWizHttpManager.h" />
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h" />
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h" />
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h" />
+    <ClInclude Include="..\Common\IPC\iSpyMemMapServer.h" />
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h" />
+    <ClInclude Include="..\Common\IPC\PipeConstants.h" />
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDataManager.h" />
+    <ClInclude Include="..\Common\ISpyEmail\ISpyList.h" />
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h" />
+    <ClInclude Include="..\Common\System\CScannerLoad.h" />
+    <ClInclude Include="..\Common\System\CSecure64.h" />
+    <ClInclude Include="..\Common\System\DriverConstants.h" />
+    <ClInclude Include="..\Common\System\Enumprocess.h" />
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h" />
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h" />
+    <ClInclude Include="..\Common\System\WrdwizEncDecManager.h" />
+    <ClInclude Include="..\Common\System\WrdWizSystemInfo.h" />
+    <ClInclude Include="..\Common\System\WWizSettings.h" />
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WardWizALUStruct.h" />
+    <ClInclude Include="WardWizParseIni.h" />
+    <ClInclude Include="WardWizUpdate.h" />
+    <ClInclude Include="WardWizUpdateDlg.h" />
+    <ClInclude Include="WardWizUpdateManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\DownloadContext.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\DownloadController.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\MessageQueue.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\ThreadPool.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\WinHttpManager.cpp" />
+    <ClCompile Include="..\Common\DownloadManager\WWizHttpManager.cpp" />
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp" />
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp" />
+    <ClCompile Include="..\Common\IPC\iSpyMemMapServer.cpp" />
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp" />
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDataManager.cpp" />
+    <ClCompile Include="..\Common\ISpyEmail\ISpyList.cpp" />
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp" />
+    <ClCompile Include="..\Common\System\CScannerLoad.cpp" />
+    <ClCompile Include="..\Common\System\CSecure64.cpp" />
+    <ClCompile Include="..\Common\System\EnumProcess.cpp" />
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp" />
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp" />
+    <ClCompile Include="..\Common\System\WrdwizEncDecManager.cpp" />
+    <ClCompile Include="..\Common\System\WrdWizSystemInfo.cpp" />
+    <ClCompile Include="..\Common\System\WWizSettings.cpp" />
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WardWizParseIni.cpp" />
+    <ClCompile Include="WardWizUpdate.cpp" />
+    <ClCompile Include="WardWizUpdateDlg.cpp" />
+    <ClCompile Include="WardWizUpdateManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WardWizUpdate.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\IDR_CSS_GERMAN_LANG.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_CRYSTAL.css" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG_DARK.css" />
+    <None Include="res\IDR_CSS_MAIN.css" />
+    <None Include="res\IDR_CSS_MAIN_CRYSTAL_THEME.css" />
+    <None Include="res\IDR_CSS_MAIN_DARK_THEME.css" />
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\IDR_HTM_FONT_AWESOME.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_HTM_UPDATE.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\IDR_TIS_ENGLISH.tis" />
+    <None Include="res\IDR_TIS_GERMAN.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG.tis" />
+    <None Include="res\IDR_TIS_GERMAN_LANG_TOOL.tis" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+    <None Include="res\IDR_TIS_MAIN.tis" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\WardWizUpdate.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\IDR_IMG_SHIELD_ICO.png" />
+    <Image Include="res\IDR_JPG_CRYSTAL_BACKGRUND.jpg" />
+    <Image Include="res\IDR_JPG_DARK_THEME.JPG" />
+    <Image Include="res\IDR_JPG_DEFAULT_BACKGRUND.jpg" />
+    <Image Include="res\IDR_PNG_HEADER.png" />
+    <Image Include="res\IDR_PNG_HEADER_BASIC.png" />
+    <Image Include="res\IDR_PNG_HEADER_BASIC_REVERSE.png" />
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png" />
+    <Image Include="res\WardWizUpdate.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="res\IDR_TTF_FONTAWESOME-WEBFONT.ttf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="WardWizUpdate.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
