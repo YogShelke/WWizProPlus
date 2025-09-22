@@ -1,0 +1,113 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by ISpyAVTray.rc
+//
+#define IDM_ABOUTBOX                    0x0010
+#define IDD_ABOUTBOX                    100
+#define IDS_ABOUTBOX                    101
+#define IDD_ISPYAVTRAY_DIALOG           102
+#define IDD_WARDWIZWIDGETDLG            103
+#define IDD_WWIZWEBFILTER               104
+#define IDD_WARDWIZSCHTEMPSCANDLG       105
+#define IDR_MAINFRAME                   128
+#define IDR_HTM_TRAY_RELEASE_NOTES      128
+#define IDR_POPUP_MENU                  129
+#define IDD_DIALOG_TRAY_FORALL          130
+#define IDB_BITMAP_BTNOK                135
+#define IDB_BITMAP_CHECKMARK            136
+#define IDB_BITMAP_EXCLAMATION          139
+#define IDB_BITMAP_EMAIL_HEADER         144
+#define IDB_BITMAP_TREATFOUND           145
+#define IDR_TRAY                        151
+#define IDD_DIALOG_SPLASH_SCREEN        257
+#define IDD_DIALOG_TRAY_MULTI_DIALOG    260
+#define IDD_DIALOG_TRAY_POP_UP          261
+#define IDD_DIALOG_TRAY_POP_WITH_REMINDER 263
+#define IDD_DIALOG_TRAY_RELEASE_NOTES   264
+#define IDR_HTM_TRAY_UPDATE_SUCCESS     266
+#define IDR_HTM_TRAY_LIVE_UPDATE        268
+#define IDR_HTM_TRAY_RESTART_POPUP      269
+#define IDR_HTML1                       270
+#define ID_DIALOG_TRAY_UPDATE_SUCCESS   274
+#define IDD_DIALOG_TRAY_UPDATE_SUCCESS  274
+#define IDD_DIALOG_TRAY_POPUP_QUARNTINE 275
+#define IDD_DIALOG_RENEW_PRODUCT        276
+#define ID_DIALOG_TRAY_SCHEDSCAN_MISS   277
+#define IDD_DIALOG_POPUP_CLIENT         278
+#define IDD_WWEMAILSCANTRAYDLG          280
+#define IDD_DIALOG_FIREWALL_POPUP       281
+#define IDD_DIALOG_RESTART_LOGOFF       282
+#define IDD_DIALOG_PAR_CTRL_POPUP       283
+#define IDD_DIALOG_USB_SCAN_POPUP       284
+#define IDC_STATIC_LIVEUPDATEHEADER     1000
+#define IDC_STATIC_EXCLAMATION          1000
+#define IDC_STATIC_CHECKMARK            1001
+#define IDC_STATIC_SUCESS_UPDATE        1002
+#define IDC_STATIC_EXCLAIMATION         1003
+#define IDC_STATIC_FAILED               1004
+#define IDC_STATIC_INTERNETMSG          1005
+#define IDC_BUTTON_CLOSE                1006
+#define IDC_STATIC_TREATFOUNDFPIC       1007
+#define IDC_STATIC_TREATNAME            1008
+#define IDC_STATIC_ACTUAL_TREATNAME     1009
+#define IDC_STATIC_FILEPATH             1010
+#define IDC_STATIC_ACTUALPATH           1011
+#define IDC_STATIC_STATUS               1012
+#define IDC_STATIC_ACTUALSTATUS         1013
+#define IDC_STATIC_EMAILHEADR           1014
+#define IDC_STATIC_SENDER_ADDR          1015
+#define IDC_STATIC_ACTUALEMAILADDR      1016
+#define IDC_STATIC_ACTIONREQUIRED       1017
+#define IDC_COMBO_ACTION                1018
+#define IDC_STATIC_COPYRIGHT            1020
+#define IDC_STATIC_SUB_TEXT             1021
+#define IDC_STATIC_HEADER               1022
+#define IDC_STATIC_SPLASH_IMG           1023
+#define IDC_STATIC_HYPRLINK_MARKET      1024
+#define IDC_STATIC_HYPERLINK_WARDWIZ    1025
+#define IDC_STATIC_THREAT_NAME          1026
+#define IDC_STATIC_ATTACHMENT_NAME      1027
+#define IDC_STATIC_SENDER_ADDRESS       1028
+#define IDC_STATIC_ACTION               1029
+#define IDC_BUTTON_PREV                 1030
+#define IDC_BUTTON_NEXT                 1031
+#define IDC_STATIC_WW_LOGO              1032
+#define IDC_STATIC_THREAT_TEXT          1033
+#define IDC_STATIC_ATTACHMENT_TEXT      1034
+#define IDC_STATIC_SENDER_TEXT          1035
+#define IDC_STATIC_ACTION_TEXT          1036
+#define IDC_STATIC_CUR_NO               1037
+#define IDC_STATIC_SEPERATOR            1038
+#define IDC_STATIC_TOTAL_COUNT          1039
+#define IDC_STATIC_UPDATE_TEXT          1041
+#define IDC_BUTTON_DOWNLOAD_NOW         1042
+#define IDC_BUTTON_REMIND_LATER         1043
+#define IDC_STATIC_DOWNLOAD_BTMP        1046
+#define IDC_STATIC_HEADER_TEXT          1047
+#define IDC_STATIC_HEADER_TEXT_LIVE_UPDATE 1047
+#define IDC_COMBO1                      1048
+#define IDC_STATIC_TrayReminder         1049
+#define IDC_STATIC_HEADER_TEXT_LIVE_REM_UPDATE 1052
+#define IDC_STATIC_REM_UPDATE_TEXT      1053
+#define IDC_STATIC_REM_DOWNLOAD_BTMP    1054
+#define IDC_STATIC_REM_CMB              1055
+#define IDC_BUTTON_REM_RESTART_NOW      1056
+#define IDC_BUTTON_REM_REMIND_LATER     1057
+#define IDC_BUTTON1                     1059
+#define IDC_BUTTON_CLOSING              1060
+#define IDC_RICHEDIT_RELEASE_NOTE_TEXT  1061
+#define IDC_STATIC_APP_DB_VERSION       1062
+#define IDC_BUTTON_OK                   1063
+#define IDC_STATIC_UPDATE_SUCCESS       1064
+#define IDB_BITMAP_REMINDER_POPUP_RESTART 1111
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_NEXT_RESOURCE_VALUE        285
+#define _APS_NEXT_COMMAND_VALUE         32784
+#define _APS_NEXT_CONTROL_VALUE         1065
+#define _APS_NEXT_SYMED_VALUE           105
+#endif
+#endif

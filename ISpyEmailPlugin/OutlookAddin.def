@@ -1,0 +1,9 @@
+; OutlookAddin.def : Declares the module parameters.
+
+LIBRARY      "WRDWIZEMAILADDIN"
+
+EXPORTS
+	DllCanUnloadNow      PRIVATE
+	DllGetClassObject    PRIVATE
+	DllRegisterServer    PRIVATE
+	DllUnregisterServer	 PRIVATE

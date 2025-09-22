@@ -1,0 +1,118 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=%ClassName%
+ClassGuid={57465043-616C-6C6F-7574-5F636C617373}
+Provider=%Bitdefender%
+CatalogFile=ignis.cat
+DriverVer= 08/10/2016,16.21.56.593
+
+[DefaultInstall.ntx86]
+   OptionDesc=%Description%
+   CopyFiles=Drivers_Dir
+
+[DefaultInstall.ntx86.Services]
+AddService = ignis,%SPSVCINST_ASSOCSERVICE%, ignis_Service_Inst
+
+[BootInstall.ntamd64]
+	OptionDesc=%Description%
+	CopyFiles=Drivers_Dir
+
+[BootInstall.ntamd64.Services]
+AddService = ignis,%SPSVCINST_ASSOCSERVICE%, boot_install_service
+
+[DefaultUninstall.ntx86]
+   DelFiles = Drivers_Dir
+;   DelReg   = WFPCalloutsClassReg
+
+[DefaultUninstall.ntx86.Services]
+   DelService = ignis,0x200                                         ;/// SPSVCINST_STOPSERVICE
+
+; ================= Class section =====================
+
+[ClassInstall32.ntx86]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+HKR,,SilentInstall,,1
+HKR,,BDM,0x10001,0x0,												;/// bug check detection mechanism configuration value
+HKR,,DeviceCharacteristics,0x10001,0x100                            ;/// FLG_ADDREG_BINVALUETYPE | FLG_ADDREG_TYPE_MULTI_SZ, FILE_DEVICE_SECURE_OPEN
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;LS)"            ;/// Permit Generic All access to SYstem, Built-in Admin, and Local System.
+HKR,"Enum",,0x00000010,
+HKR,"Instances","DefaultInstance",0x00000000,%DefaultInstance%
+HKR,"Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,"Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTx86
+
+[Standard.NTx86]
+%ignis.DeviceDesc%=ignis_Device, Root\ignis ; TODO: edit hw-id
+
+[ignis_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+ignis.sys,,,0x00000000                                                        ;/// COPYFLG_OVERWRITE_OLDER_ONLY
+
+;-------------- Service installation
+[ignis_Device.NT.Services]
+AddService = ignis,%SPSVCINST_ASSOCSERVICE%, ignis_Service_Inst
+
+; -------------- ignis driver install sections
+[ignis_Service_Inst]
+DisplayName    = %ignis.SVCDESC%
+ServiceBinary  = %12%\ignis.sys
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = NDIS                                                                           ;/// Load immediately after TCPIP.sys
+Dependencies   = TCPIP
+Addreg=SampleClassReg
+
+[boot_install_service]
+DisplayName    = %ignis.SVCDESC%
+ServiceBinary  = %12%\ignis.sys
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 0               ; SERVICE_BOOT_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = NDIS                                                                           ;/// Load immediately after TCPIP.sys
+Dependencies   = TCPIP
+Addreg=SampleClassReg
+
+;
+;--- ignis_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksFiles]
+ignis.sys  = 1,,
+
+[Strings]
+ManufacturerName="Bitdefender"
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName = "Bitdefender SRL"
+Bitdefender="Bitdefender SRL" 
+ClassName="WFPCALLOUTS" 
+Description="WFP Sampler Callout Driver"
+DiskName = "ignis Installation Disk"
+ignis.DeviceDesc = "ignis Device"
+ignis.SVCDESC = "ignis Service"
+
+;;
+;; Instances specific information.
+;;
+DefaultInstance     = "ignis Instance"
+Instance1.Name      = "ignis Instance"
+Instance1.Altitude  = "320811"
+Instance1.Flags     = 0x2            ; Suppress manual attachments

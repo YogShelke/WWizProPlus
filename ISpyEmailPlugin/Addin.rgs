@@ -1,0 +1,53 @@
+HKCR
+{
+	OutlookAddin.Addin.1 = s 'Addin Class'
+	{
+		CLSID = s '{AA4D594A-D7A6-457E-A583-E7F3303415BE}'
+	}
+	OutlookAddin.Addin = s 'Addin Class'
+	{
+		CLSID = s '{AA4D594A-D7A6-457E-A583-E7F3303415BE}'
+		CurVer = s 'OutlookAddin.Addin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AA4D594A-D7A6-457E-A583-E7F3303415BE} = s 'Addin Class'
+		{
+			ProgID = s 'OutlookAddin.Addin.1'
+			VersionIndependentProgID = s 'OutlookAddin.Addin'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{38C2F8F4-2700-4201-8031-9B16DFEF34E0}'
+		}
+	}
+}
+
+HKCU
+{
+  	Software
+	{
+		Microsoft
+		{
+			Office
+			{
+				Outlook
+				{
+					Addins
+					{
+						'OutlookAddin.Addin'
+						{
+							val FriendlyName = s 'WRDWIZ Outlook Addin'
+							val Description = s 'Wardwiz Email Scan Plugin'
+							val LoadBehavior = d '00000003'
+							val CommandLineSafe = d '00000000' 
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d02ef54d-6526-4bb7-9376-79c7597fc927}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3eb07983-318c-45b3-bc11-99d7745bf296}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{2520d8a2-3962-43d3-bb5f-983c3793e1d3}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="ISpyEmail">
+      <UniqueIdentifier>{3841c242-026d-406f-a1c7-f0f7873851f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{7f2beb16-1d0b-4e84-aabf-1c732eba6bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{1d26b284-00c9-4911-8b82-2431beed86c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{3652a191-2a89-4965-84c3-fd3305cfd7ce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Addin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dlldatax.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtractScan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ISpyContaintFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ISpyEmailSignature.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ISpyOutlookComm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ISpySpamFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ISpyVirusPopUpDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutlookAddin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyDataManager.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\ISpyEmail\ISpyList.cpp">
+      <Filter>ISpyEmail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\ColorEdit.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\ColorStatic.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\JpegDialog.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\PictureEx.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\xSkinButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\Registry.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="WrdWizPercentageDisplayDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WardWizEmailCustomMsgBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OutlookAddin.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Addin.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="OutlookAddin.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OutlookAddin.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Addin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtractScan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpyContaintFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpyEmailSignature.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpyOutlookComm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpySpamFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpyVirusPopUpDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OutlookAddinApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyDataManager.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\ISpyList.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\ISpyEmail\iTinEmailContants.h">
+      <Filter>ISpyEmail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\ColorEdit.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\ColorStatic.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\JpegDialog.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\MemDC.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\PictureEx.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\xSkinButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Registry.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\PipeConstants.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="WrdWizPercentageDisplayDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WardWizEmailCustomMsgBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\48x16.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\48x16_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mini_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mini_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Warning.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Warning_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\percentage dialog_BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\percentage-dialog.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_disable_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_hover_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_normal_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\BkGndImageForCustomMsgBox.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\QuestionMark.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="dlldatax.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
