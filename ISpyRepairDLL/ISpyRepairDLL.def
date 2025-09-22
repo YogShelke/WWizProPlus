@@ -1,0 +1,6 @@
+; ISpyRepairDLL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZREPAIRDLL"
+
+EXPORTS
+    ; Explicit exports can go here

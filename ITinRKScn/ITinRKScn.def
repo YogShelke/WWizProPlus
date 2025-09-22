@@ -1,0 +1,6 @@
+; ITinRKScn.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZRKSCN"
+
+EXPORTS
+    ; Explicit exports can go here
