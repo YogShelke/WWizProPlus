@@ -1,0 +1,28 @@
+HKCR
+{
+	DisplayPage.FilePropSheetExt.1 = s 'FilePropSheetExt Class'
+	{
+		CLSID = s '{5C8FA94F-F274-49B9-A5E5-D34C093F7846}'
+	}
+
+	DisplayPage.FilePropSheetExt = s 'FilePropSheetExt Class'
+	{
+		CLSID = s '{5C8FA94F-F274-49B9-A5E5-D34C093F7846}'
+		CurVer = s 'DisplayPage.FilePropSheetExt.1'
+	}
+
+	NoRemove CLSID
+	{
+		ForceRemove {5C8FA94F-F274-49B9-A5E5-D34C093F7846} = s 'FilePropSheetExt Class'
+		{
+			ProgID = s 'DisplayPage.FilePropSheetExt.1'
+			VersionIndependentProgID = s 'DisplayPage.FilePropSheetExt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{5E2121EE-0300-11D4-8D3B-444553540000}'
+		}
+	}
+}

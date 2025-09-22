@@ -1,0 +1,153 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,9,0,0
+ PRODUCTVERSION 1,9,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "WrdWizShellExt Module"
+            VALUE "FileVersion", "1.9.0.0"
+            VALUE "InternalName", "WrdWizShellExt"
+            VALUE "OriginalFilename", "VBSHELLEXT.DLL"
+            VALUE "ProductName", "WrdWizShellExt Module"
+            VALUE "ProductVersion", "1.9.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_SIMPLESHLEXT        REGISTRY                "WrdWizSimpleShlExt.rgs"
+IDR_DISPLAYCPLEXT       REGISTRY                "DisplayCplExt.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\register.bmp"
+IDB_BITMAP_XP           BITMAP                  "res\\Rightclickimagefor_XP.bmp"
+IDB_BITMAP_WARDWIZ      BITMAP                  "res\\WardWizPrSheet.BMP"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FILE_PROPPAGE DIALOGEX 0, 0, 231, 255
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "IDS_PRO_EDITION",IDC_STATIC_PROEDITION,22,64,95,8,0,WS_EX_TRANSPARENT
+    LTEXT           "IDS_PRO_VERSION",IDC_STATIC_PROVERSION,22,79,95,8
+    LTEXT           "IDS_SCN_VERSION",IDC_STATIC_SCANVERSION,22,109,95,8
+    LTEXT           "IDS_FILE_NAME",IDC_STATIC_FILE_NAME,10,134,218,8
+    LTEXT           "IDS_STATIC_DBVERSION",IDC_STATIC_DBVERSION,22,94,98,8
+    LTEXT           "IDS_STATIC_FILE_STATUS",IDC_STATIC_FILE_STATUS,10,155,192,8,0,WS_EX_TRANSPARENT
+    LTEXT           "IDS_EDITION",IDC_STATIC_PROEDRIGHT,123,64,91,8
+    LTEXT           "IDS_PVERSION",IDC_STATIC_PROVERSRIGHT,123,79,91,8
+    LTEXT           "IDS_DBVERSION",IDC_STATIC_DBVERSIONRIGHT,123,94,91,8
+    LTEXT           "IDS_SCNVER",IDC_STATIC_SCNVERSIONRIGHT,123,109,91,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_FILE_PROPPAGE, DIALOG
+    BEGIN
+        MOCKUP, 1, 100, 0, 0, ".\res\WardWizPrSheet.bmp"
+        BOTTOMMARGIN, 253
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_PROJNAME            "WrdWizShellExt"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
