@@ -1,0 +1,6 @@
+; ISpyScanDLL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZMD5SCN"
+
+EXPORTS
+    ; Explicit exports can go here

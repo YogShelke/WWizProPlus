@@ -1,0 +1,6 @@
+; WardWizOffLineAct.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZOFFLINEREG"
+
+EXPORTS
+    ; Explicit exports can go here

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WardWizOffLineAct", "WardWizOffLineAct.vcxproj", "{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+		ReleaseLocal|Win32 = ReleaseLocal|Win32
+		ReleaseLocal|x64 = ReleaseLocal|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Debug|Win32.Build.0 = Debug|Win32
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Debug|x64.ActiveCfg = Debug|x64
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Debug|x64.Build.0 = Debug|x64
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Release|Win32.ActiveCfg = Release|Win32
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Release|Win32.Build.0 = Release|Win32
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Release|x64.ActiveCfg = Release|x64
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.Release|x64.Build.0 = Release|x64
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.ReleaseLocal|Win32.ActiveCfg = ReleaseLocal|Win32
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.ReleaseLocal|Win32.Build.0 = ReleaseLocal|Win32
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.ReleaseLocal|x64.ActiveCfg = ReleaseLocal|x64
+		{6B1F72CB-26ED-4B31-867B-A125C02ABDE4}.ReleaseLocal|x64.Build.0 = ReleaseLocal|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
