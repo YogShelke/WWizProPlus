@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DownLoadManager">
+      <UniqueIdentifier>{bbc70013-9635-4dd3-8d62-f59912a4b7cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{43209362-b152-4e22-91f9-5aee1d8a8ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{050b0844-e959-4958-9ca2-614481c812f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadConts.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\DownloadManager\WinHttpManager.h">
+      <Filter>DownLoadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\TextProgressCtrl.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MyHyperLink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleBrowser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\JpegDialog.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\ColorStatic.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\xSkinButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="WrdWizDownloaderDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WrdWizCustomMsgBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WrdWizDownloader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\DownloadManager\WinHttpManager.cpp">
+      <Filter>DownLoadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\TextProgressCtrl.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MyHyperLink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleBrowser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\JpegDialog.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\ColorStatic.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\xSkinButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="WrdWizCustomMsgBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WrdWizDownloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WrdWizDownloaderDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WrdWizDownloader.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WrdWizDownloader.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\aero_link.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\OfflineAdvertisement_German.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\IDR_CSS_VGRID.css" />
+    <None Include="res\IDR_HTM_DOWNLOAD_MANAGER.htm" />
+    <None Include="res\IDR_TIS_VLIST.tis" />
+    <None Include="res\IDR_TIS_ROLODEX.tis" />
+    <None Include="res\IDR_CSS_LIGHTBOX_DIALOG.css" />
+    <None Include="res\IDR_TIS_LIGHTBOX_DIALOG.tis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WrdWizDownloader.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\icon.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\BkGndImageForCustomMsgBox.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Download manager BG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Downloader logo.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\close_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mini_button.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\mini_button_H_over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\OfflineAdvertisement.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_disable_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_hover_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Button_57x21_normal_whiteBG.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_JPG_BACKGROUND.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_CLOSE.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FB.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_FB_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_HEADER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LINKEDIN.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LINKEDIN_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_LOGO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_MINIMIZE.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TWITTER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\IDR_PNG_TWITTER_HOVER.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

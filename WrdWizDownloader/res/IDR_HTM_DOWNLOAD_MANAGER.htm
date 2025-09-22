@@ -1,0 +1,899 @@
+<html custom-frame="solid">
+<head>
+	<title></title>
+	<style>
+		@import url(IDR_CSS_LIGHTBOX_DIALOG.css);
+		form#data-dialog > table > tr > td:nth-child(1)
+		{
+			white-space:nowrap;
+			//text-align:right;
+			vertical-align:top;
+		}
+		@font-face {
+			font-family: 'Source Sans Pro', sans-serif;
+			src: url("SourceSansPro-Light.ttf");
+		}
+		html{
+		   padding:0dip;
+		   margin:0dip;
+		   width:722dip;
+			height:522dip;
+			overflow:hidden;
+		}
+		  body{
+		   padding:0dip;
+		   margin:0dip;
+		   border:1dip solid #000;
+		   color:#fff;
+		}
+		h1,h2,h3,h4,h5{
+			font-family: 'Source Sans Pro', sans-serif!important;
+		}
+		.main{
+			width:720dip;
+			height:520dip;
+			background:url(IDR_JPG_BACKGROUND.jpg);
+			background-size:cover;
+		}
+		.content_tray h3{
+			font-weight:500;
+			margin-top:0dip;
+			color:#dcdcdc;
+			margin-bottom:0dip;
+			behavior:clickable;
+		}
+		.content_tray p{
+			margin:0dip;
+			padding:0dip;
+		}
+		#header_frame{
+			height:60dip;
+			width:650dip;
+		}
+		#header_close_bt{
+			height:60dip;
+			width:70dip;
+		}
+		/*frame[ready] {
+		  transition: slide-over-left(quad-in-out,800ms);
+		}*/
+		
+		
+		
+		//******** Menu Bar CSS *********//	
+	
+		.header{
+			flow:horizontal;
+			
+		}
+		.logo{
+			width:200dip;
+		}
+		.logo img{
+			padding-left:15dip;
+			padding-top:5dip;
+			width:140dip;
+			height:auto;
+		}
+		
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.inner_body{
+			width:720dip;
+			height:460dip;
+			overflow:hidden;
+		}
+		.side_menu{
+			width:220dip;
+			height:290dip;
+			background:rgba(0,0,0,.2);
+		}
+		.side_menu p{
+			margin:0dip;
+			padding:9dip 0;
+		}
+		.content_display{
+			width:500dip;
+			height:250dip;
+		}
+		.footer_buttons{
+			width:190dip;
+			text-align:right;
+			height:30dip;
+		}
+		.fixed_size{
+			height:230dip;
+		}
+	
+		.scan_button:hover{
+			background: linear-gradient(bottom, #0780d8, #06304f);
+			transition: background(quart-out,0.5s,quart-in);
+			border:1dip solid #0780d8;
+			color:#000;
+		}
+		.scan_button{
+			width:70dip;
+			height:18dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+			font-size:11dip;
+		}
+		#header_content{
+			flow:horizontal;
+			background:rgba(0,0,0,.05);
+		}
+		widget[type=file-name] {
+		  prototype: FileName;
+		  flow:horizontal;
+		  width:30em;
+		  margin-left:33dip;
+		  height:35dip;
+		  display:inline-block;
+		}
+		widget[type=file-name]:disabled{
+			opacity:.5;
+		}
+		widget[type=file-name] > input { width:*;margin-top:10dip; }
+		.selector{
+			margin-left:5dip;
+			margin-top:9dip;
+			width:100dip;
+			height:22dip;
+			background: linear-gradient(bottom, #06304f, #0780d8);
+			border:1dip solid #0780d8;
+			color:#fff;
+			border-radius:4dip;
+		}
+		.selector:disabled{
+			opacity:.5;
+		}
+		
+		.scan_container{
+			flow:horizontal;
+		}
+		.progress_bar_container{
+			padding-left:10dip;
+			min-height:30dip;
+			width:510dip;
+		}
+		#progress_bar{
+			width:500dip;
+			border:2dip solid #3b7ae2;
+			background:#afccfb;
+		}
+		.percentage_container{
+			text-align:center;
+			margin-top:-20dip;
+			color:#000;
+		}
+		progress#progress_bar
+      {
+        foreground:#2e71e0;  
+        foreground-position:20 20 20 20; 
+		height:17dip;
+        
+      }
+	  .select_file_path{
+		background:rgba(0,0,0,.1);
+		width:700dip;
+		margin-left:10dip;
+		border-radius:4dip;
+		padding-top:5dip;
+		padding-bottom:5dip;
+	  }
+	  #scaning_result{
+			flow:horizontal;
+			margin-left:10dip;
+		}
+	  .col_1{
+		width:190dip;
+	  }
+	  .col_1 span{
+		font-size:11dip;
+	  }
+	  .col_2{
+		width:240dip;
+		margin-right:20dip;
+	  }
+	  .col_2 span{
+		font-size:11dip;
+	  }
+	  .col_3{
+		width:240dip;
+	  }
+	  .col_3 span{
+		font-size:11dip;
+	  }
+	  .message_display_block p{
+		margin-top:0dip;
+		margin-bottom:0dip;
+		text-align:center;
+		padding-top:10dip;
+	  }
+	  .message_display_block {
+		background:rgba(0,0,0,.8);
+		position:absolute;
+		bottom:-50dip;
+		width:720dip;
+		height:40dip;
+		visibility:none;
+		
+	  }
+	  .message_display_block:collapsed {
+		visibility:visible;
+		bottom:0;
+		transition:bottom(sine-in-out, 600ms);
+	  }
+	  #ID_DOWNLOAD_FILE_PATH{
+		margin-top:0;
+		padding-left:10dip;
+		height:18dip;
+		text-overflow:ellipsis;
+	  }
+	  #scan_heading{
+		visibility:visible;
+	  }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  .button_command{
+			width:103dip;
+			height:15dip;
+			padding-top:15dip;
+			text-align:left;
+			padding-right:15dip;
+			padding-left:0dip;
+		}
+		.button_command li{
+			display:inline-block;
+			list-style:none;
+			color:#fff;
+			padding-left:5dip;
+		}
+		.button_command li:nth-child(1){
+			padding-left:0dip;
+		}
+		.button_command img{
+			width:12dip;
+			height:12dip;
+		}
+		/******************Social Icons*********************/
+		.footer .right_section{
+			float:right;
+			padding-right:15dip;
+			padding-top:18dip;
+		}
+		.footer .left_section{
+			float:left;
+			padding-left:15dip;
+			padding-top:18dip;
+		}
+		.footer{
+			background:rgba(0,0,0,.1);
+			height:55dip;
+			color:#fff;
+			position:absolute;
+			bottom:0dip;
+			left:0dip;
+			width:720dip;
+		}
+		
+		
+		.social li{
+			display:inline-block;
+			list-style:none;
+		}
+		
+		.fb_icon_menu{
+			width:16dip;
+			height:16dip;
+			margin-bottom:0dip;
+			background:url(IDR_PNG_FB.png) no-repeat;
+			background-size:cover;
+		}
+		.right_section li:hover> div.fb_icon_menu{
+			background:url(IDR_PNG_FB_HOVER.png) no-repeat;
+			background-size:cover;
+		}
+		.tw_icon_menu{
+			width:16dip;
+			height:16dip;
+			margin-bottom:0dip;
+			background:url(IDR_PNG_TWITTER.png) no-repeat;
+			background-size:cover;
+		}
+		.right_section li:hover> div.tw_icon_menu{
+			background:url(IDR_PNG_TWITTER_HOVER.png) no-repeat;
+			background-size:cover;
+		}
+		.ln_icon_menu{
+			width:16dip;
+			height:16dip;
+			margin-bottom:0dip;
+			background:url(IDR_PNG_LINKEDIN.png) no-repeat;
+			background-size:cover;
+		}
+		.right_section li:hover> div.ln_icon_menu{
+			background:url(IDR_PNG_LINKEDIN_HOVER.png) no-repeat;
+			background-size:cover;
+		}
+		.clickable_cl{
+			behavior:clickable;
+			cursor:pointer;
+		}
+		.slider{
+		width:700dip;
+		height:auto;
+		margin-left:10dip;
+	}
+	.web{
+		width:720dip;
+		height:280dip;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	rolodex {
+        prototype: Rolodex url(IDR_TIS_ROLODEX.tis);
+        display:block;
+        flow:stack;
+        size:max-content;
+        overflow:hidden;
+		width: 718dip;
+		height:247dip;
+      }
+
+      rolodex > * { 
+        display:block;
+        visibility:hidden;
+      }
+
+      rolodex {
+        border: 1dip solid;
+      }
+      
+      img { width: 720dip;height:247dip; }
+		
+		
+		
+		
+	 
+	 div#lightbox-shim 
+	{
+	  position: fixed;
+	  width: 720dip;
+	  left: 0;
+	  top: 60dip;
+	  right: 0;
+	  bottom: 0;
+	  background-color:rgba(0,0,0,0.3);
+	  /* background: url(images/shim-bg.png) repeat; */
+	  /* background-image-transformation:color-schema("system"); */
+	  text-align:center;
+	}
+     a{
+         color:#dcdcdc;
+     }
+     a:hover{
+         color:red;
+     }
+	 #ID_ROLODEX_ENGLISH{
+		visibility:none;
+	 }
+	 #ID_ROLODEX_GERMAN{
+		visibility:none;
+	 }
+	 #ID_ROLODEX_ENGLISH:collapsed{
+		visibility:visible;
+	 }
+	 #ID_ROLODEX_GERMAN:collapsed{
+		visibility:visible;
+	 }
+	</style>
+	<script type="text/tiscript">
+		include "IDR_TIS_LIGHTBOX_DIALOG.tis";
+		var counterPauseResume=1;
+		var bIsNotificationdisplayed = false;
+		var ProductLanguage = "ENGLISH";
+	</script>
+	
+	/***************************************************************************************************
+	*  Function Name  :  DPI settings of Windows
+	*  Description    :  conversion of px into dip 
+	*  Author Name    :  Soumitra Nath
+	*  Date     : 29 Mar 2016
+	****************************************************************************************************/
+	<script type="text/tiscript">
+  
+    function showResolution() {
+      var ppi = (1in).toFloat(#px);
+      var ppdip = (1dip).toFloat(#px);
+      
+      $(#ppi).value = ppi;
+      $(#ppdip).value = ppdip;
+    }  
+  
+    view.onResolutionChanged = showResolution; // when it will change
+    showResolution(); // right now
+  
+  
+  </script>
+	<script type="text/tiscript">
+		include "IDR_TIS_DECORATORS.tis";
+		
+		@click @on "#close-dialog" :: view.OnClose();
+	</script>
+    <script type="text/tiscript">
+	namespace MESSAGE_CONST
+	{
+		const IDS_STRING_WANT_TO_STOP = 1092;
+		const IDS_STRING_WANT_TO_STOP_G = 1340;
+		const IDS_STRING_CLICK_DOWNLOAD = 1093;
+		const IDS_STRING_CLICK_DOWNLOAD_G = 1342;
+	}
+	</script>
+	<script type="text/tiscript">
+    
+    class FileName : Behavior {
+      function attached() {
+        this.$append( <input|text.path><button class="selector" id="input_file" disabled>Browse</button>);
+        
+        var path = this.path = this.$(.path);
+        
+        this.$(button.selector).onClick = function () {
+          var fn = view.selectFile(#open);
+          if( fn ) path.value = fn;
+          (this super).postEvent(Event.EDIT_VALUE_CHANGED);
+        };
+      }
+      
+      property value(v) {
+        get { return this.path.value; }
+        set { this.path.value = v; }
+      }
+    }
+    
+    $(widget).onValueChanged = function() {
+      stdout.println(this.value);
+    };
+	
+    </script>
+	
+	<script type="text/tiscript">
+		function UpdateDownloadStatus(ValRemTime,ValTransRate, ValPercentage)
+		{
+			var Percentage = ValPercentage.toInteger();
+			if( progress.value >= 100 ) 
+			{
+			progress.value = 100;
+			return;
+			}
+			progress.value = Percentage;
+			 $(#percentage).text = progress.value.toInteger();
+			//$(#ID_PROD_NAME).value=ValProdName;
+			$(#ID_TRANS_RATE).value=ValTransRate;
+			$(#ID_REM_TIME).value=ValRemTime;
+			
+		}
+	</script>
+    <script type="text/tiscript">
+    function CallOnCloseUI()
+        {
+            if(bIsNotificationdisplayed == false)
+            {
+               if(counterPauseResume == 1)
+               {
+                    view.OnClickPause();
+               }
+			var strNotMsg;
+			if(ProductLanguage == "ENGLISH")
+			{
+				strNotMsg=view.GetString(MESSAGE_CONST.IDS_STRING_WANT_TO_STOP);
+			}
+			else if(ProductLanguage == "GERMAN")
+			{	
+				strNotMsg=view.GetString(MESSAGE_CONST.IDS_STRING_WANT_TO_STOP_G);
+            }
+               var Ret = Notification_popup_call(2,strNotMsg,"");
+               bIsNotificationdisplayed = true;
+               if(Ret ==0)
+               {
+					bIsNotificationdisplayed = false;
+                    view.OnClickClose();
+               }
+               else
+               {
+                    if(ProductLanguage == "ENGLISH")
+					{
+						$(#ID_BUTTON_PAUSE_RESUME).text="Pause";
+					}
+					else
+					{
+						$(#ID_BUTTON_PAUSE_RESUME).text="Pause";
+					}
+                    counterPauseResume=1;
+					bIsNotificationdisplayed = false;
+                    view.OnClickResume();
+               }
+            }
+         }
+    </script>
+    <script type="text/tiscript">
+    function GetDownloadPath(ValPath, ValProductName)
+    {
+       $(#ID_DOWNLOAD_FILE_PATH).value=ValPath;
+	   $(#ID_PROD_NAME).value=ValProductName;
+    }
+    </script>
+	<script type="text/tiscript">
+	function GetProductLang(ProductLanguageDM)
+	{
+		ProductLanguage = ProductLanguageDM;
+		if(ProductLanguage == "ENGLISH")
+		{
+			$(#ID_ROLODEX_ENGLISH).state.collapsed = true;
+			$(#ID_PRODUCT_NAME).text = "Product Name : ";
+			$(#ID_TRANSFER_RATE).text = "Transfer Rate : ";
+			$(#ID_REMAINING_TIME).text = "Remaining Time : ";
+			$(#ID_ALL_RIGHTS).text = "All Rights Reserved";
+			$(#ID_BUTTON_STOP).text = "Stop";
+			$(#ID_BUTTON_PAUSE_RESUME).text = "Pause";
+			$(#ID_DOWNLOAD_INFO).text = "Download Information: ";
+		}
+		else if(ProductLanguage == "GERMAN")
+		{
+			$(#ID_ROLODEX_GERMAN).state.collapsed = true;
+			$(#ID_PRODUCT_NAME).text = "Produkt Name : ";
+			$(#ID_TRANSFER_RATE).text = "Uebertragungsrate : ";
+			$(#ID_REMAINING_TIME).text = "Restlaufzeit : ";
+			$(#ID_ALL_RIGHTS).text = "Alle Rechte Vorbehalten";
+			$(#ID_BUTTON_STOP).text = "Beenden";
+			$(#ID_BUTTON_PAUSE_RESUME).text = "Pause";
+			$(#ID_DOWNLOAD_INFO).text = "Information herunterladen: ";
+		}
+	}
+	</script>
+	
+	<script type="text/tiscript">
+    var progress = $(#progress_bar);
+        function self.ready(){
+         //view.msgbox(#information,"");
+            view.OnLoadDownloader(GetProductLang,UpdateDownloadStatus,GetDownloadPath,Notification_popup_call,CallOnCloseUI);
+
+            //$(.web).load("http://www.wardwiz.com/advertise/prode.html");
+
+
+          progress.value = 0;
+          function inc()
+          {
+            if( progress.value >= 99 ) return;
+            progress.value = 100;
+            //stdout.$n(inc {progress.value});
+             $(#percentage).text = progress.value.toInteger();
+            if(progress.value > 100){
+                $(.message_display_block).state.collapsed = true;
+                $(#ID_DOWNLOAD_FILE_PATH).state.collapsed = false;
+            }
+            return true;
+          }
+
+          //progress.timer(50,inc);
+        }
+    </script>
+	
+	<script type="text/tiscript">
+		$(#ID_BUTTON_PAUSE_RESUME).onClick = function()
+		{
+		  if(counterPauseResume==1){
+			  if(ProductLanguage == "ENGLISH")
+			  {
+				    $(#ID_BUTTON_PAUSE_RESUME).text="Resume";
+			  }
+			  else
+			  {
+				    $(#ID_BUTTON_PAUSE_RESUME).text="Fortsetzen";
+			  }
+			counterPauseResume=2;
+			 view.OnClickPause();
+		  }
+		  else if(counterPauseResume==2){
+			  if(ProductLanguage == "ENGLISH")
+			  {
+				    $(#ID_BUTTON_PAUSE_RESUME).text="Pause";
+			  }
+			  else
+			  {
+				    $(#ID_BUTTON_PAUSE_RESUME).text="Pause";
+			  }
+			counterPauseResume=1;
+			//view.msgbox(#information, "Resume called");
+			 view.OnClickResume();
+		  } 
+		}	
+	</script>
+	
+	
+	
+	<script type="text/tiscript">
+		
+		$(#minimize_btn).onClick = function()
+		{
+			 view.OnClickMinimize();
+		}
+	</script>
+	
+	<script type="text/tiscript">
+
+    $(#close_btn).onClick = function()
+    {
+        CallOnCloseUI();		
+    }
+    </script>
+	
+	<script type="text/tiscript">
+
+    $(#fb).onClick = function() {
+
+      Sciter.launch("https://www.facebook.com/Vibraniumav");
+
+    }
+    $(#tw).onClick = function() {
+
+      Sciter.launch("https://twitter.com/Vibranium_india");
+
+    }
+    $(#ln).onClick = function() {
+
+      Sciter.launch("https://www.linkedin.com/company/vibranium-india/");
+
+    }
+  
+    $(#DownloadLink).onClick = function() {
+
+      Sciter.launch(this.href);
+
+    }
+</script>
+<script type="text/tiscript">
+    function Notification_popup_call(iMsgType, strNotificationMsg, strDownloadLink = "")
+    {
+        if(bIsNotificationdisplayed == false)
+        {
+            if(iMsgType ==1)
+            {
+                 $(#StatusMessage).value=strNotificationMsg;
+                 bIsNotificationdisplayed = true;
+                 var res = dialog { body:$(form#simple-dialog),
+                             returns: #values,
+                             buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+                bIsNotificationdisplayed = false;
+                return 0;
+            }
+            else if(iMsgType ==2)
+            {
+                  $(#StatusMessage).value=strNotificationMsg;
+                  bIsNotificationdisplayed = true;
+                  var res;
+				  if(ProductLanguage == "ENGLISH")
+                  {
+				  res = dialog { body:$(form#simple-dialog),
+                             buttons: [ { caption: "Yes", value:true },
+                                        { caption: "No", value:false }]
+                            };
+				  }
+				  else if(ProductLanguage == "GERMAN")
+                  {
+				  res = dialog { body:$(form#simple-dialog),
+                             buttons: [ { caption: "ja", value:true },
+                                        { caption: "Nein", value:false }]
+                            };
+				  }
+                  if(res == "true")
+                  {
+                        bIsNotificationdisplayed = false;
+                        return 0;
+                  }
+                  else
+                      {
+                        bIsNotificationdisplayed = false;
+                        return 1;
+                      }
+            }
+         else if(iMsgType ==3)
+            {
+                  $(#StatusMessage).value=strNotificationMsg;
+                  bIsNotificationdisplayed = true;
+				  $(#DownloadLink).href=strDownloadLink;
+				  var res;
+                  if(ProductLanguage == "ENGLISH")
+                  {
+                        $(#DownloadLink).text = view.GetString(MESSAGE_CONST.IDS_STRING_CLICK_DOWNLOAD);
+                        res = dialog { body:$(form#simple-dialog),
+                             returns: #values,
+                             buttons: [ { caption: "Close", role:#ok, value:true }]
+                            };
+                  }
+                  else if(ProductLanguage == "GERMAN")
+                  {
+                        $(#DownloadLink).text = view.GetString(MESSAGE_CONST.IDS_STRING_CLICK_DOWNLOAD_G);
+                        res = dialog { body:$(form#simple-dialog),
+                             returns: #values,
+                             buttons: [ { caption: "schlieﬂen", role:#ok, value:true }]
+                            };
+                  }
+                   $(#DownloadLink).href=strDownloadLink;
+                   bIsNotificationdisplayed = false;
+                return 0;
+            }
+         else if(iMsgType ==4)
+            {
+                 $(#ID_REM_TIME).text="0 Min 0 Sec";
+                 $(#StatusMessage).value=strNotificationMsg;
+                 bIsNotificationdisplayed = true;
+                 var res = dialog { body:$(form#simple-dialog),
+                             returns: #values,
+                             buttons: [ { caption: "OK", role:#ok, value:true }]
+                            };
+                bIsNotificationdisplayed = false;
+                return 0;
+            }
+        else if(iMsgType ==5)
+            {
+                  $(#StatusMessage).value=strNotificationMsg;
+                  bIsNotificationdisplayed = true;
+                  var res;
+                  if(ProductLanguage == "ENGLISH")
+                  {
+                  res = dialog { body:$(form#simple-dialog),
+                             buttons: [ { caption: "Retry", value:true },
+                                        { caption: "Cancel", value:false }]
+                            };
+                  }
+                  else if(ProductLanguage == "GERMAN")
+                  {
+                  res = dialog { body:$(form#simple-dialog),
+                             buttons: [ { caption: "Erneut versuchen", value:true },
+                                        { caption: "Abbrechen", value:false }]
+                            };
+                  }
+                  if(res == "true")
+                  {
+                        view.OnLoadDownloader(GetProductLang,UpdateDownloadStatus,GetDownloadPath,Notification_popup_call,CallOnCloseUI);
+                        bIsNotificationdisplayed = false;
+                  }
+                  else
+                  {
+                        view.OnClickClose();
+                        bIsNotificationdisplayed = false;
+                  }
+            }
+        }
+    }
+
+    $(#ID_BUTTON_STOP).onClick = function()
+    {
+        CallOnCloseUI();
+    }
+</script>
+	<form #simple-dialog caption="Simple!">     
+		<p #StatusMessage>Downloading is in progress. Do you want to stop?</p>
+        <a href="" #DownloadLink></a>
+	  </form>
+</head>
+<body>
+
+
+
+    
+<div .main>
+	<div #header_content>
+		<div #header_frame role="window-caption">
+			<div .header>
+				<div .logo src="IDR_HTM_HOME.htm">
+					<img src="IDR_PNG_LOGO.png">
+				</div>
+			</div>
+		</div>
+		<div #header_close_bt>
+			<div .button_command>
+				<ul>
+					<li .clickable_cl #minimize_btn><img src="IDR_PNG_MINIMIZE.png"></li>
+					<li .clickable_cl #close_btn><img src="IDR_PNG_CLOSE.png"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div .inner_body>
+		<!-- <img .slider src="banner3.jpg"> -->
+		<!-- <object type="text/html" data="https://www.microhost.com" style="overflow:auto;width:500dip; height:300dip; "></object> -->
+		<!-- <frame src="http://www.wardwiz.com/advertise/basicin.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" style="width:720dip;height:270dip;"></frame> -->
+		<!-- <div .web></div> -->
+       
+
+        <rolodex #ID_ROLODEX_ENGLISH>
+            <img src="http://wardwiz.com/advertise/images/banner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner3.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner3.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner3.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/banner3.jpg">
+        </rolodex>
+		<rolodex #ID_ROLODEX_GERMAN>
+            <img src="http://wardwiz.com/advertise/images/GermanBanner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner2.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner2.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner2.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner1.jpg">
+            <img src="http://wardwiz.com/advertise/images/GermanBanner2.jpg">
+        </rolodex>
+		<br>
+		<br>
+		<h3 #scan_heading style="color:#fff;font-weight:400;text-shadow:1dip 1dip 6dip #292929;padding-left:12dip;margin:0;"><label #ID_DOWNLOAD_INFO>Download Information</label></h3>
+		
+		<div #scaning_result>
+			<div class="col_2">
+				<p><label #ID_PRODUCT_NAME>Product Name : </label><span #ID_PROD_NAME>WardWiz Essential</span></p>
+			</div>
+			<div class="col_1">
+				<p><label #ID_TRANSFER_RATE>Transfer Rate : </label><span #ID_TRANS_RATE>0 Kbps</span></p>
+			</div>
+			<div class="col_3">
+				<p><label #ID_REMAINING_TIME>Remaining Time : </label><span #ID_REM_TIME>0 Min 0 Sec</span></p>
+			</div>
+		</div>
+		<div .scan_container>
+			<div class="progress_bar_container">
+				<div><progress #progress_bar max="100" value="0"/></div>
+				<p .percentage_container><span #percentage>0</span>%</p>
+			</div>
+			<div .footer_buttons>
+				<button .scan_button #ID_BUTTON_PAUSE_RESUME>PAUSE</button>
+				<button .scan_button #ID_BUTTON_STOP>STOP</button>
+			</div>
+		</div>
+        <p #ID_DOWNLOAD_FILE_PATH></p>
+	</div>
+	<div .footer>
+		<div .left_section><label #ID_ALL_RIGHTS>All Rights Reserved</label> &reg; WardWiz 2019</div>
+		<div .right_section>
+			<ul .social>
+				<!-- <li .clickable_cl #support>@support</li> -->
+				<li .clickable_cl #fb><div class="fb_icon_menu"></div></li>
+				<li .clickable_cl #tw><div class="tw_icon_menu"></div></li>
+				<li .clickable_cl #ln><div class="ln_icon_menu"></div></li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>
