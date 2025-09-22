@@ -1,0 +1,6 @@
+; ValCheck.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZREGISTERDATA"
+
+EXPORTS
+    ; Explicit exports can go here

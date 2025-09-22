@@ -1,0 +1,6 @@
+; SetupDLL.def : Declares the module parameters for the DLL.
+
+LIBRARY      "VBSETUPDLL"
+
+EXPORTS
+    ; Explicit exports can go here

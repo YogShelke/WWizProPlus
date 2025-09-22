@@ -1,0 +1,245 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\USBDetectUI.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\COMPANYLOGO.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 206, 100
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC_LOGO_PIC,14,14,20,20
+    LTEXT           "WardWiz, Version ",IDC_STATIC_VERSIONTEXT,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright © 2015 WARDWIZ™, All Rights Reserved.",IDC_STATIC_ABT_COPY_RIGHT,42,41,114,21
+    PUSHBUTTON      "",IDC_BUTTON_ABOUT_CLOSEBTN,180,7,19,16
+    PUSHBUTTON      "OK",IDC_BUTTON_OK,73,71,50,14
+END
+
+IDD_USBDETECTUI_DIALOG DIALOGEX 0, 0, 504, 348
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_STATIC_SHOWDETAILS,127,91,19,8
+    PUSHBUTTON      "",IDC_BUTTON_HIDE_SHOW_DETAILS_BUTTON,30,94,49,14
+    LTEXT           "Static",IDC_STATIC_HIDE_DETAILS,109,94,19,8
+    LTEXT           "Static",IDC_STATIC_SCANNING_TEXT,113,22,19,8
+    LTEXT           "Static",IDC_STATIC_STATUS_TEXT,111,38,19,8
+    LTEXT           "",IDC_STATIC_ACTUAL_SCANNING_FILEFOLDER,175,18,8,8
+    LTEXT           "",IDC_STATIC_ACTUAL_STATUS,159,35,8,8
+    LTEXT           "Static",IDC_STATIC_FILESCANNED,137,62,19,8
+    LTEXT           "Static",IDC_STATIC_STARTTIME,183,58,19,8
+    LTEXT           "Static",IDC_STATIC_THREADFOUND,193,82,19,8
+    LTEXT           "Static",IDC_STATIC_ELAPSED_TIME,235,66,19,8
+    PUSHBUTTON      "",IDC_BUTTON_PAUSE_RESUME,192,89,50,14
+    PUSHBUTTON      "",IDC_BUTTON_STOP,226,113,50,14
+    PUSHBUTTON      "",IDC_BUTTON_CLEAN,144,116,50,14
+    CONTROL         "",IDC_LIST_VIRUSLIST_CONTROL,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,37,115,60,50
+    PUSHBUTTON      "",IDC_BUTTON_MINIMIZE,213,10,50,14
+    PUSHBUTTON      "",IDC_BUTTON_CLOSE,237,35,50,14
+    LTEXT           "Static",IDC_STATIC_HIDE_DETAILS_FORDIALOG,35,55,19,8
+    LTEXT           "Static",IDC_STATIC_SHOWDETAILS_ONDIALOG,23,78,19,8
+    LTEXT           "Static",IDC_STATIC_HEDAER_TEXT,15,18,19,8
+	CONTROL         "", IDC_STATIC_LOGO_PIC, "Static", SS_BITMAP, 53, 12, 20, 20
+    CONTROL         "",IDC_STATIC_USB_GIF,"Static",SS_BLACKRECT,82,52,20,20
+    CONTROL         "",IDC_PROGRESS_USBSTATUS,"msctls_progress32",WS_BORDER,118,151,80,14
+    LTEXT           "Static",IDC_STATIC_PERCENTAGE_VALUE,214,151,19,8
+    LTEXT           "",IDC_STATIC_PAUSE_RESUME_STATUS,263,89,8,8
+    LTEXT           "Static",IDC_STATIC_CLEANINGTEXT,34,97,35,8
+    EDITTEXT        IDC_EDIT_ACTUAL_STATUS,141,43,40,14,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "",IDC_CHECK_SELECT_ALL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,137,8,10
+    LTEXT           "Static",IDC_STATIC_SELECT_ALL,13,150,19,8
+END
+
+IDD_DIALOG_USBSCAN DIALOGEX 0, 0, 317, 183
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST | WS_EX_WINDOWEDGE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "",IDC_BTN_YES,39,79,24,9
+    PUSHBUTTON      "",IDC_BTN_NO,40,100,23,9
+    PUSHBUTTON      "",IDC_BTN_CLOSE,289,7,17,14,NOT WS_TABSTOP
+    LTEXT           "Do you want to start scanning?",IDC_STATIC_MSG,31,49,150,14
+    LTEXT           "Recommended",IDC_STATIC_YESTXT,89,79,49,10
+    LTEXT           "Without Scanning",IDC_STATIC_NOTXT,88,99,59,10
+    LTEXT           "USB Detected",IDC_STATIC_USB_DETECT_TEXT,28,18,45,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Vibranium"
+            VALUE "FileDescription", "Vibranium USB Scan"
+            VALUE "FileVersion", "1.0.0.5"
+            VALUE "InternalName", "USBDetectUI.exe"
+            VALUE "LegalCopyright", "\r\nwww.vibranium.co.in"
+            VALUE "OriginalFilename", "USBDetectUI.exe"
+            VALUE "ProductName", "Vibranium"
+            VALUE "ProductVersion", "1.0.0.4"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 199
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 93
+    END
+
+    IDD_USBDETECTUI_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 497
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 341
+    END
+
+    IDD_DIALOG_USBSCAN, DIALOG
+    BEGIN
+        RIGHTMARGIN, 316
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "&About USBDetectUI..."
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\USBDetectUI.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

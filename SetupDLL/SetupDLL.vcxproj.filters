@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{1108f72e-f3e5-463a-9dd2-9b89a78c995f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SVCCommon">
+      <UniqueIdentifier>{12b6236a-1b8e-4465-bcd1-2c8eac2dd90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{d42d3e05-ca4d-4c42-bb1e-9ee6fe73bbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DriverInstall">
+      <UniqueIdentifier>{078ddfea-b797-49e5-a795-7290b79dcea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{8e2dabf3-07c0-4466-b5f6-039716bfa448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQLite">
+      <UniqueIdentifier>{38d85b2b-3ba2-4f91-a537-3ead9ffab8cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sockets">
+      <UniqueIdentifier>{bbea769c-eb32-4faf-8566-46d5ee31d060}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SetupDLL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CommonFunctions.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\EnumProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\iTINRegWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\WardwizLangManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WardwizOSVersion.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Service\iSpySrvMgmt.cpp">
+      <Filter>SVCCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\ExecuteProcess.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\XMessageBox.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CScannerLoad.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\CSecure64.cpp">
+      <Filter>DriverInstall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommServer.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCommunicator.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyCriticalSection.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\iSpyMemMapClient.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\IPC\ISpyNamedPipeListener.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\System\WWizSettingsWrapper.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Scanner\WardWizDatabaseInterface.cpp">
+      <Filter>SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\Sockets\SocketComm.cpp">
+      <Filter>Sockets</Filter>
+    </ClCompile>
+    <ClCompile Include="MarQDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\GUI\TextProgressCtrl.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MigFailedDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SetupDLL.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\SetupDLL.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupDLL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CommonFunctions.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\Enumprocess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\iTINRegWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\CrashDumpHandlerInc\WardWizDumpCreater.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\WardwizLangManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WardwizOSVersion.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Service\iSpySrvMgmt.h">
+      <Filter>SVCCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\ExecuteProcess.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\XMessageBox.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CScannerLoad.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\CSecure64.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\DriverConstants.h">
+      <Filter>DriverInstall</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupDllConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommServer.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCommunicator.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyCriticalSection.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\iSpyMemMapClient.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\ISpyNamedPipeListener.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\IPC\PipeConstants.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupDllConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\System\WWizSettingsWrapper.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Scanner\WardWizDatabaseInterface.h">
+      <Filter>SQLite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\Sockets\SocketComm.h">
+      <Filter>Sockets</Filter>
+    </ClInclude>
+    <ClInclude Include="MarQDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\GUI\TextProgressCtrl.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WardWizInstaller\WardWizInstaller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MigFailedDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SetupDLL.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

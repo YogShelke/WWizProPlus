@@ -1,0 +1,4 @@
+// Microsoft Visual C++ generated Help ID include file.
+// Used by SetupDLL.rc
+//
+#define HIDD_DIALOG_SHOW_MARQUEE        0x97701770    // IDD_DIALOG_SHOW_MARQUEE
