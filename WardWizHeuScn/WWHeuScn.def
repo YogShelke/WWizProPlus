@@ -1,0 +1,6 @@
+; WWHeuScn.def : Declares the module parameters for the DLL.
+
+LIBRARY      "WRDWIZHEUSCN"
+
+EXPORTS
+    ; Explicit exports can go here
